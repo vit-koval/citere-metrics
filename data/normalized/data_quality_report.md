@@ -192,10 +192,11 @@ Owner distribution (rule: owned → competitor:<Brand> → institutional → sto
 | institutional | 16955 | 23.0% |
 | owned | 1955 | 2.6% |
 | adversarial | 1330 | 1.8% |
-| competitor:Lilly corporate | 250 | 0.3% |
 | competitor:Wegovy | 238 | 0.3% |
 | competitor:Zepbound | 232 | 0.3% |
 | competitor:Mounjaro | 196 | 0.3% |
+| competitor:Lilly corporate | 190 | 0.3% |
+| competitor:Trulicity | 60 | 0.1% |
 | noise | 41 | 0.1% |
 | competitor:Rybelsus | 41 | 0.1% |
 | competitor:Boehringer corporate | 13 | 0.0% |
@@ -204,16 +205,16 @@ Owner distribution (rule: owned → competitor:<Brand> → institutional → sto
 
 Stored `owner_data` × computed `owner` (rows: stored, columns: computed):
 
-| owner_data | adversarial | competitor:Boehringer corporate | competitor:Lilly corporate | competitor:Mounjaro | competitor:Rybelsus | competitor:Saxenda | competitor:Victoza | competitor:Wegovy | competitor:Zepbound | earned | institutional | noise | owned |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| adversarial | 1330 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| commerce | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14414 | 0 | 0 | 0 |
-| comp_owned | 0 | 0 | 250 | 196 | 0 | 0 | 0 | 0 | 232 | 0 | 0 | 0 | 0 |
-| earned | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 29378 | 16955 | 0 | 0 |
-| noise | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 0 |
-| other | 0 | 13 | 0 | 0 | 0 | 10 | 10 | 0 | 0 | 6942 | 0 | 0 | 0 |
-| owned | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 238 | 0 | 0 | 0 | 0 | 1955 |
-| ugc | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1837 | 0 | 0 | 0 |
+| owner_data | adversarial | competitor:Boehringer corporate | competitor:Lilly corporate | competitor:Mounjaro | competitor:Rybelsus | competitor:Saxenda | competitor:Trulicity | competitor:Victoza | competitor:Wegovy | competitor:Zepbound | earned | institutional | noise | owned |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| adversarial | 1330 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| commerce | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14414 | 0 | 0 | 0 |
+| comp_owned | 0 | 0 | 190 | 196 | 0 | 0 | 60 | 0 | 0 | 232 | 0 | 0 | 0 | 0 |
+| earned | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 29378 | 16955 | 0 | 0 |
+| noise | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 0 |
+| other | 0 | 13 | 0 | 0 | 0 | 10 | 0 | 10 | 0 | 0 | 6942 | 0 | 0 | 0 |
+| owned | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 238 | 0 | 0 | 0 | 0 | 1955 |
+| ugc | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1837 | 0 | 0 | 0 |
 
 Cycle-1 decision: stored `owner_data = other` is no longer excluded — it is classified `earned` with subtype `other` (citation_tracking_spec §2 updated accordingly; only stored `noise` stays excluded, `adversarial` is reported separately). Top-30 earned/other domains for manual labeling: luknermed.com (43), substack.com (27), sciencealert.com (25), superpower.com (23), abbott.com (21), justanswer.com (21), uspharmacist.com (19), premiummedicalcircle.com (19), htxheart.com (19), livescience.com (19), formhealth.co (19), infectiousdiseaseadvisor.com (19), adwdiabetes.com (18), omegaquant.com (18), managedhealthcareexecutive.com (18), nourishadl.com.au (18), getzealthy.com (18), aace.com (18), healthcare-bulletin.co.uk (18), megawecare.com (17), meto.co (17), weddingsdiet.com (17), amazon.com (17), medxdrg.com (17), knownwell.co (17), nighgoldenberg.com (17), davita.com (17), mydr.com.au (17), helloclue.com (17), baledoneen.com (16)
 

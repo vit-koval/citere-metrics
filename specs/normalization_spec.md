@@ -103,7 +103,7 @@ Cross-check columns (computed, kept for audit): `our_status_scored` (from scores
 | `owner_data`, `category_data` | as stored |
 | `is_artifact` | domain in `artifacts` → excluded from every metric |
 | `is_institutional` | category in `institutional_categories` OR domain in `institutional_domains` |
-| `owner` | `owned` if domain in `owned`; `competitor:<Brand>` if in `competitor`; `institutional` if is_institutional; `adversarial`/`noise`/`other` as stored; else `earned` (with `subtype` = `category_data`) |
+| `owner` | `owned` if domain in `owned`; `competitor:<Brand>` if in `competitor`; `institutional` if is_institutional; `adversarial`/`noise` as stored; stored `other` → `earned` with `subtype` = `other` (changed after the cycle-1 data quality review — only `noise` is excluded); else `earned` (with `subtype` = `category_data`) |
 | `we_present`, `comps_present` | joined from the answer |
 | `dedup` | same domain twice in one answer → keep first only |
 
