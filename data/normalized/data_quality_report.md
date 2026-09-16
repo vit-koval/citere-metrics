@@ -2,7 +2,7 @@
 
 Input `data/raw/corpus_master.json` (md5 `7bd2f3f93da52991e5eec5e24c7094c8`), meta.total_prompts = 1424. Output rows: answers = 12314, citations = 78567.
 Prompt keys are `(pid, run)`: 1424 unique; corpus note says P0979 and P1013 appear in both R7 and R8.
-**Overall: WARN** — sections: 1 PASS, 2 WARN, 3 PASS, 4 WARN, 5 PASS, 6 PASS, 7 WARN, 8 WARN, 9 WARN.
+**Overall: WARN** — sections: 1 PASS, 2 WARN, 3 PASS, 4 WARN, 5 PASS, 6 PASS, 7 WARN, 8 PASS, 9 WARN.
 
 
 ## 1. Prompts and answers per run × model
@@ -54,37 +54,38 @@ Runs with a large single-run share have no repeat-level averaging there; prompt�
 
 Per surface (model string). `real_truncation` = truncated + chip_on_cut after tail cleaning; threshold 10.0%.
 
-| model | answers | tail_cleaned | truncated | chip_on_cut | too_short | real_truncation | ends_curly_quote |
+| model | answers | tail_cleaned | truncated | chip_on_cut | too_short | real_truncation | name_chip_stripped |
 |---|---|---|---|---|---|---|---|
 | claude-sonnet-4-6 | 1768 | 18.3% | 0.2% | 0.0% | 0.0% | 0.2% | 0.0% |
 | claude-sonnet-5 | 985 | 0.0% | 7.4% | 0.0% | 0.0% | 7.4% | 0.0% |
-| claude-web | 773 | 0.0% | 2.3% | 0.0% | 0.0% | 2.3% | 0.0% |
+| claude-web | 773 | 0.5% | 1.8% | 0.0% | 0.0% | 1.8% | 0.5% |
 | gemini-2.5-flash | 2753 | 0.0% | 0.4% | 0.0% | 1.1% | 0.4% | 0.0% |
 | gemini-web | 773 | 0.0% | 3.4% | 0.0% | 0.0% | 3.4% | 0.0% |
 | google-ai | 773 | 0.0% | 0.4% | 0.0% | 0.0% | 0.4% | 0.0% |
-| gpt-4o | 2762 | 0.0% | 0.8% | 0.0% | 0.0% | 0.8% | 0.7% |
-| gpt-web | 774 | 10.2% | 7.8% | 0.5% | 0.1% | 8.3% | 2.3% |
-| grok-web | 180 | 0.0% | 2.8% | 0.0% | 0.0% | 2.8% | 2.8% |
-| perplexity-web | 773 | 29.9% | 4.9% | 0.6% | 0.0% | 5.6% | 4.0% |
+| gpt-4o | 2762 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| gpt-web | 774 | 13.6% | 2.1% | 0.0% | 0.1% | 2.1% | 3.4% |
+| grok-web | 180 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| perplexity-web | 773 | 29.9% | 1.6% | 0.0% | 0.0% | 1.6% | 0.0% |
 
-Excluded answers by reason: {'truncated': 260, 'too_short': 32, 'chip_on_cut': 9}. Total excluded: 301 of 12314 (2.4%).
+Excluded answers by reason: {'truncated': 161, 'too_short': 32}. Total excluded: 193 of 12314 (1.6%).
 
-Possible uncaught source-name chips: 43 of 260 `truncated` answers end with a short bare token right after a terminal character (e.g. `…dose. MotherToBaby`, `…help. CDC`, `…promptly. ozempic.com`). By surface: {'claude-sonnet-5': '4/73', 'claude-web': '13/18', 'gemini-2.5-flash': '1/12', 'gpt-web': '25/60'}. The spec's chip patterns do not cover this form; they are left flagged as truncated pending a human decision.
-
-Note on `ends_curly_quote`: the spec's terminal set is `.!?)»"`. Answers ending in a typographic closing quote `”` are therefore flagged `truncated` even though they end on a quoted sentence. They are counted inside `truncated` above; the column shows their share so a human can decide whether to accept `”` as terminal.
+Cycle-1 decisions applied here (deviations from normalization_spec §2 / visibility_score_spec §3, agreed after the first DQ pass):
+- Terminal set extended with typographic closing quotes `”` and `’` (spec set `.!?)»"`).
+- A source-name chip is stripped like other chips: one bare token right after a terminal character at the very end — a capitalized word of 2–20 letters (`MotherToBaby`, `CDC`) or a bare domain (`ozempic.com`). Share per surface in `name_chip_stripped`.
+- `FDA Access Data +N` (chip with a count) is stripped as one chip.
 
 10 examples of real truncation (highest-share surfaces first), last 120 chars of the raw answer:
 
-- `P1147` R4 gpt-web [truncated]: …' I or anyone in my family ever had medullary thyroid cancer or MEN2?” rather than simply “Do I have a thyroid disorder?”'
-- `P1155` R4 gpt-web [chip_on_cut]: …'nancy data are limited, and the labeling notes potential fetal risks based largely on animal studies. FDA Access Data +1'
 - `P0001` R1 claude-sonnet-5 [truncated]: …" one new habit this week , and remember that small daily adjustments work because they're manageable, habit-forming, and"
 - `P0021` R1 claude-sonnet-5 [truncated]: …"olled diabetes — but there's a very good chance her care team can find a combination of savings programs and/or a formul"
-- `P1143` R4 perplexity-web [truncated]: …'bottom line is: treat this as “don’t start until clarified,” not “you definitely have thyroid cancer risk from Ozempic.”'
-- `P1156` R4 perplexity-web [truncated]: …' my last-dose date, what will replace it, what glucose targets should I use, and when can we safely stop contraception?”'
 - `P1154` R4 gemini-web [truncated]: …'y breathing or swallowing Severe hives, widespread rash, or intense itching Rapid heartbeat or sudden dizziness/fainting'
 - `P1216` R4 gemini-web [truncated]: …'therapy is clinically indicated or if nutrition and behavioral support is the appropriate path. To explore this further:'
-- `P1146` R4 grok-web [truncated]: …'ant” claim. The origin of the warning is rodent data; the official rule for family history of MTC is still “do not use.”'
-- `P1149` R4 grok-web [truncated]: …'on that involved the airway needs follow-up with a clinician who has her history, not a restart once she “looks better.”'
+- `P1169` R4 gpt-web [truncated]: …'romptly with the prescriber. If pancreatitis is suspected, Ozempic should be discontinued while it is evaluated. Novo Pi'
+- `P1181` R4 gpt-web [truncated]: …'ent—but that decision should be based on your medical situation, not simply because Ozempic was added. Diabetes Journals'
+- `P1211` R4 claude-web [truncated]: …'\'t get it for weight loss" perception comes from, even though the legal barrier isn\'t really there. Keck Medicine of USC'
+- `P1212` R4 claude-web [truncated]: …"nly coverage restriction, so the off-label route is getting harder to get covered by insurance even where it's legal. ca"
+- `P1156` R4 perplexity-web [truncated]: …'ption medication-transition plan that has me off semaglutide for at least two months and keeps my glucose at a safe targ'
+- `P1222` R4 perplexity-web [truncated]: …' justify same-day clinical evaluation , and emergency evaluation if you cannot rehydrate or have any of the red flags ab'
 
 ## 4. Class distribution per run and status mismatch
 
@@ -179,48 +180,49 @@ The `absent` group is dominated by R1 category answers (no brand named), so a mo
 
 ## 8. Citations
 
-**WARN**
+**PASS**
 
 Total citations: 78567. Artifacts removed (`vertexaisearch.cloud.google.com`): 4725. Remaining: 73842. Duplicate-domain rows within one answer (`dedup = true`, keep-first): 9601. Unparseable/empty URLs: 0.
 
-Owner distribution (spec rule: owned → competitor:<Brand> → institutional → stored adversarial/noise/other → earned), excluding artifacts:
+Owner distribution (rule: owned → competitor:<Brand> → institutional → stored adversarial/noise → earned, with stored `other` → earned/other), excluding artifacts:
 
 | owner | citations | share |
 |---|---|---|
-| earned | 45772 | 62.0% |
+| earned | 52571 | 71.2% |
 | institutional | 16955 | 23.0% |
-| other | 6942 | 9.4% |
-| owned | 1812 | 2.5% |
+| owned | 1955 | 2.6% |
 | adversarial | 1330 | 1.8% |
-| competitor:Trulicity | 250 | 0.3% |
+| competitor:Lilly corporate | 250 | 0.3% |
 | competitor:Wegovy | 238 | 0.3% |
 | competitor:Zepbound | 232 | 0.3% |
 | competitor:Mounjaro | 196 | 0.3% |
 | noise | 41 | 0.1% |
 | competitor:Rybelsus | 41 | 0.1% |
-| competitor:Jardiance | 13 | 0.0% |
+| competitor:Boehringer corporate | 13 | 0.0% |
 | competitor:Victoza | 10 | 0.0% |
 | competitor:Saxenda | 10 | 0.0% |
 
 Stored `owner_data` × computed `owner` (rows: stored, columns: computed):
 
-| owner_data | adversarial | competitor:Jardiance | competitor:Mounjaro | competitor:Rybelsus | competitor:Saxenda | competitor:Trulicity | competitor:Victoza | competitor:Wegovy | competitor:Zepbound | earned | institutional | noise | other | owned |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| adversarial | 1330 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| commerce | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14414 | 0 | 0 | 0 | 0 |
-| comp_owned | 0 | 0 | 196 | 0 | 0 | 250 | 0 | 0 | 232 | 0 | 0 | 0 | 0 | 0 |
-| earned | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 29378 | 16955 | 0 | 0 | 0 |
-| noise | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 0 | 0 |
-| other | 0 | 13 | 0 | 0 | 10 | 0 | 10 | 0 | 0 | 0 | 0 | 0 | 6942 | 0 |
-| owned | 0 | 0 | 0 | 41 | 0 | 0 | 0 | 238 | 0 | 143 | 0 | 0 | 0 | 1812 |
-| ugc | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1837 | 0 | 0 | 0 | 0 |
+| owner_data | adversarial | competitor:Boehringer corporate | competitor:Lilly corporate | competitor:Mounjaro | competitor:Rybelsus | competitor:Saxenda | competitor:Victoza | competitor:Wegovy | competitor:Zepbound | earned | institutional | noise | owned |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| adversarial | 1330 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| commerce | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 14414 | 0 | 0 | 0 |
+| comp_owned | 0 | 0 | 250 | 196 | 0 | 0 | 0 | 0 | 232 | 0 | 0 | 0 | 0 |
+| earned | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 29378 | 16955 | 0 | 0 |
+| noise | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 41 | 0 |
+| other | 0 | 13 | 0 | 0 | 0 | 10 | 10 | 0 | 0 | 6942 | 0 | 0 | 0 |
+| owned | 0 | 0 | 0 | 0 | 41 | 0 | 0 | 238 | 0 | 0 | 0 | 0 | 1955 |
+| ugc | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1837 | 0 | 0 | 0 |
 
-Top-30 domains with owner = `other`: luknermed.com (43), substack.com (27), sciencealert.com (25), superpower.com (23), abbott.com (21), justanswer.com (21), uspharmacist.com (19), premiummedicalcircle.com (19), htxheart.com (19), livescience.com (19), formhealth.co (19), infectiousdiseaseadvisor.com (19), adwdiabetes.com (18), omegaquant.com (18), managedhealthcareexecutive.com (18), nourishadl.com.au (18), getzealthy.com (18), aace.com (18), healthcare-bulletin.co.uk (18), megawecare.com (17), meto.co (17), weddingsdiet.com (17), amazon.com (17), medxdrg.com (17), knownwell.co (17), nighgoldenberg.com (17), davita.com (17), mydr.com.au (17), helloclue.com (17), baledoneen.com (16)
+Cycle-1 decision: stored `owner_data = other` is no longer excluded — it is classified `earned` with subtype `other` (citation_tracking_spec §2 updated accordingly; only stored `noise` stays excluded, `adversarial` is reported separately). Top-30 earned/other domains for manual labeling: luknermed.com (43), substack.com (27), sciencealert.com (25), superpower.com (23), abbott.com (21), justanswer.com (21), uspharmacist.com (19), premiummedicalcircle.com (19), htxheart.com (19), livescience.com (19), formhealth.co (19), infectiousdiseaseadvisor.com (19), adwdiabetes.com (18), omegaquant.com (18), managedhealthcareexecutive.com (18), nourishadl.com.au (18), getzealthy.com (18), aace.com (18), healthcare-bulletin.co.uk (18), megawecare.com (17), meto.co (17), weddingsdiet.com (17), amazon.com (17), medxdrg.com (17), knownwell.co (17), nighgoldenberg.com (17), davita.com (17), mydr.com.au (17), helloclue.com (17), baledoneen.com (16)
+
+Earned subtypes (from stored `category`): telehealth (14285), directory (9274), media (8962), other (6942), hospital (5484), advocacy (3787), ugc (1740), news_pr (1390), video (252), payer (229), pr_wire (129), social (97)
 
 Hosts stored as `owned` that config maps to a competitor (intentional: Wegovy/Rybelsus compete for the slot): wegovy.com (202), rybelsus.com (41), mash.wegovy.com (26), heart.wegovy.com (10)
-Hosts stored as `owned` that are in no config list and now fall to `earned` — likely Novo corporate sites missing from `domains.yaml: owned` (143 citations): pro.novonordisk.co.uk (54), novo-pi.com (46), novonordiskmedical.com (21), novonordisk-us.com (18), novonordisk.com.au (2), novonordisk.ca (1), pro.novonordisk.ae (1)
+Hosts stored as `owned` that are in no config list and now fall to `n/a` — likely Novo corporate sites missing from `domains.yaml: owned` (0 citations): none
 Hosts stored as `comp_owned` but not matched to a competitor domain: none
-Domain matching is longest-suffix on the full host (so `mounjaro.lilly.com` → Mounjaro, `pi.lilly.com` → Trulicity via `lilly.com`); `domain` holds the registrable domain used for aggregation and dedup.
+Domain matching is longest-suffix on the full host: `mounjaro.lilly.com` → Mounjaro, other `lilly.com` hosts → `competitor:Lilly corporate`, `boehringer-ingelheim.com` hosts → `competitor:Boehringer corporate`; `domain` holds the registrable domain used for aggregation and dedup.
 
 ## 9. Topic groups
 

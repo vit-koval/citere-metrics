@@ -20,7 +20,7 @@ from src import common as C
 PROMPT_REQUIRED = {"pid", "run", "zone", "status", "text", "code", "diagnosis", "intent", "topic_traffic", "models"}
 ANSWER_REQUIRED = {"model", "answer", "citations", "scores", "sentiment"}
 CITATION_REQUIRED = {"url", "owner", "category"}
-STORED_OWNER_PASSTHROUGH = ("adversarial", "noise", "other")
+STORED_OWNER_PASSTHROUGH = ("adversarial", "noise")  # cycle-1 DQ decision: stored `other` -> earned/other
 
 
 class SchemaSurprise(Exception):
@@ -148,6 +148,9 @@ def build_tables(raw: dict, cfg: Dict[str, dict]):
                     owner = "institutional"
                 elif owner_data in STORED_OWNER_PASSTHROUGH:
                     owner = owner_data
+                elif owner_data == "other":
+                    owner = "earned"
+                    subtype = "other"
                 else:
                     owner = "earned"
                     subtype = category
@@ -263,7 +266,7 @@ def build_report(answers: pd.DataFrame, citations: pd.DataFrame, dropped: dict, 
     # ---- 3. tail cleaning and truncation per surface ----------------------
     max_trunc = float(th["max_truncation_share_per_surface"])
     a["_real_trunc"] = a["exclude_reason"].isin(["truncated", "chip_on_cut"])
-    a["_ends_curly"] = a["answer_clean"].str.endswith("”")
+    a["_name_chip"] = a["answer_raw"].str.rstrip().str.contains(C.NAME_CHIP_RE.pattern, regex=True)
     t = a.groupby("model").agg(
         answers=("pid", "size"),
         tail_cleaned=("tail_cleaned", "mean"),
@@ -271,31 +274,23 @@ def build_report(answers: pd.DataFrame, citations: pd.DataFrame, dropped: dict, 
         chip_on_cut=("exclude_reason", lambda s: (s == "chip_on_cut").mean()),
         too_short=("exclude_reason", lambda s: (s == "too_short").mean()),
         real_truncation=("_real_trunc", "mean"),
-        ends_curly_quote=("_ends_curly", "mean"),
+        name_chip_stripped=("_name_chip", "mean"),
     ).reset_index()
     over = t[t["real_truncation"] > max_trunc]
     tt = t.copy()
-    for c in ["tail_cleaned", "truncated", "chip_on_cut", "too_short", "real_truncation", "ends_curly_quote"]:
+    for c in ["tail_cleaned", "truncated", "chip_on_cut", "too_short", "real_truncation", "name_chip_stripped"]:
         tt[c] = tt[c].map(_pct)
     lines = ["Per surface (model string). `real_truncation` = truncated + chip_on_cut after tail cleaning; threshold {}.".format(_pct(max_trunc)), ""]
     lines += _md_table(tt)
     lines.append("")
     lines.append("Excluded answers by reason: {}. Total excluded: {} of {} ({}).".format(
         {k: int(v) for k, v in a["exclude_reason"].value_counts().items()}, int(a["excluded"].sum()), n_ans, _pct(a["excluded"].mean())))
-    # possible uncaught chip form: a short trailing token right after a sentence end (e.g. "…dose. MotherToBaby", "…help. CDC")
-    name_chip_re = r'[.!?)»"\u201d]\s+\S{1,40}$'
-    tr = a[a["exclude_reason"] == "truncated"]
-    nc = tr["answer_clean"].str.contains(name_chip_re, regex=True)
-    per_surface = tr.assign(_nc=nc).groupby("model")["_nc"].agg(["sum", "size"])
     lines.append("")
-    lines.append("Possible uncaught source-name chips: {} of {} `truncated` answers end with a short bare token right after a terminal character "
-                 "(e.g. `…dose. MotherToBaby`, `…help. CDC`, `…promptly. ozempic.com`). By surface: {}. "
-                 "The spec's chip patterns do not cover this form; they are left flagged as truncated pending a human decision.".format(
-                     int(nc.sum()), len(tr), {m: "{}/{}".format(int(r["sum"]), int(r["size"])) for m, r in per_surface.iterrows() if r["sum"] > 0}))
-    lines.append("")
-    lines.append("Note on `ends_curly_quote`: the spec's terminal set is `.!?)»\"`. Answers ending in a typographic closing quote `”` "
-                 "are therefore flagged `truncated` even though they end on a quoted sentence. They are counted inside `truncated` above; "
-                 "the column shows their share so a human can decide whether to accept `”` as terminal.")
+    lines.append("Cycle-1 decisions applied here (deviations from normalization_spec §2 / visibility_score_spec §3, agreed after the first DQ pass):")
+    lines.append("- Terminal set extended with typographic closing quotes `”` and `’` (spec set `.!?)»\"`).")
+    lines.append("- A source-name chip is stripped like other chips: one bare token right after a terminal character at the very end — "
+                 "a capitalized word of 2–20 letters (`MotherToBaby`, `CDC`) or a bare domain (`ozempic.com`). Share per surface in `name_chip_stripped`.")
+    lines.append("- `FDA Access Data +N` (chip with a count) is stripped as one chip.")
     if len(over):
         st = "STOP"
         lines.append("")
@@ -400,13 +395,18 @@ def build_report(answers: pd.DataFrame, citations: pd.DataFrame, dropped: dict, 
     lines.append("")
     od = live["owner"].value_counts().rename_axis("owner").reset_index(name="citations")
     od["share"] = (od["citations"] / len(live)).map(_pct)
-    lines += ["Owner distribution (spec rule: owned → competitor:<Brand> → institutional → stored adversarial/noise/other → earned), excluding artifacts:", ""] + _md_table(od)
+    lines += ["Owner distribution (rule: owned → competitor:<Brand> → institutional → stored adversarial/noise → earned, with stored `other` → earned/other), excluding artifacts:", ""] + _md_table(od)
     lines.append("")
     xt8 = live.pivot_table(index="owner_data", columns="owner", values="url", aggfunc="count", fill_value=0).reset_index()
     lines += ["Stored `owner_data` × computed `owner` (rows: stored, columns: computed):", ""] + _md_table(xt8)
     lines.append("")
-    top_other = live[live["owner"] == "other"]["domain"].value_counts().head(30)
-    lines.append("Top-30 domains with owner = `other`: " + ", ".join("{} ({})".format(d, n) for d, n in top_other.items()))
+    top_other = live[(live["owner"] == "earned") & (live["subtype"] == "other")]["domain"].value_counts().head(30)
+    lines.append("Cycle-1 decision: stored `owner_data = other` is no longer excluded — it is classified `earned` with subtype `other` "
+                 "(citation_tracking_spec §2 updated accordingly; only stored `noise` stays excluded, `adversarial` is reported separately). "
+                 "Top-30 earned/other domains for manual labeling: " + ", ".join("{} ({})".format(d, n) for d, n in top_other.items()))
+    lines.append("")
+    sub = live[live["owner"] == "earned"]["subtype"].value_counts()
+    lines.append("Earned subtypes (from stored `category`): " + ", ".join("{} ({})".format(k, int(v)) for k, v in sub.items()))
     lines.append("")
     so = live[(live["owner_data"] == "owned") & (live["owner"] != "owned")]
     stored_owned_comp = so[so["owner"].str.startswith("competitor:")]["host"].value_counts()
@@ -419,7 +419,8 @@ def build_report(answers: pd.DataFrame, citations: pd.DataFrame, dropped: dict, 
     comp_owned_not_cfg = live[(live["owner_data"] == "comp_owned") & (~live["owner"].str.startswith("competitor:"))]["host"].value_counts()
     lines.append("Hosts stored as `comp_owned` but not matched to a competitor domain: " +
                  (", ".join("{} ({})".format(d, n) for d, n in comp_owned_not_cfg.items()) if len(comp_owned_not_cfg) else "none"))
-    lines.append("Domain matching is longest-suffix on the full host (so `mounjaro.lilly.com` → Mounjaro, `pi.lilly.com` → Trulicity via `lilly.com`); `domain` holds the registrable domain used for aggregation and dedup.")
+    lines.append("Domain matching is longest-suffix on the full host: `mounjaro.lilly.com` → Mounjaro, other `lilly.com` hosts → `competitor:Lilly corporate`, "
+                 "`boehringer-ingelheim.com` hosts → `competitor:Boehringer corporate`; `domain` holds the registrable domain used for aggregation and dedup.")
     section("8. Citations", "WARN" if len(stored_owned_not_cfg) else "PASS", lines)
 
     # ---- 9. topic groups --------------------------------------------------
@@ -451,7 +452,7 @@ def build_report(answers: pd.DataFrame, citations: pd.DataFrame, dropped: dict, 
     overall = "STOP" if "STOP" in statuses else ("WARN" if "WARN" in statuses else "PASS")
     L.insert(4, "**Overall: {}** — sections: {}.".format(overall, ", ".join("{} {}".format(i + 1, s) for i, s in enumerate(statuses))))
     L.insert(5, "")
-    a.drop(columns=["_real_trunc", "_ends_curly"], inplace=True)
+    a.drop(columns=["_real_trunc", "_name_chip"], inplace=True)
     return "\n".join(L) + "\n"
 
 

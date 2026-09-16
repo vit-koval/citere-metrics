@@ -179,10 +179,15 @@ def expected_classes_for_status(status: str) -> set:
 # --------------------------------------------------------------------------- #
 # Tail cleaning and exclusion
 # --------------------------------------------------------------------------- #
+# Source-name chip (cycle-1 DQ decision): a single bare token right after a terminal character at the very end —
+# a capitalized word of 2–20 letters (`MotherToBaby`, `CDC`) or a bare domain (`ozempic.com`).
+NAME_CHIP_RE = re.compile(r'(?<=[.!?)\u201d"])\s+(?:[A-Z][A-Za-z]{1,19}|[a-z0-9-]+(?:\.[a-z0-9-]+)+)$')
 CHIP_PATTERNS = [
+    re.compile(r"\s*FDA Access Data\s*\+\d+$"),                    # FDA Access Data +1 (chip with a count)
     re.compile(r"\s*\[?[a-z0-9.-]+\]?\s*\+\d+$", re.IGNORECASE),  # accessdata.fda +1 / [pmc.ncbi.nlm.nih] +2
     re.compile(r"\s*FDA Access Data$"),                            # FDA Access Data
     re.compile(r"\s*\[[a-z0-9.-]+\]$", re.IGNORECASE),             # [accessdata.fda]
+    NAME_CHIP_RE,                                                  # ". MotherToBaby" / ". CDC" / ". ozempic.com"
 ]
 _EMOJI_CLASS = (
     "\U0001F000-\U0001FAFF"   # pictographs, emoticons, transport, supplemental symbols
@@ -194,7 +199,7 @@ _EMOJI_CLASS = (
 )
 EMOJI_RE = re.compile("[{}]".format(_EMOJI_CLASS))
 TRAILING_EMOJI_WS_RE = re.compile("(?:[{}]|\\s)+$".format(_EMOJI_CLASS))
-TERMINAL_CHARS = '.!?)»"'
+TERMINAL_CHARS = '.!?)»"\u201d\u2019'  # spec set + typographic closing quotes ” ’ (cycle-1 DQ decision)
 CHIP_WINDOW = 60
 
 

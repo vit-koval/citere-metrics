@@ -206,3 +206,47 @@ def test_to_float_or_none():
     assert C.to_float_or_none("") is None and C.to_float_or_none(None) is None
     assert C.to_float_or_none("85") == 85.0 and C.to_float_or_none(3) == 3.0
     assert C.to_float_or_none("abc") is None
+
+
+# --------------------------------------------------------------------------- cycle-1 DQ decisions
+def test_typographic_closing_quotes_are_terminal():
+    for end in ["”", "’"]:
+        raw = FILLER.rstrip()[:-1] + end
+        assert C.ends_terminal(raw)
+        assert C.exclusion_reason(raw, raw, MIN_CHARS) is None, end
+
+
+def test_source_name_chip_capitalized_word_is_stripped():
+    raw = FILLER.rstrip() + " Your OB can set up a pregnancy-compatible treatment plan. MotherToBaby"
+    clean, tail_cleaned, chip = C.clean_tail(raw)
+    assert clean.endswith("treatment plan.") and tail_cleaned and chip
+    assert C.exclusion_reason(clean, raw, MIN_CHARS) is None
+    raw2 = FILLER.rstrip() + " Get emergency help. CDC"
+    clean2, _, _ = C.clean_tail(raw2)
+    assert clean2.endswith("emergency help.")
+
+
+def test_source_name_chip_bare_domain_is_stripped():
+    raw = FILLER.rstrip() + " Contact your clinician promptly. ozempic.com"
+    clean, tail_cleaned, chip = C.clean_tail(raw)
+    assert clean.endswith("promptly.") and chip
+    assert C.exclusion_reason(clean, raw, MIN_CHARS) is None
+    raw2 = FILLER.rstrip() + " See the label. novonordisk-us.com"
+    assert C.clean_tail(raw2)[0].endswith("the label.")
+
+
+def test_source_name_chip_requires_terminal_before_it():
+    # a lowercase last word after a cut is not a chip; a capitalized word after a comma is not a chip
+    raw = FILLER.rstrip() + " her care team can find a"
+    assert C.exclusion_reason(C.clean_tail(raw)[0], raw, MIN_CHARS) == "truncated"
+    raw2 = FILLER.rstrip() + " ask about coverage, MotherToBaby"
+    clean2, _, chip2 = C.clean_tail(raw2)
+    assert not chip2 and clean2.endswith("MotherToBaby")
+    assert C.exclusion_reason(clean2, raw2, MIN_CHARS) == "truncated"
+
+
+def test_fda_access_data_with_count_is_one_chip():
+    raw = FILLER.rstrip() + " Labeling notes potential fetal risks based on animal studies. FDA Access Data +1"
+    clean, _, chip = C.clean_tail(raw)
+    assert clean.endswith("animal studies.") and chip
+    assert C.exclusion_reason(clean, raw, MIN_CHARS) is None

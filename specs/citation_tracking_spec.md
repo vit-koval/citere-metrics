@@ -36,7 +36,7 @@ Rules:
 
 Inside `earned` — a subtype from data `category` where available: `health_media`, `hospital`, `directory` (drugs.com, goodrx), `ugc` (reddit, youtube, quora), `news`, `telehealth`, `litigation` (drugwatch, law-firm domains), `other`. Output the top-100 domains with their subtype for manual review.
 
-Data owner `adversarial` — reported separately as "threat sources", not part of the pie. Data owners `noise`, `other` — excluded.
+Data owner `adversarial` — reported separately as "threat sources", not part of the pie. Data owner `noise` — excluded. Data owner `other` — classified `earned` with subtype `other` (changed after the cycle-1 data quality review; previously excluded).
 
 Domains not in any config list and without a data category → `earned/other`. Output the top-30 of these for manual labeling.
 
