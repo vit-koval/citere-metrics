@@ -1,0 +1,97 @@
+{
+  "cycle": 1,
+  "counters": {
+    "open_total": 135,
+    "open_auto": 27,
+    "open_manual": 108,
+    "in_progress": 0,
+    "done_this_cycle": 0,
+    "dismissed_total": 0,
+    "by_who": {
+      "Digital": 81,
+      "Medical + Digital": 12,
+      "PR/Comms": 12,
+      "Marketing + Medical": 8,
+      "Medical": 8,
+      "Comms": 8,
+      "Regulatory": 4,
+      "Medical Affairs": 2
+    },
+    "top3_open": [
+      "c66030d94d01",
+      "201897a136b5",
+      "92361d73f3e1"
+    ],
+    "citere_tasks": 52,
+    "label_tasks_awaiting_signoff": 2,
+    "label_findings_pending": 10
+  },
+  "top3_open": [
+    {
+      "task_id": "c66030d94d01",
+      "group_id": "Side effects & tolerability × LIVING ON THE DRUG",
+      "owner": "earned",
+      "execution": "manual",
+      "priority": 3,
+      "who": "Digital",
+      "score": 0.061517,
+      "impact": {
+        "ceiling_pp": 37.7,
+        "expected_pp": [
+          3.77,
+          8.29
+        ],
+        "basis": "prior",
+        "n_groups": null,
+        "demand": 247764.0,
+        "lo": 246000.0,
+        "hi": 249540.0,
+        "demand_caption": "topic demand, Google, proxy"
+      }
+    },
+    {
+      "task_id": "201897a136b5",
+      "group_id": "Side effects & tolerability × small",
+      "owner": "earned",
+      "execution": "manual",
+      "priority": 3,
+      "who": "Digital",
+      "score": 0.047676,
+      "impact": {
+        "ceiling_pp": 45.24,
+        "expected_pp": [
+          4.52,
+          9.95
+        ],
+        "basis": "prior",
+        "n_groups": null,
+        "demand": 160011.0,
+        "lo": 130000.0,
+        "hi": 196950.0,
+        "demand_caption": "topic demand, Google, proxy"
+      }
+    },
+    {
+      "task_id": "92361d73f3e1",
+      "group_id": "Side effects & tolerability × WEIGHT LOSS",
+      "owner": "earned",
+      "execution": "manual",
+      "priority": 3,
+      "who": "Digital",
+      "score": 0.037563,
+      "impact": {
+        "ceiling_pp": 35.65,
+        "expected_pp": [
+          3.56,
+          7.84
+        ],
+        "basis": "prior",
+        "n_groups": null,
+        "demand": 160011.0,
+        "lo": 130000.0,
+        "hi": 196950.0,
+        "demand_caption": "topic demand, Google, proxy"
+      }
+    }
+  ]
+}
