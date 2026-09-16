@@ -7,12 +7,14 @@
     "R5",
     "R6"
   ],
+  "headline_run": "R1",
   "config": {
     "position_decay": 0.9,
     "model_weights": "equal",
     "min_answer_len": 100,
     "low_n_threshold": 30,
-    "position_source": "text (ordinal among dictionary brands); scores.our_rank kept as a check"
+    "position_source": "text (ordinal among dictionary brands); scores.our_rank kept as a check",
+    "headline_scope": "R1 C1 prompts only (cycle-1 decision, visibility_score_spec §2)"
   },
   "counts": {
     "prompts_total": 1424,
@@ -27,7 +29,11 @@
     "answers_C1_total": 2970,
     "answers_C1_excluded": 59,
     "answers_C1_used": 2911,
-    "answers_C1_in_headline": 2890,
+    "prompts_C1_headline": 250,
+    "answers_C1_headline_used": 2212,
+    "answers_C1_headline_excluded": {
+      "truncated": 51
+    },
     "c1_prompts_by_run": {
       "R1": 250,
       "R2": 4,
@@ -37,40 +43,38 @@
     }
   },
   "headline": {
-    "ai_brand_score": 30.54,
-    "visibility_pct": 32.41,
+    "ai_brand_score": 25.06,
+    "visibility_pct": 27.28,
     "visibility_ci95": [
-      30.72,
-      34.13
+      25.46,
+      29.17
     ],
-    "average_position": 1.67,
-    "visibility_pct_brand_bearing_only": 75.28,
-    "inn_only_mention_pct": 16.9
+    "average_position": 2.0,
+    "visibility_pct_brand_bearing_only": 72.04,
+    "inn_only_mention_pct": 16.53
   },
   "headline_reference": {
-    "all_families_equal_weight_incl_low_n": {
-      "ai_brand_score": 35.33,
-      "visibility_pct": 37.85,
+    "average_position_using_scored_rank_where_present": 2.42,
+    "ai_brand_score_using_scored_rank_where_present": 24.24,
+    "all_c1_runs_pooled_non_low_n_families": {
+      "ai_brand_score": 29.7,
+      "visibility_pct": 32.41,
       "visibility_ci95": [
-        36.1,
-        39.62
+        30.72,
+        34.13
       ],
-      "average_position": 1.75,
-      "visibility_pct_brand_bearing_only": 71.94,
-      "inn_only_mention_pct": 24.13,
-      "n_answers": 2911.0,
-      "n_families": 4.0
+      "average_position": 1.99,
+      "visibility_pct_brand_bearing_only": 74.56,
+      "inn_only_mention_pct": 16.9,
+      "n_answers": 2890.0,
+      "n_families": 3.0
     },
-    "average_position_using_scored_rank_where_present": 2.17,
-    "ai_brand_score_using_scored_rank_where_present": 29.41,
     "headline_families": [
       "claude",
       "gemini",
       "gpt"
     ],
-    "low_n_families_excluded_from_headline": [
-      "perplexity"
-    ]
+    "low_n_families_excluded_from_headline": []
   },
   "cross_check": {
     "r1_visibility_pct_from_we_present": 27.28,
@@ -87,14 +91,21 @@
       "R5",
       "R6"
     ],
+    "headline_runs": [
+      "R1"
+    ],
     "surfaces_covered": [
-      "api",
-      "web"
+      "api"
     ],
     "surfaces_not_covered": [
-      "grok-web"
+      "claude-web",
+      "gemini-web",
+      "google-ai",
+      "gpt-web",
+      "grok-web",
+      "perplexity-web"
     ],
-    "note": "C1 prompts on web surfaces exist only in R5 (8 prompts); those families are low_n and excluded from the headline mean."
+    "note": "Headline on R1 category prompts only; C1 prompts in R2/R3/R5/R6 are in c1_other_runs for reference. Web surfaces have no R1 answers."
   },
   "by_model": [
     {
@@ -104,19 +115,19 @@
         "claude-sonnet-5",
         "claude-web"
       ],
-      "n_answers": 925,
-      "n_prompt_model_groups": 587,
-      "ai_brand_score": 47.42,
-      "visibility_pct": 49.2,
+      "n_answers": 708,
+      "n_prompt_model_groups": 453,
+      "ai_brand_score": 42.01,
+      "visibility_pct": 44.37,
       "visibility_ci95": [
-        45.99,
-        52.42
+        40.75,
+        48.05
       ],
-      "average_position": 1.38,
-      "visibility_pct_brand_bearing_only": 88.91,
-      "inn_only_mention_pct": 7.81,
-      "unstable_groups_pct": 8.01,
-      "single_run_groups_pct": 44.46,
+      "average_position": 1.57,
+      "visibility_pct_brand_bearing_only": 87.45,
+      "inn_only_mention_pct": 7.95,
+      "unstable_groups_pct": 6.62,
+      "single_run_groups_pct": 45.03,
       "low_n": false
     },
     {
@@ -126,18 +137,18 @@
         "gemini-web",
         "google-ai"
       ],
-      "n_answers": 992,
-      "n_prompt_model_groups": 336,
-      "ai_brand_score": 30.85,
-      "visibility_pct": 33.58,
+      "n_answers": 751,
+      "n_prompt_model_groups": 250,
+      "ai_brand_score": 23.41,
+      "visibility_pct": 26.47,
       "visibility_ci95": [
-        30.71,
-        36.58
+        23.44,
+        29.74
       ],
-      "average_position": 1.86,
-      "visibility_pct_brand_bearing_only": 76.35,
-      "inn_only_mention_pct": 11.14,
-      "unstable_groups_pct": 28.27,
+      "average_position": 2.26,
+      "visibility_pct_brand_bearing_only": 73.18,
+      "inn_only_mention_pct": 10.63,
+      "unstable_groups_pct": 28.4,
       "single_run_groups_pct": 0.0,
       "low_n": false
     },
@@ -147,40 +158,20 @@
         "gpt-4o",
         "gpt-web"
       ],
-      "n_answers": 973,
-      "n_prompt_model_groups": 328,
-      "ai_brand_score": 13.35,
-      "visibility_pct": 14.43,
+      "n_answers": 753,
+      "n_prompt_model_groups": 250,
+      "ai_brand_score": 9.75,
+      "visibility_pct": 11.0,
       "visibility_ci95": [
-        12.36,
-        16.78
+        8.96,
+        13.44
       ],
-      "average_position": 1.77,
-      "visibility_pct_brand_bearing_only": 60.59,
-      "inn_only_mention_pct": 31.76,
-      "unstable_groups_pct": 24.39,
+      "average_position": 2.18,
+      "visibility_pct_brand_bearing_only": 55.5,
+      "inn_only_mention_pct": 31.0,
+      "unstable_groups_pct": 27.2,
       "single_run_groups_pct": 0.0,
       "low_n": false
-    },
-    {
-      "model": "perplexity",
-      "versions": [
-        "perplexity-web"
-      ],
-      "n_answers": 21,
-      "n_prompt_model_groups": 8,
-      "ai_brand_score": 49.69,
-      "visibility_pct": 54.17,
-      "visibility_ci95": [
-        33.92,
-        73.13
-      ],
-      "average_position": 2.0,
-      "visibility_pct_brand_bearing_only": 61.9,
-      "inn_only_mention_pct": 45.83,
-      "unstable_groups_pct": 12.5,
-      "single_run_groups_pct": 0.0,
-      "low_n": true
     }
   ],
   "by_model_version": [
@@ -189,19 +180,19 @@
       "versions": [
         "claude-sonnet-4-6"
       ],
-      "n_answers": 643,
-      "n_prompt_model_groups": 320,
-      "ai_brand_score": 52.17,
-      "visibility_pct": 54.06,
+      "n_answers": 505,
+      "n_prompt_model_groups": 250,
+      "ai_brand_score": 46.66,
+      "visibility_pct": 49.2,
       "visibility_ci95": [
-        50.2,
-        57.88
+        44.86,
+        53.55
       ],
-      "average_position": 1.37,
-      "visibility_pct_brand_bearing_only": 91.87,
-      "inn_only_mention_pct": 7.03,
-      "unstable_groups_pct": 13.75,
-      "single_run_groups_pct": 1.25,
+      "average_position": 1.55,
+      "visibility_pct_brand_bearing_only": 89.73,
+      "inn_only_mention_pct": 7.2,
+      "unstable_groups_pct": 12.0,
+      "single_run_groups_pct": 0.4,
       "low_n": false
     },
     {
@@ -209,167 +200,437 @@
       "versions": [
         "claude-sonnet-5"
       ],
-      "n_answers": 261,
-      "n_prompt_model_groups": 259,
-      "ai_brand_score": 40.95,
-      "visibility_pct": 42.47,
+      "n_answers": 203,
+      "n_prompt_model_groups": 203,
+      "ai_brand_score": 36.28,
+      "visibility_pct": 38.42,
       "visibility_ci95": [
-        36.63,
-        48.53
+        32.01,
+        45.27
       ],
-      "average_position": 1.37,
-      "visibility_pct_brand_bearing_only": 84.62,
-      "inn_only_mention_pct": 8.49,
+      "average_position": 1.59,
+      "visibility_pct_brand_bearing_only": 83.87,
+      "inn_only_mention_pct": 8.87,
       "unstable_groups_pct": 0.0,
-      "single_run_groups_pct": 99.23,
+      "single_run_groups_pct": 100.0,
       "low_n": false
-    },
-    {
-      "model": "claude-web",
-      "versions": [
-        "claude-web"
-      ],
-      "n_answers": 21,
-      "n_prompt_model_groups": 8,
-      "ai_brand_score": 66.33,
-      "visibility_pct": 72.92,
-      "visibility_ci95": [
-        51.54,
-        87.2
-      ],
-      "average_position": 1.93,
-      "visibility_pct_brand_bearing_only": 83.33,
-      "inn_only_mention_pct": 16.67,
-      "unstable_groups_pct": 37.5,
-      "single_run_groups_pct": 0.0,
-      "low_n": true
     },
     {
       "model": "gemini-2.5-flash",
       "versions": [
         "gemini-2.5-flash"
       ],
-      "n_answers": 950,
-      "n_prompt_model_groups": 320,
-      "ai_brand_score": 28.45,
-      "visibility_pct": 30.73,
+      "n_answers": 751,
+      "n_prompt_model_groups": 250,
+      "ai_brand_score": 23.41,
+      "visibility_pct": 26.47,
       "visibility_ci95": [
-        27.88,
-        33.74
+        23.44,
+        29.74
       ],
-      "average_position": 1.8,
-      "visibility_pct_brand_bearing_only": 74.7,
-      "inn_only_mention_pct": 11.22,
-      "unstable_groups_pct": 28.75,
+      "average_position": 2.26,
+      "visibility_pct_brand_bearing_only": 73.18,
+      "inn_only_mention_pct": 10.63,
+      "unstable_groups_pct": 28.4,
       "single_run_groups_pct": 0.0,
       "low_n": false
-    },
-    {
-      "model": "gemini-web",
-      "versions": [
-        "gemini-web"
-      ],
-      "n_answers": 21,
-      "n_prompt_model_groups": 8,
-      "ai_brand_score": 73.65,
-      "visibility_pct": 85.42,
-      "visibility_ci95": [
-        65.02,
-        94.86
-      ],
-      "average_position": 2.5,
-      "visibility_pct_brand_bearing_only": 91.67,
-      "inn_only_mention_pct": 14.58,
-      "unstable_groups_pct": 25.0,
-      "single_run_groups_pct": 0.0,
-      "low_n": true
-    },
-    {
-      "model": "google-ai",
-      "versions": [
-        "google-ai"
-      ],
-      "n_answers": 21,
-      "n_prompt_model_groups": 8,
-      "ai_brand_score": 84.44,
-      "visibility_pct": 95.83,
-      "visibility_ci95": [
-        78.16,
-        99.33
-      ],
-      "average_position": 2.33,
-      "visibility_pct_brand_bearing_only": 95.83,
-      "inn_only_mention_pct": 4.17,
-      "unstable_groups_pct": 12.5,
-      "single_run_groups_pct": 0.0,
-      "low_n": true
     },
     {
       "model": "gpt-4o",
       "versions": [
         "gpt-4o"
       ],
-      "n_answers": 952,
-      "n_prompt_model_groups": 320,
-      "ai_brand_score": 12.21,
-      "visibility_pct": 13.12,
+      "n_answers": 753,
+      "n_prompt_model_groups": 250,
+      "ai_brand_score": 9.75,
+      "visibility_pct": 11.0,
       "visibility_ci95": [
-        11.13,
-        15.42
+        8.96,
+        13.44
       ],
-      "average_position": 1.74,
-      "visibility_pct_brand_bearing_only": 60.19,
-      "inn_only_mention_pct": 31.72,
-      "unstable_groups_pct": 24.69,
+      "average_position": 2.18,
+      "visibility_pct_brand_bearing_only": 55.5,
+      "inn_only_mention_pct": 31.0,
+      "unstable_groups_pct": 27.2,
       "single_run_groups_pct": 0.0,
       "low_n": false
-    },
-    {
-      "model": "gpt-web",
-      "versions": [
-        "gpt-web"
-      ],
-      "n_answers": 21,
-      "n_prompt_model_groups": 8,
-      "ai_brand_score": 59.29,
-      "visibility_pct": 66.67,
-      "visibility_ci95": [
-        45.37,
-        82.81
-      ],
-      "average_position": 2.33,
-      "visibility_pct_brand_bearing_only": 66.67,
-      "inn_only_mention_pct": 33.33,
-      "unstable_groups_pct": 12.5,
-      "single_run_groups_pct": 0.0,
-      "low_n": true
-    },
-    {
-      "model": "perplexity-web",
-      "versions": [
-        "perplexity-web"
-      ],
-      "n_answers": 21,
-      "n_prompt_model_groups": 8,
-      "ai_brand_score": 49.69,
-      "visibility_pct": 54.17,
-      "visibility_ci95": [
-        33.92,
-        73.13
-      ],
-      "average_position": 2.0,
-      "visibility_pct_brand_bearing_only": 61.9,
-      "inn_only_mention_pct": 45.83,
-      "unstable_groups_pct": 12.5,
-      "single_run_groups_pct": 0.0,
-      "low_n": true
     }
   ],
+  "c1_other_runs": {
+    "R2": {
+      "n_prompts": 4,
+      "n_answers": 23,
+      "surfaces": [
+        "api"
+      ],
+      "overall_all_families_equal_weight": {
+        "ai_brand_score": 29.17,
+        "visibility_pct": 29.17,
+        "visibility_ci95": [
+          14.7,
+          49.6
+        ],
+        "average_position": 1.0,
+        "visibility_pct_brand_bearing_only": 66.67,
+        "inn_only_mention_pct": 4.17,
+        "n_answers": 23.0,
+        "n_families": 3.0
+      },
+      "by_model": [
+        {
+          "model": "claude",
+          "versions": [
+            "claude-sonnet-4-6",
+            "claude-sonnet-5",
+            "claude-web"
+          ],
+          "n_answers": 7,
+          "n_prompt_model_groups": 4,
+          "ai_brand_score": 50.0,
+          "visibility_pct": 50.0,
+          "visibility_ci95": [
+            20.24,
+            79.76
+          ],
+          "average_position": 1.0,
+          "visibility_pct_brand_bearing_only": 100.0,
+          "inn_only_mention_pct": 0.0,
+          "unstable_groups_pct": 50.0,
+          "single_run_groups_pct": 25.0,
+          "low_n": true
+        },
+        {
+          "model": "gemini",
+          "versions": [
+            "gemini-2.5-flash",
+            "gemini-web",
+            "google-ai"
+          ],
+          "n_answers": 8,
+          "n_prompt_model_groups": 4,
+          "ai_brand_score": 12.5,
+          "visibility_pct": 12.5,
+          "visibility_ci95": [
+            2.24,
+            47.09
+          ],
+          "average_position": 1.0,
+          "visibility_pct_brand_bearing_only": 50.0,
+          "inn_only_mention_pct": 0.0,
+          "unstable_groups_pct": 25.0,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        },
+        {
+          "model": "gpt",
+          "versions": [
+            "gpt-4o",
+            "gpt-web"
+          ],
+          "n_answers": 8,
+          "n_prompt_model_groups": 4,
+          "ai_brand_score": 25.0,
+          "visibility_pct": 25.0,
+          "visibility_ci95": [
+            7.15,
+            59.07
+          ],
+          "average_position": 1.0,
+          "visibility_pct_brand_bearing_only": 50.0,
+          "inn_only_mention_pct": 12.5,
+          "unstable_groups_pct": 50.0,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        }
+      ]
+    },
+    "R3": {
+      "n_prompts": 7,
+      "n_answers": 42,
+      "surfaces": [
+        "api"
+      ],
+      "overall_all_families_equal_weight": {
+        "ai_brand_score": 63.57,
+        "visibility_pct": 64.29,
+        "visibility_ci95": [
+          49.17,
+          77.01
+        ],
+        "average_position": 1.15,
+        "visibility_pct_brand_bearing_only": 82.86,
+        "inn_only_mention_pct": 35.71,
+        "n_answers": 42.0,
+        "n_families": 3.0
+      },
+      "by_model": [
+        {
+          "model": "claude",
+          "versions": [
+            "claude-sonnet-4-6",
+            "claude-sonnet-5",
+            "claude-web"
+          ],
+          "n_answers": 14,
+          "n_prompt_model_groups": 7,
+          "ai_brand_score": 77.86,
+          "visibility_pct": 78.57,
+          "visibility_ci95": [
+            52.41,
+            92.43
+          ],
+          "average_position": 1.07,
+          "visibility_pct_brand_bearing_only": 92.86,
+          "inn_only_mention_pct": 21.43,
+          "unstable_groups_pct": 42.86,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        },
+        {
+          "model": "gemini",
+          "versions": [
+            "gemini-2.5-flash",
+            "gemini-web",
+            "google-ai"
+          ],
+          "n_answers": 14,
+          "n_prompt_model_groups": 7,
+          "ai_brand_score": 64.29,
+          "visibility_pct": 64.29,
+          "visibility_ci95": [
+            38.76,
+            83.66
+          ],
+          "average_position": 1.0,
+          "visibility_pct_brand_bearing_only": 85.71,
+          "inn_only_mention_pct": 35.71,
+          "unstable_groups_pct": 71.43,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        },
+        {
+          "model": "gpt",
+          "versions": [
+            "gpt-4o",
+            "gpt-web"
+          ],
+          "n_answers": 14,
+          "n_prompt_model_groups": 7,
+          "ai_brand_score": 48.57,
+          "visibility_pct": 50.0,
+          "visibility_ci95": [
+            26.8,
+            73.2
+          ],
+          "average_position": 1.38,
+          "visibility_pct_brand_bearing_only": 70.0,
+          "inn_only_mention_pct": 50.0,
+          "unstable_groups_pct": 14.29,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        }
+      ]
+    },
+    "R5": {
+      "n_prompts": 8,
+      "n_answers": 105,
+      "surfaces": [
+        "web"
+      ],
+      "overall_all_families_equal_weight": {
+        "ai_brand_score": 63.59,
+        "visibility_pct": 71.09,
+        "visibility_ci95": [
+          61.8,
+          78.9
+        ],
+        "average_position": 2.17,
+        "visibility_pct_brand_bearing_only": 76.41,
+        "inn_only_mention_pct": 26.3,
+        "n_answers": 105.0,
+        "n_families": 4.0
+      },
+      "by_model": [
+        {
+          "model": "claude",
+          "versions": [
+            "claude-sonnet-4-6",
+            "claude-sonnet-5",
+            "claude-web"
+          ],
+          "n_answers": 21,
+          "n_prompt_model_groups": 8,
+          "ai_brand_score": 66.33,
+          "visibility_pct": 72.92,
+          "visibility_ci95": [
+            51.54,
+            87.2
+          ],
+          "average_position": 1.93,
+          "visibility_pct_brand_bearing_only": 83.33,
+          "inn_only_mention_pct": 16.67,
+          "unstable_groups_pct": 37.5,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        },
+        {
+          "model": "gemini",
+          "versions": [
+            "gemini-2.5-flash",
+            "gemini-web",
+            "google-ai"
+          ],
+          "n_answers": 42,
+          "n_prompt_model_groups": 16,
+          "ai_brand_score": 79.04,
+          "visibility_pct": 90.62,
+          "visibility_ci95": [
+            78.12,
+            96.32
+          ],
+          "average_position": 2.42,
+          "visibility_pct_brand_bearing_only": 93.75,
+          "inn_only_mention_pct": 9.38,
+          "unstable_groups_pct": 18.75,
+          "single_run_groups_pct": 0.0,
+          "low_n": false
+        },
+        {
+          "model": "gpt",
+          "versions": [
+            "gpt-4o",
+            "gpt-web"
+          ],
+          "n_answers": 21,
+          "n_prompt_model_groups": 8,
+          "ai_brand_score": 59.29,
+          "visibility_pct": 66.67,
+          "visibility_ci95": [
+            45.37,
+            82.81
+          ],
+          "average_position": 2.33,
+          "visibility_pct_brand_bearing_only": 66.67,
+          "inn_only_mention_pct": 33.33,
+          "unstable_groups_pct": 12.5,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        },
+        {
+          "model": "perplexity",
+          "versions": [
+            "perplexity-web"
+          ],
+          "n_answers": 21,
+          "n_prompt_model_groups": 8,
+          "ai_brand_score": 49.69,
+          "visibility_pct": 54.17,
+          "visibility_ci95": [
+            33.92,
+            73.13
+          ],
+          "average_position": 2.0,
+          "visibility_pct_brand_bearing_only": 61.9,
+          "inn_only_mention_pct": 45.83,
+          "unstable_groups_pct": 12.5,
+          "single_run_groups_pct": 0.0,
+          "low_n": true
+        }
+      ]
+    },
+    "R6": {
+      "n_prompts": 59,
+      "n_answers": 529,
+      "surfaces": [
+        "api"
+      ],
+      "overall_all_families_equal_weight": {
+        "ai_brand_score": 38.63,
+        "visibility_pct": 42.59,
+        "visibility_ci95": [
+          38.45,
+          46.84
+        ],
+        "average_position": 2.07,
+        "visibility_pct_brand_bearing_only": 80.09,
+        "inn_only_mention_pct": 17.19,
+        "n_answers": 529.0,
+        "n_families": 3.0
+      },
+      "by_model": [
+        {
+          "model": "claude",
+          "versions": [
+            "claude-sonnet-4-6",
+            "claude-sonnet-5",
+            "claude-web"
+          ],
+          "n_answers": 175,
+          "n_prompt_model_groups": 115,
+          "ai_brand_score": 59.87,
+          "visibility_pct": 64.78,
+          "visibility_ci95": [
+            57.46,
+            71.47
+          ],
+          "average_position": 1.84,
+          "visibility_pct_brand_bearing_only": 91.76,
+          "inn_only_mention_pct": 6.09,
+          "unstable_groups_pct": 7.83,
+          "single_run_groups_pct": 48.7,
+          "low_n": false
+        },
+        {
+          "model": "gemini",
+          "versions": [
+            "gemini-2.5-flash",
+            "gemini-web",
+            "google-ai"
+          ],
+          "n_answers": 177,
+          "n_prompt_model_groups": 59,
+          "ai_brand_score": 40.59,
+          "visibility_pct": 46.05,
+          "visibility_ci95": [
+            38.86,
+            53.39
+          ],
+          "average_position": 2.29,
+          "visibility_pct_brand_bearing_only": 76.02,
+          "inn_only_mention_pct": 11.58,
+          "unstable_groups_pct": 25.42,
+          "single_run_groups_pct": 0.0,
+          "low_n": false
+        },
+        {
+          "model": "gpt",
+          "versions": [
+            "gpt-4o",
+            "gpt-web"
+          ],
+          "n_answers": 177,
+          "n_prompt_model_groups": 59,
+          "ai_brand_score": 15.42,
+          "visibility_pct": 16.95,
+          "visibility_ci95": [
+            12.14,
+            23.16
+          ],
+          "average_position": 2.08,
+          "visibility_pct_brand_bearing_only": 72.5,
+          "inn_only_mention_pct": 33.9,
+          "unstable_groups_pct": 13.56,
+          "single_run_groups_pct": 0.0,
+          "low_n": false
+        }
+      ]
+    }
+  },
   "intrusion": {
-    "competitor_into_ours_pct": 29.44,
+    "competitor_into_ours_pct": 29.61,
     "competitor_into_ours_ci95": [
-      28.28,
-      30.62
+      28.45,
+      30.79
     ],
     "competitor_into_ours_n_answers": 5830,
     "by_competitor": {
@@ -380,7 +641,10 @@
       "Trulicity": 1.76,
       "Victoza": 1.59,
       "Jardiance": 0.66,
-      "Saxenda": 2.11
+      "Saxenda": 2.11,
+      "Farxiga": 0.51,
+      "Januvia": 0.62,
+      "Invokana": 0.06
     },
     "ours_into_competitor_pct": 12.01,
     "ours_into_competitor_ci95": [
@@ -427,17 +691,14 @@
     }
   },
   "quality": {
-    "excluded_by_reason": {
+    "excluded_by_reason_C1": {
       "truncated": 59
     },
     "status_vs_text_mismatches": 813,
     "status_vs_text_mismatches_C1": 183,
     "unknown_brands_top20": {
-      "Farxiga": 389,
       "Metformin": 289,
-      "Invokana": 271,
       "American Diabetes Association": 247,
-      "Januvia": 193,
       "Novo Nordisk": 170,
       "semaglutide": 145,
       "Tradjenta": 137,
@@ -452,14 +713,17 @@
       "metformin": 82,
       "empagliflozin": 81,
       "Onglyza": 74,
-      "CagriSema": 73
+      "CagriSema": 73,
+      "tirzepatide": 72,
+      "Contrave": 70,
+      "dapagliflozin": 69
     },
-    "single_run_groups_pct": 20.73,
-    "unstable_groups_pct": 22.34,
+    "single_run_groups_pct_headline": 21.41,
+    "unstable_groups_pct_headline": 22.56,
     "position_text_vs_scored_differ_gt1": {
-      "n": 122,
+      "n": 128,
       "of": 547
     },
-    "legacy_visibility_field_corr_with_weight": 0.891
+    "legacy_visibility_field_corr_with_weight": 0.899
   }
 }

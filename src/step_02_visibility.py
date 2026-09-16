@@ -19,6 +19,7 @@ import pandas as pd
 from src import common as C
 
 LOW_N = 30          # spec §7: fewer than 30 C1 answers after filters -> low_n
+HEADLINE_RUN = "R1"  # cycle-1 decision (spec §2): headline on the category corpus only
 SAMPLE_PER_CASE = 10
 
 
@@ -164,16 +165,21 @@ def main() -> int:
     t["surface_type"] = t["model"].map(surf_map)
 
     used = t[~t["excluded"]].copy()
+    used["in_headline"] = used["run"] == HEADLINE_RUN
+    t["in_headline"] = t["run"] == HEADLINE_RUN
+    head = used[used["in_headline"]].copy()          # R1 C1: the category corpus (cycle-1 decision, spec §2)
+    other = used[~used["in_headline"]].copy()        # C1 prompts from R2/R3/R5/R6: reference only
     stab = stability_table(used)
+    stab_head = stab[stab["run"] == HEADLINE_RUN]
 
-    # ---- by family / by version -----------------------------------------
-    by_model = sorted(family_block(used, stab, "model_family", weights, versions_by_family), key=lambda d: d["model"])
-    by_version = sorted(family_block(used, stab, "model", weights, versions_by_family), key=lambda d: d["model"])
+    # ---- headline: by family / by version on R1 C1 ------------------------
+    by_model = sorted(family_block(head, stab_head, "model_family", weights, versions_by_family), key=lambda d: d["model"])
+    by_version = sorted(family_block(head, stab_head, "model", weights, versions_by_family), key=lambda d: d["model"])
     low_n_families = [d["model"] for d in by_model if d["low_n"]]
     headline_families = [d["model"] for d in by_model if not d["low_n"]]
-    used_head = used[used["model_family"].isin(headline_families)]
+    used_head = head[head["model_family"].isin(headline_families)]
     headline = overall_block(used_head, weights)
-    headline_all = overall_block(used, weights)
+    pooled_all = overall_block(used[used["model_family"].isin([d["model"] for d in family_block(used, stab, "model_family", weights, versions_by_family) if not d["low_n"]])], weights)
 
     # scored-rank variant of average position (reference)
     alt = used_head.copy()
@@ -182,14 +188,27 @@ def main() -> int:
     alt_pos = float(C.aggregate_bottom_up(alt, "position", ci_basis="answers", family_weights=weights)["overall"]["position"].iloc[0])
     alt_score = float(C.aggregate_bottom_up(alt, "weight", ci_basis="answers", family_weights=weights)["overall"]["weight"].iloc[0])
 
-    # ---- cross-check: visibility from our_status_scored vs we_present (R1 only, same subset) ----
-    r1 = used_head[used_head["run"] == "R1"].copy()
+    # ---- c1_other_runs: reference block per run ---------------------------
+    c1_other_runs = {}
+    for run, g in other.groupby("run"):
+        stab_r = stab[stab["run"] == run]
+        fams = family_block(g, stab_r, "model_family", weights, versions_by_family)
+        ov = overall_block(g, weights)
+        c1_other_runs[run] = {
+            "n_prompts": int(g.drop_duplicates(["pid", "run"]).shape[0]), "n_answers": int(len(g)),
+            "surfaces": sorted(g["surface_type"].dropna().unique().tolist()),
+            "overall_all_families_equal_weight": {k: (_r(v, 2) if not isinstance(v, list) else [_r(x, 2) for x in v]) for k, v in ov.items()},
+            "by_model": [{k: (_r(v, 2) if isinstance(v, float) else ([_r(x, 2) for x in v] if isinstance(v, list) and v and isinstance(v[0], float) else v)) for k, v in d.items()} for d in sorted(fams, key=lambda d: d["model"])],
+        }
+
+    # ---- cross-check: visibility from our_status_scored vs we_present (R1, same subset) ----
+    r1 = used_head.copy()
     r1["present_scored"] = r1["our_status_scored"].isin(["M", "R"]).astype(int)
     xc_text = 100.0 * float(C.aggregate_bottom_up(r1, "present", ci_basis="answers", family_weights=weights)["overall"]["present"].iloc[0])
     xc_scored = 100.0 * float(C.aggregate_bottom_up(r1, "present_scored", ci_basis="answers", family_weights=weights)["overall"]["present_scored"].iloc[0])
     xc_ok = abs(xc_text - xc_scored) <= 0.5
 
-    # ---- by prompt (§8.2) --------------------------------------------------
+    # ---- by prompt (§8.2): all C1 prompts, `in_headline` marks R1 ---------
     pm_vis = C.aggregate_bottom_up(used, "present", ci_basis="answers")["pm"]
     pm_pos = C.aggregate_bottom_up(used, "position", ci_basis="answers")["pm"]
     pm_sco = C.aggregate_bottom_up(used, "weight", ci_basis="answers")["pm"]
@@ -202,7 +221,7 @@ def main() -> int:
     meta = used.drop_duplicates(["pid", "run"]).set_index(["pid", "run"])[["text", "zone"]]
     for (pid, run), g in fam_pm.groupby(["pid", "run"]):
         g = g.sort_values(["vis", "score", "model_family"], ascending=[False, False, True])
-        rows.append({"pid": pid, "run": run, "text": meta.loc[(pid, run), "text"], "zone": meta.loc[(pid, run), "zone"],
+        rows.append({"pid": pid, "run": run, "in_headline": run == HEADLINE_RUN, "text": meta.loc[(pid, run), "text"], "zone": meta.loc[(pid, run), "zone"],
                      "n_answers": int(g["n"].sum()), "vis": float(g["vis"].mean()),
                      "avg_pos": float(g["pos"].mean()) if g["pos"].notna().any() else None,
                      "score": float(g["score"].mean()), "stability": float(g["stability"].mean()),
@@ -211,6 +230,7 @@ def main() -> int:
 
     # ---- quality ----------------------------------------------------------
     excl = {k: int(v) for k, v in c1["exclude_reason"].value_counts().items()}
+    excl_head = {k: int(v) for k, v in c1.loc[c1["run"] == HEADLINE_RUN, "exclude_reason"].value_counts().items()}
     dic = {x.lower() for x in bd.our_aliases} | {al.lower() for v in bd.competitors.values() for al in v}
     unk = {}
     for m in c1["mentioned_data"].fillna(""):
@@ -221,46 +241,54 @@ def main() -> int:
     prompts = a.drop_duplicates(["pid", "run"])
     mism_all = int(prompts["status_mismatch"].sum())
     mism_c1 = int(prompts.loc[prompts["class"] == "C1", "status_mismatch"].sum())
-    n_flag = int(used["position_flag"].sum()); n_both = int((used["position_text"].notna() & used["position_scored"].notna()).sum())
-    legacy = used.dropna(subset=["visibility_data"])
+    n_flag = int(head["position_flag"].sum()); n_both = int((head["position_text"].notna() & head["position_scored"].notna()).sum())
+    legacy = head.dropna(subset=["visibility_data"])
     legacy_corr = float(legacy["visibility_data"].corr(legacy["weight"])) if len(legacy) > 2 else None
     c1_runs = sorted(c1["run"].unique().tolist())
     c1_prompts_by_run = {r: int(n) for r, n in c1.drop_duplicates(["pid", "run"]).groupby("run").size().items()}
-    surfaces_covered = sorted(used["surface_type"].dropna().unique().tolist())
-    models_without_c1 = sorted(set(fam_map) - set(used["model"].unique()) - set(cfg["models"].get("drop") or []))
+    surfaces_covered = sorted(head["surface_type"].dropna().unique().tolist())
+    models_without_c1 = sorted(set(fam_map) - set(head["model"].unique()) - set(cfg["models"].get("drop") or []))
     intrusion = intrusion_block(a, bd, weights)
+    n_head_prompts = int(head.drop_duplicates(["pid", "run"]).shape[0])
+
+    def _rd(d):
+        return {k: (_r(v, 2) if isinstance(v, float) else ([_r(x, 2) for x in v] if isinstance(v, list) and v and isinstance(v[0], float) else v)) for k, v in d.items()}
 
     summary = {
         "brand": bd.our_name,
         "run_ids": c1_runs,
+        "headline_run": HEADLINE_RUN,
         "config": {"position_decay": decay, "model_weights": "equal" if weights is None else weights, "min_answer_len": int(th["min_answer_chars"]),
-                   "low_n_threshold": LOW_N, "position_source": "text (ordinal among dictionary brands); scores.our_rank kept as a check"},
+                   "low_n_threshold": LOW_N, "position_source": "text (ordinal among dictionary brands); scores.our_rank kept as a check",
+                   "headline_scope": "R1 C1 prompts only (cycle-1 decision, visibility_score_spec §2)"},
         "counts": {"prompts_total": int(len(prompts)),
                    "prompts_by_class": {k: int(v) for k, v in prompts["class"].value_counts().sort_index().items()},
                    "answers_total": int(len(a)), "answers_excluded": int(a["excluded"].sum()),
                    "answers_C1_total": int(len(c1)), "answers_C1_excluded": int(c1["excluded"].sum()), "answers_C1_used": int(len(used)),
-                   "answers_C1_in_headline": int(len(used_head)), "c1_prompts_by_run": c1_prompts_by_run},
+                   "prompts_C1_headline": n_head_prompts, "answers_C1_headline_used": int(len(used_head)), "answers_C1_headline_excluded": excl_head,
+                   "c1_prompts_by_run": c1_prompts_by_run},
         "headline": {k: (_r(v, 2) if not isinstance(v, list) else [_r(x, 2) for x in v]) for k, v in headline.items() if k not in ("n_answers", "n_families")},
         "headline_reference": {
-            "all_families_equal_weight_incl_low_n": {k: (_r(v, 2) if not isinstance(v, list) else [_r(x, 2) for x in v]) for k, v in headline_all.items()},
             "average_position_using_scored_rank_where_present": _r(alt_pos, 2),
             "ai_brand_score_using_scored_rank_where_present": _r(alt_score, 2),
+            "all_c1_runs_pooled_non_low_n_families": {k: (_r(v, 2) if not isinstance(v, list) else [_r(x, 2) for x in v]) for k, v in pooled_all.items()},
             "headline_families": headline_families, "low_n_families_excluded_from_headline": low_n_families,
         },
         "cross_check": {"r1_visibility_pct_from_we_present": _r(xc_text, 2), "r1_visibility_pct_from_our_status_scored": _r(xc_scored, 2),
                         "abs_diff": _r(abs(xc_text - xc_scored), 2), "within_0_5": bool(xc_ok), "n_answers": int(len(r1))},
-        "scope": {"c1_runs": c1_runs, "surfaces_covered": surfaces_covered,
+        "scope": {"c1_runs": c1_runs, "headline_runs": [HEADLINE_RUN], "surfaces_covered": surfaces_covered,
                   "surfaces_not_covered": models_without_c1,
-                  "note": "C1 prompts on web surfaces exist only in R5 (8 prompts); those families are low_n and excluded from the headline mean."},
-        "by_model": [{k: (_r(v, 2) if isinstance(v, float) else ([_r(x, 2) for x in v] if isinstance(v, list) and v and isinstance(v[0], float) else v)) for k, v in d.items()} for d in by_model],
-        "by_model_version": [{k: (_r(v, 2) if isinstance(v, float) else ([_r(x, 2) for x in v] if isinstance(v, list) and v and isinstance(v[0], float) else v)) for k, v in d.items()} for d in by_version],
+                  "note": "Headline on R1 category prompts only; C1 prompts in R2/R3/R5/R6 are in c1_other_runs for reference. Web surfaces have no R1 answers."},
+        "by_model": [_rd(d) for d in by_model],
+        "by_model_version": [_rd(d) for d in by_version],
+        "c1_other_runs": c1_other_runs,
         "intrusion": {k: (_r(v, 2) if isinstance(v, float) else ([_r(x, 2) for x in v] if isinstance(v, list) else
                           ({kk: (_r(vv, 2) if isinstance(vv, float) else {a_: (_r(b_, 2) if isinstance(b_, float) else b_) for a_, b_ in vv.items()}) for kk, vv in v.items()} if isinstance(v, dict) else v)))
                       for k, v in intrusion.items()},
-        "quality": {"excluded_by_reason": excl, "status_vs_text_mismatches": mism_all, "status_vs_text_mismatches_C1": mism_c1,
+        "quality": {"excluded_by_reason_C1": excl, "status_vs_text_mismatches": mism_all, "status_vs_text_mismatches_C1": mism_c1,
                     "unknown_brands_top20": unknown_top,
-                    "single_run_groups_pct": _r(100.0 * float(stab["single_run"].mean()), 2),
-                    "unstable_groups_pct": _r(100.0 * float(stab.loc[~stab["single_run"], "unstable"].mean()), 2),
+                    "single_run_groups_pct_headline": _r(100.0 * float(stab_head["single_run"].mean()), 2),
+                    "unstable_groups_pct_headline": _r(100.0 * float(stab_head.loc[~stab_head["single_run"], "unstable"].mean()), 2),
                     "position_text_vs_scored_differ_gt1": {"n": n_flag, "of": n_both},
                     "legacy_visibility_field_corr_with_weight": _r(legacy_corr, 3)},
     }
@@ -271,14 +299,14 @@ def main() -> int:
     with open(C.METRICS_DIR / "visibility_summary.json", "w", encoding="utf-8") as fh:
         json.dump(summary, fh, indent=2, ensure_ascii=False)
     by_prompt.to_csv(C.METRICS_DIR / "visibility_by_prompt.csv", index=False)
-    ans_cols = ["pid", "run", "model", "model_family", "surface_type", "repeat_idx", "class", "present", "position", "position_text",
+    ans_cols = ["pid", "run", "in_headline", "model", "model_family", "surface_type", "repeat_idx", "class", "present", "position", "position_text",
                 "position_scored", "position_flag", "weight", "brands_in_answer", "inn_only", "brand_bearing", "excluded", "exclude_reason", "visibility_data"]
     t_out = t[ans_cols].copy()
     t_out["brands_in_answer"] = t_out["brands_in_answer"].map(lambda l: json.dumps(l, ensure_ascii=False))
     t_out.sort_values(["run", "pid", "model", "repeat_idx"]).to_csv(C.METRICS_DIR / "visibility_answers.csv", index=False)
 
-    # audit sample: 10 present / 10 absent (not INN-only) / 10 INN-only, seed 42, deterministic ordering first
-    pool = used.sort_values(["run", "pid", "model", "repeat_idx"]).reset_index(drop=True)
+    # audit sample from the headline pool (R1 C1, non-excluded): 10 present / 10 absent (not INN-only) / 10 INN-only, seed 42
+    pool = head.sort_values(["run", "pid", "model", "repeat_idx"]).reset_index(drop=True)
     strata = [("present", pool[pool["we_present"]]), ("absent", pool[(~pool["we_present"]) & (~pool["inn_only"])]), ("inn_only", pool[pool["inn_only"]])]
     parts = []
     for name, sub in strata:
@@ -294,56 +322,66 @@ def main() -> int:
     })
     sample_out.to_csv(C.AUDIT_DIR / "sample_visibility.csv", index=False)
 
-    # ---- report (≤ 15 lines) + by-model appendix ------------------------
+    # ---- report (≤ 15 lines) + appendix tables ---------------------------
     h = summary["headline"]
     fam_line = "; ".join("{} {:.1f}% [{:.1f}–{:.1f}] pos {} score {:.1f} n={}{}".format(
         d["model"], d["visibility_pct"], d["visibility_ci95"][0], d["visibility_ci95"][1],
         "n/a" if d["average_position"] is None else "{:.2f}".format(d["average_position"]), d["ai_brand_score"], d["n_answers"], " low_n" if d["low_n"] else "")
         for d in summary["by_model"])
-    r6_c1 = c1_prompts_by_run.get("R6", 0)
+    other_line = "; ".join("{} {} prompts/{} answers on {}: vis {:.1f}% pos {} score {:.1f}".format(
+        run, v["n_prompts"], v["n_answers"], "+".join(v["surfaces"]), v["overall_all_families_equal_weight"]["visibility_pct"],
+        "n/a" if v["overall_all_families_equal_weight"]["average_position"] is None else "{:.2f}".format(v["overall_all_families_equal_weight"]["average_position"]),
+        v["overall_all_families_equal_weight"]["ai_brand_score"]) for run, v in sorted(c1_other_runs.items()))
     L = [
         "# Visibility Score — cycle 1 (step 2)",
-        "Headline (C1 unbranded prompts, families {}; equal weights): **Visibility {:.1f}%** [Wilson 95% {:.1f}–{:.1f}], **Average Position {:.2f}**, **AI Brand Score {:.1f}**; brand-bearing-only visibility {:.1f}%; INN-only mention {:.1f}% (never added to visibility).".format(
+        "Headline (R1 C1 category prompts, families {}; equal weights): **Visibility {:.1f}%** [Wilson 95% {:.1f}–{:.1f}], **Average Position {:.2f}**, **AI Brand Score {:.1f}**; brand-bearing-only visibility {:.1f}%; INN-only mention {:.1f}% (never added to visibility).".format(
             ", ".join(headline_families), h["visibility_pct"], h["visibility_ci95"][0], h["visibility_ci95"][1], h["average_position"], h["ai_brand_score"], h["visibility_pct_brand_bearing_only"], h["inn_only_mention_pct"]),
-        "Scope: {} C1 prompts ({}), {} C1 answers used after filters ({} excluded: {}); surfaces covered: {}; no C1 answers on: {}.".format(
-            sum(c1_prompts_by_run.values()), ", ".join("{} {}".format(r, n) for r, n in sorted(c1_prompts_by_run.items())), len(used), int(c1["excluded"].sum()), excl, ", ".join(surfaces_covered), ", ".join(models_without_c1) or "none"),
+        "Scope: {} R1 C1 prompts, {} answers used after filters ({} excluded: {}); surfaces covered: {}; no R1 answers on: {}{}.".format(
+            n_head_prompts, len(used_head), sum(excl_head.values()), excl_head or "none", ", ".join(surfaces_covered), ", ".join(models_without_c1) or "none",
+            "; low_n families excluded from headline: " + ", ".join(low_n_families) if low_n_families else ""),
         "By family: " + fam_line + ".",
         "Cross-check (R1, same {} answers): visibility from `we_present` {:.2f}% vs from `our_status_scored` (M/R) {:.2f}% → diff {:.2f} pts, {}.".format(
             len(r1), xc_text, xc_scored, abs(xc_text - xc_scored), "within 0.5 — PASS" if xc_ok else "outside 0.5 — WARN"),
-        "Reliability: single-run groups {:.1f}%, unstable groups (repeats disagree on presence) {:.1f}% of multi-repeat groups; CI by number of answers (§7).".format(
-            summary["quality"]["single_run_groups_pct"], summary["quality"]["unstable_groups_pct"]),
-        "Decision 1 — position source: the spec says use `scores.our_rank` when present, but the scorer ranks among *all* brands it saw (Januvia, Farxiga, metformin…), not dictionary brands; {} of {} answers with both differ by >1. Text-based ordinal among dictionary brands is primary (also the only source for the {} R6 C1 answers); with scored rank where present: Average Position {:.2f}, AI Brand Score {:.1f}.".format(
-            n_flag, n_both, int((used["run"] == "R6").sum()), alt_pos, alt_score),
-        "Decision 2 — low_n families ({}) are flagged per §7 and left out of the headline mean (equal weights would give a ~22-answer family the same weight as 1,500 answers); all-families reference: Visibility {:.1f}%, Position {:.2f}, Score {:.1f}.".format(
-            ", ".join(low_n_families) or "none", headline_all["visibility_pct"], headline_all["average_position"], headline_all["ai_brand_score"]),
-        "Anomaly 1 — C1 exists outside R1/R6: R2 {}, R3 {}, R5 {} prompts (forum-style posts naming only semaglutide or the nickname “Oz”, and R5 web probes “best weekly shot…”); included by the dictionary rule.".format(
-            c1_prompts_by_run.get("R2", 0), c1_prompts_by_run.get("R3", 0), c1_prompts_by_run.get("R5", 0)),
-        "Anomaly 2 — `mentioned` tokens outside the dictionary are real drugs, not hallucinations: top {}; consider extending brands.yaml if they should count as competitors.".format(
+        "Reliability (R1): single-run groups {:.1f}%, unstable groups (repeats disagree on presence) {:.1f}% of multi-repeat groups; CI by number of answers (§7).".format(
+            summary["quality"]["single_run_groups_pct_headline"], summary["quality"]["unstable_groups_pct_headline"]),
+        "Decision 1 (cycle 1, spec §2) — headline scope is R1 C1 only: R6 prompts are message-triggered, R5 are web probes, R2/R3 are forum posts; none is a neutral category question. Reference `c1_other_runs`: {}. All C1 runs pooled would give Visibility {:.1f}%, Position {:.2f}, Score {:.1f}.".format(
+            other_line, pooled_all["visibility_pct"], pooled_all["average_position"], pooled_all["ai_brand_score"]),
+        "Decision 2 — position source: the spec says use `scores.our_rank` when present, but the scorer ranks among *all* brands it saw (metformin, Tradjenta, Actos…), not dictionary brands; {} of {} R1 answers with both differ by >1. Text-based ordinal among dictionary brands is primary; with scored rank where present: Average Position {:.2f}, AI Brand Score {:.1f}.".format(
+            n_flag, n_both, alt_pos, alt_score),
+        "Decision 3 — dictionary extended with Farxiga, Januvia, Invokana (+ INNs and domains) after the first pass; metformin stays out as a generic.",
+        "Anomaly 1 — `mentioned` tokens still outside the dictionary (all C1): top {}.".format(
             ", ".join("{} ({})".format(k, v) for k, v in list(unknown_top.items())[:6])),
-        "Anomaly 3 — R1 scorer marks {} present answers with `our_rank = 0` (status M but no rank); legacy `visibility` field correlates {} with our weight (reference only, not used).".format(
-            int(((used["run"] == "R1") & (used["present"] == 1) & (used["our_rank_scored"] == 0)).sum()), "n/a" if legacy_corr is None else "{:.2f}".format(legacy_corr)),
-        "Intrusion: competitor into our answers (C2) {:.1f}% [{:.1f}–{:.1f}], n={}; ours into competitor answers (C3) {:.1f}% [{:.1f}–{:.1f}], n={}; top competitor in C2: {}.".format(
+        "Anomaly 2 — R1 scorer marks {} present answers with `our_rank = 0` (status M but no rank); legacy `visibility` field correlates {} with our weight (reference only, not used).".format(
+            int(((head["present"] == 1) & (head["our_rank_scored"] == 0)).sum()), "n/a" if legacy_corr is None else "{:.2f}".format(legacy_corr)),
+        "Intrusion (all runs): competitor into our answers (C2) {:.1f}% [{:.1f}–{:.1f}], n={}; ours into competitor answers (C3) {:.1f}% [{:.1f}–{:.1f}], n={}; top competitor in C2: {}.".format(
             intrusion["competitor_into_ours_pct"], *intrusion["competitor_into_ours_ci95"], intrusion["competitor_into_ours_n_answers"],
             intrusion["ours_into_competitor_pct"], *intrusion["ours_into_competitor_ci95"], intrusion["ours_into_competitor_n_answers"],
             max(intrusion["by_competitor"].items(), key=lambda kv: kv[1])[0]),
         "Status vs text class mismatches: {} prompts overall, {} among C1 (class is never taken from `status`).".format(mism_all, mism_c1),
-        "Audit: `audit/sample_visibility.csv` — 30 C1 answers (10 present / 10 absent / 10 INN-only, seed 42); stop for manual review, proceed if ≥ 90% agree.",
-        "Outputs: visibility_summary.json, visibility_by_prompt.csv ({} prompts), visibility_answers.csv ({} rows incl. excluded).".format(len(by_prompt), len(t_out)),
+        "Audit: `audit/sample_visibility.csv` — 30 R1 C1 answers (10 present / 10 absent / 10 INN-only, seed 42); stop for manual review, proceed if ≥ 90% agree.",
+        "Outputs: visibility_summary.json, visibility_by_prompt.csv ({} C1 prompts, `in_headline` marks R1), visibility_answers.csv ({} rows incl. excluded).".format(len(by_prompt), len(t_out)),
     ]
-    tbl = ["", "---", "Appendix — by model family (headline uses non-low_n families; versions pooled):", "",
+    tbl = ["", "---", "Appendix — by model family, R1 C1 (headline uses non-low_n families; versions pooled):", "",
            "| family | versions | n_answers | groups | visibility % | CI95 | avg position | brand score | brand-bearing vis % | INN-only % | unstable groups % | single-run % | low_n |",
            "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for d in summary["by_model"]:
         tbl.append("| {} | {} | {} | {} | {:.1f} | {:.1f}–{:.1f} | {} | {:.1f} | {} | {:.1f} | {:.1f} | {:.1f} | {} |".format(
-            d["model"], ", ".join(d["versions"]), d["n_answers"], d["n_prompt_model_groups"], d["visibility_pct"], d["visibility_ci95"][0], d["visibility_ci95"][1],
+            d["model"], ", ".join(v for v in d["versions"] if v in set(head["model"].unique())), d["n_answers"], d["n_prompt_model_groups"], d["visibility_pct"], d["visibility_ci95"][0], d["visibility_ci95"][1],
             "n/a" if d["average_position"] is None else "{:.2f}".format(d["average_position"]), d["ai_brand_score"],
             "n/a" if d["visibility_pct_brand_bearing_only"] is None else "{:.1f}".format(d["visibility_pct_brand_bearing_only"]),
             d["inn_only_mention_pct"], d["unstable_groups_pct"], d["single_run_groups_pct"], "yes" if d["low_n"] else ""))
-    tbl += ["", "By model version (reference only):", "", "| version | family | n_answers | visibility % | CI95 | avg position | brand score | INN-only % | low_n |", "|---|---|---|---|---|---|---|---|---|"]
+    tbl += ["", "By model version, R1 C1 (reference only):", "", "| version | family | n_answers | visibility % | CI95 | avg position | brand score | INN-only % | low_n |", "|---|---|---|---|---|---|---|---|---|"]
     for d in summary["by_model_version"]:
         tbl.append("| {} | {} | {} | {:.1f} | {:.1f}–{:.1f} | {} | {:.1f} | {:.1f} | {} |".format(
             d["model"], fam_map.get(d["model"], ""), d["n_answers"], d["visibility_pct"], d["visibility_ci95"][0], d["visibility_ci95"][1],
             "n/a" if d["average_position"] is None else "{:.2f}".format(d["average_position"]), d["ai_brand_score"], d["inn_only_mention_pct"], "yes" if d["low_n"] else ""))
+    tbl += ["", "C1 prompts in other runs (reference only, not in headline; all families equal weight, low_n flagged in JSON):", "",
+            "| run | prompts | answers | surfaces | visibility % | CI95 | avg position | brand score | INN-only % |", "|---|---|---|---|---|---|---|---|---|"]
+    for run, v in sorted(c1_other_runs.items()):
+        o = v["overall_all_families_equal_weight"]
+        tbl.append("| {} | {} | {} | {} | {:.1f} | {:.1f}–{:.1f} | {} | {:.1f} | {:.1f} |".format(
+            run, v["n_prompts"], v["n_answers"], "+".join(v["surfaces"]), o["visibility_pct"], o["visibility_ci95"][0], o["visibility_ci95"][1],
+            "n/a" if o["average_position"] is None else "{:.2f}".format(o["average_position"]), o["ai_brand_score"], o["inn_only_mention_pct"]))
     (C.METRICS_DIR / "visibility_report.md").write_text("\n".join(L + tbl) + "\n", encoding="utf-8")
     print("\n".join(L[:3]))
     print("cross-check within 0.5:", xc_ok)

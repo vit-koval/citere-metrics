@@ -50,6 +50,8 @@ Classify **by prompt text via the dictionary**, not by the `status` field. `stat
 
 Rule: **Visibility Score is computed on C1 only.** C2 prompts must not be included — our brand appears in almost every answer there (R7: 100% trivially) and would inflate the number.
 
+Cycle-1 decision: the headline Visibility %, Average Position and AI Brand Score are computed on **R1 C1 prompts only** (the category corpus). C1 prompts from other runs (R2, R3, R5, R6) are reported in a separate `c1_other_runs` block for reference and are not in the headline — R6 prompts are message-triggered and R5 are web probes; neither is a neutral category question.
+
 ---
 
 ## 3. Quality filters (apply before computing)
