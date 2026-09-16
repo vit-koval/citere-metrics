@@ -1,16 +1,16 @@
 {
   "cycle": 1,
   "counters": {
-    "open_total": 135,
-    "open_auto": 27,
-    "open_manual": 108,
+    "open_total": 132,
+    "open_auto": 26,
+    "open_manual": 106,
     "in_progress": 0,
     "done_this_cycle": 0,
     "dismissed_total": 0,
     "by_who": {
       "Digital": 81,
-      "Medical + Digital": 12,
       "PR/Comms": 12,
+      "Medical + Digital": 9,
       "Marketing + Medical": 8,
       "Medical": 8,
       "Comms": 8,
@@ -19,10 +19,10 @@
     },
     "top3_open": [
       "c66030d94d01",
-      "201897a136b5",
-      "92361d73f3e1"
+      "92361d73f3e1",
+      "34099e60975f"
     ],
-    "citere_tasks": 52,
+    "citere_tasks": 55,
     "label_tasks_awaiting_signoff": 2,
     "label_findings_pending": 10
   },
@@ -34,12 +34,12 @@
       "execution": "manual",
       "priority": 3,
       "who": "Digital",
-      "score": 0.061517,
+      "score": 0.117702,
       "impact": {
-        "ceiling_pp": 37.7,
+        "ceiling_pp": 59.8,
         "expected_pp": [
-          3.77,
-          8.29
+          5.98,
+          13.16
         ],
         "basis": "prior",
         "n_groups": null,
@@ -50,18 +50,18 @@
       }
     },
     {
-      "task_id": "201897a136b5",
-      "group_id": "Side effects & tolerability × small",
+      "task_id": "92361d73f3e1",
+      "group_id": "Side effects & tolerability × WEIGHT LOSS",
       "owner": "earned",
       "execution": "manual",
       "priority": 3,
       "who": "Digital",
-      "score": 0.047676,
+      "score": 0.066838,
       "impact": {
-        "ceiling_pp": 45.24,
+        "ceiling_pp": 52.58,
         "expected_pp": [
-          4.52,
-          9.95
+          5.26,
+          11.57
         ],
         "basis": "prior",
         "n_groups": null,
@@ -72,24 +72,24 @@
       }
     },
     {
-      "task_id": "92361d73f3e1",
-      "group_id": "Side effects & tolerability × WEIGHT LOSS",
+      "task_id": "34099e60975f",
+      "group_id": "Price, coverage & supply × Coupons & savings",
       "owner": "earned",
       "execution": "manual",
       "priority": 3,
       "who": "Digital",
-      "score": 0.037563,
+      "score": 0.059544,
       "impact": {
-        "ceiling_pp": 35.65,
+        "ceiling_pp": 61.83,
         "expected_pp": [
-          3.56,
-          7.84
+          6.18,
+          13.6
         ],
         "basis": "prior",
         "n_groups": null,
-        "demand": 160011.0,
-        "lo": 130000.0,
-        "hi": 196950.0,
+        "demand": 121227.0,
+        "lo": 88000.0,
+        "hi": 167000.0,
         "demand_caption": "topic demand, Google, proxy"
       }
     }

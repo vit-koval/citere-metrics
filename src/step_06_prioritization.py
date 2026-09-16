@@ -18,7 +18,8 @@ import pandas as pd
 
 from src import common as C
 
-LEVER_OWNERS = ["earned", "commerce", "ugc", "owned", "comp_owned"]
+LEVER_OWNERS = ["earned", "ugc", "owned", "comp_owned"]
+OWNER_FOLD = {"commerce": "earned"}  # telehealth sellers are earned for action purposes; subtype kept in `where`
 INST_CATS = {"regulatory", "gov_health", "wiki", "clinical"}
 LABEL_CODES = {"DANGEROUS LABEL ERROR", "INCOMPLETE / OMISSION", "MODEL ON AN OLD LABEL", "AI AMPLIFIES A HARMFUL MYTH", "MYTH DEFENDED", "FAMILY CONFUSION"}
 
@@ -35,7 +36,7 @@ def terciles(rows: List[dict]) -> Dict[str, float]:
         r["rank"] = i + 1
         r["priority"] = 3 if i < n / 3 else (2 if i < 2 * n / 3 else 1)
     p3 = [r["score"] for r in rows if r["priority"] == 3]; p2 = [r["score"] for r in rows if r["priority"] == 2]
-    return {"p3_min": _r(min(p3)) if p3 else None, "p2_min": _r(min(p2)) if p2 else None}
+    return {"p3_min": _r(min(p3), 6) if p3 else None, "p2_min": _r(min(p2), 6) if p2 else None}
 
 
 def main() -> int:
@@ -67,30 +68,41 @@ def main() -> int:
     # ---- groups ---------------------------------------------------------------
     pr["group_raw"] = [C.topic_group(t, s, z)[0] for t, s, z in zip(pr["topic"], pr["subtopic"], pr["zone"])]
     sizes = pr.groupby("group_raw").size()
-    topic_demand = pr.groupby("topic")["demand"].median()
-    pr["group_id"] = [g if sizes[g] >= min_n else "{} × small".format(t) for g, t in zip(pr["group_raw"], pr["topic"])]
-    merged_from = {t: sorted(set(pr.loc[(pr["group_id"] == "{} × small".format(t)), "group_raw"])) for t in pr["topic"].unique()}
+    # small groups (< min_n) attach to the largest sibling group of the same topic; demand is then the median across the
+    # merged prompts. A topic with no group of min_n+ keeps `topic × small`, demand from its own prompts only (never inherited).
+    target = {}
+    merged_from = {}
+    for topic, gt in pr.groupby("topic"):
+        raw_ids = sorted(gt["group_raw"].unique(), key=lambda g: (-int(sizes[g]), g))
+        big = [g for g in raw_ids if sizes[g] >= min_n]
+        small = [g for g in raw_ids if sizes[g] < min_n]
+        dest = big[0] if big else "{} × small".format(topic)
+        for g in big:
+            target[g] = g
+        for g in small:
+            target[g] = dest
+            merged_from.setdefault(dest, []).append(g)
+    pr["group_id"] = pr["group_raw"].map(target)
     multi_demand = []
     groups = []
     for gid, g in pr.groupby("group_id"):
         is_small = gid.endswith(" × small")
         topic = g["topic"].iloc[0]
-        if is_small:
-            demand, lo, hi, basis = float(topic_demand[topic]), float(pr.loc[pr["topic"] == topic, "lo"].median()), float(pr.loc[pr["topic"] == topic, "hi"].median()), "parent topic (median)"
-        else:
-            dvals = sorted(g["demand"].unique().tolist())
-            if len(dvals) > 1:
-                multi_demand.append({"group_id": gid, "values": dvals})
-            demand, lo, hi, basis = float(g["demand"].median()), float(g["lo"].median()), float(g["hi"].median()), g["basis"].iloc[0]
+        dvals = sorted(g["demand"].unique().tolist())
+        if len(dvals) > 1:
+            multi_demand.append({"group_id": gid, "values": dvals, "merged": bool(merged_from.get(gid))})
+        demand, lo, hi = float(g["demand"].median()), float(g["lo"].median()), float(g["hi"].median())
+        basis = ("median across merged prompts" if merged_from.get(gid) else g["basis"].iloc[0])
         n = len(g)
         codes = g["code"].value_counts()
         gap_by_run = {r: _r(float(x["sev"].isin(["warn", "bad"]).mean())) for r, x in g.groupby("run")}
         n_by_run = {r: int(len(x)) for r, x in g.groupby("run")}
         dom_run = max(n_by_run, key=lambda r: (n_by_run[r], r))
-        groups.append({"group_id": gid, "topic": topic, "subtopic": g["subtopic"].iloc[0] if not is_small and gid.startswith(topic + " × ") and (g["subtopic"].iloc[0] or "") == gid.split(" × ", 1)[1] else "",
-                       "zone": g["zone"].iloc[0] if not is_small and gid.split(" × ", 1)[1] == g["zone"].iloc[0] else "", "n_prompts": n,
+        label = gid.split(" × ", 1)[1]
+        is_sub = (not is_small) and label in set(g["subtopic"].dropna())
+        groups.append({"group_id": gid, "topic": topic, "subtopic": label if is_sub else "", "zone": label if (not is_small and not is_sub) else "", "n_prompts": n,
                        "n_answers": int(a[a["pid"].isin(g["pid"]) & a["run"].isin(g["run"])].shape[0]),
-                       "demand": demand, "lo": lo, "hi": hi, "basis": basis, "merged_from": merged_from.get(topic, []) if is_small else [],
+                       "demand": demand, "lo": lo, "hi": hi, "basis": basis, "merged_from": sorted(merged_from.get(gid, [])),
                        "gap": float(g["sev"].isin(["warn", "bad"]).mean()), "gap_bad": float((g["sev"] == "bad").mean()),
                        "gap_by_run": gap_by_run, "n_by_run": n_by_run, "dominant_run": dom_run,
                        "codes": [{"code": k, "n": int(v)} for k, v in codes.items()], "top_code": codes.index[0],
@@ -101,7 +113,8 @@ def main() -> int:
 
     # ---- lever per group ------------------------------------------------------
     c["is_inst"] = c["category_data"].isin(INST_CATS)
-    c_lever = c[~c["owner_data"].isin(["noise", "other"])]
+    c_lever = c[~c["owner_data"].isin(["noise", "other"])].copy()
+    c_lever["owner_act"] = c_lever["owner_data"].map(lambda o: OWNER_FOLD.get(o, o))
     key_to_group = {k: x["group_id"] for x in groups for k in x["pids"]}
     c_lever = c_lever.assign(group_id=[key_to_group.get((p, r)) for p, r in zip(c_lever["pid"], c_lever["run"])])
     c_lever["has_comp"] = c_lever["comps_present"].map(len) > 0
@@ -111,7 +124,8 @@ def main() -> int:
         x["n_citations"] = int(tot)
         x["institutional_share"] = float(gc["is_inst"].mean()) if tot else None
         x["adversarial_share"] = float((gc["owner_data"] == "adversarial").mean()) if tot else None
-        x["lever"] = {o: (float(((gc["owner_data"] == o) & (~gc["is_inst"])).mean()) if tot else None) for o in LEVER_OWNERS}
+        x["lever"] = {o: (float(((gc["owner_act"] == o) & (~gc["is_inst"])).mean()) if tot else None) for o in LEVER_OWNERS}
+        x["lever_subtypes"] = {o: {k: int(v) for k, v in gc.loc[(gc["owner_act"] == o) & (~gc["is_inst"]), "owner_data"].value_counts().items()} for o in LEVER_OWNERS}
         x["_gc"] = gc
 
     # ---- rows -------------------------------------------------------------------
@@ -122,11 +136,12 @@ def main() -> int:
         return [{"pid": r.pid, "run": r.run, "sev": r.sev, "text": r.text[:150]} for r in ex.itertuples()]
 
     def where(x, owner):
-        gc = x["_gc"]; sub = gc[(gc["owner_data"] == owner) & (~gc["is_inst"])]
+        gc = x["_gc"]; sub = gc[(gc["owner_act"] == owner) & (~gc["is_inst"])]
         out = []
         for d, s in sorted(sub.groupby("domain"), key=lambda kv: (-len(kv[1]), kv[0]))[:5]:
             ans = s.drop_duplicates(ans_key)
-            out.append({"domain": d, "category": s["category_data"].value_counts().idxmax(), "citations": int(len(s)), "with_us": int(ans["we_present"].sum()), "with_comp": int(ans["has_comp"].sum())})
+            out.append({"domain": d, "category": s["category_data"].value_counts().idxmax(), "owner_subtype": s["owner_data"].value_counts().idxmax(),
+                        "citations": int(len(s)), "with_us": int(ans["we_present"].sum()), "with_comp": int(ans["has_comp"].sum())})
         return out
 
     def base_row(x, owner):
@@ -155,6 +170,9 @@ def main() -> int:
             label_rows.append(r)
         else:
             no_source_other.append({"group_id": x["group_id"], "top_code": x["top_code"]})
+    dropped_zero_gap = [r for r in source_rows + label_rows if r["why"]["gap"] == 0]
+    source_rows = [r for r in source_rows if r["why"]["gap"] > 0]
+    label_rows = [r for r in label_rows if r["why"]["gap"] > 0]
     th_src = terciles(source_rows); th_lab = terciles(label_rows) if label_rows else {"p3_min": None, "p2_min": None}
     for r in source_rows + label_rows:
         r["score"] = _r(r["score"], 6)
@@ -164,13 +182,15 @@ def main() -> int:
                    for d, s in sorted(adv.groupby("domain"), key=lambda kv: -len(kv[1]))[:10]]
 
     summary = {"brand": bd.our_name, "competitor": raw["meta"].get("competitor"), "cycle": "cycle_01",
-               "config": {"min_group_prompts": min_n, "lever_denominator": "all citations in the group's answers after removing noise/other (institutional and adversarial stay in the denominator)"},
+               "config": {"min_group_prompts": min_n, "small_group_rule": "attach to the largest sibling group of the same topic; demand = median across merged prompts; topic with no 10+ group keeps topic × small with its own demand", "lever_denominator": "all citations in the group's answers after removing noise/other (institutional and adversarial stay in the denominator)"},
                "inventory": inventory, "groups_total": len(groups), "rows_total": len(source_rows), "rows_label_only": len(label_rows),
                "tercile_thresholds": th_src, "tercile_thresholds_label": th_lab,
+               "rows_dropped_zero_gap": {"n": len(dropped_zero_gap), "groups": sorted({r["group_id"] for r in dropped_zero_gap})},
+               "owner_fold": OWNER_FOLD,
                "gap_note": "Gap pools different failure kinds across runs (R1 absent from category answer, R2 lost duel, R4 label error, R6 message not delivered…); it is problem density on the topic, not one kind of failure — see gap_by_run / dominant_run on every row.",
                "recommendations": [{k: v for k, v in r.items()} for r in source_rows], "label_recommendations": label_rows,
                "groups_without_source_not_label": no_source_other, "adversarial_sources": adversarial,
-               "quality": {"groups_with_multi_demand": multi_demand, "groups_merged_small": [x["group_id"] for x in groups if x["merged_from"]],
+               "quality": {"groups_with_multi_demand": multi_demand, "groups_merged_small": {x["group_id"]: x["merged_from"] for x in groups if x["merged_from"]},
                            "groups_without_citations": [x["group_id"] for x in groups if x["n_citations"] == 0],
                            "answers_without_citations_pct": _r(100.0 * float((~aa["has"]).mean()), 2)}}
     C.METRICS_DIR.mkdir(parents=True, exist_ok=True)
@@ -190,9 +210,9 @@ def main() -> int:
             r["group"]["topic"], " / " + (r["group"]["subtopic"] or r["group"]["zone"]) if (r["group"]["subtopic"] or r["group"]["zone"]) else " / small", r["owner"], r["priority"], r["why"]["demand"], r["why"]["gap"],
             r["why"]["dominant_run"], "dominant", "n/a" if r["why"]["lever"] is None else "{:.0%}".format(r["why"]["lever"]), r["cause"][0]["code"], r["where"][0]["domain"] if r["where"] else "no source", r["impact_reach"]["point"])
     L = ["# Diagnosis & Prioritization — cycle 1 (step 6)",
-         "Groups: {} ({} merged into `topic × small` at min {} prompts: {}); {} source rows (group × owner) + {} Label/Medical rows (no citations, label codes); {} groups without citations and without a label code: {}.".format(
-             len(groups), len(summary["quality"]["groups_merged_small"]), min_n, ", ".join(summary["quality"]["groups_merged_small"]), len(source_rows), len(label_rows), len(no_source_other), ", ".join(x["group_id"] for x in no_source_other) or "none"),
-         "Score = Demand_share × Gap × Lever (Label rows: Demand_share × Gap). Tercile thresholds (source rows): P3 ≥ {}, P2 ≥ {}; Label rows: P3 ≥ {}, P2 ≥ {}.".format(th_src["p3_min"], th_src["p2_min"], th_lab["p3_min"], th_lab["p2_min"]),
+         "Groups: {} — small groups (< {} prompts) attached to the largest sibling of their topic, demand recomputed as the median across merged prompts: {}; {} source rows (group × owner) + {} Label/Medical rows (no citations, label codes); {} rows with gap = 0 dropped before terciles ({}); {} groups without citations and without a label code: {}.".format(
+             len(groups), min_n, "; ".join("{} ← {}".format(k, ", ".join(v)) for k, v in summary["quality"]["groups_merged_small"].items()), len(source_rows), len(label_rows), len(dropped_zero_gap), ", ".join(summary["rows_dropped_zero_gap"]["groups"]) or "none", len(no_source_other), ", ".join(x["group_id"] for x in no_source_other) or "none"),
+         "Score = Demand_share × Gap × Lever (Label rows: Demand_share × Gap); owners earned (commerce folded in as a subtype), ugc, owned, comp_owned. Tercile thresholds (source rows): P3 ≥ {}, P2 ≥ {}; Label rows: P3 ≥ {}, P2 ≥ {}.".format(th_src["p3_min"], th_src["p2_min"], th_lab["p3_min"], th_lab["p2_min"]),
          "**Gap caveat:** Gap pools different failure kinds across runs — R1 absent from the category answer, R2 lost duel, R4 label error, R6 message not delivered — so it is problem density on the topic, not one kind of failure; every row carries gap_by_run and its dominant run.",
          "Lever = owner citations ÷ all citations in the group's answers (noise/other removed; institutional categories excluded from Lever and reported as institutional_share; adversarial reported separately). `impact_reach` = demand × gap is a ceiling, not a forecast.",
          "Top-5 recommendations:"] + ["{}. ".format(i + 1) + line(r) for i, r in enumerate(source_rows[:5])] + [
@@ -201,11 +221,22 @@ def main() -> int:
          "Quality: multi-demand groups {} (median taken); answers without citations {:.1f}%; `who` values include `Citere` for {} rows (own monitoring tasks — routed by step 7).".format(
              len(multi_demand), summary["quality"]["answers_without_citations_pct"], sum(1 for r in source_rows + label_rows if "Citere" in r["who"])),
          "Outputs: prioritization_summary.json, prioritization_groups.csv ({} groups), prioritization_rows.csv ({} rows).".format(len(groups), len(source_rows) + len(label_rows))]
-    tbl = ["", "---", "Top-10 recommendations (source rows):", "", "| # | P | group | owner | score | demand | gap (dominant run) | gap_bad | lever | inst. share | cause | top domain | who | speed | reach ceiling |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-    for r in source_rows[:10]:
-        tbl.append("| {} | {} | {} | {} | {:.5f} | {:,.0f} | {:.0%} ({}) | {:.0%} | {:.0%} | {:.0%} | {} | {} | {} | {} | {:,.0f} |".format(
-            r["rank"], r["priority"], r["group_id"], r["owner"], r["score"], r["why"]["demand"], r["why"]["gap"], r["why"]["dominant_run"], r["why"]["gap_bad"], r["why"]["lever"], r["why"]["institutional_share"] or 0,
-            r["cause"][0]["code"], r["where"][0]["domain"] if r["where"] else "", r["who"], r["speed"], r["impact_reach"]["point"]))
+    by_group = {}
+    for r in source_rows:
+        by_group.setdefault(r["group_id"], []).append(r)
+    top_groups = sorted(by_group.items(), key=lambda kv: -max(x["score"] for x in kv[1]))[:10]
+    summary["top10_by_group"] = [{"group_id": gid, "best_score": max(x["score"] for x in rows), "priority": max(x["priority"] for x in rows), "cause": rows[0]["cause"][0]["code"],
+                                  "owners": [{"owner": x["owner"], "score": x["score"], "lever": x["why"]["lever"], "ceiling_pp": _r(x["why"]["gap"] * x["why"]["lever"] * 100, 1), "top_domain": x["where"][0]["domain"] if x["where"] else "", "who": x["who"]} for x in sorted(rows, key=lambda x: -x["score"])]} for gid, rows in top_groups]
+    json.dump(summary, open(C.METRICS_DIR / "prioritization_summary.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
+    tbl = ["", "---", "Top-10 recommendations by topic group (one row per group = best score; owners beneath with their own lever and ceiling):", "",
+           "| # | P | group / ↳ owner | score | demand | gap (dominant run) | gap_bad | lever | ceiling pp | cause / top domain | who | speed | reach ceiling |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    for i, (gid, rows) in enumerate(top_groups, 1):
+        best = max(rows, key=lambda x: x["score"]); w = best["why"]
+        tbl.append("| {} | {} | **{}** | {:.5f} | {:,.0f} | {:.0%} ({}) | {:.0%} | | | {} | {} | {} | {:,.0f} |".format(
+            i, best["priority"], gid, best["score"], w["demand"], w["gap"], w["dominant_run"], w["gap_bad"], best["cause"][0]["code"], best["who"], best["speed"], best["impact_reach"]["point"]))
+        for x in sorted(rows, key=lambda x: -x["score"]):
+            tbl.append("| | P{} | ↳ {} | {:.5f} | | | | {:.0%} | {:.1f} | {} | | | |".format(
+                x["priority"], x["owner"], x["score"], x["why"]["lever"], x["why"]["gap"] * x["why"]["lever"] * 100, x["where"][0]["domain"] + " (" + x["where"][0]["owner_subtype"] + ")" if x["where"] else ""))
     tbl += ["", "Label / Medical rows:", "", "| # | P | group | score | demand | gap | gap_bad | cause | who | speed |", "|---|---|---|---|---|---|---|---|---|---|"]
     for r in label_rows:
         tbl.append("| {} | {} | {} | {:.5f} | {:,.0f} | {:.0%} | {:.0%} | {} | {} | {} |".format(r["rank"], r["priority"], r["group_id"], r["score"], r["why"]["demand"], r["why"]["gap"], r["why"]["gap_bad"], r["cause"][0]["code"], r["who"], r["speed"]))
