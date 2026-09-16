@@ -23,7 +23,7 @@
   "answers_with_brand": 5830,
   "answers_in_scope": 2027,
   "answers_with_sentiment": 1944,
-  "sentiment_missing_pct": 4.1,
+  "sentiment_missing_pct": 4.0947,
   "prompts_in_scope": 305,
   "c2_answers_outside_scope_by_run": {
     "R4": 2831,
@@ -31,83 +31,83 @@
     "R7": 251,
     "R8": 260
   },
-  "score": 67.4,
+  "score": 67.431,
   "shares": {
-    "positive_pct": 80.4,
-    "neutral_pct": 10.8,
-    "negative_pct": 8.9,
+    "positive_pct": 80.3695,
+    "neutral_pct": 10.7706,
+    "negative_pct": 8.8598,
     "positive_ci95": [
-      78.5,
-      82.1
+      78.5447,
+      82.0746
     ],
     "neutral_ci95": [
-      9.5,
-      12.2
+      9.4691,
+      12.2269
     ],
     "negative_ci95": [
-      7.7,
-      10.2
+      7.6764,
+      10.2055
     ]
   },
   "by_model": [
     {
       "model": "claude",
-      "positive_pct": 83.9,
+      "positive_pct": 83.9384,
       "positive_ci95": [
-        81.0,
-        86.5
+        80.9611,
+        86.5276
       ],
-      "neutral_pct": 11.4,
+      "neutral_pct": 11.3861,
       "neutral_ci95": [
-        9.2,
-        14.0
+        9.1949,
+        14.0189
       ],
-      "negative_pct": 4.7,
+      "negative_pct": 4.6755,
       "negative_ci95": [
-        3.3,
-        6.6
+        3.3174,
+        6.5519
       ],
-      "score": 66.1,
+      "score": 66.104,
       "n": 668
     },
     {
       "model": "gemini",
-      "positive_pct": 68.8,
+      "positive_pct": 68.8479,
       "positive_ci95": [
-        65.0,
-        72.4
+        65.0289,
+        72.4266
       ],
-      "neutral_pct": 14.4,
+      "neutral_pct": 14.4016,
       "neutral_ci95": [
-        11.8,
-        17.4
+        11.8165,
+        17.4403
       ],
-      "negative_pct": 16.8,
+      "negative_pct": 16.7506,
       "negative_ci95": [
-        14.0,
-        20.0
+        13.974,
+        19.9509
       ],
-      "score": 65.3,
+      "score": 65.2514,
       "n": 599
     },
     {
       "model": "gpt",
-      "positive_pct": 88.3,
+      "positive_pct": 88.3224,
       "positive_ci95": [
-        85.7,
-        90.5
+        85.6841,
+        90.5282
       ],
-      "neutral_pct": 6.5,
+      "neutral_pct": 6.5241,
       "neutral_ci95": [
-        4.9,
-        8.6
+        4.8983,
+        8.6405
       ],
-      "negative_pct": 5.2,
+      "negative_pct": 5.1535,
       "negative_ci95": [
-        3.7,
-        7.1
+        3.7267,
+        7.0864
       ],
-      "score": 70.9,
+      "score": 70.9378,
       "n": 677
     }
   ],
@@ -115,187 +115,187 @@
     {
       "model": "claude-sonnet-4-6",
       "family": "claude",
-      "score": 69.4,
+      "score": 69.4254,
       "n": 482,
       "negative_pct": 0.0
     },
     {
       "model": "claude-sonnet-5",
       "family": "claude",
-      "score": 53.7,
+      "score": 53.7005,
       "n": 186,
-      "negative_pct": 22.1
+      "negative_pct": 22.1354
     },
     {
       "model": "gemini-2.5-flash",
       "family": "gemini",
-      "score": 65.3,
+      "score": 65.2514,
       "n": 599,
-      "negative_pct": 16.8
+      "negative_pct": 16.7506
     },
     {
       "model": "gpt-4o",
       "family": "gpt",
-      "score": 70.9,
+      "score": 70.9378,
       "n": 677,
-      "negative_pct": 5.2
+      "negative_pct": 5.1535
     }
   ],
   "by_run": {
     "R3": {
-      "score": 71.6,
+      "score": 71.5615,
       "n": 1437,
       "n_prompts": 239,
-      "positive_pct": 89.2,
+      "positive_pct": 89.2082,
       "positive_ci95": [
-        87.5,
-        90.7
+        87.4981,
+        90.7091
       ],
-      "neutral_pct": 7.0,
+      "neutral_pct": 6.9552,
       "neutral_ci95": [
-        5.8,
-        8.4
+        5.7515,
+        8.3885
       ],
-      "negative_pct": 3.8,
+      "negative_pct": 3.8366,
       "negative_ci95": [
-        3.0,
-        5.0
+        2.9603,
+        4.9591
       ],
       "by_model": {
         "claude": {
-          "positive_pct": 94.0,
+          "positive_pct": 94.0028,
           "positive_ci95": [
-            91.5,
-            95.8
+            91.5151,
+            95.7946
           ],
-          "neutral_pct": 6.0,
+          "neutral_pct": 5.9972,
           "neutral_ci95": [
-            4.2,
-            8.5
+            4.2054,
+            8.4849
           ],
           "negative_pct": 0.0,
           "negative_ci95": [
             0.0,
-            0.8
+            0.7907
           ],
-          "score": 69.4,
+          "score": 69.4254,
           "n": 482
         },
         "gemini": {
-          "positive_pct": 78.0,
+          "positive_pct": 78.0335,
           "positive_ci95": [
-            74.1,
-            81.5
+            74.1022,
+            81.5169
           ],
-          "neutral_pct": 11.3,
+          "neutral_pct": 11.2971,
           "neutral_ci95": [
-            8.8,
-            14.5
+            8.76,
+            14.4525
           ],
-          "negative_pct": 10.7,
+          "negative_pct": 10.6695,
           "negative_ci95": [
-            8.2,
-            13.8
+            8.2064,
+            13.7609
           ],
-          "score": 70.5,
+          "score": 70.4651,
           "n": 477
         },
         "gpt": {
-          "positive_pct": 95.6,
+          "positive_pct": 95.5882,
           "positive_ci95": [
-            93.4,
-            97.1
+            93.3555,
+            97.0941
           ],
-          "neutral_pct": 3.6,
+          "neutral_pct": 3.5714,
           "neutral_ci95": [
-            2.2,
-            5.6
+            2.2437,
+            5.6394
           ],
-          "negative_pct": 0.8,
+          "negative_pct": 0.8403,
           "negative_ci95": [
-            0.3,
-            2.1
+            0.3279,
+            2.1367
           ],
-          "score": 74.8,
+          "score": 74.7941,
           "n": 478
         }
       }
     },
     "R9": {
-      "score": 51.6,
+      "score": 51.6211,
       "n": 507,
       "n_prompts": 66,
-      "positive_pct": 46.7,
+      "positive_pct": 46.7046,
       "positive_ci95": [
-        42.4,
-        51.1
+        42.4029,
+        51.0559
       ],
-      "neutral_pct": 25.2,
+      "neutral_pct": 25.2198,
       "neutral_ci95": [
-        21.6,
-        29.2
+        21.6357,
+        29.1767
       ],
-      "negative_pct": 28.1,
+      "negative_pct": 28.0756,
       "negative_ci95": [
-        24.3,
-        32.1
+        24.3401,
+        32.1407
       ],
       "by_model": {
         "claude": {
-          "positive_pct": 46.4,
+          "positive_pct": 46.3542,
           "positive_ci95": [
-            39.3,
-            53.5
+            39.334,
+            53.5219
           ],
-          "neutral_pct": 31.5,
+          "neutral_pct": 31.5104,
           "neutral_ci95": [
-            25.3,
-            38.5
+            25.2656,
+            38.5035
           ],
-          "negative_pct": 22.1,
+          "negative_pct": 22.1354,
           "negative_ci95": [
-            16.8,
-            28.6
+            16.7668,
+            28.6317
           ],
-          "score": 53.7,
+          "score": 53.7005,
           "n": 186
         },
         "gemini": {
-          "positive_pct": 31.6,
+          "positive_pct": 31.6384,
           "positive_ci95": [
-            24.1,
-            40.3
+            24.0541,
+            40.3437
           ],
-          "neutral_pct": 27.0,
+          "neutral_pct": 26.9774,
           "neutral_ci95": [
-            19.9,
-            35.5
+            19.8937,
+            35.4667
           ],
-          "negative_pct": 41.4,
+          "negative_pct": 41.3842,
           "negative_ci95": [
-            33.0,
-            50.3
+            33.038,
+            50.2564
           ],
-          "score": 44.1,
+          "score": 44.1314,
           "n": 122
         },
         "gpt": {
-          "positive_pct": 62.1,
+          "positive_pct": 62.1212,
           "positive_ci95": [
-            55.2,
-            68.6
+            55.2122,
+            68.5712
           ],
-          "neutral_pct": 17.2,
+          "neutral_pct": 17.1717,
           "neutral_ci95": [
-            12.6,
-            23.0
+            12.5663,
+            23.0205
           ],
-          "negative_pct": 20.7,
+          "negative_pct": 20.7071,
           "negative_ci95": [
-            15.7,
-            26.9
+            15.658,
+            26.8657
           ],
-          "score": 57.0,
+          "score": 57.0316,
           "n": 199
         }
       }
@@ -308,16 +308,16 @@
       "theme": "NR-2B-BLIND · $2bn blindness lawsuit",
       "code": "NR-2B-BLIND",
       "run": "R9",
-      "pct_of_negative": 13.3,
-      "pct_of_all": 1.3,
-      "negative_rate_within_theme": 57.8,
+      "pct_of_negative": 13.3333,
+      "pct_of_all": 1.3374,
+      "negative_rate_within_theme": 57.7778,
       "n_answers": 45,
       "n_negative": 26,
       "n_prompts": 6,
       "worst_model": "gemini",
       "worst_model_negative_pct": 75.0,
       "by_model_negative_pct": {
-        "claude": 53.3,
+        "claude": 53.3333,
         "gemini": 75.0,
         "gpt": 50.0
       },
@@ -330,18 +330,18 @@
       "theme": "NR-THEY-KNEW · company hid the risks",
       "code": "NR-THEY-KNEW",
       "run": "R9",
-      "pct_of_negative": 12.3,
-      "pct_of_all": 1.2,
-      "negative_rate_within_theme": 52.2,
+      "pct_of_negative": 12.3077,
+      "pct_of_all": 1.2346,
+      "negative_rate_within_theme": 52.1739,
       "n_answers": 46,
       "n_negative": 24,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 84.6,
+      "worst_model_negative_pct": 84.6154,
       "by_model_negative_pct": {
         "claude": 40.0,
-        "gemini": 84.6,
-        "gpt": 38.9
+        "gemini": 84.6154,
+        "gpt": 38.8889
       },
       "examples": [
         "allegations that the company manufacturing Ozempic... concealed potential risks",
@@ -352,17 +352,17 @@
       "theme": "B6 · lifestyle: food, alcohol, fasting, travel",
       "code": "B6",
       "run": "R3",
-      "pct_of_negative": 10.3,
-      "pct_of_all": 1.0,
-      "negative_rate_within_theme": 9.2,
+      "pct_of_negative": 10.2564,
+      "pct_of_all": 1.0288,
+      "negative_rate_within_theme": 9.1743,
       "n_answers": 218,
       "n_negative": 20,
       "n_prompts": 36,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 27.4,
+      "worst_model_negative_pct": 27.3973,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 27.4,
+        "gemini": 27.3973,
         "gpt": 0.0
       },
       "examples": [
@@ -374,18 +374,18 @@
       "theme": "B4 · side effects: nausea, fatigue, hair",
       "code": "B4",
       "run": "R3",
-      "pct_of_negative": 9.2,
-      "pct_of_all": 0.9,
-      "negative_rate_within_theme": 7.9,
+      "pct_of_negative": 9.2308,
+      "pct_of_all": 0.9259,
+      "negative_rate_within_theme": 7.8603,
       "n_answers": 229,
       "n_negative": 18,
       "n_prompts": 38,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 22.4,
+      "worst_model_negative_pct": 22.3684,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 22.4,
-        "gpt": 1.3
+        "gemini": 22.3684,
+        "gpt": 1.2987
       },
       "examples": [
         "medical organizations...recommend that patients temporarily stop taking GLP-1 receptor agonists",
@@ -396,9 +396,9 @@
       "theme": "NR-STOMACH-PARALYSIS · gastroparesis",
       "code": "NR-STOMACH-PARALYSIS",
       "run": "R9",
-      "pct_of_negative": 9.2,
-      "pct_of_all": 0.9,
-      "negative_rate_within_theme": 36.7,
+      "pct_of_negative": 9.2308,
+      "pct_of_all": 0.9259,
+      "negative_rate_within_theme": 36.7347,
       "n_answers": 49,
       "n_negative": 18,
       "n_prompts": 6,
@@ -407,7 +407,7 @@
       "by_model_negative_pct": {
         "claude": 12.5,
         "gemini": 80.0,
-        "gpt": 22.2
+        "gpt": 22.2222
       },
       "examples": [
         "Ozempic can significantly slow stomach emptying, leading to severe symptoms.",
@@ -420,16 +420,16 @@
       "theme": "NR-2B-BLIND · $2bn blindness lawsuit",
       "code": "NR-2B-BLIND",
       "run": "R9",
-      "pct_of_negative": 13.3,
-      "pct_of_all": 1.3,
-      "negative_rate_within_theme": 57.8,
+      "pct_of_negative": 13.3333,
+      "pct_of_all": 1.3374,
+      "negative_rate_within_theme": 57.7778,
       "n_answers": 45,
       "n_negative": 26,
       "n_prompts": 6,
       "worst_model": "gemini",
       "worst_model_negative_pct": 75.0,
       "by_model_negative_pct": {
-        "claude": 53.3,
+        "claude": 53.3333,
         "gemini": 75.0,
         "gpt": 50.0
       }
@@ -438,35 +438,35 @@
       "theme": "NR-THEY-KNEW · company hid the risks",
       "code": "NR-THEY-KNEW",
       "run": "R9",
-      "pct_of_negative": 12.3,
-      "pct_of_all": 1.2,
-      "negative_rate_within_theme": 52.2,
+      "pct_of_negative": 12.3077,
+      "pct_of_all": 1.2346,
+      "negative_rate_within_theme": 52.1739,
       "n_answers": 46,
       "n_negative": 24,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 84.6,
+      "worst_model_negative_pct": 84.6154,
       "by_model_negative_pct": {
         "claude": 40.0,
-        "gemini": 84.6,
-        "gpt": 38.9
+        "gemini": 84.6154,
+        "gpt": 38.8889
       }
     },
     {
       "theme": "B6 · lifestyle: food, alcohol, fasting, travel",
       "code": "B6",
       "run": "R3",
-      "pct_of_negative": 10.3,
-      "pct_of_all": 1.0,
-      "negative_rate_within_theme": 9.2,
+      "pct_of_negative": 10.2564,
+      "pct_of_all": 1.0288,
+      "negative_rate_within_theme": 9.1743,
       "n_answers": 218,
       "n_negative": 20,
       "n_prompts": 36,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 27.4,
+      "worst_model_negative_pct": 27.3973,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 27.4,
+        "gemini": 27.3973,
         "gpt": 0.0
       }
     },
@@ -474,27 +474,27 @@
       "theme": "B4 · side effects: nausea, fatigue, hair",
       "code": "B4",
       "run": "R3",
-      "pct_of_negative": 9.2,
-      "pct_of_all": 0.9,
-      "negative_rate_within_theme": 7.9,
+      "pct_of_negative": 9.2308,
+      "pct_of_all": 0.9259,
+      "negative_rate_within_theme": 7.8603,
       "n_answers": 229,
       "n_negative": 18,
       "n_prompts": 38,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 22.4,
+      "worst_model_negative_pct": 22.3684,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 22.4,
-        "gpt": 1.3
+        "gemini": 22.3684,
+        "gpt": 1.2987
       }
     },
     {
       "theme": "NR-STOMACH-PARALYSIS · gastroparesis",
       "code": "NR-STOMACH-PARALYSIS",
       "run": "R9",
-      "pct_of_negative": 9.2,
-      "pct_of_all": 0.9,
-      "negative_rate_within_theme": 36.7,
+      "pct_of_negative": 9.2308,
+      "pct_of_all": 0.9259,
+      "negative_rate_within_theme": 36.7347,
       "n_answers": 49,
       "n_negative": 18,
       "n_prompts": 6,
@@ -503,186 +503,186 @@
       "by_model_negative_pct": {
         "claude": 12.5,
         "gemini": 80.0,
-        "gpt": 22.2
+        "gpt": 22.2222
       }
     },
     {
       "theme": "NR-BLINDNESS · blindness & vision loss (NAION)",
       "code": "NR-BLINDNESS",
       "run": "R9",
-      "pct_of_negative": 6.2,
-      "pct_of_all": 0.6,
-      "negative_rate_within_theme": 27.3,
+      "pct_of_negative": 6.1538,
+      "pct_of_all": 0.6173,
+      "negative_rate_within_theme": 27.2727,
       "n_answers": 44,
       "n_negative": 12,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 42.9,
+      "worst_model_negative_pct": 42.8571,
       "by_model_negative_pct": {
-        "claude": 27.8,
-        "gemini": 42.9,
-        "gpt": 21.1
+        "claude": 27.7778,
+        "gemini": 42.8571,
+        "gpt": 21.0526
       }
     },
     {
       "theme": "NR-MUSCLE · muscle loss",
       "code": "NR-MUSCLE",
       "run": "R9",
-      "pct_of_negative": 5.6,
-      "pct_of_all": 0.6,
-      "negative_rate_within_theme": 23.9,
+      "pct_of_negative": 5.641,
+      "pct_of_all": 0.5658,
+      "negative_rate_within_theme": 23.913,
       "n_answers": 46,
       "n_negative": 11,
       "n_prompts": 6,
       "worst_model": "gemini",
       "worst_model_negative_pct": 60.0,
       "by_model_negative_pct": {
-        "claude": 16.7,
+        "claude": 16.6667,
         "gemini": 60.0,
-        "gpt": 11.1
+        "gpt": 11.1111
       }
     },
     {
       "theme": "NR-PANC · pancreatitis / 'destroys your pancreas'",
       "code": "NR-PANC",
       "run": "R9",
-      "pct_of_negative": 5.6,
-      "pct_of_all": 0.6,
-      "negative_rate_within_theme": 24.4,
+      "pct_of_negative": 5.641,
+      "pct_of_all": 0.5658,
+      "negative_rate_within_theme": 24.4444,
       "n_answers": 45,
       "n_negative": 11,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 66.7,
+      "worst_model_negative_pct": 66.6667,
       "by_model_negative_pct": {
-        "claude": 16.7,
-        "gemini": 66.7,
-        "gpt": 11.1
+        "claude": 16.6667,
+        "gemini": 66.6667,
+        "gpt": 11.1111
       }
     },
     {
       "theme": "B5 · long-term use, stopping & weight regain",
       "code": "B5",
       "run": "R3",
-      "pct_of_negative": 5.1,
-      "pct_of_all": 0.5,
-      "negative_rate_within_theme": 4.6,
+      "pct_of_negative": 5.1282,
+      "pct_of_all": 0.5144,
+      "negative_rate_within_theme": 4.5872,
       "n_answers": 218,
       "n_negative": 10,
       "n_prompts": 36,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 9.5,
+      "worst_model_negative_pct": 9.4595,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 9.5,
-        "gpt": 4.3
+        "gemini": 9.4595,
+        "gpt": 4.2857
       }
     },
     {
       "theme": "NR-THYROID · thyroid cancer",
       "code": "NR-THYROID",
       "run": "R9",
-      "pct_of_negative": 4.6,
-      "pct_of_all": 0.5,
+      "pct_of_negative": 4.6154,
+      "pct_of_all": 0.463,
       "negative_rate_within_theme": 20.0,
       "n_answers": 45,
       "n_negative": 9,
       "n_prompts": 6,
       "worst_model": "gpt",
-      "worst_model_negative_pct": 27.8,
+      "worst_model_negative_pct": 27.7778,
       "by_model_negative_pct": {
-        "claude": 6.2,
-        "gemini": 27.3,
-        "gpt": 27.8
+        "claude": 6.25,
+        "gemini": 27.2727,
+        "gpt": 27.7778
       }
     },
     {
       "theme": "NR-COSMETIC · 'Ozempic face' & body changes",
       "code": "NR-COSMETIC",
       "run": "R9",
-      "pct_of_negative": 4.1,
-      "pct_of_all": 0.4,
-      "negative_rate_within_theme": 17.0,
+      "pct_of_negative": 4.1026,
+      "pct_of_all": 0.4115,
+      "negative_rate_within_theme": 17.0213,
       "n_answers": 47,
       "n_negative": 8,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 33.3,
+      "worst_model_negative_pct": 33.3333,
       "by_model_negative_pct": {
-        "claude": 11.8,
-        "gemini": 33.3,
-        "gpt": 11.1
+        "claude": 11.7647,
+        "gemini": 33.3333,
+        "gpt": 11.1111
       }
     },
     {
       "theme": "NR-FORLIFE · forever drug / regain",
       "code": "NR-FORLIFE",
       "run": "R9",
-      "pct_of_negative": 4.1,
-      "pct_of_all": 0.4,
-      "negative_rate_within_theme": 17.0,
+      "pct_of_negative": 4.1026,
+      "pct_of_all": 0.4115,
+      "negative_rate_within_theme": 17.0213,
       "n_answers": 47,
       "n_negative": 8,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 27.3,
+      "worst_model_negative_pct": 27.2727,
       "by_model_negative_pct": {
-        "claude": 16.7,
-        "gemini": 27.3,
-        "gpt": 11.1
+        "claude": 16.6667,
+        "gemini": 27.2727,
+        "gpt": 11.1111
       }
     },
     {
       "theme": "NR-ADDICTION · addiction & withdrawal",
       "code": "NR-ADDICTION",
       "run": "R9",
-      "pct_of_negative": 3.6,
-      "pct_of_all": 0.4,
-      "negative_rate_within_theme": 15.6,
+      "pct_of_negative": 3.5897,
+      "pct_of_all": 0.3601,
+      "negative_rate_within_theme": 15.5556,
       "n_answers": 45,
       "n_negative": 7,
       "n_prompts": 6,
       "worst_model": "gemini",
       "worst_model_negative_pct": 30.0,
       "by_model_negative_pct": {
-        "claude": 11.8,
+        "claude": 11.7647,
         "gemini": 30.0,
-        "gpt": 11.1
+        "gpt": 11.1111
       }
     },
     {
       "theme": "NR-BABIES · birth-control failure / 'Ozempic babies'",
       "code": "NR-BABIES",
       "run": "R9",
-      "pct_of_negative": 3.1,
-      "pct_of_all": 0.3,
+      "pct_of_negative": 3.0769,
+      "pct_of_all": 0.3086,
       "negative_rate_within_theme": 12.5,
       "n_answers": 48,
       "n_negative": 6,
       "n_prompts": 6,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 16.7,
+      "worst_model_negative_pct": 16.6667,
       "by_model_negative_pct": {
-        "claude": 11.1,
-        "gemini": 16.7,
-        "gpt": 11.1
+        "claude": 11.1111,
+        "gemini": 16.6667,
+        "gpt": 11.1111
       }
     },
     {
       "theme": "B1 · starting: expectations & fear of side effects",
       "code": "B1",
       "run": "R3",
-      "pct_of_negative": 2.6,
-      "pct_of_all": 0.3,
-      "negative_rate_within_theme": 2.2,
+      "pct_of_negative": 2.5641,
+      "pct_of_all": 0.2572,
+      "negative_rate_within_theme": 2.2124,
       "n_answers": 226,
       "n_negative": 5,
       "n_prompts": 38,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 6.8,
+      "worst_model_negative_pct": 6.7568,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 6.8,
+        "gemini": 6.7568,
         "gpt": 0.0
       }
     },
@@ -690,17 +690,17 @@
       "theme": "B2 · administration: dose timing, injection site, pen & storage",
       "code": "B2",
       "run": "R3",
-      "pct_of_negative": 1.0,
-      "pct_of_all": 0.1,
-      "negative_rate_within_theme": 1.2,
+      "pct_of_negative": 1.0256,
+      "pct_of_all": 0.1029,
+      "negative_rate_within_theme": 1.2346,
       "n_answers": 162,
       "n_negative": 2,
       "n_prompts": 27,
       "worst_model": "gemini",
-      "worst_model_negative_pct": 3.7,
+      "worst_model_negative_pct": 3.7037,
       "by_model_negative_pct": {
         "claude": 0.0,
-        "gemini": 3.7,
+        "gemini": 3.7037,
         "gpt": 0.0
       }
     },
@@ -854,9 +854,9 @@
     }
   },
   "negative_pct_by_prompt_mood_R3": {
-    "calm": 3.8,
-    "negative": 8.8,
-    "worried": 3.5
+    "calm": 3.8126,
+    "negative": 8.8235,
+    "worried": 3.5052
   },
   "n_negative_answers": 195
 }

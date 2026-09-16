@@ -38,7 +38,7 @@ NR_LABELS = {
 }
 
 
-def _r(x, nd=1):
+def _r(x, nd=4):  # keep precision in JSON; rounding to 1 decimal happens only in the report text and in step 8
     return None if x is None or (isinstance(x, float) and math.isnan(x)) else round(float(x), nd)
 
 
