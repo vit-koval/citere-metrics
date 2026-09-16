@@ -381,7 +381,7 @@ def aggregate_bottom_up(
                           "n_families": len(g), "ci_lo": lo, "ci_hi": hi})
 
     if by:
-        overall = fam.groupby(by, dropna=False).apply(_overall).reset_index()
+        overall = fam.groupby(by, dropna=False)[[value, family_col, "n_groups", "n_answers"]].apply(_overall).reset_index()
     else:
         overall = _overall(fam).to_frame().T
     return {"pm": pm, "family": fam, "overall": overall}
@@ -419,3 +419,52 @@ def position_weight(position: Optional[float], decay: float) -> float:
     if position is None or (isinstance(position, float) and math.isnan(position)) or position < 1:
         return 0.0
     return 100.0 * (decay ** (float(position) - 1.0))
+
+
+# --------------------------------------------------------------------------- #
+# Audit samples: carry human/LLM review columns forward across re-runs
+# --------------------------------------------------------------------------- #
+def carry_forward_review(new_sample: pd.DataFrame, path, keys: Sequence[str], computed_cols: Sequence[str]) -> pd.DataFrame:
+    """If an earlier audit file exists at `path`, copy its review columns (review_*, reviewer_agrees, note) onto
+    rows of `new_sample` whose keys AND computed values are unchanged. Rows that changed get empty review cells."""
+    review_cols_default = ["reviewer_agrees", "note"]
+    out = new_sample.copy()
+    path = Path(path)
+    if not path.exists():
+        for c in review_cols_default:
+            if c not in out.columns:
+                out[c] = ""
+        return out
+    try:
+        old = pd.read_csv(path)
+    except Exception:
+        return out
+    rcols = [c for c in old.columns if c.startswith("review_") or c in review_cols_default]
+    if not rcols or not all(k in old.columns for k in keys):
+        return out
+    keep = [k for k in keys] + [c for c in computed_cols if c in old.columns] + rcols
+    old = old[keep].drop_duplicates(list(keys))
+    merged = out.merge(old, on=list(keys), how="left", suffixes=("", "_old"))
+
+    def _same(a, b):
+        na, nb = bool(pd.isna(a)), bool(pd.isna(b))
+        if na or nb:
+            return na and nb
+        try:
+            return str(a) == str(b) or float(a) == float(b)
+        except (TypeError, ValueError):
+            return str(a) == str(b)
+
+    unchanged = pd.Series(True, index=merged.index)
+    for c in computed_cols:
+        if c + "_old" in merged.columns:
+            unchanged &= merged.apply(lambda r: _same(r[c], r[c + "_old"]), axis=1)
+    for c in rcols:
+        vals = merged[c + "_old"] if c + "_old" in merged.columns else merged[c]
+        out[c] = vals.where(unchanged, "").fillna("").values
+    for c in review_cols_default:
+        if c not in out.columns:
+            out[c] = ""
+    n_kept = int(unchanged.sum()) if len(merged) else 0
+    print("carry_forward_review: {} of {} rows kept their review columns from {}".format(n_kept, len(out), path.name))
+    return out

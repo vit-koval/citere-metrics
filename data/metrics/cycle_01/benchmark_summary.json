@@ -1,0 +1,608 @@
+{
+  "brand": "Ozempic",
+  "run_ids": [
+    "R1"
+  ],
+  "headline_scope": "R1 C1 prompts only (cycle-1 decision, as in visibility)",
+  "config": {
+    "model_weights": "equal",
+    "low_n_overlap_threshold": 20,
+    "position_source": "text ordinal among dictionary brands (visibility decision 2)",
+    "competitors": [
+      "Mounjaro",
+      "Wegovy",
+      "Zepbound",
+      "Rybelsus",
+      "Trulicity",
+      "Victoza",
+      "Jardiance",
+      "Saxenda",
+      "Farxiga",
+      "Januvia",
+      "Invokana"
+    ]
+  },
+  "answers_C1_used": 2212,
+  "prompts_C1_used": 250,
+  "overall": {
+    "win_rate": 76.57,
+    "win_rate_ci95": [
+      74.86,
+      78.2
+    ],
+    "n_overlap_answers": 2471,
+    "note": "mean of Win Rate(X) weighted by each competitor's overlap answers; CI by total overlap answers"
+  },
+  "leaderboard": [
+    {
+      "competitor": "Jardiance",
+      "overlap_answers": 301,
+      "win_rate": 63.09,
+      "win_rate_ci95": [
+        57.51,
+        68.35
+      ],
+      "impact": 6.77,
+      "impact_by_position": 4.65,
+      "impact_by_absence": 2.12,
+      "worst_model": "gemini",
+      "worst_zone": "HEART & KIDNEY",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 71.96,
+          "n_overlap_answers": 154,
+          "impact": 7.17
+        },
+        "gemini": {
+          "win_rate": 61.61,
+          "n_overlap_answers": 106,
+          "impact": 8.63
+        },
+        "gpt": {
+          "win_rate": 55.71,
+          "n_overlap_answers": 41,
+          "impact": 4.5
+        }
+      }
+    },
+    {
+      "competitor": "Wegovy",
+      "overlap_answers": 250,
+      "win_rate": 79.4,
+      "win_rate_ci95": [
+        73.96,
+        83.95
+      ],
+      "impact": 5.79,
+      "impact_by_position": 1.73,
+      "impact_by_absence": 4.06,
+      "worst_model": "gpt",
+      "worst_zone": "PRICE & ACCESS",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 90.0,
+          "n_overlap_answers": 120,
+          "impact": 4.86
+        },
+        "gemini": {
+          "win_rate": 83.33,
+          "n_overlap_answers": 87,
+          "impact": 5.23
+        },
+        "gpt": {
+          "win_rate": 64.86,
+          "n_overlap_answers": 43,
+          "impact": 7.27
+        }
+      }
+    },
+    {
+      "competitor": "Farxiga",
+      "overlap_answers": 261,
+      "win_rate": 64.15,
+      "win_rate_ci95": [
+        58.17,
+        69.73
+      ],
+      "impact": 5.66,
+      "impact_by_position": 3.67,
+      "impact_by_absence": 1.99,
+      "worst_model": "gemini",
+      "worst_zone": "HEART & KIDNEY",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 77.47,
+          "n_overlap_answers": 131,
+          "impact": 4.86
+        },
+        "gemini": {
+          "win_rate": 60.58,
+          "n_overlap_answers": 91,
+          "impact": 7.43
+        },
+        "gpt": {
+          "win_rate": 54.41,
+          "n_overlap_answers": 39,
+          "impact": 4.7
+        }
+      }
+    },
+    {
+      "competitor": "Mounjaro",
+      "overlap_answers": 411,
+      "win_rate": 85.94,
+      "win_rate_ci95": [
+        82.25,
+        88.97
+      ],
+      "impact": 4.8,
+      "impact_by_position": 2.51,
+      "impact_by_absence": 2.29,
+      "worst_model": "gemini",
+      "worst_zone": "STARTING & SWITCHING",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 91.29,
+          "n_overlap_answers": 224,
+          "impact": 4.97
+        },
+        "gemini": {
+          "win_rate": 77.93,
+          "n_overlap_answers": 120,
+          "impact": 6.5
+        },
+        "gpt": {
+          "win_rate": 88.6,
+          "n_overlap_answers": 67,
+          "impact": 2.93
+        }
+      }
+    },
+    {
+      "competitor": "Zepbound",
+      "overlap_answers": 136,
+      "win_rate": 75.72,
+      "win_rate_ci95": [
+        67.87,
+        82.16
+      ],
+      "impact": 4.25,
+      "impact_by_position": 1.26,
+      "impact_by_absence": 2.98,
+      "worst_model": "gpt",
+      "worst_zone": "PRICE & ACCESS",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 85.71,
+          "n_overlap_answers": 66,
+          "impact": 3.64
+        },
+        "gemini": {
+          "win_rate": 67.31,
+          "n_overlap_answers": 38,
+          "impact": 4.43
+        },
+        "gpt": {
+          "win_rate": 74.14,
+          "n_overlap_answers": 32,
+          "impact": 4.67
+        }
+      }
+    },
+    {
+      "competitor": "Invokana",
+      "overlap_answers": 177,
+      "win_rate": 62.25,
+      "win_rate_ci95": [
+        54.92,
+        69.06
+      ],
+      "impact": 3.93,
+      "impact_by_position": 2.83,
+      "impact_by_absence": 1.1,
+      "worst_model": "gemini",
+      "worst_zone": "SAFETY & CONTRAINDICATIONS",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 73.58,
+          "n_overlap_answers": 81,
+          "impact": 3.09
+        },
+        "gemini": {
+          "win_rate": 53.15,
+          "n_overlap_answers": 72,
+          "impact": 5.83
+        },
+        "gpt": {
+          "win_rate": 60.0,
+          "n_overlap_answers": 24,
+          "impact": 2.87
+        }
+      }
+    },
+    {
+      "competitor": "Rybelsus",
+      "overlap_answers": 252,
+      "win_rate": 87.97,
+      "win_rate_ci95": [
+        83.38,
+        91.43
+      ],
+      "impact": 3.34,
+      "impact_by_position": 1.41,
+      "impact_by_absence": 1.94,
+      "worst_model": "gemini",
+      "worst_zone": "STARTING & SWITCHING",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 84.83,
+          "n_overlap_answers": 125,
+          "impact": 3.53
+        },
+        "gemini": {
+          "win_rate": 90.2,
+          "n_overlap_answers": 88,
+          "impact": 3.93
+        },
+        "gpt": {
+          "win_rate": 88.89,
+          "n_overlap_answers": 39,
+          "impact": 2.57
+        }
+      }
+    },
+    {
+      "competitor": "Januvia",
+      "overlap_answers": 162,
+      "win_rate": 74.32,
+      "win_rate_ci95": [
+        67.08,
+        80.43
+      ],
+      "impact": 2.9,
+      "impact_by_position": 1.96,
+      "impact_by_absence": 0.94,
+      "worst_model": "gemini",
+      "worst_zone": "LIVING ON THE DRUG",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 80.65,
+          "n_overlap_answers": 90,
+          "impact": 2.87
+        },
+        "gemini": {
+          "win_rate": 64.81,
+          "n_overlap_answers": 50,
+          "impact": 4.0
+        },
+        "gpt": {
+          "win_rate": 77.5,
+          "n_overlap_answers": 22,
+          "impact": 1.83
+        }
+      }
+    },
+    {
+      "competitor": "Victoza",
+      "overlap_answers": 238,
+      "win_rate": 84.3,
+      "win_rate_ci95": [
+        79.14,
+        88.38
+      ],
+      "impact": 2.45,
+      "impact_by_position": 1.71,
+      "impact_by_absence": 0.74,
+      "worst_model": "gemini",
+      "worst_zone": "STARTING & SWITCHING",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 95.78,
+          "n_overlap_answers": 120,
+          "impact": 0.99
+        },
+        "gemini": {
+          "win_rate": 70.59,
+          "n_overlap_answers": 87,
+          "impact": 4.37
+        },
+        "gpt": {
+          "win_rate": 86.54,
+          "n_overlap_answers": 31,
+          "impact": 2.0
+        }
+      }
+    },
+    {
+      "competitor": "Saxenda",
+      "overlap_answers": 49,
+      "win_rate": 71.31,
+      "win_rate_ci95": [
+        57.46,
+        82.05
+      ],
+      "impact": 2.35,
+      "impact_by_position": 0.61,
+      "impact_by_absence": 1.73,
+      "worst_model": "gemini",
+      "worst_zone": "PRICE & ACCESS",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 85.71,
+          "n_overlap_answers": 7,
+          "impact": 0.44
+        },
+        "gemini": {
+          "win_rate": 66.67,
+          "n_overlap_answers": 29,
+          "impact": 3.4
+        },
+        "gpt": {
+          "win_rate": 61.54,
+          "n_overlap_answers": 13,
+          "impact": 3.2
+        }
+      }
+    },
+    {
+      "competitor": "Trulicity",
+      "overlap_answers": 234,
+      "win_rate": 82.14,
+      "win_rate_ci95": [
+        76.72,
+        86.51
+      ],
+      "impact": 2.28,
+      "impact_by_position": 2.1,
+      "impact_by_absence": 0.18,
+      "worst_model": "gemini",
+      "worst_zone": "LIVING ON THE DRUG",
+      "low_n": false,
+      "by_model": {
+        "claude": {
+          "win_rate": 91.57,
+          "n_overlap_answers": 111,
+          "impact": 1.55
+        },
+        "gemini": {
+          "win_rate": 63.18,
+          "n_overlap_answers": 80,
+          "impact": 4.1
+        },
+        "gpt": {
+          "win_rate": 91.67,
+          "n_overlap_answers": 43,
+          "impact": 1.2
+        }
+      }
+    }
+  ],
+  "by_model": [
+    {
+      "model": "claude",
+      "versions": [
+        "claude-sonnet-4-6",
+        "claude-sonnet-5"
+      ],
+      "win_rate": 84.8,
+      "n_overlap_answers": 1229,
+      "top_impact_competitor": "Jardiance",
+      "top_impact": 7.17
+    },
+    {
+      "model": "gemini",
+      "versions": [
+        "gemini-2.5-flash"
+      ],
+      "win_rate": 69.97,
+      "n_overlap_answers": 848,
+      "top_impact_competitor": "Jardiance",
+      "top_impact": 8.63
+    },
+    {
+      "model": "gpt",
+      "versions": [
+        "gpt-4o"
+      ],
+      "win_rate": 74.97,
+      "n_overlap_answers": 394,
+      "top_impact_competitor": "Wegovy",
+      "top_impact": 7.27
+    }
+  ],
+  "by_zone": [
+    {
+      "zone": "BLOOD SUGAR & GLYCEMIC CONTROL",
+      "win_rate": 84.55,
+      "n_overlap_answers": 437,
+      "n_prompts": 49,
+      "top_impact_competitor": "Jardiance",
+      "top_impact": 5.55
+    },
+    {
+      "zone": "HEART & KIDNEY",
+      "win_rate": 46.3,
+      "n_overlap_answers": 27,
+      "n_prompts": 4,
+      "top_impact_competitor": "Farxiga",
+      "top_impact": 21.53
+    },
+    {
+      "zone": "LIVING ON THE DRUG",
+      "win_rate": 73.53,
+      "n_overlap_answers": 185,
+      "n_prompts": 18,
+      "top_impact_competitor": "Januvia",
+      "top_impact": 10.22
+    },
+    {
+      "zone": "PRICE & ACCESS",
+      "win_rate": 75.29,
+      "n_overlap_answers": 119,
+      "n_prompts": 14,
+      "top_impact_competitor": "Wegovy",
+      "top_impact": 26.8
+    },
+    {
+      "zone": "SAFETY & CONTRAINDICATIONS",
+      "win_rate": 60.15,
+      "n_overlap_answers": 190,
+      "n_prompts": 22,
+      "top_impact_competitor": "Farxiga",
+      "top_impact": 11.3
+    },
+    {
+      "zone": "STARTING & SWITCHING",
+      "win_rate": 77.82,
+      "n_overlap_answers": 1205,
+      "n_prompts": 92,
+      "top_impact_competitor": "Jardiance",
+      "top_impact": 9.68
+    },
+    {
+      "zone": "WEIGHT LOSS",
+      "win_rate": 79.92,
+      "n_overlap_answers": 308,
+      "n_prompts": 51,
+      "top_impact_competitor": "Wegovy",
+      "top_impact": 14.7
+    }
+  ],
+  "duel_verdict": {
+    "available": true,
+    "scope": "R2 answers on C4 prompts (both brands in the question); winner ours=1, comp=0, split=0.5; none/na/third excluded from the denominator",
+    "duel_win_rate": 36.88,
+    "duel_win_rate_ci95": [
+      33.61,
+      40.28
+    ],
+    "n_scored": 799,
+    "n_c4_answers": 850,
+    "n_c4_prompts": 141,
+    "excluded_na_pct": 6.0,
+    "excluded_breakdown_c4": {
+      "none": 50,
+      "third": 1
+    },
+    "r2_winner_by_class": {
+      "C1": {
+        "na": 23
+      },
+      "C3": {
+        "na": 768,
+        "ours": 2,
+        "none": 2,
+        "split": 1,
+        "comp": 1
+      },
+      "C4": {
+        "comp": 454,
+        "ours": 241,
+        "split": 104,
+        "none": 50,
+        "third": 1
+      }
+    },
+    "by_competitor": {
+      "Mounjaro": {
+        "duel_win_rate": 23.24,
+        "n_prompts": 72,
+        "n_scored_answers": 412,
+        "ci95": [
+          19.42,
+          27.56
+        ]
+      },
+      "Wegovy": {
+        "duel_win_rate": 13.82,
+        "n_prompts": 16,
+        "n_scored_answers": 85,
+        "ci95": [
+          8.04,
+          22.73
+        ]
+      },
+      "Zepbound": {
+        "duel_win_rate": 19.7,
+        "n_prompts": 11,
+        "n_scored_answers": 63,
+        "ci95": [
+          11.75,
+          31.13
+        ]
+      },
+      "Rybelsus": {
+        "duel_win_rate": 71.83,
+        "n_prompts": 19,
+        "n_scored_answers": 108,
+        "ci95": [
+          62.71,
+          79.45
+        ]
+      },
+      "Trulicity": {
+        "duel_win_rate": 61.11,
+        "n_prompts": 18,
+        "n_scored_answers": 102,
+        "ci95": [
+          51.41,
+          70.0
+        ]
+      },
+      "Saxenda": {
+        "duel_win_rate": 82.14,
+        "n_prompts": 7,
+        "n_scored_answers": 41,
+        "ci95": [
+          67.85,
+          90.93
+        ]
+      }
+    },
+    "by_model": {
+      "claude": {
+        "duel_win_rate": 36.69,
+        "n_scored": 272
+      },
+      "gemini": {
+        "duel_win_rate": 37.31,
+        "n_scored": 248
+      },
+      "gpt": {
+        "duel_win_rate": 36.64,
+        "n_scored": 279
+      }
+    },
+    "by_model_version": {
+      "claude-sonnet-4-6": {
+        "duel_win_rate": 36.69,
+        "n_scored": 272
+      },
+      "gemini-2.5-flash": {
+        "duel_win_rate": 37.31,
+        "n_scored": 248
+      },
+      "gpt-4o": {
+        "duel_win_rate": 36.64,
+        "n_scored": 279
+      }
+    }
+  },
+  "quality": {
+    "unstable_groups_pct": 17.42,
+    "single_run_groups_pct": 61.18,
+    "n_overlap_groups": 1700,
+    "ties_logged": 0,
+    "answers_C1_excluded": 51
+  }
+}

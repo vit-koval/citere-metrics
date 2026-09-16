@@ -1,0 +1,800 @@
+{
+  "brand": "Ozempic",
+  "scope": {
+    "runs_with_citations": [
+      "R1",
+      "R2",
+      "R3",
+      "R6",
+      "R7",
+      "R9"
+    ],
+    "runs_without_citations": [
+      "R4",
+      "R5",
+      "R8"
+    ],
+    "unit": "citation (domain occurrence in one answer, deduplicated within the answer)",
+    "aggregation": "directly over citations (not repeats -> prompts)",
+    "gap_list_scope": "R1 C1 answers (headline scope)"
+  },
+  "citations_total": 78567,
+  "citations_in_pie": 62051,
+  "answers_with_citations": 7433,
+  "answers_total": 12314,
+  "answers_without_citations_pct": 39.64,
+  "answers_without_citations_pct_within_citation_runs": 3.06,
+  "artifacts_removed": {
+    "vertexaisearch.cloud.google.com": 4725
+  },
+  "artifacts_share_by_model_pct": {
+    "gemini-2.5-flash": 16.45
+  },
+  "removed": {
+    "noise": 41,
+    "duplicates_within_answer": 9601,
+    "from_quality_excluded_answers": 972,
+    "adversarial_reported_separately": 1177
+  },
+  "owner_shares": {
+    "owned": 2.53,
+    "earned": 77.43,
+    "institutional": 18.9,
+    "competitor": 1.15
+  },
+  "competitor_split": {
+    "Mounjaro": 166,
+    "Zepbound": 158,
+    "Wegovy": 147,
+    "Lilly corporate": 117,
+    "Trulicity": 47,
+    "Rybelsus": 36,
+    "Boehringer corporate": 13,
+    "Farxiga": 12,
+    "Victoza": 10,
+    "Saxenda": 9
+  },
+  "owner_shares_by_model": [
+    {
+      "model": "claude-sonnet-4-6",
+      "n": 20056,
+      "owned": 1.85,
+      "earned": 84.05,
+      "institutional": 13.65,
+      "competitor": 0.45
+    },
+    {
+      "model": "claude-sonnet-5",
+      "n": 7162,
+      "owned": 2.51,
+      "earned": 80.03,
+      "institutional": 15.68,
+      "competitor": 1.77
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "n": 23590,
+      "owned": 2.91,
+      "earned": 86.15,
+      "institutional": 9.76,
+      "competitor": 1.18
+    },
+    {
+      "model": "gpt-4o",
+      "n": 11243,
+      "owned": 2.92,
+      "earned": 45.65,
+      "institutional": 49.49,
+      "competitor": 1.95
+    }
+  ],
+  "owner_shares_by_family": [
+    {
+      "model": "claude",
+      "n": 27218,
+      "owned": 2.03,
+      "earned": 82.99,
+      "institutional": 14.18,
+      "competitor": 0.8
+    },
+    {
+      "model": "gemini",
+      "n": 23590,
+      "owned": 2.91,
+      "earned": 86.15,
+      "institutional": 9.76,
+      "competitor": 1.18
+    },
+    {
+      "model": "gpt",
+      "n": 11243,
+      "owned": 2.92,
+      "earned": 45.65,
+      "institutional": 49.49,
+      "competitor": 1.95
+    }
+  ],
+  "owner_shares_by_class": [
+    {
+      "cls": "C1",
+      "n": 24147,
+      "owned": 0.44,
+      "earned": 72.44,
+      "institutional": 26.81,
+      "competitor": 0.31
+    },
+    {
+      "cls": "C2",
+      "n": 20442,
+      "owned": 5.68,
+      "earned": 79.74,
+      "institutional": 14.53,
+      "competitor": 0.04
+    },
+    {
+      "cls": "C3",
+      "n": 9525,
+      "owned": 1.22,
+      "earned": 81.67,
+      "institutional": 11.94,
+      "competitor": 5.18
+    },
+    {
+      "cls": "C4",
+      "n": 7937,
+      "owned": 2.32,
+      "earned": 81.52,
+      "institutional": 14.41,
+      "competitor": 1.75
+    }
+  ],
+  "owner_shares_by_run": [
+    {
+      "run": "R1",
+      "n": 19565,
+      "owned": 0.38,
+      "earned": 73.67,
+      "institutional": 25.7,
+      "competitor": 0.25
+    },
+    {
+      "run": "R2",
+      "n": 15392,
+      "owned": 1.52,
+      "earned": 82.19,
+      "institutional": 13.93,
+      "competitor": 2.36
+    },
+    {
+      "run": "R3",
+      "n": 12598,
+      "owned": 4.64,
+      "earned": 86.02,
+      "institutional": 9.3,
+      "competitor": 0.04
+    },
+    {
+      "run": "R6",
+      "n": 7816,
+      "owned": 4.76,
+      "earned": 62.82,
+      "institutional": 32.08,
+      "competitor": 0.35
+    },
+    {
+      "run": "R7",
+      "n": 3542,
+      "owned": 6.32,
+      "earned": 78.2,
+      "institutional": 7.82,
+      "competitor": 7.65
+    },
+    {
+      "run": "R9",
+      "n": 3138,
+      "owned": 2.49,
+      "earned": 78.46,
+      "institutional": 19.06,
+      "competitor": 0.0
+    }
+  ],
+  "earned_subtypes": {
+    "telehealth": 28.05,
+    "health_media": 17.14,
+    "directory": 16.71,
+    "other": 13.88,
+    "hospital": 10.74,
+    "advocacy": 7.42,
+    "news": 2.9,
+    "ugc": 2.7,
+    "payer": 0.46
+  },
+  "subtype_mapping": {
+    "media": "health_media",
+    "hospital": "hospital",
+    "directory": "directory",
+    "ugc": "ugc",
+    "video": "ugc",
+    "social": "ugc",
+    "news_pr": "news",
+    "pr_wire": "news",
+    "telehealth": "telehealth",
+    "litigation": "litigation",
+    "other": "other",
+    "advocacy": "advocacy",
+    "payer": "payer"
+  },
+  "owned_share_in_answers_with_us": 3.62,
+  "owned_share_in_answers_without_us": 0.61,
+  "top_domains": [
+    {
+      "domain": "nih.gov",
+      "citations": 3348,
+      "share": 5.4,
+      "owner": "institutional",
+      "subtype": null,
+      "answers_pct": 46.79,
+      "with_us_pct": 59.41,
+      "with_comp_pct": 51.05,
+      "top_model": "gpt-4o",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "goodrx.com",
+      "citations": 2393,
+      "share": 3.86,
+      "owner": "earned",
+      "subtype": "directory",
+      "answers_pct": 33.45,
+      "with_us_pct": 75.34,
+      "with_comp_pct": 67.32,
+      "top_model": "claude-sonnet-4-6",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "drugs.com",
+      "citations": 2343,
+      "share": 3.78,
+      "owner": "earned",
+      "subtype": "directory",
+      "answers_pct": 32.75,
+      "with_us_pct": 77.34,
+      "with_comp_pct": 70.34,
+      "top_model": "claude-sonnet-4-6",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "healthline.com",
+      "citations": 1725,
+      "share": 2.78,
+      "owner": "earned",
+      "subtype": "health_media",
+      "answers_pct": 24.11,
+      "with_us_pct": 63.19,
+      "with_comp_pct": 53.97,
+      "top_model": "gemini-2.5-flash",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "medicalnewstoday.com",
+      "citations": 1393,
+      "share": 2.24,
+      "owner": "earned",
+      "subtype": "health_media",
+      "answers_pct": 19.47,
+      "with_us_pct": 68.7,
+      "with_comp_pct": 55.49,
+      "top_model": "gemini-2.5-flash",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "diabetesjournals.org",
+      "citations": 1249,
+      "share": 2.01,
+      "owner": "institutional",
+      "subtype": null,
+      "answers_pct": 17.46,
+      "with_us_pct": 47.0,
+      "with_comp_pct": 42.91,
+      "top_model": "gpt-4o",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "clevelandclinic.org",
+      "citations": 1093,
+      "share": 1.76,
+      "owner": "earned",
+      "subtype": "hospital",
+      "answers_pct": 15.28,
+      "with_us_pct": 59.47,
+      "with_comp_pct": 50.5,
+      "top_model": "gemini-2.5-flash",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "webmd.com",
+      "citations": 1023,
+      "share": 1.65,
+      "owner": "earned",
+      "subtype": "directory",
+      "answers_pct": 14.3,
+      "with_us_pct": 67.25,
+      "with_comp_pct": 48.58,
+      "top_model": "gemini-2.5-flash",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "diabetes.org",
+      "citations": 909,
+      "share": 1.46,
+      "owner": "earned",
+      "subtype": "health_media",
+      "answers_pct": 12.7,
+      "with_us_pct": 36.63,
+      "with_comp_pct": 40.26,
+      "top_model": "gpt-4o",
+      "top_zone": "STARTING & SWITCHING"
+    },
+    {
+      "domain": "mayoclinic.org",
+      "citations": 856,
+      "share": 1.38,
+      "owner": "earned",
+      "subtype": "hospital",
+      "answers_pct": 11.96,
+      "with_us_pct": 38.08,
+      "with_comp_pct": 40.77,
+      "top_model": "gemini-2.5-flash",
+      "top_zone": "STARTING & SWITCHING"
+    }
+  ],
+  "top_by_owner": {
+    "owned": [
+      {
+        "domain": "ozempic.com",
+        "citations": 809,
+        "share": 1.3,
+        "owner": "owned",
+        "subtype": null,
+        "answers_pct": 11.31,
+        "with_us_pct": 99.88,
+        "with_comp_pct": 41.16,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "novomedlink.com",
+        "citations": 356,
+        "share": 0.57,
+        "owner": "owned",
+        "subtype": null,
+        "answers_pct": 4.98,
+        "with_us_pct": 84.83,
+        "with_comp_pct": 58.71,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "novocare.com",
+        "citations": 198,
+        "share": 0.32,
+        "owner": "owned",
+        "subtype": null,
+        "answers_pct": 2.77,
+        "with_us_pct": 75.76,
+        "with_comp_pct": 70.2,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "PRICE & ACCESS"
+      },
+      {
+        "domain": "novonordisk.com",
+        "citations": 62,
+        "share": 0.1,
+        "owner": "owned",
+        "subtype": null,
+        "answers_pct": 0.87,
+        "with_us_pct": 67.74,
+        "with_comp_pct": 48.39,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "novonordisk.co.uk",
+        "citations": 54,
+        "share": 0.09,
+        "owner": "owned",
+        "subtype": null,
+        "answers_pct": 0.75,
+        "with_us_pct": 96.3,
+        "with_comp_pct": 72.22,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      }
+    ],
+    "earned": [
+      {
+        "domain": "goodrx.com",
+        "citations": 2393,
+        "share": 3.86,
+        "owner": "earned",
+        "subtype": "directory",
+        "answers_pct": 33.45,
+        "with_us_pct": 75.34,
+        "with_comp_pct": 67.32,
+        "top_model": "claude-sonnet-4-6",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "drugs.com",
+        "citations": 2343,
+        "share": 3.78,
+        "owner": "earned",
+        "subtype": "directory",
+        "answers_pct": 32.75,
+        "with_us_pct": 77.34,
+        "with_comp_pct": 70.34,
+        "top_model": "claude-sonnet-4-6",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "healthline.com",
+        "citations": 1725,
+        "share": 2.78,
+        "owner": "earned",
+        "subtype": "health_media",
+        "answers_pct": 24.11,
+        "with_us_pct": 63.19,
+        "with_comp_pct": 53.97,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "medicalnewstoday.com",
+        "citations": 1393,
+        "share": 2.24,
+        "owner": "earned",
+        "subtype": "health_media",
+        "answers_pct": 19.47,
+        "with_us_pct": 68.7,
+        "with_comp_pct": 55.49,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "clevelandclinic.org",
+        "citations": 1093,
+        "share": 1.76,
+        "owner": "earned",
+        "subtype": "hospital",
+        "answers_pct": 15.28,
+        "with_us_pct": 59.47,
+        "with_comp_pct": 50.5,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      }
+    ],
+    "institutional": [
+      {
+        "domain": "nih.gov",
+        "citations": 3348,
+        "share": 5.4,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 46.79,
+        "with_us_pct": 59.41,
+        "with_comp_pct": 51.05,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "diabetesjournals.org",
+        "citations": 1249,
+        "share": 2.01,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 17.46,
+        "with_us_pct": 47.0,
+        "with_comp_pct": 42.91,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "fda.gov",
+        "citations": 770,
+        "share": 1.24,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 10.76,
+        "with_us_pct": 71.04,
+        "with_comp_pct": 60.91,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "cdc.gov",
+        "citations": 530,
+        "share": 0.85,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 7.41,
+        "with_us_pct": 10.0,
+        "with_comp_pct": 10.19,
+        "top_model": "gpt-4o",
+        "top_zone": "BLOOD SUGAR & GLYCEMIC CONTROL"
+      },
+      {
+        "domain": "medlineplus.gov",
+        "citations": 349,
+        "share": 0.56,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 4.88,
+        "with_us_pct": 38.4,
+        "with_comp_pct": 27.79,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      }
+    ],
+    "competitor": [
+      {
+        "domain": "lilly.com",
+        "citations": 488,
+        "share": 0.79,
+        "owner": "competitor:Mounjaro",
+        "subtype": null,
+        "answers_pct": 6.82,
+        "with_us_pct": 34.22,
+        "with_comp_pct": 97.75,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "wegovy.com",
+        "citations": 147,
+        "share": 0.24,
+        "owner": "competitor:Wegovy",
+        "subtype": null,
+        "answers_pct": 2.05,
+        "with_us_pct": 21.77,
+        "with_comp_pct": 100.0,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "rybelsus.com",
+        "citations": 36,
+        "share": 0.06,
+        "owner": "competitor:Rybelsus",
+        "subtype": null,
+        "answers_pct": 0.5,
+        "with_us_pct": 80.56,
+        "with_comp_pct": 100.0,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "LIVING ON THE DRUG"
+      },
+      {
+        "domain": "boehringer-ingelheim.com",
+        "citations": 13,
+        "share": 0.02,
+        "owner": "competitor:Boehringer corporate",
+        "subtype": null,
+        "answers_pct": 0.18,
+        "with_us_pct": 46.15,
+        "with_comp_pct": 92.31,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "SAFETY & CONTRAINDICATIONS"
+      },
+      {
+        "domain": "farxiga.com",
+        "citations": 12,
+        "share": 0.02,
+        "owner": "competitor:Farxiga",
+        "subtype": null,
+        "answers_pct": 0.17,
+        "with_us_pct": 16.67,
+        "with_comp_pct": 66.67,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "BLOOD SUGAR & GLYCEMIC CONTROL"
+      }
+    ]
+  },
+  "gap_list": [
+    {
+      "domain": "apnews.com",
+      "gap_score": 8,
+      "cites_comp": 14,
+      "cites_us": 6,
+      "competitors_fed": 7,
+      "owner": "earned",
+      "subtype": "news",
+      "action_type": "PR"
+    },
+    {
+      "domain": "peakwellnessva.com",
+      "gap_score": 8,
+      "cites_comp": 9,
+      "cites_us": 1,
+      "competitors_fed": 4,
+      "owner": "earned",
+      "subtype": "telehealth",
+      "action_type": "outreach"
+    },
+    {
+      "domain": "hillsideprimarycare.com",
+      "gap_score": 7,
+      "cites_comp": 11,
+      "cites_us": 4,
+      "competitors_fed": 5,
+      "owner": "earned",
+      "subtype": "telehealth",
+      "action_type": "outreach"
+    },
+    {
+      "domain": "bodevolvebariatric.com",
+      "gap_score": 7,
+      "cites_comp": 9,
+      "cites_us": 2,
+      "competitors_fed": 4,
+      "owner": "earned",
+      "subtype": "telehealth",
+      "action_type": "outreach"
+    },
+    {
+      "domain": "weightwatchers.com",
+      "gap_score": 5,
+      "cites_comp": 27,
+      "cites_us": 22,
+      "competitors_fed": 5,
+      "owner": "earned",
+      "subtype": "telehealth",
+      "action_type": "outreach"
+    },
+    {
+      "domain": "reddit.com",
+      "gap_score": 4,
+      "cites_comp": 26,
+      "cites_us": 22,
+      "competitors_fed": 9,
+      "owner": "earned",
+      "subtype": "ugc",
+      "action_type": "monitor"
+    },
+    {
+      "domain": "farxiga.com",
+      "gap_score": 4,
+      "cites_comp": 5,
+      "cites_us": 1,
+      "competitors_fed": 3,
+      "owner": "competitor:Farxiga",
+      "subtype": null,
+      "action_type": "n/a (competitor site)"
+    },
+    {
+      "domain": "skenmedspa.com",
+      "gap_score": 4,
+      "cites_comp": 4,
+      "cites_us": 0,
+      "competitors_fed": 3,
+      "owner": "earned",
+      "subtype": "telehealth",
+      "action_type": "outreach"
+    },
+    {
+      "domain": "axios.com",
+      "gap_score": 3,
+      "cites_comp": 8,
+      "cites_us": 5,
+      "competitors_fed": 8,
+      "owner": "earned",
+      "subtype": "news",
+      "action_type": "PR"
+    },
+    {
+      "domain": "livescience.com",
+      "gap_score": 3,
+      "cites_comp": 5,
+      "cites_us": 2,
+      "competitors_fed": 6,
+      "owner": "earned",
+      "subtype": "other",
+      "action_type": "review"
+    }
+  ],
+  "gap_domains_total": 212,
+  "institutional_feeding_competitors": 8,
+  "adversarial_sources": [
+    {
+      "domain": "drugwatch.com",
+      "citations": 475
+    },
+    {
+      "domain": "motleyrice.com",
+      "citations": 185
+    },
+    {
+      "domain": "bursor.com",
+      "citations": 111
+    },
+    {
+      "domain": "robertkinglawfirm.com",
+      "citations": 67
+    },
+    {
+      "domain": "helbocklaw.com",
+      "citations": 47
+    },
+    {
+      "domain": "lawsuit-information-center.com",
+      "citations": 47
+    },
+    {
+      "domain": "wisnerbaum.com",
+      "citations": 39
+    },
+    {
+      "domain": "trulaw.com",
+      "citations": 36
+    },
+    {
+      "domain": "mctlaw.com",
+      "citations": 35
+    },
+    {
+      "domain": "lanierlawfirm.com",
+      "citations": 29
+    },
+    {
+      "domain": "torhoermanlaw.com",
+      "citations": 27
+    },
+    {
+      "domain": "therxadvocates.com",
+      "citations": 26
+    },
+    {
+      "domain": "legalclarity.org",
+      "citations": 18
+    },
+    {
+      "domain": "lawsuittracker.org",
+      "citations": 8
+    },
+    {
+      "domain": "personalinjurysandiego.org",
+      "citations": 7
+    }
+  ],
+  "unclassified_top30": [
+    "luknermed.com",
+    "substack.com",
+    "abbott.com",
+    "htxheart.com",
+    "livescience.com",
+    "premiummedicalcircle.com",
+    "adwdiabetes.com",
+    "getzealthy.com",
+    "healthcare-bulletin.co.uk",
+    "infectiousdiseaseadvisor.com",
+    "nourishadl.com.au",
+    "omegaquant.com",
+    "sciencealert.com",
+    "superpower.com",
+    "aace.com",
+    "davita.com",
+    "formhealth.co",
+    "helloclue.com",
+    "justanswer.com",
+    "managedhealthcareexecutive.com",
+    "mydr.com.au",
+    "nighgoldenberg.com",
+    "uspharmacist.com",
+    "baledoneen.com",
+    "docwirenews.com",
+    "familycaremurphy.com",
+    "forwardfamilymedicine.com",
+    "lww.com",
+    "meetaugust.ai",
+    "meto.co"
+  ],
+  "domains_total": 4186
+}

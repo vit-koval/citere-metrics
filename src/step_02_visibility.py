@@ -320,6 +320,8 @@ def main() -> int:
         "brands_in_answer": sample["brands_in_answer"].map(lambda l: json.dumps(l, ensure_ascii=False)),
         "reviewer_agrees": "", "case": sample["case"], "run": sample["run"], "repeat_idx": sample["repeat_idx"],
     })
+    sample_out = C.carry_forward_review(sample_out, C.AUDIT_DIR / "sample_visibility.csv",
+                                        keys=["pid", "model", "run", "repeat_idx"], computed_cols=["we_present", "we_pos", "inn_only"])
     sample_out.to_csv(C.AUDIT_DIR / "sample_visibility.csv", index=False)
 
     # ---- report (≤ 15 lines) + appendix tables ---------------------------
