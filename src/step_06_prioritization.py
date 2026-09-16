@@ -161,7 +161,9 @@ def main() -> int:
     source_rows, label_rows, no_source_other, healthy, below_floor = [], [], [], [], []
     for x in groups:
         if x["top_code"] in non_failure:
-            healthy.append({"group_id": x["group_id"], "top_code": x["top_code"], "n_prompts": x["n_prompts"], "demand": _r(x["demand"], 0), "gap": _r(x["gap"]), "gap_bad": _r(x["gap_bad"]), "codes": x["codes"][:3]})
+            fail_n = sum(cd["n"] for cd in x["codes"] if cd["code"] not in non_failure)
+            healthy.append({"group_id": x["group_id"], "top_code": x["top_code"], "n_prompts": x["n_prompts"], "demand": _r(x["demand"], 0), "gap": _r(x["gap"]), "gap_bad": _r(x["gap_bad"]),
+                            "failure_code_share": _r(fail_n / x["n_prompts"]), "top_failure_code": next((cd["code"] for cd in x["codes"] if cd["code"] not in non_failure), None), "codes": x["codes"][:3]})
             continue
         if x["gap"] < min_gap:
             below_floor.append({"group_id": x["group_id"], "top_code": x["top_code"], "n_prompts": x["n_prompts"], "demand": _r(x["demand"], 0), "gap": _r(x["gap"]), "gap_bad": _r(x["gap_bad"])})
@@ -196,7 +198,7 @@ def main() -> int:
                "tercile_thresholds": th_src, "tercile_thresholds_label": th_lab,
                "rows_dropped_zero_gap": {"n": len(dropped_zero_gap), "groups": sorted({r["group_id"] for r in dropped_zero_gap})},
                "code_inventory": dict(sorted(code_counts.items(), key=lambda kv: -kv[1])), "non_failure_codes": sorted(non_failure), "min_gap": min_gap,
-               "healthy_groups": sorted(healthy, key=lambda h: -h["demand"]), "below_gap_floor": sorted(below_floor, key=lambda h: -h["demand"]),
+               "healthy_groups": sorted(healthy, key=lambda h: -h["demand"]), "healthy_groups_note": "v1 limitation: dominant code alone decides inclusion; failure_code_share is informational until v2", "below_gap_floor": sorted(below_floor, key=lambda h: -h["demand"]),
                "below_gap_floor_note": "a gap below {:.0%} is background noise, not a problem worth spending on".format(min_gap),
                "owner_fold": OWNER_FOLD,
                "gap_note": "Gap pools different failure kinds across runs (R1 absent from category answer, R2 lost duel, R4 label error, R6 message not delivered…); it is problem density on the topic, not one kind of failure — see gap_by_run / dominant_run on every row.",
@@ -232,7 +234,7 @@ def main() -> int:
          "Score = Demand_share × Gap × Lever (Label rows: Demand_share × Gap); owners earned (commerce folded in as a subtype), ugc, owned, comp_owned. Tercile thresholds (source rows): P3 ≥ {}, P2 ≥ {}; Label rows: P3 ≥ {}, P2 ≥ {}.".format(th_src["p3_min"], th_src["p2_min"], th_lab["p3_min"], th_lab["p2_min"]),
          "**Gap caveat:** Gap pools different failure kinds across runs — R1 absent from the category answer, R2 lost duel, R4 label error, R6 message not delivered — so it is problem density on the topic, not one kind of failure; every row carries gap_by_run and its dominant run.",
          "Lever = owner citations ÷ all citations in the group's answers (noise/other removed; institutional categories excluded from Lever and reported as institutional_share; adversarial reported separately). `impact_reach` = demand × gap is a ceiling, not a forecast.",
-         "Excluded before ranking — healthy groups (dominant code in non_failure_codes {}): {} groups; below gap floor (gap < {:.0%}, background not a problem worth spending on): {} groups. Both listed in the appendix.".format(
+         "Excluded before ranking — healthy groups (dominant code in non_failure_codes {}): {} groups; below gap floor (gap < {:.0%}, background not a problem worth spending on): {} groups. Both listed in the appendix. Known v1 limitation: the dominant code alone decides inclusion; healthy groups show `failure_code_share` (secondary failure density) but it is not acted on until v2.".format(
              sorted(non_failure), len(healthy), min_gap, len(below_floor)),
          "Top-5 client recommendations (rows whose `who` is Citere are our monitoring, listed separately below):"] + ["{}. ".format(i + 1) + line(r) for i, r in enumerate(client_rows[:5])] + [
          "Label / Medical rows ({}): ".format(len(label_rows)) + ("; ".join("{} · P{} · gap {:.0%} · {} · who: {}".format(r["group_id"], r["priority"], r["why"]["gap"], r["cause"][0]["code"], r["who"]) for r in label_rows) or "none") + ".",
@@ -264,9 +266,10 @@ def main() -> int:
         b = max(rows, key=lambda x: x["score"])
         tbl.append("| {} | {} | {:.5f} | {:.0%} ({}) | {} | {} | {} |".format(gid, b["priority"], b["score"], b["why"]["gap"], b["why"]["dominant_run"], b["cause"][0]["code"],
                    ", ".join("{} {:.0%}".format(x["owner"], x["why"]["lever"]) for x in sorted(rows, key=lambda x: -x["score"])), b["what"][:90]))
-    tbl += ["", "Healthy groups (dominant code is not a failure — checked, nothing to fix):", "", "| group | dominant code | prompts | demand | gap | gap_bad |", "|---|---|---|---|---|---|"]
+    tbl += ["", "Healthy groups (dominant code is not a failure — checked, nothing to fix). **Known v1 limitation:** the dominant code alone decides inclusion; `failure_code_share` (prompts whose code is a failure) is shown but not acted on until v2:", "",
+            "| group | dominant code | prompts | demand | gap | gap_bad | failure code share | top failure code |", "|---|---|---|---|---|---|---|---|"]
     for h in summary["healthy_groups"]:
-        tbl.append("| {} | {} | {} | {:,.0f} | {:.0%} | {:.0%} |".format(h["group_id"], h["top_code"], h["n_prompts"], h["demand"], h["gap"], h["gap_bad"]))
+        tbl.append("| {} | {} | {} | {:,.0f} | {:.0%} | {:.0%} | {:.0%} | {} |".format(h["group_id"], h["top_code"], h["n_prompts"], h["demand"], h["gap"], h["gap_bad"], h["failure_code_share"], h["top_failure_code"] or ""))
     tbl += ["", "Below gap floor (gap < {:.0%} — background, not a problem worth spending on):".format(min_gap), "", "| group | dominant code | prompts | demand | gap | gap_bad |", "|---|---|---|---|---|---|"]
     for h in summary["below_gap_floor"]:
         tbl.append("| {} | {} | {} | {:,.0f} | {:.0%} | {:.0%} |".format(h["group_id"], h["top_code"], h["n_prompts"], h["demand"], h["gap"], h["gap_bad"]))

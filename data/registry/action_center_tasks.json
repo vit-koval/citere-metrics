@@ -1297,7 +1297,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 3,
-      "rank": 13,
+      "rank": 12,
       "score": 0.002569,
       "what": "Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -1420,137 +1420,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "cb3ef1bd5af3",
-      "group_id": "Dosing & administration × Timing, food & storage",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Timing, food & storage",
-        "zone": ""
-      },
-      "owner": "earned",
-      "execution": "manual",
-      "priority": 3,
-      "rank": 14,
-      "score": 0.002392,
-      "what": "Protect the win: keep the supporting sources fresh and citable.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_share": 0.0084,
-        "gap": 0.4,
-        "gap_bad": 0.2,
-        "n_prompts": 35,
-        "gap_by_run": {
-          "R2": 0.4286,
-          "R3": 0.5,
-          "R4": 0.0,
-          "R6": 0.6
-        },
-        "n_by_run": {
-          "R2": 14,
-          "R3": 4,
-          "R4": 7,
-          "R6": 10
-        },
-        "dominant_run": "R2",
-        "lever": 0.7114,
-        "institutional_share": 0.176
-      },
-      "cause": [
-        {
-          "code": "WE WIN THIS DUEL",
-          "n": 8
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 7
-        },
-        {
-          "code": "MESSAGE NOT DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 97,
-          "with_us": 93,
-          "with_comp": 81
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 74,
-          "with_us": 72,
-          "with_comp": 61
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 46,
-          "with_us": 46,
-          "with_comp": 37
-        },
-        {
-          "domain": "plexusdx.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 45,
-          "with_us": 45,
-          "with_comp": 30
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 39,
-          "with_us": 38,
-          "with_comp": 32
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0327",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic and Mounjaro are both weekly — is one easier to inject than the other?"
-        },
-        {
-          "pid": "P0379",
-          "run": "R2",
-          "sev": "bad",
-          "text": "For the weekly injection, is Ozempic or Mounjaro simpler to administer?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 28.46,
-        "expected_pp": [
-          2.85,
-          6.26
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "86836e3b5fc2",
       "group_id": "Side effects & tolerability × LIVING ON THE DRUG",
       "group": {
@@ -1561,7 +1430,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 3,
-      "rank": 15,
+      "rank": 13,
       "score": 0.002376,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -1662,7 +1531,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 3,
-      "rank": 16,
+      "rank": 14,
       "score": 0.00235,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -1795,7 +1664,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 3,
-      "rank": 17,
+      "rank": 15,
       "score": 0.001868,
       "what": "Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -1904,7 +1773,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 3,
-      "rank": 18,
+      "rank": 16,
       "score": 0.001816,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -2031,7 +1900,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 3,
-      "rank": 19,
+      "rank": 17,
       "score": 0.001436,
       "what": "Prioritize by volume — capture this high-traffic topic ahead of low-volume ones. Biggest reach-per-effort.",
       "who": "Digital",
@@ -2136,7 +2005,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 3,
-      "rank": 20,
+      "rank": 18,
       "score": 0.001376,
       "what": "Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -2253,7 +2122,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 3,
-      "rank": 21,
+      "rank": 19,
       "score": 0.000724,
       "what": "If this is a real clinical edge (e.g. weight, A1c), do not fight it head-on — reframe toward an axis we win (convenience / cardiovascular) in comparative content.",
       "who": "Marketing + Medical",
@@ -2386,7 +2255,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 3,
-      "rank": 22,
+      "rank": 20,
       "score": 0.000672,
       "what": "Move from mention to recommendation with guideline-aligned, comparative content on citable domains.",
       "who": "Medical",
@@ -2515,7 +2384,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 3,
-      "rank": 23,
+      "rank": 21,
       "score": 0.000628,
       "what": "If this is a real clinical edge (e.g. weight, A1c), do not fight it head-on — reframe toward an axis we win (convenience / cardiovascular) in comparative content.",
       "who": "Marketing + Medical",
@@ -2647,8 +2516,8 @@
       },
       "owner": "comp_owned",
       "execution": "manual",
-      "priority": 3,
-      "rank": 24,
+      "priority": 2,
+      "rank": 22,
       "score": 0.00059,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -2748,8 +2617,8 @@
       },
       "owner": "owned",
       "execution": "auto",
-      "priority": 3,
-      "rank": 25,
+      "priority": 2,
+      "rank": 23,
       "score": 0.000542,
       "what": "Publish owned + Medical content that carries the message verbatim, tied to this patient need.",
       "who": "Medical + Digital",
@@ -2884,7 +2753,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 2,
-      "rank": 27,
+      "rank": 25,
       "score": 0.000495,
       "what": "Move from mention to recommendation with guideline-aligned, comparative content on citable domains.",
       "who": "Medical",
@@ -3013,7 +2882,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 2,
-      "rank": 28,
+      "rank": 26,
       "score": 0.000486,
       "what": "Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -3120,7 +2989,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 2,
-      "rank": 29,
+      "rank": 27,
       "score": 0.000463,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -3253,7 +3122,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 2,
-      "rank": 30,
+      "rank": 28,
       "score": 0.000452,
       "what": "Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -3384,7 +3253,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 2,
-      "rank": 31,
+      "rank": 29,
       "score": 0.000413,
       "what": "Protect message integrity in the source set.",
       "who": "Comms",
@@ -3513,7 +3382,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 2,
-      "rank": 33,
+      "rank": 30,
       "score": 0.000385,
       "what": "Build a challenge dossier: the competitor label section vs the AI recommendation, per response. This is oppositional evidence, filed with the provider.",
       "who": "Medical Affairs",
@@ -3642,7 +3511,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 2,
-      "rank": 34,
+      "rank": 31,
       "score": 0.000263,
       "what": "Prioritize by volume — capture this high-traffic topic ahead of low-volume ones. Biggest reach-per-effort.",
       "who": "Digital",
@@ -3763,137 +3632,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "40b06e5b1b10",
-      "group_id": "Dosing & administration × Timing, food & storage",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Timing, food & storage",
-        "zone": ""
-      },
-      "owner": "owned",
-      "execution": "auto",
-      "priority": 2,
-      "rank": 35,
-      "score": 0.000231,
-      "what": "Protect the win: keep the supporting sources fresh and citable.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_share": 0.0084,
-        "gap": 0.4,
-        "gap_bad": 0.2,
-        "n_prompts": 35,
-        "gap_by_run": {
-          "R2": 0.4286,
-          "R3": 0.5,
-          "R4": 0.0,
-          "R6": 0.6
-        },
-        "n_by_run": {
-          "R2": 14,
-          "R3": 4,
-          "R4": 7,
-          "R6": 10
-        },
-        "dominant_run": "R2",
-        "lever": 0.0687,
-        "institutional_share": 0.176
-      },
-      "cause": [
-        {
-          "code": "WE WIN THIS DUEL",
-          "n": 8
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 7
-        },
-        {
-          "code": "MESSAGE NOT DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 50,
-          "with_us": 50,
-          "with_comp": 25
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 27,
-          "with_us": 27,
-          "with_comp": 16
-        },
-        {
-          "domain": "novo-pi.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 12,
-          "with_us": 12,
-          "with_comp": 6
-        },
-        {
-          "domain": "rybelsus.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 12,
-          "with_us": 12,
-          "with_comp": 12
-        },
-        {
-          "domain": "novonordisk.co.uk",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 4,
-          "with_us": 4,
-          "with_comp": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0327",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic and Mounjaro are both weekly — is one easier to inject than the other?"
-        },
-        {
-          "pid": "P0379",
-          "run": "R2",
-          "sev": "bad",
-          "text": "For the weekly injection, is Ozempic or Mounjaro simpler to administer?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 2.75,
-        "expected_pp": [
-          0.14,
-          0.28
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "5ff6f6eaa236",
       "group_id": "Efficacy & results × WEIGHT LOSS",
       "group": {
@@ -3904,7 +3642,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 2,
-      "rank": 36,
+      "rank": 32,
       "score": 0.00023,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: If this is a real clinical edge (e.g. weight, A1c), do not fight it head-on — reframe toward an axis we win (convenience / cardiovascular) in comparative content.",
       "who": "Digital",
@@ -4005,7 +3743,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 2,
-      "rank": 37,
+      "rank": 33,
       "score": 0.000212,
       "what": "Publish owned + Medical content that carries the message verbatim, tied to this patient need.",
       "who": "Medical + Digital",
@@ -4124,7 +3862,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 2,
-      "rank": 38,
+      "rank": 34,
       "score": 0.000201,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Publish owned + Medical content that carries the message verbatim, tied to this patient need.",
       "who": "Digital",
@@ -4227,7 +3965,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 2,
-      "rank": 39,
+      "rank": 35,
       "score": 0.000196,
       "what": "Package these responses into a Regulatory challenge letter quoting the exact label section that is contradicted, and file it with the model provider.",
       "who": "Regulatory",
@@ -4358,7 +4096,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 2,
-      "rank": 41,
+      "rank": 37,
       "score": 0.000143,
       "what": "Prioritize by volume — capture this high-traffic topic ahead of low-volume ones. Biggest reach-per-effort.",
       "who": "Digital",
@@ -4481,7 +4219,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 2,
-      "rank": 42,
+      "rank": 38,
       "score": 0.000106,
       "what": "Publish an owned FAQ / med-reviewed page that states the missing fact plainly, so models have a citable source to complete the answer.",
       "who": "Medical + Digital",
@@ -4602,103 +4340,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "07e085427b1b",
-      "group_id": "Dosing & administration × Site & volume",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Site & volume",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "execution": "manual",
-      "priority": 2,
-      "rank": 43,
-      "score": 9.1e-05,
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Digital",
-      "speed": "cycle",
-      "why": {
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_share": 0.0103,
-        "gap": 0.3889,
-        "gap_bad": 0.2778,
-        "n_prompts": 18,
-        "gap_by_run": {
-          "R3": 0.4,
-          "R4": 0.0,
-          "R7": 0.7143
-        },
-        "n_by_run": {
-          "R3": 5,
-          "R4": 6,
-          "R7": 7
-        },
-        "dominant_run": "R7",
-        "lever": 0.0228,
-        "institutional_share": 0.0358
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 6
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 5
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 3
-        }
-      ],
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 7,
-          "with_us": 0,
-          "with_comp": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0939",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where should I inject Wegovy?"
-        },
-        {
-          "pid": "P0944",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where can I inject Wegovy?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 0.89,
-        "expected_pp": [
-          0.09,
-          0.2
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "36eae483a77b",
       "group_id": "Indications & eligibility × Weight loss without diabetes",
       "group": {
@@ -4709,7 +4350,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 2,
-      "rank": 44,
+      "rank": 39,
       "score": 8.7e-05,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Strengthen owned + directory presence for this topic so alternatives are less prominent in the retrieved set.",
       "who": "Digital",
@@ -4808,7 +4449,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 2,
-      "rank": 45,
+      "rank": 40,
       "score": 7.9e-05,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Prioritize by volume — capture this high-traffic topic ahead of low-volume ones. Biggest reach-per-effort.",
       "who": "Digital",
@@ -4907,7 +4548,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 2,
-      "rank": 46,
+      "rank": 41,
       "score": 6.4e-05,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -5040,7 +4681,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 2,
-      "rank": 47,
+      "rank": 42,
       "score": 6.4e-05,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -5163,137 +4804,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "06e2c1ebc619",
-      "group_id": "Dosing & administration × Timing, food & storage",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Timing, food & storage",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "execution": "manual",
-      "priority": 2,
-      "rank": 48,
-      "score": 5.9e-05,
-      "what": "Protect the win: keep the supporting sources fresh and citable.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_share": 0.0084,
-        "gap": 0.4,
-        "gap_bad": 0.2,
-        "n_prompts": 35,
-        "gap_by_run": {
-          "R2": 0.4286,
-          "R3": 0.5,
-          "R4": 0.0,
-          "R6": 0.6
-        },
-        "n_by_run": {
-          "R2": 14,
-          "R3": 4,
-          "R4": 7,
-          "R6": 10
-        },
-        "dominant_run": "R2",
-        "lever": 0.0177,
-        "institutional_share": 0.176
-      },
-      "cause": [
-        {
-          "code": "WE WIN THIS DUEL",
-          "n": 8
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 7
-        },
-        {
-          "code": "MESSAGE NOT DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 15,
-          "with_us": 15,
-          "with_comp": 14
-        },
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 5,
-          "with_us": 3,
-          "with_comp": 3
-        },
-        {
-          "domain": "diabetesteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 3
-        },
-        {
-          "domain": "diabetescarecommunity.ca",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 1,
-          "with_comp": 1
-        },
-        {
-          "domain": "myepilepsyteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0327",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic and Mounjaro are both weekly — is one easier to inject than the other?"
-        },
-        {
-          "pid": "P0379",
-          "run": "R2",
-          "sev": "bad",
-          "text": "For the weekly injection, is Ozempic or Mounjaro simpler to administer?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 0.71,
-        "expected_pp": [
-          0.04,
-          0.11
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "6a3edbb6abc3",
       "group_id": "Efficacy & results × LIVING ON THE DRUG",
       "group": {
@@ -5304,7 +4814,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 51,
+      "rank": 43,
       "score": 4.5e-05,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -5415,7 +4925,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 52,
+      "rank": 44,
       "score": 3.8e-05,
       "what": "Move from mention to recommendation with guideline-aligned, comparative content on citable domains.",
       "who": "Medical",
@@ -5526,105 +5036,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "849d5f262058",
-      "group_id": "Dosing & administration × Timing, food & storage",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Timing, food & storage",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "execution": "manual",
-      "priority": 1,
-      "rank": 53,
-      "score": 3.7e-05,
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Protect the win: keep the supporting sources fresh and citable.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_share": 0.0084,
-        "gap": 0.4,
-        "gap_bad": 0.2,
-        "n_prompts": 35,
-        "gap_by_run": {
-          "R2": 0.4286,
-          "R3": 0.5,
-          "R4": 0.0,
-          "R6": 0.6
-        },
-        "n_by_run": {
-          "R2": 14,
-          "R3": 4,
-          "R4": 7,
-          "R6": 10
-        },
-        "dominant_run": "R2",
-        "lever": 0.0111,
-        "institutional_share": 0.176
-      },
-      "cause": [
-        {
-          "code": "WE WIN THIS DUEL",
-          "n": 8
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 7
-        },
-        {
-          "code": "MESSAGE NOT DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 17,
-          "with_us": 17,
-          "with_comp": 17
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0327",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic and Mounjaro are both weekly — is one easier to inject than the other?"
-        },
-        {
-          "pid": "P0379",
-          "run": "R2",
-          "sev": "bad",
-          "text": "For the weekly injection, is Ozempic or Mounjaro simpler to administer?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 0.44,
-        "expected_pp": [
-          0.04,
-          0.1
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 10583.0,
-        "lo": 10000.0,
-        "hi": 11200.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "56fbadb0c7b2",
       "group_id": "Efficacy & results × LIVING ON THE DRUG",
       "group": {
@@ -5635,7 +5046,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 1,
-      "rank": 54,
+      "rank": 45,
       "score": 2.8e-05,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "Digital",
@@ -5730,7 +5141,7 @@
       "owner": "earned",
       "execution": "manual",
       "priority": 1,
-      "rank": 55,
+      "rank": 46,
       "score": 2e-05,
       "what": "Protect message integrity in the source set.",
       "who": "Comms",
@@ -5857,7 +5268,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 56,
+      "rank": 47,
       "score": 1.7e-05,
       "what": "Protect message integrity in the source set.",
       "who": "Comms",
@@ -5978,7 +5389,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 1,
-      "rank": 57,
+      "rank": 48,
       "score": 1.6e-05,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "Digital",
@@ -6079,7 +5490,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 58,
+      "rank": 49,
       "score": 1.6e-05,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -6212,7 +5623,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 59,
+      "rank": 50,
       "score": 1.3e-05,
       "what": "Move from mention to recommendation with guideline-aligned, comparative content on citable domains.",
       "who": "Medical",
@@ -6325,7 +5736,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 60,
+      "rank": 51,
       "score": 1.2e-05,
       "what": "Protect message integrity in the source set.",
       "who": "Comms",
@@ -6438,7 +5849,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 61,
+      "rank": 52,
       "score": 1.1e-05,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -6571,7 +5982,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 62,
+      "rank": 53,
       "score": 8e-06,
       "what": "Publish an owned FAQ / med-reviewed page that states the missing fact plainly, so models have a citable source to complete the answer.",
       "who": "Medical + Digital",
@@ -6686,7 +6097,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 63,
+      "rank": 54,
       "score": 8e-06,
       "what": "Move from mention to recommendation with guideline-aligned, comparative content on citable domains.",
       "who": "Medical",
@@ -6815,7 +6226,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 1,
-      "rank": 64,
+      "rank": 55,
       "score": 7e-06,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "Digital",
@@ -6916,7 +6327,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 65,
+      "rank": 56,
       "score": 6e-06,
       "what": "Build category visibility: directories, health-media placements, source share for this situation.",
       "who": "PR/Comms",
@@ -7019,7 +6430,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 67,
+      "rank": 57,
       "score": 4e-06,
       "what": "Package these responses into a Regulatory challenge letter quoting the exact label section that is contradicted, and file it with the model provider.",
       "who": "Regulatory",
@@ -7126,7 +6537,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 68,
+      "rank": 58,
       "score": 4e-06,
       "what": "Move from mention to recommendation with guideline-aligned, comparative content on citable domains.",
       "who": "Medical",
@@ -7223,7 +6634,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 69,
+      "rank": 59,
       "score": 3e-06,
       "what": "Package these responses into a Regulatory challenge letter quoting the exact label section that is contradicted, and file it with the model provider.",
       "who": "Regulatory",
@@ -7322,7 +6733,7 @@
       "owner": "comp_owned",
       "execution": "manual",
       "priority": 1,
-      "rank": 70,
+      "rank": 60,
       "score": 2e-06,
       "what": "Competitor feeds answers with its own domains — build comparable owned content: Protect message integrity in the source set.",
       "who": "Digital",
@@ -7419,7 +6830,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 71,
+      "rank": 61,
       "score": 2e-06,
       "what": "Publish an owned FAQ / med-reviewed page that states the missing fact plainly, so models have a citable source to complete the answer.",
       "who": "Medical + Digital",
@@ -7518,7 +6929,7 @@
       "owner": "owned",
       "execution": "auto",
       "priority": 1,
-      "rank": 72,
+      "rank": 62,
       "score": 2e-06,
       "what": "Protect message integrity in the source set.",
       "who": "Comms",
@@ -7645,7 +7056,7 @@
       "owner": "ugc",
       "execution": "manual",
       "priority": 1,
-      "rank": 74,
+      "rank": 63,
       "score": 0.0,
       "what": "Protect message integrity in the source set.",
       "who": "Comms",
@@ -7869,135 +7280,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "29bdba5d4f09",
-      "group_id": "Dosing & administration × Site & volume",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Site & volume",
-        "zone": ""
-      },
-      "owner": "earned",
-      "execution": "citere",
-      "priority": 3,
-      "rank": 12,
-      "score": 0.003302,
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_share": 0.0103,
-        "gap": 0.3889,
-        "gap_bad": 0.2778,
-        "n_prompts": 18,
-        "gap_by_run": {
-          "R3": 0.4,
-          "R4": 0.0,
-          "R7": 0.7143
-        },
-        "n_by_run": {
-          "R3": 5,
-          "R4": 6,
-          "R7": 7
-        },
-        "dominant_run": "R7",
-        "lever": 0.8274,
-        "institutional_share": 0.0358
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 6
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 5
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 3
-        }
-      ],
-      "where": [
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 28,
-          "with_us": 21,
-          "with_comp": 9
-        },
-        {
-          "domain": "faynutrition.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 22,
-          "with_us": 19,
-          "with_comp": 4
-        },
-        {
-          "domain": "doctormedica.co",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 18,
-          "with_us": 18,
-          "with_comp": 1
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 18,
-          "with_us": 13,
-          "with_comp": 5
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 18,
-          "with_us": 14,
-          "with_comp": 5
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0939",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where should I inject Wegovy?"
-        },
-        {
-          "pid": "P0944",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where can I inject Wegovy?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 32.18,
-        "expected_pp": [
-          3.22,
-          7.08
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "cd4f0c7de540",
       "group_id": "Reputation & narratives × Lawsuits & cover-up",
       "group": {
@@ -8008,7 +7290,7 @@
       "owner": "ugc",
       "execution": "citere",
       "priority": 2,
-      "rank": 26,
+      "rank": 24,
       "score": 0.000507,
       "what": "Run forensics on the cited domains first — whois dates + copied-text across sites — BEFORE naming any actor.",
       "who": "Citere",
@@ -8119,127 +7401,6 @@
       "cycle_done": null
     },
     {
-      "task_id": "964acda005b0",
-      "group_id": "Dosing & administration × Site & volume",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Site & volume",
-        "zone": ""
-      },
-      "owner": "owned",
-      "execution": "citere",
-      "priority": 2,
-      "rank": 32,
-      "score": 0.000403,
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_share": 0.0103,
-        "gap": 0.3889,
-        "gap_bad": 0.2778,
-        "n_prompts": 18,
-        "gap_by_run": {
-          "R3": 0.4,
-          "R4": 0.0,
-          "R7": 0.7143
-        },
-        "n_by_run": {
-          "R3": 5,
-          "R4": 6,
-          "R7": 7
-        },
-        "dominant_run": "R7",
-        "lever": 0.101,
-        "institutional_share": 0.0358
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 6
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 5
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 3
-        }
-      ],
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 14,
-          "with_us": 14,
-          "with_comp": 1
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 8,
-          "with_us": 7,
-          "with_comp": 2
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 6,
-          "with_us": 0,
-          "with_comp": 6
-        },
-        {
-          "domain": "novo-pi.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0939",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where should I inject Wegovy?"
-        },
-        {
-          "pid": "P0944",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where can I inject Wegovy?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 3.93,
-        "expected_pp": [
-          0.2,
-          0.39
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
       "task_id": "a18fc9c192c8",
       "group_id": "Reputation & narratives × Lawsuits & cover-up",
       "group": {
@@ -8250,7 +7411,7 @@
       "owner": "owned",
       "execution": "citere",
       "priority": 2,
-      "rank": 40,
+      "rank": 36,
       "score": 0.000175,
       "what": "Run forensics on the cited domains first — whois dates + copied-text across sites — BEFORE naming any actor.",
       "who": "Citere",
@@ -8334,472 +7495,6 @@
         "demand": 40650.0,
         "lo": 40000.0,
         "hi": 41310.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
-      "task_id": "6ee0ed38712b",
-      "group_id": "Serious risks & contraindications × Kidney safety",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Kidney safety",
-        "zone": ""
-      },
-      "owner": "earned",
-      "execution": "citere",
-      "priority": 2,
-      "rank": 49,
-      "score": 5.5e-05,
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 303.0,
-        "lo": 200.0,
-        "hi": 460.0,
-        "demand_share": 0.0002,
-        "gap": 0.4651,
-        "gap_bad": 0.186,
-        "n_prompts": 43,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R4": 0.375,
-          "R5": 0.0,
-          "R6": 0.5
-        },
-        "n_by_run": {
-          "R1": 6,
-          "R4": 24,
-          "R5": 3,
-          "R6": 10
-        },
-        "dominant_run": "R4",
-        "lever": 0.4937,
-        "institutional_share": 0.4525
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 15
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 6
-        },
-        {
-          "code": "MESSAGE DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "kidney.org",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 59,
-          "with_us": 40,
-          "with_comp": 30
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 35,
-          "with_us": 22,
-          "with_comp": 23
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 27,
-          "with_us": 20,
-          "with_comp": 6
-        },
-        {
-          "domain": "kidneyfund.org",
-          "category": "advocacy",
-          "owner_subtype": "earned",
-          "citations": 22,
-          "with_us": 19,
-          "with_comp": 15
-        },
-        {
-          "domain": "kdigo.org",
-          "category": "advocacy",
-          "owner_subtype": "earned",
-          "citations": 20,
-          "with_us": 14,
-          "with_comp": 10
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0151",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my dad's creatinine is up around 2.2 and he's diabetic. which diabetes drugs are off the table with kidney function like that?"
-        },
-        {
-          "pid": "P0789",
-          "run": "R6",
-          "sev": "bad",
-          "text": "a patient said to me \"if you have kidney issues do NOT take this drug at all\" — is that right?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 22.96,
-        "expected_pp": [
-          2.3,
-          5.05
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 303.0,
-        "lo": 200.0,
-        "hi": 460.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
-      "task_id": "b6cdd301e8e7",
-      "group_id": "Dosing & administration × Site & volume",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Site & volume",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "execution": "citere",
-      "priority": 2,
-      "rank": 50,
-      "score": 5.2e-05,
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_share": 0.0103,
-        "gap": 0.3889,
-        "gap_bad": 0.2778,
-        "n_prompts": 18,
-        "gap_by_run": {
-          "R3": 0.4,
-          "R4": 0.0,
-          "R7": 0.7143
-        },
-        "n_by_run": {
-          "R3": 5,
-          "R4": 6,
-          "R7": 7
-        },
-        "dominant_run": "R7",
-        "lever": 0.013,
-        "institutional_share": 0.0358
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 6
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 5
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 3
-        }
-      ],
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        },
-        {
-          "domain": "myobesityteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0939",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where should I inject Wegovy?"
-        },
-        {
-          "pid": "P0944",
-          "run": "R7",
-          "sev": "bad",
-          "text": "Where can I inject Wegovy?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 0.51,
-        "expected_pp": [
-          0.03,
-          0.08
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 12920.0,
-        "lo": 12000.0,
-        "hi": 13910.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
-      "task_id": "7762ea100993",
-      "group_id": "Serious risks & contraindications × Kidney safety",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Kidney safety",
-        "zone": ""
-      },
-      "owner": "owned",
-      "execution": "citere",
-      "priority": 1,
-      "rank": 66,
-      "score": 5e-06,
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 303.0,
-        "lo": 200.0,
-        "hi": 460.0,
-        "demand_share": 0.0002,
-        "gap": 0.4651,
-        "gap_bad": 0.186,
-        "n_prompts": 43,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R4": 0.375,
-          "R5": 0.0,
-          "R6": 0.5
-        },
-        "n_by_run": {
-          "R1": 6,
-          "R4": 24,
-          "R5": 3,
-          "R6": 10
-        },
-        "dominant_run": "R4",
-        "lever": 0.0475,
-        "institutional_share": 0.4525
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 15
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 6
-        },
-        {
-          "code": "MESSAGE DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 22,
-          "with_us": 22,
-          "with_comp": 5
-        },
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 17,
-          "with_us": 17,
-          "with_comp": 4
-        },
-        {
-          "domain": "novo-pi.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        },
-        {
-          "domain": "novonordisk-us.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0151",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my dad's creatinine is up around 2.2 and he's diabetic. which diabetes drugs are off the table with kidney function like that?"
-        },
-        {
-          "pid": "P0789",
-          "run": "R6",
-          "sev": "bad",
-          "text": "a patient said to me \"if you have kidney issues do NOT take this drug at all\" — is that right?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 2.21,
-        "expected_pp": [
-          0.11,
-          0.22
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 303.0,
-        "lo": 200.0,
-        "hi": 460.0,
-        "demand_caption": "topic demand, Google, proxy"
-      },
-      "is_label": false,
-      "awaiting_label_signoff": false,
-      "resolved_by_data": false,
-      "status": "open",
-      "dismiss_reason": null,
-      "cycle_opened": 1,
-      "cycle_done": null
-    },
-    {
-      "task_id": "1b88f891af67",
-      "group_id": "Serious risks & contraindications × Kidney safety",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Kidney safety",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "execution": "citere",
-      "priority": 1,
-      "rank": 73,
-      "score": 1e-06,
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 303.0,
-        "lo": 200.0,
-        "hi": 460.0,
-        "demand_share": 0.0002,
-        "gap": 0.4651,
-        "gap_bad": 0.186,
-        "n_prompts": 43,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R4": 0.375,
-          "R5": 0.0,
-          "R6": 0.5
-        },
-        "n_by_run": {
-          "R1": 6,
-          "R4": 24,
-          "R5": 3,
-          "R6": 10
-        },
-        "dominant_run": "R4",
-        "lever": 0.0063,
-        "institutional_share": 0.4525
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 15
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 6
-        },
-        {
-          "code": "MESSAGE DELIVERED",
-          "n": 5
-        }
-      ],
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 5,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "patient.info",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0151",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my dad's creatinine is up around 2.2 and he's diabetic. which diabetes drugs are off the table with kidney function like that?"
-        },
-        {
-          "pid": "P0789",
-          "run": "R6",
-          "sev": "bad",
-          "text": "a patient said to me \"if you have kidney issues do NOT take this drug at all\" — is that right?"
-        }
-      ],
-      "impact": {
-        "ceiling_pp": 0.29,
-        "expected_pp": [
-          0.01,
-          0.04
-        ],
-        "basis": "prior",
-        "n_groups": null,
-        "demand": 303.0,
-        "lo": 200.0,
-        "hi": 460.0,
         "demand_caption": "topic demand, Google, proxy"
       },
       "is_label": false,
@@ -8982,14 +7677,14 @@
     }
   ],
   "counters": {
-    "open_total": 65,
-    "open_auto": 17,
-    "open_manual": 48,
+    "open_total": 60,
+    "open_auto": 16,
+    "open_manual": 44,
     "in_progress": 0,
     "done_this_cycle": 0,
     "dismissed_total": 0,
     "by_who": {
-      "Digital": 31,
+      "Digital": 26,
       "PR/Comms": 9,
       "Medical + Digital": 6,
       "Medical": 6,
@@ -9003,7 +7698,7 @@
       "92361d73f3e1",
       "34099e60975f"
     ],
-    "citere_tasks": 9,
+    "citere_tasks": 3,
     "label_tasks_awaiting_signoff": 2,
     "label_findings_pending": 10
   },
