@@ -23,10 +23,10 @@
       "block": "sentiment",
       "file": "sample_sentiment.csv",
       "rows": 30,
-      "reviewed": 0,
-      "agree": 0,
-      "agreement_pct": null,
-      "ships": false
+      "reviewed": 30,
+      "agree": 29,
+      "agreement_pct": 96.7,
+      "ships": true
     },
     {
       "block": "citations",
@@ -41,10 +41,10 @@
       "block": "safety",
       "file": "sample_safety.csv",
       "rows": 30,
-      "reviewed": 0,
-      "agree": 0,
-      "agreement_pct": null,
-      "ships": false
+      "reviewed": 30,
+      "agree": 30,
+      "agreement_pct": 100.0,
+      "ships": true
     },
     {
       "block": "safety (verdict review, step 5)",
