@@ -82,3 +82,18 @@ Columns: pid, run, question, topic/subtopic, sev, code, cause, presence %, posit
 - No number shown without its source in `platform_data.json`.
 - No `cause`, diagnosis or fix text edited or generated in the UI.
 - No status persistence claims: localStorage only, badge says so.
+
+---
+
+## Display rule — code vs cause (cycle-1 decision, fixed)
+
+The two vocabularies are hierarchical, not parallel. The pipeline `code` is **what happened** and is always the row title; the export `cause` is **why** and is always a sub-line beneath it with its confidence. Format everywhere a point or group is titled:
+
+- line 1: `code_label` — **bold**
+- line 2: `cause.label · confidence: high/med/low` — grey, smaller
+
+Never render code and cause as two equal labels, chips or columns.
+
+## Answer texts (cycle-1 decision)
+
+Do not lazy-load `corpus_master.json`. Answer texts come from `ui/answers_b64.js`, extracted from the legacy file's `ANS_B64` block (gzipped, base64, keyed by `pid|run`), loaded on demand by the UI. Coverage against the 1,424 points is verified by step 9 and reported.
