@@ -1,0 +1,862 @@
+{
+  "brand": "Ozempic",
+  "version": "v1 — C2 only, stored sentiment, no LLM re-scoring",
+  "scope": {
+    "classes_used": [
+      "C2"
+    ],
+    "runs_used": [
+      "R3",
+      "R9"
+    ],
+    "deferred": [
+      "C1/C3/C4 brand-level re-scoring (LLM)",
+      "competitor comparison (needs C3 re-scoring)",
+      "answer-vs-brand sentiment correlation check (needs brand_sentiment)"
+    ],
+    "thresholds": {
+      "negative_max": 40,
+      "positive_min": 60
+    },
+    "aggregation": "repeats → prompt×model → family (versions pooled) → overall, equal weights; Wilson CI by answers"
+  },
+  "answers_with_brand": 5830,
+  "answers_in_scope": 2027,
+  "answers_with_sentiment": 1944,
+  "sentiment_missing_pct": 4.1,
+  "prompts_in_scope": 305,
+  "c2_answers_outside_scope_by_run": {
+    "R4": 2831,
+    "R6": 461,
+    "R7": 251,
+    "R8": 260
+  },
+  "score": 67.4,
+  "shares": {
+    "positive_pct": 80.4,
+    "neutral_pct": 10.8,
+    "negative_pct": 8.9,
+    "positive_ci95": [
+      78.5,
+      82.1
+    ],
+    "neutral_ci95": [
+      9.5,
+      12.2
+    ],
+    "negative_ci95": [
+      7.7,
+      10.2
+    ]
+  },
+  "by_model": [
+    {
+      "model": "claude",
+      "positive_pct": 83.9,
+      "positive_ci95": [
+        81.0,
+        86.5
+      ],
+      "neutral_pct": 11.4,
+      "neutral_ci95": [
+        9.2,
+        14.0
+      ],
+      "negative_pct": 4.7,
+      "negative_ci95": [
+        3.3,
+        6.6
+      ],
+      "score": 66.1,
+      "n": 668
+    },
+    {
+      "model": "gemini",
+      "positive_pct": 68.8,
+      "positive_ci95": [
+        65.0,
+        72.4
+      ],
+      "neutral_pct": 14.4,
+      "neutral_ci95": [
+        11.8,
+        17.4
+      ],
+      "negative_pct": 16.8,
+      "negative_ci95": [
+        14.0,
+        20.0
+      ],
+      "score": 65.3,
+      "n": 599
+    },
+    {
+      "model": "gpt",
+      "positive_pct": 88.3,
+      "positive_ci95": [
+        85.7,
+        90.5
+      ],
+      "neutral_pct": 6.5,
+      "neutral_ci95": [
+        4.9,
+        8.6
+      ],
+      "negative_pct": 5.2,
+      "negative_ci95": [
+        3.7,
+        7.1
+      ],
+      "score": 70.9,
+      "n": 677
+    }
+  ],
+  "by_model_version": [
+    {
+      "model": "claude-sonnet-4-6",
+      "family": "claude",
+      "score": 69.4,
+      "n": 482,
+      "negative_pct": 0.0
+    },
+    {
+      "model": "claude-sonnet-5",
+      "family": "claude",
+      "score": 53.7,
+      "n": 186,
+      "negative_pct": 22.1
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "family": "gemini",
+      "score": 65.3,
+      "n": 599,
+      "negative_pct": 16.8
+    },
+    {
+      "model": "gpt-4o",
+      "family": "gpt",
+      "score": 70.9,
+      "n": 677,
+      "negative_pct": 5.2
+    }
+  ],
+  "by_run": {
+    "R3": {
+      "score": 71.6,
+      "n": 1437,
+      "n_prompts": 239,
+      "positive_pct": 89.2,
+      "positive_ci95": [
+        87.5,
+        90.7
+      ],
+      "neutral_pct": 7.0,
+      "neutral_ci95": [
+        5.8,
+        8.4
+      ],
+      "negative_pct": 3.8,
+      "negative_ci95": [
+        3.0,
+        5.0
+      ],
+      "by_model": {
+        "claude": {
+          "positive_pct": 94.0,
+          "positive_ci95": [
+            91.5,
+            95.8
+          ],
+          "neutral_pct": 6.0,
+          "neutral_ci95": [
+            4.2,
+            8.5
+          ],
+          "negative_pct": 0.0,
+          "negative_ci95": [
+            0.0,
+            0.8
+          ],
+          "score": 69.4,
+          "n": 482
+        },
+        "gemini": {
+          "positive_pct": 78.0,
+          "positive_ci95": [
+            74.1,
+            81.5
+          ],
+          "neutral_pct": 11.3,
+          "neutral_ci95": [
+            8.8,
+            14.5
+          ],
+          "negative_pct": 10.7,
+          "negative_ci95": [
+            8.2,
+            13.8
+          ],
+          "score": 70.5,
+          "n": 477
+        },
+        "gpt": {
+          "positive_pct": 95.6,
+          "positive_ci95": [
+            93.4,
+            97.1
+          ],
+          "neutral_pct": 3.6,
+          "neutral_ci95": [
+            2.2,
+            5.6
+          ],
+          "negative_pct": 0.8,
+          "negative_ci95": [
+            0.3,
+            2.1
+          ],
+          "score": 74.8,
+          "n": 478
+        }
+      }
+    },
+    "R9": {
+      "score": 51.6,
+      "n": 507,
+      "n_prompts": 66,
+      "positive_pct": 46.7,
+      "positive_ci95": [
+        42.4,
+        51.1
+      ],
+      "neutral_pct": 25.2,
+      "neutral_ci95": [
+        21.6,
+        29.2
+      ],
+      "negative_pct": 28.1,
+      "negative_ci95": [
+        24.3,
+        32.1
+      ],
+      "by_model": {
+        "claude": {
+          "positive_pct": 46.4,
+          "positive_ci95": [
+            39.3,
+            53.5
+          ],
+          "neutral_pct": 31.5,
+          "neutral_ci95": [
+            25.3,
+            38.5
+          ],
+          "negative_pct": 22.1,
+          "negative_ci95": [
+            16.8,
+            28.6
+          ],
+          "score": 53.7,
+          "n": 186
+        },
+        "gemini": {
+          "positive_pct": 31.6,
+          "positive_ci95": [
+            24.1,
+            40.3
+          ],
+          "neutral_pct": 27.0,
+          "neutral_ci95": [
+            19.9,
+            35.5
+          ],
+          "negative_pct": 41.4,
+          "negative_ci95": [
+            33.0,
+            50.3
+          ],
+          "score": 44.1,
+          "n": 122
+        },
+        "gpt": {
+          "positive_pct": 62.1,
+          "positive_ci95": [
+            55.2,
+            68.6
+          ],
+          "neutral_pct": 17.2,
+          "neutral_ci95": [
+            12.6,
+            23.0
+          ],
+          "negative_pct": 20.7,
+          "negative_ci95": [
+            15.7,
+            26.9
+          ],
+          "score": 57.0,
+          "n": 199
+        }
+      }
+    }
+  },
+  "competitors": [],
+  "competitors_note": "deferred — needs brand-level re-scoring of C3 answers (v2)",
+  "top_negative_themes": [
+    {
+      "theme": "NR-2B-BLIND · $2bn blindness lawsuit",
+      "code": "NR-2B-BLIND",
+      "run": "R9",
+      "pct_of_negative": 13.3,
+      "pct_of_all": 1.3,
+      "negative_rate_within_theme": 57.8,
+      "n_answers": 45,
+      "n_negative": 26,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 75.0,
+      "by_model_negative_pct": {
+        "claude": 53.3,
+        "gemini": 75.0,
+        "gpt": 50.0
+      },
+      "examples": [
+        "the specific framing of a 'single $2 billion lawsuit' isn't entirely accurate",
+        "Ozempic is facing numerous lawsuits alleging vision loss, including permanent blindness."
+      ]
+    },
+    {
+      "theme": "NR-THEY-KNEW · company hid the risks",
+      "code": "NR-THEY-KNEW",
+      "run": "R9",
+      "pct_of_negative": 12.3,
+      "pct_of_all": 1.2,
+      "negative_rate_within_theme": 52.2,
+      "n_answers": 46,
+      "n_negative": 24,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 84.6,
+      "by_model_negative_pct": {
+        "claude": 40.0,
+        "gemini": 84.6,
+        "gpt": 38.9
+      },
+      "examples": [
+        "allegations that the company manufacturing Ozempic... concealed potential risks",
+        "the FDA's warning letters indicate a failure in reporting procedures"
+      ]
+    },
+    {
+      "theme": "B6 · lifestyle: food, alcohol, fasting, travel",
+      "code": "B6",
+      "run": "R3",
+      "pct_of_negative": 10.3,
+      "pct_of_all": 1.0,
+      "negative_rate_within_theme": 9.2,
+      "n_answers": 218,
+      "n_negative": 20,
+      "n_prompts": 36,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 27.4,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 27.4,
+        "gpt": 0.0
+      },
+      "examples": [
+        "The safest approach is to avoid alcohol while taking Ozempic.",
+        "the safest option is often to avoid alcohol or limit consumption significantly"
+      ]
+    },
+    {
+      "theme": "B4 · side effects: nausea, fatigue, hair",
+      "code": "B4",
+      "run": "R3",
+      "pct_of_negative": 9.2,
+      "pct_of_all": 0.9,
+      "negative_rate_within_theme": 7.9,
+      "n_answers": 229,
+      "n_negative": 18,
+      "n_prompts": 38,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 22.4,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 22.4,
+        "gpt": 1.3
+      },
+      "examples": [
+        "medical organizations...recommend that patients temporarily stop taking GLP-1 receptor agonists",
+        "side effects you've experienced after surgery while taking Ozempic (semaglutide), and your observations align with recognized medical concerns and documented side effects of the medication."
+      ]
+    },
+    {
+      "theme": "NR-STOMACH-PARALYSIS · gastroparesis",
+      "code": "NR-STOMACH-PARALYSIS",
+      "run": "R9",
+      "pct_of_negative": 9.2,
+      "pct_of_all": 0.9,
+      "negative_rate_within_theme": 36.7,
+      "n_answers": 49,
+      "n_negative": 18,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 80.0,
+      "by_model_negative_pct": {
+        "claude": 12.5,
+        "gemini": 80.0,
+        "gpt": 22.2
+      },
+      "examples": [
+        "Ozempic can significantly slow stomach emptying, leading to severe symptoms.",
+        "Ozempic slowing gastric emptying"
+      ]
+    }
+  ],
+  "all_themes": [
+    {
+      "theme": "NR-2B-BLIND · $2bn blindness lawsuit",
+      "code": "NR-2B-BLIND",
+      "run": "R9",
+      "pct_of_negative": 13.3,
+      "pct_of_all": 1.3,
+      "negative_rate_within_theme": 57.8,
+      "n_answers": 45,
+      "n_negative": 26,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 75.0,
+      "by_model_negative_pct": {
+        "claude": 53.3,
+        "gemini": 75.0,
+        "gpt": 50.0
+      }
+    },
+    {
+      "theme": "NR-THEY-KNEW · company hid the risks",
+      "code": "NR-THEY-KNEW",
+      "run": "R9",
+      "pct_of_negative": 12.3,
+      "pct_of_all": 1.2,
+      "negative_rate_within_theme": 52.2,
+      "n_answers": 46,
+      "n_negative": 24,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 84.6,
+      "by_model_negative_pct": {
+        "claude": 40.0,
+        "gemini": 84.6,
+        "gpt": 38.9
+      }
+    },
+    {
+      "theme": "B6 · lifestyle: food, alcohol, fasting, travel",
+      "code": "B6",
+      "run": "R3",
+      "pct_of_negative": 10.3,
+      "pct_of_all": 1.0,
+      "negative_rate_within_theme": 9.2,
+      "n_answers": 218,
+      "n_negative": 20,
+      "n_prompts": 36,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 27.4,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 27.4,
+        "gpt": 0.0
+      }
+    },
+    {
+      "theme": "B4 · side effects: nausea, fatigue, hair",
+      "code": "B4",
+      "run": "R3",
+      "pct_of_negative": 9.2,
+      "pct_of_all": 0.9,
+      "negative_rate_within_theme": 7.9,
+      "n_answers": 229,
+      "n_negative": 18,
+      "n_prompts": 38,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 22.4,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 22.4,
+        "gpt": 1.3
+      }
+    },
+    {
+      "theme": "NR-STOMACH-PARALYSIS · gastroparesis",
+      "code": "NR-STOMACH-PARALYSIS",
+      "run": "R9",
+      "pct_of_negative": 9.2,
+      "pct_of_all": 0.9,
+      "negative_rate_within_theme": 36.7,
+      "n_answers": 49,
+      "n_negative": 18,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 80.0,
+      "by_model_negative_pct": {
+        "claude": 12.5,
+        "gemini": 80.0,
+        "gpt": 22.2
+      }
+    },
+    {
+      "theme": "NR-BLINDNESS · blindness & vision loss (NAION)",
+      "code": "NR-BLINDNESS",
+      "run": "R9",
+      "pct_of_negative": 6.2,
+      "pct_of_all": 0.6,
+      "negative_rate_within_theme": 27.3,
+      "n_answers": 44,
+      "n_negative": 12,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 42.9,
+      "by_model_negative_pct": {
+        "claude": 27.8,
+        "gemini": 42.9,
+        "gpt": 21.1
+      }
+    },
+    {
+      "theme": "NR-MUSCLE · muscle loss",
+      "code": "NR-MUSCLE",
+      "run": "R9",
+      "pct_of_negative": 5.6,
+      "pct_of_all": 0.6,
+      "negative_rate_within_theme": 23.9,
+      "n_answers": 46,
+      "n_negative": 11,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 60.0,
+      "by_model_negative_pct": {
+        "claude": 16.7,
+        "gemini": 60.0,
+        "gpt": 11.1
+      }
+    },
+    {
+      "theme": "NR-PANC · pancreatitis / 'destroys your pancreas'",
+      "code": "NR-PANC",
+      "run": "R9",
+      "pct_of_negative": 5.6,
+      "pct_of_all": 0.6,
+      "negative_rate_within_theme": 24.4,
+      "n_answers": 45,
+      "n_negative": 11,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 66.7,
+      "by_model_negative_pct": {
+        "claude": 16.7,
+        "gemini": 66.7,
+        "gpt": 11.1
+      }
+    },
+    {
+      "theme": "B5 · long-term use, stopping & weight regain",
+      "code": "B5",
+      "run": "R3",
+      "pct_of_negative": 5.1,
+      "pct_of_all": 0.5,
+      "negative_rate_within_theme": 4.6,
+      "n_answers": 218,
+      "n_negative": 10,
+      "n_prompts": 36,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 9.5,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 9.5,
+        "gpt": 4.3
+      }
+    },
+    {
+      "theme": "NR-THYROID · thyroid cancer",
+      "code": "NR-THYROID",
+      "run": "R9",
+      "pct_of_negative": 4.6,
+      "pct_of_all": 0.5,
+      "negative_rate_within_theme": 20.0,
+      "n_answers": 45,
+      "n_negative": 9,
+      "n_prompts": 6,
+      "worst_model": "gpt",
+      "worst_model_negative_pct": 27.8,
+      "by_model_negative_pct": {
+        "claude": 6.2,
+        "gemini": 27.3,
+        "gpt": 27.8
+      }
+    },
+    {
+      "theme": "NR-COSMETIC · 'Ozempic face' & body changes",
+      "code": "NR-COSMETIC",
+      "run": "R9",
+      "pct_of_negative": 4.1,
+      "pct_of_all": 0.4,
+      "negative_rate_within_theme": 17.0,
+      "n_answers": 47,
+      "n_negative": 8,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 33.3,
+      "by_model_negative_pct": {
+        "claude": 11.8,
+        "gemini": 33.3,
+        "gpt": 11.1
+      }
+    },
+    {
+      "theme": "NR-FORLIFE · forever drug / regain",
+      "code": "NR-FORLIFE",
+      "run": "R9",
+      "pct_of_negative": 4.1,
+      "pct_of_all": 0.4,
+      "negative_rate_within_theme": 17.0,
+      "n_answers": 47,
+      "n_negative": 8,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 27.3,
+      "by_model_negative_pct": {
+        "claude": 16.7,
+        "gemini": 27.3,
+        "gpt": 11.1
+      }
+    },
+    {
+      "theme": "NR-ADDICTION · addiction & withdrawal",
+      "code": "NR-ADDICTION",
+      "run": "R9",
+      "pct_of_negative": 3.6,
+      "pct_of_all": 0.4,
+      "negative_rate_within_theme": 15.6,
+      "n_answers": 45,
+      "n_negative": 7,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 30.0,
+      "by_model_negative_pct": {
+        "claude": 11.8,
+        "gemini": 30.0,
+        "gpt": 11.1
+      }
+    },
+    {
+      "theme": "NR-BABIES · birth-control failure / 'Ozempic babies'",
+      "code": "NR-BABIES",
+      "run": "R9",
+      "pct_of_negative": 3.1,
+      "pct_of_all": 0.3,
+      "negative_rate_within_theme": 12.5,
+      "n_answers": 48,
+      "n_negative": 6,
+      "n_prompts": 6,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 16.7,
+      "by_model_negative_pct": {
+        "claude": 11.1,
+        "gemini": 16.7,
+        "gpt": 11.1
+      }
+    },
+    {
+      "theme": "B1 · starting: expectations & fear of side effects",
+      "code": "B1",
+      "run": "R3",
+      "pct_of_negative": 2.6,
+      "pct_of_all": 0.3,
+      "negative_rate_within_theme": 2.2,
+      "n_answers": 226,
+      "n_negative": 5,
+      "n_prompts": 38,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 6.8,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 6.8,
+        "gpt": 0.0
+      }
+    },
+    {
+      "theme": "B2 · administration: dose timing, injection site, pen & storage",
+      "code": "B2",
+      "run": "R3",
+      "pct_of_negative": 1.0,
+      "pct_of_all": 0.1,
+      "negative_rate_within_theme": 1.2,
+      "n_answers": 162,
+      "n_negative": 2,
+      "n_prompts": 27,
+      "worst_model": "gemini",
+      "worst_model_negative_pct": 3.7,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 3.7,
+        "gpt": 0.0
+      }
+    },
+    {
+      "theme": "B3 · efficacy timeline: when sugar / weight respond",
+      "code": "B3",
+      "run": "R3",
+      "pct_of_negative": 0.0,
+      "pct_of_all": 0.0,
+      "negative_rate_within_theme": 0.0,
+      "n_answers": 217,
+      "n_negative": 0,
+      "n_prompts": 36,
+      "worst_model": "claude",
+      "worst_model_negative_pct": 0.0,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 0.0,
+        "gpt": 0.0
+      }
+    },
+    {
+      "theme": "B7 · cost, insurance & access",
+      "code": "B7",
+      "run": "R3",
+      "pct_of_negative": 0.0,
+      "pct_of_all": 0.0,
+      "negative_rate_within_theme": 0.0,
+      "n_answers": 167,
+      "n_negative": 0,
+      "n_prompts": 28,
+      "worst_model": "claude",
+      "worst_model_negative_pct": 0.0,
+      "by_model_negative_pct": {
+        "claude": 0.0,
+        "gemini": 0.0,
+        "gpt": 0.0
+      }
+    }
+  ],
+  "theme_fields_found": {
+    "R3": {
+      "prompt_tags.subtype (B-code, no legend in corpus; labels inferred from prompt texts)": {
+        "B4": 42,
+        "B1": 40,
+        "B5": 37,
+        "B3": 36,
+        "B6": 36,
+        "B7": 28,
+        "B2": 27
+      },
+      "prompt_tags.mood": {
+        "calm": 154,
+        "worried": 85,
+        "negative": 7
+      },
+      "prompt_tags.tenure": {
+        "m2-6": 84,
+        "prescribed": 54,
+        "w1-4": 51,
+        "6m+": 33,
+        "unknown": 24
+      },
+      "answer_scores.stance": {
+        "stay": 1348,
+        "doctor_only": 108,
+        "mixed": 20,
+        "stop": 7,
+        "switch": 2
+      },
+      "answer_scores.tone": {
+        "supportive": 1214,
+        "neutral": 257,
+        "alarming": 14
+      },
+      "answer_scores.risk_overload": {
+        "no": 1307,
+        "yes": 178
+      },
+      "answer_scores.churn_push": {
+        "no": 1454,
+        "yes": 31
+      },
+      "answer_scores.turning_phrase": "free-text quote (500 distinct; used as verbatim example where ≤ 25 words)"
+    },
+    "R9": {
+      "prompt_tags.narr_id (NR-narrative, self-describing)": {
+        "NR-2B-BLIND": 6,
+        "NR-ADDICTION": 6,
+        "NR-BABIES": 6,
+        "NR-BLINDNESS": 6,
+        "NR-COSMETIC": 6,
+        "NR-FORLIFE": 6,
+        "NR-MUSCLE": 6,
+        "NR-PANC": 6,
+        "NR-STOMACH-PARALYSIS": 6,
+        "NR-THEY-KNEW": 6,
+        "NR-THYROID": 6
+      },
+      "prompt_tags.probe_type": {
+        "N1": 11,
+        "N2": 11,
+        "N3": 11,
+        "N4": 11,
+        "N5": 11,
+        "N6": 11
+      },
+      "answer_scores.uptake": {
+        "with_context": 527,
+        "rejected": 39,
+        "absent": 26,
+        "as_fact": 7
+      },
+      "answer_scores.anti_frame_outcome": {
+        "reversed": 483,
+        "silent": 109,
+        "reinforced": 7
+      },
+      "answer_scores.harm_flag": {
+        "no": 575,
+        "yes": 24
+      },
+      "answer_scores.churn_advice": {
+        "doctor_only": 408,
+        "na": 179,
+        "stay": 12
+      },
+      "answer_scores.evidence": "free-text quote (552 distinct; used as verbatim example where ≤ 25 words)"
+    },
+    "choice": "themes = R3 tags.subtype (B1–B7) + R9 tags.narr_id (NR-*): the only fields that name a problem per prompt; answer-level scores (stance/tone/uptake…) describe the answer's behaviour, not a problem attributed to the brand, and are reported as context only"
+  },
+  "answer_behaviour_context": {
+    "R3_tone": {
+      "supportive": 1214,
+      "neutral": 257,
+      "alarming": 14
+    },
+    "R3_risk_overload": {
+      "no": 1307,
+      "yes": 178
+    },
+    "R9_uptake": {
+      "with_context": 527,
+      "rejected": 39,
+      "absent": 26,
+      "as_fact": 7
+    },
+    "R9_harm_flag": {
+      "no": 575,
+      "yes": 24
+    }
+  },
+  "negative_pct_by_prompt_mood_R3": {
+    "calm": 3.8,
+    "negative": 8.8,
+    "worried": 3.5
+  },
+  "n_negative_answers": 195
+}

@@ -19,7 +19,7 @@
     "gap_list_scope": "R1 C1 answers (headline scope)"
   },
   "citations_total": 78567,
-  "citations_in_pie": 62051,
+  "citations_in_pie": 62041,
   "answers_with_citations": 7433,
   "answers_total": 12314,
   "answers_without_citations_pct": 39.64,
@@ -31,14 +31,14 @@
     "gemini-2.5-flash": 16.45
   },
   "removed": {
-    "noise": 41,
+    "noise": 42,
     "duplicates_within_answer": 9601,
     "from_quality_excluded_answers": 972,
-    "adversarial_reported_separately": 1177
+    "adversarial_reported_separately": 1186
   },
   "owner_shares": {
     "owned": 2.53,
-    "earned": 77.43,
+    "earned": 77.42,
     "institutional": 18.9,
     "competitor": 1.15
   },
@@ -65,15 +65,15 @@
     },
     {
       "model": "claude-sonnet-5",
-      "n": 7162,
-      "owned": 2.51,
-      "earned": 80.03,
-      "institutional": 15.68,
-      "competitor": 1.77
+      "n": 7153,
+      "owned": 2.52,
+      "earned": 80.01,
+      "institutional": 15.7,
+      "competitor": 1.78
     },
     {
       "model": "gemini-2.5-flash",
-      "n": 23590,
+      "n": 23589,
       "owned": 2.91,
       "earned": 86.15,
       "institutional": 9.76,
@@ -83,23 +83,23 @@
       "model": "gpt-4o",
       "n": 11243,
       "owned": 2.92,
-      "earned": 45.65,
-      "institutional": 49.49,
+      "earned": 45.64,
+      "institutional": 49.5,
       "competitor": 1.95
     }
   ],
   "owner_shares_by_family": [
     {
       "model": "claude",
-      "n": 27218,
+      "n": 27209,
       "owned": 2.03,
       "earned": 82.99,
-      "institutional": 14.18,
+      "institutional": 14.19,
       "competitor": 0.8
     },
     {
       "model": "gemini",
-      "n": 23590,
+      "n": 23589,
       "owned": 2.91,
       "earned": 86.15,
       "institutional": 9.76,
@@ -109,8 +109,8 @@
       "model": "gpt",
       "n": 11243,
       "owned": 2.92,
-      "earned": 45.65,
-      "institutional": 49.49,
+      "earned": 45.64,
+      "institutional": 49.5,
       "competitor": 1.95
     }
   ],
@@ -125,15 +125,15 @@
     },
     {
       "cls": "C2",
-      "n": 20442,
+      "n": 20433,
       "owned": 5.68,
-      "earned": 79.74,
-      "institutional": 14.53,
+      "earned": 79.73,
+      "institutional": 14.55,
       "competitor": 0.04
     },
     {
       "cls": "C3",
-      "n": 9525,
+      "n": 9524,
       "owned": 1.22,
       "earned": 81.67,
       "institutional": 11.94,
@@ -159,7 +159,7 @@
     },
     {
       "run": "R2",
-      "n": 15392,
+      "n": 15391,
       "owned": 1.52,
       "earned": 82.19,
       "institutional": 13.93,
@@ -169,7 +169,7 @@
       "run": "R3",
       "n": 12598,
       "owned": 4.64,
-      "earned": 86.02,
+      "earned": 86.01,
       "institutional": 9.3,
       "competitor": 0.04
     },
@@ -191,18 +191,18 @@
     },
     {
       "run": "R9",
-      "n": 3138,
+      "n": 3129,
       "owned": 2.49,
-      "earned": 78.46,
-      "institutional": 19.06,
+      "earned": 78.4,
+      "institutional": 19.11,
       "competitor": 0.0
     }
   ],
   "earned_subtypes": {
-    "telehealth": 28.05,
-    "health_media": 17.14,
-    "directory": 16.71,
-    "other": 13.88,
+    "telehealth": 28.06,
+    "health_media": 17.15,
+    "directory": 16.72,
+    "other": 13.86,
     "hospital": 10.74,
     "advocacy": 7.42,
     "news": 2.9,
@@ -278,7 +278,7 @@
     {
       "domain": "medicalnewstoday.com",
       "citations": 1393,
-      "share": 2.24,
+      "share": 2.25,
       "owner": "earned",
       "subtype": "health_media",
       "answers_pct": 19.47,
@@ -326,7 +326,7 @@
     {
       "domain": "diabetes.org",
       "citations": 909,
-      "share": 1.46,
+      "share": 1.47,
       "owner": "earned",
       "subtype": "health_media",
       "answers_pct": 12.7,
@@ -451,7 +451,7 @@
       {
         "domain": "medicalnewstoday.com",
         "citations": 1393,
-        "share": 2.24,
+        "share": 2.25,
         "owner": "earned",
         "subtype": "health_media",
         "answers_pct": 19.47,
@@ -756,12 +756,12 @@
       "citations": 18
     },
     {
-      "domain": "lawsuittracker.org",
-      "citations": 8
+      "domain": "hmf-law.com",
+      "citations": 9
     },
     {
-      "domain": "personalinjurysandiego.org",
-      "citations": 7
+      "domain": "lawsuittracker.org",
+      "citations": 8
     }
   ],
   "unclassified_top30": [
@@ -796,5 +796,5 @@
     "meetaugust.ai",
     "meto.co"
   ],
-  "domains_total": 4186
+  "domains_total": 4184
 }

@@ -58,6 +58,8 @@ def build_tables(raw: dict, cfg: Dict[str, dict]):
     inst_cats = set(dom["institutional_categories"])
     inst_domains = [d.lower() for d in dom["institutional_domains"]]
     artifacts = [d.lower() for d in dom["artifacts"]]
+    adversarial_domains = [d.lower() for d in (dom.get("adversarial_domains") or [])]
+    noise_domains = [d.lower() for d in (dom.get("noise_domains") or [])]
 
     ans_rows: List[dict] = []
     cit_rows: List[dict] = []
@@ -140,7 +142,12 @@ def build_tables(raw: dict, cfg: Dict[str, dict]):
                 subtype = None
                 owned_hit = C.match_domain_list(host, owned) if host else None
                 comp_hit = C.match_domain_list(host, comp_entries.keys()) if host else None
-                if owned_hit:
+                # config overrides first (explicit human decisions), all matched on the full host (longest suffix)
+                if host and C.match_domain_list(host, noise_domains):
+                    owner = "noise"
+                elif host and C.match_domain_list(host, adversarial_domains):
+                    owner = "adversarial"
+                elif owned_hit:
                     owner = "owned"
                 elif comp_hit:
                     owner = "competitor:{}".format(comp_entries[comp_hit])
@@ -419,8 +426,10 @@ def build_report(answers: pd.DataFrame, citations: pd.DataFrame, dropped: dict, 
     comp_owned_not_cfg = live[(live["owner_data"] == "comp_owned") & (~live["owner"].str.startswith("competitor:"))]["host"].value_counts()
     lines.append("Hosts stored as `comp_owned` but not matched to a competitor domain: " +
                  (", ".join("{} ({})".format(d, n) for d, n in comp_owned_not_cfg.items()) if len(comp_owned_not_cfg) else "none"))
-    lines.append("Domain matching is longest-suffix on the full host: `mounjaro.lilly.com` → Mounjaro, other `lilly.com` hosts → `competitor:Lilly corporate`, "
-                 "`boehringer-ingelheim.com` hosts → `competitor:Boehringer corporate`; `domain` holds the registrable domain used for aggregation and dedup.")
+    lines.append("Domain matching is longest-suffix on the full host (before registrable-domain reduction): `mounjaro.lilly.com` → Mounjaro, other `lilly.com` hosts → `competitor:Lilly corporate`, "
+                 "`boehringer-ingelheim.com` hosts → `competitor:Boehringer corporate`, `mhraproducts….blob.core.windows.net` → institutional; `domain` holds the registrable domain used for aggregation and dedup. "
+                 "Config overrides `noise_domains` ({}) and `adversarial_domains` ({}) are applied first.".format(
+                     ", ".join(cfg["domains"].get("noise_domains") or []), ", ".join(cfg["domains"].get("adversarial_domains") or [])))
     section("8. Citations", "WARN" if len(stored_owned_not_cfg) else "PASS", lines)
 
     # ---- 9. topic groups --------------------------------------------------

@@ -151,8 +151,14 @@ def main() -> int:
     raw["comps_present"] = raw["comps_present"].map(lambda l: json.dumps(l, ensure_ascii=False))
     raw.sort_values(["run", "pid", "model", "repeat_idx"]).to_csv(C.METRICS_DIR / "citations_raw.csv", index=False)
 
-    # audit sample: 40 random domains (seed 42) with computed owner/subtype
-    pool = dom_sorted.sort_values("domain").reset_index(drop=True)
+    # audit sample: 40 random domains (seed 42) from ALL classified domains (pie + adversarial + noise), so the pool does not
+    # shift when a domain is reclassified; computed owner/subtype attached
+    allc = live.copy()
+    allc = pd.concat([allc, c[(~c["is_artifact"]) & (~c["dedup"]) & (~c["excluded"]) & (c["owner"] == "noise")].assign(group="noise", subtype=None)])
+    pool = allc.groupby("domain").agg(citations=("url", "size"), owner=("owner", lambda s: s.value_counts().idxmax()),
+                                      subtype=("subtype", lambda s: s.value_counts().idxmax() if s.notna().any() else None),
+                                      sample_url=("url", "first"), top_model=("model", lambda s: s.value_counts().idxmax())).reset_index()
+    pool = pool.sort_values("domain").reset_index(drop=True)
     samp = pool.sample(n=min(SAMPLE_N, len(pool)), random_state=C.SEED).sort_values("domain")
     samp_out = samp[["domain", "citations", "owner", "subtype", "sample_url", "top_model"]].copy()
     samp_out["owner_group"] = samp_out["owner"].map(owner_group)

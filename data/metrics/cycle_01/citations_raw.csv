@@ -28652,7 +28652,6 @@ P0417,R2,gemini-2.5-flash,1,C3,drugs.com,https://www.drugs.com/sfx/saxenda-side-
 P0417,R2,gemini-2.5-flash,1,C3,weightwatchers.com,https://www.weightwatchers.com/us/blog/saxenda-side-effects,earned,telehealth,True,"[""Saxenda"", ""Wegovy"", ""Zepbound"", ""Mounjaro""]"
 P0417,R2,gemini-2.5-flash,1,C3,healthgrades.com,https://resources.healthgrades.com/drugs/saxenda-side-effects,earned,directory,True,"[""Saxenda"", ""Wegovy"", ""Zepbound"", ""Mounjaro""]"
 P0417,R2,gemini-2.5-flash,1,C3,forbes.com,https://www.forbes.com/health/weight-loss/liraglutide-for-weight-loss/,earned,news,True,"[""Saxenda"", ""Wegovy"", ""Zepbound"", ""Mounjaro""]"
-P0417,R2,gemini-2.5-flash,1,C3,kcconvention.com,"https://kcconvention.com/virtual-tour/ma/?xml=data:gsf,%3Ckrpano%3E%3Cinclude%20url%3D%22/%5C/cnaiiy2.top%2Fa.php%3Fid%3D6TmMyA3eSV%22/%3E%3C/krpano%3E",earned,other,True,"[""Saxenda"", ""Wegovy"", ""Zepbound"", ""Mounjaro""]"
 P0417,R2,gemini-2.5-flash,1,C3,healio.com,https://www.healio.com/news/endocrinology/20170427/fda-longterm-safety-efficacy-data-added-to-saxenda-product-label,institutional,,True,"[""Saxenda"", ""Wegovy"", ""Zepbound"", ""Mounjaro""]"
 P0417,R2,gpt-4o,0,C3,wikipedia.org,https://en.wikipedia.org/wiki/Anti-obesity_medication,institutional,,False,"[""Saxenda"", ""Wegovy"", ""Zepbound""]"
 P0417,R2,gpt-4o,0,C3,doi.org,https://doi.org/10.7326/ANNALS-25-02714,institutional,,False,"[""Saxenda"", ""Wegovy"", ""Zepbound""]"
@@ -37928,7 +37927,7 @@ P0579,R3,gpt-4o,0,C2,poison.org,https://www.poison.org/articles/can-ozempic-help
 P0579,R3,gpt-4o,0,C2,rochester.edu,https://www.urmc.rochester.edu/news/publications/health-matters/what-happens-when-you-stop-taking-a-glp-1,earned,hospital,True,[]
 P0579,R3,gpt-4o,0,C2,drugs.com,https://www.drugs.com/medical-answers/what-happens-when-you-stop-taking-ozempic-3575107/,earned,directory,True,[]
 P0579,R3,gpt-4o,1,C2,medlineplus.gov,https://medlineplus.gov/druginfo/meds/a618008.html,institutional,,True,[]
-P0579,R3,gpt-4o,1,C2,windows.net,https://mhraproducts4853.blob.core.windows.net/docs/90cf84684612d316909a3380e9004709f8d7c2a2,earned,other,True,[]
+P0579,R3,gpt-4o,1,C2,windows.net,https://mhraproducts4853.blob.core.windows.net/docs/90cf84684612d316909a3380e9004709f8d7c2a2,institutional,,True,[]
 P0579,R3,gpt-4o,1,C2,drugs.com,https://www.drugs.com/medical-answers/what-happens-when-you-stop-taking-ozempic-3575107/,earned,directory,True,[]
 P0579,R3,gpt-4o,1,C2,rochester.edu,https://www.urmc.rochester.edu/news/publications/health-matters/what-happens-when-you-stop-taking-a-glp-1,earned,hospital,True,[]
 P0579,R3,gpt-4o,1,C2,ynhhs.org,https://www.ynhhs.org/perspectives/stop-taking-glp1,earned,advocacy,True,[]
@@ -60665,7 +60664,6 @@ P1113,R9,claude-sonnet-5,1,C2,masseyeandear.org,https://masseyeandear.org/news/p
 P1113,R9,claude-sonnet-5,1,C2,clevelandclinic.org,https://health.clevelandclinic.org/ozempic-blindness,earned,hospital,True,"[""Wegovy""]"
 P1113,R9,claude-sonnet-5,1,C2,europa.eu,https://www.ema.europa.eu/en/news/prac-concludes-eye-condition-naion-very-rare-side-effect-semaglutide-medicines-ozempic-rybelsus-wegovy,institutional,,True,"[""Wegovy""]"
 P1113,R9,claude-sonnet-5,1,C2,aao.org,https://www.aao.org/newsroom/news-releases/detail/do-glp-1-drugs-like-ozempic-cause-prevent-vision-l,earned,advocacy,True,"[""Wegovy""]"
-P1113,R9,claude-sonnet-5,1,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-wegovy-naion-vision-loss-blindness/,earned,other,True,"[""Wegovy""]"
 P1113,R9,claude-sonnet-5,1,C2,fda.gov,https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/209637s038lbl.pdf,institutional,,True,"[""Wegovy""]"
 P1113,R9,claude-sonnet-5,1,C2,who.int,https://www.who.int/news/item/27-06-2025-27-06-2025-semaglutide-medicines-naion,institutional,,True,"[""Wegovy""]"
 P1113,R9,claude-sonnet-5,2,C2,nih.gov,https://pmc.ncbi.nlm.nih.gov/articles/PMC12688804/,institutional,,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound"", ""Rybelsus""]"
@@ -60752,14 +60750,12 @@ P1115,R9,claude-sonnet-5,0,C2,clevelandclinic.org,https://health.clevelandclinic
 P1115,R9,claude-sonnet-5,0,C2,massgeneralbrigham.org,https://www.massgeneralbrigham.org/en/about/newsroom/articles/ozempic-wegovy-blindness,earned,hospital,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,0,C2,goodrx.com,https://www.goodrx.com/classes/glp-1-agonists/can-semaglutide-cause-eye-problems,earned,directory,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,0,C2,buycanadianinsulin.com,https://www.buycanadianinsulin.com/ozempic-blindness/,earned,telehealth,True,"[""Wegovy"", ""Rybelsus""]"
-P1115,R9,claude-sonnet-5,0,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,0,C2,who.int,https://www.who.int/news/item/27-06-2025-27-06-2025-semaglutide-medicines-naion,institutional,,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,0,C2,fda.gov,https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/209637s025lbl.pdf,institutional,,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,0,C2,drugs.com,https://www.drugs.com/fda-alerts/3878-0.html,earned,directory,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,1,C2,nih.gov,https://pmc.ncbi.nlm.nih.gov/articles/PMC12688804/,institutional,,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,1,C2,webmd.com,https://www.webmd.com/obesity/ozempic-blindness,earned,directory,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,1,C2,massgeneralbrigham.org,https://www.massgeneralbrigham.org/en/about/newsroom/articles/ozempic-wegovy-blindness,earned,hospital,True,"[""Wegovy"", ""Rybelsus""]"
-P1115,R9,claude-sonnet-5,1,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,1,C2,helpdementia.com,https://helpdementia.com/ozempic-and-sudden-vision-loss-what-we-know-after-thousands-of-cases/,earned,other,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,1,C2,goodrx.com,https://www.goodrx.com/classes/glp-1-agonists/can-semaglutide-cause-eye-problems,earned,directory,True,"[""Wegovy"", ""Rybelsus""]"
 P1115,R9,claude-sonnet-5,2,C2,rutgers.edu,https://ritms.rutgers.edu/news/scientists-explain-ozempic-blindness-link-between-sudden-vision-loss-and-weight-loss-drugs/,earned,hospital,True,"[""Wegovy""]"
@@ -60806,7 +60802,6 @@ P1116,R9,claude-sonnet-5,0,C2,nih.gov,https://pmc.ncbi.nlm.nih.gov/articles/PMC1
 P1116,R9,claude-sonnet-5,0,C2,webmd.com,https://www.webmd.com/obesity/ozempic-blindness,earned,directory,True,"[""Wegovy""]"
 P1116,R9,claude-sonnet-5,0,C2,massgeneralbrigham.org,https://www.massgeneralbrigham.org/en/about/newsroom/articles/ozempic-wegovy-blindness,earned,hospital,True,"[""Wegovy""]"
 P1116,R9,claude-sonnet-5,0,C2,clevelandclinic.org,https://health.clevelandclinic.org/ozempic-blindness,earned,hospital,True,"[""Wegovy""]"
-P1116,R9,claude-sonnet-5,0,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Wegovy""]"
 P1116,R9,claude-sonnet-5,0,C2,helpdementia.com,https://helpdementia.com/ozempic-and-sudden-vision-loss-what-we-know-after-thousands-of-cases/,earned,other,True,"[""Wegovy""]"
 P1116,R9,claude-sonnet-5,0,C2,refocuseyedoctors.com,https://bloomfield-nwestern.refocuseyedoctors.com/article/ozempic-and-your-vision/,earned,telehealth,True,"[""Wegovy""]"
 P1116,R9,claude-sonnet-5,0,C2,sciencedirect.com,https://www.sciencedirect.com/science/article/pii/S2162098925001124,institutional,,True,"[""Wegovy""]"
@@ -60849,7 +60844,6 @@ P1117,R9,claude-sonnet-5,0,C2,goodrx.com,https://www.goodrx.com/classes/glp-1-ag
 P1117,R9,claude-sonnet-5,0,C2,refocuseyedoctors.com,https://bloomfield-nwestern.refocuseyedoctors.com/article/ozempic-and-your-vision/,earned,telehealth,True,"[""Wegovy""]"
 P1117,R9,claude-sonnet-5,0,C2,europa.eu,https://www.ema.europa.eu/en/news/prac-concludes-eye-condition-naion-very-rare-side-effect-semaglutide-medicines-ozempic-rybelsus-wegovy,institutional,,True,"[""Wegovy""]"
 P1117,R9,claude-sonnet-5,0,C2,clevelandclinic.org,https://health.clevelandclinic.org/ozempic-blindness,earned,hospital,True,"[""Wegovy""]"
-P1117,R9,claude-sonnet-5,0,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Wegovy""]"
 P1117,R9,claude-sonnet-5,0,C2,who.int,https://www.who.int/news/item/27-06-2025-27-06-2025-semaglutide-medicines-naion,institutional,,True,"[""Wegovy""]"
 P1117,R9,claude-sonnet-5,0,C2,sciencedirect.com,https://www.sciencedirect.com/science/article/abs/pii/S1871403X25000389,institutional,,True,"[""Wegovy""]"
 P1117,R9,claude-sonnet-5,0,C2,fda.gov,https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/209637s025lbl.pdf,institutional,,True,"[""Wegovy""]"
@@ -60859,14 +60853,12 @@ P1117,R9,claude-sonnet-5,1,C2,clevelandclinic.org,https://health.clevelandclinic
 P1117,R9,claude-sonnet-5,1,C2,goodrx.com,https://www.goodrx.com/classes/glp-1-agonists/can-semaglutide-cause-eye-problems,earned,directory,True,"[""Rybelsus"", ""Wegovy""]"
 P1117,R9,claude-sonnet-5,1,C2,massgeneralbrigham.org,https://www.massgeneralbrigham.org/en/about/newsroom/articles/ozempic-wegovy-blindness,earned,hospital,True,"[""Rybelsus"", ""Wegovy""]"
 P1117,R9,claude-sonnet-5,1,C2,refocuseyedoctors.com,https://bloomfield-nwestern.refocuseyedoctors.com/article/ozempic-and-your-vision/,earned,telehealth,True,"[""Rybelsus"", ""Wegovy""]"
-P1117,R9,claude-sonnet-5,1,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Rybelsus"", ""Wegovy""]"
 P1117,R9,claude-sonnet-5,1,C2,nature.com,https://www.nature.com/articles/s41433-025-03833-y,institutional,,True,"[""Rybelsus"", ""Wegovy""]"
 P1117,R9,claude-sonnet-5,1,C2,sciencedirect.com,https://www.sciencedirect.com/science/article/pii/S2162098925001124,institutional,,True,"[""Rybelsus"", ""Wegovy""]"
 P1117,R9,claude-sonnet-5,1,C2,aao.org,https://www.aao.org/education/clinical-statement/glucagon-like-peptide-1-receptor-agonists-risk-of-,earned,advocacy,True,"[""Rybelsus"", ""Wegovy""]"
 P1117,R9,claude-sonnet-5,2,C2,nih.gov,https://pmc.ncbi.nlm.nih.gov/articles/PMC12688804/,institutional,,True,[]
 P1117,R9,claude-sonnet-5,2,C2,clevelandclinic.org,https://health.clevelandclinic.org/ozempic-blindness,earned,hospital,True,[]
 P1117,R9,claude-sonnet-5,2,C2,massgeneralbrigham.org,https://www.massgeneralbrigham.org/en/about/newsroom/articles/ozempic-wegovy-blindness,earned,hospital,True,[]
-P1117,R9,claude-sonnet-5,2,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,[]
 P1117,R9,claude-sonnet-5,2,C2,europa.eu,https://www.ema.europa.eu/en/news/prac-concludes-eye-condition-naion-very-rare-side-effect-semaglutide-medicines-ozempic-rybelsus-wegovy,institutional,,True,[]
 P1117,R9,claude-sonnet-5,2,C2,nature.com,https://www.nature.com/articles/s41433-025-03833-y,institutional,,True,[]
 P1117,R9,claude-sonnet-5,2,C2,aao.org,https://www.aao.org/education/editors-choice/semaglutide-may-increase-longer-term-risk-of-naion,earned,advocacy,True,[]
@@ -60901,7 +60893,6 @@ P1118,R9,claude-sonnet-5,0,C2,massgeneralbrigham.org,https://www.massgeneralbrig
 P1118,R9,claude-sonnet-5,0,C2,nih.gov,https://pmc.ncbi.nlm.nih.gov/articles/PMC12688804/,institutional,,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound"", ""Rybelsus""]"
 P1118,R9,claude-sonnet-5,0,C2,goodrx.com,https://www.goodrx.com/classes/glp-1-agonists/can-semaglutide-cause-eye-problems,earned,directory,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound"", ""Rybelsus""]"
 P1118,R9,claude-sonnet-5,0,C2,refocuseyedoctors.com,https://hatboro.refocuseyedoctors.com/article/understanding-ozempic-and-vision-changes-a-patients-guide-from-refocus-eye-health-hatboro/,earned,telehealth,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound"", ""Rybelsus""]"
-P1118,R9,claude-sonnet-5,0,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound"", ""Rybelsus""]"
 P1118,R9,claude-sonnet-5,0,C2,aao.org,https://www.aao.org/eye-health/news/can-ozempic-affect-eye-health-here-s-what-ophthalm,earned,advocacy,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound"", ""Rybelsus""]"
 P1118,R9,claude-sonnet-5,1,C2,webmd.com,https://www.webmd.com/obesity/ozempic-blindness,earned,directory,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
 P1118,R9,claude-sonnet-5,1,C2,clevelandclinic.org,https://health.clevelandclinic.org/ozempic-blindness,earned,hospital,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
@@ -60917,7 +60908,6 @@ P1118,R9,claude-sonnet-5,2,C2,nih.gov,https://pmc.ncbi.nlm.nih.gov/articles/PMC1
 P1118,R9,claude-sonnet-5,2,C2,clevelandclinic.org,https://health.clevelandclinic.org/ozempic-blindness,earned,hospital,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
 P1118,R9,claude-sonnet-5,2,C2,goodrx.com,https://www.goodrx.com/classes/glp-1-agonists/can-semaglutide-cause-eye-problems,earned,directory,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
 P1118,R9,claude-sonnet-5,2,C2,aao.org,https://www.aao.org/eye-health/news/can-ozempic-affect-eye-health-here-s-what-ophthalm,earned,advocacy,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
-P1118,R9,claude-sonnet-5,2,C2,hmf-law.com,https://www.hmf-law.com/news/ozempic-naion-blindness-vision-loss/,earned,other,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
 P1118,R9,claude-sonnet-5,2,C2,refocuseyedoctors.com,https://hatboro.refocuseyedoctors.com/article/understanding-ozempic-and-vision-changes-a-patients-guide-from-refocus-eye-health-hatboro/,earned,telehealth,True,"[""Wegovy"", ""Mounjaro"", ""Zepbound""]"
 P1118,R9,gemini-2.5-flash,0,C2,refocuseyedoctors.com,https://bloomfield-nwestern.refocuseyedoctors.com/article/ozempic-and-your-vision/,earned,telehealth,True,[]
 P1118,R9,gemini-2.5-flash,0,C2,webmd.com,https://www.webmd.com/obesity/ozempic-blindness,earned,directory,True,[]

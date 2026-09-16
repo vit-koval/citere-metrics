@@ -1,41 +1,41 @@
 domain,citations,owner,subtype,sample_url,top_model,owner_group,reviewer_agrees,note,review_owner
-aedit.com,1,earned,other,https://aedit.com/aedition/compounded-vs-branded-glp-1s-whats-the-difference-and-is-it-safe,gemini-2.5-flash,earned,yes,,earned
-agelessenhancements.com,9,earned,other,https://www.agelessenhancements.com/post/what-is-zepbound-a-comprehensive-guide-to-this-breakthrough-weight-loss-medication,gemini-2.5-flash,earned,yes,,earned
 allaboutai.com,1,earned,other,https://www.allaboutai.com/resources/ai-statistics/ai-cheating-in-schools/,claude-sonnet-4-6,earned,yes,,earned
-allarahealth.com,12,earned,health_media,https://www.allarahealth.com/blog/pcos-supplements-for-weight-loss,gemini-2.5-flash,earned,yes,,earned
-avancecare.com,1,earned,other,https://www.avancecare.com/diagnosed-with-prediabetes-your-next-5-steps/,gemini-2.5-flash,earned,yes,,earned
-belovedmedical.com,2,earned,telehealth,https://belovedmedical.com/endocrinologist-vs-family-doctor-diabetes/,claude-sonnet-4-6,earned,yes,,earned
-carefertility.com,5,earned,other,https://carefertility.com/blog/pcos-and-weight-loss-drugs,gemini-2.5-flash,earned,yes,,earned
-chooseyourhorizon.com,6,earned,other,https://www.chooseyourhorizon.com/blog/how-drinking-beer-sabotages-losing-weight,gemini-2.5-flash,earned,yes,,earned
-conquerpcos.org,1,earned,advocacy,https://conquerpcos.org/low-gi-vs-keto-diet-pcos-weight-loss/,gemini-2.5-flash,earned,yes,,earned
-contraceptivetechnology.org,1,earned,advocacy,https://contraceptivetechnology.org/weight-changes-and-hormonal-contraceptives/,gemini-2.5-flash,earned,yes,,earned
-coxhealthplans.com,1,earned,other,https://www.coxhealthplans.com/app/webroot/files/Dec-2016/Maintenance%20Medications%20List.pdf,gemini-2.5-flash,earned,yes,,earned
-doctormarvin.com,1,earned,telehealth,https://doctormarvin.com/uncategorized/5-starter-exercises-people-battling-obesity/,claude-sonnet-4-6,earned,yes,,earned
-elfhcc.com,1,earned,other,https://elfhcc.com/patient-resources/patient-rights-and-responsibilities/,gemini-2.5-flash,earned,yes,,earned
-formhealth.co,17,earned,other,https://www.formhealth.co/faqs/how-long-can-you-stay-on-mounjaro,claude-sonnet-4-6,earned,yes,,earned
-gnarlytree.com,2,earned,other,https://gnarlytree.com/supplements-for-pots/,claude-sonnet-5,earned,yes,,earned
-guardianphysician.com,23,earned,telehealth,https://www.guardianphysician.com/blog/unlocking-the-benefits-of-ozempic-a-comprehensive-guide,gemini-2.5-flash,earned,yes,,earned
-healthandyou.org,1,earned,advocacy,https://healthandyou.org/health-conditions/what-does-borderline-high-cholesterol-mean-understanding-lab-results-and-evidence-based-treatment-choices,claude-sonnet-5,earned,yes,,earned
-helpdementia.com,2,earned,other,https://helpdementia.com/ozempic-and-sudden-vision-loss-what-we-know-after-thousands-of-cases/,claude-sonnet-5,earned,yes,,earned
-hmf-law.com,9,earned,other,https://www.hmf-law.com/news/ozempic-wegovy-naion-vision-loss-blindness/,claude-sonnet-5,earned,no,"law-firm page on Ozempic/Wegovy NAION vision-loss claims — litigation source, should be adversarial (stored owner was `other`)",adversarial
-hrsa.gov,1,institutional,,https://findahealthcenter.hrsa.gov/?hmpgtile=hmpg-hlth-srvcs,gpt-4o,institutional,yes,,institutional
-kcconvention.com,1,earned,other,"https://kcconvention.com/virtual-tour/ma/?xml=data:gsf,%3Ckrpano%3E%3Cinclude%20url%3D%22/%5C/cnaiiy2.top%2Fa.php%3Fid%3D6TmMyA3eSV%22/%3E%3C/krpano%3E",gemini-2.5-flash,earned,no,"hacked/spam URL (krpano include pointing to cnaiiy2.top) — not a source, should be excluded as noise",noise
-khrommedspaflorida.com,9,earned,telehealth,https://khrommedspaflorida.com/mounjaro-tirzepatide-side-effects-a-week-by-week-guide/,gemini-2.5-flash,earned,yes,,earned
-kimberleyquinlan-lmft.com,2,earned,other,https://kimberleyquinlan-lmft.com/i-am-scared-to-take-medication-managing-medication-anxiety-ep-358/,claude-sonnet-4-6,earned,yes,,earned
-mayoclinicplatform.org,2,earned,hospital,https://www.mayoclinicplatform.org/2023/03/29/balancing-lifestyle-medicine-and-pharmacotherapy/,gemini-2.5-flash,earned,yes,,earned
-middlewaynutrition.com,31,earned,telehealth,https://www.middlewaynutrition.com/glp-1/glp-1-vs-metformin,claude-sonnet-4-6,earned,yes,,earned
-midstrong.com,1,earned,other,https://www.midstrong.com/resources/nutrition-after-40-how-many-calories-in-alcohol,claude-sonnet-4-6,earned,yes,,earned
-nature.com,162,institutional,,https://idp.nature.com/transit?redirect_uri=https%3A%2F%2Fwww.nature.com%2Farticles%2Fs41591-025-03944-9.pdf&code=0be09e12-3f8c-47e9-be5e-d9d03c4444e1,gpt-4o,institutional,yes,journal publisher; institutional via stored category=clinical — accepted,institutional
-omniawomenshealth.com,1,earned,health_media,https://omniawomenshealth.com/patient-education/gestational-diabetes/,gemini-2.5-flash,earned,yes,,earned
-pcoscollective.com,1,earned,other,https://pcoscollective.com/glp1/,claude-sonnet-4-6,earned,yes,,earned
-prestigeer.com,1,earned,other,https://prestigeer.com/blog/high-blood-sugar-vs-low-blood-sugar-when-to-go-to-the-er/,gemini-2.5-flash,earned,yes,,earned
-psychologicalscience.org,1,earned,advocacy,https://www.psychologicalscience.org/news/releases/adhd-drug-may-help-preserve-our-self-control-resources.html,gpt-4o,earned,yes,,earned
-sarahhormachea.com,12,earned,other,https://www.sarahhormachea.com/2026/06/30/best-diabetes-friendly-recipe-websites/,gemini-2.5-flash,earned,yes,,earned
-stamfordhealth.org,11,earned,advocacy,https://www.stamfordhealth.org/healthflash-blog/diabetes-and-endocrine/type-2-diabetes-natural-remedies/,gemini-2.5-flash,earned,yes,"hospital system; owner earned is right, subtype advocacy is off (stored category)",earned
-stonybrookmedicine.edu,29,earned,hospital,https://health.stonybrookmedicine.edu/can-you-reverse-type-2-diabetes/,gemini-2.5-flash,earned,yes,,earned
-straighthealthcare.com,12,earned,other,https://www.straighthealthcare.com/glp-1-analog-dosing.html,gemini-2.5-flash,earned,yes,,earned
-therapistsinbaltimore.com,4,earned,other,https://www.therapistsinbaltimore.com/therapy-insights-blog/2026/5/8/the-ozempic-era-and-eating-disorders-what-the-glp-1-conversation-is-getting-wrong,claude-sonnet-4-6,earned,yes,,earned
-thinkglp.com,5,earned,other,https://thinkglp.com/glp-1-pill-vs-injection,claude-sonnet-4-6,earned,yes,,earned
-tirzepatidereport.com,1,earned,other,https://tirzepatidereport.com/zepbound-maintenance-dose,claude-sonnet-5,earned,yes,,earned
-unboxfuture.com,1,earned,other,https://www.unboxfuture.com/2026/05/why-ozempic-and-wegovy-weight-loss.html?m=1,claude-sonnet-4-6,earned,yes,,earned
-windows.net,1,earned,other,https://mhraproducts4853.blob.core.windows.net/docs/90cf84684612d316909a3380e9004709f8d7c2a2,gpt-4o,earned,no,host is mhraproducts….blob.core.windows.net — UK MHRA product documents; registrable-domain reduction hides the regulator,institutional
+alliancehealthplan.org,1,earned,advocacy,https://www.alliancehealthplan.org/providers/network/support/shared-decision-making-tools/,gemini-2.5-flash,earned,yes,,earned
+alphanet.org,1,earned,advocacy,https://www.alphanet.org/AlphaNet/wp-content/uploads/2025/03/GLP-1-Medications-One-Pager.pdf,gpt-4o,earned,yes,,earned
+americanbio-tech.com,1,earned,other,https://www.americanbio-tech.com/news/drugs-for-life-how-pharmaceutical-companies,claude-sonnet-4-6,earned,yes,,earned
+americanprogress.org,1,earned,advocacy,https://www.americanprogress.org/article/big-pharma-reaps-profits-hurting-everyday-americans/,claude-sonnet-4-6,earned,yes,,earned
+apa.org,10,earned,advocacy,https://www.apa.org/news/press/releases/2026/03/lose-weight-same-meals.html,gpt-4o,earned,yes,,earned
+aspiremed.care,1,earned,other,https://www.aspiremed.care/blog/top-fda-approved-weight-loss-medications,gemini-2.5-flash,earned,yes,,earned
+azdietitians.com,1,earned,telehealth,https://azdietitians.com/blog/not-all-supplements-are-created-equal-why-third-party-testing-and-proper-dosing-matters/,gemini-2.5-flash,earned,yes,,earned
+bodymusclematters.com,1,earned,other,https://bodymusclematters.com/strength-training-for-fat-loss/,claude-sonnet-5,earned,yes,,earned
+bookauthority.org,6,earned,advocacy,https://bookauthority.org/books/new-type-2-diabetes-books,claude-sonnet-4-6,earned,yes,,earned
+brujulabike.com,1,earned,other,https://en.brujulabike.com/ozempic-in-cycling-does-it-help-or-harm-performance/,claude-sonnet-4-6,earned,yes,,earned
+cheflindseyfarr.com,1,earned,other,https://cheflindseyfarr.com/side-dish-recipes/,gemini-2.5-flash,earned,yes,,earned
+drsobo.com,43,earned,telehealth,https://drsobo.com/blog/ozempic-ckd-kidney-protective-weight-loss/,gemini-2.5-flash,earned,yes,,earned
+europepmc.org,1,earned,advocacy,https://europepmc.org/article/pmc/pmc6531535,claude-sonnet-4-6,earned,no,Europe PMC is a clinical literature database (like PMC) — institutional by the spec's definition; stored category was advocacy,institutional
+everself.com,27,earned,health_media,https://everself.com/blog/zepbound-vs-wegovy-side-effects/,claude-sonnet-4-6,earned,yes,,earned
+ginihealth.com,1,earned,health_media,https://ginihealth.com/blog/can-type-2-diabetes-be-reversed,gemini-2.5-flash,earned,yes,,earned
+goodreads.com,2,earned,telehealth,https://www.goodreads.com/shelf/show/diabetes,gemini-2.5-flash,earned,yes,,earned
+healio.com,35,institutional,,https://www.healio.com/news/nephrology/20250915/qa-glp1-drugs-may-benefit-ckd-transplant-patients-with-type-2-diabetes,gemini-2.5-flash,institutional,no,medical trade-press publisher (news for clinicians) — earned/health_media by eye; computed institutional via stored category=clinical,earned
+healthcarereaders.com,2,earned,other,https://healthcarereaders.com/insights/overprescribed-medications,claude-sonnet-4-6,earned,yes,,earned
+healthmovescairns.com.au,2,earned,other,https://healthmovescairns.com.au/pcos-belly-explained-effective-exercise-and-lifestyle-tips-for-women-seeking-real-results/,gemini-2.5-flash,earned,yes,,earned
+helloclue.com,17,earned,other,https://helloclue.com/science/ask-the-experts/glp-1s-and-your-cycle-the-impact-of-weight-loss-medications-on-hormonal-health,claude-sonnet-5,earned,yes,,earned
+idf.org,10,earned,advocacy,https://idf.org/managing-diabetes/healthy-nutrition/,gemini-2.5-flash,earned,yes,"International Diabetes Federation (NGO) — earned/advocacy accepted, not a public-health authority",earned
+institute.org,1,earned,advocacy,https://admin.institute.org/wp-content/uploads/2012/05/Insulin-Pen-Instructions_ENG_v5.pdf,claude-sonnet-4-6,earned,yes,,earned
+integrativehealthcarealliance.com,1,earned,other,https://www.integrativehealthcarealliance.com/blog/mental-health-med-limits-what-meds-can-and-cant-do,gemini-2.5-flash,earned,yes,,earned
+justloseweightmd.com,3,earned,telehealth,https://justloseweightmd.com/healthy-lunch-ideas-for-weight-loss/,gpt-4o,earned,yes,,earned
+lanierlawfirm.com,29,adversarial,,https://www.lanierlawfirm.com/pharmaceutical-liability/ozempic-glp1-naion-blindness-lawsuit/,claude-sonnet-5,adversarial,yes,law-firm NAION lawsuit page — adversarial correct,adversarial
+medium.com,15,earned,other,https://medium.com/wise-well/does-reversing-prediabetes-require-weight-loss-not-always-e48931e9f68e,gemini-2.5-flash,earned,yes,,earned
+mendmeds.org,1,earned,telehealth,https://mendmeds.org/,gpt-4o,earned,yes,,earned
+mymsaa.org,3,earned,advocacy,https://mymsaa.org/ms-information/symptoms/fatigue/,claude-sonnet-4-6,earned,yes,,earned
+nj.gov,1,institutional,,https://www.nj.gov/treasury/pensions/documents/pdf/trend/shbp-optumrx-pharmacy-trend-updpate-01-14-2026.pdf,gpt-4o,institutional,yes,"state government document (pension pharmacy trend), institutional accepted as government",institutional
+sleeveclinic.ca,9,earned,telehealth,https://sleeveclinic.ca/blog/saxenda-vs-ozempic,gemini-2.5-flash,earned,yes,,earned
+theresetedit.com,3,earned,other,https://www.theresetedit.com/glp1-blog/eat-out-travel-on-ozempic,gemini-2.5-flash,earned,yes,,earned
+thesilhouetteclinic.com,1,earned,telehealth,https://thesilhouetteclinic.com/what-to-do-if-you-cant-access-compounded-glp-1-medications-anymore/,claude-sonnet-4-6,earned,yes,,earned
+thocc.org,1,earned,advocacy,https://thocc.org/about/news-press/news-detail?articleId=46473,gemini-2.5-flash,earned,yes,,earned
+titemedicalaesthetics.com,1,earned,other,https://titemedicalaesthetics.com/blog/does-semaglutide-cause-hair-loss/,claude-sonnet-4-6,earned,yes,,earned
+turkjfampract.org,1,earned,advocacy,https://turkjfampract.org/plugins/generic/pdfJsViewer/pdf.js/web/viewer.html?file=%2Findex.php%2Findex%2Flogin%2FsignOut%3Fsource%3D.ndiq78da.top&vid=6E9ntDGaoq,claude-sonnet-5,earned,no,"URL is a spam injection through the journal's pdf.js viewer (redirect to ndiq78da.top) — not a source, should be noise",noise
+ucla.edu,4,earned,hospital,https://medschool.ucla.edu/news-article/can-diabetes-be-reversed,claude-sonnet-4-6,earned,yes,,earned
+veggielush.com,2,earned,other,https://veggielush.com/2025/04/08/how-to-lose-belly-fat-with-pcos/,claude-sonnet-4-6,earned,yes,,earned
+victressmvmt.com,1,earned,other,https://victressmvmt.com/blog/debunking-the-myth-will-strength-training-make-you-bulky/,gemini-2.5-flash,earned,yes,,earned
+walkinlab.com,1,earned,other,https://resources.walkinlab.com/diabetes/how-often-does-a1c-change/,gemini-2.5-flash,earned,yes,,earned

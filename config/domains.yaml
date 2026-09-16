@@ -15,5 +15,7 @@ competitor:
   Lilly corporate: ["lilly.com"]
   Boehringer corporate: ["boehringer-ingelheim.com"]
 institutional_categories: ["regulatory", "gov_health", "wiki", "clinical"]
-institutional_domains: ["fda.gov", "accessdata.fda.gov", "dailymed.nlm.nih.gov", "ema.europa.eu", "nih.gov", "cdc.gov", "nhs.uk", "medlineplus.gov", "pubmed.ncbi.nlm.nih.gov", "pmc.ncbi.nlm.nih.gov", "cochrane.org", "wikipedia.org"]
+institutional_domains: ["fda.gov", "accessdata.fda.gov", "dailymed.nlm.nih.gov", "ema.europa.eu", "nih.gov", "cdc.gov", "nhs.uk", "medlineplus.gov", "pubmed.ncbi.nlm.nih.gov", "pmc.ncbi.nlm.nih.gov", "cochrane.org", "wikipedia.org", "mhraproducts.blob.core.windows.net", "mhraproducts4853.blob.core.windows.net"]
 artifacts: ["vertexaisearch.cloud.google.com"]
+adversarial_domains: ["hmf-law.com"]
+noise_domains: ["kcconvention.com"]
