@@ -43,6 +43,8 @@ def main() -> int:
     cfg = C.load_configs()
     bd = C.BrandDictionary(cfg["brands"])
     min_n = int(cfg["thresholds"]["min_group_prompts"])
+    min_gap = float(cfg["thresholds"].get("min_gap", 0.0))
+    non_failure = set(cfg["thresholds"].get("non_failure_codes") or [])
     raw = C.load_raw_corpus()
     fixes_by_code = {}
     for p in raw["prompts"]:
@@ -155,8 +157,15 @@ def main() -> int:
                 "impact_reach": {"point": _r(x["demand"] * x["gap"], 0), "lo": _r(x["lo"] * x["gap"], 0), "hi": _r(x["hi"] * x["gap"], 0),
                                  "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"}}
 
-    source_rows, label_rows, no_source_other = [], [], []
+    code_counts = {k: int(v) for k, v in pr["code"].value_counts().items()}
+    source_rows, label_rows, no_source_other, healthy, below_floor = [], [], [], [], []
     for x in groups:
+        if x["top_code"] in non_failure:
+            healthy.append({"group_id": x["group_id"], "top_code": x["top_code"], "n_prompts": x["n_prompts"], "demand": _r(x["demand"], 0), "gap": _r(x["gap"]), "gap_bad": _r(x["gap_bad"]), "codes": x["codes"][:3]})
+            continue
+        if x["gap"] < min_gap:
+            below_floor.append({"group_id": x["group_id"], "top_code": x["top_code"], "n_prompts": x["n_prompts"], "demand": _r(x["demand"], 0), "gap": _r(x["gap"]), "gap_bad": _r(x["gap_bad"])})
+            continue
         if x["n_citations"] > 0:
             for o in LEVER_OWNERS:
                 lv = x["lever"][o]
@@ -186,6 +195,9 @@ def main() -> int:
                "inventory": inventory, "groups_total": len(groups), "rows_total": len(source_rows), "rows_label_only": len(label_rows),
                "tercile_thresholds": th_src, "tercile_thresholds_label": th_lab,
                "rows_dropped_zero_gap": {"n": len(dropped_zero_gap), "groups": sorted({r["group_id"] for r in dropped_zero_gap})},
+               "code_inventory": dict(sorted(code_counts.items(), key=lambda kv: -kv[1])), "non_failure_codes": sorted(non_failure), "min_gap": min_gap,
+               "healthy_groups": sorted(healthy, key=lambda h: -h["demand"]), "below_gap_floor": sorted(below_floor, key=lambda h: -h["demand"]),
+               "below_gap_floor_note": "a gap below {:.0%} is background noise, not a problem worth spending on".format(min_gap),
                "owner_fold": OWNER_FOLD,
                "gap_note": "Gap pools different failure kinds across runs (R1 absent from category answer, R2 lost duel, R4 label error, R6 message not delivered…); it is problem density on the topic, not one kind of failure — see gap_by_run / dominant_run on every row.",
                "recommendations": [{k: v for k, v in r.items()} for r in source_rows], "label_recommendations": label_rows,
@@ -205,6 +217,11 @@ def main() -> int:
                          "top_code": r["cause"][0]["code"], "top_domain": r["where"][0]["domain"] if r["where"] else "", "impact_reach": r["impact_reach"]["point"]} for r in source_rows + label_rows])
     rdf.to_csv(C.METRICS_DIR / "prioritization_rows.csv", index=False)
 
+    client_rows = [r for r in source_rows if "citere" not in (r["who"] or "").lower()]
+    citere_rows = [r for r in source_rows if "citere" in (r["who"] or "").lower()]
+    summary["citere_rows"] = [{"group_id": r["group_id"], "owner": r["owner"], "priority": r["priority"], "score": r["score"], "what": r["what"]} for r in citere_rows]
+    summary["client_rows_total"] = len(client_rows)
+
     def line(r):
         return "{}{} → {} · P{} · demand {:,.0f} · gap {:.0%} ({} {}) · lever {} · {} · {} · affects up to {:,.0f}/month".format(
             r["group"]["topic"], " / " + (r["group"]["subtopic"] or r["group"]["zone"]) if (r["group"]["subtopic"] or r["group"]["zone"]) else " / small", r["owner"], r["priority"], r["why"]["demand"], r["why"]["gap"],
@@ -215,20 +232,22 @@ def main() -> int:
          "Score = Demand_share × Gap × Lever (Label rows: Demand_share × Gap); owners earned (commerce folded in as a subtype), ugc, owned, comp_owned. Tercile thresholds (source rows): P3 ≥ {}, P2 ≥ {}; Label rows: P3 ≥ {}, P2 ≥ {}.".format(th_src["p3_min"], th_src["p2_min"], th_lab["p3_min"], th_lab["p2_min"]),
          "**Gap caveat:** Gap pools different failure kinds across runs — R1 absent from the category answer, R2 lost duel, R4 label error, R6 message not delivered — so it is problem density on the topic, not one kind of failure; every row carries gap_by_run and its dominant run.",
          "Lever = owner citations ÷ all citations in the group's answers (noise/other removed; institutional categories excluded from Lever and reported as institutional_share; adversarial reported separately). `impact_reach` = demand × gap is a ceiling, not a forecast.",
-         "Top-5 recommendations:"] + ["{}. ".format(i + 1) + line(r) for i, r in enumerate(source_rows[:5])] + [
+         "Excluded before ranking — healthy groups (dominant code in non_failure_codes {}): {} groups; below gap floor (gap < {:.0%}, background not a problem worth spending on): {} groups. Both listed in the appendix.".format(
+             sorted(non_failure), len(healthy), min_gap, len(below_floor)),
+         "Top-5 client recommendations (rows whose `who` is Citere are our monitoring, listed separately below):"] + ["{}. ".format(i + 1) + line(r) for i, r in enumerate(client_rows[:5])] + [
          "Label / Medical rows ({}): ".format(len(label_rows)) + ("; ".join("{} · P{} · gap {:.0%} · {} · who: {}".format(r["group_id"], r["priority"], r["why"]["gap"], r["cause"][0]["code"], r["who"]) for r in label_rows) or "none") + ".",
          "Top-3 adversarial (threat) sources: " + "; ".join("{} ({} citations, {})".format(d["domain"], d["citations"], d["category"]) for d in adversarial[:3]) + " — excluded from Lever.",
          "Quality: multi-demand groups {} (median taken); answers without citations {:.1f}%; `who` values include `Citere` for {} rows (own monitoring tasks — routed by step 7).".format(
              len(multi_demand), summary["quality"]["answers_without_citations_pct"], sum(1 for r in source_rows + label_rows if "Citere" in r["who"])),
          "Outputs: prioritization_summary.json, prioritization_groups.csv ({} groups), prioritization_rows.csv ({} rows).".format(len(groups), len(source_rows) + len(label_rows))]
     by_group = {}
-    for r in source_rows:
+    for r in client_rows:
         by_group.setdefault(r["group_id"], []).append(r)
     top_groups = sorted(by_group.items(), key=lambda kv: -max(x["score"] for x in kv[1]))[:10]
     summary["top10_by_group"] = [{"group_id": gid, "best_score": max(x["score"] for x in rows), "priority": max(x["priority"] for x in rows), "cause": rows[0]["cause"][0]["code"],
                                   "owners": [{"owner": x["owner"], "score": x["score"], "lever": x["why"]["lever"], "ceiling_pp": _r(x["why"]["gap"] * x["why"]["lever"] * 100, 1), "top_domain": x["where"][0]["domain"] if x["where"] else "", "who": x["who"]} for x in sorted(rows, key=lambda x: -x["score"])]} for gid, rows in top_groups]
     json.dump(summary, open(C.METRICS_DIR / "prioritization_summary.json", "w", encoding="utf-8"), indent=2, ensure_ascii=False)
-    tbl = ["", "---", "Top-10 recommendations by topic group (one row per group = best score; owners beneath with their own lever and ceiling):", "",
+    tbl = ["", "---", "Top-10 client recommendations by topic group (one row per group = best score; owners beneath with their own lever and ceiling; Citere rows excluded):", "",
            "| # | P | group / ↳ owner | score | demand | gap (dominant run) | gap_bad | lever | ceiling pp | cause / top domain | who | speed | reach ceiling |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for i, (gid, rows) in enumerate(top_groups, 1):
         best = max(rows, key=lambda x: x["score"]); w = best["why"]
@@ -237,6 +256,20 @@ def main() -> int:
         for x in sorted(rows, key=lambda x: -x["score"]):
             tbl.append("| | P{} | ↳ {} | {:.5f} | | | | {:.0%} | {:.1f} | {} | | | |".format(
                 x["priority"], x["owner"], x["score"], x["why"]["lever"], x["why"]["gap"] * x["why"]["lever"] * 100, x["where"][0]["domain"] + " (" + x["where"][0]["owner_subtype"] + ")" if x["where"] else ""))
+    cg = {}
+    for r in citere_rows:
+        cg.setdefault(r["group_id"], []).append(r)
+    tbl += ["", "Our monitoring, not client work (`who` = Citere; routed as citere tasks in step 7):", "", "| group | P | best score | gap (dominant run) | cause | owners (lever) | what |", "|---|---|---|---|---|---|---|"]
+    for gid, rows in sorted(cg.items(), key=lambda kv: -max(x["score"] for x in kv[1])):
+        b = max(rows, key=lambda x: x["score"])
+        tbl.append("| {} | {} | {:.5f} | {:.0%} ({}) | {} | {} | {} |".format(gid, b["priority"], b["score"], b["why"]["gap"], b["why"]["dominant_run"], b["cause"][0]["code"],
+                   ", ".join("{} {:.0%}".format(x["owner"], x["why"]["lever"]) for x in sorted(rows, key=lambda x: -x["score"])), b["what"][:90]))
+    tbl += ["", "Healthy groups (dominant code is not a failure — checked, nothing to fix):", "", "| group | dominant code | prompts | demand | gap | gap_bad |", "|---|---|---|---|---|---|"]
+    for h in summary["healthy_groups"]:
+        tbl.append("| {} | {} | {} | {:,.0f} | {:.0%} | {:.0%} |".format(h["group_id"], h["top_code"], h["n_prompts"], h["demand"], h["gap"], h["gap_bad"]))
+    tbl += ["", "Below gap floor (gap < {:.0%} — background, not a problem worth spending on):".format(min_gap), "", "| group | dominant code | prompts | demand | gap | gap_bad |", "|---|---|---|---|---|---|"]
+    for h in summary["below_gap_floor"]:
+        tbl.append("| {} | {} | {} | {:,.0f} | {:.0%} | {:.0%} |".format(h["group_id"], h["top_code"], h["n_prompts"], h["demand"], h["gap"], h["gap_bad"]))
     tbl += ["", "Label / Medical rows:", "", "| # | P | group | score | demand | gap | gap_bad | cause | who | speed |", "|---|---|---|---|---|---|---|---|---|---|"]
     for r in label_rows:
         tbl.append("| {} | {} | {} | {:.5f} | {:,.0f} | {:.0%} | {:.0%} | {} | {} | {} |".format(r["rank"], r["priority"], r["group_id"], r["score"], r["why"]["demand"], r["why"]["gap"], r["why"]["gap_bad"], r["cause"][0]["code"], r["who"], r["speed"]))

@@ -98,11 +98,11 @@
     ]
   },
   "groups_total": 39,
-  "rows_total": 127,
+  "rows_total": 74,
   "rows_label_only": 2,
   "tercile_thresholds": {
-    "p3_min": 0.000507,
-    "p2_min": 3e-05
+    "p3_min": 0.000542,
+    "p2_min": 5.2e-05
   },
   "tercile_thresholds_label": {
     "p3_min": 0.000339,
@@ -112,6 +112,381 @@
     "n": 0,
     "groups": []
   },
+  "code_inventory": {
+    "NO CLEAR WINNER": 134,
+    "LEAK TO A COMPETITOR": 129,
+    "WE ARE ABSENT": 129,
+    "REACH OK": 98,
+    "PATIENT RETAINED": 98,
+    "ANSWERED CORRECTLY": 92,
+    "COMPETITOR WITHIN LABEL": 83,
+    "LOW REACH ON HIGH DEMAND": 80,
+    "WE LOSE THIS DUEL": 78,
+    "LISTED BUT NOT CHOSEN": 74,
+    "INCOMPLETE / OMISSION": 57,
+    "MYTH DEFENDED": 52,
+    "FREE TERRITORY": 47,
+    "MESSAGE NOT DELIVERED": 46,
+    "WE WIN THIS DUEL": 42,
+    "MESSAGE DELIVERED": 32,
+    "DANGEROUS LABEL ERROR": 31,
+    "MESSAGE DILUTED": 31,
+    "COMPETITOR OFF-LABEL LIFT": 19,
+    "AI STEERS OUR PATIENT AWAY": 19,
+    "CONTESTED / SPLIT": 18,
+    "AI AMPLIFIES A HARMFUL MYTH": 14,
+    "FAMILY CONFUSION": 13,
+    "MODEL ON AN OLD LABEL": 6,
+    "MESSAGE CREDITED TO CLASS/RIVAL": 1,
+    "ENTITY KNOWN WELL": 1
+  },
+  "non_failure_codes": [
+    "COMPETITOR WITHIN LABEL",
+    "MYTH DEFENDED",
+    "NO CLEAR WINNER",
+    "PATIENT RETAINED",
+    "REACH OK"
+  ],
+  "min_gap": 0.2,
+  "healthy_groups": [
+    {
+      "group_id": "Reputation & narratives × Body-change memes",
+      "top_code": "REACH OK",
+      "n_prompts": 16,
+      "demand": 257805.0,
+      "gap": 0.0625,
+      "gap_bad": 0.0625,
+      "codes": [
+        {
+          "code": "REACH OK",
+          "n": 10
+        },
+        {
+          "code": "MYTH DEFENDED",
+          "n": 5
+        },
+        {
+          "code": "AI AMPLIFIES A HARMFUL MYTH",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "group_id": "Basics & mechanism × STARTING & SWITCHING",
+      "top_code": "REACH OK",
+      "n_prompts": 39,
+      "demand": 89149.0,
+      "gap": 0.6923,
+      "gap_bad": 0.3846,
+      "codes": [
+        {
+          "code": "REACH OK",
+          "n": 11
+        },
+        {
+          "code": "FAMILY CONFUSION",
+          "n": 10
+        },
+        {
+          "code": "LOW REACH ON HIGH DEMAND",
+          "n": 7
+        }
+      ]
+    },
+    {
+      "group_id": "Price, coverage & supply × Cost & price",
+      "top_code": "NO CLEAR WINNER",
+      "n_prompts": 48,
+      "demand": 70316.0,
+      "gap": 0.75,
+      "gap_bad": 0.2917,
+      "codes": [
+        {
+          "code": "NO CLEAR WINNER",
+          "n": 15
+        },
+        {
+          "code": "LOW REACH ON HIGH DEMAND",
+          "n": 8
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 7
+        }
+      ]
+    },
+    {
+      "group_id": "Reputation & narratives × Other narratives",
+      "top_code": "MYTH DEFENDED",
+      "n_prompts": 13,
+      "demand": 31005.0,
+      "gap": 0.3077,
+      "gap_bad": 0.0769,
+      "codes": [
+        {
+          "code": "MYTH DEFENDED",
+          "n": 6
+        },
+        {
+          "code": "REACH OK",
+          "n": 3
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "group_id": "Dosing & administration × Titration & dose schedule",
+      "top_code": "PATIENT RETAINED",
+      "n_prompts": 111,
+      "demand": 23610.0,
+      "gap": 0.7207,
+      "gap_bad": 0.3964,
+      "codes": [
+        {
+          "code": "PATIENT RETAINED",
+          "n": 16
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 16
+        },
+        {
+          "code": "LOW REACH ON HIGH DEMAND",
+          "n": 12
+        }
+      ]
+    },
+    {
+      "group_id": "Side effects & tolerability × GI & nausea",
+      "top_code": "NO CLEAR WINNER",
+      "n_prompts": 49,
+      "demand": 9872.0,
+      "gap": 0.6939,
+      "gap_bad": 0.1633,
+      "codes": [
+        {
+          "code": "NO CLEAR WINNER",
+          "n": 14
+        },
+        {
+          "code": "PATIENT RETAINED",
+          "n": 13
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 11
+        }
+      ]
+    },
+    {
+      "group_id": "Indications & eligibility × Cosmetic & small-weight",
+      "top_code": "COMPETITOR WITHIN LABEL",
+      "n_prompts": 10,
+      "demand": 7305.0,
+      "gap": 0.5,
+      "gap_bad": 0.4,
+      "codes": [
+        {
+          "code": "COMPETITOR WITHIN LABEL",
+          "n": 5
+        },
+        {
+          "code": "COMPETITOR OFF-LABEL LIFT",
+          "n": 4
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "group_id": "Serious risks & contraindications × Thyroid / MTC",
+      "top_code": "COMPETITOR WITHIN LABEL",
+      "n_prompts": 97,
+      "demand": 4600.0,
+      "gap": 0.4948,
+      "gap_bad": 0.134,
+      "codes": [
+        {
+          "code": "COMPETITOR WITHIN LABEL",
+          "n": 20
+        },
+        {
+          "code": "ANSWERED CORRECTLY",
+          "n": 14
+        },
+        {
+          "code": "INCOMPLETE / OMISSION",
+          "n": 12
+        }
+      ]
+    },
+    {
+      "group_id": "Lifestyle & daily living × LIVING ON THE DRUG",
+      "top_code": "PATIENT RETAINED",
+      "n_prompts": 10,
+      "demand": 4065.0,
+      "gap": 0.3,
+      "gap_bad": 0.0,
+      "codes": [
+        {
+          "code": "PATIENT RETAINED",
+          "n": 7
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 3
+        }
+      ]
+    },
+    {
+      "group_id": "Lifestyle & daily living × STARTING & SWITCHING",
+      "top_code": "PATIENT RETAINED",
+      "n_prompts": 20,
+      "demand": 4065.0,
+      "gap": 0.25,
+      "gap_bad": 0.0,
+      "codes": [
+        {
+          "code": "PATIENT RETAINED",
+          "n": 15
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 4
+        },
+        {
+          "code": "FREE TERRITORY",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "group_id": "Serious risks & contraindications × Pregnancy & lactation",
+      "top_code": "COMPETITOR WITHIN LABEL",
+      "n_prompts": 43,
+      "demand": 2083.0,
+      "gap": 0.4419,
+      "gap_bad": 0.3023,
+      "codes": [
+        {
+          "code": "COMPETITOR WITHIN LABEL",
+          "n": 11
+        },
+        {
+          "code": "WE ARE ABSENT",
+          "n": 7
+        },
+        {
+          "code": "INCOMPLETE / OMISSION",
+          "n": 7
+        }
+      ]
+    },
+    {
+      "group_id": "Serious risks & contraindications × Pancreatitis",
+      "top_code": "COMPETITOR WITHIN LABEL",
+      "n_prompts": 25,
+      "demand": 1196.0,
+      "gap": 0.24,
+      "gap_bad": 0.04,
+      "codes": [
+        {
+          "code": "COMPETITOR WITHIN LABEL",
+          "n": 8
+        },
+        {
+          "code": "MYTH DEFENDED",
+          "n": 6
+        },
+        {
+          "code": "ANSWERED CORRECTLY",
+          "n": 5
+        }
+      ]
+    },
+    {
+      "group_id": "Side effects & tolerability × Fatigue & energy",
+      "top_code": "NO CLEAR WINNER",
+      "n_prompts": 10,
+      "demand": 801.0,
+      "gap": 0.8,
+      "gap_bad": 0.0,
+      "codes": [
+        {
+          "code": "NO CLEAR WINNER",
+          "n": 4
+        },
+        {
+          "code": "LEAK TO A COMPETITOR",
+          "n": 4
+        },
+        {
+          "code": "PATIENT RETAINED",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "group_id": "Side effects & tolerability × STARTING & SWITCHING",
+      "top_code": "NO CLEAR WINNER",
+      "n_prompts": 16,
+      "demand": 365.0,
+      "gap": 0.75,
+      "gap_bad": 0.3125,
+      "codes": [
+        {
+          "code": "NO CLEAR WINNER",
+          "n": 5
+        },
+        {
+          "code": "WE LOSE THIS DUEL",
+          "n": 4
+        },
+        {
+          "code": "CONTESTED / SPLIT",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "group_id": "Serious risks & contraindications × Vision & retinopathy",
+      "top_code": "MYTH DEFENDED",
+      "n_prompts": 13,
+      "demand": 164.0,
+      "gap": 0.0769,
+      "gap_bad": 0.0769,
+      "codes": [
+        {
+          "code": "MYTH DEFENDED",
+          "n": 6
+        },
+        {
+          "code": "ANSWERED CORRECTLY",
+          "n": 3
+        },
+        {
+          "code": "COMPETITOR WITHIN LABEL",
+          "n": 3
+        }
+      ]
+    }
+  ],
+  "below_gap_floor": [
+    {
+      "group_id": "Serious risks & contraindications × Hypoglycemia",
+      "top_code": "ANSWERED CORRECTLY",
+      "n_prompts": 20,
+      "demand": 173.0,
+      "gap": 0.15,
+      "gap_bad": 0.05
+    }
+  ],
+  "below_gap_floor_note": "a gap below 20% is background noise, not a problem worth spending on",
   "owner_fold": {
     "commerce": "earned"
   },
@@ -468,236 +843,6 @@
       "priority": 3
     },
     {
-      "group_id": "Basics & mechanism × STARTING & SWITCHING",
-      "group": {
-        "topic": "Basics & mechanism",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "earned",
-      "what": "Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 89149.0,
-        "lo": 55000.0,
-        "hi": 144500.0,
-        "demand_share": 0.0708,
-        "gap": 0.6923,
-        "gap_bad": 0.3846,
-        "n_prompts": 39,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R7": 0.3889,
-          "R8": 0.9286
-        },
-        "n_by_run": {
-          "R1": 7,
-          "R7": 18,
-          "R8": 14
-        },
-        "dominant_run": "R7",
-        "lever": 0.6841,
-        "institutional_share": 0.2345
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 11
-        },
-        {
-          "code": "FAMILY CONFUSION",
-          "n": 10
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0184",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the best medicine for a new diabetic with fbs 9.0 & rbs 13?"
-        },
-        {
-          "pid": "P0195",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the most promising treatment for diabetes that will come on the market in the near future?"
-        }
-      ],
-      "impact_reach": {
-        "point": 61719.0,
-        "lo": 38077.0,
-        "hi": 100038.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.033543,
-      "where": [
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 46,
-          "with_us": 24,
-          "with_comp": 42
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 36,
-          "with_us": 19,
-          "with_comp": 35
-        },
-        {
-          "domain": "diabetes.org",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 22,
-          "with_us": 12,
-          "with_comp": 13
-        },
-        {
-          "domain": "clevelandclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 20,
-          "with_us": 7,
-          "with_comp": 18
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 17,
-          "with_us": 9,
-          "with_comp": 16
-        }
-      ],
-      "no_source_data": false,
-      "rank": 4,
-      "priority": 3
-    },
-    {
-      "group_id": "Price, coverage & supply × Cost & price",
-      "group": {
-        "topic": "Price, coverage & supply",
-        "subtopic": "Cost & price",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 70316.0,
-        "lo": 47000.0,
-        "hi": 105200.0,
-        "demand_share": 0.0559,
-        "gap": 0.75,
-        "gap_bad": 0.2917,
-        "n_prompts": 48,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.8,
-          "R3": 0.9,
-          "R7": 0.5333
-        },
-        "n_by_run": {
-          "R1": 3,
-          "R2": 20,
-          "R3": 10,
-          "R7": 15
-        },
-        "dominant_run": "R2",
-        "lever": 0.7815,
-        "institutional_share": 0.1086
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 15
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 8
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0108",
-          "run": "R1",
-          "sev": "bad",
-          "text": "how much of the long-term safety data on the newer diabetes medications is actually solid versus just short trials?"
-        },
-        {
-          "pid": "P0176",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 30M, diagnosed with T2D (hba1c ~12) 4 years ago. Metformin brought it under control quickly, but I stopped monitoring twice and it crept back to 1"
-        }
-      ],
-      "impact_reach": {
-        "point": 52737.0,
-        "lo": 35250.0,
-        "hi": 78900.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.032742,
-      "where": [
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 136,
-          "with_us": 90,
-          "with_comp": 122
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 106,
-          "with_us": 64,
-          "with_comp": 97
-        },
-        {
-          "domain": "singlecare.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 81,
-          "with_us": 61,
-          "with_comp": 71
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 68,
-          "with_us": 48,
-          "with_comp": 61
-        },
-        {
-          "domain": "forbes.com",
-          "category": "news_pr",
-          "owner_subtype": "earned",
-          "citations": 59,
-          "with_us": 45,
-          "with_comp": 53
-        }
-      ],
-      "no_source_data": false,
-      "rank": 5,
-      "priority": 3
-    },
-    {
       "group_id": "Efficacy & results × WEIGHT LOSS",
       "group": {
         "topic": "Efficacy & results",
@@ -812,7 +957,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 6,
+      "rank": 4,
       "priority": 3
     },
     {
@@ -928,7 +1073,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 7,
+      "rank": 5,
       "priority": 3
     },
     {
@@ -1042,243 +1187,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 8,
-      "priority": 3
-    },
-    {
-      "group_id": "Reputation & narratives × Body-change memes",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Body-change memes",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 257805.0,
-        "lo": 216000.0,
-        "hi": 307700.0,
-        "demand_share": 0.2048,
-        "gap": 0.0625,
-        "gap_bad": 0.0625,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R7": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R7": 10,
-          "R9": 6
-        },
-        "dominant_run": "R7",
-        "lever": 0.849,
-        "institutional_share": 0.1114
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 10
-        },
-        {
-          "code": "MYTH DEFENDED",
-          "n": 5
-        },
-        {
-          "code": "AI AMPLIFIES A HARMFUL MYTH",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1140",
-          "run": "R9",
-          "sev": "bad",
-          "text": "is it true that ozempic gives you a gaunt, saggy face and makes your butt disappear?"
-        },
-        {
-          "pid": "P0881",
-          "run": "R7",
-          "sev": "good",
-          "text": "What is “Ozempic butt,” and is it real?"
-        }
-      ],
-      "impact_reach": {
-        "point": 16113.0,
-        "lo": 13500.0,
-        "hi": 19231.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.010867,
-      "where": [
-        {
-          "domain": "clevelandclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 35,
-          "with_us": 35,
-          "with_comp": 17
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 31,
-          "with_us": 31,
-          "with_comp": 15
-        },
-        {
-          "domain": "hingehealth.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 23,
-          "with_us": 23,
-          "with_comp": 10
-        },
-        {
-          "domain": "northwell.edu",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 19,
-          "with_us": 19,
-          "with_comp": 10
-        },
-        {
-          "domain": "plasticsurgery.org",
-          "category": "advocacy",
-          "owner_subtype": "earned",
-          "citations": 17,
-          "with_us": 17,
-          "with_comp": 8
-        }
-      ],
-      "no_source_data": false,
-      "rank": 9,
-      "priority": 3
-    },
-    {
-      "group_id": "Dosing & administration × Titration & dose schedule",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Titration & dose schedule",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 23610.0,
-        "lo": 13000.0,
-        "hi": 42880.0,
-        "demand_share": 0.0188,
-        "gap": 0.7207,
-        "gap_bad": 0.3964,
-        "n_prompts": 111,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.7778,
-          "R3": 0.5676,
-          "R4": 1.0,
-          "R5": 0.0,
-          "R6": 1.0,
-          "R7": 0.5,
-          "R8": 1.0
-        },
-        "n_by_run": {
-          "R1": 18,
-          "R2": 9,
-          "R3": 37,
-          "R4": 10,
-          "R5": 1,
-          "R6": 10,
-          "R7": 24,
-          "R8": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.7319,
-        "institutional_share": 0.1719
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 16
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 16
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0024",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I get severe side effects on metformin even at half the dose. Can type 2 be managed with diet alone instead?"
-        },
-        {
-          "pid": "P0048",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 55 and my fasting glucose is creeping into the prediabetic range. What lifestyle changes actually move the needle?"
-        }
-      ],
-      "impact_reach": {
-        "point": 17016.0,
-        "lo": 9369.0,
-        "hi": 30905.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.009893,
-      "where": [
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 245,
-          "with_us": 187,
-          "with_comp": 126
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 241,
-          "with_us": 162,
-          "with_comp": 152
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 140,
-          "with_us": 101,
-          "with_comp": 80
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 128,
-          "with_us": 87,
-          "with_comp": 70
-        },
-        {
-          "domain": "webmd.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 100,
-          "with_us": 85,
-          "with_comp": 54
-        }
-      ],
-      "no_source_data": false,
-      "rank": 10,
+      "rank": 6,
       "priority": 3
     },
     {
@@ -1392,123 +1301,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 11,
-      "priority": 3
-    },
-    {
-      "group_id": "Reputation & narratives × Other narratives",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Other narratives",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Monitor the narrative for drift next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 31005.0,
-        "lo": 31000.0,
-        "hi": 31010.0,
-        "demand_share": 0.0246,
-        "gap": 0.3077,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 1.0,
-          "R7": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R3": 2,
-          "R7": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.7668,
-        "institutional_share": 0.1762
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "REACH OK",
-          "n": 3
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0011",
-          "run": "R1",
-          "sev": "bad",
-          "text": "Is the whole diabetes-drug industry overblown — could most people manage with diet alone?"
-        },
-        {
-          "pid": "P0109",
-          "run": "R1",
-          "sev": "warn",
-          "text": "honestly is all this hype around the weight loss shots real or is it just marketing?"
-        }
-      ],
-      "impact_reach": {
-        "point": 9540.0,
-        "lo": 9538.0,
-        "hi": 9542.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.005812,
-      "where": [
-        {
-          "domain": "endoslimclinic.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 23,
-          "with_us": 23,
-          "with_comp": 1
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 23,
-          "with_us": 23,
-          "with_comp": 5
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 22,
-          "with_us": 22,
-          "with_comp": 4
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 21,
-          "with_us": 21,
-          "with_comp": 4
-        },
-        {
-          "domain": "strongwithsarah.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 18,
-          "with_us": 18,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 12,
+      "rank": 7,
       "priority": 3
     },
     {
@@ -1626,123 +1419,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 13,
-      "priority": 3
-    },
-    {
-      "group_id": "Side effects & tolerability × GI & nausea",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "GI & nausea",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 9872.0,
-        "lo": 6300.0,
-        "hi": 15470.0,
-        "demand_share": 0.0078,
-        "gap": 0.6939,
-        "gap_bad": 0.1633,
-        "n_prompts": 49,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.4583,
-          "R7": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R2": 21,
-          "R3": 24,
-          "R7": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.8425,
-        "institutional_share": 0.0814
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 14
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 13
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 11
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0204",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I recently started taking Metformin and on day one I've had severe stomach pains and diarrhea. This is my second time trying and the first month on it"
-        },
-        {
-          "pid": "P0288",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic gives me nausea, thinking of switching to Mounjaro — is it easier on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 6850.0,
-        "lo": 4371.0,
-        "hi": 10734.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.004584,
-      "where": [
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 141,
-          "with_us": 100,
-          "with_comp": 98
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 141,
-          "with_us": 111,
-          "with_comp": 69
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 109,
-          "with_us": 82,
-          "with_comp": 45
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 101,
-          "with_us": 79,
-          "with_comp": 43
-        },
-        {
-          "domain": "ubiehealth.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 98,
-          "with_us": 84,
-          "with_comp": 34
-        }
-      ],
-      "no_source_data": false,
-      "rank": 14,
+      "rank": 8,
       "priority": 3
     },
     {
@@ -1862,7 +1539,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 15,
+      "rank": 9,
       "priority": 3
     },
     {
@@ -1944,7 +1621,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 16,
+      "rank": 10,
       "priority": 3
     },
     {
@@ -2060,7 +1737,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 17,
+      "rank": 11,
       "priority": 3
     },
     {
@@ -2174,349 +1851,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 18,
-      "priority": 3
-    },
-    {
-      "group_id": "Price, coverage & supply × Cost & price",
-      "group": {
-        "topic": "Price, coverage & supply",
-        "subtopic": "Cost & price",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 70316.0,
-        "lo": 47000.0,
-        "hi": 105200.0,
-        "demand_share": 0.0559,
-        "gap": 0.75,
-        "gap_bad": 0.2917,
-        "n_prompts": 48,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.8,
-          "R3": 0.9,
-          "R7": 0.5333
-        },
-        "n_by_run": {
-          "R1": 3,
-          "R2": 20,
-          "R3": 10,
-          "R7": 15
-        },
-        "dominant_run": "R2",
-        "lever": 0.0644,
-        "institutional_share": 0.1086
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 15
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 8
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0108",
-          "run": "R1",
-          "sev": "bad",
-          "text": "how much of the long-term safety data on the newer diabetes medications is actually solid versus just short trials?"
-        },
-        {
-          "pid": "P0176",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 30M, diagnosed with T2D (hba1c ~12) 4 years ago. Metformin brought it under control quickly, but I stopped monitoring twice and it crept back to 1"
-        }
-      ],
-      "impact_reach": {
-        "point": 52737.0,
-        "lo": 35250.0,
-        "hi": 78900.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.002699,
-      "where": [
-        {
-          "domain": "novocare.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 62,
-          "with_us": 55,
-          "with_comp": 38
-        },
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 53,
-          "with_us": 53,
-          "with_comp": 32
-        },
-        {
-          "domain": "novonordisk.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 13,
-          "with_us": 12,
-          "with_comp": 4
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 10,
-          "with_us": 2,
-          "with_comp": 10
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 5,
-          "with_us": 3,
-          "with_comp": 2
-        }
-      ],
-      "no_source_data": false,
-      "rank": 19,
-      "priority": 3
-    },
-    {
-      "group_id": "Indications & eligibility × Cosmetic & small-weight",
-      "group": {
-        "topic": "Indications & eligibility",
-        "subtopic": "Cosmetic & small-weight",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 7305.0,
-        "lo": 7300.0,
-        "hi": 7310.0,
-        "demand_share": 0.0058,
-        "gap": 0.5,
-        "gap_bad": 0.4,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R3": 1.0,
-          "R5": 0.4444
-        },
-        "n_by_run": {
-          "R3": 1,
-          "R5": 9
-        },
-        "dominant_run": "R5",
-        "lever": 0.8919,
-        "institutional_share": 0.0541
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 5
-        },
-        {
-          "code": "COMPETITOR OFF-LABEL LIFT",
-          "n": 4
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1322",
-          "run": "R5",
-          "sev": "bad",
-          "text": "im at a normalish weight but want to get really lean for summer — can i get mounjaro for that?"
-        },
-        {
-          "pid": "P1323",
-          "run": "R5",
-          "sev": "bad",
-          "text": "whats the strongest shot to drop the last 10-15 vanity pounds? not diabetic"
-        }
-      ],
-      "impact_reach": {
-        "point": 3652.0,
-        "lo": 3650.0,
-        "hi": 3655.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.002588,
-      "where": [
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 5,
-          "with_us": 5,
-          "with_comp": 0
-        },
-        {
-          "domain": "4allfamily.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        },
-        {
-          "domain": "fellahealth.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        },
-        {
-          "domain": "ro.co",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        },
-        {
-          "domain": "sugarmedical.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 20,
-      "priority": 3
-    },
-    {
-      "group_id": "Basics & mechanism × STARTING & SWITCHING",
-      "group": {
-        "topic": "Basics & mechanism",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "owned",
-      "what": "Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 89149.0,
-        "lo": 55000.0,
-        "hi": 144500.0,
-        "demand_share": 0.0708,
-        "gap": 0.6923,
-        "gap_bad": 0.3846,
-        "n_prompts": 39,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R7": 0.3889,
-          "R8": 0.9286
-        },
-        "n_by_run": {
-          "R1": 7,
-          "R7": 18,
-          "R8": 14
-        },
-        "dominant_run": "R7",
-        "lever": 0.0524,
-        "institutional_share": 0.2345
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 11
-        },
-        {
-          "code": "FAMILY CONFUSION",
-          "n": 10
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0184",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the best medicine for a new diabetic with fbs 9.0 & rbs 13?"
-        },
-        {
-          "pid": "P0195",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the most promising treatment for diabetes that will come on the market in the near future?"
-        }
-      ],
-      "impact_reach": {
-        "point": 61719.0,
-        "lo": 38077.0,
-        "hi": 100038.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.00257,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 15,
-          "with_us": 15,
-          "with_comp": 13
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 13,
-          "with_us": 5,
-          "with_comp": 13
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 4,
-          "with_us": 3,
-          "with_comp": 4
-        },
-        {
-          "domain": "novonordisk.co.uk",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 2
-        },
-        {
-          "domain": "novocare.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 2
-        }
-      ],
-      "no_source_data": false,
-      "rank": 21,
+      "rank": 12,
       "priority": 3
     },
     {
@@ -2634,7 +1969,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 22,
+      "rank": 13,
       "priority": 3
     },
     {
@@ -2750,7 +2085,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 23,
+      "rank": 14,
       "priority": 3
     },
     {
@@ -2836,7 +2171,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 24,
+      "rank": 15,
       "priority": 3
     },
     {
@@ -2954,7 +2289,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 25,
+      "rank": 16,
       "priority": 3
     },
     {
@@ -3048,7 +2383,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 26,
+      "rank": 17,
       "priority": 3
     },
     {
@@ -3160,7 +2495,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 27,
+      "rank": 18,
       "priority": 3
     },
     {
@@ -3250,7 +2585,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 28,
+      "rank": 19,
       "priority": 3
     },
     {
@@ -3352,543 +2687,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 29,
-      "priority": 3
-    },
-    {
-      "group_id": "Serious risks & contraindications × Thyroid / MTC",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Thyroid / MTC",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4600.0,
-        "lo": 4000.0,
-        "hi": 5290.0,
-        "demand_share": 0.0037,
-        "gap": 0.4948,
-        "gap_bad": 0.134,
-        "n_prompts": 97,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.625,
-          "R3": 0.6667,
-          "R4": 0.4815,
-          "R5": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R1": 17,
-          "R2": 24,
-          "R3": 3,
-          "R4": 27,
-          "R5": 20,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.6404,
-        "institutional_share": 0.2964
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 20
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 14
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0053",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm in my 40s, obese, pre-diabetic with insulin resistance, and every medication or supplement I try triggers tachycardia because of my POTS. Is there"
-        },
-        {
-          "pid": "P0055",
-          "run": "R1",
-          "sev": "bad",
-          "text": "prediabetic and insulin resistant but i cant take most meds or supplements cause they spike my heart rate (POTS). is there anything left for me to try"
-        }
-      ],
-      "impact_reach": {
-        "point": 2276.0,
-        "lo": 1979.0,
-        "hi": 2618.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.001158,
-      "where": [
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 117,
-          "with_us": 102,
-          "with_comp": 101
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 89,
-          "with_us": 75,
-          "with_comp": 70
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 84,
-          "with_us": 70,
-          "with_comp": 62
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 75,
-          "with_us": 44,
-          "with_comp": 48
-        },
-        {
-          "domain": "clevelandclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 56,
-          "with_us": 27,
-          "with_comp": 28
-        }
-      ],
-      "no_source_data": false,
-      "rank": 30,
-      "priority": 3
-    },
-    {
-      "group_id": "Basics & mechanism × STARTING & SWITCHING",
-      "group": {
-        "topic": "Basics & mechanism",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 89149.0,
-        "lo": 55000.0,
-        "hi": 144500.0,
-        "demand_share": 0.0708,
-        "gap": 0.6923,
-        "gap_bad": 0.3846,
-        "n_prompts": 39,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R7": 0.3889,
-          "R8": 0.9286
-        },
-        "n_by_run": {
-          "R1": 7,
-          "R7": 18,
-          "R8": 14
-        },
-        "dominant_run": "R7",
-        "lever": 0.0221,
-        "institutional_share": 0.2345
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 11
-        },
-        {
-          "code": "FAMILY CONFUSION",
-          "n": 10
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0184",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the best medicine for a new diabetic with fbs 9.0 & rbs 13?"
-        },
-        {
-          "pid": "P0195",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the most promising treatment for diabetes that will come on the market in the near future?"
-        }
-      ],
-      "impact_reach": {
-        "point": 61719.0,
-        "lo": 38077.0,
-        "hi": 100038.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.001082,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 16,
-          "with_us": 2,
-          "with_comp": 16
-        }
-      ],
-      "no_source_data": false,
-      "rank": 31,
-      "priority": 3
-    },
-    {
-      "group_id": "Lifestyle & daily living × LIVING ON THE DRUG",
-      "group": {
-        "topic": "Lifestyle & daily living",
-        "subtopic": "",
-        "zone": "LIVING ON THE DRUG"
-      },
-      "owner": "earned",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4065.0,
-        "lo": 2700.0,
-        "hi": 6120.0,
-        "demand_share": 0.0032,
-        "gap": 0.3,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R3": 0.3
-        },
-        "n_by_run": {
-          "R3": 10
-        },
-        "dominant_run": "R3",
-        "lever": 0.8969,
-        "institutional_share": 0.072
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 7
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0531",
-          "run": "R3",
-          "sev": "warn",
-          "text": "Which foods tend to trigger the most nausea on Ozempic?"
-        },
-        {
-          "pid": "P0544",
-          "run": "R3",
-          "sev": "good",
-          "text": "Does alcohol hit harder on Ozempic?"
-        }
-      ],
-      "impact_reach": {
-        "point": 1220.0,
-        "lo": 810.0,
-        "hi": 1836.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000869,
-      "where": [
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 44,
-          "with_us": 44,
-          "with_comp": 2
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 29,
-          "with_us": 29,
-          "with_comp": 2
-        },
-        {
-          "domain": "webmd.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 29,
-          "with_us": 29,
-          "with_comp": 1
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 28,
-          "with_us": 28,
-          "with_comp": 1
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 23,
-          "with_us": 23,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 32,
-      "priority": 3
-    },
-    {
-      "group_id": "Price, coverage & supply × Cost & price",
-      "group": {
-        "topic": "Price, coverage & supply",
-        "subtopic": "Cost & price",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 70316.0,
-        "lo": 47000.0,
-        "hi": 105200.0,
-        "demand_share": 0.0559,
-        "gap": 0.75,
-        "gap_bad": 0.2917,
-        "n_prompts": 48,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.8,
-          "R3": 0.9,
-          "R7": 0.5333
-        },
-        "n_by_run": {
-          "R1": 3,
-          "R2": 20,
-          "R3": 10,
-          "R7": 15
-        },
-        "dominant_run": "R2",
-        "lever": 0.0203,
-        "institutional_share": 0.1086
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 15
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 8
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0108",
-          "run": "R1",
-          "sev": "bad",
-          "text": "how much of the long-term safety data on the newer diabetes medications is actually solid versus just short trials?"
-        },
-        {
-          "pid": "P0176",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 30M, diagnosed with T2D (hba1c ~12) 4 years ago. Metformin brought it under control quickly, but I stopped monitoring twice and it crept back to 1"
-        }
-      ],
-      "impact_reach": {
-        "point": 52737.0,
-        "lo": 35250.0,
-        "hi": 78900.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000849,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 35,
-          "with_us": 19,
-          "with_comp": 23
-        },
-        {
-          "domain": "myobesityteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 4,
-          "with_us": 3,
-          "with_comp": 4
-        },
-        {
-          "domain": "diaglobal.org",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "diabetes-forum.de",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "diabetes.org.uk",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 0,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 33,
-      "priority": 3
-    },
-    {
-      "group_id": "Lifestyle & daily living × STARTING & SWITCHING",
-      "group": {
-        "topic": "Lifestyle & daily living",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "earned",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4065.0,
-        "lo": 2700.0,
-        "hi": 6120.0,
-        "demand_share": 0.0032,
-        "gap": 0.25,
-        "gap_bad": 0.0,
-        "n_prompts": 20,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 0.2105
-        },
-        "n_by_run": {
-          "R1": 1,
-          "R3": 19
-        },
-        "dominant_run": "R3",
-        "lever": 0.9137,
-        "institutional_share": 0.0615
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 15
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "FREE TERRITORY",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0214",
-          "run": "R1",
-          "sev": "warn",
-          "text": "I'm 5'5, 195 lbs and really want to hit my first goal of 155lbs for summer. I'm in a 1000 calorie deficit and work out at the gym 3 times a week; my w"
-        },
-        {
-          "pid": "P0537",
-          "run": "R3",
-          "sev": "good",
-          "text": "Is a glass of wine with dinner okay while taking Ozempic?"
-        }
-      ],
-      "impact_reach": {
-        "point": 1016.0,
-        "lo": 675.0,
-        "hi": 1530.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000738,
-      "where": [
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 76,
-          "with_us": 71,
-          "with_comp": 3
-        },
-        {
-          "domain": "webmd.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 60,
-          "with_us": 59,
-          "with_comp": 0
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 53,
-          "with_us": 53,
-          "with_comp": 5
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 44,
-          "with_us": 44,
-          "with_comp": 1
-        },
-        {
-          "domain": "forhers.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 39,
-          "with_us": 38,
-          "with_comp": 4
-        }
-      ],
-      "no_source_data": false,
-      "rank": 34,
+      "rank": 20,
       "priority": 3
     },
     {
@@ -4006,215 +2805,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 35,
-      "priority": 3
-    },
-    {
-      "group_id": "Price, coverage & supply × Cost & price",
-      "group": {
-        "topic": "Price, coverage & supply",
-        "subtopic": "Cost & price",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 70316.0,
-        "lo": 47000.0,
-        "hi": 105200.0,
-        "demand_share": 0.0559,
-        "gap": 0.75,
-        "gap_bad": 0.2917,
-        "n_prompts": 48,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.8,
-          "R3": 0.9,
-          "R7": 0.5333
-        },
-        "n_by_run": {
-          "R1": 3,
-          "R2": 20,
-          "R3": 10,
-          "R7": 15
-        },
-        "dominant_run": "R2",
-        "lever": 0.0171,
-        "institutional_share": 0.1086
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 15
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 8
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0108",
-          "run": "R1",
-          "sev": "bad",
-          "text": "how much of the long-term safety data on the newer diabetes medications is actually solid versus just short trials?"
-        },
-        {
-          "pid": "P0176",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 30M, diagnosed with T2D (hba1c ~12) 4 years ago. Metformin brought it under control quickly, but I stopped monitoring twice and it crept back to 1"
-        }
-      ],
-      "impact_reach": {
-        "point": 52737.0,
-        "lo": 35250.0,
-        "hi": 78900.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000717,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 38,
-          "with_us": 12,
-          "with_comp": 38
-        }
-      ],
-      "no_source_data": false,
-      "rank": 36,
-      "priority": 3
-    },
-    {
-      "group_id": "Dosing & administration × Titration & dose schedule",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Titration & dose schedule",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 23610.0,
-        "lo": 13000.0,
-        "hi": 42880.0,
-        "demand_share": 0.0188,
-        "gap": 0.7207,
-        "gap_bad": 0.3964,
-        "n_prompts": 111,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.7778,
-          "R3": 0.5676,
-          "R4": 1.0,
-          "R5": 0.0,
-          "R6": 1.0,
-          "R7": 0.5,
-          "R8": 1.0
-        },
-        "n_by_run": {
-          "R1": 18,
-          "R2": 9,
-          "R3": 37,
-          "R4": 10,
-          "R5": 1,
-          "R6": 10,
-          "R7": 24,
-          "R8": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.0512,
-        "institutional_share": 0.1719
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 16
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 16
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0024",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I get severe side effects on metformin even at half the dose. Can type 2 be managed with diet alone instead?"
-        },
-        {
-          "pid": "P0048",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 55 and my fasting glucose is creeping into the prediabetic range. What lifestyle changes actually move the needle?"
-        }
-      ],
-      "impact_reach": {
-        "point": 17016.0,
-        "lo": 9369.0,
-        "hi": 30905.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000692,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 105,
-          "with_us": 104,
-          "with_comp": 31
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 49,
-          "with_us": 37,
-          "with_comp": 29
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 28,
-          "with_us": 5,
-          "with_comp": 28
-        },
-        {
-          "domain": "novocare.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 16,
-          "with_us": 9,
-          "with_comp": 16
-        },
-        {
-          "domain": "novo-pi.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 13,
-          "with_us": 10,
-          "with_comp": 6
-        }
-      ],
-      "no_source_data": false,
-      "rank": 37,
+      "rank": 21,
       "priority": 3
     },
     {
@@ -4328,7 +2919,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 38,
+      "rank": 22,
       "priority": 3
     },
     {
@@ -4446,7 +3037,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 39,
+      "rank": 23,
       "priority": 3
     },
     {
@@ -4532,7 +3123,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 40,
+      "rank": 24,
       "priority": 3
     },
     {
@@ -4652,127 +3243,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 41,
-      "priority": 3
-    },
-    {
-      "group_id": "Serious risks & contraindications × Pregnancy & lactation",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Pregnancy & lactation",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 2083.0,
-        "lo": 1400.0,
-        "hi": 3100.0,
-        "demand_share": 0.0017,
-        "gap": 0.4419,
-        "gap_bad": 0.3023,
-        "n_prompts": 43,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.0,
-          "R4": 0.5714,
-          "R5": 0.1538,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 8,
-          "R2": 1,
-          "R3": 1,
-          "R4": 14,
-          "R5": 13,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.7125,
-        "institutional_share": 0.2489
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 11
-        },
-        {
-          "code": "WE ARE ABSENT",
-          "n": 7
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0022",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm pregnant with type 2 and can't see my doctor for weeks. What can I safely do to manage my sugar until then?"
-        },
-        {
-          "pid": "P0112",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my daughter's been at a strict deficit and in the gym for months and isnt losing anything, shes on birth control and antidepressants. could those be w"
-        }
-      ],
-      "impact_reach": {
-        "point": 920.0,
-        "lo": 619.0,
-        "hi": 1370.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000521,
-      "where": [
-        {
-          "domain": "clevelandclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 40,
-          "with_us": 16,
-          "with_comp": 16
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 36,
-          "with_us": 22,
-          "with_comp": 18
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 27,
-          "with_us": 17,
-          "with_comp": 15
-        },
-        {
-          "domain": "webmd.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 26,
-          "with_us": 9,
-          "with_comp": 2
-        },
-        {
-          "domain": "diabetes.org",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 24,
-          "with_us": 0,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 42,
+      "rank": 25,
       "priority": 3
     },
     {
@@ -4878,8 +3349,8 @@
         }
       ],
       "no_source_data": false,
-      "rank": 43,
-      "priority": 3
+      "rank": 26,
+      "priority": 2
     },
     {
       "group_id": "Reputation & narratives × Forever drug & regain",
@@ -4992,7 +3463,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 44,
+      "rank": 27,
       "priority": 2
     },
     {
@@ -5084,7 +3555,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 45,
+      "rank": 28,
       "priority": 2
     },
     {
@@ -5202,7 +3673,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 46,
+      "rank": 29,
       "priority": 2
     },
     {
@@ -5318,7 +3789,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 47,
+      "rank": 30,
       "priority": 2
     },
     {
@@ -5432,119 +3903,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 48,
-      "priority": 2
-    },
-    {
-      "group_id": "Side effects & tolerability × Fatigue & energy",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "Fatigue & energy",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 801.0,
-        "lo": 600.0,
-        "hi": 1070.0,
-        "demand_share": 0.0006,
-        "gap": 0.8,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R3": 0.6667
-        },
-        "n_by_run": {
-          "R2": 4,
-          "R3": 6
-        },
-        "dominant_run": "R3",
-        "lever": 0.8013,
-        "institutional_share": 0.0873
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 4
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0427",
-          "run": "R2",
-          "sev": "warn",
-          "text": "I have narcolepsy and take stimulants. On Zepbound I lost 15-18 lbs but had severe nausea, vomiting and extreme fatigue that leaves me unable to move "
-        },
-        {
-          "pid": "P0429",
-          "run": "R2",
-          "sev": "warn",
-          "text": "Is there anyone out there that hasn’t experienced this symptom? Or that got over it with prolonged use? Or should I just expect to be super tired for "
-        }
-      ],
-      "impact_reach": {
-        "point": 641.0,
-        "lo": 480.0,
-        "hi": 856.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000408,
-      "where": [
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 31,
-          "with_us": 24,
-          "with_comp": 11
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 27,
-          "with_us": 18,
-          "with_comp": 14
-        },
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 24,
-          "with_us": 13,
-          "with_comp": 14
-        },
-        {
-          "domain": "ubiehealth.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 17,
-          "with_us": 10,
-          "with_comp": 9
-        },
-        {
-          "domain": "doctronic.ai",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 14,
-          "with_us": 10,
-          "with_comp": 5
-        }
-      ],
-      "no_source_data": false,
-      "rank": 49,
+      "rank": 31,
       "priority": 2
     },
     {
@@ -5650,7 +4009,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 50,
+      "rank": 32,
       "priority": 2
     },
     {
@@ -5764,229 +4123,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 51,
-      "priority": 2
-    },
-    {
-      "group_id": "Basics & mechanism × STARTING & SWITCHING",
-      "group": {
-        "topic": "Basics & mechanism",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "ugc",
-      "what": "Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 89149.0,
-        "lo": 55000.0,
-        "hi": 144500.0,
-        "demand_share": 0.0708,
-        "gap": 0.6923,
-        "gap_bad": 0.3846,
-        "n_prompts": 39,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R7": 0.3889,
-          "R8": 0.9286
-        },
-        "n_by_run": {
-          "R1": 7,
-          "R7": 18,
-          "R8": 14
-        },
-        "dominant_run": "R7",
-        "lever": 0.0069,
-        "institutional_share": 0.2345
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 11
-        },
-        {
-          "code": "FAMILY CONFUSION",
-          "n": 10
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0184",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the best medicine for a new diabetic with fbs 9.0 & rbs 13?"
-        },
-        {
-          "pid": "P0195",
-          "run": "R1",
-          "sev": "bad",
-          "text": "What is the most promising treatment for diabetes that will come on the market in the near future?"
-        }
-      ],
-      "impact_reach": {
-        "point": 61719.0,
-        "lo": 38077.0,
-        "hi": 100038.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000338,
-      "where": [
-        {
-          "domain": "diabetesteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 2
-        },
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 1,
-          "with_comp": 1
-        },
-        {
-          "domain": "quora.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 52,
-      "priority": 2
-    },
-    {
-      "group_id": "Dosing & administration × Titration & dose schedule",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Titration & dose schedule",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 23610.0,
-        "lo": 13000.0,
-        "hi": 42880.0,
-        "demand_share": 0.0188,
-        "gap": 0.7207,
-        "gap_bad": 0.3964,
-        "n_prompts": 111,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.7778,
-          "R3": 0.5676,
-          "R4": 1.0,
-          "R5": 0.0,
-          "R6": 1.0,
-          "R7": 0.5,
-          "R8": 1.0
-        },
-        "n_by_run": {
-          "R1": 18,
-          "R2": 9,
-          "R3": 37,
-          "R4": 10,
-          "R5": 1,
-          "R6": 10,
-          "R7": 24,
-          "R8": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.0234,
-        "institutional_share": 0.1719
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 16
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 16
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0024",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I get severe side effects on metformin even at half the dose. Can type 2 be managed with diet alone instead?"
-        },
-        {
-          "pid": "P0048",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 55 and my fasting glucose is creeping into the prediabetic range. What lifestyle changes actually move the needle?"
-        }
-      ],
-      "impact_reach": {
-        "point": 17016.0,
-        "lo": 9369.0,
-        "hi": 30905.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000316,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 69,
-          "with_us": 56,
-          "with_comp": 22
-        },
-        {
-          "domain": "myobesityteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 18,
-          "with_us": 18,
-          "with_comp": 1
-        },
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 9,
-          "with_us": 3,
-          "with_comp": 2
-        },
-        {
-          "domain": "quora.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 5,
-          "with_us": 3,
-          "with_comp": 2
-        },
-        {
-          "domain": "diabetesteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 3,
-          "with_us": 2,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 53,
+      "rank": 33,
       "priority": 2
     },
     {
@@ -6102,95 +4239,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 54,
-      "priority": 2
-    },
-    {
-      "group_id": "Reputation & narratives × Body-change memes",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Body-change memes",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 257805.0,
-        "lo": 216000.0,
-        "hi": 307700.0,
-        "demand_share": 0.2048,
-        "gap": 0.0625,
-        "gap_bad": 0.0625,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R7": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R7": 10,
-          "R9": 6
-        },
-        "dominant_run": "R7",
-        "lever": 0.0198,
-        "institutional_share": 0.1114
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 10
-        },
-        {
-          "code": "MYTH DEFENDED",
-          "n": 5
-        },
-        {
-          "code": "AI AMPLIFIES A HARMFUL MYTH",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1140",
-          "run": "R9",
-          "sev": "bad",
-          "text": "is it true that ozempic gives you a gaunt, saggy face and makes your butt disappear?"
-        },
-        {
-          "pid": "P0881",
-          "run": "R7",
-          "sev": "good",
-          "text": "What is “Ozempic butt,” and is it real?"
-        }
-      ],
-      "impact_reach": {
-        "point": 16113.0,
-        "lo": 13500.0,
-        "hi": 19231.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000253,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 6,
-          "with_us": 6,
-          "with_comp": 2
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 55,
+      "rank": 34,
       "priority": 2
     },
     {
@@ -6306,7 +4355,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 56,
+      "rank": 35,
       "priority": 2
     },
     {
@@ -6392,7 +4441,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 57,
+      "rank": 36,
       "priority": 2
     },
     {
@@ -6496,7 +4545,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 58,
+      "rank": 37,
       "priority": 2
     },
     {
@@ -6584,7 +4633,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 59,
+      "rank": 38,
       "priority": 2
     },
     {
@@ -6700,7 +4749,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 60,
+      "rank": 39,
       "priority": 2
     },
     {
@@ -6790,625 +4839,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 61,
-      "priority": 2
-    },
-    {
-      "group_id": "Side effects & tolerability × STARTING & SWITCHING",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "earned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 365.0,
-        "lo": 350.0,
-        "hi": 380.0,
-        "demand_share": 0.0003,
-        "gap": 0.75,
-        "gap_bad": 0.3125,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R2": 0.9167,
-          "R7": 0.3333,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 12,
-          "R7": 3,
-          "R9": 1
-        },
-        "dominant_run": "R2",
-        "lever": 0.7815,
-        "institutional_share": 0.1246
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 5
-        },
-        {
-          "code": "WE LOSE THIS DUEL",
-          "n": 4
-        },
-        {
-          "code": "CONTESTED / SPLIT",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0321",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Which is easier on the stomach, Ozempic or Mounjaro?"
-        },
-        {
-          "pid": "P0336",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Between Ozempic and Mounjaro, which is gentler on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 274.0,
-        "lo": 262.0,
-        "hi": 285.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.00017,
-      "where": [
-        {
-          "domain": "drugs.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 57,
-          "with_us": 41,
-          "with_comp": 54
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 43,
-          "with_us": 30,
-          "with_comp": 41
-        },
-        {
-          "domain": "healthline.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 33,
-          "with_us": 22,
-          "with_comp": 30
-        },
-        {
-          "domain": "singlecare.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 26,
-          "with_us": 16,
-          "with_comp": 26
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 24,
-          "with_us": 14,
-          "with_comp": 23
-        }
-      ],
-      "no_source_data": false,
-      "rank": 62,
-      "priority": 2
-    },
-    {
-      "group_id": "Reputation & narratives × Other narratives",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Other narratives",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Monitor the narrative for drift next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 31005.0,
-        "lo": 31000.0,
-        "hi": 31010.0,
-        "demand_share": 0.0246,
-        "gap": 0.3077,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 1.0,
-          "R7": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R3": 2,
-          "R7": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.0207,
-        "institutional_share": 0.1762
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "REACH OK",
-          "n": 3
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0011",
-          "run": "R1",
-          "sev": "bad",
-          "text": "Is the whole diabetes-drug industry overblown — could most people manage with diet alone?"
-        },
-        {
-          "pid": "P0109",
-          "run": "R1",
-          "sev": "warn",
-          "text": "honestly is all this hype around the weight loss shots real or is it just marketing?"
-        }
-      ],
-      "impact_reach": {
-        "point": 9540.0,
-        "lo": 9538.0,
-        "hi": 9542.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000157,
-      "where": [
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 6,
-          "with_us": 6,
-          "with_comp": 3
-        },
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 4,
-          "with_us": 4,
-          "with_comp": 1
-        },
-        {
-          "domain": "instagram.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        },
-        {
-          "domain": "tiktok.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 63,
-      "priority": 2
-    },
-    {
-      "group_id": "Indications & eligibility × Cosmetic & small-weight",
-      "group": {
-        "topic": "Indications & eligibility",
-        "subtopic": "Cosmetic & small-weight",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 7305.0,
-        "lo": 7300.0,
-        "hi": 7310.0,
-        "demand_share": 0.0058,
-        "gap": 0.5,
-        "gap_bad": 0.4,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R3": 1.0,
-          "R5": 0.4444
-        },
-        "n_by_run": {
-          "R3": 1,
-          "R5": 9
-        },
-        "dominant_run": "R5",
-        "lever": 0.0541,
-        "institutional_share": 0.0541
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 5
-        },
-        {
-          "code": "COMPETITOR OFF-LABEL LIFT",
-          "n": 4
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1322",
-          "run": "R5",
-          "sev": "bad",
-          "text": "im at a normalish weight but want to get really lean for summer — can i get mounjaro for that?"
-        },
-        {
-          "pid": "P1323",
-          "run": "R5",
-          "sev": "bad",
-          "text": "whats the strongest shot to drop the last 10-15 vanity pounds? not diabetic"
-        }
-      ],
-      "impact_reach": {
-        "point": 3652.0,
-        "lo": 3650.0,
-        "hi": 3655.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000157,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 64,
-      "priority": 2
-    },
-    {
-      "group_id": "Side effects & tolerability × GI & nausea",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "GI & nausea",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 9872.0,
-        "lo": 6300.0,
-        "hi": 15470.0,
-        "demand_share": 0.0078,
-        "gap": 0.6939,
-        "gap_bad": 0.1633,
-        "n_prompts": 49,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.4583,
-          "R7": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R2": 21,
-          "R3": 24,
-          "R7": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.0269,
-        "institutional_share": 0.0814
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 14
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 13
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 11
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0204",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I recently started taking Metformin and on day one I've had severe stomach pains and diarrhea. This is my second time trying and the first month on it"
-        },
-        {
-          "pid": "P0288",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic gives me nausea, thinking of switching to Mounjaro — is it easier on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 6850.0,
-        "lo": 4371.0,
-        "hi": 10734.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000146,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 58,
-          "with_us": 30,
-          "with_comp": 38
-        },
-        {
-          "domain": "patient.info",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 5,
-          "with_us": 2,
-          "with_comp": 5
-        },
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 2
-        },
-        {
-          "domain": "forumsforums.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        },
-        {
-          "domain": "myobesityteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 65,
-      "priority": 2
-    },
-    {
-      "group_id": "Reputation & narratives × Other narratives",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Other narratives",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Monitor the narrative for drift next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 31005.0,
-        "lo": 31000.0,
-        "hi": 31010.0,
-        "demand_share": 0.0246,
-        "gap": 0.3077,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 1.0,
-          "R7": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R3": 2,
-          "R7": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.019,
-        "institutional_share": 0.1762
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "REACH OK",
-          "n": 3
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0011",
-          "run": "R1",
-          "sev": "bad",
-          "text": "Is the whole diabetes-drug industry overblown — could most people manage with diet alone?"
-        },
-        {
-          "pid": "P0109",
-          "run": "R1",
-          "sev": "warn",
-          "text": "honestly is all this hype around the weight loss shots real or is it just marketing?"
-        }
-      ],
-      "impact_reach": {
-        "point": 9540.0,
-        "lo": 9538.0,
-        "hi": 9542.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000144,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 5,
-          "with_us": 5,
-          "with_comp": 0
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 3
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 2,
-          "with_us": 1,
-          "with_comp": 1
-        },
-        {
-          "domain": "novonordisk.ca",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 66,
-      "priority": 2
-    },
-    {
-      "group_id": "Dosing & administration × Titration & dose schedule",
-      "group": {
-        "topic": "Dosing & administration",
-        "subtopic": "Titration & dose schedule",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Maintain — keep the supportive sources live.",
-      "who": "Digital",
-      "speed": "cycle",
-      "why": {
-        "demand": 23610.0,
-        "lo": 13000.0,
-        "hi": 42880.0,
-        "demand_share": 0.0188,
-        "gap": 0.7207,
-        "gap_bad": 0.3964,
-        "n_prompts": 111,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.7778,
-          "R3": 0.5676,
-          "R4": 1.0,
-          "R5": 0.0,
-          "R6": 1.0,
-          "R7": 0.5,
-          "R8": 1.0
-        },
-        "n_by_run": {
-          "R1": 18,
-          "R2": 9,
-          "R3": 37,
-          "R4": 10,
-          "R5": 1,
-          "R6": 10,
-          "R7": 24,
-          "R8": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.0106,
-        "institutional_share": 0.1719
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 16
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 16
-        },
-        {
-          "code": "LOW REACH ON HIGH DEMAND",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0024",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I get severe side effects on metformin even at half the dose. Can type 2 be managed with diet alone instead?"
-        },
-        {
-          "pid": "P0048",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm 55 and my fasting glucose is creeping into the prediabetic range. What lifestyle changes actually move the needle?"
-        }
-      ],
-      "impact_reach": {
-        "point": 17016.0,
-        "lo": 9369.0,
-        "hi": 30905.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000144,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 50,
-          "with_us": 6,
-          "with_comp": 50
-        }
-      ],
-      "no_source_data": false,
-      "rank": 67,
+      "rank": 40,
       "priority": 2
     },
     {
@@ -7516,237 +4947,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 68,
-      "priority": 2
-    },
-    {
-      "group_id": "Serious risks & contraindications × Pancreatitis",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Pancreatitis",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 1196.0,
-        "lo": 1000.0,
-        "hi": 1430.0,
-        "demand_share": 0.001,
-        "gap": 0.24,
-        "gap_bad": 0.04,
-        "n_prompts": 25,
-        "gap_by_run": {
-          "R4": 0.5455,
-          "R5": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R4": 11,
-          "R5": 8,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.6216,
-        "institutional_share": 0.2222
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 8
-        },
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 5
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1294",
-          "run": "R4",
-          "sev": "bad",
-          "text": "My 76-year-old father is on Ozempic and keeps complaining of intense stomach pain that goes to his back. Is that just a side effect or something we sh"
-        },
-        {
-          "pid": "P1075",
-          "run": "R9",
-          "sev": "good",
-          "text": "the thing about how ozempic destroys your pancreas is basically proven now, right? my sister sent me like three articles about it."
-        }
-      ],
-      "impact_reach": {
-        "point": 287.0,
-        "lo": 240.0,
-        "hi": 343.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000142,
-      "where": [
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 27,
-          "with_us": 27,
-          "with_comp": 6
-        },
-        {
-          "domain": "mission-cure.org",
-          "category": "advocacy",
-          "owner_subtype": "earned",
-          "citations": 24,
-          "with_us": 24,
-          "with_comp": 3
-        },
-        {
-          "domain": "doctronic.ai",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 23,
-          "with_us": 23,
-          "with_comp": 3
-        },
-        {
-          "domain": "ubiehealth.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 20,
-          "with_us": 20,
-          "with_comp": 2
-        },
-        {
-          "domain": "dietitianlive.com",
-          "category": "telehealth",
-          "owner_subtype": "commerce",
-          "citations": 19,
-          "with_us": 19,
-          "with_comp": 2
-        }
-      ],
-      "no_source_data": false,
-      "rank": 69,
-      "priority": 2
-    },
-    {
-      "group_id": "Side effects & tolerability × GI & nausea",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "GI & nausea",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 9872.0,
-        "lo": 6300.0,
-        "hi": 15470.0,
-        "demand_share": 0.0078,
-        "gap": 0.6939,
-        "gap_bad": 0.1633,
-        "n_prompts": 49,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.4583,
-          "R7": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R2": 21,
-          "R3": 24,
-          "R7": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.0248,
-        "institutional_share": 0.0814
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 14
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 13
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 11
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0204",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I recently started taking Metformin and on day one I've had severe stomach pains and diarrhea. This is my second time trying and the first month on it"
-        },
-        {
-          "pid": "P0288",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic gives me nausea, thinking of switching to Mounjaro — is it easier on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 6850.0,
-        "lo": 4371.0,
-        "hi": 10734.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.000135,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 44,
-          "with_us": 44,
-          "with_comp": 8
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 9,
-          "with_us": 2,
-          "with_comp": 9
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 5,
-          "with_us": 4,
-          "with_comp": 3
-        },
-        {
-          "domain": "novonordiskmedical.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 1,
-          "with_comp": 3
-        },
-        {
-          "domain": "novocare.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 70,
+      "rank": 41,
       "priority": 2
     },
     {
@@ -7862,87 +5063,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 71,
-      "priority": 2
-    },
-    {
-      "group_id": "Reputation & narratives × Body-change memes",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Body-change memes",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Protect the position.",
-      "who": "Digital",
-      "speed": "days",
-      "why": {
-        "demand": 257805.0,
-        "lo": 216000.0,
-        "hi": 307700.0,
-        "demand_share": 0.2048,
-        "gap": 0.0625,
-        "gap_bad": 0.0625,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R7": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R7": 10,
-          "R9": 6
-        },
-        "dominant_run": "R7",
-        "lever": 0.0074,
-        "institutional_share": 0.1114
-      },
-      "cause": [
-        {
-          "code": "REACH OK",
-          "n": 10
-        },
-        {
-          "code": "MYTH DEFENDED",
-          "n": 5
-        },
-        {
-          "code": "AI AMPLIFIES A HARMFUL MYTH",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1140",
-          "run": "R9",
-          "sev": "bad",
-          "text": "is it true that ozempic gives you a gaunt, saggy face and makes your butt disappear?"
-        },
-        {
-          "pid": "P0881",
-          "run": "R7",
-          "sev": "good",
-          "text": "What is “Ozempic butt,” and is it real?"
-        }
-      ],
-      "impact_reach": {
-        "point": 16113.0,
-        "lo": 13500.0,
-        "hi": 19231.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 9.5e-05,
-      "where": [
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 2
-        }
-      ],
-      "no_source_data": false,
-      "rank": 72,
+      "rank": 42,
       "priority": 2
     },
     {
@@ -8024,7 +5145,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 73,
+      "rank": 43,
       "priority": 2
     },
     {
@@ -8108,7 +5229,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 74,
+      "rank": 44,
       "priority": 2
     },
     {
@@ -8192,7 +5313,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 75,
+      "rank": 45,
       "priority": 2
     },
     {
@@ -8310,7 +5431,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 76,
+      "rank": 46,
       "priority": 2
     },
     {
@@ -8428,7 +5549,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 77,
+      "rank": 47,
       "priority": 2
     },
     {
@@ -8544,7 +5665,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 78,
+      "rank": 48,
       "priority": 2
     },
     {
@@ -8660,7 +5781,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 79,
+      "rank": 49,
       "priority": 2
     },
     {
@@ -8750,91 +5871,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 80,
-      "priority": 2
-    },
-    {
-      "group_id": "Side effects & tolerability × GI & nausea",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "GI & nausea",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 9872.0,
-        "lo": 6300.0,
-        "hi": 15470.0,
-        "demand_share": 0.0078,
-        "gap": 0.6939,
-        "gap_bad": 0.1633,
-        "n_prompts": 49,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.4583,
-          "R7": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R2": 21,
-          "R3": 24,
-          "R7": 2
-        },
-        "dominant_run": "R3",
-        "lever": 0.0088,
-        "institutional_share": 0.0814
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 14
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 13
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 11
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0204",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I recently started taking Metformin and on day one I've had severe stomach pains and diarrhea. This is my second time trying and the first month on it"
-        },
-        {
-          "pid": "P0288",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Ozempic gives me nausea, thinking of switching to Mounjaro — is it easier on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 6850.0,
-        "lo": 4371.0,
-        "hi": 10734.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 4.8e-05,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 22,
-          "with_us": 7,
-          "with_comp": 22
-        }
-      ],
-      "no_source_data": false,
-      "rank": 81,
+      "rank": 50,
       "priority": 2
     },
     {
@@ -8930,8 +5967,8 @@
         }
       ],
       "no_source_data": false,
-      "rank": 82,
-      "priority": 2
+      "rank": 51,
+      "priority": 1
     },
     {
       "group_id": "Indications & eligibility × PCOS & off-label",
@@ -9036,8 +6073,8 @@
         }
       ],
       "no_source_data": false,
-      "rank": 83,
-      "priority": 2
+      "rank": 52,
+      "priority": 1
     },
     {
       "group_id": "Dosing & administration × Timing, food & storage",
@@ -9120,128 +6157,8 @@
         }
       ],
       "no_source_data": false,
-      "rank": 84,
-      "priority": 2
-    },
-    {
-      "group_id": "Serious risks & contraindications × Thyroid / MTC",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Thyroid / MTC",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4600.0,
-        "lo": 4000.0,
-        "hi": 5290.0,
-        "demand_share": 0.0037,
-        "gap": 0.4948,
-        "gap_bad": 0.134,
-        "n_prompts": 97,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.625,
-          "R3": 0.6667,
-          "R4": 0.4815,
-          "R5": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R1": 17,
-          "R2": 24,
-          "R3": 3,
-          "R4": 27,
-          "R5": 20,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.0163,
-        "institutional_share": 0.2964
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 20
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 14
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0053",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm in my 40s, obese, pre-diabetic with insulin resistance, and every medication or supplement I try triggers tachycardia because of my POTS. Is there"
-        },
-        {
-          "pid": "P0055",
-          "run": "R1",
-          "sev": "bad",
-          "text": "prediabetic and insulin resistant but i cant take most meds or supplements cause they spike my heart rate (POTS). is there anything left for me to try"
-        }
-      ],
-      "impact_reach": {
-        "point": 2276.0,
-        "lo": 1979.0,
-        "hi": 2618.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 3e-05,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 26,
-          "with_us": 26,
-          "with_comp": 9
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 14,
-          "with_us": 10,
-          "with_comp": 11
-        },
-        {
-          "domain": "novo-pi.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 5,
-          "with_us": 4,
-          "with_comp": 5
-        },
-        {
-          "domain": "novocare.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 0
-        },
-        {
-          "domain": "novonordiskmedical.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 0,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 85,
-      "priority": 2
+      "rank": 53,
+      "priority": 1
     },
     {
       "group_id": "Efficacy & results × LIVING ON THE DRUG",
@@ -9320,297 +6237,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 86,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Thyroid / MTC",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Thyroid / MTC",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4600.0,
-        "lo": 4000.0,
-        "hi": 5290.0,
-        "demand_share": 0.0037,
-        "gap": 0.4948,
-        "gap_bad": 0.134,
-        "n_prompts": 97,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.625,
-          "R3": 0.6667,
-          "R4": 0.4815,
-          "R5": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R1": 17,
-          "R2": 24,
-          "R3": 3,
-          "R4": 27,
-          "R5": 20,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.0146,
-        "institutional_share": 0.2964
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 20
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 14
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0053",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm in my 40s, obese, pre-diabetic with insulin resistance, and every medication or supplement I try triggers tachycardia because of my POTS. Is there"
-        },
-        {
-          "pid": "P0055",
-          "run": "R1",
-          "sev": "bad",
-          "text": "prediabetic and insulin resistant but i cant take most meds or supplements cause they spike my heart rate (POTS). is there anything left for me to try"
-        }
-      ],
-      "impact_reach": {
-        "point": 2276.0,
-        "lo": 1979.0,
-        "hi": 2618.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 2.6e-05,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 23,
-          "with_us": 14,
-          "with_comp": 14
-        },
-        {
-          "domain": "diabetescarecommunity.ca",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 11,
-          "with_us": 11,
-          "with_comp": 10
-        },
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 6,
-          "with_us": 2,
-          "with_comp": 1
-        },
-        {
-          "domain": "diabetesteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "myfitnesspal.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 87,
-      "priority": 1
-    },
-    {
-      "group_id": "Side effects & tolerability × Fatigue & energy",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "Fatigue & energy",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 801.0,
-        "lo": 600.0,
-        "hi": 1070.0,
-        "demand_share": 0.0006,
-        "gap": 0.8,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R3": 0.6667
-        },
-        "n_by_run": {
-          "R2": 4,
-          "R3": 6
-        },
-        "dominant_run": "R3",
-        "lever": 0.0437,
-        "institutional_share": 0.0873
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 4
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0427",
-          "run": "R2",
-          "sev": "warn",
-          "text": "I have narcolepsy and take stimulants. On Zepbound I lost 15-18 lbs but had severe nausea, vomiting and extreme fatigue that leaves me unable to move "
-        },
-        {
-          "pid": "P0429",
-          "run": "R2",
-          "sev": "warn",
-          "text": "Is there anyone out there that hasn’t experienced this symptom? Or that got over it with prolonged use? Or should I just expect to be super tired for "
-        }
-      ],
-      "impact_reach": {
-        "point": 641.0,
-        "lo": 480.0,
-        "hi": 856.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 2.2e-05,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 15,
-          "with_us": 9,
-          "with_comp": 6
-        },
-        {
-          "domain": "forumfunctionalhealth.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 3,
-          "with_us": 3,
-          "with_comp": 0
-        },
-        {
-          "domain": "mymsteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 88,
-      "priority": 1
-    },
-    {
-      "group_id": "Lifestyle & daily living × LIVING ON THE DRUG",
-      "group": {
-        "topic": "Lifestyle & daily living",
-        "subtopic": "",
-        "zone": "LIVING ON THE DRUG"
-      },
-      "owner": "ugc",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4065.0,
-        "lo": 2700.0,
-        "hi": 6120.0,
-        "demand_share": 0.0032,
-        "gap": 0.3,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R3": 0.3
-        },
-        "n_by_run": {
-          "R3": 10
-        },
-        "dominant_run": "R3",
-        "lever": 0.0214,
-        "institutional_share": 0.072
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 7
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0531",
-          "run": "R3",
-          "sev": "warn",
-          "text": "Which foods tend to trigger the most nausea on Ozempic?"
-        },
-        {
-          "pid": "P0544",
-          "run": "R3",
-          "sev": "good",
-          "text": "Does alcohol hit harder on Ozempic?"
-        }
-      ],
-      "impact_reach": {
-        "point": 1220.0,
-        "lo": 810.0,
-        "hi": 1836.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 2.1e-05,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 11,
-          "with_us": 11,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 89,
+      "rank": 54,
       "priority": 1
     },
     {
@@ -9722,7 +6349,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 90,
+      "rank": 55,
       "priority": 1
     },
     {
@@ -9828,7 +6455,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 91,
+      "rank": 56,
       "priority": 1
     },
     {
@@ -9914,7 +6541,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 92,
+      "rank": 57,
       "priority": 1
     },
     {
@@ -10032,91 +6659,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 93,
-      "priority": 1
-    },
-    {
-      "group_id": "Reputation & narratives × Other narratives",
-      "group": {
-        "topic": "Reputation & narratives",
-        "subtopic": "Other narratives",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Monitor the narrative for drift next cycle.",
-      "who": "Digital",
-      "speed": "cycle",
-      "why": {
-        "demand": 31005.0,
-        "lo": 31000.0,
-        "hi": 31010.0,
-        "demand_share": 0.0246,
-        "gap": 0.3077,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 1.0,
-          "R7": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 2,
-          "R3": 2,
-          "R7": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.0017,
-        "institutional_share": 0.1762
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "REACH OK",
-          "n": 3
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0011",
-          "run": "R1",
-          "sev": "bad",
-          "text": "Is the whole diabetes-drug industry overblown — could most people manage with diet alone?"
-        },
-        {
-          "pid": "P0109",
-          "run": "R1",
-          "sev": "warn",
-          "text": "honestly is all this hype around the weight loss shots real or is it just marketing?"
-        }
-      ],
-      "impact_reach": {
-        "point": 9540.0,
-        "lo": 9538.0,
-        "hi": 9542.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 1.3e-05,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 94,
+      "rank": 58,
       "priority": 1
     },
     {
@@ -10214,121 +6757,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 95,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Hypoglycemia",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Hypoglycemia",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "No action — keep this target in the monitoring set for the next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 173.0,
-        "lo": 100.0,
-        "hi": 300.0,
-        "demand_share": 0.0001,
-        "gap": 0.15,
-        "gap_bad": 0.05,
-        "n_prompts": 20,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R4": 0.1818,
-          "R5": 0.0
-        },
-        "n_by_run": {
-          "R1": 1,
-          "R4": 11,
-          "R5": 8
-        },
-        "dominant_run": "R4",
-        "lever": 0.6038,
-        "institutional_share": 0.3962
-      },
-      "cause": [
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 9
-        },
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 8
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0119",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my son's type 2 and keeps having really low blood sugars and dropping weight. what can we do about the constant lows?"
-        },
-        {
-          "pid": "P1177",
-          "run": "R4",
-          "sev": "good",
-          "text": "i'm on insulin and my doctor added ozempic — do i need to change my insulin dose?"
-        }
-      ],
-      "impact_reach": {
-        "point": 26.0,
-        "lo": 15.0,
-        "hi": 45.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 1.2e-05,
-      "where": [
-        {
-          "domain": "mayoclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 5,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "clevelandclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 4,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "diabetes.org",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 4,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "medicalnewstoday.com",
-          "category": "media",
-          "owner_subtype": "earned",
-          "citations": 4,
-          "with_us": 0,
-          "with_comp": 0
-        },
-        {
-          "domain": "healthgrades.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 3,
-          "with_us": 0,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 96,
+      "rank": 59,
       "priority": 1
     },
     {
@@ -10426,95 +6855,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 97,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Thyroid / MTC",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Thyroid / MTC",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: No action — legitimate competitor advantage is not a fix target.",
-      "who": "Digital",
-      "speed": "cycle",
-      "why": {
-        "demand": 4600.0,
-        "lo": 4000.0,
-        "hi": 5290.0,
-        "demand_share": 0.0037,
-        "gap": 0.4948,
-        "gap_bad": 0.134,
-        "n_prompts": 97,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 0.625,
-          "R3": 0.6667,
-          "R4": 0.4815,
-          "R5": 0.0,
-          "R9": 0.1667
-        },
-        "n_by_run": {
-          "R1": 17,
-          "R2": 24,
-          "R3": 3,
-          "R4": 27,
-          "R5": 20,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.0065,
-        "institutional_share": 0.2964
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 20
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 14
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 12
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0053",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm in my 40s, obese, pre-diabetic with insulin resistance, and every medication or supplement I try triggers tachycardia because of my POTS. Is there"
-        },
-        {
-          "pid": "P0055",
-          "run": "R1",
-          "sev": "bad",
-          "text": "prediabetic and insulin resistant but i cant take most meds or supplements cause they spike my heart rate (POTS). is there anything left for me to try"
-        }
-      ],
-      "impact_reach": {
-        "point": 2276.0,
-        "lo": 1979.0,
-        "hi": 2618.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 1.2e-05,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 19,
-          "with_us": 11,
-          "with_comp": 19
-        }
-      ],
-      "no_source_data": false,
-      "rank": 98,
+      "rank": 60,
       "priority": 1
     },
     {
@@ -10632,619 +6973,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 99,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Pregnancy & lactation",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Pregnancy & lactation",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 2083.0,
-        "lo": 1400.0,
-        "hi": 3100.0,
-        "demand_share": 0.0017,
-        "gap": 0.4419,
-        "gap_bad": 0.3023,
-        "n_prompts": 43,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.0,
-          "R4": 0.5714,
-          "R5": 0.1538,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 8,
-          "R2": 1,
-          "R3": 1,
-          "R4": 14,
-          "R5": 13,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.0148,
-        "institutional_share": 0.2489
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 11
-        },
-        {
-          "code": "WE ARE ABSENT",
-          "n": 7
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0022",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm pregnant with type 2 and can't see my doctor for weeks. What can I safely do to manage my sugar until then?"
-        },
-        {
-          "pid": "P0112",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my daughter's been at a strict deficit and in the gym for months and isnt losing anything, shes on birth control and antidepressants. could those be w"
-        }
-      ],
-      "impact_reach": {
-        "point": 920.0,
-        "lo": 619.0,
-        "hi": 1370.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 1.1e-05,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 9,
-          "with_us": 9,
-          "with_comp": 3
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 1
-        },
-        {
-          "domain": "novo-pi.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 1
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 100,
-      "priority": 1
-    },
-    {
-      "group_id": "Lifestyle & daily living × STARTING & SWITCHING",
-      "group": {
-        "topic": "Lifestyle & daily living",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "ugc",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4065.0,
-        "lo": 2700.0,
-        "hi": 6120.0,
-        "demand_share": 0.0032,
-        "gap": 0.25,
-        "gap_bad": 0.0,
-        "n_prompts": 20,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 0.2105
-        },
-        "n_by_run": {
-          "R1": 1,
-          "R3": 19
-        },
-        "dominant_run": "R3",
-        "lever": 0.0129,
-        "institutional_share": 0.0615
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 15
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "FREE TERRITORY",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0214",
-          "run": "R1",
-          "sev": "warn",
-          "text": "I'm 5'5, 195 lbs and really want to hit my first goal of 155lbs for summer. I'm in a 1000 calorie deficit and work out at the gym 3 times a week; my w"
-        },
-        {
-          "pid": "P0537",
-          "run": "R3",
-          "sev": "good",
-          "text": "Is a glass of wine with dinner okay while taking Ozempic?"
-        }
-      ],
-      "impact_reach": {
-        "point": 1016.0,
-        "lo": 675.0,
-        "hi": 1530.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 1e-05,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 12,
-          "with_us": 10,
-          "with_comp": 2
-        }
-      ],
-      "no_source_data": false,
-      "rank": 101,
-      "priority": 1
-    },
-    {
-      "group_id": "Side effects & tolerability × Fatigue & energy",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "Fatigue & energy",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 801.0,
-        "lo": 600.0,
-        "hi": 1070.0,
-        "demand_share": 0.0006,
-        "gap": 0.8,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R3": 0.6667
-        },
-        "n_by_run": {
-          "R2": 4,
-          "R3": 6
-        },
-        "dominant_run": "R3",
-        "lever": 0.0197,
-        "institutional_share": 0.0873
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 4
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0427",
-          "run": "R2",
-          "sev": "warn",
-          "text": "I have narcolepsy and take stimulants. On Zepbound I lost 15-18 lbs but had severe nausea, vomiting and extreme fatigue that leaves me unable to move "
-        },
-        {
-          "pid": "P0429",
-          "run": "R2",
-          "sev": "warn",
-          "text": "Is there anyone out there that hasn’t experienced this symptom? Or that got over it with prolonged use? Or should I just expect to be super tired for "
-        }
-      ],
-      "impact_reach": {
-        "point": 641.0,
-        "lo": 480.0,
-        "hi": 856.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 1e-05,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 9,
-          "with_us": 0,
-          "with_comp": 9
-        }
-      ],
-      "no_source_data": false,
-      "rank": 102,
-      "priority": 1
-    },
-    {
-      "group_id": "Lifestyle & daily living × LIVING ON THE DRUG",
-      "group": {
-        "topic": "Lifestyle & daily living",
-        "subtopic": "",
-        "zone": "LIVING ON THE DRUG"
-      },
-      "owner": "owned",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4065.0,
-        "lo": 2700.0,
-        "hi": 6120.0,
-        "demand_share": 0.0032,
-        "gap": 0.3,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R3": 0.3
-        },
-        "n_by_run": {
-          "R3": 10
-        },
-        "dominant_run": "R3",
-        "lever": 0.0097,
-        "institutional_share": 0.072
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 7
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0531",
-          "run": "R3",
-          "sev": "warn",
-          "text": "Which foods tend to trigger the most nausea on Ozempic?"
-        },
-        {
-          "pid": "P0544",
-          "run": "R3",
-          "sev": "good",
-          "text": "Does alcohol hit harder on Ozempic?"
-        }
-      ],
-      "impact_reach": {
-        "point": 1220.0,
-        "lo": 810.0,
-        "hi": 1836.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 9e-06,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 4,
-          "with_us": 4,
-          "with_comp": 0
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 103,
-      "priority": 1
-    },
-    {
-      "group_id": "Lifestyle & daily living × STARTING & SWITCHING",
-      "group": {
-        "topic": "Lifestyle & daily living",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "owned",
-      "what": "Maintain — keep the supportive sources live.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 4065.0,
-        "lo": 2700.0,
-        "hi": 6120.0,
-        "demand_share": 0.0032,
-        "gap": 0.25,
-        "gap_bad": 0.0,
-        "n_prompts": 20,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R3": 0.2105
-        },
-        "n_by_run": {
-          "R1": 1,
-          "R3": 19
-        },
-        "dominant_run": "R3",
-        "lever": 0.0108,
-        "institutional_share": 0.0615
-      },
-      "cause": [
-        {
-          "code": "PATIENT RETAINED",
-          "n": 15
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "FREE TERRITORY",
-          "n": 1
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0214",
-          "run": "R1",
-          "sev": "warn",
-          "text": "I'm 5'5, 195 lbs and really want to hit my first goal of 155lbs for summer. I'm in a 1000 calorie deficit and work out at the gym 3 times a week; my w"
-        },
-        {
-          "pid": "P0537",
-          "run": "R3",
-          "sev": "good",
-          "text": "Is a glass of wine with dinner okay while taking Ozempic?"
-        }
-      ],
-      "impact_reach": {
-        "point": 1016.0,
-        "lo": 675.0,
-        "hi": 1530.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 9e-06,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 10,
-          "with_us": 10,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 104,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Pregnancy & lactation",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Pregnancy & lactation",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 2083.0,
-        "lo": 1400.0,
-        "hi": 3100.0,
-        "demand_share": 0.0017,
-        "gap": 0.4419,
-        "gap_bad": 0.3023,
-        "n_prompts": 43,
-        "gap_by_run": {
-          "R1": 1.0,
-          "R2": 1.0,
-          "R3": 0.0,
-          "R4": 0.5714,
-          "R5": 0.1538,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R1": 8,
-          "R2": 1,
-          "R3": 1,
-          "R4": 14,
-          "R5": 13,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.0114,
-        "institutional_share": 0.2489
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 11
-        },
-        {
-          "code": "WE ARE ABSENT",
-          "n": 7
-        },
-        {
-          "code": "INCOMPLETE / OMISSION",
-          "n": 7
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0022",
-          "run": "R1",
-          "sev": "bad",
-          "text": "I'm pregnant with type 2 and can't see my doctor for weeks. What can I safely do to manage my sugar until then?"
-        },
-        {
-          "pid": "P0112",
-          "run": "R1",
-          "sev": "bad",
-          "text": "my daughter's been at a strict deficit and in the gym for months and isnt losing anything, shes on birth control and antidepressants. could those be w"
-        }
-      ],
-      "impact_reach": {
-        "point": 920.0,
-        "lo": 619.0,
-        "hi": 1370.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 8e-06,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 9,
-          "with_us": 2,
-          "with_comp": 2
-        },
-        {
-          "domain": "facebook.com",
-          "category": "social",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 0,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 105,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Pancreatitis",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Pancreatitis",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "No action — legitimate competitor advantage is not a fix target.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 1196.0,
-        "lo": 1000.0,
-        "hi": 1430.0,
-        "demand_share": 0.001,
-        "gap": 0.24,
-        "gap_bad": 0.04,
-        "n_prompts": 25,
-        "gap_by_run": {
-          "R4": 0.5455,
-          "R5": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R4": 11,
-          "R5": 8,
-          "R9": 6
-        },
-        "dominant_run": "R4",
-        "lever": 0.036,
-        "institutional_share": 0.2222
-      },
-      "cause": [
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 8
-        },
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 5
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P1294",
-          "run": "R4",
-          "sev": "bad",
-          "text": "My 76-year-old father is on Ozempic and keeps complaining of intense stomach pain that goes to his back. Is that just a side effect or something we sh"
-        },
-        {
-          "pid": "P1075",
-          "run": "R9",
-          "sev": "good",
-          "text": "the thing about how ozempic destroys your pancreas is basically proven now, right? my sister sent me like three articles about it."
-        }
-      ],
-      "impact_reach": {
-        "point": 287.0,
-        "lo": 240.0,
-        "hi": 343.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 8e-06,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 12,
-          "with_us": 12,
-          "with_comp": 3
-        }
-      ],
-      "no_source_data": false,
-      "rank": 106,
+      "rank": 61,
       "priority": 1
     },
     {
@@ -11344,7 +7073,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 107,
+      "rank": 62,
       "priority": 1
     },
     {
@@ -11458,7 +7187,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 108,
+      "rank": 63,
       "priority": 1
     },
     {
@@ -11544,211 +7273,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 109,
-      "priority": 1
-    },
-    {
-      "group_id": "Side effects & tolerability × STARTING & SWITCHING",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "ugc",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 365.0,
-        "lo": 350.0,
-        "hi": 380.0,
-        "demand_share": 0.0003,
-        "gap": 0.75,
-        "gap_bad": 0.3125,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R2": 0.9167,
-          "R7": 0.3333,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 12,
-          "R7": 3,
-          "R9": 1
-        },
-        "dominant_run": "R2",
-        "lever": 0.0308,
-        "institutional_share": 0.1246
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 5
-        },
-        {
-          "code": "WE LOSE THIS DUEL",
-          "n": 4
-        },
-        {
-          "code": "CONTESTED / SPLIT",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0321",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Which is easier on the stomach, Ozempic or Mounjaro?"
-        },
-        {
-          "pid": "P0336",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Between Ozempic and Mounjaro, which is gentler on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 274.0,
-        "lo": 262.0,
-        "hi": 285.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 7e-06,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 19,
-          "with_us": 11,
-          "with_comp": 19
-        },
-        {
-          "domain": "patient.info",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 2,
-          "with_us": 0,
-          "with_comp": 2
-        },
-        {
-          "domain": "myobesityteam.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 0,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 110,
-      "priority": 1
-    },
-    {
-      "group_id": "Side effects & tolerability × STARTING & SWITCHING",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "owned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 365.0,
-        "lo": 350.0,
-        "hi": 380.0,
-        "demand_share": 0.0003,
-        "gap": 0.75,
-        "gap_bad": 0.3125,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R2": 0.9167,
-          "R7": 0.3333,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 12,
-          "R7": 3,
-          "R9": 1
-        },
-        "dominant_run": "R2",
-        "lever": 0.0266,
-        "institutional_share": 0.1246
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 5
-        },
-        {
-          "code": "WE LOSE THIS DUEL",
-          "n": 4
-        },
-        {
-          "code": "CONTESTED / SPLIT",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0321",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Which is easier on the stomach, Ozempic or Mounjaro?"
-        },
-        {
-          "pid": "P0336",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Between Ozempic and Mounjaro, which is gentler on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 274.0,
-        "lo": 262.0,
-        "hi": 285.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 6e-06,
-      "where": [
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 6,
-          "with_us": 4,
-          "with_comp": 5
-        },
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 6,
-          "with_us": 6,
-          "with_comp": 2
-        },
-        {
-          "domain": "novonordisk.co.uk",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 4,
-          "with_us": 3,
-          "with_comp": 4
-        },
-        {
-          "domain": "wegovy.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 3,
-          "with_us": 1,
-          "with_comp": 3
-        }
-      ],
-      "no_source_data": false,
-      "rank": 111,
+      "rank": 64,
       "priority": 1
     },
     {
@@ -11836,7 +7361,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 112,
+      "rank": 65,
       "priority": 1
     },
     {
@@ -11944,123 +7469,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 113,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Vision & retinopathy",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Vision & retinopathy",
-        "zone": ""
-      },
-      "owner": "earned",
-      "what": "Monitor the narrative for drift next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 164.0,
-        "lo": 100.0,
-        "hi": 270.0,
-        "demand_share": 0.0001,
-        "gap": 0.0769,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R4": 0.0,
-          "R5": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 1,
-          "R4": 3,
-          "R5": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.5056,
-        "institutional_share": 0.2599
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 3
-        },
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0301",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Originally my doctor was going to put me on Ozempic but told me that mounjaro be better side effect wise. Now I’m having second thoughts on actually s"
-        },
-        {
-          "pid": "P1113",
-          "run": "R9",
-          "sev": "good",
-          "text": "where can i read more about the whole blindness and vision loss thing with ozempic — like actual sources?"
-        }
-      ],
-      "impact_reach": {
-        "point": 13.0,
-        "lo": 8.0,
-        "hi": 21.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 5e-06,
-      "where": [
-        {
-          "domain": "webmd.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 35,
-          "with_us": 35,
-          "with_comp": 22
-        },
-        {
-          "domain": "goodrx.com",
-          "category": "directory",
-          "owner_subtype": "earned",
-          "citations": 21,
-          "with_us": 21,
-          "with_comp": 15
-        },
-        {
-          "domain": "aao.org",
-          "category": "advocacy",
-          "owner_subtype": "earned",
-          "citations": 17,
-          "with_us": 17,
-          "with_comp": 14
-        },
-        {
-          "domain": "massgeneralbrigham.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 17,
-          "with_us": 17,
-          "with_comp": 16
-        },
-        {
-          "domain": "clevelandclinic.org",
-          "category": "hospital",
-          "owner_subtype": "earned",
-          "citations": 16,
-          "with_us": 16,
-          "with_comp": 12
-        }
-      ],
-      "no_source_data": false,
-      "rank": 114,
+      "rank": 66,
       "priority": 1
     },
     {
@@ -12152,7 +7561,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 115,
+      "rank": 67,
       "priority": 1
     },
     {
@@ -12234,95 +7643,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 116,
-      "priority": 1
-    },
-    {
-      "group_id": "Side effects & tolerability × Fatigue & energy",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "Fatigue & energy",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 801.0,
-        "lo": 600.0,
-        "hi": 1070.0,
-        "demand_share": 0.0006,
-        "gap": 0.8,
-        "gap_bad": 0.0,
-        "n_prompts": 10,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R3": 0.6667
-        },
-        "n_by_run": {
-          "R2": 4,
-          "R3": 6
-        },
-        "dominant_run": "R3",
-        "lever": 0.0066,
-        "institutional_share": 0.0873
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 4
-        },
-        {
-          "code": "LEAK TO A COMPETITOR",
-          "n": 4
-        },
-        {
-          "code": "PATIENT RETAINED",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0427",
-          "run": "R2",
-          "sev": "warn",
-          "text": "I have narcolepsy and take stimulants. On Zepbound I lost 15-18 lbs but had severe nausea, vomiting and extreme fatigue that leaves me unable to move "
-        },
-        {
-          "pid": "P0429",
-          "run": "R2",
-          "sev": "warn",
-          "text": "Is there anyone out there that hasn’t experienced this symptom? Or that got over it with prolonged use? Or should I just expect to be super tired for "
-        }
-      ],
-      "impact_reach": {
-        "point": 641.0,
-        "lo": 480.0,
-        "hi": 856.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 3e-06,
-      "where": [
-        {
-          "domain": "novonordiskmedical.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 2,
-          "with_us": 2,
-          "with_comp": 0
-        },
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 117,
+      "rank": 68,
       "priority": 1
     },
     {
@@ -12406,7 +7727,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 118,
+      "rank": 69,
       "priority": 1
     },
     {
@@ -12488,89 +7809,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 119,
-      "priority": 1
-    },
-    {
-      "group_id": "Side effects & tolerability × STARTING & SWITCHING",
-      "group": {
-        "topic": "Side effects & tolerability",
-        "subtopic": "",
-        "zone": "STARTING & SWITCHING"
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Enter the comparison with owned, med-reviewed comparative content.",
-      "who": "Digital",
-      "speed": "weeks",
-      "why": {
-        "demand": 365.0,
-        "lo": 350.0,
-        "hi": 380.0,
-        "demand_share": 0.0003,
-        "gap": 0.75,
-        "gap_bad": 0.3125,
-        "n_prompts": 16,
-        "gap_by_run": {
-          "R2": 0.9167,
-          "R7": 0.3333,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 12,
-          "R7": 3,
-          "R9": 1
-        },
-        "dominant_run": "R2",
-        "lever": 0.0084,
-        "institutional_share": 0.1246
-      },
-      "cause": [
-        {
-          "code": "NO CLEAR WINNER",
-          "n": 5
-        },
-        {
-          "code": "WE LOSE THIS DUEL",
-          "n": 4
-        },
-        {
-          "code": "CONTESTED / SPLIT",
-          "n": 2
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0321",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Which is easier on the stomach, Ozempic or Mounjaro?"
-        },
-        {
-          "pid": "P0336",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Between Ozempic and Mounjaro, which is gentler on the stomach?"
-        }
-      ],
-      "impact_reach": {
-        "point": 274.0,
-        "lo": 262.0,
-        "hi": 285.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 2e-06,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 6,
-          "with_us": 2,
-          "with_comp": 6
-        }
-      ],
-      "no_source_data": false,
-      "rank": 120,
+      "rank": 70,
       "priority": 1
     },
     {
@@ -12654,7 +7893,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 121,
+      "rank": 71,
       "priority": 1
     },
     {
@@ -12766,7 +8005,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 122,
+      "rank": 72,
       "priority": 1
     },
     {
@@ -12858,7 +8097,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 123,
+      "rank": 73,
       "priority": 1
     },
     {
@@ -12946,267 +8185,7 @@
         }
       ],
       "no_source_data": false,
-      "rank": 124,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Vision & retinopathy",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Vision & retinopathy",
-        "zone": ""
-      },
-      "owner": "owned",
-      "what": "Monitor the narrative for drift next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 164.0,
-        "lo": 100.0,
-        "hi": 270.0,
-        "demand_share": 0.0001,
-        "gap": 0.0769,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R4": 0.0,
-          "R5": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 1,
-          "R4": 3,
-          "R5": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.0282,
-        "institutional_share": 0.2599
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 3
-        },
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0301",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Originally my doctor was going to put me on Ozempic but told me that mounjaro be better side effect wise. Now I’m having second thoughts on actually s"
-        },
-        {
-          "pid": "P1113",
-          "run": "R9",
-          "sev": "good",
-          "text": "where can i read more about the whole blindness and vision loss thing with ozempic — like actual sources?"
-        }
-      ],
-      "impact_reach": {
-        "point": 13.0,
-        "lo": 8.0,
-        "hi": 21.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.0,
-      "where": [
-        {
-          "domain": "ozempic.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 9,
-          "with_us": 9,
-          "with_comp": 1
-        },
-        {
-          "domain": "novomedlink.com",
-          "category": "owned_brand",
-          "owner_subtype": "owned",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 0
-        }
-      ],
-      "no_source_data": false,
-      "rank": 125,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Vision & retinopathy",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Vision & retinopathy",
-        "zone": ""
-      },
-      "owner": "comp_owned",
-      "what": "Competitor feeds answers with its own domains — build comparable owned content: Monitor the narrative for drift next cycle.",
-      "who": "Digital",
-      "speed": "cycle",
-      "why": {
-        "demand": 164.0,
-        "lo": 100.0,
-        "hi": 270.0,
-        "demand_share": 0.0001,
-        "gap": 0.0769,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R4": 0.0,
-          "R5": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 1,
-          "R4": 3,
-          "R5": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.0085,
-        "institutional_share": 0.2599
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 3
-        },
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0301",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Originally my doctor was going to put me on Ozempic but told me that mounjaro be better side effect wise. Now I’m having second thoughts on actually s"
-        },
-        {
-          "pid": "P1113",
-          "run": "R9",
-          "sev": "good",
-          "text": "where can i read more about the whole blindness and vision loss thing with ozempic — like actual sources?"
-        }
-      ],
-      "impact_reach": {
-        "point": 13.0,
-        "lo": 8.0,
-        "hi": 21.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.0,
-      "where": [
-        {
-          "domain": "lilly.com",
-          "category": "comp_owned",
-          "owner_subtype": "comp_owned",
-          "citations": 3,
-          "with_us": 2,
-          "with_comp": 3
-        }
-      ],
-      "no_source_data": false,
-      "rank": 126,
-      "priority": 1
-    },
-    {
-      "group_id": "Serious risks & contraindications × Vision & retinopathy",
-      "group": {
-        "topic": "Serious risks & contraindications",
-        "subtopic": "Vision & retinopathy",
-        "zone": ""
-      },
-      "owner": "ugc",
-      "what": "Monitor the narrative for drift next cycle.",
-      "who": "Citere",
-      "speed": "cycle",
-      "why": {
-        "demand": 164.0,
-        "lo": 100.0,
-        "hi": 270.0,
-        "demand_share": 0.0001,
-        "gap": 0.0769,
-        "gap_bad": 0.0769,
-        "n_prompts": 13,
-        "gap_by_run": {
-          "R2": 1.0,
-          "R4": 0.0,
-          "R5": 0.0,
-          "R9": 0.0
-        },
-        "n_by_run": {
-          "R2": 1,
-          "R4": 3,
-          "R5": 3,
-          "R9": 6
-        },
-        "dominant_run": "R9",
-        "lever": 0.0028,
-        "institutional_share": 0.2599
-      },
-      "cause": [
-        {
-          "code": "MYTH DEFENDED",
-          "n": 6
-        },
-        {
-          "code": "ANSWERED CORRECTLY",
-          "n": 3
-        },
-        {
-          "code": "COMPETITOR WITHIN LABEL",
-          "n": 3
-        }
-      ],
-      "examples": [
-        {
-          "pid": "P0301",
-          "run": "R2",
-          "sev": "bad",
-          "text": "Originally my doctor was going to put me on Ozempic but told me that mounjaro be better side effect wise. Now I’m having second thoughts on actually s"
-        },
-        {
-          "pid": "P1113",
-          "run": "R9",
-          "sev": "good",
-          "text": "where can i read more about the whole blindness and vision loss thing with ozempic — like actual sources?"
-        }
-      ],
-      "impact_reach": {
-        "point": 13.0,
-        "lo": 8.0,
-        "hi": 21.0,
-        "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
-      },
-      "score": 0.0,
-      "where": [
-        {
-          "domain": "reddit.com",
-          "category": "ugc",
-          "owner_subtype": "ugc",
-          "citations": 1,
-          "with_us": 1,
-          "with_comp": 1
-        }
-      ],
-      "no_source_data": false,
-      "rank": 127,
+      "rank": 74,
       "priority": 1
     }
   ],
@@ -13560,6 +8539,72 @@
     ],
     "answers_without_citations_pct": 41.86
   },
+  "citere_rows": [
+    {
+      "group_id": "Reputation & narratives × Lawsuits & cover-up",
+      "owner": "earned",
+      "priority": 3,
+      "score": 0.008539,
+      "what": "Run forensics on the cited domains first — whois dates + copied-text across sites — BEFORE naming any actor."
+    },
+    {
+      "group_id": "Dosing & administration × Site & volume",
+      "owner": "earned",
+      "priority": 3,
+      "score": 0.003302,
+      "what": "No action — keep this target in the monitoring set for the next cycle."
+    },
+    {
+      "group_id": "Reputation & narratives × Lawsuits & cover-up",
+      "owner": "ugc",
+      "priority": 2,
+      "score": 0.000507,
+      "what": "Run forensics on the cited domains first — whois dates + copied-text across sites — BEFORE naming any actor."
+    },
+    {
+      "group_id": "Dosing & administration × Site & volume",
+      "owner": "owned",
+      "priority": 2,
+      "score": 0.000403,
+      "what": "No action — keep this target in the monitoring set for the next cycle."
+    },
+    {
+      "group_id": "Reputation & narratives × Lawsuits & cover-up",
+      "owner": "owned",
+      "priority": 2,
+      "score": 0.000175,
+      "what": "Run forensics on the cited domains first — whois dates + copied-text across sites — BEFORE naming any actor."
+    },
+    {
+      "group_id": "Serious risks & contraindications × Kidney safety",
+      "owner": "earned",
+      "priority": 2,
+      "score": 5.5e-05,
+      "what": "No action — keep this target in the monitoring set for the next cycle."
+    },
+    {
+      "group_id": "Dosing & administration × Site & volume",
+      "owner": "ugc",
+      "priority": 2,
+      "score": 5.2e-05,
+      "what": "No action — keep this target in the monitoring set for the next cycle."
+    },
+    {
+      "group_id": "Serious risks & contraindications × Kidney safety",
+      "owner": "owned",
+      "priority": 1,
+      "score": 5e-06,
+      "what": "No action — keep this target in the monitoring set for the next cycle."
+    },
+    {
+      "group_id": "Serious risks & contraindications × Kidney safety",
+      "owner": "ugc",
+      "priority": 1,
+      "score": 1e-06,
+      "what": "No action — keep this target in the monitoring set for the next cycle."
+    }
+  ],
+  "client_rows_total": 65,
   "top10_by_group": [
     {
       "group_id": "Side effects & tolerability × LIVING ON THE DRUG",
@@ -13682,86 +8727,6 @@
       ]
     },
     {
-      "group_id": "Basics & mechanism × STARTING & SWITCHING",
-      "best_score": 0.033543,
-      "priority": 3,
-      "cause": "REACH OK",
-      "owners": [
-        {
-          "owner": "earned",
-          "score": 0.033543,
-          "lever": 0.6841,
-          "ceiling_pp": 47.4,
-          "top_domain": "drugs.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "owned",
-          "score": 0.00257,
-          "lever": 0.0524,
-          "ceiling_pp": 3.6,
-          "top_domain": "ozempic.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "comp_owned",
-          "score": 0.001082,
-          "lever": 0.0221,
-          "ceiling_pp": 1.5,
-          "top_domain": "lilly.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "ugc",
-          "score": 0.000338,
-          "lever": 0.0069,
-          "ceiling_pp": 0.5,
-          "top_domain": "diabetesteam.com",
-          "who": "Digital"
-        }
-      ]
-    },
-    {
-      "group_id": "Price, coverage & supply × Cost & price",
-      "best_score": 0.032742,
-      "priority": 3,
-      "cause": "NO CLEAR WINNER",
-      "owners": [
-        {
-          "owner": "earned",
-          "score": 0.032742,
-          "lever": 0.7815,
-          "ceiling_pp": 58.6,
-          "top_domain": "goodrx.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "owned",
-          "score": 0.002699,
-          "lever": 0.0644,
-          "ceiling_pp": 4.8,
-          "top_domain": "novocare.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "ugc",
-          "score": 0.000849,
-          "lever": 0.0203,
-          "ceiling_pp": 1.5,
-          "top_domain": "reddit.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "comp_owned",
-          "score": 0.000717,
-          "lever": 0.0171,
-          "ceiling_pp": 1.3,
-          "top_domain": "lilly.com",
-          "who": "Digital"
-        }
-      ]
-    },
-    {
       "group_id": "Efficacy & results × WEIGHT LOSS",
       "best_score": 0.028075,
       "priority": 3,
@@ -13842,106 +8807,202 @@
       ]
     },
     {
-      "group_id": "Reputation & narratives × Body-change memes",
-      "best_score": 0.010867,
+      "group_id": "Dosing & administration × Pen & device",
+      "best_score": 0.004313,
       "priority": 3,
-      "cause": "REACH OK",
+      "cause": "MESSAGE NOT DELIVERED",
       "owners": [
         {
           "owner": "earned",
-          "score": 0.010867,
-          "lever": 0.849,
-          "ceiling_pp": 5.3,
-          "top_domain": "clevelandclinic.org",
-          "who": "Digital"
-        },
-        {
-          "owner": "owned",
-          "score": 0.000253,
-          "lever": 0.0198,
-          "ceiling_pp": 0.1,
-          "top_domain": "ozempic.com",
-          "who": "Digital"
-        },
-        {
-          "owner": "ugc",
-          "score": 9.5e-05,
-          "lever": 0.0074,
-          "ceiling_pp": 0.0,
-          "top_domain": "facebook.com",
-          "who": "Digital"
-        }
-      ]
-    },
-    {
-      "group_id": "Dosing & administration × Titration & dose schedule",
-      "best_score": 0.009893,
-      "priority": 3,
-      "cause": "PATIENT RETAINED",
-      "owners": [
-        {
-          "owner": "earned",
-          "score": 0.009893,
-          "lever": 0.7319,
-          "ceiling_pp": 52.7,
+          "score": 0.004313,
+          "lever": 0.6861,
+          "ceiling_pp": 47.2,
           "top_domain": "drugs.com",
-          "who": "Citere"
+          "who": "Medical + Digital"
         },
         {
           "owner": "owned",
-          "score": 0.000692,
-          "lever": 0.0512,
-          "ceiling_pp": 3.7,
+          "score": 0.000542,
+          "lever": 0.0863,
+          "ceiling_pp": 5.9,
           "top_domain": "ozempic.com",
-          "who": "Citere"
+          "who": "Medical + Digital"
         },
         {
           "owner": "ugc",
-          "score": 0.000316,
-          "lever": 0.0234,
-          "ceiling_pp": 1.7,
+          "score": 0.000212,
+          "lever": 0.0337,
+          "ceiling_pp": 2.3,
           "top_domain": "reddit.com",
-          "who": "Citere"
+          "who": "Medical + Digital"
         },
         {
           "owner": "comp_owned",
-          "score": 0.000144,
-          "lever": 0.0106,
-          "ceiling_pp": 0.8,
+          "score": 0.000201,
+          "lever": 0.032,
+          "ceiling_pp": 2.2,
           "top_domain": "lilly.com",
           "who": "Digital"
         }
       ]
     },
     {
-      "group_id": "Reputation & narratives × Lawsuits & cover-up",
-      "best_score": 0.008539,
+      "group_id": "Price, coverage & supply × Insurance & coverage",
+      "best_score": 0.004142,
       "priority": 3,
-      "cause": "AI AMPLIFIES A HARMFUL MYTH",
+      "cause": "LOW REACH ON HIGH DEMAND",
       "owners": [
         {
           "owner": "earned",
-          "score": 0.008539,
-          "lever": 0.42,
-          "ceiling_pp": 26.4,
-          "top_domain": "clevelandclinic.org",
-          "who": "Citere"
-        },
-        {
-          "owner": "ugc",
-          "score": 0.000507,
-          "lever": 0.025,
-          "ceiling_pp": 1.6,
-          "top_domain": "facebook.com",
-          "who": "Citere"
+          "score": 0.004142,
+          "lever": 0.7516,
+          "ceiling_pp": 63.6,
+          "top_domain": "goodrx.com",
+          "who": "Digital"
         },
         {
           "owner": "owned",
-          "score": 0.000175,
-          "lever": 0.0086,
-          "ceiling_pp": 0.5,
+          "score": 0.000263,
+          "lever": 0.0477,
+          "ceiling_pp": 4.0,
+          "top_domain": "novocare.com",
+          "who": "Digital"
+        },
+        {
+          "owner": "ugc",
+          "score": 0.000143,
+          "lever": 0.026,
+          "ceiling_pp": 2.2,
+          "top_domain": "reddit.com",
+          "who": "Digital"
+        },
+        {
+          "owner": "comp_owned",
+          "score": 7.9e-05,
+          "lever": 0.0143,
+          "ceiling_pp": 1.2,
+          "top_domain": "lilly.com",
+          "who": "Digital"
+        }
+      ]
+    },
+    {
+      "group_id": "Dosing & administration × Timing, food & storage",
+      "best_score": 0.002392,
+      "priority": 3,
+      "cause": "WE WIN THIS DUEL",
+      "owners": [
+        {
+          "owner": "earned",
+          "score": 0.002392,
+          "lever": 0.7114,
+          "ceiling_pp": 28.5,
+          "top_domain": "goodrx.com",
+          "who": "Digital"
+        },
+        {
+          "owner": "owned",
+          "score": 0.000231,
+          "lever": 0.0687,
+          "ceiling_pp": 2.7,
           "top_domain": "ozempic.com",
-          "who": "Citere"
+          "who": "Digital"
+        },
+        {
+          "owner": "ugc",
+          "score": 5.9e-05,
+          "lever": 0.0177,
+          "ceiling_pp": 0.7,
+          "top_domain": "reddit.com",
+          "who": "Digital"
+        },
+        {
+          "owner": "comp_owned",
+          "score": 3.7e-05,
+          "lever": 0.0111,
+          "ceiling_pp": 0.4,
+          "top_domain": "lilly.com",
+          "who": "Digital"
+        }
+      ]
+    },
+    {
+      "group_id": "Efficacy & results × STARTING & SWITCHING",
+      "best_score": 0.00235,
+      "priority": 3,
+      "cause": "WE ARE ABSENT",
+      "owners": [
+        {
+          "owner": "earned",
+          "score": 0.00235,
+          "lever": 0.7012,
+          "ceiling_pp": 52.8,
+          "top_domain": "drugs.com",
+          "who": "PR/Comms"
+        },
+        {
+          "owner": "owned",
+          "score": 6.4e-05,
+          "lever": 0.0191,
+          "ceiling_pp": 1.4,
+          "top_domain": "ozempic.com",
+          "who": "PR/Comms"
+        },
+        {
+          "owner": "ugc",
+          "score": 6.4e-05,
+          "lever": 0.019,
+          "ceiling_pp": 1.4,
+          "top_domain": "reddit.com",
+          "who": "PR/Comms"
+        },
+        {
+          "owner": "comp_owned",
+          "score": 1.6e-05,
+          "lever": 0.0047,
+          "ceiling_pp": 0.4,
+          "top_domain": "lilly.com",
+          "who": "Digital"
+        }
+      ]
+    },
+    {
+      "group_id": "Efficacy & results × LIVING ON THE DRUG",
+      "best_score": 0.001816,
+      "priority": 3,
+      "cause": "WE ARE ABSENT",
+      "owners": [
+        {
+          "owner": "earned",
+          "score": 0.001816,
+          "lever": 0.7517,
+          "ceiling_pp": 75.2,
+          "top_domain": "diabetes.org",
+          "who": "PR/Comms"
+        },
+        {
+          "owner": "ugc",
+          "score": 4.5e-05,
+          "lever": 0.0186,
+          "ceiling_pp": 1.9,
+          "top_domain": "reddit.com",
+          "who": "PR/Comms"
+        },
+        {
+          "owner": "comp_owned",
+          "score": 2.8e-05,
+          "lever": 0.0116,
+          "ceiling_pp": 1.2,
+          "top_domain": "lilly.com",
+          "who": "Digital"
+        },
+        {
+          "owner": "owned",
+          "score": 6e-06,
+          "lever": 0.0023,
+          "ceiling_pp": 0.2,
+          "top_domain": "novonordiskmedical.com",
+          "who": "PR/Comms"
         }
       ]
     }

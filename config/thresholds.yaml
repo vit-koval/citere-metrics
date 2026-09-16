@@ -6,3 +6,5 @@ finding_min_n: 3
 min_group_prompts: 10
 position_decay: 0.9
 closure_coefficients: {owned: [0.05, 0.10], earned: [0.10, 0.22], commerce: [0.10, 0.22], comp_owned: [0.10, 0.22], ugc: [0.05, 0.15]}
+min_gap: 0.20
+non_failure_codes: ["REACH OK", "PATIENT RETAINED", "NO CLEAR WINNER", "MYTH DEFENDED", "COMPETITOR WITHIN LABEL"]
