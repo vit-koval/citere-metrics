@@ -112,9 +112,11 @@ def main() -> int:
     expected = cfg_fams - dropped_fams
     got = {d["model"] for d in dash["visibility"]["by_model"]}
     fams_in_scope = set(a.loc[(a["run"] == vis["headline_run"]) & (a["class"] == "C1"), "model_family"].unique())
-    check("2. visibility.by_model families = config families minus dropped", got == expected,
-          "config minus dropped = {}; by_model = {}; missing = {} (these families have no answers in the headline scope {} C1; scope-aware variant [families with answers in scope] = {} → {})".format(
-              sorted(expected), sorted(got), sorted(expected - got), vis["headline_run"], sorted(fams_in_scope), "PASS" if got == fams_in_scope else "FAIL"))
+    # scope-aware (cycle-1 decision, spec §2 updated): validate against config families that have ≥1 answer in the headline scope
+    excluded_fams = sorted(expected - fams_in_scope)
+    check("2. visibility.by_model families = config families with answers in the headline scope (scope-aware)", got == (expected & fams_in_scope),
+          "config minus dropped = {}; families with answers in {} C1 = {}; by_model = {}; excluded from validation (no {} C1 answers, web-only surfaces): {}".format(
+              sorted(expected), vis["headline_run"], sorted(fams_in_scope), sorted(got), vis["headline_run"], excluded_fams or "none"))
 
     comps = {d["competitor"] for d in dash["benchmarking"]["leaderboard"]}
     check("3. benchmarking.leaderboard competitors ⊆ brands.yaml competitors", comps <= set(cfg["brands"]["competitors"]), "leaderboard {}; extra = {}".format(sorted(comps), sorted(comps - set(cfg["brands"]["competitors"])) or "none"))

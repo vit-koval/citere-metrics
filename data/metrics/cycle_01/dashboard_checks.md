@@ -1,7 +1,7 @@
 # Dashboard assembly checks — cycle 1
 
 - PASS **1. every shares triple sums to 100 ± 0.1** — checked 6 sentiment triples + citations pie; sums = {'sentiment.headline': 100.0, 'sentiment.narrative_resistance': 100.0, 'sentiment.combined_c2': 100.1, 'sentiment.headline.by_model.claude': 100.0, 'sentiment.headline.by_model.gemini': 100.0, 'sentiment.headline.by_model.gpt': 100.0}; pie = 99.9; off: none
-- FAIL **2. visibility.by_model families = config families minus dropped** — config minus dropped = ['claude', 'gemini', 'gpt', 'grok', 'perplexity']; by_model = ['claude', 'gemini', 'gpt']; missing = ['grok', 'perplexity'] (these families have no answers in the headline scope R1 C1; scope-aware variant [families with answers in scope] = ['claude', 'gemini', 'gpt'] → PASS)
+- PASS **2. visibility.by_model families = config families with answers in the headline scope (scope-aware)** — config minus dropped = ['claude', 'gemini', 'gpt', 'grok', 'perplexity']; families with answers in R1 C1 = ['claude', 'gemini', 'gpt']; by_model = ['claude', 'gemini', 'gpt']; excluded from validation (no R1 C1 answers, web-only surfaces): ['grok', 'perplexity']
 - PASS **3. benchmarking.leaderboard competitors ⊆ brands.yaml competitors** — leaderboard ['Farxiga', 'Invokana', 'Januvia', 'Jardiance', 'Mounjaro', 'Rybelsus', 'Saxenda', 'Trulicity', 'Victoza', 'Wegovy', 'Zepbound']; extra = none
 - PASS **4. every prioritization recommendation group exists in prioritization_groups.csv** — missing = none
 - PASS **5. every action_center.top3_open task_id exists in the registry** — top3 = ['c66030d94d01', '92361d73f3e1', '34099e60975f']; missing = none

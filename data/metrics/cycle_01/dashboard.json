@@ -1,0 +1,2303 @@
+{
+  "meta": {
+    "brand": "Ozempic",
+    "cycle": 1,
+    "period": "2026-09",
+    "market": "US/en",
+    "competitors": [
+      "Mounjaro",
+      "Wegovy",
+      "Zepbound",
+      "Rybelsus",
+      "Trulicity",
+      "Victoza",
+      "Jardiance",
+      "Saxenda",
+      "Farxiga",
+      "Januvia",
+      "Invokana"
+    ],
+    "prompts": 1424,
+    "answers": 12314,
+    "answers_excluded_by_filter": 193,
+    "surfaces": 10,
+    "surface_list": [
+      "claude-sonnet-4-6",
+      "claude-sonnet-5",
+      "claude-web",
+      "gemini-2.5-flash",
+      "gemini-web",
+      "google-ai",
+      "gpt-4o",
+      "gpt-web",
+      "grok-web",
+      "perplexity-web"
+    ],
+    "dropped_models": [
+      "gemini-3.6-flash"
+    ],
+    "generated_at": "2026-09-16",
+    "pipeline_version": "c3c2e4b",
+    "config_hash": "33dd300ee2c2"
+  },
+  "visibility": {
+    "scope_note": "R1 C1 prompts only (cycle-1 decision, visibility_score_spec §2)",
+    "headline": {
+      "ai_brand_score": 25.1,
+      "visibility_pct": 27.3,
+      "visibility_ci95": [
+        25.5,
+        29.2
+      ],
+      "average_position": 2.0,
+      "visibility_pct_brand_bearing_only": 72.0,
+      "inn_only_mention_pct": 16.5
+    },
+    "headline_reference": {
+      "average_position_using_scored_rank_where_present": 2.4,
+      "ai_brand_score_using_scored_rank_where_present": 24.2,
+      "all_c1_runs_pooled_non_low_n_families": {
+        "ai_brand_score": 29.7,
+        "visibility_pct": 32.4,
+        "visibility_ci95": [
+          30.7,
+          34.1
+        ],
+        "average_position": 2.0,
+        "visibility_pct_brand_bearing_only": 74.6,
+        "inn_only_mention_pct": 16.9,
+        "n_answers": 2890.0,
+        "n_families": 3.0
+      },
+      "headline_families": [
+        "claude",
+        "gemini",
+        "gpt"
+      ],
+      "low_n_families_excluded_from_headline": []
+    },
+    "cross_check": {
+      "r1_visibility_pct_from_we_present": 27.3,
+      "r1_visibility_pct_from_our_status_scored": 27.4,
+      "abs_diff": 0.1,
+      "within_0_5": true,
+      "n_answers": 2212
+    },
+    "by_model": [
+      {
+        "model": "claude",
+        "versions": [
+          "claude-sonnet-4-6",
+          "claude-sonnet-5",
+          "claude-web"
+        ],
+        "n_answers": 708,
+        "n_prompt_model_groups": 453,
+        "ai_brand_score": 42.0,
+        "visibility_pct": 44.4,
+        "visibility_ci95": [
+          40.8,
+          48.0
+        ],
+        "average_position": 1.6,
+        "visibility_pct_brand_bearing_only": 87.5,
+        "inn_only_mention_pct": 8.0,
+        "unstable_groups_pct": 6.6,
+        "single_run_groups_pct": 45.0,
+        "low_n": false
+      },
+      {
+        "model": "gemini",
+        "versions": [
+          "gemini-2.5-flash",
+          "gemini-web",
+          "google-ai"
+        ],
+        "n_answers": 751,
+        "n_prompt_model_groups": 250,
+        "ai_brand_score": 23.4,
+        "visibility_pct": 26.5,
+        "visibility_ci95": [
+          23.4,
+          29.7
+        ],
+        "average_position": 2.3,
+        "visibility_pct_brand_bearing_only": 73.2,
+        "inn_only_mention_pct": 10.6,
+        "unstable_groups_pct": 28.4,
+        "single_run_groups_pct": 0.0,
+        "low_n": false
+      },
+      {
+        "model": "gpt",
+        "versions": [
+          "gpt-4o",
+          "gpt-web"
+        ],
+        "n_answers": 753,
+        "n_prompt_model_groups": 250,
+        "ai_brand_score": 9.8,
+        "visibility_pct": 11.0,
+        "visibility_ci95": [
+          9.0,
+          13.4
+        ],
+        "average_position": 2.2,
+        "visibility_pct_brand_bearing_only": 55.5,
+        "inn_only_mention_pct": 31.0,
+        "unstable_groups_pct": 27.2,
+        "single_run_groups_pct": 0.0,
+        "low_n": false
+      }
+    ],
+    "scope": {
+      "c1_runs": [
+        "R1",
+        "R2",
+        "R3",
+        "R5",
+        "R6"
+      ],
+      "headline_runs": [
+        "R1"
+      ],
+      "surfaces_covered": [
+        "api"
+      ],
+      "surfaces_not_covered": [
+        "claude-web",
+        "gemini-web",
+        "google-ai",
+        "gpt-web",
+        "grok-web",
+        "perplexity-web"
+      ],
+      "note": "Headline on R1 category prompts only; C1 prompts in R2/R3/R5/R6 are in c1_other_runs for reference. Web surfaces have no R1 answers."
+    },
+    "intrusion": {
+      "competitor_into_ours_pct": 29.6,
+      "competitor_into_ours_ci95": [
+        28.4,
+        30.8
+      ],
+      "competitor_into_ours_n_answers": 5830,
+      "by_competitor": {
+        "Mounjaro": 6.1,
+        "Wegovy": 25.3,
+        "Zepbound": 5.4,
+        "Rybelsus": 7.0,
+        "Trulicity": 1.8,
+        "Victoza": 1.6,
+        "Jardiance": 0.7,
+        "Saxenda": 2.1,
+        "Farxiga": 0.5,
+        "Januvia": 0.6,
+        "Invokana": 0.1
+      },
+      "ours_into_competitor_pct": 12.0,
+      "ours_into_competitor_ci95": [
+        10.8,
+        13.3
+      ],
+      "ours_into_competitor_n_answers": 2460,
+      "by_competitor_asked": {
+        "Mounjaro": {
+          "pct": 9.4,
+          "n_prompts": 187,
+          "n_answers": 1759
+        },
+        "Wegovy": {
+          "pct": 13.2,
+          "n_prompts": 75,
+          "n_answers": 379
+        },
+        "Zepbound": {
+          "pct": 7.7,
+          "n_prompts": 81,
+          "n_answers": 419
+        },
+        "Rybelsus": {
+          "pct": 36.7,
+          "n_prompts": 5,
+          "n_answers": 26
+        },
+        "Trulicity": {
+          "pct": 41.0,
+          "n_prompts": 26,
+          "n_answers": 143
+        },
+        "Victoza": {
+          "pct": 71.4,
+          "n_prompts": 7,
+          "n_answers": 42
+        },
+        "Saxenda": {
+          "pct": 22.2,
+          "n_prompts": 6,
+          "n_answers": 33
+        }
+      }
+    },
+    "c1_other_runs": {
+      "R2": {
+        "ai_brand_score": 29.2,
+        "visibility_pct": 29.2,
+        "visibility_ci95": [
+          14.7,
+          49.6
+        ],
+        "average_position": 1.0,
+        "visibility_pct_brand_bearing_only": 66.7,
+        "inn_only_mention_pct": 4.2,
+        "n_answers": 23.0,
+        "n_families": 3.0
+      },
+      "R3": {
+        "ai_brand_score": 63.6,
+        "visibility_pct": 64.3,
+        "visibility_ci95": [
+          49.2,
+          77.0
+        ],
+        "average_position": 1.1,
+        "visibility_pct_brand_bearing_only": 82.9,
+        "inn_only_mention_pct": 35.7,
+        "n_answers": 42.0,
+        "n_families": 3.0
+      },
+      "R5": {
+        "ai_brand_score": 63.6,
+        "visibility_pct": 71.1,
+        "visibility_ci95": [
+          61.8,
+          78.9
+        ],
+        "average_position": 2.2,
+        "visibility_pct_brand_bearing_only": 76.4,
+        "inn_only_mention_pct": 26.3,
+        "n_answers": 105.0,
+        "n_families": 4.0
+      },
+      "R6": {
+        "ai_brand_score": 38.6,
+        "visibility_pct": 42.6,
+        "visibility_ci95": [
+          38.5,
+          46.8
+        ],
+        "average_position": 2.1,
+        "visibility_pct_brand_bearing_only": 80.1,
+        "inn_only_mention_pct": 17.2,
+        "n_answers": 529.0,
+        "n_families": 3.0
+      }
+    }
+  },
+  "benchmarking": {
+    "scope_note": "R1 C1 prompts only (cycle-1 decision, as in visibility)",
+    "overall": {
+      "win_rate": 76.6,
+      "win_rate_ci95": [
+        74.9,
+        78.2
+      ],
+      "n_overlap_answers": 2471,
+      "note": "mean of Win Rate(X) weighted by each competitor's overlap answers; CI by total overlap answers"
+    },
+    "leaderboard": [
+      {
+        "competitor": "Jardiance",
+        "overlap_answers": 301,
+        "win_rate": 63.1,
+        "win_rate_ci95": [
+          57.5,
+          68.3
+        ],
+        "impact": 6.8,
+        "impact_by_position": 4.7,
+        "impact_by_absence": 2.1,
+        "worst_model": "gemini",
+        "worst_zone": "HEART & KIDNEY",
+        "low_n": false
+      },
+      {
+        "competitor": "Wegovy",
+        "overlap_answers": 250,
+        "win_rate": 79.4,
+        "win_rate_ci95": [
+          74.0,
+          84.0
+        ],
+        "impact": 5.8,
+        "impact_by_position": 1.7,
+        "impact_by_absence": 4.1,
+        "worst_model": "gpt",
+        "worst_zone": "PRICE & ACCESS",
+        "low_n": false
+      },
+      {
+        "competitor": "Farxiga",
+        "overlap_answers": 261,
+        "win_rate": 64.2,
+        "win_rate_ci95": [
+          58.2,
+          69.7
+        ],
+        "impact": 5.7,
+        "impact_by_position": 3.7,
+        "impact_by_absence": 2.0,
+        "worst_model": "gemini",
+        "worst_zone": "HEART & KIDNEY",
+        "low_n": false
+      },
+      {
+        "competitor": "Mounjaro",
+        "overlap_answers": 411,
+        "win_rate": 85.9,
+        "win_rate_ci95": [
+          82.2,
+          89.0
+        ],
+        "impact": 4.8,
+        "impact_by_position": 2.5,
+        "impact_by_absence": 2.3,
+        "worst_model": "gemini",
+        "worst_zone": "STARTING & SWITCHING",
+        "low_n": false
+      },
+      {
+        "competitor": "Zepbound",
+        "overlap_answers": 136,
+        "win_rate": 75.7,
+        "win_rate_ci95": [
+          67.9,
+          82.2
+        ],
+        "impact": 4.2,
+        "impact_by_position": 1.3,
+        "impact_by_absence": 3.0,
+        "worst_model": "gpt",
+        "worst_zone": "PRICE & ACCESS",
+        "low_n": false
+      },
+      {
+        "competitor": "Invokana",
+        "overlap_answers": 177,
+        "win_rate": 62.2,
+        "win_rate_ci95": [
+          54.9,
+          69.1
+        ],
+        "impact": 3.9,
+        "impact_by_position": 2.8,
+        "impact_by_absence": 1.1,
+        "worst_model": "gemini",
+        "worst_zone": "SAFETY & CONTRAINDICATIONS",
+        "low_n": false
+      },
+      {
+        "competitor": "Rybelsus",
+        "overlap_answers": 252,
+        "win_rate": 88.0,
+        "win_rate_ci95": [
+          83.4,
+          91.4
+        ],
+        "impact": 3.3,
+        "impact_by_position": 1.4,
+        "impact_by_absence": 1.9,
+        "worst_model": "gemini",
+        "worst_zone": "STARTING & SWITCHING",
+        "low_n": false
+      },
+      {
+        "competitor": "Januvia",
+        "overlap_answers": 162,
+        "win_rate": 74.3,
+        "win_rate_ci95": [
+          67.1,
+          80.4
+        ],
+        "impact": 2.9,
+        "impact_by_position": 2.0,
+        "impact_by_absence": 0.9,
+        "worst_model": "gemini",
+        "worst_zone": "LIVING ON THE DRUG",
+        "low_n": false
+      },
+      {
+        "competitor": "Victoza",
+        "overlap_answers": 238,
+        "win_rate": 84.3,
+        "win_rate_ci95": [
+          79.1,
+          88.4
+        ],
+        "impact": 2.5,
+        "impact_by_position": 1.7,
+        "impact_by_absence": 0.7,
+        "worst_model": "gemini",
+        "worst_zone": "STARTING & SWITCHING",
+        "low_n": false
+      },
+      {
+        "competitor": "Saxenda",
+        "overlap_answers": 49,
+        "win_rate": 71.3,
+        "win_rate_ci95": [
+          57.5,
+          82.0
+        ],
+        "impact": 2.4,
+        "impact_by_position": 0.6,
+        "impact_by_absence": 1.7,
+        "worst_model": "gemini",
+        "worst_zone": "PRICE & ACCESS",
+        "low_n": false
+      },
+      {
+        "competitor": "Trulicity",
+        "overlap_answers": 234,
+        "win_rate": 82.1,
+        "win_rate_ci95": [
+          76.7,
+          86.5
+        ],
+        "impact": 2.3,
+        "impact_by_position": 2.1,
+        "impact_by_absence": 0.2,
+        "worst_model": "gemini",
+        "worst_zone": "LIVING ON THE DRUG",
+        "low_n": false
+      }
+    ],
+    "by_model": [
+      {
+        "model": "claude",
+        "versions": [
+          "claude-sonnet-4-6",
+          "claude-sonnet-5"
+        ],
+        "win_rate": 84.8,
+        "n_overlap_answers": 1229,
+        "top_impact_competitor": "Jardiance",
+        "top_impact": 7.2
+      },
+      {
+        "model": "gemini",
+        "versions": [
+          "gemini-2.5-flash"
+        ],
+        "win_rate": 70.0,
+        "n_overlap_answers": 848,
+        "top_impact_competitor": "Jardiance",
+        "top_impact": 8.6
+      },
+      {
+        "model": "gpt",
+        "versions": [
+          "gpt-4o"
+        ],
+        "win_rate": 75.0,
+        "n_overlap_answers": 394,
+        "top_impact_competitor": "Wegovy",
+        "top_impact": 7.3
+      }
+    ],
+    "duel_verdict": {
+      "available": true,
+      "scope": "R2 answers on C4 prompts (both brands in the question); winner ours=1, comp=0, split=0.5; none/na/third excluded from the denominator",
+      "duel_win_rate": 36.9,
+      "duel_win_rate_ci95": [
+        33.6,
+        40.3
+      ],
+      "n_scored": 799,
+      "n_c4_answers": 850,
+      "n_c4_prompts": 141,
+      "excluded_na_pct": 6.0,
+      "excluded_breakdown_c4": {
+        "none": 50,
+        "third": 1
+      },
+      "by_competitor": {
+        "Mounjaro": {
+          "duel_win_rate": 23.2,
+          "n_prompts": 72,
+          "n_scored_answers": 412,
+          "ci95": [
+            19.4,
+            27.6
+          ]
+        },
+        "Wegovy": {
+          "duel_win_rate": 13.8,
+          "n_prompts": 16,
+          "n_scored_answers": 85,
+          "ci95": [
+            8.0,
+            22.7
+          ]
+        },
+        "Zepbound": {
+          "duel_win_rate": 19.7,
+          "n_prompts": 11,
+          "n_scored_answers": 63,
+          "ci95": [
+            11.8,
+            31.1
+          ]
+        },
+        "Rybelsus": {
+          "duel_win_rate": 71.8,
+          "n_prompts": 19,
+          "n_scored_answers": 108,
+          "ci95": [
+            62.7,
+            79.5
+          ]
+        },
+        "Trulicity": {
+          "duel_win_rate": 61.1,
+          "n_prompts": 18,
+          "n_scored_answers": 102,
+          "ci95": [
+            51.4,
+            70.0
+          ]
+        },
+        "Saxenda": {
+          "duel_win_rate": 82.1,
+          "n_prompts": 7,
+          "n_scored_answers": 41,
+          "ci95": [
+            67.8,
+            90.9
+          ]
+        }
+      },
+      "by_model": {
+        "claude": {
+          "duel_win_rate": 36.7,
+          "n_scored": 272
+        },
+        "gemini": {
+          "duel_win_rate": 37.3,
+          "n_scored": 248
+        },
+        "gpt": {
+          "duel_win_rate": 36.6,
+          "n_scored": 279
+        }
+      },
+      "by_model_version": {
+        "claude-sonnet-4-6": {
+          "duel_win_rate": 36.7,
+          "n_scored": 272
+        },
+        "gemini-2.5-flash": {
+          "duel_win_rate": 37.3,
+          "n_scored": 248
+        },
+        "gpt-4o": {
+          "duel_win_rate": 36.6,
+          "n_scored": 279
+        }
+      }
+    }
+  },
+  "sentiment": {
+    "scope_note": "v1: class C2 only (questions about the brand). Headline = R3 (living on the drug); narrative_resistance = R9 myth probes, reported separately. C1/C3/C4 brand-level LLM re-scoring and the competitor comparison are deferred to v2.",
+    "headline": {
+      "run": "R3",
+      "score": 71.5615,
+      "shares": {
+        "positive_pct": 89.2,
+        "neutral_pct": 7.0,
+        "negative_pct": 3.8
+      },
+      "n": 1437,
+      "n_prompts": 239,
+      "by_model": {
+        "claude": {
+          "positive_pct": 94.0,
+          "positive_ci95": [
+            91.5,
+            95.8
+          ],
+          "neutral_pct": 6.0,
+          "neutral_ci95": [
+            4.2,
+            8.5
+          ],
+          "negative_pct": 0.0,
+          "negative_ci95": [
+            0.0,
+            0.8
+          ],
+          "score": 69.4254,
+          "n": 482
+        },
+        "gemini": {
+          "positive_pct": 78.0,
+          "positive_ci95": [
+            74.1,
+            81.5
+          ],
+          "neutral_pct": 11.3,
+          "neutral_ci95": [
+            8.8,
+            14.5
+          ],
+          "negative_pct": 10.7,
+          "negative_ci95": [
+            8.2,
+            13.8
+          ],
+          "score": 70.4651,
+          "n": 477
+        },
+        "gpt": {
+          "positive_pct": 95.6,
+          "positive_ci95": [
+            93.4,
+            97.1
+          ],
+          "neutral_pct": 3.6,
+          "neutral_ci95": [
+            2.2,
+            5.6
+          ],
+          "negative_pct": 0.8,
+          "negative_ci95": [
+            0.3,
+            2.1
+          ],
+          "score": 74.7941,
+          "n": 478
+        }
+      }
+    },
+    "narrative_resistance": {
+      "run": "R9",
+      "score": 51.6211,
+      "shares": {
+        "positive_pct": 46.7,
+        "neutral_pct": 25.2,
+        "negative_pct": 28.1
+      },
+      "n": 507,
+      "n_prompts": 66,
+      "by_model": {
+        "claude": {
+          "positive_pct": 46.4,
+          "positive_ci95": [
+            39.3,
+            53.5
+          ],
+          "neutral_pct": 31.5,
+          "neutral_ci95": [
+            25.3,
+            38.5
+          ],
+          "negative_pct": 22.1,
+          "negative_ci95": [
+            16.8,
+            28.6
+          ],
+          "score": 53.7005,
+          "n": 186
+        },
+        "gemini": {
+          "positive_pct": 31.6,
+          "positive_ci95": [
+            24.1,
+            40.3
+          ],
+          "neutral_pct": 27.0,
+          "neutral_ci95": [
+            19.9,
+            35.5
+          ],
+          "negative_pct": 41.4,
+          "negative_ci95": [
+            33.0,
+            50.3
+          ],
+          "score": 44.1314,
+          "n": 122
+        },
+        "gpt": {
+          "positive_pct": 62.1,
+          "positive_ci95": [
+            55.2,
+            68.6
+          ],
+          "neutral_pct": 17.2,
+          "neutral_ci95": [
+            12.6,
+            23.0
+          ],
+          "negative_pct": 20.7,
+          "negative_ci95": [
+            15.7,
+            26.9
+          ],
+          "score": 57.0316,
+          "n": 199
+        }
+      },
+      "themes": [
+        {
+          "theme": "NR-2B-BLIND · $2bn blindness lawsuit",
+          "code": "NR-2B-BLIND",
+          "run": "R9",
+          "pct_of_negative": 13.3,
+          "pct_of_all": 1.3,
+          "negative_rate_within_theme": 57.8,
+          "n_answers": 45,
+          "n_negative": 26,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 75.0,
+          "by_model_negative_pct": {
+            "claude": 53.3,
+            "gemini": 75.0,
+            "gpt": 50.0
+          }
+        },
+        {
+          "theme": "NR-THEY-KNEW · company hid the risks",
+          "code": "NR-THEY-KNEW",
+          "run": "R9",
+          "pct_of_negative": 12.3,
+          "pct_of_all": 1.2,
+          "negative_rate_within_theme": 52.2,
+          "n_answers": 46,
+          "n_negative": 24,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 84.6,
+          "by_model_negative_pct": {
+            "claude": 40.0,
+            "gemini": 84.6,
+            "gpt": 38.9
+          }
+        },
+        {
+          "theme": "NR-STOMACH-PARALYSIS · gastroparesis",
+          "code": "NR-STOMACH-PARALYSIS",
+          "run": "R9",
+          "pct_of_negative": 9.2,
+          "pct_of_all": 0.9,
+          "negative_rate_within_theme": 36.7,
+          "n_answers": 49,
+          "n_negative": 18,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 80.0,
+          "by_model_negative_pct": {
+            "claude": 12.5,
+            "gemini": 80.0,
+            "gpt": 22.2
+          }
+        },
+        {
+          "theme": "NR-BLINDNESS · blindness & vision loss (NAION)",
+          "code": "NR-BLINDNESS",
+          "run": "R9",
+          "pct_of_negative": 6.2,
+          "pct_of_all": 0.6,
+          "negative_rate_within_theme": 27.3,
+          "n_answers": 44,
+          "n_negative": 12,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 42.9,
+          "by_model_negative_pct": {
+            "claude": 27.8,
+            "gemini": 42.9,
+            "gpt": 21.1
+          }
+        },
+        {
+          "theme": "NR-MUSCLE · muscle loss",
+          "code": "NR-MUSCLE",
+          "run": "R9",
+          "pct_of_negative": 5.6,
+          "pct_of_all": 0.6,
+          "negative_rate_within_theme": 23.9,
+          "n_answers": 46,
+          "n_negative": 11,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 60.0,
+          "by_model_negative_pct": {
+            "claude": 16.7,
+            "gemini": 60.0,
+            "gpt": 11.1
+          }
+        },
+        {
+          "theme": "NR-PANC · pancreatitis / 'destroys your pancreas'",
+          "code": "NR-PANC",
+          "run": "R9",
+          "pct_of_negative": 5.6,
+          "pct_of_all": 0.6,
+          "negative_rate_within_theme": 24.4,
+          "n_answers": 45,
+          "n_negative": 11,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 66.7,
+          "by_model_negative_pct": {
+            "claude": 16.7,
+            "gemini": 66.7,
+            "gpt": 11.1
+          }
+        },
+        {
+          "theme": "NR-THYROID · thyroid cancer",
+          "code": "NR-THYROID",
+          "run": "R9",
+          "pct_of_negative": 4.6,
+          "pct_of_all": 0.5,
+          "negative_rate_within_theme": 20.0,
+          "n_answers": 45,
+          "n_negative": 9,
+          "n_prompts": 6,
+          "worst_model": "gpt",
+          "worst_model_negative_pct": 27.8,
+          "by_model_negative_pct": {
+            "claude": 6.2,
+            "gemini": 27.3,
+            "gpt": 27.8
+          }
+        },
+        {
+          "theme": "NR-COSMETIC · 'Ozempic face' & body changes",
+          "code": "NR-COSMETIC",
+          "run": "R9",
+          "pct_of_negative": 4.1,
+          "pct_of_all": 0.4,
+          "negative_rate_within_theme": 17.0,
+          "n_answers": 47,
+          "n_negative": 8,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 33.3,
+          "by_model_negative_pct": {
+            "claude": 11.8,
+            "gemini": 33.3,
+            "gpt": 11.1
+          }
+        },
+        {
+          "theme": "NR-FORLIFE · forever drug / regain",
+          "code": "NR-FORLIFE",
+          "run": "R9",
+          "pct_of_negative": 4.1,
+          "pct_of_all": 0.4,
+          "negative_rate_within_theme": 17.0,
+          "n_answers": 47,
+          "n_negative": 8,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 27.3,
+          "by_model_negative_pct": {
+            "claude": 16.7,
+            "gemini": 27.3,
+            "gpt": 11.1
+          }
+        },
+        {
+          "theme": "NR-ADDICTION · addiction & withdrawal",
+          "code": "NR-ADDICTION",
+          "run": "R9",
+          "pct_of_negative": 3.6,
+          "pct_of_all": 0.4,
+          "negative_rate_within_theme": 15.6,
+          "n_answers": 45,
+          "n_negative": 7,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 30.0,
+          "by_model_negative_pct": {
+            "claude": 11.8,
+            "gemini": 30.0,
+            "gpt": 11.1
+          }
+        },
+        {
+          "theme": "NR-BABIES · birth-control failure / 'Ozempic babies'",
+          "code": "NR-BABIES",
+          "run": "R9",
+          "pct_of_negative": 3.1,
+          "pct_of_all": 0.3,
+          "negative_rate_within_theme": 12.5,
+          "n_answers": 48,
+          "n_negative": 6,
+          "n_prompts": 6,
+          "worst_model": "gemini",
+          "worst_model_negative_pct": 16.7,
+          "by_model_negative_pct": {
+            "claude": 11.1,
+            "gemini": 16.7,
+            "gpt": 11.1
+          }
+        }
+      ]
+    },
+    "combined_c2": {
+      "score": 67.431,
+      "shares": {
+        "positive_pct": 80.4,
+        "neutral_pct": 10.8,
+        "negative_pct": 8.9,
+        "positive_ci95": [
+          78.5,
+          82.1
+        ],
+        "neutral_ci95": [
+          9.5,
+          12.2
+        ],
+        "negative_ci95": [
+          7.7,
+          10.2
+        ]
+      },
+      "by_model": [
+        {
+          "model": "claude",
+          "positive_pct": 83.9,
+          "positive_ci95": [
+            81.0,
+            86.5
+          ],
+          "neutral_pct": 11.4,
+          "neutral_ci95": [
+            9.2,
+            14.0
+          ],
+          "negative_pct": 4.7,
+          "negative_ci95": [
+            3.3,
+            6.6
+          ],
+          "score": 66.104,
+          "n": 668
+        },
+        {
+          "model": "gemini",
+          "positive_pct": 68.8,
+          "positive_ci95": [
+            65.0,
+            72.4
+          ],
+          "neutral_pct": 14.4,
+          "neutral_ci95": [
+            11.8,
+            17.4
+          ],
+          "negative_pct": 16.8,
+          "negative_ci95": [
+            14.0,
+            20.0
+          ],
+          "score": 65.2514,
+          "n": 599
+        },
+        {
+          "model": "gpt",
+          "positive_pct": 88.3,
+          "positive_ci95": [
+            85.7,
+            90.5
+          ],
+          "neutral_pct": 6.5,
+          "neutral_ci95": [
+            4.9,
+            8.6
+          ],
+          "negative_pct": 5.2,
+          "negative_ci95": [
+            3.7,
+            7.1
+          ],
+          "score": 70.9378,
+          "n": 677
+        }
+      ]
+    },
+    "competitors": [],
+    "competitors_note": "deferred — needs brand-level re-scoring of C3 answers (v2)",
+    "top_negative_themes": [
+      {
+        "theme": "NR-2B-BLIND · $2bn blindness lawsuit",
+        "code": "NR-2B-BLIND",
+        "run": "R9",
+        "pct_of_negative": 13.3,
+        "pct_of_all": 1.3,
+        "negative_rate_within_theme": 57.8,
+        "n_answers": 45,
+        "n_negative": 26,
+        "n_prompts": 6,
+        "worst_model": "gemini",
+        "worst_model_negative_pct": 75.0,
+        "by_model_negative_pct": {
+          "claude": 53.3,
+          "gemini": 75.0,
+          "gpt": 50.0
+        },
+        "examples": [
+          "the specific framing of a 'single $2 billion lawsuit' isn't entirely accurate",
+          "Ozempic is facing numerous lawsuits alleging vision loss, including permanent blindness."
+        ]
+      },
+      {
+        "theme": "NR-THEY-KNEW · company hid the risks",
+        "code": "NR-THEY-KNEW",
+        "run": "R9",
+        "pct_of_negative": 12.3,
+        "pct_of_all": 1.2,
+        "negative_rate_within_theme": 52.2,
+        "n_answers": 46,
+        "n_negative": 24,
+        "n_prompts": 6,
+        "worst_model": "gemini",
+        "worst_model_negative_pct": 84.6,
+        "by_model_negative_pct": {
+          "claude": 40.0,
+          "gemini": 84.6,
+          "gpt": 38.9
+        },
+        "examples": [
+          "allegations that the company manufacturing Ozempic... concealed potential risks",
+          "the FDA's warning letters indicate a failure in reporting procedures"
+        ]
+      },
+      {
+        "theme": "B6 · lifestyle: food, alcohol, fasting, travel",
+        "code": "B6",
+        "run": "R3",
+        "pct_of_negative": 10.3,
+        "pct_of_all": 1.0,
+        "negative_rate_within_theme": 9.2,
+        "n_answers": 218,
+        "n_negative": 20,
+        "n_prompts": 36,
+        "worst_model": "gemini",
+        "worst_model_negative_pct": 27.4,
+        "by_model_negative_pct": {
+          "claude": 0.0,
+          "gemini": 27.4,
+          "gpt": 0.0
+        },
+        "examples": [
+          "The safest approach is to avoid alcohol while taking Ozempic.",
+          "the safest option is often to avoid alcohol or limit consumption significantly"
+        ]
+      },
+      {
+        "theme": "B4 · side effects: nausea, fatigue, hair",
+        "code": "B4",
+        "run": "R3",
+        "pct_of_negative": 9.2,
+        "pct_of_all": 0.9,
+        "negative_rate_within_theme": 7.9,
+        "n_answers": 229,
+        "n_negative": 18,
+        "n_prompts": 38,
+        "worst_model": "gemini",
+        "worst_model_negative_pct": 22.4,
+        "by_model_negative_pct": {
+          "claude": 0.0,
+          "gemini": 22.4,
+          "gpt": 1.3
+        },
+        "examples": [
+          "medical organizations...recommend that patients temporarily stop taking GLP-1 receptor agonists",
+          "side effects you've experienced after surgery while taking Ozempic (semaglutide), and your observations align with recognized medical concerns and documented side effects of the medication."
+        ]
+      },
+      {
+        "theme": "NR-STOMACH-PARALYSIS · gastroparesis",
+        "code": "NR-STOMACH-PARALYSIS",
+        "run": "R9",
+        "pct_of_negative": 9.2,
+        "pct_of_all": 0.9,
+        "negative_rate_within_theme": 36.7,
+        "n_answers": 49,
+        "n_negative": 18,
+        "n_prompts": 6,
+        "worst_model": "gemini",
+        "worst_model_negative_pct": 80.0,
+        "by_model_negative_pct": {
+          "claude": 12.5,
+          "gemini": 80.0,
+          "gpt": 22.2
+        },
+        "examples": [
+          "Ozempic can significantly slow stomach emptying, leading to severe symptoms.",
+          "Ozempic slowing gastric emptying"
+        ]
+      }
+    ]
+  },
+  "citations": {
+    "scope_note": {
+      "runs_with_citations": [
+        "R1",
+        "R2",
+        "R3",
+        "R6",
+        "R7",
+        "R9"
+      ],
+      "runs_without_citations": [
+        "R4",
+        "R5",
+        "R8"
+      ],
+      "unit": "citation (domain occurrence in one answer, deduplicated within the answer)",
+      "aggregation": "directly over citations (not repeats -> prompts)",
+      "gap_list_scope": "R1 C1 answers (headline scope)"
+    },
+    "owner_shares": {
+      "owned": 2.5,
+      "earned": 77.4,
+      "institutional": 18.9,
+      "competitor": 1.1
+    },
+    "owner_shares_by_model": [
+      {
+        "model": "claude-sonnet-4-6",
+        "n": 20056,
+        "owned": 1.9,
+        "earned": 84.0,
+        "institutional": 13.7,
+        "competitor": 0.5
+      },
+      {
+        "model": "claude-sonnet-5",
+        "n": 7153,
+        "owned": 2.5,
+        "earned": 80.0,
+        "institutional": 15.7,
+        "competitor": 1.8
+      },
+      {
+        "model": "gemini-2.5-flash",
+        "n": 23589,
+        "owned": 2.9,
+        "earned": 86.2,
+        "institutional": 9.8,
+        "competitor": 1.2
+      },
+      {
+        "model": "gpt-4o",
+        "n": 11243,
+        "owned": 2.9,
+        "earned": 45.6,
+        "institutional": 49.5,
+        "competitor": 1.9
+      }
+    ],
+    "earned_subtypes": {
+      "telehealth": 28.1,
+      "health_media": 17.1,
+      "directory": 16.7,
+      "other": 13.9,
+      "hospital": 10.7,
+      "advocacy": 7.4,
+      "news": 2.9,
+      "ugc": 2.7,
+      "payer": 0.5
+    },
+    "owned_share_in_answers_with_us": 3.6,
+    "top_domains": [
+      {
+        "domain": "nih.gov",
+        "citations": 3348,
+        "share": 5.4,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 46.8,
+        "with_us_pct": 59.4,
+        "with_comp_pct": 51.0,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "goodrx.com",
+        "citations": 2393,
+        "share": 3.9,
+        "owner": "earned",
+        "subtype": "directory",
+        "answers_pct": 33.5,
+        "with_us_pct": 75.3,
+        "with_comp_pct": 67.3,
+        "top_model": "claude-sonnet-4-6",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "drugs.com",
+        "citations": 2343,
+        "share": 3.8,
+        "owner": "earned",
+        "subtype": "directory",
+        "answers_pct": 32.8,
+        "with_us_pct": 77.3,
+        "with_comp_pct": 70.3,
+        "top_model": "claude-sonnet-4-6",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "healthline.com",
+        "citations": 1725,
+        "share": 2.8,
+        "owner": "earned",
+        "subtype": "health_media",
+        "answers_pct": 24.1,
+        "with_us_pct": 63.2,
+        "with_comp_pct": 54.0,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "medicalnewstoday.com",
+        "citations": 1393,
+        "share": 2.2,
+        "owner": "earned",
+        "subtype": "health_media",
+        "answers_pct": 19.5,
+        "with_us_pct": 68.7,
+        "with_comp_pct": 55.5,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "diabetesjournals.org",
+        "citations": 1249,
+        "share": 2.0,
+        "owner": "institutional",
+        "subtype": null,
+        "answers_pct": 17.5,
+        "with_us_pct": 47.0,
+        "with_comp_pct": 42.9,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "clevelandclinic.org",
+        "citations": 1093,
+        "share": 1.8,
+        "owner": "earned",
+        "subtype": "hospital",
+        "answers_pct": 15.3,
+        "with_us_pct": 59.5,
+        "with_comp_pct": 50.5,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "webmd.com",
+        "citations": 1023,
+        "share": 1.6,
+        "owner": "earned",
+        "subtype": "directory",
+        "answers_pct": 14.3,
+        "with_us_pct": 67.2,
+        "with_comp_pct": 48.6,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "diabetes.org",
+        "citations": 909,
+        "share": 1.5,
+        "owner": "earned",
+        "subtype": "health_media",
+        "answers_pct": 12.7,
+        "with_us_pct": 36.6,
+        "with_comp_pct": 40.3,
+        "top_model": "gpt-4o",
+        "top_zone": "STARTING & SWITCHING"
+      },
+      {
+        "domain": "mayoclinic.org",
+        "citations": 856,
+        "share": 1.4,
+        "owner": "earned",
+        "subtype": "hospital",
+        "answers_pct": 12.0,
+        "with_us_pct": 38.1,
+        "with_comp_pct": 40.8,
+        "top_model": "gemini-2.5-flash",
+        "top_zone": "STARTING & SWITCHING"
+      }
+    ],
+    "gap_list": [
+      {
+        "domain": "apnews.com",
+        "gap_score": 8,
+        "cites_comp": 14,
+        "cites_us": 6,
+        "competitors_fed": 7,
+        "owner": "earned",
+        "subtype": "news",
+        "action_type": "PR"
+      },
+      {
+        "domain": "peakwellnessva.com",
+        "gap_score": 8,
+        "cites_comp": 9,
+        "cites_us": 1,
+        "competitors_fed": 4,
+        "owner": "earned",
+        "subtype": "telehealth",
+        "action_type": "outreach"
+      },
+      {
+        "domain": "hillsideprimarycare.com",
+        "gap_score": 7,
+        "cites_comp": 11,
+        "cites_us": 4,
+        "competitors_fed": 5,
+        "owner": "earned",
+        "subtype": "telehealth",
+        "action_type": "outreach"
+      },
+      {
+        "domain": "bodevolvebariatric.com",
+        "gap_score": 7,
+        "cites_comp": 9,
+        "cites_us": 2,
+        "competitors_fed": 4,
+        "owner": "earned",
+        "subtype": "telehealth",
+        "action_type": "outreach"
+      },
+      {
+        "domain": "weightwatchers.com",
+        "gap_score": 5,
+        "cites_comp": 27,
+        "cites_us": 22,
+        "competitors_fed": 5,
+        "owner": "earned",
+        "subtype": "telehealth",
+        "action_type": "outreach"
+      },
+      {
+        "domain": "reddit.com",
+        "gap_score": 4,
+        "cites_comp": 26,
+        "cites_us": 22,
+        "competitors_fed": 9,
+        "owner": "earned",
+        "subtype": "ugc",
+        "action_type": "monitor"
+      },
+      {
+        "domain": "farxiga.com",
+        "gap_score": 4,
+        "cites_comp": 5,
+        "cites_us": 1,
+        "competitors_fed": 3,
+        "owner": "competitor:Farxiga",
+        "subtype": null,
+        "action_type": "n/a (competitor site)"
+      },
+      {
+        "domain": "skenmedspa.com",
+        "gap_score": 4,
+        "cites_comp": 4,
+        "cites_us": 0,
+        "competitors_fed": 3,
+        "owner": "earned",
+        "subtype": "telehealth",
+        "action_type": "outreach"
+      },
+      {
+        "domain": "axios.com",
+        "gap_score": 3,
+        "cites_comp": 8,
+        "cites_us": 5,
+        "competitors_fed": 8,
+        "owner": "earned",
+        "subtype": "news",
+        "action_type": "PR"
+      },
+      {
+        "domain": "livescience.com",
+        "gap_score": 3,
+        "cites_comp": 5,
+        "cites_us": 2,
+        "competitors_fed": 6,
+        "owner": "earned",
+        "subtype": "other",
+        "action_type": "review"
+      }
+    ],
+    "adversarial_sources": [
+      {
+        "domain": "drugwatch.com",
+        "citations": 475
+      },
+      {
+        "domain": "motleyrice.com",
+        "citations": 185
+      },
+      {
+        "domain": "bursor.com",
+        "citations": 111
+      },
+      {
+        "domain": "robertkinglawfirm.com",
+        "citations": 67
+      },
+      {
+        "domain": "helbocklaw.com",
+        "citations": 47
+      },
+      {
+        "domain": "lawsuit-information-center.com",
+        "citations": 47
+      },
+      {
+        "domain": "wisnerbaum.com",
+        "citations": 39
+      },
+      {
+        "domain": "trulaw.com",
+        "citations": 36
+      },
+      {
+        "domain": "mctlaw.com",
+        "citations": 35
+      },
+      {
+        "domain": "lanierlawfirm.com",
+        "citations": 29
+      },
+      {
+        "domain": "torhoermanlaw.com",
+        "citations": 27
+      },
+      {
+        "domain": "therxadvocates.com",
+        "citations": 26
+      },
+      {
+        "domain": "legalclarity.org",
+        "citations": 18
+      },
+      {
+        "domain": "hmf-law.com",
+        "citations": 9
+      },
+      {
+        "domain": "lawsuittracker.org",
+        "citations": 8
+      }
+    ],
+    "answers_without_citations_pct": 39.6
+  },
+  "prioritization": {
+    "recommendations": [
+      {
+        "group_id": "Side effects & tolerability × LIVING ON THE DRUG",
+        "best_score": 0.117702,
+        "priority": 3,
+        "cause": "LEAK TO A COMPETITOR",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.117702,
+            "lever": 0.8,
+            "ceiling_pp": 59.8,
+            "top_domain": "drugs.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 0.005394,
+            "lever": 0.0,
+            "ceiling_pp": 2.7,
+            "top_domain": "ozempic.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.002569,
+            "lever": 0.0,
+            "ceiling_pp": 1.3,
+            "top_domain": "reddit.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 0.002376,
+            "lever": 0.0,
+            "ceiling_pp": 1.2,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Side effects & tolerability × WEIGHT LOSS",
+        "best_score": 0.066838,
+        "priority": 3,
+        "cause": "LEAK TO A COMPETITOR",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.066838,
+            "lever": 0.7,
+            "ceiling_pp": 52.6,
+            "top_domain": "drugs.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.001868,
+            "lever": 0.0,
+            "ceiling_pp": 1.5,
+            "top_domain": "reddit.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 0.001376,
+            "lever": 0.0,
+            "ceiling_pp": 1.1,
+            "top_domain": "ozempic.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 0.00059,
+            "lever": 0.0,
+            "ceiling_pp": 0.5,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Price, coverage & supply × Coupons & savings",
+        "best_score": 0.059544,
+        "priority": 3,
+        "cause": "LOW REACH ON HIGH DEMAND",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.059544,
+            "lever": 0.7,
+            "ceiling_pp": 61.8,
+            "top_domain": "goodrx.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 0.012013,
+            "lever": 0.1,
+            "ceiling_pp": 12.5,
+            "top_domain": "novocare.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 0.004179,
+            "lever": 0.0,
+            "ceiling_pp": 4.3,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.001436,
+            "lever": 0.0,
+            "ceiling_pp": 1.5,
+            "top_domain": "reddit.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Efficacy & results × WEIGHT LOSS",
+        "best_score": 0.028075,
+        "priority": 3,
+        "cause": "WE LOSE THIS DUEL",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.028075,
+            "lever": 0.8,
+            "ceiling_pp": 64.3,
+            "top_domain": "drugs.com",
+            "who": "Marketing + Medical"
+          },
+          {
+            "owner": "owned",
+            "score": 0.000724,
+            "lever": 0.0,
+            "ceiling_pp": 1.7,
+            "top_domain": "ozempic.com",
+            "who": "Marketing + Medical"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.000628,
+            "lever": 0.0,
+            "ceiling_pp": 1.4,
+            "top_domain": "reddit.com",
+            "who": "Marketing + Medical"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 0.00023,
+            "lever": 0.0,
+            "ceiling_pp": 0.5,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Indications & eligibility × Weight loss without diabetes",
+        "best_score": 0.025881,
+        "priority": 3,
+        "cause": "LEAK TO A COMPETITOR",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.025881,
+            "lever": 0.7,
+            "ceiling_pp": 48.8,
+            "top_domain": "drugs.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.000486,
+            "lever": 0.0,
+            "ceiling_pp": 0.9,
+            "top_domain": "reddit.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 0.000452,
+            "lever": 0.0,
+            "ceiling_pp": 0.9,
+            "top_domain": "novonordisk.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 8.7e-05,
+            "lever": 0.0,
+            "ceiling_pp": 0.2,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Dosing & administration × Pen & device",
+        "best_score": 0.004313,
+        "priority": 3,
+        "cause": "MESSAGE NOT DELIVERED",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.004313,
+            "lever": 0.7,
+            "ceiling_pp": 47.2,
+            "top_domain": "drugs.com",
+            "who": "Medical + Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 0.000542,
+            "lever": 0.1,
+            "ceiling_pp": 5.9,
+            "top_domain": "ozempic.com",
+            "who": "Medical + Digital"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.000212,
+            "lever": 0.0,
+            "ceiling_pp": 2.3,
+            "top_domain": "reddit.com",
+            "who": "Medical + Digital"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 0.000201,
+            "lever": 0.0,
+            "ceiling_pp": 2.2,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Price, coverage & supply × Insurance & coverage",
+        "best_score": 0.004142,
+        "priority": 3,
+        "cause": "LOW REACH ON HIGH DEMAND",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.004142,
+            "lever": 0.8,
+            "ceiling_pp": 63.6,
+            "top_domain": "goodrx.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 0.000263,
+            "lever": 0.0,
+            "ceiling_pp": 4.0,
+            "top_domain": "novocare.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "ugc",
+            "score": 0.000143,
+            "lever": 0.0,
+            "ceiling_pp": 2.2,
+            "top_domain": "reddit.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 7.9e-05,
+            "lever": 0.0,
+            "ceiling_pp": 1.2,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Efficacy & results × STARTING & SWITCHING",
+        "best_score": 0.00235,
+        "priority": 3,
+        "cause": "WE ARE ABSENT",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.00235,
+            "lever": 0.7,
+            "ceiling_pp": 52.8,
+            "top_domain": "drugs.com",
+            "who": "PR/Comms"
+          },
+          {
+            "owner": "owned",
+            "score": 6.4e-05,
+            "lever": 0.0,
+            "ceiling_pp": 1.4,
+            "top_domain": "ozempic.com",
+            "who": "PR/Comms"
+          },
+          {
+            "owner": "ugc",
+            "score": 6.4e-05,
+            "lever": 0.0,
+            "ceiling_pp": 1.4,
+            "top_domain": "reddit.com",
+            "who": "PR/Comms"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 1.6e-05,
+            "lever": 0.0,
+            "ceiling_pp": 0.4,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          }
+        ]
+      },
+      {
+        "group_id": "Efficacy & results × LIVING ON THE DRUG",
+        "best_score": 0.001816,
+        "priority": 3,
+        "cause": "WE ARE ABSENT",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.001816,
+            "lever": 0.8,
+            "ceiling_pp": 75.2,
+            "top_domain": "diabetes.org",
+            "who": "PR/Comms"
+          },
+          {
+            "owner": "ugc",
+            "score": 4.5e-05,
+            "lever": 0.0,
+            "ceiling_pp": 1.9,
+            "top_domain": "reddit.com",
+            "who": "PR/Comms"
+          },
+          {
+            "owner": "comp_owned",
+            "score": 2.8e-05,
+            "lever": 0.0,
+            "ceiling_pp": 1.2,
+            "top_domain": "lilly.com",
+            "who": "Digital"
+          },
+          {
+            "owner": "owned",
+            "score": 6e-06,
+            "lever": 0.0,
+            "ceiling_pp": 0.2,
+            "top_domain": "novonordiskmedical.com",
+            "who": "PR/Comms"
+          }
+        ]
+      },
+      {
+        "group_id": "Indications & eligibility × PCOS & off-label",
+        "best_score": 0.000672,
+        "priority": 3,
+        "cause": "LISTED BUT NOT CHOSEN",
+        "owners": [
+          {
+            "owner": "earned",
+            "score": 0.000672,
+            "lever": 0.7,
+            "ceiling_pp": 56.8,
+            "top_domain": "goodrx.com",
+            "who": "Medical"
+          },
+          {
+            "owner": "ugc",
+            "score": 3.8e-05,
+            "lever": 0.0,
+            "ceiling_pp": 3.2,
+            "top_domain": "reddit.com",
+            "who": "Medical"
+          },
+          {
+            "owner": "owned",
+            "score": 1.3e-05,
+            "lever": 0.0,
+            "ceiling_pp": 1.1,
+            "top_domain": "ozempic.com",
+            "who": "Medical"
+          }
+        ]
+      }
+    ],
+    "label_recommendations": [
+      {
+        "group_id": "Serious risks & contraindications × Allergy & hypersensitivity",
+        "group": {
+          "topic": "Serious risks & contraindications",
+          "subtopic": "Allergy & hypersensitivity",
+          "zone": ""
+        },
+        "owner": "label",
+        "what": "Publish an owned FAQ / med-reviewed page that states the missing fact plainly, so models have a citable source to complete the answer.",
+        "who": "Medical + Digital",
+        "speed": "weeks",
+        "why": {
+          "demand": 853.0,
+          "lo": 700.0,
+          "hi": 1040.0,
+          "demand_share": 0.0007,
+          "gap": 0.5,
+          "gap_bad": 0.2,
+          "n_prompts": 16,
+          "gap_by_run": {
+            "R4": 0.6,
+            "R5": 0.0
+          },
+          "n_by_run": {
+            "R4": 13,
+            "R5": 3
+          },
+          "dominant_run": "R4",
+          "lever": null,
+          "institutional_share": null
+        },
+        "cause": [
+          {
+            "code": "INCOMPLETE / OMISSION",
+            "n": 5
+          },
+          {
+            "code": "ANSWERED CORRECTLY",
+            "n": 5
+          },
+          {
+            "code": "DANGEROUS LABEL ERROR",
+            "n": 3
+          }
+        ],
+        "examples": [
+          {
+            "pid": "P1148",
+            "run": "R4",
+            "sev": "bad",
+            "text": "i had anaphylaxis on ozempic last month — can i try it again at a lower dose?"
+          },
+          {
+            "pid": "P1151",
+            "run": "R4",
+            "sev": "bad",
+            "text": "anyone restart ozempic after a bad allergic reaction? mine was pretty serious and im wondering if its safe to go again"
+          }
+        ],
+        "impact_reach": {
+          "point": 426.0,
+          "lo": 350.0,
+          "hi": 520.0,
+          "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
+        },
+        "score": 0.000339,
+        "where": [],
+        "no_source_data": true,
+        "rank": 1,
+        "priority": 3
+      },
+      {
+        "group_id": "Indications & eligibility × Pediatrics & teens",
+        "group": {
+          "topic": "Indications & eligibility",
+          "subtopic": "Pediatrics & teens",
+          "zone": ""
+        },
+        "owner": "label",
+        "what": "Publish an owned FAQ / med-reviewed page that states the missing fact plainly, so models have a citable source to complete the answer.",
+        "who": "Medical + Digital",
+        "speed": "weeks",
+        "why": {
+          "demand": 539.0,
+          "lo": 300.0,
+          "hi": 970.0,
+          "demand_share": 0.0004,
+          "gap": 0.6,
+          "gap_bad": 0.4,
+          "n_prompts": 14,
+          "gap_by_run": {
+            "R4": 0.8,
+            "R5": 0.0,
+            "R8": 1.0
+          },
+          "n_by_run": {
+            "R4": 10,
+            "R5": 3,
+            "R8": 1
+          },
+          "dominant_run": "R4",
+          "lever": null,
+          "institutional_share": null
+        },
+        "cause": [
+          {
+            "code": "INCOMPLETE / OMISSION",
+            "n": 4
+          },
+          {
+            "code": "DANGEROUS LABEL ERROR",
+            "n": 4
+          },
+          {
+            "code": "COMPETITOR WITHIN LABEL",
+            "n": 3
+          }
+        ],
+        "examples": [
+          {
+            "pid": "P1059",
+            "run": "R8",
+            "sev": "bad",
+            "text": "Is Mounjaro approved for use in children or teenagers, or adults only?"
+          },
+          {
+            "pid": "P1215",
+            "run": "R4",
+            "sev": "bad",
+            "text": "my daughter is 14, obese and prediabetic. her pediatrician mentioned options — is ozempic something that's established for someone her age?"
+          }
+        ],
+        "impact_reach": {
+          "point": 346.0,
+          "lo": 193.0,
+          "hi": 624.0,
+          "caption": "ceiling, not a forecast — topic demand (Google proxy) × gap"
+        },
+        "score": 0.000275,
+        "where": [],
+        "no_source_data": true,
+        "rank": 2,
+        "priority": 2
+      }
+    ],
+    "tercile_thresholds": {
+      "p3_min": 0.0,
+      "p2_min": 0.0
+    },
+    "tercile_thresholds_label": {
+      "p3_min": 0.0,
+      "p2_min": 0.0
+    },
+    "gap_note": "Gap pools different failure kinds across runs (R1 absent from category answer, R2 lost duel, R4 label error, R6 message not delivered…); it is problem density on the topic, not one kind of failure — see gap_by_run / dominant_run on every row.",
+    "healthy_groups_count": 19,
+    "below_gap_floor_count": 0,
+    "citere_rows_count": 3,
+    "rows_total": 60
+  },
+  "action_center": {
+    "counters": {
+      "open_total": 60,
+      "open_auto": 16,
+      "open_manual": 44,
+      "in_progress": 0,
+      "done_this_cycle": 0,
+      "dismissed_total": 0,
+      "by_who": {
+        "Digital": 26,
+        "PR/Comms": 9,
+        "Medical + Digital": 6,
+        "Medical": 6,
+        "Comms": 6,
+        "Marketing + Medical": 3,
+        "Regulatory": 3,
+        "Medical Affairs": 1
+      },
+      "top3_open": [
+        "c66030d94d01",
+        "92361d73f3e1",
+        "34099e60975f"
+      ],
+      "citere_tasks": 3,
+      "label_tasks_awaiting_signoff": 2,
+      "label_findings_pending": 10
+    },
+    "top3_open": [
+      {
+        "task_id": "c66030d94d01",
+        "group_id": "Side effects & tolerability × LIVING ON THE DRUG",
+        "owner": "earned",
+        "execution": "manual",
+        "priority": 3,
+        "who": "Digital",
+        "score": 0.117702,
+        "impact": {
+          "ceiling_pp": 59.8,
+          "expected_pp": [
+            6.0,
+            13.2
+          ],
+          "basis": "prior",
+          "n_groups": null,
+          "demand": 247764.0,
+          "lo": 246000.0,
+          "hi": 249540.0,
+          "demand_caption": "topic demand, Google, proxy"
+        }
+      },
+      {
+        "task_id": "92361d73f3e1",
+        "group_id": "Side effects & tolerability × WEIGHT LOSS",
+        "owner": "earned",
+        "execution": "manual",
+        "priority": 3,
+        "who": "Digital",
+        "score": 0.066838,
+        "impact": {
+          "ceiling_pp": 52.6,
+          "expected_pp": [
+            5.3,
+            11.6
+          ],
+          "basis": "prior",
+          "n_groups": null,
+          "demand": 160011.0,
+          "lo": 130000.0,
+          "hi": 196950.0,
+          "demand_caption": "topic demand, Google, proxy"
+        }
+      },
+      {
+        "task_id": "34099e60975f",
+        "group_id": "Price, coverage & supply × Coupons & savings",
+        "owner": "earned",
+        "execution": "manual",
+        "priority": 3,
+        "who": "Digital",
+        "score": 0.059544,
+        "impact": {
+          "ceiling_pp": 61.8,
+          "expected_pp": [
+            6.2,
+            13.6
+          ],
+          "basis": "prior",
+          "n_groups": null,
+          "demand": 121227.0,
+          "lo": 88000.0,
+          "hi": 167000.0,
+          "demand_caption": "topic demand, Google, proxy"
+        }
+      }
+    ]
+  },
+  "safety_label": {
+    "traffic_light": "red",
+    "critical_answer_share": 12.1,
+    "critical_ci95": [
+      11.0,
+      13.4
+    ],
+    "findings": {
+      "total": 10,
+      "dangerous": 6,
+      "incomplete": 4,
+      "pending_signoff": 10,
+      "confirmed": 0,
+      "rejected": 0,
+      "note": "pending findings do not enter the client report / Action Center; traffic light computed from non-rejected findings"
+    },
+    "by_surface": [
+      {
+        "surface": "claude-web",
+        "n": 530,
+        "critical_share": 20.6,
+        "dangerous_answers": 20,
+        "findings": 3,
+        "worst_class": "DANGEROUS",
+        "single_run": false,
+        "excluded_pct": 1.9,
+        "tail_cleaned_pct": 0.7
+      },
+      {
+        "surface": "gemini-web",
+        "n": 534,
+        "critical_share": 14.2,
+        "dangerous_answers": 10,
+        "findings": 3,
+        "worst_class": "DANGEROUS",
+        "single_run": false,
+        "excluded_pct": 1.1,
+        "tail_cleaned_pct": 0.0
+      },
+      {
+        "surface": "google-ai",
+        "n": 538,
+        "critical_share": 14.9,
+        "dangerous_answers": 17,
+        "findings": 2,
+        "worst_class": "DANGEROUS",
+        "single_run": false,
+        "excluded_pct": 0.4,
+        "tail_cleaned_pct": 0.0
+      },
+      {
+        "surface": "gpt-web",
+        "n": 529,
+        "critical_share": 7.6,
+        "dangerous_answers": 0,
+        "findings": 1,
+        "worst_class": "INCOMPLETE",
+        "single_run": false,
+        "excluded_pct": 2.2,
+        "tail_cleaned_pct": 16.6
+      },
+      {
+        "surface": "grok-web",
+        "n": 180,
+        "critical_share": 6.1,
+        "dangerous_answers": 2,
+        "findings": 1,
+        "worst_class": "DANGEROUS",
+        "single_run": true,
+        "excluded_pct": 0.0,
+        "tail_cleaned_pct": 0.0
+      },
+      {
+        "surface": "perplexity-web",
+        "n": 536,
+        "critical_share": 5.4,
+        "dangerous_answers": 0,
+        "findings": 0,
+        "worst_class": "",
+        "single_run": false,
+        "excluded_pct": 0.7,
+        "tail_cleaned_pct": 30.4
+      }
+    ],
+    "top_label_sections": [
+      {
+        "section": "§4/Boxed/§5.1",
+        "target": "T-THYR-CI",
+        "targets": [
+          "T-THYR-CI"
+        ],
+        "critical_answers": 121
+      },
+      {
+        "section": "§2.2",
+        "target": "T-DOSE-TITR",
+        "targets": [
+          "T-DOSE-TITR"
+        ],
+        "critical_answers": 81
+      },
+      {
+        "section": "§8.4",
+        "target": "T-PEDI",
+        "targets": [
+          "T-PEDI"
+        ],
+        "critical_answers": 41
+      }
+    ],
+    "error_types": {
+      "Omission": 93.9,
+      "Fabrication": 8.4,
+      "Negation": 6.4,
+      "Contextual": 3.2
+    },
+    "scoring_caveat": "Omission accounts for 94% of CRITICAL verdicts. Several T-THYR-CI cells mark an answer CRITICAL for omitting thyroid-symptom counselling after it correctly stated the family-history MTC contraindication; whether that rule is clinically appropriate is the first question for the reviewing clinician. Verdicts are unchanged.",
+    "flagged_for_review": [
+      {
+        "pid": "P1308",
+        "surface": "grok-web",
+        "repeat_idx": 0,
+        "target": "T-DOSE-TITR",
+        "verdict": "CRITICAL",
+        "harm_class": "DANGEROUS",
+        "issue": "harm_class DANGEROUS unsupported: the answer tells the parent not to accelerate titration; CRITICAL rests on the omitted 2 mg step only"
+      },
+      {
+        "pid": "P1306",
+        "surface": "claude-web",
+        "repeat_idx": 2,
+        "target": "T-DOSE-TITR",
+        "verdict": "CRITICAL",
+        "harm_class": "DANGEROUS",
+        "issue": "harm_class DANGEROUS is a stretch: the answer refuses the 0.25→1 mg jump; CRITICAL rests on a fabricated 3-week titration option"
+      }
+    ],
+    "findings_list": [],
+    "findings_list_note": "filtered to signoff_status = confirmed; 10 pending findings are counted in findings.pending_signoff only"
+  },
+  "before_after": {
+    "available": false,
+    "reason": "first cycle",
+    "next_cycle_expected": "2026-12"
+  }
+}

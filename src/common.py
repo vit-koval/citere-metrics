@@ -447,7 +447,8 @@ def carry_forward_review(new_sample: pd.DataFrame, path, keys: Sequence[str], co
     merged = out.merge(old, on=list(keys), how="left", suffixes=("", "_old"))
 
     def _same(a, b):
-        na, nb = bool(pd.isna(a)), bool(pd.isna(b))
+        na = bool(pd.isna(a)) or (isinstance(a, str) and a == "")   # CSV round-trips "" as NaN
+        nb = bool(pd.isna(b)) or (isinstance(b, str) and b == "")
         if na or nb:
             return na and nb
         try:

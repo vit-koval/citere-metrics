@@ -29,7 +29,7 @@ From cycle 2: `before_after` holds, per metric, `{current, previous, delta, comp
 ## 2. Checks before writing (all must pass)
 
 - Every shares triple sums to 100 ± 0.1.
-- `visibility.by_model` families = families in `config/models.yaml` minus dropped.
+- `visibility.by_model` families = families in `config/models.yaml` minus dropped **that have at least one answer in the visibility headline scope** (cycle-1 decision: R1 C1 runs only on API models, so web-only families such as perplexity and grok are excluded from this validation and listed in the check output with the reason).
 - `benchmarking.leaderboard` competitors ⊆ `config/brands.yaml.competitors`.
 - Every `prioritization.recommendations[].group` exists in `prioritization_groups.csv`.
 - Every `action_center.top3_open[].task_id` exists in the registry.

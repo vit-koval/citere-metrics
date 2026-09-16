@@ -1,0 +1,59 @@
+{
+  "release_rule": "a block ships only when reviewer agreement >= 90% on its sample",
+  "blocks": [
+    {
+      "block": "visibility",
+      "file": "sample_visibility.csv",
+      "rows": 60,
+      "reviewed": 60,
+      "agree": 60,
+      "agreement_pct": 100.0,
+      "ships": true
+    },
+    {
+      "block": "benchmarking",
+      "file": "sample_benchmarking.csv",
+      "rows": 40,
+      "reviewed": 40,
+      "agree": 40,
+      "agreement_pct": 100.0,
+      "ships": true
+    },
+    {
+      "block": "sentiment",
+      "file": "sample_sentiment.csv",
+      "rows": 30,
+      "reviewed": 0,
+      "agree": 0,
+      "agreement_pct": null,
+      "ships": false
+    },
+    {
+      "block": "citations",
+      "file": "sample_citations.csv",
+      "rows": 40,
+      "reviewed": 40,
+      "agree": 37,
+      "agreement_pct": 92.5,
+      "ships": true
+    },
+    {
+      "block": "safety",
+      "file": "sample_safety.csv",
+      "rows": 30,
+      "reviewed": 0,
+      "agree": 0,
+      "agreement_pct": null,
+      "ships": false
+    },
+    {
+      "block": "safety (verdict review, step 5)",
+      "file": "sample_label.csv",
+      "rows": 40,
+      "reviewed": 40,
+      "agree": 38,
+      "agreement_pct": 95.0,
+      "ships": true
+    }
+  ]
+}
