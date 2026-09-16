@@ -166,10 +166,14 @@ def main() -> int:
     top200 = live_c["domain"].value_counts().head(200).index
     sources = dict(cit, domain_pids={d: dom_pids[d] for d in top200})
 
+    vis_s, ben_s, lab_s = L("visibility_summary.json"), L("benchmark_summary.json"), L("label_flag_summary.json")
+    breakdowns = {"note": "carried verbatim from the step summaries: visibility/benchmarking on the R1 C1 headline scope, safety on R4",
+                  "visibility_by_zone": vis_s["by_zone"], "visibility_by_topic_group": vis_s["by_topic_group"],
+                  "benchmarking_by_zone": ben_s["by_zone"], "safety_by_target": lab_s["by_target"], "safety_unstable_cells": lab_s["unstable_cells_list"]}
     data = {"meta": dict(dash["meta"], platform_export_generated=export["meta"].get("generated"), points_joined=len(points), points_unmatched=unmatched,
                          label_mismatches=len(label_mismatch), ans_store="ui/answers.js (built by step 10 from the corpus: gzip+base64, keys pid|run, full texts)"),
             "dashboard": dash, "groups": groups, "points": points, "campaigns": campaigns, "label_tasks_awaiting_signoff": held, "citere_tasks": citere_tasks,
-            "label_findings": label_findings, "sources": sources, "map": "unchanged — the neural map keeps its own data block",
+            "label_findings": label_findings, "sources": sources, "breakdowns": breakdowns, "map": "unchanged — the neural map keeps its own data block",
             "code_labels": CODE_LABELS, "display_rule": "code = what happened (bold title); cause = why (grey sub-line with confidence) — never two equal labels"}
 
     # ---- checks (§3) ------------------------------------------------------------------

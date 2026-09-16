@@ -256,6 +256,505 @@
       "low_n": false
     }
   ],
+  "by_zone": [
+    {
+      "zone": "STARTING & SWITCHING",
+      "n_prompts": 92,
+      "n_answers": 819,
+      "visibility_pct": 36.01,
+      "visibility_ci95": [
+        32.8,
+        39.36
+      ],
+      "average_position": 1.96,
+      "visibility_pct_brand_bearing_only": 75.1,
+      "ai_brand_score": 33.01,
+      "inn_only_mention_pct": 19.68,
+      "low_n": false
+    },
+    {
+      "zone": "PRICE & ACCESS",
+      "n_prompts": 14,
+      "n_answers": 122,
+      "visibility_pct": 31.47,
+      "visibility_ci95": [
+        23.9,
+        40.17
+      ],
+      "average_position": 1.98,
+      "visibility_pct_brand_bearing_only": 48.99,
+      "ai_brand_score": 29.25,
+      "inn_only_mention_pct": 24.11,
+      "low_n": false
+    },
+    {
+      "zone": "WEIGHT LOSS",
+      "n_prompts": 51,
+      "n_answers": 443,
+      "visibility_pct": 24.26,
+      "visibility_ci95": [
+        20.5,
+        28.47
+      ],
+      "average_position": 1.67,
+      "visibility_pct_brand_bearing_only": 67.16,
+      "ai_brand_score": 23.13,
+      "inn_only_mention_pct": 17.31,
+      "low_n": false
+    },
+    {
+      "zone": "SAFETY & CONTRAINDICATIONS",
+      "n_prompts": 22,
+      "n_answers": 192,
+      "visibility_pct": 22.66,
+      "visibility_ci95": [
+        17.31,
+        29.08
+      ],
+      "average_position": 2.73,
+      "visibility_pct_brand_bearing_only": 86.42,
+      "ai_brand_score": 19.52,
+      "inn_only_mention_pct": 13.42,
+      "low_n": false
+    },
+    {
+      "zone": "LIVING ON THE DRUG",
+      "n_prompts": 18,
+      "n_answers": 160,
+      "visibility_pct": 19.66,
+      "visibility_ci95": [
+        14.25,
+        26.5
+      ],
+      "average_position": 2.46,
+      "visibility_pct_brand_bearing_only": 62.3,
+      "ai_brand_score": 17.42,
+      "inn_only_mention_pct": 10.73,
+      "low_n": false
+    },
+    {
+      "zone": "BLOOD SUGAR & GLYCEMIC CONTROL",
+      "n_prompts": 49,
+      "n_answers": 440,
+      "visibility_pct": 18.75,
+      "visibility_ci95": [
+        15.38,
+        22.66
+      ],
+      "average_position": 1.82,
+      "visibility_pct_brand_bearing_only": 81.48,
+      "ai_brand_score": 17.34,
+      "inn_only_mention_pct": 10.54,
+      "low_n": false
+    },
+    {
+      "zone": "HEART & KIDNEY",
+      "n_prompts": 4,
+      "n_answers": 36,
+      "visibility_pct": 13.89,
+      "visibility_ci95": [
+        6.08,
+        28.66
+      ],
+      "average_position": 3.42,
+      "visibility_pct_brand_bearing_only": 66.67,
+      "ai_brand_score": 10.88,
+      "inn_only_mention_pct": 27.78,
+      "low_n": true
+    }
+  ],
+  "by_topic_group": [
+    {
+      "topic_group": "Indications & eligibility × PCOS & off-label",
+      "n_prompts": 7,
+      "n_answers": 59,
+      "visibility_pct": 56.98,
+      "visibility_ci95": [
+        44.31,
+        68.81
+      ],
+      "average_position": 1.8,
+      "visibility_pct_brand_bearing_only": 68.1,
+      "ai_brand_score": 54.6,
+      "inn_only_mention_pct": 33.49,
+      "low_n": true
+    },
+    {
+      "topic_group": "Indications & eligibility × Weight loss without diabetes",
+      "n_prompts": 15,
+      "n_answers": 137,
+      "visibility_pct": 55.27,
+      "visibility_ci95": [
+        46.91,
+        63.34
+      ],
+      "average_position": 1.96,
+      "visibility_pct_brand_bearing_only": 64.2,
+      "ai_brand_score": 50.76,
+      "inn_only_mention_pct": 39.14,
+      "low_n": false
+    },
+    {
+      "topic_group": "Reputation & narratives × Forever drug & regain",
+      "n_prompts": 5,
+      "n_answers": 45,
+      "visibility_pct": 52.22,
+      "visibility_ci95": [
+        38.04,
+        66.06
+      ],
+      "average_position": 1.0,
+      "visibility_pct_brand_bearing_only": 100.0,
+      "ai_brand_score": 52.22,
+      "inn_only_mention_pct": 15.56,
+      "low_n": true
+    },
+    {
+      "topic_group": "Reputation & narratives × Other narratives",
+      "n_prompts": 2,
+      "n_answers": 18,
+      "visibility_pct": 50.0,
+      "visibility_ci95": [
+        29.03,
+        70.97
+      ],
+      "average_position": 1.92,
+      "visibility_pct_brand_bearing_only": 61.11,
+      "ai_brand_score": 45.92,
+      "inn_only_mention_pct": 22.22,
+      "low_n": true
+    },
+    {
+      "topic_group": "Side effects & tolerability × GI & nausea",
+      "n_prompts": 2,
+      "n_answers": 18,
+      "visibility_pct": 48.61,
+      "visibility_ci95": [
+        27.89,
+        69.82
+      ],
+      "average_position": 3.33,
+      "visibility_pct_brand_bearing_only": 61.11,
+      "ai_brand_score": 39.58,
+      "inn_only_mention_pct": 20.83,
+      "low_n": true
+    },
+    {
+      "topic_group": "Basics & mechanism × STARTING & SWITCHING",
+      "n_prompts": 6,
+      "n_answers": 52,
+      "visibility_pct": 45.37,
+      "visibility_ci95": [
+        32.63,
+        58.75
+      ],
+      "average_position": 1.64,
+      "visibility_pct_brand_bearing_only": 85.19,
+      "ai_brand_score": 42.69,
+      "inn_only_mention_pct": 22.04,
+      "low_n": true
+    },
+    {
+      "topic_group": "Reputation & narratives × Lawsuits & cover-up",
+      "n_prompts": 10,
+      "n_answers": 88,
+      "visibility_pct": 42.5,
+      "visibility_ci95": [
+        32.7,
+        52.93
+      ],
+      "average_position": 1.33,
+      "visibility_pct_brand_bearing_only": 90.83,
+      "ai_brand_score": 40.57,
+      "inn_only_mention_pct": 15.56,
+      "low_n": false
+    },
+    {
+      "topic_group": "Serious risks & contraindications × Kidney safety",
+      "n_prompts": 6,
+      "n_answers": 54,
+      "visibility_pct": 40.74,
+      "visibility_ci95": [
+        28.68,
+        54.03
+      ],
+      "average_position": 3.38,
+      "visibility_pct_brand_bearing_only": 92.96,
+      "ai_brand_score": 32.43,
+      "inn_only_mention_pct": 20.37,
+      "low_n": true
+    },
+    {
+      "topic_group": "Dosing & administration × Titration & dose schedule",
+      "n_prompts": 18,
+      "n_answers": 162,
+      "visibility_pct": 39.03,
+      "visibility_ci95": [
+        31.86,
+        46.72
+      ],
+      "average_position": 2.23,
+      "visibility_pct_brand_bearing_only": 70.39,
+      "ai_brand_score": 35.09,
+      "inn_only_mention_pct": 18.7,
+      "low_n": false
+    },
+    {
+      "topic_group": "Price, coverage & supply × Insurance & coverage",
+      "n_prompts": 12,
+      "n_answers": 105,
+      "visibility_pct": 36.76,
+      "visibility_ci95": [
+        28.16,
+        46.3
+      ],
+      "average_position": 2.02,
+      "visibility_pct_brand_bearing_only": 55.27,
+      "ai_brand_score": 33.61,
+      "inn_only_mention_pct": 22.45,
+      "low_n": false
+    },
+    {
+      "topic_group": "Basics & mechanism × WEIGHT LOSS",
+      "n_prompts": 1,
+      "n_answers": 9,
+      "visibility_pct": 33.33,
+      "visibility_ci95": [
+        12.06,
+        64.58
+      ],
+      "average_position": 4.25,
+      "visibility_pct_brand_bearing_only": 33.33,
+      "ai_brand_score": 23.49,
+      "inn_only_mention_pct": 66.67,
+      "low_n": true
+    },
+    {
+      "topic_group": "Serious risks & contraindications × Thyroid / MTC",
+      "n_prompts": 14,
+      "n_answers": 121,
+      "visibility_pct": 30.23,
+      "visibility_ci95": [
+        22.76,
+        38.91
+      ],
+      "average_position": 2.83,
+      "visibility_pct_brand_bearing_only": 70.34,
+      "ai_brand_score": 25.48,
+      "inn_only_mention_pct": 25.05,
+      "low_n": false
+    },
+    {
+      "topic_group": "Serious risks & contraindications × Liver / hepatic",
+      "n_prompts": 3,
+      "n_answers": 27,
+      "visibility_pct": 27.78,
+      "visibility_ci95": [
+        14.5,
+        46.59
+      ],
+      "average_position": 1.56,
+      "visibility_pct_brand_bearing_only": 91.67,
+      "ai_brand_score": 26.76,
+      "inn_only_mention_pct": 22.22,
+      "low_n": true
+    },
+    {
+      "topic_group": "Efficacy & results × STARTING & SWITCHING",
+      "n_prompts": 47,
+      "n_answers": 418,
+      "visibility_pct": 24.73,
+      "visibility_ci95": [
+        20.83,
+        29.08
+      ],
+      "average_position": 1.82,
+      "visibility_pct_brand_bearing_only": 80.74,
+      "ai_brand_score": 22.98,
+      "inn_only_mention_pct": 15.14,
+      "low_n": false
+    },
+    {
+      "topic_group": "Side effects & tolerability × LIVING ON THE DRUG",
+      "n_prompts": 4,
+      "n_answers": 36,
+      "visibility_pct": 21.53,
+      "visibility_ci95": [
+        11.22,
+        37.33
+      ],
+      "average_position": 1.7,
+      "visibility_pct_brand_bearing_only": 53.33,
+      "ai_brand_score": 20.42,
+      "inn_only_mention_pct": 29.17,
+      "low_n": true
+    },
+    {
+      "topic_group": "Price, coverage & supply × Cost & price",
+      "n_prompts": 3,
+      "n_answers": 26,
+      "visibility_pct": 20.0,
+      "visibility_ci95": [
+        9.0,
+        38.72
+      ],
+      "average_position": 1.0,
+      "visibility_pct_brand_bearing_only": 25.0,
+      "ai_brand_score": 20.0,
+      "inn_only_mention_pct": 36.3,
+      "low_n": true
+    },
+    {
+      "topic_group": "Efficacy & results × BLOOD SUGAR & GLYCEMIC CONTROL",
+      "n_prompts": 42,
+      "n_answers": 378,
+      "visibility_pct": 17.75,
+      "visibility_ci95": [
+        14.23,
+        21.93
+      ],
+      "average_position": 1.93,
+      "visibility_pct_brand_bearing_only": 77.93,
+      "ai_brand_score": 16.26,
+      "inn_only_mention_pct": 10.29,
+      "low_n": false
+    },
+    {
+      "topic_group": "Side effects & tolerability × SAFETY & CONTRAINDICATIONS",
+      "n_prompts": 1,
+      "n_answers": 9,
+      "visibility_pct": 16.67,
+      "visibility_ci95": [
+        3.95,
+        49.33
+      ],
+      "average_position": 2.0,
+      "visibility_pct_brand_bearing_only": 100.0,
+      "ai_brand_score": 15.0,
+      "inn_only_mention_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "topic_group": "Serious risks & contraindications × Hypoglycemia",
+      "n_prompts": 1,
+      "n_answers": 10,
+      "visibility_pct": 11.11,
+      "visibility_ci95": [
+        2.14,
+        41.67
+      ],
+      "average_position": 1.0,
+      "visibility_pct_brand_bearing_only": 100.0,
+      "ai_brand_score": 11.11,
+      "inn_only_mention_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "topic_group": "Efficacy & results × WEIGHT LOSS",
+      "n_prompts": 29,
+      "n_answers": 252,
+      "visibility_pct": 10.93,
+      "visibility_ci95": [
+        7.65,
+        15.39
+      ],
+      "average_position": 1.42,
+      "visibility_pct_brand_bearing_only": 68.52,
+      "ai_brand_score": 10.55,
+      "inn_only_mention_pct": 7.65,
+      "low_n": false
+    },
+    {
+      "topic_group": "Serious risks & contraindications × Pregnancy & lactation",
+      "n_prompts": 8,
+      "n_answers": 69,
+      "visibility_pct": 4.17,
+      "visibility_ci95": [
+        1.4,
+        11.77
+      ],
+      "average_position": 1.0,
+      "visibility_pct_brand_bearing_only": 66.67,
+      "ai_brand_score": 4.17,
+      "inn_only_mention_pct": 5.56,
+      "low_n": true
+    },
+    {
+      "topic_group": "Efficacy & results × LIVING ON THE DRUG",
+      "n_prompts": 8,
+      "n_answers": 69,
+      "visibility_pct": 3.77,
+      "visibility_ci95": [
+        1.2,
+        11.22
+      ],
+      "average_position": 3.0,
+      "visibility_pct_brand_bearing_only": 66.67,
+      "ai_brand_score": 3.02,
+      "inn_only_mention_pct": 1.39,
+      "low_n": true
+    },
+    {
+      "topic_group": "Efficacy & results × SAFETY & CONTRAINDICATIONS",
+      "n_prompts": 3,
+      "n_answers": 26,
+      "visibility_pct": 0.0,
+      "visibility_ci95": [
+        0.0,
+        12.87
+      ],
+      "average_position": null,
+      "visibility_pct_brand_bearing_only": null,
+      "ai_brand_score": 0.0,
+      "inn_only_mention_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "topic_group": "Lifestyle & daily living × WEIGHT LOSS",
+      "n_prompts": 1,
+      "n_answers": 8,
+      "visibility_pct": 0.0,
+      "visibility_ci95": [
+        0.0,
+        32.44
+      ],
+      "average_position": null,
+      "visibility_pct_brand_bearing_only": null,
+      "ai_brand_score": 0.0,
+      "inn_only_mention_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "topic_group": "Serious risks & contraindications × Surgery & anesthesia",
+      "n_prompts": 1,
+      "n_answers": 8,
+      "visibility_pct": 0.0,
+      "visibility_ci95": [
+        0.0,
+        32.44
+      ],
+      "average_position": null,
+      "visibility_pct_brand_bearing_only": 0.0,
+      "ai_brand_score": 0.0,
+      "inn_only_mention_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "topic_group": "Side effects & tolerability × WEIGHT LOSS",
+      "n_prompts": 1,
+      "n_answers": 8,
+      "visibility_pct": 0.0,
+      "visibility_ci95": [
+        0.0,
+        32.44
+      ],
+      "average_position": null,
+      "visibility_pct_brand_bearing_only": null,
+      "ai_brand_score": 0.0,
+      "inn_only_mention_pct": 0.0,
+      "low_n": true
+    }
+  ],
   "c1_other_runs": {
     "R2": {
       "n_prompts": 4,

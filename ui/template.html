@@ -69,7 +69,6 @@ table.t2 th.sorted{color:var(--accent)}
 </div>
 <!--LEGACY_MAP_HTML-->
 <script>/*PLATFORM_DATA*/</script>
-<script>/*MAP_DATA*/</script>
 <script>
 "use strict";
 const D = window.PLATFORM_DATA;
@@ -105,7 +104,7 @@ function render(){
   document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on", a.dataset.r===route));
   const v1=document.getElementById("view1"), v2=document.getElementById("view2"), v3=document.getElementById("view3");
   v1.innerHTML=v2.innerHTML=v3.innerHTML="";
-  if(route==="map"){ window.__openMap && window.__openMap(); return; } else { window.__closeMap && window.__closeMap(); }
+  if(route==="map"){ openMapRoute(); return; } else { window.__closeMap && window.__closeMap(); }
   if(route==="") return level1(v1);
   if(route==="point") return level3(v3, key, q);
   const fn = {visibility:vVisibility, competitors:vCompetitors, sentiment:vSentiment, sources:vSources, priorities:vPriorities, actions:vActions, safety:vSafety}[route];
@@ -176,6 +175,7 @@ function pointTable(el, keys, opts={}){
   (opts.preset||[]).forEach(([k,v])=>{ st[k]=v; const e=document.getElementById("pf_"+k); if(e) e.value=v; });
   draw();
 }
+function sliceTable(rows, key, label){ return tbl([{k:"k",h:label,f:d=>`<b>${esc(d[key])}</b>${d.low_n?' <span class="tag ci">low_n</span>':""}`},{k:"p",h:"Prompts",f:d=>d.n_prompts,sort:d=>d.n_prompts},{k:"n",h:"Answers",f:d=>d.n_answers,sort:d=>d.n_answers},{k:"v",h:"Visibility",f:d=>`<span class="num">${pct(d.visibility_pct)}</span> <span class="ci">${ci(d.visibility_ci95)}</span><div class="bar2"><i style="width:${Math.round(d.visibility_pct)}%"></i></div>`,sort:d=>d.visibility_pct},{k:"pos",h:"Avg position",f:d=>f1(d.average_position),sort:d=>d.average_position??99},{k:"s",h:"Brand score",f:d=>f1(d.ai_brand_score),sort:d=>d.ai_brand_score},{k:"inn",h:"INN-only",f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct}], rows, {sortKey:"v"}); }
 function sec(h, inner, note){ return `<div class="sec"><h3>${h}</h3>${inner}${note?`<p class="note">${note}</p>`:""}</div>`; }
 function kv(pairs){ return `<div class="kv">${pairs.map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join("")}</div>`; }
 
@@ -192,6 +192,8 @@ function vVisibility(el){
       {k:"bb",h:"Brand-bearing vis",f:d=>pct(d.visibility_pct_brand_bearing_only)},
       {k:"inn",h:"INN-only",f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct},
       {k:"u",h:"Unstable groups",f:d=>pct(d.unstable_groups_pct)},{k:"sr",h:"Single-run",f:d=>pct(d.single_run_groups_pct)},{k:"ln",h:"low_n",f:d=>d.low_n?"yes":""}], V.by_model, {sortKey:"v"}), "CI shown as a range, never hidden.")
+   + sec("By zone (R1 C1, headline families, equal family weights)", sliceTable(D.breakdowns.visibility_by_zone, "zone", "Zone"))
+   + sec("By topic group (R1 C1)", sliceTable(D.breakdowns.visibility_by_topic_group, "topic_group", "Topic group"), "low_n = fewer than the minimum group prompts from thresholds; CI still shown.")
    + sec("Other C1 runs (reference, not headline)", tbl([{k:"r",h:"Run",f:([r])=>r},{k:"v",h:"Visibility",f:([,o])=>pct(o.visibility_pct)+" "+ci(o.visibility_ci95)},{k:"p",h:"Avg position",f:([,o])=>f1(o.average_position)},{k:"s",h:"Brand score",f:([,o])=>f1(o.ai_brand_score)},{k:"n",h:"Answers",f:([,o])=>o.n_answers}], Object.entries(V.c1_other_runs)))
    + sec("Intrusion", kv([["Competitor into our answers (C2)",pct(V.intrusion.competitor_into_ours_pct)+" "+ci(V.intrusion.competitor_into_ours_ci95)],["Ours into competitor answers (C3)",pct(V.intrusion.ours_into_competitor_pct)+" "+ci(V.intrusion.ours_into_competitor_ci95)]]) + `<div class="note">By competitor in C2: ${Object.entries(V.intrusion.by_competitor).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · ")}</div>`)
    + `<div class="sec"><h3>Points — R1 (headline scope)</h3><div id="pt"></div></div>`;
@@ -207,7 +209,8 @@ function vCompetitors(el, q){
       {k:"wm",h:"Worst model",f:d=>esc(d.worst_model)},{k:"wz",h:"Worst zone",f:d=>esc(d.worst_zone)}], B.leaderboard, {sortKey:"i"}),
       `Overall win rate ${pct(B.overall.win_rate)} ${ci(B.overall.win_rate_ci95)} over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers. ${esc(B.scope_note)}`)
    + sec("Duel Verdict (R2, C4 prompts)", kv([["Duel win rate",pct(B.duel_verdict.duel_win_rate)+" "+ci(B.duel_verdict.duel_win_rate_ci95)],["Scored answers",B.duel_verdict.n_scored],["Excluded none/na",pct(B.duel_verdict.excluded_na_pct)]]) + tbl([{k:"c",h:"Competitor asked",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",f:([,v])=>pct(v.duel_win_rate)+" "+ci(v.ci95||[]),sort:([,v])=>v.duel_win_rate},{k:"n",h:"Prompts / answers",f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}) + `<div class="note">By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(k)} ${pct(v.duel_win_rate)}`).join(" · ")}</div>`)
-   + sec("By model family (win rate)", tbl([{k:"m",h:"Family",f:d=>`<b>${esc(d.model)}</b>`},{k:"w",h:"Win rate",f:d=>pct(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} ${pct(d.top_impact)}`}], B.by_model), "By zone is not in platform_data.json and is therefore not shown.")
+   + sec("By model family (win rate)", tbl([{k:"m",h:"Family",f:d=>`<b>${esc(d.model)}</b>`},{k:"w",h:"Win rate",f:d=>pct(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} ${pct(d.top_impact)}`}], B.by_model))
+   + sec("By zone (R1 C1)", tbl([{k:"z",h:"Zone",f:d=>`<b>${esc(d.zone)}</b>`},{k:"w",h:"Win rate",f:d=>`<span class="num">${pct(d.win_rate)}</span><div class="bar2"><i style="width:${Math.round(d.win_rate)}%"></i></div>`,sort:d=>d.win_rate},{k:"n",h:"Overlap answers",f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} ${pct(d.top_impact)}`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}))
    + `<div class="sec"><h3>Points${sel?` — ${esc(sel)} present and we are absent or lower`:" — R1"}</h3><div id="pt"></div></div>`;
   let keys = KEYS.filter(k=>PTS[k].run==="R1");
   if(sel) keys = keys.filter(k=>{const m=PTS[k].metrics; return (m.competitors_present||{})[sel]>0 && (m.we_present_share==null || m.we_present_share<1);});
@@ -274,19 +277,30 @@ function vSafety(el, q){
       {k:"so",h:"Sign-off",f:f=>`<span class="tag ${f.signoff_status==="confirmed"?"conf":"pend"}">${f.signoff_status==="pending"?"awaiting sign-off":esc(f.signoff_status)}</span>${f.single_run?' <span class="tag ci">single_run</span>':""}`},
       {k:"cv",h:"Caveat",f:f=>`<span title="${esc(f.scoring_caveat)}" style="color:var(--muted);font-size:11px">${esc((f.scoring_caveat||"").slice(0,90))}…${(f.flagged_for_review||[]).length?` <span class="tag ci">${f.flagged_for_review.length} flagged</span>`:""}</span>`}], findings, {sortKey:"s"}), esc(L.scoring_caveat))
    + sec("By surface", tbl([{k:"s",h:"Surface",f:d=>`<b>${esc(d.surface)}</b>${d.single_run?' <span class="tag ci">single_run</span>':""}`},{k:"n",h:"Answers",f:d=>d.n},{k:"c",h:"Critical share",f:d=>pct(d.critical_share),sort:d=>d.critical_share},{k:"f",h:"Findings",f:d=>d.findings},{k:"w",h:"Worst class",f:d=>esc(d.worst_class||"—")},{k:"x",h:"Excluded",f:d=>pct(d.excluded_pct)}], L.by_surface, {sortKey:"c"}))
-   + sec("Top label sections by CRITICAL answers", tbl([{k:"s",h:"Section",f:d=>`<b>${esc(d.section)}</b>`},{k:"t",h:"Targets",f:d=>esc((d.targets||[d.target]).join(", "))},{k:"n",h:"Critical answers",f:d=>d.critical_answers}], L.top_label_sections), "Error types among CRITICAL: "+Object.entries(L.error_types).map(([k,v])=>`${k} ${pct(v)}`).join(" · ")+". By-target table and unstable-cell list are not in platform_data.json and are not shown.")
+   + sec("Top label sections by CRITICAL answers", tbl([{k:"s",h:"Section",f:d=>`<b>${esc(d.section)}</b>`},{k:"t",h:"Targets",f:d=>esc((d.targets||[d.target]).join(", "))},{k:"n",h:"Critical answers",f:d=>d.critical_answers}], L.top_label_sections), "Error types among CRITICAL: "+Object.entries(L.error_types).map(([k,v])=>`${k} ${pct(v)}`).join(" · ")+".")
+   + sec("By target (R4)", tbl([{k:"t",h:"Target",f:d=>`<b>${esc(d.target)}</b>`},{k:"tier",h:"Tier",f:d=>esc(d.tier),sort:d=>d.tier},{k:"ls",h:"Label section",f:d=>esc(d.label_section)},{k:"n",h:"Answers",f:d=>d.n,sort:d=>d.n},{k:"c",h:"Critical share",f:d=>`<span class="num">${pct(d.critical_share)}</span><div class="bar2"><i style="width:${Math.round(d.critical_share)}%;background:var(--crit)"></i></div>`,sort:d=>d.critical_share},{k:"d",h:"Dangerous share",f:d=>pct(d.dangerous_share),sort:d=>d.dangerous_share},{k:"fs",h:"Findings on surfaces",f:d=>esc((d.findings_surfaces||[]).join(", "))}], D.breakdowns.safety_by_target, {sortKey:"c"}))
+   + sec("Unstable cells (critical share between 0 and the finding threshold)", tbl([{k:"t",h:"Target",f:d=>`<b>${esc(d.target)}</b>`},{k:"s",h:"Surface",f:d=>esc(d.surface)},{k:"n",h:"n",f:d=>d.n},{k:"c",h:"Critical share",f:d=>shr(d.critical_share),sort:d=>d.critical_share}], D.breakdowns.safety_unstable_cells, {sortKey:"c"}))
    + `<div class="sec"><h3>Points${t?` — R4 answers in cell ${esc(t)} × ${esc(s||"")}`:" — R4"}</h3><div id="pt"></div></div>`;
   let keys = KEYS.filter(k=>PTS[k].run==="R4");
   if(t){ const f=findings.find(x=>x.target===t&&x.surface===s); if(f) keys = f.pids; }
   pointTable(document.getElementById("pt"), keys, {sortKey:"dem", caption: t?`cell ${t} × ${s}`:"R4"});
 }
 
+// ---------------- map data on demand ----------------
+let mapPromise=null;
+function openMapRoute(){
+  if(window.__openMap){ window.__openMap(); return; }
+  if(!mapPromise) mapPromise = loadScript("map_data.js").then(()=>{ window.__mapBoot(); });
+  mapPromise.then(()=>{ if(location.hash.startsWith("#/map")) window.__openMap(); }).catch(e=>{ document.getElementById("view2").innerHTML=`<div class="sec">Neural map data (map_data.js) could not be loaded: ${esc(e.message)}</div>`; });
+}
+function loadScript(src){ return new Promise((res,rej)=>{ const sc=document.createElement("script"); sc.src=src; sc.onload=res; sc.onerror=()=>rej(new Error(src+" not found")); document.head.appendChild(sc); }); }
+
 // ---------------- Level 3: point ----------------
-let ANSWERS=null, ansPromise=null;
-function loadAnswers(){
-  if(ansPromise) return ansPromise;
-  ansPromise = new Promise((res,rej)=>{ const sc=document.createElement("script"); sc.src="answers.js"; sc.onload=async()=>{ try{ const bin=Uint8Array.from(atob(window.ANSWERS_B64), c=>c.charCodeAt(0)); const ds=new DecompressionStream("gzip"); const text=await new Response(new Blob([bin]).stream().pipeThrough(ds)).text(); ANSWERS=JSON.parse(text); res(); }catch(e){ ANSWERS={}; rej(e);} }; sc.onerror=()=>{ANSWERS={};rej(new Error("answers.js not found"));}; document.head.appendChild(sc); });
-  return ansPromise;
+const ANSWERS={}, ansPromise={};   // one gzip+base64 store per run: answers_R1.js … loaded only for the point's run
+function loadAnswers(run){
+  if(ansPromise[run]) return ansPromise[run];
+  ansPromise[run] = loadScript("answers_"+run+".js").then(async()=>{ const b64=window["ANSWERS_B64_"+run]; const bin=Uint8Array.from(atob(b64), c=>c.charCodeAt(0)); const ds=new DecompressionStream("gzip"); const text=await new Response(new Blob([bin]).stream().pipeThrough(ds)).text(); Object.assign(ANSWERS, JSON.parse(text)); });
+  return ansPromise[run];
 }
 function level3(el, key){
   const p = PTS[key]; if(!p){ el.innerHTML=`<div class="sec">Point ${esc(key)} not found.</div>`; return; }
@@ -299,7 +313,7 @@ function level3(el, key){
     ${sec("Metrics (from the pipeline)", kv([["Answers",m.answers],["Excluded",m.answers_excluded],["Presence share",shr(m.we_present_share)],["Avg position",f1(m.avg_position)],["INN-only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)]]) + `<div style="margin-top:8px">${tbl([{k:"f",h:"Family",f:r=>`<b>${esc(r.model_family)}</b>`},{k:"a",h:"Answers",f:r=>r.answers},{k:"w",h:"We present",f:r=>r.we_present},{k:"p",h:"Position",f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",f:r=>f1(r.answer_sentiment)}], m.by_model)}</div><div class="note">Competitors present: ${Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(" · ")||"none"}</div><div class="note">Citations: total ${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}</div><div class="kv" style="margin-top:6px">${runspec}</div>`)}
     ${sec("Diagnosis (platform export)", `<div class="whyblk">${(p.diagnosis_text||[]).map((s,i)=>`<div class="${i===0?"wl":"wp"}">${esc(s)}</div>`).join("")}</div>`)}
     ${sec("Evidence lines (platform export)", `<div class="whyblk" style="border-left-color:var(--good)"><ul>${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul></div>`)}
-    ${sec("Answers — full text, one per model × repeat", `<button class="showans" id="loadAns">load answers ▾</button><div id="ansBox"></div>`, "Loaded on demand from answers.js (full texts from the corpus, gzip). Excluded answers are flagged; their verdicts are not counted.")}
+    ${sec("Answers — full text, one per model × repeat", `<button class="showans" id="loadAns">load answers ▾</button><div id="ansBox"></div>`, "Loaded on demand from answers_<run>.js (full texts from the corpus, gzip). Excluded answers are flagged; their verdicts are not counted.")}
   </div><div>
     ${sec("Sources", `<div class="srcdoms">${(m.citations.top_domains||[]).map(d=>`<a class="sd-chip" href="#/sources?domain=${encodeURIComponent(d.domain)}" style="text-decoration:none">${esc(d.domain)} <b>×${d.n}</b> <span style="color:var(--muted)">${esc(d.owner)}${d.subtype?"/"+esc(d.subtype):""}</span></a>`).join("")||"<span class='note'>no citations</span>"}</div>` + (p.serp?`<h4 style="margin:12px 0 4px;font:600 10.5px 'IBM Plex Mono';color:var(--muted)">SERP SNAPSHOT</h4><div class="note">Google: ${p.serp.our?"#"+p.serp.our:"absent"} · competitor ${p.serp.comp?"#"+p.serp.comp:"absent"} · occupiers ${(p.serp.occ||[]).map(esc).join(", ")} · overlap ${p.serp.ov??"—"}%</div>`:"") + (p.inventory?`<h4 style="margin:12px 0 4px;font:600 10.5px 'IBM Plex Mono';color:var(--muted)">OUR-PAGE INVENTORY</h4><div class="note">${esc(p.inventory.v)} · ${p.inventory.url?`<a href="${esc(p.inventory.url)}" target="_blank" rel="noopener">${esc(p.inventory.url)}</a>`:""}<br>${esc(p.inventory.miss||"")}</div>`:""))}
     ${sec("Demand", kv([["Topic demand",f1(p.demand.topic_demand)],["lo–hi",`${f1(p.demand.lo)}–${f1(p.demand.hi)}`],["basis",esc(p.demand.basis)]]) + `<div class="note">prompt_share ${f1(p.demand_extra.prompt_share)} · AI-native ${p.demand_extra.ai_native?"yes":"no"} (source: platform export)</div>`)}
@@ -308,9 +322,9 @@ function level3(el, key){
   </div></div>`;
   document.getElementById("loadAns").onclick = async (ev) => {
     ev.target.textContent = "loading…";
-    try{ await loadAnswers(); }catch(e){}
-    const arr = (ANSWERS||{})[key] || [];
-    document.getElementById("ansBox").innerHTML = arr.length ? arr.map((a,i)=>`<div class="ans"><div class="ah" onclick="this.nextElementSibling.classList.toggle('hide')"><b>${esc(a.model)}</b><span class="mono">repeat ${a.repeat_idx}</span>${a.excluded?`<span class="excl">excluded · ${esc(a.exclude_reason)}</span>`:""}<span class="mono">${a.citations.length} citations</span></div><div class="hide"><div class="ab">${esc(a.answer_clean)}</div><div class="cits">${a.citations.map(c=>`<a href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc(c.owner)}">${esc(c.domain)}</a>`).join("")}</div></div></div>`).join("") : `<div class="note">No answer texts available (answers.js missing or key absent).</div>`;
+    let err=null; try{ await loadAnswers(p.run); }catch(e){ err=e; }
+    const arr = ANSWERS[key] || [];
+    document.getElementById("ansBox").innerHTML = arr.length ? arr.map((a,i)=>`<div class="ans"><div class="ah" onclick="this.nextElementSibling.classList.toggle('hide')"><b>${esc(a.model)}</b><span class="mono">repeat ${a.repeat_idx}</span>${a.excluded?`<span class="excl">excluded · ${esc(a.exclude_reason)}</span>`:""}<span class="mono">${a.citations.length} citations</span></div><div class="hide"><div class="ab">${esc(a.answer_clean)}</div><div class="cits">${a.citations.map(c=>`<a href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc(c.owner)}">${esc(c.domain)}</a>`).join("")}</div></div></div>`).join("") : `<div class="note">No answer texts available (${err?esc(err.message):"key absent in answers_"+esc(p.run)+".js"}).</div>`;
     ev.target.textContent = `${arr.length} answers loaded`;
   };
 }

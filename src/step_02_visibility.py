@@ -89,10 +89,14 @@ def family_block(used: pd.DataFrame, stab: pd.DataFrame, family_col: str, weight
 
 def overall_block(used: pd.DataFrame, weights) -> dict:
     vis = C.aggregate_bottom_up(used, "present", ci_basis="answers", family_weights=weights)["overall"].iloc[0]
-    pos = C.aggregate_bottom_up(used, "position", ci_basis="answers", family_weights=weights)["overall"].iloc[0]
+    def _ov(col):   # a slice with no presence / no brand-bearing answer has nothing to aggregate for that column → NaN
+        if not bool(used[col].notna().any()):
+            return {col: float("nan")}
+        return C.aggregate_bottom_up(used, col, ci_basis="answers", family_weights=weights)["overall"].iloc[0]
+    pos = _ov("position")
     sco = C.aggregate_bottom_up(used, "weight", ci_basis="answers", family_weights=weights)["overall"].iloc[0]
     inn = C.aggregate_bottom_up(used, "inn_only_i", ci_basis="answers", family_weights=weights)["overall"].iloc[0]
-    bb = C.aggregate_bottom_up(used, "present_bb", ci_basis="answers", family_weights=weights)["overall"].iloc[0]
+    bb = _ov("present_bb")
     return {
         "ai_brand_score": float(sco["weight"]),
         "visibility_pct": 100.0 * float(vis["present"]),
@@ -179,6 +183,24 @@ def main() -> int:
     headline_families = [d["model"] for d in by_model if not d["low_n"]]
     used_head = head[head["model_family"].isin(headline_families)]
     headline = overall_block(used_head, weights)
+
+    # ---- headline breakdowns: by zone and by topic group (same scope and weighting as the headline) ----
+    used_head = used_head.copy()
+    used_head["topic_group"] = [C.topic_group(t_, s_, z_)[0] for t_, s_, z_ in zip(used_head["topic"], used_head["subtopic"], used_head["zone"])]
+
+    def _slice_block(col):
+        rows = []
+        for val, g in used_head.groupby(col):
+            ov = overall_block(g, weights)
+            rows.append({col: val, "n_prompts": int(g["pid"].nunique()), "n_answers": int(len(g)),
+                         "visibility_pct": ov["visibility_pct"], "visibility_ci95": ov["visibility_ci95"],
+                         "average_position": None if math.isnan(ov["average_position"]) else ov["average_position"],
+                         "visibility_pct_brand_bearing_only": None if math.isnan(ov["visibility_pct_brand_bearing_only"]) else ov["visibility_pct_brand_bearing_only"],
+                         "ai_brand_score": ov["ai_brand_score"], "inn_only_mention_pct": ov["inn_only_mention_pct"],
+                         "low_n": int(g["pid"].nunique()) < int(th["min_group_prompts"])})
+        return sorted(rows, key=lambda d: (-d["visibility_pct"], d[col]))
+    by_zone = _slice_block("zone")
+    by_topic_group = _slice_block("topic_group")
     pooled_all = overall_block(used[used["model_family"].isin([d["model"] for d in family_block(used, stab, "model_family", weights, versions_by_family) if not d["low_n"]])], weights)
 
     # scored-rank variant of average position (reference)
@@ -281,6 +303,8 @@ def main() -> int:
                   "note": "Headline on R1 category prompts only; C1 prompts in R2/R3/R5/R6 are in c1_other_runs for reference. Web surfaces have no R1 answers."},
         "by_model": [_rd(d) for d in by_model],
         "by_model_version": [_rd(d) for d in by_version],
+        "by_zone": [_rd(d) for d in by_zone],
+        "by_topic_group": [_rd(d) for d in by_topic_group],
         "c1_other_runs": c1_other_runs,
         "intrusion": {k: (_r(v, 2) if isinstance(v, float) else ([_r(x, 2) for x in v] if isinstance(v, list) else
                           ({kk: (_r(vv, 2) if isinstance(vv, float) else {a_: (_r(b_, 2) if isinstance(b_, float) else b_) for a_, b_ in vv.items()}) for kk, vv in v.items()} if isinstance(v, dict) else v)))

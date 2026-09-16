@@ -14,7 +14,7 @@ from src import common as C
 
 UI = C.ROOT / "ui"
 MAP_DATA_KEYS = ["points", "domIndex", "owners", "cats", "runs"]
-SPLIT_LIMIT = 20 * 1024 * 1024
+ARTIFACT_TEXT_LIMIT = 16 * 1024 * 1024   # artifact publish ceiling per text file → answer store is split by run
 
 
 def build_answer_store():
@@ -35,9 +35,14 @@ def build_answer_store():
             rows.append({"model": m, "repeat_idx": ri, "answer_raw": r["answer_raw"], "answer_clean": r["answer_clean"], "excluded": bool(r["excluded"]),
                          "exclude_reason": None if pd.isna(r["exclude_reason"]) else r["exclude_reason"], "citations": cit.get((p["pid"], p["run"], m, ri), [])})
         store[k] = rows
-    raw = json.dumps(store, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-    b64 = base64.b64encode(gzip.compress(raw, mtime=0)).decode("ascii")
-    return store, b64, len(raw)
+    by_run = collections.OrderedDict()
+    for k, rows in store.items():
+        by_run.setdefault(k.split("|")[1], collections.OrderedDict())[k] = rows
+    out = collections.OrderedDict()
+    for run, sub in by_run.items():
+        raw = json.dumps(sub, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        out[run] = (base64.b64encode(gzip.compress(raw, mtime=0)).decode("ascii"), len(raw), len(sub), sum(len(v) for v in sub.values()))
+    return out
 
 
 def main() -> int:
@@ -69,31 +74,36 @@ def main() -> int:
     nm = re.sub(r"window\.__nmGoFix=pid=>\{.*?\};\n", "", nm, flags=re.S)
     for chunk, name in [(consts, "consts"), (engine, "engine")]:
         assert "document." not in chunk, "legacy {} touches the DOM at load time".format(name)
-    map_js = ("<script>\n(function(){\n\"use strict\";\nconst DATA = window.MAP_DATA;\n" + consts + "\n" + engine + "\n" + nm +
-              "\nwindow.__openMap=openMap; window.__closeMap=closeMap;\n})();\n</script>")
+    map_js = ("<script>\nwindow.__mapBoot = function(){\n\"use strict\";\nconst DATA = window.MAP_DATA;\n" + consts + "\n" + engine + "\n" + nm +
+              "\nwindow.__openMap=openMap; window.__closeMap=closeMap;\n};\n</script>")
 
     # ---- answer store --------------------------------------------------------------------
-    store, b64, raw_len = build_answer_store()
-    js = ('// Full answer texts from corpus_master.json via data/normalized (step 1): gzip+base64 JSON keyed "pid|run",\n'
-          '// each entry an array in corpus order of {model, repeat_idx, answer_raw, answer_clean, excluded, exclude_reason, citations[{domain,url,owner}]}.\n'
-          'window.ANSWERS_B64="' + b64 + '";\n')
-    (UI / "answers.js").write_text(js, encoding="utf-8")
-    ans_size = (UI / "answers.js").stat().st_size
-    if ans_size > SPLIT_LIMIT:
-        print("answers.js is {:,} bytes > 20 MB — split by run required (not implemented in this build)".format(ans_size)); return 2
-    for stale in ["answers_b64.js"]:
+    stores = build_answer_store()
+    ans_sizes = collections.OrderedDict(); n_pts = n_ans = 0
+    for run, (b64, raw_len, npts, nans) in stores.items():
+        js = ('// Full answer texts from corpus_master.json via data/normalized (step 1), run ' + run + ': gzip+base64 JSON keyed "pid|run",\n'
+              '// each entry an array in corpus order of {model, repeat_idx, answer_raw, answer_clean, excluded, exclude_reason, citations[{domain,url,owner}]}.\n'
+              'window.ANSWERS_B64_' + run + '="' + b64 + '";\n')
+        (UI / "answers_{}.js".format(run)).write_text(js, encoding="utf-8")
+        ans_sizes[run] = (UI / "answers_{}.js".format(run)).stat().st_size; n_pts += npts; n_ans += nans
+        assert ans_sizes[run] <= ARTIFACT_TEXT_LIMIT, "answers_{}.js exceeds the artifact text-file ceiling".format(run)
+    for stale in ["answers_b64.js", "answers.js"]:
         if (UI / stale).exists(): (UI / stale).unlink()
+    # map data block: separate file, loaded only when #/map opens
+    (UI / "map_data.js").write_text("window.MAP_DATA=" + json.dumps(map_data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+    map_size = (UI / "map_data.js").stat().st_size
+    assert map_size <= ARTIFACT_TEXT_LIMIT
 
     # ---- assemble ------------------------------------------------------------------------
     out = tpl.replace("<!--LEGACY_STYLE-->", style) \
              .replace("<!--LEGACY_MAP_HTML-->", map_html) \
              .replace("<script>/*PLATFORM_DATA*/</script>", "<script>window.PLATFORM_DATA=" + pdata + ";</script>") \
-             .replace("<script>/*MAP_DATA*/</script>", "<script>window.MAP_DATA=" + json.dumps(map_data, ensure_ascii=False, separators=(",", ":")) + ";</script>") \
              .replace("<!--LEGACY_MAP_JS-->", map_js)
     (UI / "index.html").write_text(out, encoding="utf-8")
-    print("index.html {:,} bytes | answers.js {:,} bytes ({:,} bytes JSON, {} points, {} answers) | map data {:,} bytes ({})".format(
-        (UI / "index.html").stat().st_size, ans_size, raw_len, len(store), sum(len(v) for v in store.values()),
-        len(json.dumps(map_data, separators=(",", ":"))), ", ".join(MAP_DATA_KEYS)))
+    print("index.html {:,} bytes | map_data.js {:,} bytes ({}) | answer stores {} points, {} answers, total {:,} bytes:".format(
+        (UI / "index.html").stat().st_size, map_size, ", ".join(MAP_DATA_KEYS), n_pts, n_ans, sum(ans_sizes.values())))
+    for run, sz in ans_sizes.items():
+        print("  answers_{}.js {:,} bytes".format(run, sz))
     return 0
 
 

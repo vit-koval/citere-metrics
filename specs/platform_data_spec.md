@@ -78,6 +78,13 @@ Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stay
   "citere_tasks": [ ...registry citere tasks + all TRACK fix cards grouped by group_id ],
   "label_findings": [ ...label_findings_registry.json, with cell → pids of R4 answers in that cell ],
   "sources": { ...citations_summary.json + per-domain "pids" list (top 200 domains only, to bound size) },
+  "breakdowns": {                    — carried verbatim from the step summaries (added after cycle-1 UI review)
+    "visibility_by_zone":        [ visibility_summary.by_zone: {zone, n_prompts, n_answers, visibility_pct, visibility_ci95, average_position, ai_brand_score, inn_only_mention_pct, low_n} ],
+    "visibility_by_topic_group": [ visibility_summary.by_topic_group: same fields keyed topic_group ],
+    "benchmarking_by_zone":      [ benchmark_summary.by_zone: {zone, win_rate, n_overlap_answers, n_prompts, top_impact_competitor, top_impact} ],
+    "safety_by_target":          [ label_flag_summary.by_target: {target, tier, label_section, n, critical_share, dangerous_share, findings_surfaces} ],
+    "safety_unstable_cells":     [ label_flag_summary.unstable_cells_list: {target, surface, n, critical_share} ]
+  },
   "map": "unchanged — the neural map keeps its own data block"
 }
 ```
