@@ -10,6 +10,7 @@ Error types among CRITICAL: Omission 94%, Fabrication 8%, Negation 6%, Contextua
 Unstable cells (0 < critical_share < 50%, require re-run): 35; single-run cells (grok-web, 1 repeat): 36; cells with n < 3: 13.
 Registry: `data/registry/label_findings_registry.json` — 10 findings, merge key finding_id = sha1(target|surface)[:12], sign-off fields never overwritten. Audit: `audit/sample_label.csv` — 40 answers (15 CRITICAL / 10 MAJOR / 15 CORRECT, seed 42) for verdict review against the stored evidence.
 Outputs: label_flag_summary.json, label_cells.csv (216 cells), label_answers.csv (2881 rows incl. excluded).
+Scoring caveat (recorded on every finding, verdicts unchanged): Omission accounts for 94% of CRITICAL verdicts. Several T-THYR-CI cells mark an answer CRITICAL for omitting thyroid-symptom counselling after it correctly stated the family-history MTC contraindication; whether that rule is clinically appropriate is the first question for the reviewing clinician. Verdicts are unchanged. Flagged for review (harm_class DANGEROUS unsupported): P1308 grok-web:0 (T-DOSE-TITR); P1306 claude-web:2 (T-DOSE-TITR).
 
 ---
 Findings (sorted DANGEROUS first, then critical share):
