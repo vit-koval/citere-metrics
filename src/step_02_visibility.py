@@ -20,7 +20,7 @@ from src import common as C
 
 LOW_N = 30          # spec §7: fewer than 30 C1 answers after filters -> low_n
 HEADLINE_RUN = "R1"  # cycle-1 decision (spec §2): headline on the category corpus only
-SAMPLE_PER_CASE = 10
+SAMPLE_PER_CASE = 20
 
 
 def _r(x, nd=1):
