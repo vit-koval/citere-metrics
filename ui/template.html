@@ -1,0 +1,326 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Citere · Ozempic · cycle 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<!--LEGACY_STYLE-->
+<style>
+/* ---- additions on top of the legacy tokens ---- */
+.nav{display:flex;gap:4px;margin:14px 0 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.nav a{color:var(--ink2);font:600 13px "IBM Plex Sans";padding:9px 13px;text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav a.on{color:var(--accent);border-bottom-color:var(--accent)}
+.hdr{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.hdr .meta{color:var(--muted);font:500 11.5px "IBM Plex Mono",monospace}
+.pbtn{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--accent);font:600 12px "IBM Plex Sans";border-radius:6px;padding:7px 12px;cursor:pointer}
+.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+@media(max-width:1100px){.grid8{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid8{grid-template-columns:1fr}}
+.tile2{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;cursor:pointer;min-height:150px;display:flex;flex-direction:column;gap:4px}
+.tile2:hover{border-color:var(--accent)}
+.tile2.off{cursor:default;opacity:.7}
+.tile2 h4{margin:0 0 4px;font:600 10px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tile2 .big{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile2 .ci{font:500 11px "IBM Plex Mono",monospace;color:var(--muted)}
+.tile2 .ln{font-size:12px;color:var(--ink2);line-height:1.45}
+.tile2 .ln b{color:var(--ink)}
+.light{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;margin-right:6px}
+.light.red{background:var(--crit)} .light.yellow{background:var(--warn)} .light.green{background:var(--good)}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0}
+.sec h3{margin:0 0 10px;font:600 11px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sec .note{font-size:12px;color:var(--muted);margin:6px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+table.t2{min-width:0;font-size:12.5px}
+table.t2 th{cursor:pointer;user-select:none}
+table.t2 th.sorted{color:var(--accent)}
+.bar2{height:6px;background:var(--na-bg);border-radius:3px;position:relative;overflow:hidden;min-width:90px}
+.bar2 i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:3px}
+.title{font-weight:700;font-size:13px}
+.causeln{color:var(--muted);font-size:11.5px;margin-top:2px}
+.causeln .cf{font-family:"IBM Plex Mono",monospace;font-size:10.5px}
+.tag{display:inline-block;border-radius:3px;padding:1px 6px;font:600 10px/1.7 "IBM Plex Mono",monospace;letter-spacing:.04em;margin-right:4px}
+.tag.cl{background:var(--accent-soft);color:var(--accent)} .tag.ci{background:var(--na-bg);color:var(--na)}
+.tag.pend{background:var(--na-bg);color:var(--na)} .tag.conf{background:var(--good-bg);color:var(--good)}
+.tag.dang{background:var(--crit-bg);color:var(--crit)} .tag.inc{background:var(--warn-bg);color:var(--warn)}
+.badge-ls{font:600 10px "IBM Plex Mono",monospace;color:var(--warn);border:1px solid var(--warn);border-radius:3px;padding:1px 6px;margin-left:6px}
+.pt-detail{display:grid;grid-template-columns:1.3fr 1fr;gap:18px 26px}
+@media(max-width:900px){.pt-detail{grid-template-columns:1fr}}
+.ans{border:1px solid var(--line);border-radius:8px;margin:8px 0;background:var(--card)}
+.ans .ah{display:flex;gap:10px;align-items:center;padding:8px 12px;border-bottom:1px solid var(--line);font:600 12px "IBM Plex Sans";cursor:pointer;flex-wrap:wrap}
+.ans .ah .mono{color:var(--muted);font-weight:500}
+.ans .ab{padding:10px 14px;white-space:pre-wrap;font-size:12.5px;line-height:1.6;color:var(--ink)}
+.ans .cits{padding:0 14px 10px;display:flex;flex-wrap:wrap;gap:4px}
+.ans .cits a{border:1px solid var(--line);border-radius:4px;padding:1px 6px;font:500 10.5px "IBM Plex Mono",monospace;color:var(--ink2);text-decoration:none;background:var(--card2)}
+.excl{background:var(--crit-bg);color:var(--crit);font:600 10px "IBM Plex Mono",monospace;border-radius:3px;padding:1px 6px}
+.prevnext{display:flex;gap:8px;margin:0 0 10px}
+.prevnext a{color:var(--accent);text-decoration:none;font:600 12px "IBM Plex Sans"}
+.kv{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px}
+.kv b{font-variant-numeric:tabular-nums}
+.sub-row td{background:var(--card2);font-size:12px}
+.status-sel{border:1px solid var(--line);border-radius:5px;padding:3px 6px;font:500 11.5px "IBM Plex Sans";background:var(--card);color:var(--ink)}
+.collapse{color:var(--accent);cursor:pointer;font:600 12px "IBM Plex Sans";background:none;border:0;padding:6px 0}
+@media print{ .nav,.pbtn,.filters,#view2,#view3{display:none!important} body{background:#fff} .tile2{break-inside:avoid;border-color:#999} }
+</style></head><body>
+<div class="wrap" id="app">
+  <div class="hdr"><div><div class="kicker">CITERE · MASTER DASHBOARD · <span id="hCycle"></span></div><h1 id="hBrand"></h1><div class="meta" id="hMeta"></div></div>
+    <button class="pbtn" onclick="window.print()">Export one-page PDF</button></div>
+  <nav class="nav" id="nav"></nav>
+  <div id="view1"></div>
+  <div id="view2"></div>
+  <div id="view3"></div>
+</div>
+<!--LEGACY_MAP_HTML-->
+<script>/*PLATFORM_DATA*/</script>
+<script>/*MAP_DATA*/</script>
+<script>
+"use strict";
+const D = window.PLATFORM_DATA;
+const DASH = D.dashboard, PTS = D.points, GROUPS = D.groups;
+const KEYS = Object.keys(PTS);
+const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const f1 = v => (v==null||v==="") ? "—" : (typeof v==="number" ? (Number.isInteger(v)?v.toLocaleString("en"):v.toFixed(1)) : esc(v));
+const pct = v => v==null ? "—" : (v*1).toFixed(1)+"%";
+const shr = v => v==null ? "—" : (v*100).toFixed(1)+"%";   // share 0–1 stored by pipeline → percent display
+const ci = a => (a&&a.length===2) ? `[${(+a[0]).toFixed(1)}–${(+a[1]).toFixed(1)}]` : "";
+const SEV = {good:["Good","s-good"],warn:["Warn","s-warn"],bad:["Bad","s-bad"]};
+const CONF = {high:"high",med:"med",medium:"med",low:"low"};
+const titleCause = (code, label, cause) => `<div class="title">${esc(label||code)}</div>${cause?`<div class="causeln">${esc(cause.label||cause.code)} · <span class="cf">confidence: ${esc(CONF[(cause.confidence||"").toLowerCase()]||cause.confidence||"—")}</span></div>`:""}`;
+const groupById = Object.fromEntries(GROUPS.map(g=>[g.group_id,g]));
+const ROUTES = ["visibility","competitors","sentiment","sources","priorities","actions","safety","map"];
+const NAVL = {"":"Dashboard",visibility:"Visibility",competitors:"Competitors",sentiment:"Sentiment",sources:"Sources",priorities:"Priorities",actions:"Actions",safety:"Safety / Label",map:"Neural map ✦"};
+
+// ---------------- header ----------------
+document.getElementById("hCycle").textContent = `CYCLE ${DASH.meta.cycle} · ${DASH.meta.period}`;
+document.getElementById("hBrand").textContent = `${DASH.meta.brand} in AI answers`;
+document.getElementById("hMeta").textContent = `${DASH.meta.prompts.toLocaleString("en")} prompts · ${DASH.meta.answers.toLocaleString("en")} answers · ${DASH.meta.surfaces} surfaces · ${DASH.meta.market} · pipeline ${DASH.meta.pipeline_version}`;
+document.getElementById("nav").innerHTML = ["",...ROUTES].map(r=>`<a href="#/${r}" data-r="${r}">${NAVL[r]}</a>`).join("");
+
+// ---------------- router ----------------
+function parseHash(){
+  const h = location.hash.replace(/^#\/?/,""); const [path,qs] = h.split("?"); const q = new URLSearchParams(qs||"");
+  if(path.startsWith("point/")) return {route:"point", key:decodeURIComponent(path.slice(6)), q};
+  return {route:path||"", q};
+}
+window.addEventListener("hashchange", render); render();
+function render(){
+  const {route,key,q} = parseHash();
+  document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on", a.dataset.r===route));
+  const v1=document.getElementById("view1"), v2=document.getElementById("view2"), v3=document.getElementById("view3");
+  v1.innerHTML=v2.innerHTML=v3.innerHTML="";
+  if(route==="map"){ window.__openMap && window.__openMap(); return; } else { window.__closeMap && window.__closeMap(); }
+  if(route==="") return level1(v1);
+  if(route==="point") return level3(v3, key, q);
+  const fn = {visibility:vVisibility, competitors:vCompetitors, sentiment:vSentiment, sources:vSources, priorities:vPriorities, actions:vActions, safety:vSafety}[route];
+  if(fn) fn(v2, q); else v2.innerHTML = `<div class="sec">Unknown route.</div>`;
+  window.scrollTo(0,0);
+}
+
+// ---------------- Level 1 ----------------
+function level1(el){
+  const V=DASH.visibility.headline, B=DASH.benchmarking, S=DASH.sentiment, C=DASH.citations, P=DASH.prioritization, A=DASH.action_center, L=DASH.safety_label, BA=DASH.before_after;
+  const first = !BA.available;
+  const tile = (h, body, href, off) => `<div class="tile2${off?" off":""}" ${href&&!off?`onclick="location.hash='${href}'"`:""}><h4>${h}</h4>${body}${first?`<div class="ci">first cycle — no delta</div>`:""}</div>`;
+  el.innerHTML = `<div class="grid8">
+    ${tile("Visibility Score", `<div class="big">${pct(V.visibility_pct)}</div><div class="ci">Wilson 95% ${ci(V.visibility_ci95)}</div><div class="ln">avg position <b>${f1(V.average_position)}</b> · AI Brand Score <b>${f1(V.ai_brand_score)}</b><br>INN-only mention <b>${pct(V.inn_only_mention_pct)}</b> · ${esc(DASH.visibility.scope_note)}</div>`, "#/visibility")}
+    ${tile("Competitive Benchmarking", `<div class="big">${pct(B.overall.win_rate)}</div><div class="ci">win rate ${ci(B.overall.win_rate_ci95)} · ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers</div><div class="ln">top impact <b>${esc(B.leaderboard[0].competitor)}</b> ${pct(B.leaderboard[0].impact)}<br>duel win rate <b>${pct(B.duel_verdict.duel_win_rate)}</b> (R2 verdicts)</div>`, "#/competitors")}
+    ${tile("Sentiment", `<div class="big">${f1(S.headline.score)}</div><div class="ci">R3 · negative ${pct(S.headline.shares.negative_pct)} · positive ${pct(S.headline.shares.positive_pct)}</div><div class="ln">under myth probes (R9): <b>${f1(S.narrative_resistance.score)}</b>, negative <b>${pct(S.narrative_resistance.shares.negative_pct)}</b><br>C1/C3/C4 brand-level: deferred to v2</div>`, "#/sentiment")}
+    ${tile("Citation Tracking", `<div class="big">${pct(C.owner_shares.owned)} <span style="font-size:13px;font-weight:500;color:var(--muted)">owned</span></div><div class="ci">earned ${pct(C.owner_shares.earned)} · institutional ${pct(C.owner_shares.institutional)} · competitor ${pct(C.owner_shares.competitor)}</div><div class="ln">top domain <b>${esc(C.top_domains[0].domain)}</b> ${pct(C.top_domains[0].share)} of citations<br>owned share where we are named <b>${pct(C.owned_share_in_answers_with_us)}</b></div>`, "#/sources")}
+    ${tile("Diagnosis & Prioritization", `<div class="ln">${P.recommendations.slice(0,3).map((r,i)=>`<b>${i+1}.</b> ${esc(r.group_id)} <span class="mono" style="color:var(--muted)">P${r.priority}</span>`).join("<br>")}</div><div class="ci" style="margin-top:6px">${P.rows_total} client rows · ${P.healthy_groups_count} healthy groups · ${P.label_recommendations.length} label rows</div>`, "#/priorities")}
+    ${tile("Action Center", `<div class="big">${A.counters.open_total}</div><div class="ci">open · auto ${A.counters.open_auto} · manual ${A.counters.open_manual} · in progress ${A.counters.in_progress} · done ${A.counters.done_this_cycle}</div><div class="ln">${A.top3_open.map((t,i)=>`<b>${i+1}.</b> ${esc(t.group_id)} → ${esc(t.owner)} · P${t.priority}`).join("<br>")}</div>`, "#/actions")}
+    ${tile("Safety / Label", `<div class="big"><span class="light ${L.traffic_light}"></span>${L.traffic_light.toUpperCase()}</div><div class="ci">critical answers ${pct(L.critical_answer_share)} ${ci(L.critical_ci95)}</div><div class="ln">findings <b>${L.findings.total}</b> · dangerous <b>${L.findings.dangerous}</b> · incomplete <b>${L.findings.incomplete}</b><br>awaiting sign-off: <b>${L.findings.pending_signoff}</b> · confirmed <b>${L.findings.confirmed}</b></div>`, "#/safety")}
+    ${tile("Before / After", `<div class="big" style="font-size:18px">${BA.available?"available":"first cycle"}</div><div class="ln">${BA.available?"":`reason: ${esc(BA.reason)} · next cycle expected <b>${esc(BA.next_cycle_expected)}</b>`}</div>`, "", !BA.available)}
+  </div>`;
+}
+
+// ---------------- shared: tables ----------------
+function tbl(cols, rows, opts={}){
+  // cols: [{k, h, f(row) -> html, sort(row) -> value}], rows: array; sortable by clicking headers
+  const id = "t"+Math.random().toString(36).slice(2,8);
+  const state = {k:opts.sortKey||null, dir:opts.sortDir||-1};
+  const draw = () => {
+    let r = rows.slice();
+    if(state.k){ const c=cols.find(x=>x.k===state.k); const sv=c.sort||c.f; r.sort((a,b)=>{const x=sv(a),y=sv(b); return (x>y?1:x<y?-1:0)*state.dir;}); }
+    return `<div class="tblwrap"><table class="t2"><thead><tr>${cols.map(c=>`<th data-k="${c.k}" class="${state.k===c.k?"sorted":""}">${c.h}${state.k===c.k?(state.dir>0?" ▲":" ▼"):""}</th>`).join("")}</tr></thead><tbody>${r.map(row=>`<tr${opts.rowAttr?opts.rowAttr(row):""}>${cols.map(c=>`<td>${c.f(row)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  };
+  setTimeout(()=>{ const host=document.getElementById(id); if(!host) return; host.querySelectorAll("th").forEach(th=>th.onclick=()=>{ const k=th.dataset.k; if(state.k===k) state.dir*=-1; else {state.k=k; state.dir=-1;} host.innerHTML=draw(); bind(); }); const bind=()=>host.querySelectorAll("tr[data-href]").forEach(tr=>tr.onclick=()=>location.hash=tr.dataset.href); bind(); },0);
+  return `<div id="${id}">${draw()}</div>`;
+}
+
+// ---------------- shared: point table with filters ----------------
+function famChips(p){ return (p.metrics.by_model||[]).map(m=>`<span class="mc"><b>${esc(m.model_family)}</b> ${m.we_present}/${m.answers}</span>`).join(""); }
+function pointTable(el, keys, opts={}){
+  const st = {run:"",zone:"",topic:"",sub:"",fam:"",qt:"",stage:"",code:"",cause:"",sev:"",text:""};
+  const all = keys.map(k=>PTS[k]);
+  const uniq = (f) => [...new Set(all.map(f).filter(Boolean))].sort();
+  const sel = (id,label,vals) => `<select id="${id}"><option value="">${label}</option>${vals.map(v=>`<option>${esc(v)}</option>`).join("")}</select>`;
+  el.innerHTML = `<div class="filters">${sel("pf_run","Run: all",uniq(p=>p.run))}${sel("pf_zone","Zone: all",uniq(p=>p.zone))}${sel("pf_topic","Topic: all",uniq(p=>p.topic))}${sel("pf_sub","Subtopic: all",uniq(p=>p.subtopic))}${sel("pf_fam","Family: all",uniq(p=>(p.metrics.by_model||[]).map(m=>m.model_family)).flat())}${sel("pf_qt","Query type: all",uniq(p=>p.query_type))}${sel("pf_stage","Stage: all",uniq(p=>p.patient_stage))}${sel("pf_code","Code: all",uniq(p=>p.code))}${sel("pf_cause","Cause: all",uniq(p=>p.cause&&p.cause.code))}${sel("pf_sev","Sev: all",["good","warn","bad"])}<input type="search" id="pf_text" placeholder="Search questions / pid…"><button class="reset" id="pf_reset">Reset</button></div><p class="count" id="pf_cnt"></p><div id="pf_tbl"></div>`;
+  const cols = [
+    {k:"pid",h:"Point",f:p=>`<span class="corner">${p.pid}</span><div class="z" style="font:500 10.5px 'IBM Plex Mono';color:var(--muted)">${p.run} · ${p.class}</div>`,sort:p=>p.pid+p.run},
+    {k:"q",h:"Question",f:p=>`<div class="qtext"><div class="t">${esc(p.question)}</div><div class="z">${esc(p.zone)} · ${esc(p.query_type)} · ${esc(p.patient_stage)}</div></div>`,sort:p=>p.question},
+    {k:"topic",h:"Topic / subtopic",f:p=>`${esc(p.topic)}${p.subtopic?` / ${esc(p.subtopic)}`:""}`,sort:p=>p.topic+(p.subtopic||"")},
+    {k:"sev",h:"Sev",f:p=>`<span class="pill ${(SEV[p.sev]||[])[1]||"s-na"}">${esc(p.sev)}</span>`,sort:p=>({bad:0,warn:1,good:2})[p.sev]},
+    {k:"code",h:"Code (what) · cause (why)",f:p=>titleCause(p.code,p.code_label,p.cause),sort:p=>p.code},
+    {k:"pres",h:"Presence",f:p=>p.metrics.we_present_share==null?"—":`<span class="num">${shr(p.metrics.we_present_share)}</span><div class="bar2"><i style="width:${Math.round(p.metrics.we_present_share*100)}%"></i></div>`,sort:p=>p.metrics.we_present_share??-1},
+    {k:"pos",h:"Position",f:p=>f1(p.metrics.avg_position),sort:p=>p.metrics.avg_position??99},
+    {k:"models",h:"Models (present / answers)",f:p=>`<div class="mchips">${famChips(p)}</div>`,sort:p=>p.metrics.answers},
+    {k:"dem",h:"Topic demand",f:p=>`<span class="vol">${f1(p.demand.topic_demand)}</span>`,sort:p=>p.demand.topic_demand},
+    {k:"rank",h:"Rank score",f:p=>`<span class="num">${f1(p.point_rank_score)}</span>`,sort:p=>p.point_rank_score},
+  ];
+  const draw = () => {
+    const q = st.text.toLowerCase();
+    const list = all.filter(p => (!st.run||p.run===st.run)&&(!st.zone||p.zone===st.zone)&&(!st.topic||p.topic===st.topic)&&(!st.sub||p.subtopic===st.sub)&&(!st.fam||(p.metrics.by_model||[]).some(m=>m.model_family===st.fam))&&(!st.qt||p.query_type===st.qt)&&(!st.stage||p.patient_stage===st.stage)&&(!st.code||p.code===st.code)&&(!st.cause||(p.cause&&p.cause.code===st.cause))&&(!st.sev||p.sev===st.sev)&&(!q||p.question.toLowerCase().includes(q)||p.pid.toLowerCase().includes(q)));
+    document.getElementById("pf_cnt").textContent = `${list.length.toLocaleString("en")} of ${all.length.toLocaleString("en")} points${opts.caption?" · "+opts.caption:""}`;
+    window.__lastList = list.map(p=>p.pid+"|"+p.run);
+    document.getElementById("pf_tbl").innerHTML = tbl(cols, list, {sortKey:opts.sortKey||null, sortDir:opts.sortDir||-1, rowAttr:p=>` class="pt" data-href="#/point/${encodeURIComponent(p.pid+"|"+p.run)}"`});
+  };
+  Object.keys(st).forEach(k=>{ const e=document.getElementById("pf_"+k); if(e) e[k==="text"?"oninput":"onchange"]=ev=>{st[k]=ev.target.value;draw();}; });
+  document.getElementById("pf_reset").onclick=()=>{Object.keys(st).forEach(k=>{st[k]="";const e=document.getElementById("pf_"+k);if(e)e.value="";});draw();};
+  (opts.preset||[]).forEach(([k,v])=>{ st[k]=v; const e=document.getElementById("pf_"+k); if(e) e.value=v; });
+  draw();
+}
+function sec(h, inner, note){ return `<div class="sec"><h3>${h}</h3>${inner}${note?`<p class="note">${note}</p>`:""}</div>`; }
+function kv(pairs){ return `<div class="kv">${pairs.map(([k,v])=>`<span>${k} <b>${v}</b></span>`).join("")}</div>`; }
+
+// ---------------- Level 2 screens ----------------
+function vVisibility(el){
+  const V=DASH.visibility;
+  el.innerHTML = sec("Visibility — headline (R1 C1)", kv([["Visibility",pct(V.headline.visibility_pct)+" "+ci(V.headline.visibility_ci95)],["Average position",f1(V.headline.average_position)],["AI Brand Score",f1(V.headline.ai_brand_score)],["Brand-bearing only",pct(V.headline.visibility_pct_brand_bearing_only)],["INN-only mention",pct(V.headline.inn_only_mention_pct)],["Cross-check vs scorer",`${pct(V.cross_check.r1_visibility_pct_from_we_present)} vs ${pct(V.cross_check.r1_visibility_pct_from_our_status_scored)} (${V.cross_check.within_0_5?"within 0.5":"outside 0.5"})`]]), esc(V.scope_note)+" · surfaces not covered: "+esc((V.scope.surfaces_not_covered||[]).join(", ")))
+   + sec("By model family", tbl([
+      {k:"m",h:"Family",f:d=>`<b>${esc(d.model)}</b> <span class="mono" style="color:var(--muted)">${esc((d.versions||[]).join(", "))}</span>`},
+      {k:"n",h:"Answers",f:d=>d.n_answers},
+      {k:"v",h:"Visibility",f:d=>`<span class="num">${pct(d.visibility_pct)}</span> <span class="ci">${ci(d.visibility_ci95)}</span><div class="bar2"><i style="width:${Math.round(d.visibility_pct)}%"></i></div>`,sort:d=>d.visibility_pct},
+      {k:"p",h:"Avg position",f:d=>f1(d.average_position),sort:d=>d.average_position??99},
+      {k:"s",h:"Brand score",f:d=>f1(d.ai_brand_score),sort:d=>d.ai_brand_score},
+      {k:"bb",h:"Brand-bearing vis",f:d=>pct(d.visibility_pct_brand_bearing_only)},
+      {k:"inn",h:"INN-only",f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct},
+      {k:"u",h:"Unstable groups",f:d=>pct(d.unstable_groups_pct)},{k:"sr",h:"Single-run",f:d=>pct(d.single_run_groups_pct)},{k:"ln",h:"low_n",f:d=>d.low_n?"yes":""}], V.by_model, {sortKey:"v"}), "CI shown as a range, never hidden.")
+   + sec("Other C1 runs (reference, not headline)", tbl([{k:"r",h:"Run",f:([r])=>r},{k:"v",h:"Visibility",f:([,o])=>pct(o.visibility_pct)+" "+ci(o.visibility_ci95)},{k:"p",h:"Avg position",f:([,o])=>f1(o.average_position)},{k:"s",h:"Brand score",f:([,o])=>f1(o.ai_brand_score)},{k:"n",h:"Answers",f:([,o])=>o.n_answers}], Object.entries(V.c1_other_runs)))
+   + sec("Intrusion", kv([["Competitor into our answers (C2)",pct(V.intrusion.competitor_into_ours_pct)+" "+ci(V.intrusion.competitor_into_ours_ci95)],["Ours into competitor answers (C3)",pct(V.intrusion.ours_into_competitor_pct)+" "+ci(V.intrusion.ours_into_competitor_ci95)]]) + `<div class="note">By competitor in C2: ${Object.entries(V.intrusion.by_competitor).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · ")}</div>`)
+   + `<div class="sec"><h3>Points — R1 (headline scope)</h3><div id="pt"></div></div>`;
+  pointTable(document.getElementById("pt"), KEYS.filter(k=>PTS[k].run==="R1"), {sortKey:"dem", caption:"R1 category prompts"});
+}
+function vCompetitors(el, q){
+  const B=DASH.benchmarking; const sel=q.get("competitor");
+  el.innerHTML = sec("Leaderboard by Impact (R1 C1)", tbl([
+      {k:"c",h:"Competitor",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}" style="color:var(--accent);font-weight:600;text-decoration:none">${esc(d.competitor)}</a>${d.low_n?' <span class="tag ci">low_n</span>':""}`},
+      {k:"i",h:"Impact",f:d=>`<span class="num">${pct(d.impact)}</span><div class="bar2"><i style="width:${Math.round(d.impact*10)}%;background:var(--bad)"></i></div>`,sort:d=>d.impact},
+      {k:"ip",h:"by position",f:d=>pct(d.impact_by_position),sort:d=>d.impact_by_position},{k:"ia",h:"by absence",f:d=>pct(d.impact_by_absence),sort:d=>d.impact_by_absence},
+      {k:"w",h:"Win rate",f:d=>`${pct(d.win_rate)} <span class="ci">${ci(d.win_rate_ci95)}</span>`,sort:d=>d.win_rate},{k:"n",h:"Overlap answers",f:d=>d.overlap_answers,sort:d=>d.overlap_answers},
+      {k:"wm",h:"Worst model",f:d=>esc(d.worst_model)},{k:"wz",h:"Worst zone",f:d=>esc(d.worst_zone)}], B.leaderboard, {sortKey:"i"}),
+      `Overall win rate ${pct(B.overall.win_rate)} ${ci(B.overall.win_rate_ci95)} over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers. ${esc(B.scope_note)}`)
+   + sec("Duel Verdict (R2, C4 prompts)", kv([["Duel win rate",pct(B.duel_verdict.duel_win_rate)+" "+ci(B.duel_verdict.duel_win_rate_ci95)],["Scored answers",B.duel_verdict.n_scored],["Excluded none/na",pct(B.duel_verdict.excluded_na_pct)]]) + tbl([{k:"c",h:"Competitor asked",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",f:([,v])=>pct(v.duel_win_rate)+" "+ci(v.ci95||[]),sort:([,v])=>v.duel_win_rate},{k:"n",h:"Prompts / answers",f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}) + `<div class="note">By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(k)} ${pct(v.duel_win_rate)}`).join(" · ")}</div>`)
+   + sec("By model family (win rate)", tbl([{k:"m",h:"Family",f:d=>`<b>${esc(d.model)}</b>`},{k:"w",h:"Win rate",f:d=>pct(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} ${pct(d.top_impact)}`}], B.by_model), "By zone is not in platform_data.json and is therefore not shown.")
+   + `<div class="sec"><h3>Points${sel?` — ${esc(sel)} present and we are absent or lower`:" — R1"}</h3><div id="pt"></div></div>`;
+  let keys = KEYS.filter(k=>PTS[k].run==="R1");
+  if(sel) keys = keys.filter(k=>{const m=PTS[k].metrics; return (m.competitors_present||{})[sel]>0 && (m.we_present_share==null || m.we_present_share<1);});
+  pointTable(document.getElementById("pt"), keys, {sortKey:"dem", caption: sel?`competitor ${sel}`:"R1"});
+}
+function vSentiment(el, q){
+  const S=DASH.sentiment;
+  const themes = (list, title) => sec(title, tbl([{k:"t",h:"Theme",f:t=>`<b>${esc(t.theme)}</b>`},{k:"pn",h:"% of negative",f:t=>pct(t.pct_of_negative),sort:t=>t.pct_of_negative},{k:"pa",h:"% of all",f:t=>pct(t.pct_of_all)},{k:"nr",h:"Negative rate",f:t=>pct(t.negative_rate_within_theme),sort:t=>t.negative_rate_within_theme},{k:"w",h:"Worst family",f:t=>`${esc(t.worst_model)} ${pct(t.worst_model_negative_pct)}`},{k:"bm",h:"By family",f:t=>Object.entries(t.by_model_negative_pct||{}).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · ")},{k:"ex",h:"Examples",f:t=>(t.examples||[]).map(e=>`<div style="font-size:11.5px;color:var(--ink2)">“${esc(e)}”</div>`).join("")}], list, {sortKey:"pn"}));
+  const shares = s => `positive ${pct(s.positive_pct)} · neutral ${pct(s.neutral_pct)} · negative ${pct(s.negative_pct)}`;
+  const byFam = b => tbl([{k:"m",h:"Family",f:([k])=>`<b>${esc(k)}</b>`},{k:"s",h:"Score",f:([,v])=>f1(v.score),sort:([,v])=>v.score},{k:"n",h:"Negative",f:([,v])=>pct(v.negative_pct)+" "+ci(v.negative_ci95),sort:([,v])=>v.negative_pct},{k:"p",h:"Positive",f:([,v])=>pct(v.positive_pct)},{k:"c",h:"Answers",f:([,v])=>v.n}], Object.entries(b));
+  el.innerHTML = sec("R3 — living on the drug (headline)", `<div class="big" style="font-size:26px;font-weight:700">${f1(S.headline.score)}</div><div class="note">${shares(S.headline.shares)} · ${S.headline.n} answers · ${S.headline.n_prompts} prompts</div>`+byFam(S.headline.by_model), esc(S.scope_note))
+   + themes(DASH.sentiment.top_negative_themes.filter(t=>t.run==="R3"), "R3 B-themes among negative answers")
+   + `<div class="sec" style="border-color:var(--warn)"><h3>Under myth probes (R9) — adversarial by design</h3><div class="big" style="font-size:26px;font-weight:700">${f1(S.narrative_resistance.score)}</div><div class="note">${shares(S.narrative_resistance.shares)} · ${S.narrative_resistance.n} answers · ${S.narrative_resistance.n_prompts} prompts</div>${byFam(S.narrative_resistance.by_model)}</div>`
+   + themes(S.narrative_resistance.themes, "R9 NR-themes with negative rate per family")
+   + sec("Competitors", `<div class="note">${esc(S.competitors_note)}</div>`)
+   + `<div class="sec"><h3>Points — C2, sev = bad</h3><div id="pt"></div></div>`;
+  pointTable(document.getElementById("pt"), KEYS.filter(k=>["R3","R9"].includes(PTS[k].run)), {preset:[["sev","bad"]], sortKey:"dem"});
+}
+function vSources(el, q){
+  const C=DASH.citations; const dom=q.get("domain");
+  const own = C.owner_shares;
+  el.innerHTML = sec("Owner pie (citations, all runs with citations)", `<div class="two"><div>${["owned","earned","institutional","competitor"].map(k=>`<div class="sovrow" style="grid-template-columns:110px 1fr 60px"><span class="bn">${k}</span><span class="bar"><i style="width:${Math.round(own[k])}%;background:${{owned:"var(--good)",earned:"var(--warn)",institutional:"var(--accent)",competitor:"var(--bad)"}[k]}"></i></span><span class="pv num">${pct(own[k])}</span></div>`).join("")}<div class="note">owned share in answers where we are named: <b>${pct(C.owned_share_in_answers_with_us)}</b> · answers without citations ${pct(C.answers_without_citations_pct)}</div></div><div><h3>Earned subtypes</h3>${Object.entries(C.earned_subtypes).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="sovrow" style="grid-template-columns:110px 1fr 60px"><span class="bn">${esc(k)}</span><span class="bar"><i style="width:${Math.round(v)}%;background:var(--warn)"></i></span><span class="pv num">${pct(v)}</span></div>`).join("")}</div></div>`)
+   + sec("Top domains", tbl([{k:"d",h:"Domain",f:d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}" class="dom-d" style="color:var(--accent);text-decoration:none">${esc(d.domain)}</a>`},{k:"o",h:"Owner / subtype",f:d=>`${esc(d.owner)}${d.subtype?` / ${esc(d.subtype)}`:""}`},{k:"c",h:"Citations",f:d=>d.citations,sort:d=>d.citations},{k:"s",h:"Share",f:d=>pct(d.share),sort:d=>d.share},{k:"a",h:"Answers %",f:d=>pct(d.answers_pct)},{k:"u",h:"With us",f:d=>pct(d.with_us_pct)},{k:"cp",h:"With comp",f:d=>pct(d.with_comp_pct)},{k:"m",h:"Top model / zone",f:d=>`${esc(d.top_model)} · ${esc(d.top_zone)}`}], C.top_domains, {sortKey:"c"}))
+   + sec("Gap list (R1 C1) — feed competitor answers, silent about us", tbl([{k:"d",h:"Domain",f:g=>`<a href="#/sources?domain=${encodeURIComponent(g.domain)}" class="dom-d" style="color:var(--accent);text-decoration:none">${esc(g.domain)}</a>`},{k:"g",h:"Gap",f:g=>g.gap_score,sort:g=>g.gap_score},{k:"cc",h:"Cites comp / us",f:g=>`${g.cites_comp} / ${g.cites_us}`},{k:"cf",h:"Competitors fed",f:g=>g.competitors_fed},{k:"o",h:"Owner / subtype",f:g=>`${esc(g.owner)}${g.subtype?` / ${esc(g.subtype)}`:""}`},{k:"a",h:"Action",f:g=>esc(g.action_type)}], C.gap_list, {sortKey:"g"}))
+   + `<div class="sec" style="border-color:var(--crit)"><h3 style="color:var(--crit)">Adversarial sources (threat, excluded from lever)</h3>${tbl([{k:"d",h:"Domain",f:a=>`<span class="dom-d">${esc(a.domain)}</span>`},{k:"c",h:"Citations",f:a=>a.citations,sort:a=>a.citations}], C.adversarial_sources, {sortKey:"c"})}</div>`
+   + `<div class="sec"><h3>Points${dom?` citing ${esc(dom)}`:""}</h3>${dom?"":'<p class="note">Click a domain above to list the points citing it (top-200 domains carry a point index).</p>'}<div id="pt"></div></div>`;
+  let keys = KEYS;
+  if(dom){ const idx=(D.sources.domain_pids||{})[dom]; keys = idx ? idx.filter(k=>PTS[k]) : KEYS.filter(k=>(PTS[k].metrics.citations.top_domains||[]).some(t=>t.domain===dom)); }
+  pointTable(document.getElementById("pt"), keys, {sortKey:"dem", caption: dom?`citing ${dom}`:"all points"});
+}
+function vPriorities(el, q){
+  const P=DASH.prioritization; const gsel=q.get("group");
+  const gb = b => GROUPS.filter(g=>g.bucket===b);
+  const grow = g => `<tr class="pt" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}"><td>${g.priority?`P${g.priority}`:""}</td><td>${titleCause(g.dominant_code, g.dominant_code_label, {label:g.dominant_cause.code, confidence:`share ${(g.dominant_cause.share*100).toFixed(0)}%`})}<div class="z" style="font:500 10.5px 'IBM Plex Mono';color:var(--muted)">${esc(g.group_id)} · ${g.n_prompts} prompts</div></td><td class="num">${f1(g.demand)}</td><td class="num">${shr(g.gap)} <span class="ci">(${esc(Object.entries(g.gap_by_run).sort((a,b)=>b[1]-a[1])[0]?.[0]||"")} dominant)</span></td><td class="num">earned ${shr(g.lever.earned)} · owned ${shr(g.lever.owned)} · ugc ${shr(g.lever.ugc)} · comp ${shr(g.lever.comp_owned)}</td><td class="num">${g.failure_code_share!=null?shr(g.failure_code_share):"—"}</td></tr>`;
+  const head = `<thead><tr><th>P</th><th>Group — dominant code (what) · dominant cause (why)</th><th>Demand</th><th>Gap (dominant run)</th><th>Lever</th><th>Failure code share</th></tr></thead>`;
+  const rec = P.recommendations.map(r=>{ const g=groupById[r.group_id]; return `<tr class="pt" data-href="#/priorities?group=${encodeURIComponent(r.group_id)}"><td>P${r.priority}</td><td>${titleCause(g.dominant_code,g.dominant_code_label,{label:g.dominant_cause.code,confidence:`share ${(g.dominant_cause.share*100).toFixed(0)}%`})}<div class="z" style="font:500 10.5px 'IBM Plex Mono';color:var(--muted)">${esc(r.group_id)} · best score ${r.best_score.toFixed(5)}</div></td><td class="num">${f1(g.demand)}</td><td class="num">${shr(g.gap)}</td><td>${r.owners.map(o=>`<div class="sub-row" style="font-size:12px">↳ <b>${esc(o.owner)}</b> lever ${shr(o.lever)} · ceiling ${f1(o.ceiling_pp)} pp · ${esc(o.top_domain)} · ${esc(o.who)}</div>`).join("")}</td><td class="num">—</td></tr>`; }).join("");
+  el.innerHTML = sec("Recommendations (one row per group; owners as sub-rows with lever and ceiling)", `<div class="tblwrap"><table class="t2">${head}<tbody>${rec}</tbody></table></div>`, `Score = demand_share × gap × lever · tercile thresholds P3 ≥ ${P.tercile_thresholds.p3_min}, P2 ≥ ${P.tercile_thresholds.p2_min}. ${esc(P.gap_note)}`)
+   + sec("Healthy groups (dominant code is not a failure)", `<div class="tblwrap"><table class="t2">${head}<tbody>${gb("healthy").map(grow).join("")}</tbody></table></div>`, "v1 limitation: the dominant code alone decides inclusion; failure_code_share shows secondary failure density but is not acted on until v2.")
+   + sec("Label / Medical rows", `<div class="tblwrap"><table class="t2">${head}<tbody>${gb("label").map(grow).join("")}</tbody></table></div>`)
+   + `<div class="sec"><h3>Points${gsel?` — ${esc(gsel)} (ordered by rank score)`:""}</h3><div id="pt"></div></div>`;
+  setTimeout(()=>el.querySelectorAll("tr[data-href]").forEach(tr=>tr.onclick=()=>location.hash=tr.dataset.href),0);
+  const keys = gsel && groupById[gsel] ? groupById[gsel].pids : KEYS;
+  pointTable(document.getElementById("pt"), keys, gsel?{caption:gsel}:{sortKey:"dem"});
+}
+function vActions(el){
+  const st = JSON.parse(localStorage.getItem("citere_task_status")||"{}");
+  const card = (ref) => { const p=PTS[ref.pid_run]; const c=p.fixes[ref.fix_idx]; return `<div class="fx"><div class="fxh"><span class="exb ${c.platform_execution==="AGENT"?"exa":c.platform_execution==="AGENT+APPROVE"?"exp":"exh"}">${esc(c.platform_execution)}</span><span class="atype ${c.type==="LABEL-MEDICAL"?"label":c.type.toLowerCase()}">${esc(c.type)}</span><span class="mlrb ${c.mlr==="medical-review"?"mr":"ok"}">${c.mlr==="medical-review"?"MEDICAL REVIEW":"MLR-COMPATIBLE"}</span><span class="ow">${esc(c.owner)}</span><span class="sp">· ${esc(c.speed)}</span><a href="#/point/${encodeURIComponent(ref.pid_run)}" style="margin-left:auto;font:600 11px 'IBM Plex Mono';color:var(--accent);text-decoration:none">${esc(p.pid)} ↗</a></div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why:</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect:</b> ${esc(c.effect)}</div>`:""}</div>`; };
+  const order = {open:0,in_progress:1,done:2,dismissed:3};
+  const tasks = D.campaigns.slice().map(t=>({...t, ui_status: st[t.task_id]?.status || t.status})).sort((a,b)=>(order[a.ui_status]-order[b.ui_status])||(b.score-a.score));
+  const groups = ["open","in_progress","done","dismissed"];
+  el.innerHTML = sec("Counters (registry)", kv([["Open",DASH.action_center.counters.open_total],["auto",DASH.action_center.counters.open_auto],["manual",DASH.action_center.counters.open_manual],["In progress",DASH.action_center.counters.in_progress],["Done this cycle",DASH.action_center.counters.done_this_cycle],["Dismissed",DASH.action_center.counters.dismissed_total],["Label tasks awaiting sign-off",DASH.action_center.counters.label_tasks_awaiting_signoff]]), "Status changes below are saved in this browser only and are not synced to the registry.")
+   + groups.map(g=>{ const list=tasks.filter(t=>t.ui_status===g); if(!list.length) return ""; return sec(`${g.replace("_"," ")} · ${list.length}`, list.map(t=>{ const i=t.impact; return `<div class="ans"><div class="ah" onclick="this.nextElementSibling.classList.toggle('hide')"><span>${esc(t.group_id)} → <b>${esc(t.owner)}</b></span><span class="tag cl">P${t.priority}</span><span class="tag ci">${esc(t.execution)}</span><span class="mono">${esc(t.who)} · ${esc(t.speed)}</span><span class="mono">gap ${shr(t.why.gap)} (${esc(t.why.dominant_run)}) · lever ${shr(t.why.lever)} · ceiling ${f1(i.ceiling_pp)} pp · expected ${i.expected_pp?`${f1(i.expected_pp[0])}…${f1(i.expected_pp[1])} pp`:"n/a"} (${esc(i.basis)}) · topic demand ~${f1(i.demand)}/mo (Google, proxy)</span>${st[t.task_id]?'<span class="badge-ls">not synced to registry</span>':""}<select class="status-sel" data-id="${t.task_id}" onclick="event.stopPropagation()">${groups.map(s=>`<option ${s===t.ui_status?"selected":""}>${s}</option>`).join("")}</select></div><div class="hide" style="padding:10px 14px"><div class="fxl" style="margin-bottom:8px"><b>What:</b> ${esc(t.what)}</div><div class="fxl" style="margin-bottom:8px"><b>Cause:</b> ${(t.cause||[]).map(c=>`${esc(c.code)} (${c.n})`).join(", ")}</div><div class="fxl" style="margin-bottom:8px"><b>Where:</b> ${(t.where||[]).map(w=>`${esc(w.domain)} (${w.citations})`).join(", ")}</div><h4 style="margin:8px 0 6px;font:600 10.5px 'IBM Plex Mono';color:var(--muted)">FIX CARDS · client · ${t.fix_card_refs.length}</h4>${t.fix_card_refs.slice(0,40).map(card).join("")}${t.fix_card_refs.length>40?`<div class="note">${t.fix_card_refs.length-40} more cards on the points of this group</div>`:""}</div></div>`; }).join("")); }).join("")
+   + `<div class="sec"><button class="collapse" onclick="document.getElementById('citere').classList.toggle('hide')">Citere monitoring ▾ (${D.citere_tasks.registry_tasks.length} registry tasks · ${Object.values(D.citere_tasks.track_cards_by_group).reduce((s,a)=>s+a.length,0)} TRACK cards)</button><div id="citere" class="hide">${D.citere_tasks.registry_tasks.map(t=>`<div class="fxl">${esc(t.group_id)} → ${esc(t.owner)} · P${t.priority} · ${esc(t.what)}</div>`).join("")}${Object.entries(D.citere_tasks.track_cards_by_group).map(([g,refs])=>`<div style="margin-top:8px"><b>${esc(g)}</b> · ${refs.length} TRACK cards${refs.slice(0,3).map(card).join("")}</div>`).join("")}</div></div>`;
+  el.querySelectorAll(".status-sel").forEach(s=>s.onchange=()=>{ const cur=JSON.parse(localStorage.getItem("citere_task_status")||"{}"); let reason=null; if(s.value==="dismissed"){ reason=prompt("Dismiss reason (required)"); if(!reason){ s.value=st[s.dataset.id]?.status||"open"; return; } } cur[s.dataset.id]={status:s.value, dismiss_reason:reason, at:new Date().toISOString()}; localStorage.setItem("citere_task_status", JSON.stringify(cur)); render(); });
+}
+function vSafety(el, q){
+  const L=DASH.safety_label; const t=q.get("target"), s=q.get("surface");
+  const findings = D.label_findings;
+  el.innerHTML = sec("Traffic light", `<div class="big" style="font-size:26px;font-weight:700"><span class="light ${L.traffic_light}"></span>${L.traffic_light.toUpperCase()}</div>`+kv([["Critical answer share",pct(L.critical_answer_share)+" "+ci(L.critical_ci95)],["Findings",L.findings.total],["Dangerous",L.findings.dangerous],["Incomplete",L.findings.incomplete],["Awaiting sign-off",L.findings.pending_signoff],["Confirmed",L.findings.confirmed]]), `Pending findings are excluded from any count labelled confirmed. ${esc(L.findings.note)}`)
+   + sec("Findings (cells target × surface)", tbl([
+      {k:"c",h:"Class",f:f=>`<span class="tag ${f.class==="DANGEROUS"?"dang":"inc"}">${f.class}</span>`,sort:f=>f.class},
+      {k:"cell",h:"Cell",f:f=>`<a href="#/safety?target=${encodeURIComponent(f.target)}&surface=${encodeURIComponent(f.surface)}" style="color:var(--accent);text-decoration:none;font-weight:600">${esc(f.target)} × ${esc(f.surface)}</a>`},
+      {k:"s",h:"Critical share",f:f=>shr(f.critical_share),sort:f=>f.critical_share},{k:"n",h:"n",f:f=>f.n},{k:"st",h:"Stability",f:f=>f1(f.stability)},{k:"ls",h:"Label sections",f:f=>esc((f.label_sections||[]).join(", "))},
+      {k:"so",h:"Sign-off",f:f=>`<span class="tag ${f.signoff_status==="confirmed"?"conf":"pend"}">${f.signoff_status==="pending"?"awaiting sign-off":esc(f.signoff_status)}</span>${f.single_run?' <span class="tag ci">single_run</span>':""}`},
+      {k:"cv",h:"Caveat",f:f=>`<span title="${esc(f.scoring_caveat)}" style="color:var(--muted);font-size:11px">${esc((f.scoring_caveat||"").slice(0,90))}…${(f.flagged_for_review||[]).length?` <span class="tag ci">${f.flagged_for_review.length} flagged</span>`:""}</span>`}], findings, {sortKey:"s"}), esc(L.scoring_caveat))
+   + sec("By surface", tbl([{k:"s",h:"Surface",f:d=>`<b>${esc(d.surface)}</b>${d.single_run?' <span class="tag ci">single_run</span>':""}`},{k:"n",h:"Answers",f:d=>d.n},{k:"c",h:"Critical share",f:d=>pct(d.critical_share),sort:d=>d.critical_share},{k:"f",h:"Findings",f:d=>d.findings},{k:"w",h:"Worst class",f:d=>esc(d.worst_class||"—")},{k:"x",h:"Excluded",f:d=>pct(d.excluded_pct)}], L.by_surface, {sortKey:"c"}))
+   + sec("Top label sections by CRITICAL answers", tbl([{k:"s",h:"Section",f:d=>`<b>${esc(d.section)}</b>`},{k:"t",h:"Targets",f:d=>esc((d.targets||[d.target]).join(", "))},{k:"n",h:"Critical answers",f:d=>d.critical_answers}], L.top_label_sections), "Error types among CRITICAL: "+Object.entries(L.error_types).map(([k,v])=>`${k} ${pct(v)}`).join(" · ")+". By-target table and unstable-cell list are not in platform_data.json and are not shown.")
+   + `<div class="sec"><h3>Points${t?` — R4 answers in cell ${esc(t)} × ${esc(s||"")}`:" — R4"}</h3><div id="pt"></div></div>`;
+  let keys = KEYS.filter(k=>PTS[k].run==="R4");
+  if(t){ const f=findings.find(x=>x.target===t&&x.surface===s); if(f) keys = f.pids; }
+  pointTable(document.getElementById("pt"), keys, {sortKey:"dem", caption: t?`cell ${t} × ${s}`:"R4"});
+}
+
+// ---------------- Level 3: point ----------------
+let ANSWERS=null, ansPromise=null;
+function loadAnswers(){
+  if(ansPromise) return ansPromise;
+  ansPromise = new Promise((res,rej)=>{ const sc=document.createElement("script"); sc.src="answers.js"; sc.onload=async()=>{ try{ const bin=Uint8Array.from(atob(window.ANSWERS_B64), c=>c.charCodeAt(0)); const ds=new DecompressionStream("gzip"); const text=await new Response(new Blob([bin]).stream().pipeThrough(ds)).text(); ANSWERS=JSON.parse(text); res(); }catch(e){ ANSWERS={}; rej(e);} }; sc.onerror=()=>{ANSWERS={};rej(new Error("answers.js not found"));}; document.head.appendChild(sc); });
+  return ansPromise;
+}
+function level3(el, key){
+  const p = PTS[key]; if(!p){ el.innerHTML=`<div class="sec">Point ${esc(key)} not found.</div>`; return; }
+  const list = window.__lastList || KEYS; const i = list.indexOf(key);
+  const nav = `<div class="prevnext">${i>0?`<a href="#/point/${encodeURIComponent(list[i-1])}">← prev</a>`:""}<a href="javascript:history.back()">↑ back</a>${i>=0&&i<list.length-1?`<a href="#/point/${encodeURIComponent(list[i+1])}">next →</a>`:""}<span class="mono" style="color:var(--muted)">${i>=0?`${i+1} of ${list.length} in current list`:""}</span></div>`;
+  const m = p.metrics; const g = groupById[p.group_id];
+  const runspec = Object.entries(m.run_specific||{}).map(([k,v])=>`<span>${esc(k)}: <b>${esc(Object.entries(v).map(([a,b])=>`${a}×${b}`).join(", "))}</b></span>`).join("");
+  el.innerHTML = nav + `<div class="sec"><div class="kicker">${esc(p.pid)} · ${esc(p.run)} · ${esc(p.class)} · <a href="#/priorities?group=${encodeURIComponent(p.group_id)}" style="color:var(--accent)">${esc(p.group_id)}</a></div><h1 style="font-size:19px">${esc(p.question)}</h1><div class="kv"><span>${esc(p.zone)}</span><span>${esc(p.topic)}${p.subtopic?` / ${esc(p.subtopic)}`:""}</span><span>${esc(p.patient_stage)}</span><span>${esc(p.query_type)}</span><span class="pill ${(SEV[p.sev]||[])[1]||"s-na"}">${esc(p.sev)}</span></div><div style="margin-top:10px">${titleCause(p.code,p.code_label,p.cause)}</div>${p.cause&&p.cause.evidence?`<ul class="note" style="margin:6px 0 0 16px">${p.cause.evidence.map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`:""}</div>
+  <div class="pt-detail"><div>
+    ${sec("Metrics (from the pipeline)", kv([["Answers",m.answers],["Excluded",m.answers_excluded],["Presence share",shr(m.we_present_share)],["Avg position",f1(m.avg_position)],["INN-only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)]]) + `<div style="margin-top:8px">${tbl([{k:"f",h:"Family",f:r=>`<b>${esc(r.model_family)}</b>`},{k:"a",h:"Answers",f:r=>r.answers},{k:"w",h:"We present",f:r=>r.we_present},{k:"p",h:"Position",f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",f:r=>f1(r.answer_sentiment)}], m.by_model)}</div><div class="note">Competitors present: ${Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(" · ")||"none"}</div><div class="note">Citations: total ${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}</div><div class="kv" style="margin-top:6px">${runspec}</div>`)}
+    ${sec("Diagnosis (platform export)", `<div class="whyblk">${(p.diagnosis_text||[]).map((s,i)=>`<div class="${i===0?"wl":"wp"}">${esc(s)}</div>`).join("")}</div>`)}
+    ${sec("Evidence lines (platform export)", `<div class="whyblk" style="border-left-color:var(--good)"><ul>${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul></div>`)}
+    ${sec("Answers — full text, one per model × repeat", `<button class="showans" id="loadAns">load answers ▾</button><div id="ansBox"></div>`, "Loaded on demand from answers.js (full texts from the corpus, gzip). Excluded answers are flagged; their verdicts are not counted.")}
+  </div><div>
+    ${sec("Sources", `<div class="srcdoms">${(m.citations.top_domains||[]).map(d=>`<a class="sd-chip" href="#/sources?domain=${encodeURIComponent(d.domain)}" style="text-decoration:none">${esc(d.domain)} <b>×${d.n}</b> <span style="color:var(--muted)">${esc(d.owner)}${d.subtype?"/"+esc(d.subtype):""}</span></a>`).join("")||"<span class='note'>no citations</span>"}</div>` + (p.serp?`<h4 style="margin:12px 0 4px;font:600 10.5px 'IBM Plex Mono';color:var(--muted)">SERP SNAPSHOT</h4><div class="note">Google: ${p.serp.our?"#"+p.serp.our:"absent"} · competitor ${p.serp.comp?"#"+p.serp.comp:"absent"} · occupiers ${(p.serp.occ||[]).map(esc).join(", ")} · overlap ${p.serp.ov??"—"}%</div>`:"") + (p.inventory?`<h4 style="margin:12px 0 4px;font:600 10.5px 'IBM Plex Mono';color:var(--muted)">OUR-PAGE INVENTORY</h4><div class="note">${esc(p.inventory.v)} · ${p.inventory.url?`<a href="${esc(p.inventory.url)}" target="_blank" rel="noopener">${esc(p.inventory.url)}</a>`:""}<br>${esc(p.inventory.miss||"")}</div>`:""))}
+    ${sec("Demand", kv([["Topic demand",f1(p.demand.topic_demand)],["lo–hi",`${f1(p.demand.lo)}–${f1(p.demand.hi)}`],["basis",esc(p.demand.basis)]]) + `<div class="note">prompt_share ${f1(p.demand_extra.prompt_share)} · AI-native ${p.demand_extra.ai_native?"yes":"no"} (source: platform export)</div>`)}
+    ${sec("Fix cards — client", p.fixes.filter(c=>c.audience==="client").map(fixCard).join("")||"<span class='note'>none</span>")}
+    <div class="sec"><button class="collapse" onclick="document.getElementById('cit2').classList.toggle('hide')">Citere monitoring ▾ (${p.fixes.filter(c=>c.audience==="citere").length} TRACK cards)</button><div id="cit2" class="hide">${p.fixes.filter(c=>c.audience==="citere").map(fixCard).join("")}</div></div>
+  </div></div>`;
+  document.getElementById("loadAns").onclick = async (ev) => {
+    ev.target.textContent = "loading…";
+    try{ await loadAnswers(); }catch(e){}
+    const arr = (ANSWERS||{})[key] || [];
+    document.getElementById("ansBox").innerHTML = arr.length ? arr.map((a,i)=>`<div class="ans"><div class="ah" onclick="this.nextElementSibling.classList.toggle('hide')"><b>${esc(a.model)}</b><span class="mono">repeat ${a.repeat_idx}</span>${a.excluded?`<span class="excl">excluded · ${esc(a.exclude_reason)}</span>`:""}<span class="mono">${a.citations.length} citations</span></div><div class="hide"><div class="ab">${esc(a.answer_clean)}</div><div class="cits">${a.citations.map(c=>`<a href="${esc(c.url)}" target="_blank" rel="noopener" title="${esc(c.owner)}">${esc(c.domain)}</a>`).join("")}</div></div></div>`).join("") : `<div class="note">No answer texts available (answers.js missing or key absent).</div>`;
+    ev.target.textContent = `${arr.length} answers loaded`;
+  };
+}
+function fixCard(c){ return `<div class="fx"><div class="fxh"><span class="exb ${c.platform_execution==="AGENT"?"exa":c.platform_execution==="AGENT+APPROVE"?"exp":"exh"}">${esc(c.platform_execution)}</span><span class="atype ${c.type==="LABEL-MEDICAL"?"label":c.type.toLowerCase()}">${esc(c.type)}</span><span class="mlrb ${c.mlr==="medical-review"?"mr":"ok"}">${c.mlr==="medical-review"?"MEDICAL REVIEW":"MLR-COMPATIBLE"}</span><span class="ow">${esc(c.owner)}</span><span class="sp">· ${esc(c.speed)}</span></div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why:</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect:</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run:</b> ${esc(c.verify)}</div>`:""}<div class="fxl"><b>Execution:</b> ${esc(c.agent)}</div></div>`; }
+
+// ---------------- map bridge (legacy block below is unchanged) ----------------
+const PID2KEY = {}; KEYS.forEach(k=>{ const pid=k.split("|")[0]; if(!PID2KEY[pid]) PID2KEY[pid]=k; });
+window.__nmGoPoint = pid => { location.hash = "#/point/"+encodeURIComponent(PID2KEY[pid]||pid); };
+window.__nmGoFix = pid => { location.hash = "#/actions"; };
+document.getElementById("nmClose").addEventListener("click", () => { if(location.hash.startsWith("#/map")) location.hash = "#/"; });
+</script>
+<!--LEGACY_MAP_JS-->
+</body></html>

@@ -127,7 +127,7 @@ def main() -> int:
             "diagnosis_text": p["diagnosis"], "evidence_lines": (p.get("evidence_measured") or []) + (p.get("evidence_search") or []),
             "serp": p.get("serp"), "inventory": p.get("inventory"),
             "fixes": [dict(card, audience=TRACK_AUDIENCE.get(card.get("type"), "client"), platform_execution=card.get("execution")) for card in (p.get("fixes") or [])],
-            "answers_ref": "answers_b64.js#" + k,
+            "answers_ref": "answers.js#" + k,
         }
         groups_pids[key_group[k]].append((p["priority"], k))
 
@@ -167,7 +167,7 @@ def main() -> int:
     sources = dict(cit, domain_pids={d: dom_pids[d] for d in top200})
 
     data = {"meta": dict(dash["meta"], platform_export_generated=export["meta"].get("generated"), points_joined=len(points), points_unmatched=unmatched,
-                         label_mismatches=len(label_mismatch), ans_store="ui/answers_b64.js (gzip+base64, keys pid|run)"),
+                         label_mismatches=len(label_mismatch), ans_store="ui/answers.js (built by step 10 from the corpus: gzip+base64, keys pid|run, full texts)"),
             "dashboard": dash, "groups": groups, "points": points, "campaigns": campaigns, "label_tasks_awaiting_signoff": held, "citere_tasks": citere_tasks,
             "label_findings": label_findings, "sources": sources, "map": "unchanged — the neural map keeps its own data block",
             "code_labels": CODE_LABELS, "display_rule": "code = what happened (bold title); cause = why (grey sub-line with confidence) — never two equal labels"}

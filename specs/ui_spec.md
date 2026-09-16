@@ -96,4 +96,4 @@ Never render code and cause as two equal labels, chips or columns.
 
 ## Answer texts (cycle-1 decision)
 
-Do not lazy-load `corpus_master.json`. Answer texts come from `ui/answers_b64.js`, extracted from the legacy file's `ANS_B64` block (gzipped, base64, keyed by `pid|run`), loaded on demand by the UI. Coverage against the 1,424 points is verified by step 9 and reported.
+Do not lazy-load `corpus_master.json`. Answer texts come from `ui/answers.js`, built by `src/step_10_build_ui.py` from the normalized corpus (`answers.parquet` + `citations.parquet`, i.e. `corpus_master.json` after step 1): full texts, no previews; gzip + base64 JSON keyed `pid|run`, each entry an array in corpus order of `{model, repeat_idx, answer_raw, answer_clean, excluded, exclude_reason, citations:[{domain, url, owner}]}`; loaded on demand by the point view. One file while it stays under 20 MB (cycle 1: 19.9 MB); above that, split by run into `ui/answers_R1.js` etc. and load only the point's run. The earlier preview store `ui/answers_b64.js` (texts cut at 2,000 chars) is deleted.

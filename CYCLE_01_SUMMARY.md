@@ -91,3 +91,12 @@ What cycle 1 measures and what it does not. One line per decision, grouped by st
 - Brand-level sentiment outside C2, competitor sentiment, and the sentiment correlation gate.
 - Before/after deltas (first cycle).
 - Any label finding as confirmed — all await clinician sign-off.
+
+## Step 10 — UI (`src/step_10_build_ui.py` → `ui/index.html`, `ui/answers.js`)
+
+- **Answer store rebuilt from the corpus.** `ui/answers.js` holds full texts (no previews) for all 1,424 points / 12,314 answers, keyed `pid|run`, corpus order, with `excluded` / `exclude_reason` and per-answer citations; gzip (mtime 0) + base64, 19,892,346 bytes — under the 20 MB split threshold, so one file. The legacy preview store `ui/answers_b64.js` (texts cut at 2,000 chars) is deleted; `answers_ref` in platform_data.json now reads `answers.js#pid|run` (step 9 re-run, checks 7/7).
+- **The UI computes nothing.** Every number on Levels 1–3 is read from `platform_data.json`; the JS only formats, sorts and filters. Level 1 = eight tiles; Level 2 = `#/visibility #/competitors #/sentiment #/sources #/priorities #/actions #/safety #/map`; Level 3 = `#/point/<pid>|<run>` with full answers loaded on demand.
+- **Legacy reuse.** Design tokens and CSS, the `#mapView` markup and the Neural map init code are taken verbatim from `ui/evidence_base_legacy.html` at build time. The map keeps its own data block (`MAP_DATA`: legacy `points, domIndex, owners, cats, runs`, 3.8 MB) and the legacy helpers it calls (fix engine, HUMAN_CAUSE, dem, aiNative), all wrapped in one IIFE so nothing leaks into the new app. The map is the only place where legacy-computed numbers still appear (spec: "unchanged").
+- **Legacy code dropped because it computed numbers not in platform_data.json:** share-of-voice / sentiment / index strip (`strip()`), per-row "Ozempic n/N" bars, status-chip counts, `pointPrio`, `diagParas` narrative generator, `topSource` shares, Sources-tab `oppScore` and "play" ranking, action-queue demand-weighted ranking, campaign simulations, Agent Workbench, ANS_B64 preview loader. Numbers the spec asks for but platform_data.json does not carry are not shown: visibility by zone / topic group, benchmarking by zone, safety by target and unstable-cell list.
+- **Status controls** on `#/actions` write to `localStorage` only and show a "not synced to registry" badge.
+- Build is deterministic (identical md5 on two consecutive builds).
