@@ -1,28 +1,28 @@
 {
   "cycle": 1,
   "counters": {
-    "open_total": 132,
-    "open_auto": 26,
-    "open_manual": 106,
+    "open_total": 65,
+    "open_auto": 17,
+    "open_manual": 48,
     "in_progress": 0,
     "done_this_cycle": 0,
     "dismissed_total": 0,
     "by_who": {
-      "Digital": 81,
-      "PR/Comms": 12,
-      "Medical + Digital": 9,
-      "Marketing + Medical": 8,
-      "Medical": 8,
-      "Comms": 8,
-      "Regulatory": 4,
-      "Medical Affairs": 2
+      "Digital": 31,
+      "PR/Comms": 9,
+      "Medical + Digital": 6,
+      "Medical": 6,
+      "Comms": 6,
+      "Marketing + Medical": 3,
+      "Regulatory": 3,
+      "Medical Affairs": 1
     },
     "top3_open": [
       "c66030d94d01",
       "92361d73f3e1",
       "34099e60975f"
     ],
-    "citere_tasks": 55,
+    "citere_tasks": 9,
     "label_tasks_awaiting_signoff": 2,
     "label_findings_pending": 10
   },
