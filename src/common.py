@@ -313,6 +313,8 @@ def wilson_ci(k: float, n: float, z: float = 1.959964) -> Tuple[float, float]:
     if n is None or n <= 0 or k is None or (isinstance(k, float) and math.isnan(k)):
         return (float("nan"), float("nan"))
     p = k / n
+    if p < 0 or p > 1 or math.isnan(p):  # not a proportion (e.g. a mean position): CI undefined
+        return (float("nan"), float("nan"))
     denom = 1.0 + z * z / n
     centre = (p + z * z / (2 * n)) / denom
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
@@ -338,6 +340,7 @@ def aggregate_bottom_up(
     prompt_keys: Sequence[str] = ("pid", "run"),
     family_weights: Optional[Dict[str, float]] = None,
     dropna: bool = True,
+    ci_basis: str = "groups",
 ) -> Dict[str, pd.DataFrame]:
     """Runbook aggregation: repeats -> prompt×model -> model family -> overall, equal family weights.
 
@@ -345,19 +348,26 @@ def aggregate_bottom_up(
       pm      — one row per (by, prompt_keys, model): mean over repeats, n_repeats
       family  — one row per (by, family): mean over prompt×model groups (all versions pooled), n_groups, ci_lo/ci_hi
       overall — one row per (by): equal-weight (or `family_weights`) mean over families, n_groups, ci_lo/ci_hi
-    Wilson CIs use n = number of underlying prompt×model groups and k = share × n; meaningful for 0/1 values.
+    Wilson CIs use k = share × n with n = number of prompt×model groups (`ci_basis="groups"`, runbook default)
+    or n = number of underlying answers (`ci_basis="answers"`, visibility_score_spec §7); meaningful for 0/1 values.
     """
+    if ci_basis not in ("groups", "answers"):
+        raise ValueError("ci_basis must be 'groups' or 'answers'")
     by = list(by)
     d = df if not dropna else df.dropna(subset=[value])
+    keys = []
+    for k in by + list(prompt_keys) + [model_col, family_col]:
+        if k not in keys:
+            keys.append(k)  # family_col may equal model_col (per-version aggregation)
     pm = (
-        d.groupby(by + list(prompt_keys) + [model_col, family_col], dropna=False)[value]
+        d.groupby(keys, dropna=False)[value]
         .agg(["mean", "size"])
         .rename(columns={"mean": value, "size": "n_repeats"})
         .reset_index()
     )
-    fam = pm.groupby(by + [family_col], dropna=False)[value].agg(["mean", "size"]).reset_index()
-    fam = fam.rename(columns={"mean": value, "size": "n_groups"})
-    fam[["ci_lo", "ci_hi"]] = fam.apply(lambda r: pd.Series(wilson_ci(r[value] * r["n_groups"], r["n_groups"])), axis=1)
+    fam = pm.groupby(by + [family_col], dropna=False).agg(**{value: (value, "mean"), "n_groups": (value, "size"), "n_answers": ("n_repeats", "sum")}).reset_index()
+    n_col = "n_groups" if ci_basis == "groups" else "n_answers"
+    fam[["ci_lo", "ci_hi"]] = fam.apply(lambda r: pd.Series(wilson_ci(r[value] * r[n_col], r[n_col])), axis=1)
 
     def _overall(g: pd.DataFrame) -> pd.Series:
         if family_weights:
@@ -365,9 +375,10 @@ def aggregate_bottom_up(
             m = float((g[value] * w).sum() / w.sum()) if w.sum() > 0 else float("nan")
         else:
             m = float(g[value].mean())
-        n = int(g["n_groups"].sum())
+        n = int(g[n_col].sum())
         lo, hi = wilson_ci(m * n, n)
-        return pd.Series({value: m, "n_groups": n, "n_families": len(g), "ci_lo": lo, "ci_hi": hi})
+        return pd.Series({value: m, "n_groups": int(g["n_groups"].sum()), "n_answers": int(g["n_answers"].sum()),
+                          "n_families": len(g), "ci_lo": lo, "ci_hi": hi})
 
     if by:
         overall = fam.groupby(by, dropna=False).apply(_overall).reset_index()
@@ -398,3 +409,13 @@ def topic_group(topic: str, subtopic: Optional[str], zone: str) -> Tuple[str, st
     if subtopic and str(subtopic).strip() and str(subtopic).strip() != "Other":
         return ("{} × {}".format(topic, subtopic), "topic×subtopic")
     return ("{} × {}".format(topic, zone), "topic×zone")
+
+
+# --------------------------------------------------------------------------- #
+# Position weight (visibility_score_spec §4.3)
+# --------------------------------------------------------------------------- #
+def position_weight(position: Optional[float], decay: float) -> float:
+    """Evertune weight: 100 × decay^(pos − 1); absent (None/NaN/<1) → 0."""
+    if position is None or (isinstance(position, float) and math.isnan(position)) or position < 1:
+        return 0.0
+    return 100.0 * (decay ** (float(position) - 1.0))

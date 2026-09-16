@@ -1,0 +1,465 @@
+{
+  "brand": "Ozempic",
+  "run_ids": [
+    "R1",
+    "R2",
+    "R3",
+    "R5",
+    "R6"
+  ],
+  "config": {
+    "position_decay": 0.9,
+    "model_weights": "equal",
+    "min_answer_len": 100,
+    "low_n_threshold": 30,
+    "position_source": "text (ordinal among dictionary brands); scores.our_rank kept as a check"
+  },
+  "counts": {
+    "prompts_total": 1424,
+    "prompts_by_class": {
+      "C1": 328,
+      "C2": 614,
+      "C3": 331,
+      "C4": 151
+    },
+    "answers_total": 12314,
+    "answers_excluded": 193,
+    "answers_C1_total": 2970,
+    "answers_C1_excluded": 59,
+    "answers_C1_used": 2911,
+    "answers_C1_in_headline": 2890,
+    "c1_prompts_by_run": {
+      "R1": 250,
+      "R2": 4,
+      "R3": 7,
+      "R5": 8,
+      "R6": 59
+    }
+  },
+  "headline": {
+    "ai_brand_score": 30.54,
+    "visibility_pct": 32.41,
+    "visibility_ci95": [
+      30.72,
+      34.13
+    ],
+    "average_position": 1.67,
+    "visibility_pct_brand_bearing_only": 75.28,
+    "inn_only_mention_pct": 16.9
+  },
+  "headline_reference": {
+    "all_families_equal_weight_incl_low_n": {
+      "ai_brand_score": 35.33,
+      "visibility_pct": 37.85,
+      "visibility_ci95": [
+        36.1,
+        39.62
+      ],
+      "average_position": 1.75,
+      "visibility_pct_brand_bearing_only": 71.94,
+      "inn_only_mention_pct": 24.13,
+      "n_answers": 2911.0,
+      "n_families": 4.0
+    },
+    "average_position_using_scored_rank_where_present": 2.17,
+    "ai_brand_score_using_scored_rank_where_present": 29.41,
+    "headline_families": [
+      "claude",
+      "gemini",
+      "gpt"
+    ],
+    "low_n_families_excluded_from_headline": [
+      "perplexity"
+    ]
+  },
+  "cross_check": {
+    "r1_visibility_pct_from_we_present": 27.28,
+    "r1_visibility_pct_from_our_status_scored": 27.37,
+    "abs_diff": 0.09,
+    "within_0_5": true,
+    "n_answers": 2212
+  },
+  "scope": {
+    "c1_runs": [
+      "R1",
+      "R2",
+      "R3",
+      "R5",
+      "R6"
+    ],
+    "surfaces_covered": [
+      "api",
+      "web"
+    ],
+    "surfaces_not_covered": [
+      "grok-web"
+    ],
+    "note": "C1 prompts on web surfaces exist only in R5 (8 prompts); those families are low_n and excluded from the headline mean."
+  },
+  "by_model": [
+    {
+      "model": "claude",
+      "versions": [
+        "claude-sonnet-4-6",
+        "claude-sonnet-5",
+        "claude-web"
+      ],
+      "n_answers": 925,
+      "n_prompt_model_groups": 587,
+      "ai_brand_score": 47.42,
+      "visibility_pct": 49.2,
+      "visibility_ci95": [
+        45.99,
+        52.42
+      ],
+      "average_position": 1.38,
+      "visibility_pct_brand_bearing_only": 88.91,
+      "inn_only_mention_pct": 7.81,
+      "unstable_groups_pct": 8.01,
+      "single_run_groups_pct": 44.46,
+      "low_n": false
+    },
+    {
+      "model": "gemini",
+      "versions": [
+        "gemini-2.5-flash",
+        "gemini-web",
+        "google-ai"
+      ],
+      "n_answers": 992,
+      "n_prompt_model_groups": 336,
+      "ai_brand_score": 30.85,
+      "visibility_pct": 33.58,
+      "visibility_ci95": [
+        30.71,
+        36.58
+      ],
+      "average_position": 1.86,
+      "visibility_pct_brand_bearing_only": 76.35,
+      "inn_only_mention_pct": 11.14,
+      "unstable_groups_pct": 28.27,
+      "single_run_groups_pct": 0.0,
+      "low_n": false
+    },
+    {
+      "model": "gpt",
+      "versions": [
+        "gpt-4o",
+        "gpt-web"
+      ],
+      "n_answers": 973,
+      "n_prompt_model_groups": 328,
+      "ai_brand_score": 13.35,
+      "visibility_pct": 14.43,
+      "visibility_ci95": [
+        12.36,
+        16.78
+      ],
+      "average_position": 1.77,
+      "visibility_pct_brand_bearing_only": 60.59,
+      "inn_only_mention_pct": 31.76,
+      "unstable_groups_pct": 24.39,
+      "single_run_groups_pct": 0.0,
+      "low_n": false
+    },
+    {
+      "model": "perplexity",
+      "versions": [
+        "perplexity-web"
+      ],
+      "n_answers": 21,
+      "n_prompt_model_groups": 8,
+      "ai_brand_score": 49.69,
+      "visibility_pct": 54.17,
+      "visibility_ci95": [
+        33.92,
+        73.13
+      ],
+      "average_position": 2.0,
+      "visibility_pct_brand_bearing_only": 61.9,
+      "inn_only_mention_pct": 45.83,
+      "unstable_groups_pct": 12.5,
+      "single_run_groups_pct": 0.0,
+      "low_n": true
+    }
+  ],
+  "by_model_version": [
+    {
+      "model": "claude-sonnet-4-6",
+      "versions": [
+        "claude-sonnet-4-6"
+      ],
+      "n_answers": 643,
+      "n_prompt_model_groups": 320,
+      "ai_brand_score": 52.17,
+      "visibility_pct": 54.06,
+      "visibility_ci95": [
+        50.2,
+        57.88
+      ],
+      "average_position": 1.37,
+      "visibility_pct_brand_bearing_only": 91.87,
+      "inn_only_mention_pct": 7.03,
+      "unstable_groups_pct": 13.75,
+      "single_run_groups_pct": 1.25,
+      "low_n": false
+    },
+    {
+      "model": "claude-sonnet-5",
+      "versions": [
+        "claude-sonnet-5"
+      ],
+      "n_answers": 261,
+      "n_prompt_model_groups": 259,
+      "ai_brand_score": 40.95,
+      "visibility_pct": 42.47,
+      "visibility_ci95": [
+        36.63,
+        48.53
+      ],
+      "average_position": 1.37,
+      "visibility_pct_brand_bearing_only": 84.62,
+      "inn_only_mention_pct": 8.49,
+      "unstable_groups_pct": 0.0,
+      "single_run_groups_pct": 99.23,
+      "low_n": false
+    },
+    {
+      "model": "claude-web",
+      "versions": [
+        "claude-web"
+      ],
+      "n_answers": 21,
+      "n_prompt_model_groups": 8,
+      "ai_brand_score": 66.33,
+      "visibility_pct": 72.92,
+      "visibility_ci95": [
+        51.54,
+        87.2
+      ],
+      "average_position": 1.93,
+      "visibility_pct_brand_bearing_only": 83.33,
+      "inn_only_mention_pct": 16.67,
+      "unstable_groups_pct": 37.5,
+      "single_run_groups_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "versions": [
+        "gemini-2.5-flash"
+      ],
+      "n_answers": 950,
+      "n_prompt_model_groups": 320,
+      "ai_brand_score": 28.45,
+      "visibility_pct": 30.73,
+      "visibility_ci95": [
+        27.88,
+        33.74
+      ],
+      "average_position": 1.8,
+      "visibility_pct_brand_bearing_only": 74.7,
+      "inn_only_mention_pct": 11.22,
+      "unstable_groups_pct": 28.75,
+      "single_run_groups_pct": 0.0,
+      "low_n": false
+    },
+    {
+      "model": "gemini-web",
+      "versions": [
+        "gemini-web"
+      ],
+      "n_answers": 21,
+      "n_prompt_model_groups": 8,
+      "ai_brand_score": 73.65,
+      "visibility_pct": 85.42,
+      "visibility_ci95": [
+        65.02,
+        94.86
+      ],
+      "average_position": 2.5,
+      "visibility_pct_brand_bearing_only": 91.67,
+      "inn_only_mention_pct": 14.58,
+      "unstable_groups_pct": 25.0,
+      "single_run_groups_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "model": "google-ai",
+      "versions": [
+        "google-ai"
+      ],
+      "n_answers": 21,
+      "n_prompt_model_groups": 8,
+      "ai_brand_score": 84.44,
+      "visibility_pct": 95.83,
+      "visibility_ci95": [
+        78.16,
+        99.33
+      ],
+      "average_position": 2.33,
+      "visibility_pct_brand_bearing_only": 95.83,
+      "inn_only_mention_pct": 4.17,
+      "unstable_groups_pct": 12.5,
+      "single_run_groups_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "model": "gpt-4o",
+      "versions": [
+        "gpt-4o"
+      ],
+      "n_answers": 952,
+      "n_prompt_model_groups": 320,
+      "ai_brand_score": 12.21,
+      "visibility_pct": 13.12,
+      "visibility_ci95": [
+        11.13,
+        15.42
+      ],
+      "average_position": 1.74,
+      "visibility_pct_brand_bearing_only": 60.19,
+      "inn_only_mention_pct": 31.72,
+      "unstable_groups_pct": 24.69,
+      "single_run_groups_pct": 0.0,
+      "low_n": false
+    },
+    {
+      "model": "gpt-web",
+      "versions": [
+        "gpt-web"
+      ],
+      "n_answers": 21,
+      "n_prompt_model_groups": 8,
+      "ai_brand_score": 59.29,
+      "visibility_pct": 66.67,
+      "visibility_ci95": [
+        45.37,
+        82.81
+      ],
+      "average_position": 2.33,
+      "visibility_pct_brand_bearing_only": 66.67,
+      "inn_only_mention_pct": 33.33,
+      "unstable_groups_pct": 12.5,
+      "single_run_groups_pct": 0.0,
+      "low_n": true
+    },
+    {
+      "model": "perplexity-web",
+      "versions": [
+        "perplexity-web"
+      ],
+      "n_answers": 21,
+      "n_prompt_model_groups": 8,
+      "ai_brand_score": 49.69,
+      "visibility_pct": 54.17,
+      "visibility_ci95": [
+        33.92,
+        73.13
+      ],
+      "average_position": 2.0,
+      "visibility_pct_brand_bearing_only": 61.9,
+      "inn_only_mention_pct": 45.83,
+      "unstable_groups_pct": 12.5,
+      "single_run_groups_pct": 0.0,
+      "low_n": true
+    }
+  ],
+  "intrusion": {
+    "competitor_into_ours_pct": 29.44,
+    "competitor_into_ours_ci95": [
+      28.28,
+      30.62
+    ],
+    "competitor_into_ours_n_answers": 5830,
+    "by_competitor": {
+      "Mounjaro": 6.14,
+      "Wegovy": 25.32,
+      "Zepbound": 5.36,
+      "Rybelsus": 7.03,
+      "Trulicity": 1.76,
+      "Victoza": 1.59,
+      "Jardiance": 0.66,
+      "Saxenda": 2.11
+    },
+    "ours_into_competitor_pct": 12.01,
+    "ours_into_competitor_ci95": [
+      10.78,
+      13.35
+    ],
+    "ours_into_competitor_n_answers": 2460,
+    "by_competitor_asked": {
+      "Mounjaro": {
+        "pct": 9.36,
+        "n_prompts": 187,
+        "n_answers": 1759
+      },
+      "Wegovy": {
+        "pct": 13.18,
+        "n_prompts": 75,
+        "n_answers": 379
+      },
+      "Zepbound": {
+        "pct": 7.72,
+        "n_prompts": 81,
+        "n_answers": 419
+      },
+      "Rybelsus": {
+        "pct": 36.67,
+        "n_prompts": 5,
+        "n_answers": 26
+      },
+      "Trulicity": {
+        "pct": 41.03,
+        "n_prompts": 26,
+        "n_answers": 143
+      },
+      "Victoza": {
+        "pct": 71.43,
+        "n_prompts": 7,
+        "n_answers": 42
+      },
+      "Saxenda": {
+        "pct": 22.22,
+        "n_prompts": 6,
+        "n_answers": 33
+      }
+    }
+  },
+  "quality": {
+    "excluded_by_reason": {
+      "truncated": 59
+    },
+    "status_vs_text_mismatches": 813,
+    "status_vs_text_mismatches_C1": 183,
+    "unknown_brands_top20": {
+      "Farxiga": 389,
+      "Metformin": 289,
+      "Invokana": 271,
+      "American Diabetes Association": 247,
+      "Januvia": 193,
+      "Novo Nordisk": 170,
+      "semaglutide": 145,
+      "Tradjenta": 137,
+      "Awiqli": 131,
+      "CDC": 117,
+      "Eli Lilly": 113,
+      "ADA": 111,
+      "Foundayo": 103,
+      "Actos": 85,
+      "liraglutide": 84,
+      "Semaglutide": 82,
+      "metformin": 82,
+      "empagliflozin": 81,
+      "Onglyza": 74,
+      "CagriSema": 73
+    },
+    "single_run_groups_pct": 20.73,
+    "unstable_groups_pct": 22.34,
+    "position_text_vs_scored_differ_gt1": {
+      "n": 122,
+      "of": 547
+    },
+    "legacy_visibility_field_corr_with_weight": 0.891
+  }
+}

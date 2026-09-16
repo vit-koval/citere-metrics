@@ -250,3 +250,23 @@ def test_fda_access_data_with_count_is_one_chip():
     clean, _, chip = C.clean_tail(raw)
     assert clean.endswith("animal studies.") and chip
     assert C.exclusion_reason(clean, raw, MIN_CHARS) is None
+
+
+def test_position_weight():
+    assert C.position_weight(1, 0.9) == 100.0
+    assert abs(C.position_weight(2, 0.9) - 90.0) < 1e-9
+    assert abs(C.position_weight(4, 0.9) - 72.9) < 1e-9
+    assert C.position_weight(None, 0.9) == 0.0 and C.position_weight(float("nan"), 0.9) == 0.0
+
+
+def test_aggregate_ci_basis_answers():
+    rows = [("P1", "R1", "a1", "A", 1), ("P1", "R1", "a1", "A", 0), ("P2", "R1", "a1", "A", 1)]
+    df = pd.DataFrame(rows, columns=["pid", "run", "model", "model_family", "v"])
+    g = C.aggregate_bottom_up(df, "v", ci_basis="groups")["family"].iloc[0]
+    a = C.aggregate_bottom_up(df, "v", ci_basis="answers")["family"].iloc[0]
+    assert int(g["n_groups"]) == 2 and int(a["n_answers"]) == 3
+    assert (a["ci_hi"] - a["ci_lo"]) < (g["ci_hi"] - g["ci_lo"])  # more answers -> tighter CI
+
+
+def test_wilson_ci_non_proportion_is_nan():
+    assert all(math.isnan(v) for v in C.wilson_ci(250, 100))
