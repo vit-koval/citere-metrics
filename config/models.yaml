@@ -1,0 +1,11 @@
+families:
+  claude: ["claude-sonnet-4-6", "claude-sonnet-5", "claude-web"]
+  gpt: ["gpt-4o", "gpt-web"]
+  gemini: ["gemini-2.5-flash", "gemini-web", "google-ai"]
+  perplexity: ["perplexity-web"]
+  grok: ["grok-web"]
+drop: ["gemini-3.6-flash"]
+surface_type:
+  api: ["gemini-2.5-flash", "gpt-4o", "claude-sonnet-4-6", "claude-sonnet-5"]
+  web: ["gpt-web", "claude-web", "grok-web", "gemini-web", "google-ai", "perplexity-web"]
+weights: equal

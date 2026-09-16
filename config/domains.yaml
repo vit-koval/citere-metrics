@@ -1,0 +1,14 @@
+# Note: novonordisk.com and novocare.com are corporate sites that also cover Wegovy and Rybelsus, so some owned citations may come from answers about those brands.
+owned: ["ozempic.com", "novonordisk.com", "novomedlink.com", "novocare.com"]
+competitor:
+  Mounjaro: ["mounjaro.lilly.com", "mounjaro.com"]
+  Zepbound: ["zepbound.lilly.com"]
+  Wegovy: ["wegovy.com"]
+  Rybelsus: ["rybelsus.com"]
+  Jardiance: ["jardiance.com", "boehringer-ingelheim.com"]
+  Trulicity: ["trulicity.com", "lilly.com"]
+  Victoza: ["victoza.com"]
+  Saxenda: ["saxenda.com"]
+institutional_categories: ["regulatory", "gov_health", "wiki", "clinical"]
+institutional_domains: ["fda.gov", "accessdata.fda.gov", "dailymed.nlm.nih.gov", "ema.europa.eu", "nih.gov", "cdc.gov", "nhs.uk", "medlineplus.gov", "pubmed.ncbi.nlm.nih.gov", "pmc.ncbi.nlm.nih.gov", "cochrane.org", "wikipedia.org"]
+artifacts: ["vertexaisearch.cloud.google.com"]

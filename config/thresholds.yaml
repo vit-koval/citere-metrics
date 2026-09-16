@@ -1,0 +1,8 @@
+min_answer_chars: 100
+max_truncation_share_per_surface: 0.10
+sentiment_thresholds: [40, 60]
+finding_min_critical_share: 0.5
+finding_min_n: 3
+min_group_prompts: 10
+position_decay: 0.9
+closure_coefficients: {owned: [0.05, 0.10], earned: [0.10, 0.22], commerce: [0.10, 0.22], comp_owned: [0.10, 0.22], ugc: [0.05, 0.15]}

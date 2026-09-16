@@ -1,0 +1,16 @@
+our_brand: ["Ozempic"]
+our_inn: ["semaglutide"]
+competitors:
+  Mounjaro: ["Mounjaro"]
+  Wegovy: ["Wegovy"]
+  Zepbound: ["Zepbound"]
+  Rybelsus: ["Rybelsus"]
+  Trulicity: ["Trulicity"]
+  Victoza: ["Victoza"]
+  Jardiance: ["Jardiance"]
+  Saxenda: ["Saxenda"]
+competitor_inn:
+  tirzepatide: ["Mounjaro", "Zepbound"]
+  liraglutide: ["Victoza", "Saxenda"]
+  dulaglutide: ["Trulicity"]
+  empagliflozin: ["Jardiance"]
