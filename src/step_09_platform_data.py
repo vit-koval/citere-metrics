@@ -38,6 +38,33 @@ def subject_phrase(topic, subtopic, zone):
     return lead + (", " if " and " in ctx else " and ") + ctx
 
 
+# Task type: the export's own `agent` field, grouped into plain names. The agent string stays on the card,
+# so nothing here is invented — every key below appears verbatim in the export.
+TASK_TYPE = {
+    "H22": "Monitor & alert", "A2": "Rewrite page", "A2/A6": "Rewrite page", "A1/A7": "Create page / evidence",
+    "B8/C12": "Fix listings & directories", "B10": "Fix listings & directories", "A1": "Draft label content",
+    "F18/C12": "PR & outreach", "E16/E17": "Reference sites", "G20": "Provider error reports",
+    "Task for the client's Commercial team": "Commercial decision",
+    "Task for the client's Medical/Regulatory": "Medical / Regulatory",
+    "Task for the client's Legal": "Legal",
+    "Decision for the client": "CMO decision",
+    "Task for Regulatory; A1 agent builds only after the go": "Regulatory go",
+    "Task for the client's team": "Client team",
+}
+
+
+def task_type(agent):
+    """Plain name for the export's `agent` string: the agent code before ' · ', else the human-task wording."""
+    a = (agent or "").strip()
+    head = a.split(" · ")[0].strip()
+    if head in TASK_TYPE:
+        return TASK_TYPE[head]
+    for key, name in TASK_TYPE.items():
+        if a.startswith(key):
+            return name
+    return "Other"
+
+
 TRACK_AUDIENCE = {"TRACK": "citere", "OWNED": "client", "EARNED": "client", "LABEL-MEDICAL": "client"}
 CARD_TO_OWNER = {"OWNED": {"owned"}, "EARNED": {"earned", "ugc", "comp_owned"}, "LABEL-MEDICAL": {"label"}}
 RUN_FIELDS = {"R1": ["our_status", "our_rank", "consideration_set"], "R2": ["winner", "axis_winner", "split_axes", "third_brands"],
@@ -160,7 +187,8 @@ def main() -> int:
             "demand_extra": {"prompt_share": p["demand"].get("prompt_share"), "ai_native": p["demand"].get("ai_native"), "source": "platform_export"},
             "diagnosis_text": p["diagnosis"], "evidence_lines": (p.get("evidence_measured") or []) + (p.get("evidence_search") or []),
             "serp": p.get("serp"), "inventory": p.get("inventory"),
-            "fixes": [dict(card, audience=TRACK_AUDIENCE.get(card.get("type"), "client"), platform_execution=card.get("execution")) for card in (p.get("fixes") or [])],
+            # `execution` is the export's own AGENT / AGENT+APPROVE / HUMAN TASK — one field, not duplicated
+            "fixes": [dict(card, audience=TRACK_AUDIENCE.get(card.get("type"), "client"), task_type=task_type(card.get("agent"))) for card in (p.get("fixes") or [])],
             "answers_ref": "answers.js#" + k,
         }
         groups_pids[key_group[k]].append((p["priority"], k))
@@ -245,11 +273,24 @@ def main() -> int:
                 if card["audience"] == "client" and CARD_TO_OWNER.get(card["type"], set()) & owners:
                     out.append({"pid_run": k, "fix_idx": i})
         return out
+    def _task_types(refs):
+        seen = []
+        for r in refs:
+            tt = points[r["pid_run"]]["fixes"][r["fix_idx"]].get("task_type")
+            if tt and tt not in seen: seen.append(tt)
+        return sorted(seen)
+
     def _with_reach(t):
         rw = rows_by_owner.get((t["group_id"], t["owner"]))
         return dict(t, impact=dict(t["impact"], reach=(rw["impact_reach"] if rw else None)))
-    campaigns = [dict(_with_reach(t), fix_card_refs=refs_for(t, {t["owner"]} if t["owner"] != "label" else {"label"})) for t in ac_reg["tasks"]]
-    held = [dict(_with_reach(t), fix_card_refs=refs_for(t, {"label"})) for t in ac_reg.get("label_tasks_awaiting_signoff", [])]
+    campaigns = []
+    for t in ac_reg["tasks"]:
+        refs = refs_for(t, {t["owner"]} if t["owner"] != "label" else {"label"})
+        campaigns.append(dict(_with_reach(t), fix_card_refs=refs, task_types=_task_types(refs)))
+    held = []
+    for t in ac_reg.get("label_tasks_awaiting_signoff", []):
+        refs = refs_for(t, {"label"})
+        held.append(dict(_with_reach(t), fix_card_refs=refs, task_types=_task_types(refs)))
     track_by_group = defaultdict(list)
     for k, pt in points.items():
         for i, card in enumerate(pt["fixes"]):

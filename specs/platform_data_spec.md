@@ -27,7 +27,7 @@ Join key: `(pid, run)` — same in both sources, 1,424 matches expected; report 
 
 Fix cards: keep all four types but tag `audience`: `TRACK` → `citere`; `OWNED`, `EARNED`, `LABEL-MEDICAL` → `client`. UI shows `client` by default.
 
-Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stays on the card as `platform_execution`; the campaign-level `execution` (auto/manual/citere) comes from the Action Center registry. Both are visible, neither overrides the other.
+Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stays on the card as `execution` — one field, not duplicated; the campaign-level `execution` (auto/manual/citere) comes from the Action Center registry. Both are visible, neither overrides the other.
 
 ---
 
@@ -70,7 +70,7 @@ Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stay
       "demand_extra": {"prompt_share": 0, "ai_native": false, "source": "platform_export"},
       "diagnosis_text": ["..."], "evidence_lines": ["..."],
       "serp": {...}, "inventory": {...},
-      "fixes": [{...card..., "audience": "client|citere", "platform_execution": "AGENT|AGENT+APPROVE|HUMAN TASK"}],
+      "fixes": [{...card..., "audience": "client|citere", "task_type": "plain name for the export's own `agent` field; the agent string stays on the card"}],
       "answers_ref": "corpus_master.json#P0001|R1"   — answer texts are NOT embedded here
     }
   },

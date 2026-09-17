@@ -419,5 +419,21 @@
     "title": "Before / after",
     "lead": "Nothing to compare yet — this cycle is the baseline.",
     "text": "From the second cycle this tile shows what moved since last time: visibility, safety findings and the win rate against each competitor. The same questions and the same surfaces are used every cycle so the change is real and not drift."
+  },
+  "task_type": {
+    "title": "Task type",
+    "text": "What kind of work this is, taken from the platform's own agent assignment: rewriting a page, creating one, fixing listings, outreach, a label draft, or a decision that belongs to a person. Hover the chip to see the underlying agent code."
+  },
+  "potential": {
+    "title": "Potential",
+    "text": "The most this task could add to how often we are named on its topic, in percentage points, if every source it can reach went our way. A ceiling, not a forecast, and the column the table sorts by."
+  },
+  "task_actions": {
+    "title": "Task actions",
+    "text": "Send to agent hands the task to the platform, Assign gives it to a person, Mark done closes it, Dismiss needs a reason. All four are stored in this browser only and are never written back to the task registry."
+  },
+  "view_toggle": {
+    "title": "Board or table",
+    "text": "The same filtered tasks, two ways: a board grouped by status for working through them, a table sorted by potential for deciding where to spend. Filters and search apply to both."
   }
 }
