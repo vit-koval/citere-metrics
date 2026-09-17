@@ -1,6 +1,6 @@
 # Spec: Platform UI — three levels on one data file
 
-Version 1.0 · For Claude Code · Reads `data/metrics/cycle_01/platform_data.json` (step 9) and, lazily, `data/raw/corpus_master.json` for answer texts. Builds on the existing Evidence Base HTML (`ui/evidence_base_legacy.html`): reuse its design tokens, table, point detail panel and the Neural map block unchanged; replace its embedded DATA and its own calculations entirely.
+Version 1.0 · For Claude Code · Reads `data/metrics/cycle_01/platform_data.json` (step 9) and, lazily, `data/raw/corpus_master.json` for answer texts. Design source: the approved mockup `ui/citere_cmo_master_screen.html` is the design system for the whole platform — its `:root` token blocks (light and dark), font pairing (Fraunces for figures and headings, Public Sans for text and labels), tile shape and spacing, table, tag and bar styles and overall density are taken verbatim at build time and apply to Level 1, every Level 2 screen and the point view; no second palette. From the legacy Evidence Base (`ui/evidence_base_legacy.html`) keep only the DOM structure where useful (point table filter bar, detail panel sections) and the Neural map block untouched, with its own CSS and data; its palette, typography and calculations are not used.
 
 Rule: **the UI never computes.** Every number is read from `platform_data.json`. If a number is not in the file, the UI does not show it.
 

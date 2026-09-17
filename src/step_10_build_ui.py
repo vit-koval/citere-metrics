@@ -1,6 +1,7 @@
 """Step 10 — build ui/index.html (ui_spec.md).
 
-Inputs : ui/template.html, data/metrics/cycle_01/platform_data.json, ui/evidence_base_legacy.html (style block, map view markup,
+Inputs : ui/template.html, data/metrics/cycle_01/platform_data.json, ui/citere_cmo_master_screen.html (design source: style block verbatim),
+         ui/evidence_base_legacy.html (map CSS, map view markup,
          map init function + the fix-engine helpers it calls, slimmed legacy DATA for the map only), normalized parquet + corpus
          (answer store).
 Outputs: ui/index.html (platform_data inlined), ui/answers.js (full answer texts, gzip+base64, keyed pid|run, corpus order).
@@ -51,8 +52,14 @@ def main() -> int:
     pdata = (C.METRICS_DIR / "platform_data.json").read_text(encoding="utf-8")
 
     # ---- legacy pieces reused unchanged ----------------------------------------------------
-    st0 = legacy.index("<style>\n")  # the real block (line 4); line 1 holds only the artifact wrapper reset
-    style = legacy[st0: legacy.index("</style>", st0) + len("</style>")]
+    # design source: the approved mockup — its <style> block (tokens, fonts, tiles, tables, tags, bars) is taken verbatim
+    mock = (UI / "citere_cmo_master_screen.html").read_text(encoding="utf-8")
+    style = mock[mock.index("<style>"): mock.index("</style>") + len("</style>")]
+    # the Neural map keeps its own CSS from the legacy file (the block from #mapView{ up to the workbench rules); the legacy palette is not used
+    lst = legacy.index("<style>\n"); lend = legacy.index("</style>", lst)
+    lcss = legacy[lst:lend]
+    map_css = "<style>\n" + lcss[lcss.index("#mapView{"): lcss.index("#wbView{")] + "</style>"
+    assert "var(--" not in map_css, "legacy map CSS references legacy tokens: " + ", ".join(sorted(set(re.findall(r"var\((--[a-z0-9-]+)\)", map_css))))
     map_html = legacy[legacy.index('<div id="mapView">'): legacy.index('<div id="wbView">')]
     m = re.search(r'const DATA=(\{.*?\});\n', legacy, re.S)
     full = json.loads(m.group(1))
@@ -95,7 +102,7 @@ def main() -> int:
     assert map_size <= ARTIFACT_TEXT_LIMIT
 
     # ---- assemble ------------------------------------------------------------------------
-    out = tpl.replace("<!--LEGACY_STYLE-->", style) \
+    out = tpl.replace("<!--MOCKUP_STYLE-->", style).replace("<!--LEGACY_MAP_CSS-->", map_css) \
              .replace("<!--LEGACY_MAP_HTML-->", map_html) \
              .replace("<script>/*PLATFORM_DATA*/</script>", "<script>window.PLATFORM_DATA=" + pdata + ";</script>") \
              .replace("<!--LEGACY_MAP_JS-->", map_js)

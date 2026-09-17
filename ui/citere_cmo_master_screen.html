@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ozempic in AI answers — cycle 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F5F4; --panel:#FFFFFF; --ink:#1B2530; --muted:#5E6B78; --line:#DCE2E0; --soft:#EEF2F0;
+  --us:#0F6B6B; --us-soft:#D7ECEA; --comp:#B8741F; --comp-soft:#F5E8D3;
+  --bad:#B4372F; --bad-soft:#F6E1DE; --warn:#C2861A; --ok:#2E7A4F; --ok-soft:#DDEFE3;
+  --radius:6px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131A1F; --panel:#1B242B; --ink:#E9EEF0; --muted:#9AA7B1; --line:#2B3740; --soft:#222D35;
+    --us:#4FB3AE; --us-soft:#173B3A; --comp:#D8A05A; --comp-soft:#3D2E17;
+    --bad:#E06B62; --bad-soft:#3F2220; --warn:#D9A33A; --ok:#5DBB86; --ok-soft:#1C3527;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131A1F; --panel:#1B242B; --ink:#E9EEF0; --muted:#9AA7B1; --line:#2B3740; --soft:#222D35;
+  --us:#4FB3AE; --us-soft:#173B3A; --comp:#D8A05A; --comp-soft:#3D2E17;
+  --bad:#E06B62; --bad-soft:#3F2220; --warn:#D9A33A; --ok:#5DBB86; --ok-soft:#1C3527;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.45}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:24px 20px 48px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;margin:0}
+.sub{color:var(--muted);margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--panel);color:var(--muted);font-size:13px}
+.chip strong{color:var(--ink);font-weight:500}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:var(--radius);padding:8px 14px;font-weight:500;cursor:pointer;font:inherit}
+.btn.ghost{background:transparent;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.tile h2{font-size:15px;font-weight:600;margin:0;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.tile h2 span{font-weight:400;color:var(--muted);font-size:13px}
+.big{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:64px;line-height:1;letter-spacing:-0.01em;margin:2px 0 0}
+.big small{font-size:20px;color:var(--muted);font-family:"Public Sans",sans-serif;margin-left:6px}
+.mid{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:40px;line-height:1}
+.mid small{font-size:15px;color:var(--muted);font-family:"Public Sans",sans-serif;margin-left:4px}
+.note{color:var(--muted);font-size:13px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:4px 16px;font-size:13px}
+.kv div:nth-child(even){text-align:right;font-variant-numeric:tabular-nums}
+.row{display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap}
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.t-us{background:var(--us)} .t-comp{background:var(--comp)} .t-bad{background:var(--bad)} .t-ok{background:var(--ok)} .t-mute{background:#9AA7B1} .t-warn{background:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--muted);font-weight:500;padding:0 0 6px;border-bottom:1px solid var(--line)}
+td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;border-radius:4px;padding:1px 7px;font-size:12px;font-weight:500}
+.tag.p3{background:var(--bad-soft);color:var(--bad)} .tag.p2{background:var(--comp-soft);color:var(--comp)} .tag.p1{background:var(--soft);color:var(--muted)}
+.tag.us{background:var(--us-soft);color:var(--us)} .tag.ok{background:var(--ok-soft);color:var(--ok)} .tag.bad{background:var(--bad-soft);color:var(--bad)}
+.tag.warn{background:var(--comp-soft);color:var(--warn)}
+.ci{position:relative;height:10px;background:var(--soft);border-radius:5px;margin-top:8px}
+.ci b{position:absolute;top:0;height:10px;background:var(--us-soft);border-radius:5px}
+.ci i{position:absolute;top:-3px;width:3px;height:16px;background:var(--us);border-radius:2px}
+.safety{border-left:6px solid var(--bad)}
+.safety .big{color:var(--bad)}
+.light{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.light::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--bad);box-shadow:0 0 0 4px var(--bad-soft)}
+.empty{border-style:dashed;justify-content:center;align-items:flex-start;color:var(--muted)}
+.empty .mid{color:var(--muted);font-size:28px}
+.foot{color:var(--muted);font-size:12px;margin-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.c5{grid-column:span 5}.c4{grid-column:span 4}.c3{grid-column:span 3}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.models{display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center;font-size:13px}
+.models .bar{height:6px}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px}
+.dl dt{color:var(--muted)} .dl dd{margin:0}
+:focus-visible{outline:2px solid var(--us);outline-offset:2px}
+@media (max-width:980px){.c5,.c4,.c3,.c6,.c7,.c8{grid-column:span 6}}
+@media (max-width:640px){.c5,.c4,.c3,.c6,.c7,.c8{grid-column:span 12}.big{font-size:52px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <h1>Ozempic in AI answers</h1>
+    <div class="sub">Cycle 1, September 2026. United States, English. Against Mounjaro, Wegovy, Zepbound, Rybelsus, Jardiance.</div>
+  </div>
+  <div class="chips">
+    <span class="chip"><strong>1,424</strong> questions</span>
+    <span class="chip"><strong>12,315</strong> answers</span>
+    <span class="chip"><strong>9</strong> AI surfaces</span>
+    <button class="btn ghost" type="button">Open details</button>
+    <button class="btn" type="button">Export one-page PDF</button>
+  </div>
+</header>
+
+<div class="grid">
+
+  <!-- 1. VISIBILITY -->
+  <section class="tile c5" aria-label="Visibility Score">
+    <h2>Visibility Score <span>unbranded questions, API models</span></h2>
+    <div class="row">
+      <div>
+        <div class="big">19.5<small>of 100</small></div>
+        <div class="note">AI Brand Score: how often we are named, weighted by how early</div>
+      </div>
+      <div style="flex:1;min-width:180px">
+        <div class="kv">
+          <div>Named in answers</div><div>20.6%</div>
+          <div>Average position when named</div><div>1.9</div>
+          <div>Active ingredient named, brand not</div><div>16%</div>
+        </div>
+        <div class="ci" title="Wilson 95% interval"><b style="left:17%;width:6%"></b><i style="left:20.6%"></i></div>
+        <div class="note" style="margin-top:4px">95% interval 17–23%. Change vs last cycle appears from cycle 2.</div>
+      </div>
+    </div>
+    <div class="models">
+      <div>Claude</div><div class="bar"><i class="t-us" style="width:45%"></i></div><div>43.5</div>
+      <div>Gemini</div><div class="bar"><i class="t-us" style="width:26%"></i></div><div>24.4</div>
+      <div>GPT-4o</div><div class="bar"><i class="t-us" style="width:11%"></i></div><div>10.1</div>
+    </div>
+    <div class="note">Web surfaces (ChatGPT web, Perplexity, Google AI Overviews) not measured on unbranded questions this cycle.</div>
+  </section>
+
+  <!-- 2. BENCHMARKING -->
+  <section class="tile c4" aria-label="Competitive Benchmarking">
+    <h2>Competitive Benchmarking <span>who takes our answers</span></h2>
+    <div class="row">
+      <div><div class="mid">81<small>% win rate</small></div><div class="note">ahead when both named</div></div>
+      <div><div class="mid">37<small>% in duels</small></div><div class="note">"Ozempic vs X" questions</div></div>
+    </div>
+    <table>
+      <tr><th>Competitor</th><th class="n">Answers taken</th><th class="n">By absence</th></tr>
+      <tr><td>Jardiance</td><td class="n">6.6%</td><td class="n">2.1%</td></tr>
+      <tr><td>Wegovy</td><td class="n">5.9%</td><td class="n">4.1%</td></tr>
+      <tr><td>Mounjaro</td><td class="n">4.6%</td><td class="n">2.3%</td></tr>
+      <tr><td>Zepbound</td><td class="n">4.4%</td><td class="n">3.0%</td></tr>
+    </table>
+    <div class="note">When we are named we lead. We lose mostly by not being named at all.</div>
+  </section>
+
+  <!-- 7. SAFETY / LABEL -->
+  <section class="tile c3 safety" aria-label="Safety and label flag">
+    <h2>Safety / Label <span>web surfaces</span></h2>
+    <div class="light">Dangerous errors found</div>
+    <div class="big">10<small>findings</small></div>
+    <div class="kv">
+      <div>Said something dangerous</div><div>6</div>
+      <div>Omitted a required warning</div><div>4</div>
+      <div>Awaiting clinical sign-off</div><div>10</div>
+      <div>Answers with a critical error</div><div>12%</div>
+    </div>
+    <dl class="dl">
+      <dt>Worst surface</dt><dd>Claude web, 20% critical</dd>
+      <dt>Top label section</dt><dd>Thyroid boxed warning</dd>
+      <dt>Then</dt><dd>Dosing (§2.2), pediatric use (§8.4)</dd>
+    </dl>
+    <div class="note">Findings reach the client report only after clinician sign-off.</div>
+  </section>
+
+  <!-- 3. SENTIMENT -->
+  <section class="tile c3" aria-label="Sentiment">
+    <h2>Sentiment <span>questions about us</span></h2>
+    <div class="mid">66<small>of 100</small></div>
+    <div class="bar"><i class="t-ok" style="width:78%"></i><i class="t-mute" style="width:12%"></i><i class="t-bad" style="width:10%"></i></div>
+    <div class="kv"><div>Positive</div><div>78%</div><div>Neutral</div><div>12%</div><div>Negative</div><div>10%</div></div>
+    <div class="note" style="margin-top:2px">What negative answers say</div>
+    <table>
+      <tr><td>Thyroid cancer risk</td><td class="n">31%</td></tr>
+      <tr><td>Cost and insurance</td><td class="n">24%</td></tr>
+      <tr><td>Nausea and stomach</td><td class="n">19%</td></tr>
+      <tr><td>Advises stopping</td><td class="n">11%</td></tr>
+      <tr><td>Shortage</td><td class="n">8%</td></tr>
+    </table>
+  </section>
+
+  <!-- 4. CITATIONS -->
+  <section class="tile c4" aria-label="Citation tracking">
+    <h2>Citation Tracking <span>66,826 citations</span></h2>
+    <div class="bar"><i class="t-comp" style="width:68%"></i><i class="t-mute" style="width:25.4%"></i><i class="t-us" style="width:3.3%"></i><i class="t-bad" style="width:2%"></i><i style="width:1%;background:var(--ink)"></i></div>
+    <div class="kv">
+      <div><span class="tag warn">earned</span> media, directories, forums, hospitals</div><div>68%</div>
+      <div><span class="tag p1">institutional</span> FDA, NIH, journals, Wikipedia</div><div>25%</div>
+      <div><span class="tag us">owned</span> our sites</div><div>3.3%</div>
+      <div><span class="tag bad">threat</span> litigation, adversarial</div><div>2.0%</div>
+      <div><span class="tag p1">competitor</span> their sites</div><div>1.0%</div>
+    </div>
+    <div class="note" style="margin-top:2px">Feeding answers about competitors, not us</div>
+    <table>
+      <tr><td>healthline.com</td><td class="n">earned</td><td class="n">gap 212</td></tr>
+      <tr><td>drugs.com</td><td class="n">directory</td><td class="n">gap 168</td></tr>
+      <tr><td>goodrx.com</td><td class="n">directory</td><td class="n">gap 141</td></tr>
+      <tr><td>reddit.com</td><td class="n">forum</td><td class="n">gap 97</td></tr>
+    </table>
+  </section>
+
+  <!-- 5. DIAGNOSIS & PRIORITIZATION -->
+  <section class="tile c5" aria-label="Diagnosis and prioritization">
+    <h2>Diagnosis &amp; Prioritization <span>demand × gap × lever</span></h2>
+    <table>
+      <tr><th>Fix first</th><th class="n">Demand /mo</th><th class="n">Losing</th><th class="n">Lever</th><th class="n">Reach</th></tr>
+      <tr>
+        <td><span class="tag p3">3</span> Side effects, living on the drug — earned media<br><span class="note">Cause: absent from answer, competitor lifted off-label</span></td>
+        <td class="n">248K</td><td class="n">76%</td><td class="n">48%</td><td class="n">up to 188K</td>
+      </tr>
+      <tr>
+        <td><span class="tag p3">3</span> Weight loss without diabetes — earned media<br><span class="note">Cause: competitor lifted off-label, we are absent</span></td>
+        <td class="n">67K</td><td class="n">71%</td><td class="n">58%</td><td class="n">up to 47K</td>
+      </tr>
+      <tr>
+        <td><span class="tag p2">2</span> Dosing and titration — directories<br><span class="note">Cause: model on an old label, incomplete</span></td>
+        <td class="n">24K</td><td class="n">64%</td><td class="n">31%</td><td class="n">up to 15K</td>
+      </tr>
+    </table>
+    <div class="note">Reach is a ceiling, in Google searches per month for the topic. Priority tiers are the top, middle and bottom third of 51 topic groups.</div>
+  </section>
+
+  <!-- 6. ACTION CENTER -->
+  <section class="tile c7" aria-label="Action Center">
+    <h2>Action Center <span>tasks from the list above</span></h2>
+    <div class="row">
+      <div><div class="mid">14<small>open</small></div><div class="note">2 automated, 12 for your team</div></div>
+      <div><div class="mid">0<small>in progress</small></div></div>
+      <div><div class="mid">0<small>done this cycle</small></div></div>
+      <div style="flex:1;min-width:200px">
+        <div class="kv"><div>Digital</div><div>5</div><div>PR</div><div>4</div><div>Medical</div><div>4</div><div>Regulatory</div><div>1</div></div>
+      </div>
+    </div>
+    <table>
+      <tr><th>Next up</th><th>Who</th><th class="n">Expected</th><th class="n">Status</th></tr>
+      <tr><td>Get cited on healthline and drugs.com for side-effect questions</td><td>Digital + PR</td><td class="n">−4 to −8 pts of loss</td><td class="n"><span class="tag p1">open</span></td></tr>
+      <tr><td>Publish clinician-reviewed weight-loss-without-diabetes page</td><td>Medical + Digital</td><td class="n">−4 to −9 pts</td><td class="n"><span class="tag p1">open</span></td></tr>
+      <tr><td>Correct thyroid warning on 6 web surfaces (after sign-off)</td><td>Regulatory</td><td class="n">not estimated</td><td class="n"><span class="tag warn">awaiting sign-off</span></td></tr>
+    </table>
+    <div class="note">Expected shift uses industry priors until two cycles of your own results exist.</div>
+  </section>
+
+  <!-- 8. BEFORE / AFTER -->
+  <section class="tile c5 empty" aria-label="Before and after">
+    <h2>Before / After <span>trend across cycles</span></h2>
+    <div class="mid">First cycle</div>
+    <div class="note">This is the baseline. From cycle 2 this tile shows the Visibility Score line, the Safety findings count and the win rate against each competitor, with change since last cycle. Same questions, same surfaces, same brand dictionary each time, so the deltas are comparable.</div>
+    <div class="note">Next run: December 2026.</div>
+  </section>
+
+</div>
+
+<div class="foot">
+  <div>All figures computed from 1,424 questions run on 9 AI surfaces in September 2026. Brand means trade name only; "semaglutide" without "Ozempic" is counted separately.</div>
+  <div>Click any tile for the breakdown by model, topic and source.</div>
+</div>
+
+</div>
+</body>
+</html>
