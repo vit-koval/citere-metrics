@@ -78,6 +78,20 @@ Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stay
   "citere_tasks": [ ...registry citere tasks + all TRACK fix cards grouped by group_id ],
   "label_findings": [ ...label_findings_registry.json, with cell → pids of R4 answers in that cell ],
   "sources": { ...citations_summary.json + per-domain "pids" list (top 200 domains only, to bound size) },
+  "groups[] also carry, for the Priorities screen (added after cycle-1 review; all carried, nothing recomputed)": {
+    "headline": "plain-language title: subject phrase (topic × subtopic/zone) + the action for the top owner",
+    "subject_label": "Side effects and daily life", "action_label": "get cited on drug directories", "source_label": "drug directories",
+    "top_owner": "earned", "top_owner_lever": 0.754,
+    "impact_reach": "step 6 impact_reach {point, lo, hi, caption} = topic demand × gap — the row's own number, not recomputed",
+    "dominant_cause": "+ label and confidence (modal among the points carrying it)",
+    "failing_cause": "{code, label, n, share, confidence} over points whose code is a failure code",
+    "code_distribution": "[{code, label, n, share}]", "cause_distribution": "[{code, label, n, share}]",
+    "top_domains": "[{domain, owner, subtype, citations, with_us}] top 8 over the group's answers",
+    "owner_rows": "[{owner, what, who, speed, score, lever, impact_reach, top_domain, source_label, task_id, status, execution, ceiling_pp, expected_pp}]",
+    "campaign_ids": "[]", "held_task_ids": "[]", "citere_task_ids": "[]",
+    "no_campaign_reason": "one line saying why a group raised no client campaign (healthy / below floor / label awaiting sign-off / Citere monitoring)"
+  },
+  "campaigns[].impact.reach": "the same step-6 impact_reach, so the Action Center and the group agree",
   "breakdowns": {                    — carried verbatim from the step summaries (added after cycle-1 UI review)
     "visibility_by_zone":        [ visibility_summary.by_zone: {zone, n_prompts, n_answers, visibility_pct, visibility_ci95, average_position, ai_brand_score, inn_only_mention_pct, low_n} ],
     "visibility_by_topic_group": [ visibility_summary.by_topic_group: same fields keyed topic_group ],

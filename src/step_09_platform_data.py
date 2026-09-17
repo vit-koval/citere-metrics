@@ -12,6 +12,32 @@ import pandas as pd
 
 from src import common as C
 
+# Plain-language vocabulary for the Priorities screen. Labels only — every number stays as the pipeline produced it.
+ZONE_PLAIN = {"LIVING ON THE DRUG": "daily life", "STARTING & SWITCHING": "starting or switching", "WEIGHT LOSS": "weight loss",
+              "PRICE & ACCESS": "price and access", "SAFETY & CONTRAINDICATIONS": "safety", "BLOOD SUGAR & GLYCEMIC CONTROL": "blood sugar",
+              "HEART & KIDNEY": "heart and kidney"}
+CATEGORY_PLAIN = {"directory": "drug directories", "media": "health media", "health_media": "health media", "forum": "community forums",
+                  "ugc": "community forums", "hospital": "hospital sites", "news": "news sites", "telehealth": "telehealth sites",
+                  "advocacy": "advocacy sites", "payer": "insurer sites", "government": "government sites", "other": "third-party sites"}
+OWNER_ACTION = {"owned": "make our own pages the answer", "ugc": "show up in community answers",
+                "comp_owned": "counter competitor-owned pages", "label": "publish the missing label fact"}
+OWNER_SOURCE = {"owned": "our own pages", "ugc": "community forums", "comp_owned": "competitor pages", "label": "label pages"}
+CONF_PLAIN = {"high": "high", "med": "medium", "medium": "medium", "low": "low"}
+
+
+def subject_phrase(topic, subtopic, zone):
+    """`Side effects & tolerability` × `LIVING ON THE DRUG` -> `Side effects and daily life`."""
+    lead = re.split(r"\s*[&,]\s*", (topic or "").strip())[0].strip()
+    ctx = (subtopic or "").strip() or ZONE_PLAIN.get(zone, (zone or "").lower())
+    ctx = ctx.replace(" & ", " and ")
+    first = ctx.split(" ")[0]
+    if ctx[:1].isupper() and not first.isupper():          # keep acronyms (PCOS, GI) as written
+        ctx = ctx[:1].lower() + ctx[1:]
+    if not lead:
+        return ctx[:1].upper() + ctx[1:]
+    return lead + (", " if " and " in ctx else " and ") + ctx
+
+
 TRACK_AUDIENCE = {"TRACK": "citere", "OWNED": "client", "EARNED": "client", "LABEL-MEDICAL": "client"}
 CARD_TO_OWNER = {"OWNED": {"owned"}, "EARNED": {"earned", "ugc", "comp_owned"}, "LABEL-MEDICAL": {"label"}}
 RUN_FIELDS = {"R1": ["our_status", "our_rank", "consideration_set"], "R2": ["winner", "axis_winner", "split_axes", "third_brands"],
@@ -145,6 +171,64 @@ def main() -> int:
                        "lever": {"earned": _n(r.lever_earned), "owned": _n(r.lever_owned), "ugc": _n(r.lever_ugc), "comp_owned": _n(r.lever_comp_owned), "institutional_share": _n(r.institutional_share)},
                        "pids": pids})
 
+    # ---- Priorities screen: plain-language headline, reach, distributions, sources (all carried, nothing recomputed) ----
+    rows_by_owner = {}
+    for r in pri["recommendations"] + pri["label_recommendations"]:
+        rows_by_owner[(r["group_id"], r["owner"])] = r
+    best_row = {}
+    for r in pri["recommendations"] + pri["label_recommendations"]:
+        cur = best_row.get(r["group_id"])
+        if cur is None or r["score"] > cur["score"]:
+            best_row[r["group_id"]] = r
+    citere_groups = {r["group_id"] for r in pri.get("citere_rows", [])}
+    live_c["_group"] = live_c["key"].map(key_group)
+    dom_by_group = {}
+    for gid, sub in live_c.groupby("_group"):
+        agg = sub.groupby(["domain", "owner", "subtype"], dropna=False).agg(citations=("url", "size"), with_us=("we_present", "sum")).reset_index()
+        agg = agg.sort_values(["citations", "domain"], ascending=[False, True]).head(8)
+        dom_by_group[gid] = [{"domain": t.domain, "owner": t.owner, "subtype": "" if not isinstance(t.subtype, str) else t.subtype,
+                              "citations": int(t.citations), "with_us": int(t.with_us)} for t in agg.itertuples()]
+    for g in groups:
+        gid = g["group_id"]; pts = [points[k] for k in g["pids"]]
+        row = best_row.get(gid)
+        def _dist(vals, labels):
+            cnt = Counter(vals)
+            return [{"code": c, "label": labels.get(c, c), "n": int(n), "share": round(n / len(pts), 4)} for c, n in cnt.most_common()]
+        cause_labels = {}
+        for pt in pts:
+            cz = pt.get("cause") or {}
+            if cz.get("code") and cz.get("label"):
+                cause_labels.setdefault(cz["code"], cz["label"])
+        g["code_distribution"] = _dist([pt["code"] for pt in pts], CODE_LABELS)
+        g["cause_distribution"] = _dist([(pt.get("cause") or {}).get("code") for pt in pts], cause_labels)
+        def _cause_block(sel):
+            if not sel:
+                return None
+            cd, cn = Counter((pt.get("cause") or {}).get("code") for pt in sel).most_common(1)[0]
+            same = [pt for pt in sel if ((pt.get("cause") or {}).get("code")) == cd]
+            conf = Counter(((pt.get("cause") or {}).get("confidence") or "").lower() for pt in same).most_common(1)[0][0]
+            return {"code": cd, "label": cause_labels.get(cd, cd), "n": len(same), "share": round(len(same) / len(sel), 4),
+                    "confidence": CONF_PLAIN.get(conf, conf or None)}
+        g["dominant_cause"] = dict(g["dominant_cause"], **{k: v for k, v in (_cause_block(pts) or {}).items() if k in ("label", "confidence")})
+        g["failing_cause"] = _cause_block([pt for pt in pts if pt["code"] not in non_failure])
+        g["top_domains"] = dom_by_group.get(gid, [])
+        g["impact_reach"] = row["impact_reach"] if row else None
+        g["top_owner"] = row["owner"] if row else None
+        g["top_owner_lever"] = (row["why"].get("lever") if row else None)
+        cat = (row["where"][0].get("category") if row and row.get("where") else None)
+        src = OWNER_SOURCE.get(g["top_owner"]) or CATEGORY_PLAIN.get(cat, "third-party sites")
+        g["source_label"] = src if g["top_owner"] else None
+        g["action_label"] = OWNER_ACTION.get(g["top_owner"], "get cited on " + src) if g["top_owner"] else None
+        subject = subject_phrase(g["topic"], g["subtopic"], g["zone"])
+        g["subject_label"] = subject
+        g["headline"] = subject + (" — " + g["action_label"] if g["action_label"] else "")
+        g["owner_rows"] = [{"owner": o, "what": rw["what"], "who": rw["who"], "speed": rw["speed"], "score": rw["score"],
+                            "lever": rw["why"].get("lever"), "impact_reach": rw["impact_reach"],
+                            "top_domain": (rw["where"][0]["domain"] if rw.get("where") else None),
+                            "source_label": (OWNER_SOURCE.get(o) or CATEGORY_PLAIN.get((rw["where"][0].get("category") if rw.get("where") else None), "third-party sites"))}
+                           for (gg, o), rw in sorted(rows_by_owner.items(), key=lambda kv: -kv[1]["score"]) if gg == gid]
+        g["_citere_only"] = gid in citere_groups
+
     # ---- campaigns / citere / label findings / sources ------------------------------
     def refs_for(task, owners):
         out = []
@@ -153,13 +237,56 @@ def main() -> int:
                 if card["audience"] == "client" and CARD_TO_OWNER.get(card["type"], set()) & owners:
                     out.append({"pid_run": k, "fix_idx": i})
         return out
-    campaigns = [dict(t, fix_card_refs=refs_for(t, {t["owner"]} if t["owner"] != "label" else {"label"})) for t in ac_reg["tasks"]]
-    held = [dict(t, fix_card_refs=refs_for(t, {"label"})) for t in ac_reg.get("label_tasks_awaiting_signoff", [])]
+    def _with_reach(t):
+        rw = rows_by_owner.get((t["group_id"], t["owner"]))
+        return dict(t, impact=dict(t["impact"], reach=(rw["impact_reach"] if rw else None)))
+    campaigns = [dict(_with_reach(t), fix_card_refs=refs_for(t, {t["owner"]} if t["owner"] != "label" else {"label"})) for t in ac_reg["tasks"]]
+    held = [dict(_with_reach(t), fix_card_refs=refs_for(t, {"label"})) for t in ac_reg.get("label_tasks_awaiting_signoff", [])]
     track_by_group = defaultdict(list)
     for k, pt in points.items():
         for i, card in enumerate(pt["fixes"]):
             if card["audience"] == "citere": track_by_group[pt["group_id"]].append({"pid_run": k, "fix_idx": i})
     citere_tasks = {"registry_tasks": ac_reg.get("citere_tasks", []), "track_cards_by_group": dict(sorted(track_by_group.items()))}
+    camp_by_group = defaultdict(list); held_by_group = defaultdict(list)
+    for t in campaigns:
+        camp_by_group[t["group_id"]].append(t["task_id"])
+    for t in held:
+        held_by_group[t["group_id"]].append(t["task_id"])
+    citere_by_group = defaultdict(list)
+    for t in ac_reg.get("citere_tasks", []):
+        citere_by_group[t["group_id"]].append(t.get("task_id"))
+    min_gap = pri.get("min_gap")
+    for g in groups:
+        gid = g["group_id"]
+        by_owner = {}
+        for t in campaigns + held:
+            if t["group_id"] == gid:
+                by_owner[t["owner"]] = t
+        for o in g["owner_rows"]:
+            t = by_owner.get(o["owner"])
+            o["task_id"] = t["task_id"] if t else None
+            o["status"] = t["status"] if t else None
+            o["execution"] = t["execution"] if t else None
+            o["ceiling_pp"] = t["impact"]["ceiling_pp"] if t else None
+            o["expected_pp"] = t["impact"]["expected_pp"] if t else None
+            o["awaiting_label_signoff"] = bool(t.get("awaiting_label_signoff")) if t else False
+        g["campaign_ids"] = camp_by_group.get(gid, [])
+        g["held_task_ids"] = held_by_group.get(gid, [])
+        g["citere_task_ids"] = citere_by_group.get(gid, [])
+        if g["campaign_ids"]:
+            g["no_campaign_reason"] = None
+        elif g["held_task_ids"] or g["bucket"] == "label":
+            g["no_campaign_reason"] = "No campaign yet — the label finding on this topic is held until a clinician signs it off."
+        elif g.pop("_citere_only", False) or g["citere_task_ids"]:
+            g["no_campaign_reason"] = "No client campaign — the rows on this topic are adversarial-source monitoring, kept with Citere."
+        elif g["bucket"] == "healthy":
+            g["no_campaign_reason"] = "No campaign — the dominant code on this topic is not a failure, so nothing was raised."
+        elif g["bucket"] == "below_floor":
+            g["no_campaign_reason"] = "No campaign — the gap is below the {:.0%} floor, treated as background noise.".format(min_gap or 0)
+        else:
+            g["no_campaign_reason"] = "No campaign raised for this group."
+        g.pop("_citere_only", None)
+
     r4 = a[a["run"] == "R4"].copy(); r4s = r4["scores_json"].map(json.loads); r4["target"] = r4s.map(lambda s_: s_.get("target"))
     label_findings = [dict(f, pids=sorted(set(r4[(r4["target"] == f["target"]) & (r4["model"] == f["surface"]) & (~r4["excluded"])]["key"]))) for f in lab_reg["findings"]]
     dom_pids = live_c.groupby("domain")["key"].agg(lambda s_: sorted(set(s_)))

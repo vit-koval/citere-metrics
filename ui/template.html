@@ -62,6 +62,28 @@ td .z{color:var(--muted);font-size:12px;margin-top:2px}
 .light.green::before{background:var(--ok);box-shadow:0 0 0 4px var(--ok-soft)}
 .safety.yellow{border-left-color:var(--warn)} .safety.yellow .big{color:var(--warn)}
 .safety.green{border-left-color:var(--ok)} .safety.green .big{color:var(--ok)}
+.lead{color:var(--muted);font-size:13px;margin:-2px 0 10px;max-width:78ch}
+.rec{display:grid;gap:3px;padding:14px 12px;margin:0 -12px;border-top:1px solid var(--line);cursor:pointer}
+.rec:first-of-type{border-top:0}
+.rec:hover{background:var(--soft)}
+.rec-t{font-size:15px;font-weight:600;line-height:1.3;text-wrap:balance}
+.rec-n{font-size:13px}
+.rec-w{font-size:13px;color:var(--muted)}
+.rec-f{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted);margin-top:3px}
+.rec-f b{color:var(--ink);font-weight:500}
+.chip-s{border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--ink);text-decoration:none;background:var(--panel);white-space:nowrap}
+.chip-s:hover{border-color:var(--us);color:var(--us)}
+.chip-s .st{color:var(--muted)}
+.hz{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;padding:9px 12px;margin:0 -12px;border-top:1px solid var(--line);cursor:pointer;align-items:baseline}
+.hz:first-of-type{border-top:0}
+.hz:hover{background:var(--soft)}
+.hz .s{font-weight:500}
+.hz .d{color:var(--muted);font-size:13px}
+.hz .n{font-variant-numeric:tabular-nums;font-size:13px;color:var(--muted);text-align:right;white-space:nowrap}
+.dist{display:grid;grid-template-columns:minmax(0,1fr) 46px 90px;gap:4px 10px;align-items:center;font-size:13px}
+.dist .n{font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+.camp.hit{background:var(--us-soft);margin:0 -12px;padding:10px 12px;border-radius:var(--radius)}
+.backlink{color:var(--us);text-decoration:none;font-size:13px;font-weight:500}
 .prevnext{display:flex;gap:14px;align-items:center;font-size:13px;margin-bottom:14px}
 .prevnext a{color:var(--us);text-decoration:none;font-weight:500}
 .prevnext .count{margin-left:auto}
@@ -135,6 +157,7 @@ const themeName = t => t.includes(" · ") ? t.split(" · ").slice(1).join(" · "
 const titleCause = (code, label, cause) => `<div class="title">${esc(label||code)}</div>${cause?`<div class="causeln">${esc(cause.label||cause.code)} · confidence ${esc(CONF[(cause.confidence||"").toLowerCase()]||cause.confidence||"—")}</div>`:""}`;
 const groupById = Object.fromEntries(GROUPS.map(g=>[g.group_id,g]));
 const campById = Object.fromEntries(D.campaigns.map(t=>[t.task_id,t]));
+const heldById = Object.fromEntries((D.label_tasks_awaiting_signoff||[]).map(t=>[t.task_id,t]));
 const ROUTES = ["visibility","competitors","sentiment","sources","priorities","actions","safety","map"];
 const NAVL = {"":"Dashboard",visibility:"Visibility",competitors:"Competitors",sentiment:"Sentiment",sources:"Sources",priorities:"Priorities",actions:"Actions",safety:"Safety / Label",map:"Neural map"};
 const M = DASH.meta;
@@ -379,34 +402,88 @@ function vSources(el, q){
 }
 function vPriorities(el, q){
   const P=DASH.prioritization; const gsel=q.get("group");
-  const gb = b => GROUPS.filter(g=>g.bucket===b);
-  const head = `<tr><th class="c">P</th><th>Group · what happened · why</th><th class="n">Demand /mo</th><th class="n">Losing</th><th class="n">Lever</th><th class="n">Failure codes</th></tr>`;
-  const gcell = (g, extra) => `${g.priority?`<span class="tag p${g.priority}">${g.priority}</span>`:'<span class="tag mute">—</span>'}`;
-  const grow = g => `<tr class="pt" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}"><td class="c">${gcell(g)}</td><td><div class="title">${esc(g.group_id)}</div><div class="causeln">${esc(g.dominant_code_label||g.dominant_code)} · cause ${esc(g.dominant_cause.code.toLowerCase())} in ${shr0(g.dominant_cause.share)} · ${g.n_prompts} prompts</div></td><td class="n">${fmtK(g.demand)}</td><td class="n">${shr0(g.gap)} <span class="note">${esc(Object.entries(g.gap_by_run).sort((a,b)=>b[1]-a[1])[0]?.[0]||"")}</span></td><td class="n">earned ${shr0(g.lever.earned)} · owned ${shr0(g.lever.owned)}</td><td class="n">${g.failure_code_share!=null?shr0(g.failure_code_share):"—"}</td></tr>`;
-  const rec = P.recommendations.map(r=>{ const g=groupById[r.group_id]; return `<tr class="pt" data-href="#/priorities?group=${encodeURIComponent(r.group_id)}"><td class="c"><span class="tag p${r.priority}">${r.priority}</span></td><td><div class="title">${esc(r.group_id)}</div><div class="causeln">${esc(g.dominant_code_label||g.dominant_code)} · cause ${esc(g.dominant_cause.code.toLowerCase())} in ${shr0(g.dominant_cause.share)} · score ${(+r.best_score).toFixed(3)}</div>${r.owners.map(o=>`<div class="z">↳ ${esc(o.owner)} · lever ${shr0(o.lever)} · reach up to ${(+o.ceiling_pp).toFixed(0)} pp · ${esc(o.top_domain)} · ${esc(o.who)}</div>`).join("")}</td><td class="n">${fmtK(g.demand)}</td><td class="n">${shr0(g.gap)}</td><td class="n">${shr0(r.owners[0].lever)}</td><td class="n">—</td></tr>`; }).join("");
-  const wrap = rows => `<div class="tblwrap"><table>${head}${rows}</table></div>`;
-  el.innerHTML = page("Diagnosis & Prioritization", `Score = demand share × gap × lever. Tiers: P3 ≥ ${P.tercile_thresholds.p3_min}, P2 ≥ ${P.tercile_thresholds.p2_min}. ${esc(P.gap_note)}`) + `<div class="stack">`
-   + sec("Recommendations", wrap(rec), "One row per group; owners as sub-rows with lever and reach ceiling.", `${P.recommendations.length} groups`, "c12")
-   + sec("Healthy groups", wrap(gb("healthy").map(grow).join("")), "The dominant code is not a failure. Failure-code share is shown, not acted on, in v1.", `${gb("healthy").length} groups`, "c12")
-   + sec("Label / Medical", wrap(gb("label").map(grow).join("")), "", `${gb("label").length} rows`, "c12")
-   + sec("Points", `<div id="pt"></div>`, "", gsel?`${esc(gsel)}, ordered by rank score`:"all groups") + `</div>`;
-  setTimeout(()=>el.querySelectorAll("tr[data-href]").forEach(tr=>tr.onclick=()=>location.hash=tr.dataset.href),0);
-  const keys = gsel && groupById[gsel] ? groupById[gsel].pids : KEYS;
-  pointTable(document.getElementById("pt"), keys, gsel?{caption:gsel}:{sortKey:"dem"});
+  if(gsel && groupById[gsel]) return groupView(el, groupById[gsel]);
+  const rec = GROUPS.filter(g=>g.bucket==="recommendation").sort((a,b)=>(b.priority-a.priority)||((b.impact_reach?b.impact_reach.point:0)-(a.impact_reach?a.impact_reach.point:0)));
+  const healthy = GROUPS.filter(g=>g.bucket==="healthy").sort((a,b)=>b.failure_code_share-a.failure_code_share);
+  const label = GROUPS.filter(g=>g.bucket==="label");
+  el.innerHTML = page("Diagnosis & Prioritization", `Ranked by demand × gap × lever. ${esc(P.gap_note)}`) + `<div class="stack">`
+   + sec("Act on these", `<div class="lead">Topics where we lose answers and something can be done about it. ${rec.length} of ${GROUPS.length} topics. Tiers are the top, middle and bottom third of ${P.rows_total} client rows.</div>` + rec.map(recRow).join(""), "", "recommendations", "c12")
+   + sec("Checked, nothing to fix", `<div class="lead">The dominant code on these topics is not a failure, so no campaign was raised. Failure-code share shows how many of their points still carry some other failure — informational in v1, set aside deliberately.</div>` + healthy.map(healthyRow).join(""), "Ordered by failure-code share, highest first.", `healthy · ${healthy.length}`, "c7")
+   + `<section class="tile c5 safety"><h2>Awaiting clinician sign-off <span>label / medical · ${label.length}</span></h2><div class="lead">Label findings on these topics are held out of the client report and the Action Center until a clinician signs them off.</div>${label.map(labelRow).join("")}<div class="note">Findings reach the client report only after clinician sign-off. ${DASH.safety_label.findings.pending_signoff} findings are pending across all topics.</div></section>`
+   + sec("All points", `<div id="pt"></div>`, "", "every run") + `</div>`;
+  bindRows(el);
+  pointTable(document.getElementById("pt"), KEYS, {sortKey:"dem"});
+}
+function campChip(id){
+  const t = campById[id] || heldById[id]; if(!t) return "";
+  return `<a class="chip-s" href="#/actions?task=${encodeURIComponent(id)}" data-stop="1">${esc(t.owner)} <span class="st">· ${esc((t.status||"open").replace("_"," "))}</span></a>`;
+}
+function recLines(g){
+  const reach = g.impact_reach ? g.impact_reach.point : null;
+  const why = g.failing_cause || g.dominant_cause;
+  return `<div class="rec-n"><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month · we lose <b>${shr0(g.gap)}</b> of answers on this topic · ${esc(g.source_label||"sources")} supply <b>${shr0(g.top_owner_lever)}</b> of the sources</div>
+  <div class="rec-w">Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div>
+  <div class="rec-f"><span>Affects up to <b>${reach==null?"—":Math.round(reach).toLocaleString("en")}</b> searches a month</span><span>·</span><span>Priority <b>${g.priority}</b></span>${g.campaign_ids.length?`<span>·</span><span>Campaigns:</span>${g.campaign_ids.map(campChip).join("")}`:`<span>·</span><span>${esc(g.no_campaign_reason||"")}</span>`}</div>`;
+}
+function recRow(g){
+  return `<div class="rec" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}" title="score ${g.owner_rows[0]?g.owner_rows[0].score:""} · ${esc(g.group_id)}">
+    <div class="rec-t"><span class="tag p${g.priority}">${g.priority}</span> ${esc(g.headline)}</div>${recLines(g)}</div>`;
+}
+function healthyRow(g){
+  return `<div class="hz" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}" title="${esc(g.group_id)}">
+    <div class="s">${esc(g.subject_label)}</div><div class="n">${Math.round(g.demand).toLocaleString("en")}/mo</div>
+    <div class="d">${esc(g.dominant_code_label)} · ${g.n_prompts} prompts</div><div class="n">${shr0(g.failure_code_share)} failure codes</div></div>`;
+}
+function labelRow(g){
+  const held = g.held_task_ids.map(id=>heldById[id]).filter(Boolean);
+  return `<div class="hz" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}" title="${esc(g.group_id)}">
+    <div class="s">${esc(g.subject_label)}</div><div class="n"><span class="tag p1">awaiting sign-off</span></div>
+    <div class="d">${esc(held.length?held[0].what:(g.action_label||""))}</div><div class="n">${Math.round(g.demand).toLocaleString("en")}/mo</div></div>`;
+}
+function bindRows(el){ el.querySelectorAll("[data-href]").forEach(r=>r.onclick=ev=>{ if(ev.target.closest("[data-stop]")) return; location.hash=r.dataset.href; }); }
+function distBlock(list, total){
+  return `<div class="dist">${list.slice(0,8).map(d=>`<div>${esc(d.label||d.code)}</div><div class="n">${d.n}</div><div class="bar"><i class="t-us" style="width:${Math.round(d.n/total*100)}%"></i></div>`).join("")}</div>`;
+}
+function groupView(el, g){
+  const why = g.failing_cause || g.dominant_cause;
+  const camps = g.campaign_ids.map(id=>campById[id]).filter(Boolean).concat(g.held_task_ids.map(id=>heldById[id]).filter(Boolean));
+  const ownerCols = [
+    {k:"o",h:"Where",c:"cw",f:o=>`<b>${esc(o.owner)}</b><div class="z">${esc(o.source_label||"")}${o.top_domain?` · ${esc(o.top_domain)}`:""}</div>`},
+    {k:"w",h:"What to do",c:"cq",f:o=>esc(o.what)},
+    {k:"lv",h:"Lever",f:o=>bar((o.lever||0)*100),sort:o=>o.lever||0},
+    {k:"cp",h:"Ceiling",n:true,f:o=>o.ceiling_pp==null?"—":`${f1(o.ceiling_pp)} pp`,sort:o=>o.ceiling_pp||0},
+    {k:"ep",h:"Expected",n:true,f:o=>o.expected_pp?`+${f1(o.expected_pp[0])} to +${f1(o.expected_pp[1])} pp`:"not estimated"},
+    {k:"wh",h:"Who",f:o=>`${esc(o.who)}<div class="z">${esc(o.speed||"")}</div>`},
+    {k:"st",h:"Campaign",c:"c",f:o=>o.task_id?campChip(o.task_id):`<span class="tag mute">none</span>`},
+  ];
+  el.innerHTML = `<div class="prevnext"><a class="backlink" href="#/priorities">← All topics</a><span class="count">${esc(g.group_id)}</span></div>`
+   + `<h2 class="page">${esc(g.headline)}</h2>`
+   + `<div style="margin-bottom:16px">${g.bucket==="recommendation"?recLines(g):`<div class="rec-n"><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month · we lose <b>${shr0(g.gap)}</b> of answers on this topic · ${g.n_prompts} prompts</div><div class="rec-w">Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div><div class="rec-f">${esc(g.no_campaign_reason||"")}</div>`}</div>`
+   + `<div class="stack">`
+   + sec("Where the lever is", tbl(ownerCols, g.owner_rows, {sortKey:"lv", scroll:false}), `Lever is the share of this topic's sources we can act on; ceiling is the presence it could add, in percentage points. ${esc((g.impact_reach||{}).caption||"")}`, "owners", "c12")
+   + sec("What happened", distBlock(g.code_distribution, g.n_prompts), `Dominant code: ${esc(g.dominant_code_label)}. Failure codes on ${shr0(g.failure_code_share)} of points.`, `${g.n_prompts} points`, "c6")
+   + sec("Why", distBlock(g.cause_distribution, g.n_prompts), why.confidence?`Dominant cause among failing points: ${esc(why.label||why.code)} · confidence ${esc(why.confidence)}.`:"", "cause", "c6")
+   + sec("Top sources on this topic", tbl([{k:"d",h:"Domain",f:t=>`<a href="#/sources?domain=${encodeURIComponent(t.domain)}">${esc(t.domain)}</a>`},{k:"o",h:"Owner",f:t=>`${esc(t.owner)}${t.subtype?` <span class="note">${esc(t.subtype)}</span>`:""}`},{k:"c",h:"Citations",n:true,f:t=>t.citations,sort:t=>t.citations},{k:"u",h:"In answers naming us",n:true,f:t=>t.with_us,sort:t=>t.with_us}], g.top_domains, {scroll:false}), "", "cited by this topic's answers", "c6")
+   + sec("Campaigns from this topic", camps.length ? camps.map(t=>`<div class="hz" data-href="#/actions?task=${encodeURIComponent(t.task_id)}"><div class="s">${esc(t.owner)} → ${esc(t.who)}</div><div class="n"><span class="tag ${t.awaiting_label_signoff?"p1":"mute"}">${esc(t.awaiting_label_signoff?"awaiting sign-off":(t.status||"open").replace("_"," "))}</span></div><div class="d">${esc(t.what)}</div><div class="n">${t.impact.ceiling_pp==null?"":f1(t.impact.ceiling_pp)+" pp"}</div></div>`).join("") : `<div class="lead">${esc(g.no_campaign_reason||"")}</div>`, "", `${camps.length}`, "c6")
+   + sec("Points", `<div id="pt"></div>`, "", "ordered by rank score") + `</div>`;
+  bindRows(el);
+  pointTable(document.getElementById("pt"), g.pids, {caption:g.group_id});
 }
 function fixCard(c, link){ return `<div class="fx"><div class="fxh"><span class="tag ${c.platform_execution==="AGENT"?"us":c.platform_execution==="AGENT+APPROVE"?"warn":"ink"}">${esc(c.platform_execution)}</span><span class="tag ${c.type==="LABEL-MEDICAL"?"bad":"mute"}">${esc(c.type)}</span><span class="tag ${c.mlr==="medical-review"?"warn":"ok"}">${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span><span>${esc(c.owner)} · ${esc(c.speed)}</span>${link?`<a href="${link}" style="margin-left:auto;color:var(--us);text-decoration:none">${esc(link.split("/").pop().replace("%7C"," · "))}</a>`:""}</div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}${c.agent?`<div class="fxl"><b>Execution</b> ${esc(c.agent)}</div>`:""}</div>`; }
-function vActions(el){
+function vActions(el, q){
   const st = JSON.parse(localStorage.getItem("citere_task_status")||"{}");
   const A=DASH.action_center.counters;
   const order = {open:0,in_progress:1,done:2,dismissed:3};
   const tasks = D.campaigns.slice().map(t=>({...t, ui_status: st[t.task_id]?.status || t.status})).sort((a,b)=>(order[a.ui_status]-order[b.ui_status])||(b.score-a.score));
   const groups = ["open","in_progress","done","dismissed"];
   const card = ref => fixCard(PTS[ref.pid_run].fixes[ref.fix_idx], `#/point/${encodeURIComponent(ref.pid_run)}`);
-  const camp = t => { const i=t.impact; return `<div class="camp"><div class="ch" onclick="this.nextElementSibling.classList.toggle('hide')"><span class="tag p${t.priority}">${t.priority}</span><span class="t">${esc(t.group_id)} → ${esc(t.owner)}</span><select class="status-sel" data-id="${t.task_id}" onclick="event.stopPropagation()">${groups.map(s=>`<option value="${s}" ${s===t.ui_status?"selected":""}>${s.replace("_"," ")}</option>`).join("")}</select><span class="meta"><span>${esc(t.who)} · ${esc(t.execution)} · ${esc(t.speed)}</span><span>losing ${shr0(t.why.gap)} (${esc(t.why.dominant_run)}) · lever ${shr0(t.why.lever)} · reach up to ${(+i.ceiling_pp).toFixed(0)} pp · expected ${i.expected_pp?`+${(+i.expected_pp[0]).toFixed(0)} to +${(+i.expected_pp[1]).toFixed(0)} pp`:"not estimated"} (${esc(i.basis)}) · demand ${fmtK(i.demand)}/mo</span>${st[t.task_id]?'<span class="tag warn">not synced to registry</span>':""}</span></div><div class="body hide"><div class="fxl" style="margin-bottom:6px"><b>What</b> ${esc(t.what)}</div><div class="fxl" style="margin-bottom:6px"><b>Cause</b> ${(t.cause||[]).map(c=>`${esc(c.code)} (${c.n})`).join(", ")}</div><div class="fxl" style="margin-bottom:10px"><b>Where</b> ${(t.where||[]).map(w=>`${esc(w.domain)} (${w.citations})`).join(", ")}</div><div class="kicker" style="margin-bottom:4px">Fix cards · client · ${t.fix_card_refs.length}</div>${t.fix_card_refs.slice(0,40).map(card).join("")}${t.fix_card_refs.length>40?`<div class="note">${t.fix_card_refs.length-40} more cards on the points of this group.</div>`:""}</div></div>`; };
+  const camp = t => { const i=t.impact; return `<div class="camp" data-task="${t.task_id}"><div class="ch" onclick="this.nextElementSibling.classList.toggle('hide')"><span class="tag p${t.priority}">${t.priority}</span><span class="t">${esc((groupById[t.group_id]||{}).subject_label || t.group_id)} → ${esc(t.owner)}</span><select class="status-sel" data-id="${t.task_id}" onclick="event.stopPropagation()">${groups.map(s=>`<option value="${s}" ${s===t.ui_status?"selected":""}>${s.replace("_"," ")}</option>`).join("")}</select><span class="meta"><span>${esc(t.who)} · ${esc(t.execution)} · ${esc(t.speed)}</span><span>losing ${shr0(t.why.gap)} (${esc(t.why.dominant_run)}) · lever ${shr0(t.why.lever)} · reach up to ${(+i.ceiling_pp).toFixed(0)} pp · expected ${i.expected_pp?`+${(+i.expected_pp[0]).toFixed(0)} to +${(+i.expected_pp[1]).toFixed(0)} pp`:"not estimated"} (${esc(i.basis)}) · demand ${fmtK(i.demand)}/mo</span>${st[t.task_id]?'<span class="tag warn">not synced to registry</span>':""}</span></div><div class="body hide"><div class="fxl" style="margin-bottom:6px"><b>What</b> ${esc(t.what)}</div><div class="fxl" style="margin-bottom:6px"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc((groupById[t.group_id]||{}).headline || t.group_id)}</a></div><div class="fxl" style="margin-bottom:6px"><b>Cause</b> ${(t.cause||[]).map(c=>`${esc(c.code)} (${c.n})`).join(", ")}</div><div class="fxl" style="margin-bottom:10px"><b>Where</b> ${(t.where||[]).map(w=>`${esc(w.domain)} (${w.citations})`).join(", ")}</div><div class="kicker" style="margin-bottom:4px">Fix cards · client · ${t.fix_card_refs.length}</div>${t.fix_card_refs.slice(0,40).map(card).join("")}${t.fix_card_refs.length>40?`<div class="note">${t.fix_card_refs.length-40} more cards on the points of this group.</div>`:""}</div></div>`; };
   el.innerHTML = page("Action Center", "Status changes are saved in this browser only and are not synced to the registry.") + `<div class="stack">`
    + sec("Counters", `<div class="row top"><div><div class="mid">${A.open_total}<small>open</small></div><div class="note">${A.open_auto} automated, ${A.open_manual} for your team</div></div><div><div class="mid">${A.in_progress}<small>in progress</small></div></div><div><div class="mid">${A.done_this_cycle}<small>done this cycle</small></div></div><div><div class="mid">${A.dismissed_total}<small>dismissed</small></div></div><div style="flex:1;min-width:200px">${kv(Object.entries(A.by_who).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[esc(k),v]))}</div></div>`, `${A.label_tasks_awaiting_signoff} label tasks await sign-off; ${A.citere_tasks} tasks are Citere's own.`, "registry", "c12")
    + groups.map(g=>{ const list=tasks.filter(t=>t.ui_status===g); return list.length ? sec(cap(g.replace("_"," ")), list.map(camp).join(""), "", `${list.length}`, "c12") : ""; }).join("")
    + `<section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('citere').classList.toggle('hide')">Citere monitoring (${D.citere_tasks.registry_tasks.length} registry tasks, ${Object.values(D.citere_tasks.track_cards_by_group).reduce((s,a)=>s+a.length,0)} TRACK cards)</button><div id="citere" class="hide">${D.citere_tasks.registry_tasks.map(t=>`<div class="fxl">${esc(t.group_id)} → ${esc(t.owner)} · P${t.priority} · ${esc(t.what)}</div>`).join("")}${Object.entries(D.citere_tasks.track_cards_by_group).map(([g,refs])=>`<div style="margin-top:10px"><div class="title">${esc(g)} <span class="note">${refs.length} TRACK cards</span></div>${refs.slice(0,3).map(card).join("")}</div>`).join("")}</div></section></div>`;
+  const want = q && q.get("task");
+  if(want){ const node = el.querySelector(`.camp[data-task="${want}"]`); if(node){ node.classList.add("hit"); const body=node.querySelector(".body"); if(body) body.classList.remove("hide"); setTimeout(()=>node.scrollIntoView({block:"center"}),0); } }
   el.querySelectorAll(".status-sel").forEach(s=>s.onchange=()=>{ const cur=JSON.parse(localStorage.getItem("citere_task_status")||"{}"); let reason=null; if(s.value==="dismissed"){ reason=prompt("Dismiss reason (required)"); if(!reason){ s.value=st[s.dataset.id]?.status||"open"; return; } } cur[s.dataset.id]={status:s.value, dismiss_reason:reason, at:new Date().toISOString()}; localStorage.setItem("citere_task_status", JSON.stringify(cur)); render(); });
 }
 function vSafety(el, q){
