@@ -90,6 +90,17 @@ th[data-g]{text-decoration:underline dotted var(--line);text-underline-offset:3p
 .dist{display:grid;grid-template-columns:minmax(0,1fr) 46px 90px;gap:4px 10px;align-items:center;font-size:13px}
 .dist .n{font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
 .camp.hit{background:var(--us-soft);margin:0 -12px;padding:10px 12px;border-radius:var(--radius)}
+.kbscroll{max-height:1400px;overflow:auto;padding-right:2px}
+.kcard.grouped{border-left:3px solid var(--us)}
+.crumb{border:1px solid var(--line);border-radius:999px;padding:0 8px;font-size:11px;color:var(--ink);text-decoration:none;background:var(--soft)}
+.kcard>*{min-width:0}
+.kcard .t,.kcard .fwhy,.kcard .fpt{overflow-wrap:anywhere}
+.kcard .m{min-width:0}
+.kcard .tt{white-space:normal}
+.crumb:hover{border-color:var(--us);color:var(--us)}
+.ded{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.fpt-l{color:var(--us);text-decoration:none;font-variant-numeric:tabular-nums}
+.kcard .fwhy{font-size:12px}
 .bar-sum{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;font-size:13px}
 .bar-sum b{font-variant-numeric:tabular-nums}
 .bar-sum .sep{color:var(--line)}
@@ -486,7 +497,9 @@ function vPriorities(el, q){
 }
 function campChip(id){
   const t = campById[id] || heldById[id]; if(!t) return "";
-  return `<a class="chip-s" href="#/actions?task=${encodeURIComponent(id)}" data-stop="1">${esc(t.owner)} <span class="st">· ${esc((t.status||"open").replace("_"," "))}</span></a>`;
+  const subj = (groupById[t.group_id]||{}).subject_label || t.group_id;
+  const n = (t.fix_card_refs||[]).length;
+  return `<a class="chip-s" href="#/actions?group=${encodeURIComponent(subj)}&owner=${encodeURIComponent(t.owner)}" data-stop="1" title="open these ${n} tasks in the Action Center">${esc(t.owner)} <span class="st">· ${n} task${n===1?"":"s"}</span></a>`;
 }
 function recLines(g){
   const reach = g.impact_reach ? g.impact_reach.point : null;
@@ -534,7 +547,7 @@ function groupView(el, g){
    + sec("What happened", distBlock(g.code_distribution, g.n_prompts), `Dominant code: ${esc(g.dominant_code_label)}. Failure codes on ${shr0(g.failure_code_share)} of points.`, `${g.n_prompts} points`, "c6", "code")
    + sec("Why", distBlock(g.cause_distribution, g.n_prompts), why.confidence?`Dominant cause among failing points: ${esc(why.label||why.code)} · confidence ${esc(why.confidence)}.`:"", "cause", "c6", "cause")
    + sec("Top sources on this topic", tbl([{k:"d",h:"Domain",g:"top_domain_citations",f:t=>`<a href="#/sources?domain=${encodeURIComponent(t.domain)}">${esc(t.domain)}</a>`},{k:"o",h:"Owner",g:"citation_owned",f:t=>`${esc(t.owner)}${t.subtype?` <span class="note">${esc(t.subtype)}</span>`:""}`},{k:"c",h:"Citations",g:"top_domain_citations",n:true,f:t=>t.citations,sort:t=>t.citations},{k:"u",h:"In answers naming us",g:"with_us_pct",n:true,f:t=>t.with_us,sort:t=>t.with_us}], g.top_domains, {scroll:false}), "", "cited by this topic's answers", "c6", "top_domain_citations")
-   + sec("Campaigns from this topic", camps.length ? camps.map(t=>`<div class="hz" data-href="#/actions?task=${encodeURIComponent(t.task_id)}"><div class="s">${esc(t.owner)} → ${esc(t.who)}</div><div class="n"><span class="tag ${t.awaiting_label_signoff?"p1":"mute"}">${esc(t.awaiting_label_signoff?"awaiting sign-off":(t.status||"open").replace("_"," "))}</span></div><div class="d">${esc(t.what)}</div><div class="n">${t.impact.ceiling_pp==null?"":f1(t.impact.ceiling_pp)+" pp"}</div></div>`).join("") : `<div class="lead">${esc(g.no_campaign_reason||"")}</div>`, "", `${camps.length}`, "c6", "task_status")
+   + sec("Campaigns from this topic", camps.length ? camps.map(t=>`<div class="hz" data-href="#/actions?group=${encodeURIComponent((groupById[t.group_id]||{}).subject_label || t.group_id)}&owner=${encodeURIComponent(t.owner)}"><div class="s">${esc(t.owner)} → ${esc(t.who)}</div><div class="n"><span class="tag ${t.awaiting_label_signoff?"p1":"mute"}">${esc(t.awaiting_label_signoff?"awaiting sign-off":(t.status||"open").replace("_"," "))}</span></div><div class="d">${esc(t.what)}</div><div class="n"${gAttr("potential")}>${t.impact.ceiling_pp==null?"":f1(t.impact.ceiling_pp)+" pp"}</div></div>`).join("") : `<div class="lead">${esc(g.no_campaign_reason||"")}</div>`, "", `${camps.length}`, "c6", "task_status")
    + sec("Points", `<div id="pt"></div>`, "", "ordered by rank score") + `</div>`;
   bindRows(el);
   pointTable(document.getElementById("pt"), g.pids, {caption:g.group_id});
@@ -545,174 +558,166 @@ function vActions(el, q){
   const STORE = "citere_task_state";
   const readState = () => { try { return JSON.parse(localStorage.getItem(STORE) || "{}"); } catch(e){ return {}; } };
   const writeState = o => { try { localStorage.setItem(STORE, JSON.stringify(o)); } catch(e){} };
-  const st = readState();
-  const tasks = D.campaigns.concat(D.label_tasks_awaiting_signoff || []).map(t => {
-    const s0 = st[t.task_id] || {};
-    return Object.assign({}, t, {ui_status: s0.status || t.status, assignee: s0.assignee || null, sent_at: s0.sent_at || null, dismiss_reason: s0.dismiss_reason || t.dismiss_reason, touched: !!st[t.task_id]});
+
+  // ---- the unit is one fix card. Campaigns are metadata on the card, not a container. ----
+  const byCard = new Map();
+  D.campaigns.concat(D.label_tasks_awaiting_signoff || []).forEach(t => {
+    (t.fix_card_refs || []).forEach(r => {
+      const id = r.pid_run + "#" + r.fix_idx;
+      if(!byCard.has(id)) byCard.set(id, {id, pid_run: r.pid_run, card: PTS[r.pid_run].fixes[r.fix_idx], campaigns: []});
+      byCard.get(id).campaigns.push(t);
+    });
   });
+  const st0 = readState();
+  const TASKS = [...byCard.values()].map(x => {
+    const c = x.card, cs = x.campaigns, s = st0[x.id] || {};
+    const prio = Math.max(...cs.map(t => t.priority || 0));
+    return {id: x.id, pid_run: x.pid_run, point: PTS[x.pid_run], card: c, campaigns: cs,
+            group_id: cs[0].group_id, owners: [...new Set(cs.map(t => t.owner))], priority: prio,
+            awaiting: cs.every(t => t.awaiting_label_signoff),
+            status: s.status || "open", assignee: s.assignee || null, sent_at: s.sent_at || null,
+            dismiss_reason: s.dismiss_reason || null, touched: !!st0[x.id]};
+  }).sort((a,b) => (b.priority - a.priority) || a.id.localeCompare(b.id));
   const COLS = [["open","Open"],["in_progress","In progress"],["done","Done"],["dismissed","Dismissed"]];
-  const uniq = f => [...new Set(tasks.map(f).flat().filter(Boolean))].sort();
+  const uniq = f => [...new Set(TASKS.map(f).flat().filter(Boolean))].sort();
   const qp = k => (q && q.get(k)) || "";
-  const F = {view: qp("view") || window.__acView || "kanban", who:qp("who"), exec:qp("exec"), owner:qp("owner"), prio:qp("prio"), type:qp("type"), text:qp("text")};
-  const syncHash = () => {                       // filters are addressable, so a filtered board is a link
-    const parts = Object.entries({view:F.view==="kanban"?"":"table", who:F.who, exec:F.exec, owner:F.owner, prio:F.prio, type:F.type, text:F.text})
-      .filter(([,v])=>v).map(([k,v])=>`${k}=${encodeURIComponent(v)}`);
-    history.replaceState(null, "", "#/actions" + (parts.length?"?"+parts.join("&"):""));
+  const F = {view: qp("view") || window.__acView || "board", who: qp("who"), exec: qp("exec"), owner: qp("owner"),
+             prio: qp("prio"), type: qp("type"), group: qp("group"), text: qp("text"), dedupe: qp("dedupe") === "1"};
+  const syncHash = () => {
+    const parts = Object.entries({view: F.view === "board" ? "" : "table", who:F.who, exec:F.exec, owner:F.owner, prio:F.prio,
+                                  type:F.type, group:F.group, text:F.text, dedupe: F.dedupe ? "1" : ""})
+      .filter(([,v]) => v).map(([k,v]) => `${k}=${encodeURIComponent(v)}`);
+    history.replaceState(null, "", "#/actions" + (parts.length ? "?" + parts.join("&") : ""));
   };
   const sel = (id,label,vals) => `<select id="${id}"><option value="">${label}</option>${vals.map(v=>`<option>${esc(v)}</option>`).join("")}</select>`;
-  el.innerHTML = page("Action Center", "Status, assignment and dismissals are saved in this browser only and are not written back to the task registry.", "screen_actions")
+  el.innerHTML = page("Action Center", "One card is one task. Status, assignment and dismissals are saved in this browser only and are not written back to the task registry.", "screen_actions")
    + `<section class="tile c12"><h2${gAttr("open_tasks")}>This cycle <span>registry</span></h2>${gLead("open_tasks")}
       <div class="bar-sum" id="sumbar"></div>
       <div class="toolbar">
         <span class="vtog"${gAttr("view_toggle")}><button id="vKan" type="button">Board</button><button id="vTab" type="button">Table</button></span>
-        ${sel("f_who","Who: all",uniq(t=>t.who))}${sel("f_exec","How it runs: all",uniq(t=>t.execution))}${sel("f_owner","Source type: all",uniq(t=>t.owner))}
-        ${sel("f_prio","Priority: all",uniq(t=>String(t.priority)))}${sel("f_type","Task type: all",uniq(t=>t.task_types))}
-        <input type="search" id="f_text" placeholder="Search topic, task or owner" value="${esc(F.text)}"><button class="btn ghost" id="f_reset" type="button">Reset</button>
+        ${sel("f_who","Who: all",uniq(t=>t.card.owner))}${sel("f_exec","How it runs: all",uniq(t=>t.card.execution))}
+        ${sel("f_owner","Source type: all",uniq(t=>t.owners))}${sel("f_prio","Priority: all",uniq(t=>String(t.priority)))}
+        ${sel("f_type","Task type: all",uniq(t=>t.card.task_type))}${sel("f_group","Topic: all",uniq(t=>(groupById[t.group_id]||{}).subject_label || t.group_id))}
+        <input type="search" id="f_text" placeholder="Search action, topic or target" value="${esc(F.text)}">
+        <label class="ded"><input type="checkbox" id="f_dedupe"${F.dedupe?" checked":""}> Group identical actions</label>
+        <button class="btn ghost" id="f_reset" type="button">Reset</button>
       </div></section>
      <div id="acView"></div>
-     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('citere').classList.toggle('hide')">Citere monitoring (${D.citere_tasks.registry_tasks.length} registry tasks, ${Object.values(D.citere_tasks.track_cards_by_group).reduce((s,a)=>s+a.length,0)} TRACK cards) ▾</button><div id="citere" class="hide">${D.citere_tasks.registry_tasks.map(t=>`<div class="fxl">${esc(t.group_id)} → ${esc(t.owner)} · P${t.priority} · ${esc(t.what)}</div>`).join("")}${Object.entries(D.citere_tasks.track_cards_by_group).map(([gid,refs])=>`<div style="margin-top:10px"><div class="title">${esc((groupById[gid]||{}).subject_label || gid)} <span class="note">${refs.length} TRACK cards</span></div>${refs.slice(0,2).map(r=>fixCard(PTS[r.pid_run].fixes[r.fix_idx])).join("")}</div>`).join("")}</div></section>`;
+     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('citere').classList.toggle('hide')">Citere monitoring (${D.citere_tasks.registry_tasks.length} registry tasks, ${Object.values(D.citere_tasks.track_cards_by_group).reduce((s,a)=>s+a.length,0)} TRACK cards) ▾</button><div id="citere" class="hide">${D.citere_tasks.registry_tasks.map(t=>`<div class="fxl">${esc((groupById[t.group_id]||{}).subject_label || t.group_id)} → ${esc(t.owner)} · P${t.priority} · ${esc(t.what)}</div>`).join("")}</div></section>`;
 
-  const match = t => (!F.who||t.who===F.who) && (!F.exec||t.execution===F.exec) && (!F.owner||t.owner===F.owner)
-    && (!F.prio||String(t.priority)===F.prio) && (!F.type||(t.task_types||[]).includes(F.type))
-    && (!F.text||[t.group_id,(groupById[t.group_id]||{}).headline,t.what,t.who,t.owner].join(" ").toLowerCase().includes(F.text.toLowerCase()));
-  const ttChip = (name, t) => `<span class="tt" title="${esc(agentFor(name, t))}">${esc(name)}</span>`;
-  function agentFor(name, t){
-    for(const r of (t.fix_card_refs||[])){ const c=PTS[r.pid_run].fixes[r.fix_idx]; if(c.task_type===name) return c.agent; }
-    return name;
+  const subj = gid => (groupById[gid] || {}).subject_label || gid;
+  const match = t => (!F.who||t.card.owner===F.who) && (!F.exec||t.card.execution===F.exec) && (!F.owner||t.owners.includes(F.owner))
+    && (!F.prio||String(t.priority)===F.prio) && (!F.type||t.card.task_type===F.type) && (!F.group||subj(t.group_id)===F.group)
+    && (!F.text||[t.card.action,t.card.target,t.card.why,subj(t.group_id),t.card.owner].join(" ").toLowerCase().includes(F.text.toLowerCase()));
+
+  function act(ids, kind){
+    const cur = readState();
+    let assignee = null, why = null;
+    if(kind==="assign"){ assignee = prompt("Assign to"); if(!assignee) return; }
+    if(kind==="dismiss"){ why = prompt("Dismiss reason (required)"); if(!why) return; }
+    ids.forEach(id => {
+      const e = cur[id] || {};
+      if(kind==="agent"){ e.sent_at = new Date().toISOString(); e.status = "in_progress"; }
+      if(kind==="assign"){ e.assignee = assignee; if(e.status !== "done") e.status = "in_progress"; }
+      if(kind==="done"){ e.status = "done"; }
+      if(kind==="dismiss"){ e.status = "dismissed"; e.dismiss_reason = why; }
+      e.at = new Date().toISOString(); cur[id] = e;
+    });
+    writeState(cur); render();
   }
-  function act(id, kind){
-    const cur = readState(); const e = cur[id] || {};
-    if(kind==="agent"){ e.sent_at = new Date().toISOString(); e.status = "in_progress"; }
-    if(kind==="assign"){ const who = prompt("Assign to"); if(!who) return; e.assignee = who; e.status = e.status==="done"?e.status:"in_progress"; }
-    if(kind==="done"){ e.status = "done"; }
-    if(kind==="dismiss"){ const why = prompt("Dismiss reason (required)"); if(!why) return; e.status="dismissed"; e.dismiss_reason=why; }
-    e.at = new Date().toISOString(); cur[id] = e; writeState(cur); render();
-  }
-  const buttons = t => `<div class="acts"${gAttr("task_actions")}>
-      <button type="button" class="pri" data-a="agent" data-id="${t.task_id}">Send to agent</button>
-      <button type="button" data-a="assign" data-id="${t.task_id}">Assign</button>
-      <button type="button" data-a="done" data-id="${t.task_id}">Mark done</button>
-      <button type="button" data-a="dismiss" data-id="${t.task_id}">Dismiss</button></div>`;
+  const buttons = (ids, n) => `<div class="acts"${gAttr("task_actions")}>
+      <button type="button" class="pri" data-a="agent" data-ids="${ids.join(",")}">Send to agent${n>1?` (${n})`:""}</button>
+      <button type="button" data-a="assign" data-ids="${ids.join(",")}">Assign</button>
+      <button type="button" data-a="done" data-ids="${ids.join(",")}">Mark done</button>
+      <button type="button" data-a="dismiss" data-ids="${ids.join(",")}">Dismiss</button></div>`;
+  const crumbs = t => `<a class="crumb" href="#/priorities?group=${encodeURIComponent(t.group_id)}" title="${esc((groupById[t.group_id]||{}).headline||"")}">${esc(subj(t.group_id))} · ${t.owners.map(esc).join(" / ")}</a>`;
+  const meta = c => `<span class="tt" title="${esc(c.agent||"")}"${gAttr("task_type")}>${esc(c.task_type||"")}</span>
+      <span class="tag ${c.execution==="AGENT"?"us":c.execution==="AGENT+APPROVE"?"warn":"ink"}"${gAttr("task_execution")}>${esc(c.execution)}</span>
+      <span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span>
+      <span>target <b>${esc(c.target||"—")}</b></span><span>${esc(c.owner||"")}</span><span${gAttr("speed")}>${esc(c.speed||"")}</span>`;
   const stateLine = t => {
-    const bits=[];
+    const bits = [];
     if(t.sent_at) bits.push("sent to agent");
-    if(t.assignee) bits.push("assigned to "+esc(t.assignee));
-    if(t.dismiss_reason) bits.push("dismissed: "+esc(t.dismiss_reason));
-    if(t.awaiting_label_signoff) bits.push("awaiting clinician sign-off");
+    if(t.assignee) bits.push("assigned to " + esc(t.assignee));
+    if(t.dismiss_reason) bits.push("dismissed: " + esc(t.dismiss_reason));
+    if(t.awaiting) bits.push("awaiting clinician sign-off");
     return bits.length ? `<div class="state">${bits.join(" · ")}${t.touched?' <span class="tag warn">not synced to registry</span>':""}</div>` : "";
   };
-  // Every fix card the task references. Identical action text is grouped into one row with its points behind a
-  // toggle — collapsed, never dropped.
-  function fixList(t){
-    const byAction = new Map();
-    (t.fix_card_refs||[]).forEach(r=>{ const c=PTS[r.pid_run].fixes[r.fix_idx]; if(!byAction.has(c.action)) byAction.set(c.action, []); byAction.get(c.action).push({r,c}); });
-    const rows = [...byAction.entries()].sort((a,b)=>b[1].length-a[1].length);
-    if(!rows.length) return `<div class="dedup">No fix cards reference this task.</div>`;
-    const body = rows.map(([action, items], gi) => {
-      const c = items[0].c, many = items.length > 1, id = `fl_${t.task_id}_${gi}`;
-      const pts = items.map(({r}) => `<div class="fpt"><a href="#/point/${encodeURIComponent(r.pid_run)}">${esc(r.pid_run)}</a> <span class="q">${esc((PTS[r.pid_run].question||"").slice(0,110))}</span></div>`).join("");
-      return `<div class="fitem">
-        <div class="faction">${esc(action)}</div>
-        <div class="fmeta">
-          <span class="tt" title="${esc(c.agent||"")}">${esc(c.task_type||"")}</span>
-          <span class="tag ${c.execution==="AGENT"?"us":c.execution==="AGENT+APPROVE"?"warn":"ink"}"${gAttr("task_execution")}>${esc(c.execution)}</span>
-          <span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span>
-          <span class="tag mute">${esc(c.type)}</span>
-          <span>target <b>${esc(c.target||"—")}</b></span><span>${esc(c.owner||"")}</span><span${gAttr("speed")}>${esc(c.speed||"")}</span>
-        </div>
-        <div class="fwhy"><b>Why</b> ${esc(c.why||"—")}</div>
-        ${c.effect?`<div class="fwhy"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}
-        ${c.verify?`<div class="fwhy"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}
-        ${many ? `<button class="flmore" type="button" data-fl="${id}">Show the ${items.length} points ▾</button><div class="fpts hide" id="${id}">${pts}</div>`
-               : `<div class="fpts">${pts}</div>`}
-      </div>`;
-    }).join("");
-    return `<div class="dedup" style="margin-bottom:4px">${(t.fix_card_refs||[]).length} fix cards · ${rows.length} distinct action${rows.length===1?"":"s"}</div><div class="fixlist">${body}</div>`;
+  const pointLink = t => `<a class="fpt-l" href="#/point/${encodeURIComponent(t.pid_run)}">${esc(t.pid_run)}</a> <span class="q">${esc((t.point.question||"").slice(0,90))}</span>`;
+
+  function taskCard(t){
+    return `<div class="kcard" data-id="${t.id}">
+      <div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span>${crumbs(t)}</div>
+      <div class="t">${esc(t.card.action)}</div>
+      <div class="m">${meta(t.card)}</div>
+      <div class="fwhy"><b>Why</b> ${esc(t.card.why||"—")}</div>
+      ${t.card.effect?`<div class="fwhy"><b>Expected effect</b> ${esc(t.card.effect)}</div>`:""}
+      ${t.card.verify?`<div class="fwhy"><b>Verify on re-run</b> ${esc(t.card.verify)}</div>`:""}
+      <div class="fpt">${pointLink(t)}</div>
+      ${stateLine(t)}${buttons([t.id], 1)}</div>`;
   }
-  function wireFixList(root){
-    root.querySelectorAll("[data-fl]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const box=document.getElementById(b.dataset.fl); box.classList.toggle("hide"); b.textContent = b.textContent.replace(box.classList.contains("hide")?"▴":"▾", box.classList.contains("hide")?"▾":"▴"); });
-    root.querySelectorAll(".fpt a, .fixlist a").forEach(a=>a.onclick=ev=>ev.stopPropagation());
-  }
-  const byId = Object.fromEntries(tasks.map(t=>[t.task_id, t]));
-  function detailHTML(t){
-    const gh = groupById[t.group_id] || {};
-    return `<div class="fxl" style="margin:4px 0 6px"><b>What</b> ${esc(t.what)}</div>`
-      + `<div class="fxl" style="margin-bottom:6px"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc(gh.headline || t.group_id)}</a></div>`
-      + `<div class="fxl" style="margin-bottom:6px"><b>Why</b> losing ${shr0(t.why.gap)} of answers (${esc(t.why.dominant_run)}), ${esc(t.owner)} sources supply ${shr0(t.why.lever)}</div>`
-      + fixList(t);
+  function groupCard(action, items){
+    const t = items[0], id = "g_" + items[0].id.replace(/[^a-zA-Z0-9]/g,"");
+    return `<div class="kcard grouped">
+      <div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span><span class="tag mute">${items.length} identical tasks</span>${crumbs(t)}</div>
+      <div class="t">${esc(action)}</div>
+      <div class="m">${meta(t.card)}</div>
+      <div class="fwhy"><b>Why</b> ${esc(t.card.why||"—")}</div>
+      <button class="flmore" type="button" data-fl="${id}">Show the ${items.length} tasks ▾</button>
+      <div class="fpts hide" id="${id}">${items.map(x=>`<div class="fpt">${pointLink(x)} ${stateLine(x)}</div>`).join("")}</div>
+      ${buttons(items.map(x=>x.id), items.length)}</div>`;
   }
   function draw(){
-    const list = tasks.filter(match);
-    const by = Object.fromEntries(COLS.map(([k])=>[k, list.filter(t=>t.ui_status===k)]));
+    const list = TASKS.filter(match);
+    const by = Object.fromEntries(COLS.map(([k])=>[k, list.filter(t=>t.status===k)]));
     document.getElementById("sumbar").innerHTML =
-      `<span>Showing <b>${list.length}</b> of <b>${tasks.length}</b> tasks</span><span class="sep">|</span>`
+      `<span>Showing <b>${list.length}</b> of <b>${TASKS.length}</b> tasks</span><span class="sep">|</span>`
       + COLS.map(([k,l])=>`<span>${l} <b>${by[k].length}</b></span>`).join('<span class="sep">·</span>')
-      + `<span class="sep">|</span><span>registry: <b>${A.open_auto}</b> automated, <b>${A.open_manual}</b> for your team</span>`
-      + `<span class="sep">·</span><span>${A.label_tasks_awaiting_signoff} awaiting clinician sign-off</span>`;
+      + `<span class="sep">|</span><span>across <b>${new Set(list.map(t=>t.group_id)).size}</b> topics</span>`
+      + `<span class="sep">·</span><span>${list.filter(t=>t.awaiting).length} awaiting clinician sign-off</span>`;
     const host = document.getElementById("acView");
-    if(F.view==="kanban"){
-      host.innerHTML = `<div class="kb">${COLS.map(([k,l])=>`<div class="kbcol"><h4>${l}<span>${by[k].length}</span></h4>${by[k].map(t=>{
-        const gh=(groupById[t.group_id]||{}); const i=t.impact;
-        return `<div class="kcard"><div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span><span>${esc(t.owner)}</span><span>${esc(t.who)}</span><span>${esc(t.execution)}</span><span${gAttr("speed")}>${esc(t.speed)}</span></div>
-          <div class="t">${esc(gh.subject_label || t.group_id)}</div>
-          <div class="m">${(t.task_types||[]).map(n=>ttChip(n,t)).join("")}</div>
-          <div class="m"><span${gAttr("potential")}>potential <b class="num">${i.ceiling_pp==null?"—":f1(i.ceiling_pp)} pp</b></span><span${gAttr("expected_pp")}>expected <b class="num">${i.expected_pp?`+${f1(i.expected_pp[0])} to +${f1(i.expected_pp[1])}`:"n/a"}</b></span><span${gAttr("demand")}>${fmtK(i.demand)}/mo</span></div>
-          ${stateLine(t)}${buttons(t)}
-          <button class="collapse" type="button" data-x="${t.task_id}">Fix cards (${(t.fix_card_refs||[]).length}) ▾</button><div class="hide" id="x_${t.task_id}">${detailHTML(t)}</div></div>`;
-      }).join("") || '<div class="dedup">none</div>'}</div>`).join("")}</div>`;
+    const render_col = items => {
+      if(!F.dedupe) return items.map(taskCard).join("") || '<div class="dedup">none</div>';
+      const m = new Map();
+      items.forEach(t => { if(!m.has(t.card.action)) m.set(t.card.action, []); m.get(t.card.action).push(t); });
+      return [...m.entries()].sort((a,b)=>b[1].length-a[1].length)
+        .map(([a,its]) => its.length>1 ? groupCard(a, its) : taskCard(its[0])).join("") || '<div class="dedup">none</div>';
+    };
+    if(F.view === "board"){
+      host.innerHTML = `<div class="kb">${COLS.map(([k,l])=>`<div class="kbcol"><h4>${l}<span>${by[k].length}</span></h4><div class="kbscroll">${render_col(by[k])}</div></div>`).join("")}</div>`;
     } else {
       const cols = [
         {k:"p",h:"P",c:"c",g:"priority",f:t=>`<span class="tag p${t.priority}">${t.priority}</span>`,sort:t=>t.priority},
-        {k:"g",h:"Topic",c:"cq",g:"topic_group",f:t=>`<a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc((groupById[t.group_id]||{}).subject_label || t.group_id)}</a><div class="z">${esc(t.what)}</div>`,sort:t=>t.group_id},
-        {k:"o",h:"Source type",g:"lever",f:t=>esc(t.owner)},
-        {k:"w",h:"Who",g:"who",f:t=>esc(t.who)},
-        {k:"e",h:"How it runs",g:"task_execution",f:t=>esc(t.execution)},
-        {k:"tt",h:"Task type",c:"ct",g:"task_type",f:t=>`<div class="m" style="display:flex;flex-wrap:wrap;gap:3px">${(t.task_types||[]).map(n=>ttChip(n,t)).join("")||"—"}</div>`,sort:t=>(t.task_types||[]).join(",")},
-        {k:"pot",h:"Potential",n:true,g:"potential",f:t=>t.impact.ceiling_pp==null?"—":`${f1(t.impact.ceiling_pp)} pp`,sort:t=>t.impact.ceiling_pp||0},
-        {k:"ex",h:"Expected",n:true,g:"expected_pp",f:t=>t.impact.expected_pp?`+${f1(t.impact.expected_pp[0])} to +${f1(t.impact.expected_pp[1])} pp`:"not estimated",sort:t=>t.impact.expected_pp?t.impact.expected_pp[1]:-1},
-        {k:"d",h:"Demand /mo",n:true,g:"demand",f:t=>fmtK(t.impact.demand),sort:t=>t.impact.demand||0},
-        {k:"s",h:"Status",c:"c",g:"task_status",f:t=>`<span class="tag ${t.ui_status==="done"?"ok":t.ui_status==="dismissed"?"mute":t.ui_status==="in_progress"?"warn":"p1"}">${esc(t.ui_status.replace("_"," "))}</span>${stateLine(t)}`,sort:t=>t.ui_status},
-        {k:"a",h:"Actions",c:"ca",g:"task_actions",f:t=>buttons(t)},
+        {k:"a",h:"Task",c:"cq",g:"task_execution",f:t=>`<div>${esc(t.card.action)}</div><div class="z">${crumbs(t)}</div>`,sort:t=>t.card.action},
+        {k:"tt",h:"Task type",c:"ct",g:"task_type",f:t=>`<span class="tt" title="${esc(t.card.agent||"")}">${esc(t.card.task_type||"")}</span>`,sort:t=>t.card.task_type||""},
+        {k:"e",h:"How it runs",g:"task_execution",f:t=>esc(t.card.execution),sort:t=>t.card.execution},
+        {k:"w",h:"Who",g:"who",f:t=>`${esc(t.card.owner)}<div class="z">${esc(t.card.speed)}</div>`,sort:t=>t.card.owner},
+        {k:"m",h:"Review",c:"c",g:"mlr_status",f:t=>`<span class="tag ${t.card.mlr==="medical-review"?"warn":"ok"}">${t.card.mlr==="medical-review"?"medical":"MLR"}</span>`,sort:t=>t.card.mlr},
+        {k:"tg",h:"Target",g:"lever",f:t=>esc(t.card.target||"—"),sort:t=>t.card.target||""},
+        {k:"pt",h:"Point",g:"point_id",f:t=>`<a href="#/point/${encodeURIComponent(t.pid_run)}">${esc(t.pid_run)}</a>`,sort:t=>t.pid_run},
+        {k:"s",h:"Status",c:"c",g:"task_status",f:t=>`<span class="tag ${t.status==="done"?"ok":t.status==="dismissed"?"mute":t.status==="in_progress"?"warn":"p1"}">${esc(t.status.replace("_"," "))}</span>${stateLine(t)}`,sort:t=>t.status},
+        {k:"ac",h:"Actions",c:"ca",g:"task_actions",f:t=>buttons([t.id],1)},
       ];
-      host.innerHTML = `<section class="tile c12"><h2${gAttr("potential")}>Tasks by potential <span>${list.length} shown</span></h2>${tbl(cols, list, {sortKey:"pot", sortDir:-1, scroll:list.length>14?"tall":false, rowAttr:t=>` class="task" data-task="${t.task_id}"`})}</section>`;
+      host.innerHTML = `<section class="tile c12"><h2${gAttr("open_tasks")}>Tasks <span>${list.length} shown</span></h2>${tbl(cols, list, {sortKey:"p", sortDir:-1, scroll:list.length>14?"tall":false, rowAttr:t=>` data-id="${t.id}"`})}</section>`;
     }
-    host.querySelectorAll("[data-a]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); act(b.dataset.id, b.dataset.a); });
-    wireFixList(host);
-    const swallow = ev => !!(ev.target.closest && ev.target.closest("button,a,select,input,textarea,[data-g]"));
-    host.querySelectorAll("[data-x]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const card=b.closest(".kcard"); const panel=document.getElementById("x_"+b.dataset.x); panel.classList.toggle("hide"); if(card) card.classList.toggle("open", !panel.classList.contains("hide")); });
-    // the card body opens the same detail — the buttons and links inside it keep their own behaviour
-    host.querySelectorAll(".kcard").forEach(card=>{
-      const b = card.querySelector("[data-x]"); if(!b) return;
-      card.onclick = ev => { if(swallow(ev)) return; const panel=document.getElementById("x_"+b.dataset.x); panel.classList.toggle("hide"); card.classList.toggle("open", !panel.classList.contains("hide")); };
-    });
-    // table rows open a detail row underneath
-    host.querySelectorAll("tr.task").forEach(tr=>{
-      tr.onclick = ev => {
-        if(swallow(ev)) return;
-        const next = tr.nextElementSibling;
-        if(next && next.classList.contains("taskdetail")){ next.remove(); tr.classList.remove("open"); return; }
-        const t = byId[tr.dataset.task]; if(!t) return;
-        const det = document.createElement("tr"); det.className = "taskdetail";
-        det.innerHTML = `<td colspan="${tr.children.length}"><div class="inner">${detailHTML(t)}</div></td>`;
-        tr.after(det); tr.classList.add("open");
-        wireFixList(det);
-        det.querySelectorAll("a").forEach(a=>a.onclick=e=>e.stopPropagation());
-      };
-    });
-    document.getElementById("vKan").classList.toggle("on", F.view==="kanban");
-    document.getElementById("vTab").classList.toggle("on", F.view!=="kanban");
+    host.querySelectorAll("[data-a]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); act(b.dataset.ids.split(","), b.dataset.a); });
+    host.querySelectorAll("[data-fl]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const box=document.getElementById(b.dataset.fl); box.classList.toggle("hide");
+      b.textContent = `Show the ${box.querySelectorAll(".fpt").length} tasks ` + (box.classList.contains("hide") ? "▾" : "▴"); });
+    host.querySelectorAll("a").forEach(a=>a.onclick=ev=>ev.stopPropagation());
+    document.getElementById("vKan").classList.toggle("on", F.view==="board");
+    document.getElementById("vTab").classList.toggle("on", F.view!=="board");
   }
-  document.getElementById("vKan").onclick=()=>{F.view="kanban"; window.__acView="kanban"; syncHash(); draw();};
+  document.getElementById("vKan").onclick=()=>{F.view="board"; window.__acView="board"; syncHash(); draw();};
   document.getElementById("vTab").onclick=()=>{F.view="table"; window.__acView="table"; syncHash(); draw();};
-  [["f_who","who"],["f_exec","exec"],["f_owner","owner"],["f_prio","prio"],["f_type","type"]].forEach(([id,k])=>{ document.getElementById(id).onchange=e=>{F[k]=e.target.value; syncHash(); draw();}; });
+  [["f_who","who"],["f_exec","exec"],["f_owner","owner"],["f_prio","prio"],["f_type","type"],["f_group","group"]].forEach(([id,k])=>{
+    document.getElementById(id).onchange=e=>{F[k]=e.target.value; syncHash(); draw();}; });
   document.getElementById("f_text").oninput=e=>{F.text=e.target.value; syncHash(); draw();};
-  document.getElementById("f_reset").onclick=()=>{ ["who","exec","owner","prio","type","text"].forEach(k=>F[k]=""); ["f_who","f_exec","f_owner","f_prio","f_type","f_text"].forEach(i=>document.getElementById(i).value=""); syncHash(); draw(); };
-  [["f_who",F.who],["f_exec",F.exec],["f_owner",F.owner],["f_prio",F.prio],["f_type",F.type]].forEach(([i,v])=>{ if(v) document.getElementById(i).value=v; });
-  const want = q && q.get("task");
+  document.getElementById("f_dedupe").onchange=e=>{F.dedupe=e.target.checked; syncHash(); draw();};
+  document.getElementById("f_reset").onclick=()=>{ ["who","exec","owner","prio","type","group","text"].forEach(k=>F[k]=""); F.dedupe=false;
+    ["f_who","f_exec","f_owner","f_prio","f_type","f_group","f_text"].forEach(i=>document.getElementById(i).value="");
+    document.getElementById("f_dedupe").checked=false; syncHash(); draw(); };
+  [["f_who",F.who],["f_exec",F.exec],["f_owner",F.owner],["f_prio",F.prio],["f_type",F.type],["f_group",F.group]].forEach(([i,v])=>{ if(v) document.getElementById(i).value=v; });
   draw();
-  if(want){ const row=[...document.querySelectorAll("[data-id]")].find(b=>b.dataset.id===want); if(row){ const card=row.closest(".kcard,tr");
-    if(card){ card.classList.add("hit"); card.click();
-      const r = card.getBoundingClientRect(); if(r.top < 0 || r.bottom > innerHeight) card.scrollIntoView({block:"center"}); } } }
 }
 function vSafety(el, q){
   const L=DASH.safety_label; const t=q.get("target"), s=q.get("surface");
