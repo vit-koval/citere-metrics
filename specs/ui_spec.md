@@ -58,7 +58,7 @@ Reuse the existing detail panel layout. Sections in order:
 4. Evidence lines (from export).
 5. Sources: top domains with owner/subtype; SERP snapshot; inventory.
 6. Answers: loaded lazily from `corpus_master.json` by `answers_ref`; one per model × repeat, with `excluded` flag visible; citations under each.
-7. Fix cards: client cards first, then a collapsed "Citere monitoring" block.
+7. Tasks from this question: the point's client fix cards rendered as the same clickable, actionable task cards the Action Center uses — click opens the detail, the four action buttons work in place, and each carries a link to itself on the board (or a note when its topic raises no tasks). Then a collapsed "Citere monitoring" block of TRACK cards.
 
 Prev/next within the current filtered list.
 

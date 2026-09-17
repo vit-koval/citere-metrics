@@ -255,25 +255,42 @@ const TASK_STORE = "citere_task_state";
 const readTaskState = () => { try { return JSON.parse(localStorage.getItem(TASK_STORE) || "{}"); } catch(e){ return {}; } };
 const writeTaskState = o => { try { localStorage.setItem(TASK_STORE, JSON.stringify(o)); } catch(e){} };
 const TASK_COLS = [["open","Open"],["in_progress","In progress"],["done","Done"],["dismissed","Dismissed"]];
-function buildTasks(){
-  // window.__taskById lets a table row find its task when it opens its detail row
-  const byCard = new Map();
+let __campIndex = null;
+function campaignsByCard(){                       // fix-card id -> the campaigns that reference it
+  if(__campIndex) return __campIndex;
+  __campIndex = new Map();
   D.campaigns.concat(D.label_tasks_awaiting_signoff || []).forEach(t => {
     (t.fix_card_refs || []).forEach(r => {
       const id = r.pid_run + "#" + r.fix_idx;
-      if(!byCard.has(id)) byCard.set(id, {id, pid_run: r.pid_run, card: PTS[r.pid_run].fixes[r.fix_idx], campaigns: []});
-      byCard.get(id).campaigns.push(t);
+      if(!__campIndex.has(id)) __campIndex.set(id, []);
+      __campIndex.get(id).push(t);
     });
   });
+  return __campIndex;
+}
+function makeTask(pid_run, fix_idx, cs, st){      // one fix card, with whatever campaign context it has
+  const id = pid_run + "#" + fix_idx, s = st[id] || {};
+  return {id, pid_run, fix_idx, point: PTS[pid_run], card: PTS[pid_run].fixes[fix_idx], campaigns: cs,
+          group_id: cs.length ? cs[0].group_id : PTS[pid_run].group_id,
+          owners: [...new Set(cs.map(t => t.owner))],
+          priority: cs.length ? Math.max(...cs.map(t => t.priority || 0)) : ((groupById[PTS[pid_run].group_id] || {}).priority || 0),
+          awaiting: cs.length ? cs.every(t => t.awaiting_label_signoff) : false,
+          status: s.status || "open", assignee: s.assignee || null, sent_at: s.sent_at || null,
+          dismiss_reason: s.dismiss_reason || null, touched: !!st[id]};
+}
+function buildTasks(){
+  // window.__taskById lets a table row find its task when it opens its detail row
   const st = readTaskState();
-  return [...byCard.values()].map(x => {
-    const cs = x.campaigns, s = st[x.id] || {};
-    return {id: x.id, pid_run: x.pid_run, point: PTS[x.pid_run], card: x.card, campaigns: cs,
-            group_id: cs[0].group_id, owners: [...new Set(cs.map(t => t.owner))],
-            priority: Math.max(...cs.map(t => t.priority || 0)), awaiting: cs.every(t => t.awaiting_label_signoff),
-            status: s.status || "open", assignee: s.assignee || null, sent_at: s.sent_at || null,
-            dismiss_reason: s.dismiss_reason || null, touched: !!st[x.id]};
+  return [...campaignsByCard().entries()].map(([id, cs]) => {
+    const i = id.lastIndexOf("#");
+    return makeTask(id.slice(0, i), Number(id.slice(i + 1)), cs, st);
   }).sort((a,b) => (b.priority - a.priority) || a.id.localeCompare(b.id));
+}
+function tasksForPoint(key){                      // every client fix card on one question, as real tasks
+  const idx = campaignsByCard(), st = readTaskState();
+  return (PTS[key].fixes || []).map((c, i) => ({c, i}))
+    .filter(x => x.c.audience === "client")
+    .map(x => makeTask(key, x.i, idx.get(key + "#" + x.i) || [], st));
 }
 function indexTasks(list){ window.__taskById = Object.fromEntries(list.map(t=>[t.id, t])); return list; }
 function taskAct(ids, kind){
@@ -333,6 +350,9 @@ function taskCardHTML(t, opts){
     <div class="fpt">${taskPointLink(t)}</div>
     <button class="flmore" type="button" data-td="${t.id}">Details ▾</button>
     <div class="hide" id="${tdId(t)}">${taskDetailHTML(t)}</div>
+    ${opts.acLink ? (t.campaigns.length
+        ? `<a class="crumb" href="#/actions?open=${encodeURIComponent(t.pid_run)}~${t.fix_idx}">in Action Center →</a>`
+        : `<span class="note">not on the Action Center board — this topic raises no tasks</span>`) : ""}
     ${taskStateLine(t)}${taskButtons([t.id], 1)}</div>`;
 }
 function taskGroupCardHTML(action, items, opts){
@@ -843,7 +863,7 @@ function loadAnswers(run){
   ansPromise[run] = loadScript("answers_"+run+".js").then(async()=>{ const b64=window["ANSWERS_B64_"+run]; const bin=Uint8Array.from(atob(b64), c=>c.charCodeAt(0)); const ds=new DecompressionStream("gzip"); const text=await new Response(new Blob([bin]).stream().pipeThrough(ds)).text(); Object.assign(ANSWERS, JSON.parse(text)); });
   return ansPromise[run];
 }
-function level3(el, key){
+function level3(el, key, q){
   const p = PTS[key]; if(!p){ el.innerHTML=`<section class="tile">Point ${esc(key)} not found.</section>`; return; }
   const list = window.__lastList || KEYS; const i = list.indexOf(key);
   const nav = `<div class="prevnext">${i>0?`<a href="#/point/${encodeURIComponent(list[i-1])}">← Previous</a>`:""}<a href="javascript:history.back()">Back</a>${i>=0&&i<list.length-1?`<a href="#/point/${encodeURIComponent(list[i+1])}">Next →</a>`:""}<span class="count">${i>=0?`${i+1} of ${list.length} in the current list`:""}</span></div>`;
@@ -857,9 +877,15 @@ function level3(el, key){
     ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]]), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
     ${sec("Evidence", `<ul class="evid">${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`, "", "platform export", "c8", "code")}
     ${sec("Answers", `<button class="btn ghost" id="loadAns" type="button">Load answers</button><div id="ansBox"></div>`, "Full texts from the corpus, loaded on demand. Excluded answers are flagged; their verdicts are not counted.", "one per model × repeat", "c12", "answers_scored")}
-    ${sec("Fix cards", p.fixes.filter(c=>c.audience==="client").map(c=>fixCard(c)).join("")||"<span class='note'>none</span>", "", "client", "c12", "task_execution")}
+    ${sec("Tasks from this question", `<div class="lead">The same cards as the Action Center: open one for its detail, or act on it here.</div><div id="ptTasks">${taskListHTML(tasksForPoint(key), false, {acLink:true, showStatus:true})}</div>`, "", `client · ${p.fixes.filter(c=>c.audience==="client").length}`, "c12", "open_tasks")}
     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('cit2').classList.toggle('hide')">Citere monitoring (${p.fixes.filter(c=>c.audience==="citere").length} TRACK cards)</button><div id="cit2" class="hide">${p.fixes.filter(c=>c.audience==="citere").map(c=>fixCard(c)).join("")}</div></section>
   </div>`;
+  wireTasks(document.getElementById("ptTasks"));
+  const openTask = q && q.get("open");                    // #/point/<key>?open=<fix index> opens that task here
+  if(openTask){
+    const card = document.querySelector(`#ptTasks .kcard[data-id="${CSS.escape(key + "#" + openTask)}"]`);
+    if(card){ card.classList.add("hit"); card.click(); }
+  }
   document.getElementById("loadAns").onclick = async (ev) => {
     ev.target.textContent = "Loading…";
     let err=null; try{ await loadAnswers(p.run); }catch(e){ err=e; }
