@@ -62,7 +62,8 @@ def map_nodes(pd_data):
                              int(aw.get("adversarial", 0)), int(aw.get("institutional", 0)), int(aw.get("earned", 0))],
                       "dm": dm,
                       "fx": (act[:170] + "\u2026") if len(act) > 170 else act, "ex": c0.get("platform_execution") or "AGENT"})
-        ans += int(m["answers"]); oz_t += oz; mn_t += int((m.get("competitors_present") or {}).get("Mounjaro") or 0)
+        ans += int(m["answers"]) - int(m["answers_excluded"]); oz_t += oz; mn_t += int((m.get("competitors_present") or {}).get("Mounjaro") or 0)
+    # centre gauge denominator = scored answers, so it equals dashboard.visibility.named_any_scope_pct
     return {"points": nodes, "center": {"ans": ans, "oz": oz_t, "mn": mn_t, "pts": len(nodes)}}
 ARTIFACT_TEXT_LIMIT = 16 * 1024 * 1024   # artifact publish ceiling per text file → answer store is split by run
 
@@ -114,9 +115,17 @@ def main() -> int:
     meta = json.loads(pdata)["meta"]
     old_strip = '<div class="s">GLP-1 · <b>Ozempic</b> vs <span style="color:#F4645C">Mounjaro</span> · US · <b>1,424</b> questions · <b>12,315</b> answers · cycle 1</div>'
     assert old_strip in map_html, "map header strip not found"
-    map_html = map_html.replace(old_strip, '<div class="s">GLP-1 · <b>{}</b> vs <span style="color:#F4645C">{}</span> · {} · <b>{:,}</b> questions · <b>{:,}</b> answers · cycle {}</div>'.format(
-        meta["brand"], meta["competitors"][0], meta["market"].split("/")[0], meta["prompts"], meta["answers"], meta["cycle"]))
+    vis8 = json.loads(pdata)["dashboard"]["visibility"]
+    nas = vis8["named_any_scope"]
+    map_html = map_html.replace(old_strip, ('<div class="s">GLP-1 · <b>{}</b> vs <span style="color:#F4645C">{}</span> · {} · <b>{:,}</b> questions · <b>{:,}</b> answers · cycle {}</div>'
+        '<div class="s" style="margin-top:34px">Centre: named in <b>{:.0f}%</b> of all {:,} scored answers, across all {:,} tested questions. '
+        'Visibility (<b>{}%</b>) is measured only on unbranded category questions (R1) and is the headline everywhere else.</div>').format(
+        meta["brand"], meta["competitors"][0], meta["market"].split("/")[0], meta["prompts"], meta["answers"], meta["cycle"],
+        vis8["named_any_scope_pct"], nas["answers_scored"], nas["points"], vis8["headline"]["visibility_pct"]))
     map_data = map_nodes(json.loads(pdata))
+    _vis = json.loads(pdata)["dashboard"]["visibility"]
+    _gauge = round(map_data["center"]["oz"] / map_data["center"]["ans"] * 100)
+    assert _gauge == round(_vis["named_any_scope_pct"]), "map centre {} != dashboard named_any_scope_pct {}".format(_gauge, _vis["named_any_scope_pct"])
     app = legacy[legacy.index("<script>", legacy.index("const ANS_B64")) + len("<script>"):]
     app = app[: app.index("</script>")]
     lines = app.split("\n")
@@ -131,6 +140,19 @@ def main() -> int:
     nm = re.sub(r"const NMC=\(\(\)=>\{.*?\}\)\(\);\n", "const NMC=DATA.center;\n", nm, count=1, flags=re.S)
     nm = nm.replace("${q.kw?`search trace <b>${q.kw.toLocaleString('en')}</b>/mo`:`<b>AI-native</b> \u2014 asked to AI, no Google trace`}",
                     "${q.ai?`<b>AI-native</b> \u2014 asked to AI, no Google trace`:`basis <b>${q.db}</b>`}")
+    # labels only — no number changes. Each string below named a figure whose scope differs from the dashboard's word for it.
+    relabels = [
+        ("ctx.fillText('VISIBILITY',sx(0),sy(0)+13);", "ctx.fillText('NAMED',sx(0),sy(0)+13);"),
+        ("ctx.fillText('SHARE OF VOICE',sx(0),sy(0)+CR+18);", "ctx.fillText('OF ALL SCORED ANSWERS',sx(0),sy(0)+CR+18);"),
+        ("'hold '+c.soa+'% · '+c.vis+' questions'", "'hold index '+c.soa+' · '+c.vis+' questions'"),
+        ("◉ CLUSTER · hold ${cl.soa}%", "◉ CLUSTER · hold index ${cl.soa}"),
+        ("· sentiment <b>'+q.se+'</b>/100'", "· answer sentiment <b>'+q.se+'</b>/100'"),
+        ("· sentiment <b>${q.se}</b>/100", "· answer sentiment <b>${q.se}</b>/100"),
+        ("· demand <b>${q.vol.toLocaleString('en')}</b>/mo", "· this question's share <b>${q.vol.toLocaleString('en')}</b>/mo"),
+    ]
+    for a_, b_ in relabels:
+        assert a_ in nm, "map label not found: " + a_
+        nm = nm.replace(a_, b_)
     for probe in ["const NMP=P.map(q=>Object.assign({},q));", "const NMC=DATA.center;", "basis <b>${q.db}</b>"]:
         assert probe in nm, "map data re-point failed: " + probe
     nm = nm.replace("tabM.classList.add('on');", "").replace("tabM.classList.remove('on');", "")

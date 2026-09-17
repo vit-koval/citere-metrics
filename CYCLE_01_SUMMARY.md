@@ -31,6 +31,9 @@ What cycle 1 measures and what it does not. One line per decision, grouped by st
 - Web surfaces have no R1 answers, so no visibility on web is measured this cycle.
 - Independent review: 60/60 rows agree (20 present / 20 absent / 20 INN-only, seed 42).
 
+- **Two visibility figures are shown, and the headline is unchanged.** The tile leads with **27.3%** (R1 unbranded category questions, 95% interval 25.5–29.2) and shows **66%** beneath it (`dashboard.visibility.named_any_scope_pct`: 8,007 of 12,121 scored answers name the brand, across every run and prompt class). The finding is the contrast: we answer well once the conversation reaches us; the gap is getting into the conversation. **The 27.3% remains the metric everything downstream is built on, and the 66% must never be presented alone as visibility** — only the R1 set is unbranded, so in three quarters of those answers the question already names Ozempic or a competitor. The map centre reads the same field, so both surfaces show one number.
+- The map centre previously showed 65% because it divided scored answers that name us (8,007) by *all* answers (12,314), including the 193 excluded as unscoreable. The dashboard field uses the pipeline's rule on both sides (8,007 of 12,121) and the map now reads it, so the gauge shows 66%.
+
 ## Step 3a — competitive benchmarking
 - Win Rate and Impact on R1 C1 only, families pooled, equal weights, Wilson CI by overlap answers.
 - Duel Verdict from R2 `scores.winner` on C4 prompts only; ours=1, comp=0, split=0.5; none/na/third excluded (6%); R2 non-C4 prompts are family pairs and are not our duel.

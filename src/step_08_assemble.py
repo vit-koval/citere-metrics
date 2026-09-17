@@ -46,6 +46,7 @@ def main() -> int:
     ac_reg = json.load(open(C.REGISTRY_DIR / "action_center_tasks.json", encoding="utf-8"))
     lab_reg = json.load(open(C.REGISTRY_DIR / "label_findings_registry.json", encoding="utf-8"))
     a = C.load_answers()
+    sc = a[~a["excluded"]]          # scored answers — the all-scope "named anywhere" figure uses the same exclusion rule as every other metric
     groups_csv = pd.read_csv(C.METRICS_DIR / "prioritization_groups.csv")
     try:
         version = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], cwd=str(C.ROOT)).decode().strip()
@@ -62,7 +63,13 @@ def main() -> int:
                  "prompts": int(a.drop_duplicates(["pid", "run"]).shape[0]), "answers": int(len(a)), "answers_excluded_by_filter": int(a["excluded"].sum()),
                  "surfaces": int(a["model"].nunique()), "surface_list": sorted(a["model"].unique().tolist()), "dropped_models": sorted(drop),
                  "generated_at": str(date.today()), "pipeline_version": version, "config_hash": config_hash},
-        "visibility": {"scope_note": vis["config"]["headline_scope"], "headline": vis["headline"], "headline_reference": vis["headline_reference"], "cross_check": vis["cross_check"],
+        "visibility": {"scope_note": vis["config"]["headline_scope"], "named_any_scope_pct": 100.0 * float(sc["we_present"].mean()),
+                       "named_any_scope": {"answers_naming_us": int(sc["we_present"].sum()), "answers_scored": int(len(sc)), "answers_total": int(len(a)),
+                                           "points": int(a.drop_duplicates(["pid", "run"]).shape[0]),
+                                           "scope": "every run and prompt class, scored answers only (excluded answers out of both sides, as everywhere else)",
+                                           "note": "Share of answers that name the brand anywhere. NOT the visibility headline and never to be shown alone as visibility: only R1 C1 is unbranded, "
+                                                   "so in most of these the question already names Ozempic or a competitor. The headline (R1 C1) is the metric everything downstream is built on."},
+                       "headline": vis["headline"], "headline_reference": vis["headline_reference"], "cross_check": vis["cross_check"],
                        "by_model": vis["by_model"], "scope": vis["scope"], "intrusion": vis["intrusion"], "c1_other_runs": {k: v["overall_all_families_equal_weight"] for k, v in vis["c1_other_runs"].items()}},
         "benchmarking": {"scope_note": ben["headline_scope"], "overall": ben["overall"], "leaderboard": [{k: v for k, v in d.items() if k != "by_model"} for d in ben["leaderboard"]],
                          "by_model": ben["by_model"], "duel_verdict": {k: v for k, v in ben["duel_verdict"].items() if k not in ("r2_winner_by_class",)}},

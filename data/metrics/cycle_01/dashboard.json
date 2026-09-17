@@ -36,12 +36,21 @@
     "dropped_models": [
       "gemini-3.6-flash"
     ],
-    "generated_at": "2026-09-16",
-    "pipeline_version": "2949653",
-    "config_hash": "33dd300ee2c2"
+    "generated_at": "2026-09-17",
+    "pipeline_version": "e29e207",
+    "config_hash": "0ff49bebf042"
   },
   "visibility": {
     "scope_note": "R1 C1 prompts only (cycle-1 decision, visibility_score_spec §2)",
+    "named_any_scope_pct": 66.1,
+    "named_any_scope": {
+      "answers_naming_us": 8007,
+      "answers_scored": 12121,
+      "answers_total": 12314,
+      "points": 1424,
+      "scope": "every run and prompt class, scored answers only (excluded answers out of both sides, as everywhere else)",
+      "note": "Share of answers that name the brand anywhere. NOT the visibility headline and never to be shown alone as visibility: only R1 C1 is unbranded, so in most of these the question already names Ozempic or a competitor. The headline (R1 C1) is the metric everything downstream is built on."
+    },
     "headline": {
       "ai_brand_score": 25.1,
       "visibility_pct": 27.3,

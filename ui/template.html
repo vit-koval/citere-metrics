@@ -206,14 +206,21 @@ function level1(el){
   el.innerHTML = `<div class="grid">
   <section class="tile c5" aria-label="Visibility Score" onclick="location.hash='#/visibility'">
     <h2>Visibility Score <span>unbranded questions, API models</span></h2>
-    <div class="row">
-      <div><div class="big">${(+H.ai_brand_score).toFixed(1)}<small>of 100</small></div><div class="note">AI Brand Score: how often we are named, weighted by how early</div></div>
-      <div style="flex:1;min-width:180px">
-        <div class="kv"><div>Named in answers</div><div>${pct(H.visibility_pct)}</div><div>Average position when named</div><div>${f1(H.average_position)}</div><div>Active ingredient named, brand not</div><div>${pct0(H.inn_only_mention_pct)}</div></div>
+    <div class="row top">
+      <div style="flex:1;min-width:210px">
+        <div class="big">${pct(V.headline.visibility_pct)}</div>
+        <div class="note">named when the patient asks about the category</div>
         <div class="ci" title="Wilson 95% interval"><b style="left:${lo}%;width:${(hi-lo).toFixed(2)}%"></b><i style="left:${H.visibility_pct}%"></i></div>
-        <div class="note" style="margin-top:4px">95% interval ${ci(H.visibility_ci95)}. Change vs last cycle appears from cycle 2.</div>
+        <div class="note" style="margin-top:4px">95% interval ${ci(H.visibility_ci95)} · R1 unbranded questions</div>
+        <div class="mid" style="margin-top:12px">${pct0(V.named_any_scope_pct)}</div>
+        <div class="note">named anywhere across all ${V.named_any_scope.points.toLocaleString("en")} tested questions — only the R1 set is unbranded</div>
+      </div>
+      <div style="flex:1;min-width:190px">
+        <div class="kv"><div>AI Brand Score</div><div>${f1(H.ai_brand_score)} of 100</div><div>Average position when named</div><div>${f1(H.average_position)}</div><div>Active ingredient named, brand not</div><div>${pct0(H.inn_only_mention_pct)}</div></div>
+        <div class="note" style="margin-top:6px">Change vs last cycle appears from cycle 2.</div>
       </div>
     </div>
+    <div class="note" style="color:var(--ink)">We answer well once the conversation reaches us — the gap is getting into the conversation.</div>
     <div class="models">${fam}</div>
     <div class="note">${esc((V.scope.surfaces_not_covered||[]).join(", "))} not measured on unbranded questions this cycle.</div>
   </section>
@@ -340,7 +347,7 @@ function sliceTable(rows, key, label){ return tbl([{k:"k",h:label,c:"cw",f:d=>`$
 function vVisibility(el){
   const V=DASH.visibility, H=V.headline;
   el.innerHTML = page("Visibility", esc(V.scope_note)) + `<div class="stack">`
-   + sec("Headline", `<div class="row top"><div><div class="big">${(+H.ai_brand_score).toFixed(1)}<small>of 100</small></div><div class="note">AI Brand Score</div></div><div style="flex:1;min-width:260px;max-width:520px">${kv([["Named in answers",pct(H.visibility_pct)],["95% interval",ci(H.visibility_ci95)],["Average position when named",f1(H.average_position)],["Named when any brand is named",pct(H.visibility_pct_brand_bearing_only)],["Active ingredient named, brand not",pct(H.inn_only_mention_pct)],["Cross-check vs scorer",`${pct(V.cross_check.r1_visibility_pct_from_we_present)} vs ${pct(V.cross_check.r1_visibility_pct_from_our_status_scored)}`]])}</div></div>`, `Surfaces not covered: ${esc((V.scope.surfaces_not_covered||[]).join(", "))}.`, "R1 C1", "c12")
+   + sec("Headline", `<div class="row top"><div><div class="big">${pct(H.visibility_pct)}</div><div class="note">named when the patient asks about the category</div><div class="mid" style="margin-top:12px">${pct0(V.named_any_scope_pct)}</div><div class="note">named anywhere across all ${V.named_any_scope.points.toLocaleString("en")} tested questions</div></div><div style="flex:1;min-width:260px;max-width:520px">${kv([["Named in answers",pct(H.visibility_pct)],["95% interval",ci(H.visibility_ci95)],["Average position when named",f1(H.average_position)],["Named when any brand is named",pct(H.visibility_pct_brand_bearing_only)],["Active ingredient named, brand not",pct(H.inn_only_mention_pct)],["Cross-check vs scorer",`${pct(V.cross_check.r1_visibility_pct_from_we_present)} vs ${pct(V.cross_check.r1_visibility_pct_from_our_status_scored)}`]])}</div></div><div class="note" style="color:var(--ink);margin-top:8px">We answer well once the conversation reaches us — the gap is getting into the conversation.</div>`, `The headline is R1 unbranded questions and is the metric everything downstream is built on. ${esc(V.named_any_scope.note)} Surfaces not covered: ${esc((V.scope.surfaces_not_covered||[]).join(", "))}.`, "R1 C1", "c12")
    + sec("By model family", tbl([
       {k:"m",h:"Family",c:"cw",f:d=>`${esc(cap(d.model))}<span class="z ell" title="${esc((d.versions||[]).join(", "))}">${esc((d.versions||[]).join(", "))}</span>`},
       {k:"n",h:"Answers",n:true,f:d=>d.n_answers},
