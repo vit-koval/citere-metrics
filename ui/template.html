@@ -158,6 +158,8 @@ const titleCause = (code, label, cause) => `<div class="title">${esc(label||code
 const groupById = Object.fromEntries(GROUPS.map(g=>[g.group_id,g]));
 const campById = Object.fromEntries(D.campaigns.map(t=>[t.task_id,t]));
 const heldById = Object.fromEntries((D.label_tasks_awaiting_signoff||[]).map(t=>[t.task_id,t]));
+const NOT_TARGETED = new Set(D.meta.competitors_found_in_data||[]);   // entered the dictionary mid-cycle; R1/R2 were built against the GLP-1 set
+const duelOf = name => (DASH.benchmarking.duel_verdict.by_competitor||{})[name] || null;
 const ROUTES = ["visibility","competitors","sentiment","sources","priorities","actions","safety","map"];
 const NAVL = {"":"Dashboard",visibility:"Visibility",competitors:"Competitors",sentiment:"Sentiment",sources:"Sources",priorities:"Priorities",actions:"Actions",safety:"Safety / Label",map:"Neural map"};
 const M = DASH.meta;
@@ -358,13 +360,15 @@ function vVisibility(el){
 function vCompetitors(el, q){
   const B=DASH.benchmarking; const sel=q.get("competitor");
   el.innerHTML = page("Competitors", esc(B.scope_note)) + `<div class="stack">`
-   + sec("Leaderboard by Impact", tbl([
-      {k:"c",h:"Competitor",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}">${esc(d.competitor)}</a>${d.low_n?' <span class="tag mute">low n</span>':""}`},
-      {k:"i",h:"Answers taken",f:d=>bar(d.impact,"t-comp"),sort:d=>d.impact},
-      {k:"ip",h:"By position",n:true,f:d=>pct(d.impact_by_position),sort:d=>d.impact_by_position},{k:"ia",h:"By absence",n:true,f:d=>pct(d.impact_by_absence),sort:d=>d.impact_by_absence},
-      {k:"w",h:"Win rate",n:true,f:d=>pct(d.win_rate),sort:d=>d.win_rate},{k:"wc",h:"95% interval",n:true,f:d=>ci(d.win_rate_ci95)},{k:"n",h:"Overlap answers",n:true,f:d=>d.overlap_answers,sort:d=>d.overlap_answers},
-      {k:"wm",h:"Worst family",f:d=>esc(cap(d.worst_model))},{k:"wz",h:"Worst zone",f:d=>esc(d.worst_zone)}], B.leaderboard, {sortKey:"i"}),
-      `Overall win rate ${pct(B.overall.win_rate)}, interval ${ci(B.overall.win_rate_ci95)}, over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.`, "R1 C1", "c12")
+   + sec("Leaderboard by Impact", `<div class="lead">Three readings of the same rivalry. <b>Impact</b> is how many answers the competitor takes from us overall. <b>Win rate</b> is who ranks higher when both are named. <b>Duel win rate</b> is who wins when the patient asks “${esc(M.brand)} or X” directly. Both rates are ours, so a high win rate beside a low duel win rate means we lead where both are mentioned and lose the direct question. Sorted by Impact.</div>` + tbl([
+      {k:"c",h:"Competitor",c:"cw",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}">${esc(d.competitor)}</a>${d.low_n?' <span class="tag mute">low n</span>':""}${NOT_TARGETED.has(d.competitor)?`<div class="z" title="${esc(D.meta.competitors_found_in_data_note||"")}">found in data, not a target of this run</div>`:""}`},
+      {k:"i",h:"Impact",f:d=>bar(d.impact,"t-comp"),sort:d=>d.impact},
+      {k:"w",h:"Win rate",f:d=>bar(d.win_rate)+`<div class="z">${ci(d.win_rate_ci95)}</div>`,sort:d=>d.win_rate},
+      {k:"dw",h:"Duel win rate",f:d=>{const v=duelOf(d.competitor); return v?bar(v.duel_win_rate)+`<div class="z">${ci(v.ci95||[])}</div>`:`<span class="note" title="no “${esc(M.brand)} or X” prompts in R2 for this brand">not asked</span>`;},sort:d=>{const v=duelOf(d.competitor); return v?v.duel_win_rate:-1;}},
+      {k:"ip",h:"Impact: position / absence",n:true,f:d=>`${pct(d.impact_by_position)} / ${pct(d.impact_by_absence)}`,sort:d=>d.impact_by_position},
+      {k:"n",h:"Answers: overlap / duels",n:true,f:d=>{const v=duelOf(d.competitor); return `${d.overlap_answers} / ${v?v.n_prompts:"—"}`;},sort:d=>d.overlap_answers},
+      {k:"wm",h:"Worst family · zone",f:d=>`${esc(cap(d.worst_model))}<div class="z">${esc(d.worst_zone)}</div>`}], B.leaderboard, {sortKey:"i", scroll:false}),
+      `Impact and win rate are R1 C1; duel win rate is R2, C4 prompts. Overall win rate ${pct(B.overall.win_rate)}, interval ${ci(B.overall.win_rate_ci95)}, over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.`, "R1 C1 · R2", "c12")
    + sec("Duel verdict", `<div class="row top"><div><div class="mid">${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">interval ${ci(B.duel_verdict.duel_win_rate_ci95)} · ${B.duel_verdict.n_scored} scored answers · ${pct(B.duel_verdict.excluded_na_pct)} without a verdict</div></div></div>` + tbl([{k:"c",h:"Competitor asked",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",f:([,v])=>bar(v.duel_win_rate),sort:([,v])=>v.duel_win_rate},{k:"ci",h:"95% interval",n:true,f:([,v])=>ci(v.ci95||[])},{k:"n",h:"Prompts / answers",n:true,f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}), `By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(cap(k))} ${pct(v.duel_win_rate)}`).join(" · ")}`, "R2, C4 prompts", "c12")
    + sec("By model family", tbl([{k:"m",h:"Family",f:d=>esc(cap(d.model))},{k:"w",h:"Win rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",n:true,f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`}], B.by_model) + `<div></div>` + tbl([{k:"z",h:"Zone",f:d=>esc(d.zone)},{k:"w",h:"Win rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",n:true,f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",n:true,f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}), "", "and by zone, R1 C1", "c12")
    + sec("Points", `<div id="pt"></div>`, "", sel?`${esc(sel)} present, we are absent or lower`:"R1") + `</div>`;

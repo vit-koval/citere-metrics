@@ -306,6 +306,8 @@ def main() -> int:
                   "visibility_by_zone": vis_s["by_zone"], "visibility_by_topic_group": vis_s["by_topic_group"],
                   "benchmarking_by_zone": ben_s["by_zone"], "safety_by_target": lab_s["by_target"], "safety_unstable_cells": lab_s["unstable_cells_list"]}
     data = {"meta": dict(dash["meta"], platform_export_generated=export["meta"].get("generated"), points_joined=len(points), points_unmatched=unmatched,
+                         competitors_found_in_data=list(cfg["brands"].get("competitors_found_in_data") or []),
+                         competitors_found_in_data_note="entered the dictionary mid-cycle after showing up in answers; R1 and R2 were designed against the GLP-1 set",
                          label_mismatches=len(label_mismatch), ans_store="ui/answers.js (built by step 10 from the corpus: gzip+base64, keys pid|run, full texts)"),
             "dashboard": dash, "groups": groups, "points": points, "campaigns": campaigns, "label_tasks_awaiting_signoff": held, "citere_tasks": citere_tasks,
             "label_findings": label_findings, "sources": sources, "breakdowns": breakdowns, "map": "unchanged — the neural map keeps its own data block",

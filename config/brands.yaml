@@ -12,6 +12,9 @@ competitors:
   Farxiga: ["Farxiga"]
   Januvia: ["Januvia"]
   Invokana: ["Invokana"]
+# Entered the dictionary mid-cycle, after these names showed up in answers. The R1 and R2 prompt sets were
+# designed against the GLP-1 set, so these brands are measured where they appear but were not a target of this run.
+competitors_found_in_data: ["Jardiance", "Farxiga", "Januvia", "Invokana"]
 competitor_inn:
   tirzepatide: ["Mounjaro", "Zepbound"]
   liraglutide: ["Victoza", "Saxenda"]
