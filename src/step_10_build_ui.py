@@ -99,6 +99,7 @@ def build_answer_store():
 
 def main() -> int:
     tpl = (UI / "template.html").read_text(encoding="utf-8")
+    glossary = json.loads((UI / "glossary.json").read_text(encoding="utf-8"))   # plain-language wording, one file
     legacy = (UI / "evidence_base_legacy.html").read_text(encoding="utf-8")
     pdata = (C.METRICS_DIR / "platform_data.json").read_text(encoding="utf-8")
 
@@ -118,8 +119,8 @@ def main() -> int:
     assert old_strip in map_html, "map header strip not found"
     vis8 = json.loads(pdata)["dashboard"]["visibility"]
     nas = vis8["named_any_scope"]
-    map_html = map_html.replace(old_strip, ('<div class="s">GLP-1 · <b>{}</b> vs <span style="color:#F4645C">{}</span> · {} · <b>{:,}</b> questions · <b>{:,}</b> answers · cycle {}</div>'
-        '<div class="s" style="margin-top:34px">Centre: named in <b>{:.0f}%</b> of all {:,} scored answers, across all {:,} tested questions. '
+    map_html = map_html.replace(old_strip, ('<div class="s" data-g="screen_map">GLP-1 · <b>{}</b> vs <span style="color:#F4645C">{}</span> · {} · <b>{:,}</b> questions · <b>{:,}</b> answers · cycle {}</div>'
+        '<div class="s" style="margin-top:34px" data-g="map_centre">Centre: named in <b>{:.0f}%</b> of all {:,} scored answers, across all {:,} tested questions. '
         'Visibility (<b>{}%</b>) is measured only on unbranded category questions (R1) and is the headline everywhere else.</div>').format(
         meta["brand"], meta["competitors"][0], meta["market"].split("/")[0], meta["prompts"], meta["answers"], meta["cycle"],
         vis8["named_any_scope_pct"], nas["answers_scored"], nas["points"], vis8["headline"]["visibility_pct"]))
@@ -143,13 +144,14 @@ def main() -> int:
                     "${q.ai?`<b>AI-native</b> \u2014 asked to AI, no Google trace`:`basis <b>${q.db}</b>`}")
     # labels only — no number changes. Each string below named a figure whose scope differs from the dashboard's word for it.
     relabels = [
+        ("sp.className=layer[k]?'':'off';", "sp.className=layer[k]?'':'off'; sp.dataset.g={u:'map_we_hold',t:'map_we_lose',m:'map_contested',e:'map_unclaimed'}[k];"),
         ("ctx.fillText('VISIBILITY',sx(0),sy(0)+13);", "ctx.fillText('NAMED',sx(0),sy(0)+13);"),
         ("ctx.fillText('SHARE OF VOICE',sx(0),sy(0)+CR+18);", "ctx.fillText('OF ALL SCORED ANSWERS',sx(0),sy(0)+CR+18);"),
         ("'hold '+c.soa+'% · '+c.vis+' questions'", "'hold index '+c.soa+' · '+c.vis+' questions'"),
-        ("◉ CLUSTER · hold ${cl.soa}%", "◉ CLUSTER · hold index ${cl.soa}"),
+        ("◉ CLUSTER · hold ${cl.soa}%", "◉ CLUSTER · <span data-g=\"map_hold_index\">hold index ${cl.soa}</span>"),
         ("· sentiment <b>'+q.se+'</b>/100'", "· answer sentiment <b>'+q.se+'</b>/100'"),
-        ("· sentiment <b>${q.se}</b>/100", "· answer sentiment <b>${q.se}</b>/100"),
-        ("· demand <b>${q.vol.toLocaleString('en')}</b>/mo", "· this question's share <b>${q.vol.toLocaleString('en')}</b>/mo"),
+        ("· sentiment <b>${q.se}</b>/100", "· <span data-g=\"answer_sentiment\">answer sentiment <b>${q.se}</b>/100</span>"),
+        ("· demand <b>${q.vol.toLocaleString('en')}</b>/mo", "· <span data-g=\"question_share\">this question's share <b>${q.vol.toLocaleString('en')}</b>/mo</span>"),
         ('<div class="agg">${q.n} answers · ${q.qt} · ${q.sg}</div>',
          '<div class="agg">${q.n} scored answers · ${q.qt} · ${q.sg}${q.nx?` · <b>${q.nx}</b> excluded as unscoreable`:``}</div>'),
     ]
@@ -193,9 +195,16 @@ def main() -> int:
     # ---- assemble ------------------------------------------------------------------------
     out = tpl.replace("<!--MOCKUP_STYLE-->", style).replace("<!--LEGACY_MAP_CSS-->", map_css) \
              .replace("<!--LEGACY_MAP_HTML-->", map_html) \
+             .replace("<script>/*GLOSSARY*/</script>", "<script>window.GLOSSARY=" + json.dumps(glossary, ensure_ascii=False, separators=(",", ":")) + ";</script>") \
              .replace("<script>/*PLATFORM_DATA*/</script>", "<script>window.PLATFORM_DATA=" + pdata + ";</script>") \
              .replace("<!--LEGACY_MAP_JS-->", map_js)
+    markup = tpl + map_js + map_html
+    used = set(k for k in glossary if not k.startswith("_") and re.search(r'["\']' + re.escape(k) + r'["\']', markup))
+    missing = sorted(used - set(glossary))
+    assert not missing, "figures point at glossary entries that do not exist: {}".format(missing)
+    unused = sorted(k for k in glossary if not k.startswith("_") and k not in used)
     (UI / "index.html").write_text(out, encoding="utf-8")
+    print("glossary: {} entries, {} used by figures{}".format(len([k for k in glossary if not k.startswith("_")]), len(used), ", unused: " + ", ".join(unused) if unused else ""))
     print("index.html {:,} bytes | map_data.js {:,} bytes ({} nodes, {} topic groups, from platform_data.json) | answer stores {} points, {} answers, total {:,} bytes:".format(
         (UI / "index.html").stat().st_size, map_size, len(map_data["points"]), len(per_gid), n_pts, n_ans, sum(ans_sizes.values())))
     for run, sz in ans_sizes.items():

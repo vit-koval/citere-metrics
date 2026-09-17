@@ -63,6 +63,13 @@ td .z{color:var(--muted);font-size:12px;margin-top:2px}
 .safety.yellow{border-left-color:var(--warn)} .safety.yellow .big{color:var(--warn)}
 .safety.green{border-left-color:var(--ok)} .safety.green .big{color:var(--ok)}
 .lead{color:var(--muted);font-size:13px;margin:-2px 0 10px;max-width:78ch}
+[data-g]{cursor:help}
+h2[data-g],.page[data-g]{cursor:help}
+th[data-g]{text-decoration:underline dotted var(--line);text-underline-offset:3px}
+#gtip{position:fixed;z-index:400;max-width:330px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px;font-size:13px;line-height:1.5;box-shadow:0 8px 28px rgba(0,0,0,.18);display:none}
+#gtip.on{display:block}
+#gtip b{display:block;margin-bottom:3px;font-weight:600}
+@media print{#gtip{display:none!important}}
 .rec{display:grid;gap:3px;padding:14px 12px;margin:0 -12px;border-top:1px solid var(--line);cursor:pointer}
 .rec:first-of-type{border-top:0}
 .rec:hover{background:var(--soft)}
@@ -118,7 +125,8 @@ td .z{color:var(--muted);font-size:12px;margin-top:2px}
 .srclist a span{color:var(--muted)}
 .hide{display:none}
 .big.pct small,.mid.pct small{margin-left:2px}
-@media (max-width:980px){.stack>.c7,.stack>.c5{grid-column:span 12}}
+@media (max-width:1100px){.stack>.c3,.stack>.c4,.stack>.c5,.stack>.c6,.stack>.c7,.stack>.c8{grid-column:span 12}}
+@media (max-width:640px){.tile h2{flex-wrap:wrap}.tile h2 span{flex-basis:100%}}
 @media print{.nav,.btn,#view2,#view3,#mapView{display:none!important}.wrap{padding:0}.tile{break-inside:avoid}}
 </style>
 <!--LEGACY_MAP_CSS-->
@@ -134,12 +142,17 @@ td .z{color:var(--muted);font-size:12px;margin-top:2px}
   <div id="view3"></div>
 </div>
 <!--LEGACY_MAP_HTML-->
+<script>/*GLOSSARY*/</script>
 <script>/*PLATFORM_DATA*/</script>
 <script>
 "use strict";
 const D = window.PLATFORM_DATA;
 const DASH = D.dashboard, PTS = D.points, GROUPS = D.groups;
 const KEYS = Object.keys(PTS);
+const G = id => (window.GLOSSARY||{})[id] || null;
+const gAttr = id => G(id) ? ` data-g="${id}"` : "";
+const gLead = id => { const g=G(id); return g&&g.lead ? `<div class="lead">${escG(g.lead)}</div>` : ""; };
+const escG = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const f1 = v => (v==null||v==="") ? "—" : (typeof v==="number" ? (Number.isInteger(v)?v.toLocaleString("en"):v.toFixed(1)) : esc(v));
 const pct = v => v==null ? "—" : (v*1).toFixed(1)+"%";
@@ -154,7 +167,7 @@ const period = p => { const [y,m]=p.split("-"); return `${MONTHS[+m-1]} ${y}`; }
 const SEVTAG = {good:"ok",warn:"warn",bad:"bad"};
 const CONF = {high:"high",med:"medium",medium:"medium",low:"low"};
 const themeName = t => t.includes(" · ") ? t.split(" · ").slice(1).join(" · ") : t;
-const titleCause = (code, label, cause) => `<div class="title">${esc(label||code)}</div>${cause?`<div class="causeln">${esc(cause.label||cause.code)} · confidence ${esc(CONF[(cause.confidence||"").toLowerCase()]||cause.confidence||"—")}</div>`:""}`;
+const titleCause = (code, label, cause) => `<div class="title">${esc(label||code)}</div>${cause?`<div class="causeln">${esc(cause.label||cause.code)} · <span${gAttr("confidence")}>confidence ${esc(CONF[(cause.confidence||"").toLowerCase()]||cause.confidence||"—")}</span></div>`:""}`;
 const groupById = Object.fromEntries(GROUPS.map(g=>[g.group_id,g]));
 const campById = Object.fromEntries(D.campaigns.map(t=>[t.task_id,t]));
 const heldById = Object.fromEntries((D.label_tasks_awaiting_signoff||[]).map(t=>[t.task_id,t]));
@@ -203,16 +216,16 @@ function level1(el){
   const recs = P.recommendations.slice(0,3).map(r=>{ const g=groupById[r.group_id]; const o=r.owners[0]; return `<tr><td><span class="tag p${r.priority}">${r.priority}</span> <a href="#/priorities?group=${encodeURIComponent(r.group_id)}">${esc(r.group_id)}</a> — ${esc(o.owner)}<br><span class="note">Cause: ${esc(g.dominant_cause.code.toLowerCase())} in ${shr0(g.dominant_cause.share)} of points</span></td><td class="n">${fmtK(g.demand)}</td><td class="n">${shr0(g.gap)}</td><td class="n">${shr0(o.lever)}</td><td class="n">up to ${(+o.ceiling_pp).toFixed(0)} pp</td></tr>`; }).join("");
   const who = Object.entries(A.counters.by_who).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<div>${esc(k)}</div><div>${v}</div>`).join("");
   const next = A.top3_open.map(t=>{ const c=campById[t.task_id]||{}; const e=t.impact.expected_pp; return `<tr><td><a href="#/actions">${esc(c.what||t.group_id+" → "+t.owner)}</a></td><td>${esc(t.who)}</td><td class="n">${e?`+${(+e[0]).toFixed(0)} to +${(+e[1]).toFixed(0)} pp`:"not estimated"}</td><td class="n"><span class="tag p1">open</span></td></tr>`; }).join("");
-  el.innerHTML = `<div class="grid">
+  el.innerHTML = `${gLead("screen_dashboard")}<div class="grid">
   <section class="tile c5" aria-label="Visibility Score" onclick="location.hash='#/visibility'">
-    <h2>Visibility Score <span>unbranded questions, API models</span></h2>
+    <h2${gAttr("visibility_score")}>Visibility Score <span>unbranded questions, API models</span></h2>${gLead("visibility_score")}
     <div class="row top">
       <div style="flex:1;min-width:210px">
-        <div class="big">${pct(V.headline.visibility_pct)}</div>
+        <div class="big"${gAttr("visibility_score")}>${pct(V.headline.visibility_pct)}</div>
         <div class="note">named when the patient asks about the category</div>
         <div class="ci" title="Wilson 95% interval"><b style="left:${lo}%;width:${(hi-lo).toFixed(2)}%"></b><i style="left:${H.visibility_pct}%"></i></div>
         <div class="note" style="margin-top:4px">95% interval ${ci(H.visibility_ci95)} · R1 unbranded questions</div>
-        <div class="mid" style="margin-top:12px">${pct0(V.named_any_scope_pct)}</div>
+        <div class="mid" style="margin-top:12px"${gAttr("named_any_scope")}>${pct0(V.named_any_scope_pct)}</div>
         <div class="note">named anywhere across all ${V.named_any_scope.points.toLocaleString("en")} tested questions — only the R1 set is unbranded</div>
       </div>
       <div style="flex:1;min-width:190px">
@@ -225,25 +238,25 @@ function level1(el){
     <div class="note">${esc((V.scope.surfaces_not_covered||[]).join(", "))} not measured on unbranded questions this cycle.</div>
   </section>
   <section class="tile c4" aria-label="Competitive Benchmarking" onclick="location.hash='#/competitors'">
-    <h2>Competitive Benchmarking <span>who takes our answers</span></h2>
+    <h2${gAttr("screen_competitors")}>Competitive Benchmarking <span>who takes our answers</span></h2>${gLead("screen_competitors")}
     <div class="row">
-      <div><div class="mid">${Math.round(B.overall.win_rate)}<small>% win rate</small></div><div class="note">ahead when both named</div></div>
-      <div><div class="mid">${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">"${esc(M.brand)} vs X" questions</div></div>
+      <div><div class="mid"${gAttr("win_rate")}>${Math.round(B.overall.win_rate)}<small>% win rate</small></div><div class="note">ahead when both named</div></div>
+      <div><div class="mid"${gAttr("duel_win_rate")}>${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">"${esc(M.brand)} vs X" questions</div></div>
     </div>
     <div class="tblwrap"><table><tr><th>Competitor</th><th class="n">Answers taken</th><th class="n">By absence</th></tr>${lead}</table></div>
     <div class="note">Win rate ${ci(B.overall.win_rate_ci95)} over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.</div>
   </section>
   <section class="tile c3 safety ${L.traffic_light}" aria-label="Safety and label flag" onclick="location.hash='#/safety'">
-    <h2>Safety / Label <span>web surfaces</span></h2>
-    <div class="light ${L.traffic_light}">${lightText}</div>
-    <div class="big">${L.findings.total}<small>findings</small></div>
+    <h2${gAttr("screen_safety")}>Safety / Label <span>web surfaces</span></h2>${gLead("screen_safety")}
+    <div class="light ${L.traffic_light}"${gAttr("traffic_light")}>${lightText}</div>
+    <div class="big"${gAttr("findings_total")}>${L.findings.total}<small>findings</small></div>
     <div class="kv"><div>Said something dangerous</div><div>${L.findings.dangerous}</div><div>Omitted a required warning</div><div>${L.findings.incomplete}</div><div>Awaiting clinical sign-off</div><div>${L.findings.pending_signoff}</div><div>Answers with a critical error</div><div>${pct0(L.critical_answer_share)}</div></div>
     <dl class="dl"><dt>Worst surface</dt><dd>${esc(worst.surface)}, ${pct0(worst.critical_share)} critical</dd><dt>Top label section</dt><dd>${esc(L.top_label_sections[0].section)} (${esc(L.top_label_sections[0].target)})</dd><dt>Then</dt><dd>${L.top_label_sections.slice(1).map(s=>`${esc(s.section)} (${esc(s.target)})`).join(", ")}</dd></dl>
     <div class="note">Findings reach the client report only after clinician sign-off.</div>
   </section>
   <section class="tile c3" aria-label="Sentiment" onclick="location.hash='#/sentiment'">
-    <h2>Sentiment <span>questions about us</span></h2>
-    <div class="mid">${Math.round(S.headline.score)}<small>of 100</small></div>
+    <h2${gAttr("sentiment_score")}>Sentiment <span>questions about us</span></h2>${gLead("sentiment_score")}
+    <div class="mid"${gAttr("sentiment_score")}>${Math.round(S.headline.score)}<small>of 100</small></div>
     <div class="bar"><i class="t-ok" style="width:${S.headline.shares.positive_pct}%"></i><i class="t-mute" style="width:${S.headline.shares.neutral_pct}%"></i><i class="t-bad" style="width:${S.headline.shares.negative_pct}%"></i></div>
     <div class="kv"><div>Positive</div><div>${pct0(S.headline.shares.positive_pct)}</div><div>Neutral</div><div>${pct0(S.headline.shares.neutral_pct)}</div><div>Negative</div><div>${pct0(S.headline.shares.negative_pct)}</div></div>
     <div class="note" style="margin-top:2px">What negative answers say</div>
@@ -251,27 +264,27 @@ function level1(el){
     <div class="note">Under myth probes: ${Math.round(S.narrative_resistance.score)} of 100, ${pct0(S.narrative_resistance.shares.negative_pct)} negative.</div>
   </section>
   <section class="tile c4" aria-label="Citation tracking" onclick="location.hash='#/sources'">
-    <h2>Citation Tracking <span>all runs with citations</span></h2>
+    <h2${gAttr("screen_sources")}>Citation Tracking <span>all runs with citations</span></h2>${gLead("screen_sources")}
     <div class="bar"><i class="t-comp" style="width:${C.owner_shares.earned}%"></i><i class="t-mute" style="width:${C.owner_shares.institutional}%"></i><i class="t-us" style="width:${C.owner_shares.owned}%"></i><i style="width:${C.owner_shares.competitor}%;background:var(--ink)"></i></div>
     <div class="kv">
-      <div><span class="tag warn">earned</span> media, directories, forums, hospitals</div><div>${pct0(C.owner_shares.earned)}</div>
-      <div><span class="tag p1">institutional</span> FDA, NIH, journals, Wikipedia</div><div>${pct0(C.owner_shares.institutional)}</div>
-      <div><span class="tag us">owned</span> our sites</div><div>${pct(C.owner_shares.owned)}</div>
-      <div><span class="tag p1">competitor</span> their sites</div><div>${pct(C.owner_shares.competitor)}</div>
-      <div><span class="tag bad">threat</span> litigation, adversarial</div><div>${C.adversarial_sources.length} domain${C.adversarial_sources.length===1?"":"s"}</div>
+      <div><span class="tag warn"${gAttr("citation_earned")}>earned</span> media, directories, forums, hospitals</div><div>${pct0(C.owner_shares.earned)}</div>
+      <div><span class="tag p1"${gAttr("citation_institutional")}>institutional</span> FDA, NIH, journals, Wikipedia</div><div>${pct0(C.owner_shares.institutional)}</div>
+      <div><span class="tag us"${gAttr("citation_owned")}>owned</span> our sites</div><div>${pct(C.owner_shares.owned)}</div>
+      <div><span class="tag p1"${gAttr("citation_competitor")}>competitor</span> their sites</div><div>${pct(C.owner_shares.competitor)}</div>
+      <div><span class="tag bad"${gAttr("citation_adversarial")}>threat</span> litigation, adversarial</div><div>${C.adversarial_sources.length} domain${C.adversarial_sources.length===1?"":"s"}</div>
     </div>
     <div class="note" style="margin-top:2px">Feeding answers about competitors, not us</div>
     <div class="tblwrap"><table>${gap}</table></div>
   </section>
   <section class="tile c5" aria-label="Diagnosis and prioritization" onclick="location.hash='#/priorities'">
-    <h2>Diagnosis &amp; Prioritization <span>demand × gap × lever</span></h2>
+    <h2${gAttr("screen_priorities")}>Diagnosis &amp; Prioritization <span>demand × gap × lever</span></h2>${gLead("screen_priorities")}
     <div class="tblwrap"><table><tr><th>Fix first</th><th class="n">Demand /mo</th><th class="n">Losing</th><th class="n">Lever</th><th class="n">Reach</th></tr>${recs}</table></div>
     <div class="note">Reach is a ceiling, in percentage points of presence. Priority tiers are the top, middle and bottom third of ${P.rows_total} client rows; ${P.healthy_groups_count} groups are healthy.</div>
   </section>
   <section class="tile c7" aria-label="Action Center" onclick="location.hash='#/actions'">
-    <h2>Action Center <span>tasks from the list above</span></h2>
+    <h2${gAttr("screen_actions")}>Action Center <span>tasks from the list above</span></h2>${gLead("screen_actions")}
     <div class="row">
-      <div><div class="mid">${A.counters.open_total}<small>open</small></div><div class="note">${A.counters.open_auto} automated, ${A.counters.open_manual} for your team</div></div>
+      <div><div class="mid"${gAttr("open_tasks")}>${A.counters.open_total}<small>open</small></div><div class="note">${A.counters.open_auto} automated, ${A.counters.open_manual} for your team</div></div>
       <div><div class="mid">${A.counters.in_progress}<small>in progress</small></div></div>
       <div><div class="mid">${A.counters.done_this_cycle}<small>done this cycle</small></div></div>
       <div style="flex:1;min-width:200px"><div class="kv">${who}</div></div>
@@ -280,8 +293,8 @@ function level1(el){
     <div class="note">Expected shift uses industry priors until two cycles of your own results exist. ${A.counters.label_tasks_awaiting_signoff} label tasks await sign-off.</div>
   </section>
   <section class="tile c5 empty" aria-label="Before and after">
-    <h2>Before / After <span>trend across cycles</span></h2>
-    <div class="mid">${BA.available?"Available":"First cycle"}</div>
+    <h2${gAttr("before_after")}>Before / After <span>trend across cycles</span></h2>${gLead("before_after")}
+    <div class="mid"${gAttr("before_after")}>${BA.available?"Available":"First cycle"}</div>
     <div class="note">This is the baseline. From cycle 2 this tile shows the Visibility Score line, the Safety findings count and the win rate against each competitor, with change since last cycle. Same questions, same surfaces, same brand dictionary each time, so the deltas are comparable.</div>
     <div class="note">Next run: ${esc(period(BA.next_cycle_expected))}.</div>
   </section>
@@ -299,15 +312,15 @@ function tbl(cols, rows, opts={}){
     if(state.k){ const c=cols.find(x=>x.k===state.k); const sv=c.sort||c.f; r.sort((a,b)=>{const x=sv(a),y=sv(b); return (x>y?1:x<y?-1:0)*state.dir;}); }
     const scroll = opts.scroll===undefined ? rows.length>12 : opts.scroll;
     const cls = c => [c.n?"n":"", c.c||""].filter(Boolean).join(" ");
-    return `${scroll===true?`<div class="count">${rows.length.toLocaleString("en")} rows, scroll inside the table</div>`:""}<div class="tblwrap${scroll===true?" scroll":scroll==="tall"?" tall":""}"><table${opts.tableClass?` class="${opts.tableClass}"`:""}><thead><tr>${cols.map(c=>`<th data-k="${c.k}" class="sort ${cls(c)}${state.k===c.k?" on":""}">${c.h}${state.k===c.k?(state.dir>0?" ↑":" ↓"):""}</th>`).join("")}</tr></thead><tbody>${r.map(row=>`<tr${opts.rowAttr?opts.rowAttr(row):""}>${cols.map(c=>`<td class="${cls(c)}">${c.f(row)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    return `${scroll===true?`<div class="count">${rows.length.toLocaleString("en")} rows, scroll inside the table</div>`:""}<div class="tblwrap${scroll===true?" scroll":scroll==="tall"?" tall":""}"><table${opts.tableClass?` class="${opts.tableClass}"`:""}><thead><tr>${cols.map(c=>`<th data-k="${c.k}"${gAttr(c.g)} class="sort ${cls(c)}${state.k===c.k?" on":""}">${c.h}${state.k===c.k?(state.dir>0?" ↑":" ↓"):""}</th>`).join("")}</tr></thead><tbody>${r.map(row=>`<tr${opts.rowAttr?opts.rowAttr(row):""}>${cols.map(c=>`<td class="${cls(c)}">${c.f(row)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   };
   setTimeout(()=>{ const host=document.getElementById(id); if(!host) return; const bind=()=>{ host.querySelectorAll("th").forEach(th=>th.onclick=()=>{ const k=th.dataset.k; if(state.k===k) state.dir*=-1; else {state.k=k; state.dir=-1;} host.innerHTML=draw(); bind(); }); host.querySelectorAll("tr[data-href]").forEach(tr=>tr.onclick=()=>location.hash=tr.dataset.href); }; bind(); },0);
   return `<div id="${id}">${draw()}</div>`;
 }
-function sec(h, inner, note, sub, span){ return `<section class="tile ${span||"c12"}"><h2>${h}${sub?` <span>${sub}</span>`:""}</h2>${inner}${note?`<div class="note">${note}</div>`:""}</section>`; }
+function sec(h, inner, note, sub, span, gid){ return `<section class="tile ${span||"c12"}"><h2${gAttr(gid)}>${h}${sub?` <span>${sub}</span>`:""}</h2>${gLead(gid)}${inner}${note?`<div class="note">${note}</div>`:""}</section>`; }
 function kv(pairs){ return `<div class="kv">${pairs.map(([k,v])=>`<div>${k}</div><div>${v}</div>`).join("")}</div>`; }
 function bar(v, cls){ return `<div class="bars"><div class="bar"><i class="${cls||"t-us"}" style="width:${Math.min(100,Math.max(0,v||0))}%"></i></div><span>${pct(v)}</span></div>`; }
-function page(title, sub){ return `<div style="margin-bottom:16px"><h2 class="page">${title}</h2>${sub?`<div class="subline">${sub}</div>`:""}</div>`; }
+function page(title, sub, gid){ return `<div style="margin-bottom:16px"><h2 class="page"${gAttr(gid)}>${title}</h2>${gLead(gid)}${sub?`<div class="subline">${sub}</div>`:""}</div>`; }
 
 // ---------------- shared: point table with the legacy filter bar, re-pointed ----------------
 function famChips(p){ return (p.metrics.by_model||[]).map(m=>`<span class="mc"><b>${esc(cap(m.model_family))}</b> ${m.we_present}/${m.answers}</span>`).join(""); }
@@ -318,16 +331,16 @@ function pointTable(el, keys, opts={}){
   const sel = (id,label,vals) => `<select id="${id}"><option value="">${label}</option>${vals.map(v=>`<option>${esc(v)}</option>`).join("")}</select>`;
   el.innerHTML = `<div class="filters">${sel("pf_run","Run: all",uniq(p=>p.run))}${sel("pf_zone","Zone: all",uniq(p=>p.zone))}${sel("pf_topic","Topic: all",uniq(p=>p.topic))}${sel("pf_sub","Subtopic: all",uniq(p=>p.subtopic))}${sel("pf_fam","Family: all",uniq(p=>(p.metrics.by_model||[]).map(m=>m.model_family)))}${sel("pf_qt","Query type: all",uniq(p=>p.query_type))}${sel("pf_stage","Stage: all",uniq(p=>p.patient_stage))}${sel("pf_code","Code: all",uniq(p=>p.code))}${sel("pf_cause","Cause: all",uniq(p=>p.cause&&p.cause.code))}${sel("pf_sev","Sev: all",["good","warn","bad"])}<input type="search" id="pf_text" placeholder="Search questions or point id"><button class="btn ghost" id="pf_reset" type="button">Reset</button></div><p class="count" id="pf_cnt"></p><div id="pf_tbl"></div>`;
   const cols = [
-    {k:"pid",h:"Point",f:p=>`<span class="pid">${p.pid} · ${p.run}</span><div class="z">${p.class}</div>`,sort:p=>p.pid+p.run},
-    {k:"q",h:"Question",c:"cq",f:p=>`<div>${esc(p.question)}</div><div class="z">${esc(p.zone)} · ${esc(p.query_type)} · ${esc(p.patient_stage)}</div>`,sort:p=>p.question},
-    {k:"topic",h:"Topic / subtopic",c:"cw",f:p=>`${esc(p.topic)}${p.subtopic?`<div class="z">${esc(p.subtopic)}</div>`:""}`,sort:p=>p.topic+(p.subtopic||"")},
-    {k:"sev",h:"Sev",c:"c",f:p=>`<span class="tag ${SEVTAG[p.sev]||"mute"}">${esc(p.sev)}</span>`,sort:p=>({bad:0,warn:1,good:2})[p.sev]},
-    {k:"code",h:"What happened · why",c:"cc",f:p=>titleCause(p.code,p.code_label,p.cause),sort:p=>p.code},
-    {k:"pres",h:"Presence",f:p=>p.metrics.we_present_share==null?"—":bar(p.metrics.we_present_share*100),sort:p=>p.metrics.we_present_share??-1},
-    {k:"pos",h:"Position",n:true,f:p=>f1(p.metrics.avg_position),sort:p=>p.metrics.avg_position??99},
-    {k:"models",h:"Models, present / answers",f:p=>`<div class="mchips">${famChips(p)}</div>`,sort:p=>p.metrics.answers},
-    {k:"dem",h:"Demand /mo",n:true,f:p=>fmtK(p.demand.topic_demand),sort:p=>p.demand.topic_demand},
-    {k:"rank",h:"Rank",n:true,f:p=>f1(p.point_rank_score),sort:p=>p.point_rank_score},
+    {k:"pid",h:"Point",g:"point_id",f:p=>`<span class="pid">${p.pid} · ${p.run}</span><div class="z">${p.class}</div>`,sort:p=>p.pid+p.run},
+    {k:"q",h:"Question",g:"question",c:"cq",f:p=>`<div>${esc(p.question)}</div><div class="z">${esc(p.zone)} · ${esc(p.query_type)} · ${esc(p.patient_stage)}</div>`,sort:p=>p.question},
+    {k:"topic",h:"Topic / subtopic",g:"topic_subtopic",c:"cw",f:p=>`${esc(p.topic)}${p.subtopic?`<div class="z">${esc(p.subtopic)}</div>`:""}`,sort:p=>p.topic+(p.subtopic||"")},
+    {k:"sev",h:"Sev",g:"sev",c:"c",f:p=>`<span class="tag ${SEVTAG[p.sev]||"mute"}">${esc(p.sev)}</span>`,sort:p=>({bad:0,warn:1,good:2})[p.sev]},
+    {k:"code",h:"What happened · why",g:"code",c:"cc",f:p=>titleCause(p.code,p.code_label,p.cause),sort:p=>p.code},
+    {k:"pres",h:"Presence",g:"presence_share",f:p=>p.metrics.we_present_share==null?"—":bar(p.metrics.we_present_share*100),sort:p=>p.metrics.we_present_share??-1},
+    {k:"pos",h:"Position",g:"avg_position",n:true,f:p=>f1(p.metrics.avg_position),sort:p=>p.metrics.avg_position??99},
+    {k:"models",h:"Models, present / answers",g:"model_family",f:p=>`<div class="mchips">${famChips(p)}</div>`,sort:p=>p.metrics.answers},
+    {k:"dem",h:"Demand /mo",g:"demand",n:true,f:p=>fmtK(p.demand.topic_demand),sort:p=>p.demand.topic_demand},
+    {k:"rank",h:"Rank",g:"rank_score",n:true,f:p=>f1(p.point_rank_score),sort:p=>p.point_rank_score},
   ];
   const draw = () => {
     const q = st.text.toLowerCase();
@@ -341,43 +354,43 @@ function pointTable(el, keys, opts={}){
   (opts.preset||[]).forEach(([k,v])=>{ st[k]=v; const e=document.getElementById("pf_"+k); if(e) e.value=v; });
   draw();
 }
-function sliceTable(rows, key, label){ return tbl([{k:"k",h:label,c:"cw",f:d=>`${esc(d[key])}${d.low_n?' <span class="tag mute">low n</span>':""}`},{k:"p",h:"Prompts",n:true,f:d=>d.n_prompts,sort:d=>d.n_prompts},{k:"n",h:"Answers",n:true,f:d=>d.n_answers,sort:d=>d.n_answers},{k:"v",h:"Named",f:d=>bar(d.visibility_pct),sort:d=>d.visibility_pct},{k:"c",h:"95% interval",n:true,f:d=>ci(d.visibility_ci95)},{k:"pos",h:"Avg position",n:true,f:d=>f1(d.average_position),sort:d=>d.average_position??99},{k:"s",h:"Brand score",n:true,f:d=>f1(d.ai_brand_score),sort:d=>d.ai_brand_score},{k:"inn",h:"INN only",n:true,f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct}], rows, {sortKey:"v"}); }
+function sliceTable(rows, key, label){ return tbl([{k:"k",h:label,c:"cw",f:d=>`${esc(d[key])}${d.low_n?' <span class="tag mute"${gAttr("low_n")}>low n</span>':""}`},{k:"p",h:"Prompts",g:"prompts",n:true,f:d=>d.n_prompts,sort:d=>d.n_prompts},{k:"n",h:"Answers",g:"answers_scored",n:true,f:d=>d.n_answers,sort:d=>d.n_answers},{k:"v",h:"Named",g:"visibility_score",f:d=>bar(d.visibility_pct),sort:d=>d.visibility_pct},{k:"c",h:"95% interval",g:"ci95",n:true,f:d=>ci(d.visibility_ci95)},{k:"pos",h:"Avg position",g:"avg_position",n:true,f:d=>f1(d.average_position),sort:d=>d.average_position??99},{k:"s",h:"Brand score",g:"ai_brand_score",n:true,f:d=>f1(d.ai_brand_score),sort:d=>d.ai_brand_score},{k:"inn",h:"INN only",g:"inn_only",n:true,f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct}], rows, {sortKey:"v"}); }
 
 // ---------------- Level 2 screens ----------------
 function vVisibility(el){
   const V=DASH.visibility, H=V.headline;
-  el.innerHTML = page("Visibility", esc(V.scope_note)) + `<div class="stack">`
-   + sec("Headline", `<div class="row top"><div><div class="big">${pct(H.visibility_pct)}</div><div class="note">named when the patient asks about the category</div><div class="mid" style="margin-top:12px">${pct0(V.named_any_scope_pct)}</div><div class="note">named anywhere across all ${V.named_any_scope.points.toLocaleString("en")} tested questions</div></div><div style="flex:1;min-width:260px;max-width:520px">${kv([["Named in answers",pct(H.visibility_pct)],["95% interval",ci(H.visibility_ci95)],["Average position when named",f1(H.average_position)],["Named when any brand is named",pct(H.visibility_pct_brand_bearing_only)],["Active ingredient named, brand not",pct(H.inn_only_mention_pct)],["Cross-check vs scorer",`${pct(V.cross_check.r1_visibility_pct_from_we_present)} vs ${pct(V.cross_check.r1_visibility_pct_from_our_status_scored)}`]])}</div></div><div class="note" style="color:var(--ink);margin-top:8px">We answer well once the conversation reaches us — the gap is getting into the conversation.</div>`, `The headline is R1 unbranded questions and is the metric everything downstream is built on. ${esc(V.named_any_scope.note)} Surfaces not covered: ${esc((V.scope.surfaces_not_covered||[]).join(", "))}.`, "R1 C1", "c12")
+  el.innerHTML = page("Visibility", esc(V.scope_note), "screen_visibility") + `<div class="stack">`
+   + sec("Headline", `<div class="row top"><div><div class="big">${pct(H.visibility_pct)}</div><div class="note">named when the patient asks about the category</div><div class="mid" style="margin-top:12px"${gAttr("named_any_scope")}>${pct0(V.named_any_scope_pct)}</div><div class="note">named anywhere across all ${V.named_any_scope.points.toLocaleString("en")} tested questions</div></div><div style="flex:1;min-width:260px;max-width:520px">${kv([["Named in answers",pct(H.visibility_pct)],["95% interval",ci(H.visibility_ci95)],["Average position when named",f1(H.average_position)],["<span${gAttr('brand_bearing')}>Named when any brand is named</span>",pct(H.visibility_pct_brand_bearing_only)],["Active ingredient named, brand not",pct(H.inn_only_mention_pct)],["<span${gAttr('cross_check')}>Cross-check vs scorer</span>",`${pct(V.cross_check.r1_visibility_pct_from_we_present)} vs ${pct(V.cross_check.r1_visibility_pct_from_our_status_scored)}`]])}</div></div><div class="note" style="color:var(--ink);margin-top:8px">We answer well once the conversation reaches us — the gap is getting into the conversation.</div>`, `The headline is R1 unbranded questions and is the metric everything downstream is built on. ${esc(V.named_any_scope.note)} Surfaces not covered: ${esc((V.scope.surfaces_not_covered||[]).join(", "))}.`, "R1 C1", "c12", "visibility_score")
    + sec("By model family", tbl([
-      {k:"m",h:"Family",c:"cw",f:d=>`${esc(cap(d.model))}<span class="z ell" title="${esc((d.versions||[]).join(", "))}">${esc((d.versions||[]).join(", "))}</span>`},
-      {k:"n",h:"Answers",n:true,f:d=>d.n_answers},
-      {k:"v",h:"Named",f:d=>bar(d.visibility_pct),sort:d=>d.visibility_pct},
-      {k:"c",h:"95% interval",n:true,f:d=>ci(d.visibility_ci95)},
-      {k:"p",h:"Avg position",n:true,f:d=>f1(d.average_position),sort:d=>d.average_position??99},
-      {k:"s",h:"Brand score",n:true,f:d=>f1(d.ai_brand_score),sort:d=>d.ai_brand_score},
-      {k:"inn",h:"INN only",n:true,f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct},
-      {k:"u",h:"Unstable groups",n:true,f:d=>pct(d.unstable_groups_pct)},{k:"sr",h:"Single run",n:true,f:d=>pct(d.single_run_groups_pct)}], V.by_model, {sortKey:"v"}), "Interval shown as a range, never hidden.", "", "c12")
-   + sec("By zone", sliceTable(D.breakdowns.visibility_by_zone, "zone", "Zone"), "", "R1 C1, headline families, equal family weights", "c12")
-   + sec("By topic group", sliceTable(D.breakdowns.visibility_by_topic_group, "topic_group", "Topic group"), "Low n: fewer prompts than the minimum group size.", "R1 C1", "c12")
-   + sec("Intrusion", kv([["Competitor named in answers about us (C2)",`${pct(V.intrusion.competitor_into_ours_pct)} · ${ci(V.intrusion.competitor_into_ours_ci95)}`],["We are named in answers about competitors (C3)",`${pct(V.intrusion.ours_into_competitor_pct)} · ${ci(V.intrusion.ours_into_competitor_ci95)}`]]) + `<div class="note">In C2 by competitor: ${Object.entries(V.intrusion.by_competitor).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · ")}</div>`, "", "", "c5")
-   + sec("Other C1 runs", tbl([{k:"r",h:"Run",f:([r])=>r},{k:"v",h:"Named",f:([,o])=>bar(o.visibility_pct),sort:([,o])=>o.visibility_pct},{k:"c",h:"95% interval",n:true,f:([,o])=>ci(o.visibility_ci95)},{k:"p",h:"Avg position",n:true,f:([,o])=>f1(o.average_position)},{k:"s",h:"Brand score",n:true,f:([,o])=>f1(o.ai_brand_score)},{k:"n",h:"Answers",n:true,f:([,o])=>o.n_answers}], Object.entries(V.c1_other_runs)), "", "reference, not headline", "c7")
+      {k:"m",h:"Family",g:"model_family",c:"cw",f:d=>`${esc(cap(d.model))}<span class="z ell" title="${esc((d.versions||[]).join(", "))}">${esc((d.versions||[]).join(", "))}</span>`},
+      {k:"n",h:"Answers",g:"answers_scored",n:true,f:d=>d.n_answers},
+      {k:"v",h:"Named",g:"visibility_score",f:d=>bar(d.visibility_pct),sort:d=>d.visibility_pct},
+      {k:"c",h:"95% interval",g:"ci95",n:true,f:d=>ci(d.visibility_ci95)},
+      {k:"p",h:"Avg position",g:"avg_position",n:true,f:d=>f1(d.average_position),sort:d=>d.average_position??99},
+      {k:"s",h:"Brand score",g:"ai_brand_score",n:true,f:d=>f1(d.ai_brand_score),sort:d=>d.ai_brand_score},
+      {k:"inn",h:"INN only",g:"inn_only",n:true,f:d=>pct(d.inn_only_mention_pct),sort:d=>d.inn_only_mention_pct},
+      {k:"u",h:"Unstable groups",g:"unstable_groups",n:true,f:d=>pct(d.unstable_groups_pct)},{k:"sr",h:"Single run",g:"single_run",n:true,f:d=>pct(d.single_run_groups_pct)}], V.by_model, {sortKey:"v"}), "Interval shown as a range, never hidden.", "", "c12", "model_family")
+   + sec("By zone", sliceTable(D.breakdowns.visibility_by_zone, "zone", "Zone"), "", "R1 C1, headline families, equal family weights", "c12", "visibility_score")
+   + sec("By topic group", sliceTable(D.breakdowns.visibility_by_topic_group, "topic_group", "Topic group"), "Low n: fewer prompts than the minimum group size.", "R1 C1", "c12", "visibility_score")
+   + sec("Intrusion", kv([["<span${gAttr('intrusion_c2')}>Competitor named in answers about us (C2)</span>",`${pct(V.intrusion.competitor_into_ours_pct)} · ${ci(V.intrusion.competitor_into_ours_ci95)}`],["<span${gAttr('intrusion_c3')}>We are named in answers about competitors (C3)</span>",`${pct(V.intrusion.ours_into_competitor_pct)} · ${ci(V.intrusion.ours_into_competitor_ci95)}`]]) + `<div class="note">In C2 by competitor: ${Object.entries(V.intrusion.by_competitor).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · ")}</div>`, "", "", "c5", "intrusion_c2")
+   + sec("Other C1 runs", tbl([{k:"r",h:"Run",g:"run",f:([r])=>r},{k:"v",h:"Named",g:"visibility_score",f:([,o])=>bar(o.visibility_pct),sort:([,o])=>o.visibility_pct},{k:"c",h:"95% interval",g:"ci95",n:true,f:([,o])=>ci(o.visibility_ci95)},{k:"p",h:"Avg position",g:"avg_position",n:true,f:([,o])=>f1(o.average_position)},{k:"s",h:"Brand score",g:"ai_brand_score",n:true,f:([,o])=>f1(o.ai_brand_score)},{k:"n",h:"Answers",g:"answers_scored",n:true,f:([,o])=>o.n_answers}], Object.entries(V.c1_other_runs)), "", "reference, not headline", "c7", "run")
    + sec("Points", `<div id="pt"></div>`, "", "R1, headline scope") + `</div>`;
   pointTable(document.getElementById("pt"), KEYS.filter(k=>PTS[k].run==="R1"), {sortKey:"dem", caption:"R1 category prompts"});
 }
 function vCompetitors(el, q){
   const B=DASH.benchmarking; const sel=q.get("competitor");
-  el.innerHTML = page("Competitors", esc(B.scope_note)) + `<div class="stack">`
+  el.innerHTML = page("Competitors", esc(B.scope_note), "screen_competitors") + `<div class="stack">`
    + sec("Leaderboard by Impact", `<div class="lead">Three readings of the same rivalry. <b>Impact</b> is how many answers the competitor takes from us overall. <b>Win rate</b> is who ranks higher when both are named. <b>Duel win rate</b> is who wins when the patient asks “${esc(M.brand)} or X” directly. Both rates are ours, so a high win rate beside a low duel win rate means we lead where both are mentioned and lose the direct question. Sorted by Impact.</div>` + tbl([
-      {k:"c",h:"Competitor",c:"cw",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}">${esc(d.competitor)}</a>${d.low_n?' <span class="tag mute">low n</span>':""}${NOT_TARGETED.has(d.competitor)?`<div class="z" title="${esc(D.meta.competitors_found_in_data_note||"")}">found in data, not a target of this run</div>`:""}`},
-      {k:"i",h:"Impact",f:d=>bar(d.impact,"t-comp"),sort:d=>d.impact},
-      {k:"w",h:"Win rate",f:d=>bar(d.win_rate)+`<div class="z">${ci(d.win_rate_ci95)}</div>`,sort:d=>d.win_rate},
-      {k:"dw",h:"Duel win rate",f:d=>{const v=duelOf(d.competitor); return v?bar(v.duel_win_rate)+`<div class="z">${ci(v.ci95||[])}</div>`:`<span class="note" title="no “${esc(M.brand)} or X” prompts in R2 for this brand">not asked</span>`;},sort:d=>{const v=duelOf(d.competitor); return v?v.duel_win_rate:-1;}},
-      {k:"ip",h:"Impact: position / absence",n:true,f:d=>`${pct(d.impact_by_position)} / ${pct(d.impact_by_absence)}`,sort:d=>d.impact_by_position},
-      {k:"n",h:"Answers: overlap / duels",n:true,f:d=>{const v=duelOf(d.competitor); return `${d.overlap_answers} / ${v?v.n_prompts:"—"}`;},sort:d=>d.overlap_answers},
-      {k:"wm",h:"Worst family · zone",f:d=>`${esc(cap(d.worst_model))}<div class="z">${esc(d.worst_zone)}</div>`}], B.leaderboard, {sortKey:"i", scroll:false}),
-      `Impact and win rate are R1 C1; duel win rate is R2, C4 prompts. Overall win rate ${pct(B.overall.win_rate)}, interval ${ci(B.overall.win_rate_ci95)}, over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.`, "R1 C1 · R2", "c12")
-   + sec("Duel verdict", `<div class="row top"><div><div class="mid">${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">interval ${ci(B.duel_verdict.duel_win_rate_ci95)} · ${B.duel_verdict.n_scored} scored answers · ${pct(B.duel_verdict.excluded_na_pct)} without a verdict</div></div></div>` + tbl([{k:"c",h:"Competitor asked",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",f:([,v])=>bar(v.duel_win_rate),sort:([,v])=>v.duel_win_rate},{k:"ci",h:"95% interval",n:true,f:([,v])=>ci(v.ci95||[])},{k:"n",h:"Prompts / answers",n:true,f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}), `By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(cap(k))} ${pct(v.duel_win_rate)}`).join(" · ")}`, "R2, C4 prompts", "c12")
-   + sec("By model family", tbl([{k:"m",h:"Family",f:d=>esc(cap(d.model))},{k:"w",h:"Win rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",n:true,f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`}], B.by_model) + `<div></div>` + tbl([{k:"z",h:"Zone",f:d=>esc(d.zone)},{k:"w",h:"Win rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",n:true,f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",n:true,f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}), "", "and by zone, R1 C1", "c12")
+      {k:"c",h:"Competitor",c:"cw",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}">${esc(d.competitor)}</a>${d.low_n?' <span class="tag mute"${gAttr("low_n")}>low n</span>':""}${NOT_TARGETED.has(d.competitor)?`<div class="z"${gAttr("found_in_data")}>found in data, not a target of this run</div>`:""}`},
+      {k:"i",h:"Impact",g:"impact",f:d=>bar(d.impact,"t-comp"),sort:d=>d.impact},
+      {k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate)+`<div class="z">${ci(d.win_rate_ci95)}</div>`,sort:d=>d.win_rate},
+      {k:"dw",h:"Duel win rate",g:"duel_win_rate",f:d=>{const v=duelOf(d.competitor); return v?bar(v.duel_win_rate)+`<div class="z">${ci(v.ci95||[])}</div>`:`<span class="note" title="no “${esc(M.brand)} or X” prompts in R2 for this brand">not asked</span>`;},sort:d=>{const v=duelOf(d.competitor); return v?v.duel_win_rate:-1;}},
+      {k:"ip",h:"Impact: position / absence",g:"impact_by_position",n:true,f:d=>`${pct(d.impact_by_position)} / ${pct(d.impact_by_absence)}`,sort:d=>d.impact_by_position},
+      {k:"n",h:"Answers: overlap / duels",g:"overlap_answers",n:true,f:d=>{const v=duelOf(d.competitor); return `${d.overlap_answers} / ${v?v.n_prompts:"—"}`;},sort:d=>d.overlap_answers},
+      {k:"wm",h:"Worst family · zone",g:"worst_model",f:d=>`${esc(cap(d.worst_model))}<div class="z">${esc(d.worst_zone)}</div>`}], B.leaderboard, {sortKey:"i", scroll:false}),
+      `Impact and win rate are R1 C1; duel win rate is R2, C4 prompts. Overall win rate ${pct(B.overall.win_rate)}, interval ${ci(B.overall.win_rate_ci95)}, over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.`, "R1 C1 · R2", "c12", "impact")
+   + sec("Duel verdict", `<div class="row top"><div><div class="mid"${gAttr("duel_win_rate")}>${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">interval ${ci(B.duel_verdict.duel_win_rate_ci95)} · ${B.duel_verdict.n_scored} scored answers · ${pct(B.duel_verdict.excluded_na_pct)} without a verdict</div></div></div>` + tbl([{k:"c",h:"Competitor asked",g:"duel_prompts",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",g:"duel_win_rate",f:([,v])=>bar(v.duel_win_rate),sort:([,v])=>v.duel_win_rate},{k:"ci",h:"95% interval",g:"ci95",n:true,f:([,v])=>ci(v.ci95||[])},{k:"n",h:"Prompts / answers",g:"duel_prompts",n:true,f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}), `By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(cap(k))} ${pct(v.duel_win_rate)}`).join(" · ")}`, "R2, C4 prompts", "c12", "duel_win_rate")
+   + sec("By model family", tbl([{k:"m",h:"Family",g:"model_family",f:d=>esc(cap(d.model))},{k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`}], B.by_model) + `<div></div>` + tbl([{k:"z",h:"Zone",g:"zone",f:d=>esc(d.zone)},{k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",g:"prompts",n:true,f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}), "", "and by zone, R1 C1", "c12")
    + sec("Points", `<div id="pt"></div>`, "", sel?`${esc(sel)} present, we are absent or lower`:"R1") + `</div>`;
   let keys = KEYS.filter(k=>PTS[k].run==="R1");
   if(sel) keys = keys.filter(k=>{const m=PTS[k].metrics; return (m.competitors_present||{})[sel]>0 && (m.we_present_share==null || m.we_present_share<1);});
@@ -385,13 +398,13 @@ function vCompetitors(el, q){
 }
 function vSentiment(el){
   const S=DASH.sentiment;
-  const themes = (list) => tbl([{k:"t",h:"Theme",c:"cx",f:t=>`${esc(themeName(t.theme))}<div class="z">${esc(t.code)}${(t.examples||[]).slice(0,1).map(e=>` · “${esc(e)}”`).join("")}</div>`},{k:"pn",h:"Of negative",n:true,f:t=>pct(t.pct_of_negative),sort:t=>t.pct_of_negative},{k:"pa",h:"Of all",n:true,f:t=>pct(t.pct_of_all)},{k:"nr",h:"Negative rate in theme",n:true,f:t=>pct(t.negative_rate_within_theme),sort:t=>t.negative_rate_within_theme},{k:"w",h:"Worst family",f:t=>`${esc(cap(t.worst_model))} <span class="note">${pct(t.worst_model_negative_pct)}</span>`}], list, {sortKey:"pn"});
-  const block = (h, s, sub, extra) => sec(h, `<div class="row top"><div><div class="mid">${Math.round(s.score)}<small>of 100</small></div></div><div style="flex:1;min-width:200px"><div class="bar"><i class="t-ok" style="width:${s.shares.positive_pct}%"></i><i class="t-mute" style="width:${s.shares.neutral_pct}%"></i><i class="t-bad" style="width:${s.shares.negative_pct}%"></i></div>${kv([["Positive",pct(s.shares.positive_pct)],["Neutral",pct(s.shares.neutral_pct)],["Negative",pct(s.shares.negative_pct)],["Answers / prompts",`${s.n} / ${s.n_prompts}`]])}</div></div>` + tbl([{k:"m",h:"Family",f:([k])=>esc(cap(k))},{k:"s",h:"Score",n:true,f:([,v])=>f1(v.score),sort:([,v])=>v.score},{k:"n",h:"Negative",f:([,v])=>bar(v.negative_pct,"t-bad"),sort:([,v])=>v.negative_pct},{k:"c",h:"95% interval",n:true,f:([,v])=>ci(v.negative_ci95)},{k:"p",h:"Positive",n:true,f:([,v])=>pct(v.positive_pct)},{k:"a",h:"Answers",n:true,f:([,v])=>v.n}], Object.entries(s.by_model)), extra, sub, "c6");
-  el.innerHTML = page("Sentiment", esc(S.scope_note)) + `<div class="stack">`
+  const themes = (list) => tbl([{k:"t",h:"Theme",g:"theme_of_negative",c:"cx",f:t=>`${esc(themeName(t.theme))}<div class="z">${esc(t.code)}${(t.examples||[]).slice(0,1).map(e=>` · “${esc(e)}”`).join("")}</div>`},{k:"pn",h:"Of negative",g:"theme_of_negative",n:true,f:t=>pct(t.pct_of_negative),sort:t=>t.pct_of_negative},{k:"pa",h:"Of all",g:"theme_of_all",n:true,f:t=>pct(t.pct_of_all)},{k:"nr",h:"Negative rate in theme",g:"theme_negative_rate",n:true,f:t=>pct(t.negative_rate_within_theme),sort:t=>t.negative_rate_within_theme},{k:"w",h:"Worst family",g:"worst_model",f:t=>`${esc(cap(t.worst_model))} <span class="note">${pct(t.worst_model_negative_pct)}</span>`}], list, {sortKey:"pn"});
+  const block = (h, s, sub, extra, gid) => sec(h, `<div class="row top"><div><div class="mid">${Math.round(s.score)}<small>of 100</small></div></div><div style="flex:1;min-width:200px"><div class="bar"><i class="t-ok" style="width:${s.shares.positive_pct}%"></i><i class="t-mute" style="width:${s.shares.neutral_pct}%"></i><i class="t-bad" style="width:${s.shares.negative_pct}%"></i></div>${kv([["Positive",pct(s.shares.positive_pct)],["<span${gAttr('sentiment_neutral')}>Neutral</span>",pct(s.shares.neutral_pct)],["Negative",pct(s.shares.negative_pct)],["Answers / prompts",`${s.n} / ${s.n_prompts}`]])}</div></div>` + tbl([{k:"m",h:"Family",g:"model_family",f:([k])=>esc(cap(k))},{k:"s",h:"Score",g:"sentiment_score",n:true,f:([,v])=>f1(v.score),sort:([,v])=>v.score},{k:"n",h:"Negative",g:"sentiment_negative",f:([,v])=>bar(v.negative_pct,"t-bad"),sort:([,v])=>v.negative_pct},{k:"c",h:"95% interval",g:"ci95",n:true,f:([,v])=>ci(v.negative_ci95)},{k:"p",h:"Positive",g:"sentiment_positive",n:true,f:([,v])=>pct(v.positive_pct)},{k:"a",h:"Answers",g:"answers_scored",n:true,f:([,v])=>v.n}], Object.entries(s.by_model)), extra, sub, "c6", gid||"sentiment_score");
+  el.innerHTML = page("Sentiment", esc(S.scope_note), "screen_sentiment") + `<div class="stack">`
    + block("Living on the drug", S.headline, "R3, headline", "")
-   + block("Under myth probes", S.narrative_resistance, "R9, adversarial by design", "Kept apart from the headline: these prompts carry a false premise on purpose.")
-   + sec("What negative answers say", themes(S.top_negative_themes.filter(t=>t.run==="R3")), "", "R3 themes", "c12")
-   + sec("Myth-probe themes", themes(S.narrative_resistance.themes), "", "R9, negative rate per family", "c12")
+   + block("Under myth probes", S.narrative_resistance, "R9, adversarial by design", "Kept apart from the headline: these prompts carry a false premise on purpose.", "narrative_resistance")
+   + sec("What negative answers say", themes(S.top_negative_themes.filter(t=>t.run==="R3")), "", "R3 themes", "c12", "theme_of_negative")
+   + sec("Myth-probe themes", themes(S.narrative_resistance.themes), "", "R9, negative rate per family", "c12", "narrative_resistance")
    + sec("Competitors", `<div class="para"><p>${esc(S.competitors_note)}</p></div>`, "", "", "c12")
    + sec("Points", `<div id="pt"></div>`, "", "R3 and R9, sev = bad") + `</div>`;
   pointTable(document.getElementById("pt"), KEYS.filter(k=>["R3","R9"].includes(PTS[k].run)), {preset:[["sev","bad"]], sortKey:"dem"});
@@ -399,13 +412,13 @@ function vSentiment(el){
 function vSources(el, q){
   const C=DASH.citations; const dom=q.get("domain"); const own=C.owner_shares;
   const sn = C.scope_note && typeof C.scope_note==="object" ? `Citations in ${esc((C.scope_note.runs_with_citations||[]).join(", "))}; none in ${esc((C.scope_note.runs_without_citations||[]).join(", "))}. Unit: ${esc(C.scope_note.unit||"")}.` : esc(C.scope_note);
-  el.innerHTML = page("Sources", sn) + `<div class="stack">`
-   + sec("Who gets cited", `<div class="bar"><i class="t-comp" style="width:${own.earned}%"></i><i class="t-mute" style="width:${own.institutional}%"></i><i class="t-us" style="width:${own.owned}%"></i><i style="width:${own.competitor}%;background:var(--ink)"></i></div>` + kv([[`<span class="tag warn">earned</span>`,pct(own.earned)],[`<span class="tag p1">institutional</span>`,pct(own.institutional)],[`<span class="tag us">owned</span>`,pct(own.owned)],[`<span class="tag p1">competitor</span>`,pct(own.competitor)],["Owned share where we are named",pct(C.owned_share_in_answers_with_us)],["Answers without citations",pct(C.answers_without_citations_pct)]]), "", "all runs with citations", "c4")
-   + sec("Earned subtypes", kv(Object.entries(C.earned_subtypes).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[esc(k),pct(v)])), "", "share of all citations", "c3")
-   + sec("Owner share by model", tbl([{k:"m",h:"Model",f:v=>esc(v.model)},{k:"n",h:"Citations",n:true,f:v=>v.n.toLocaleString("en"),sort:v=>v.n},{k:"o",h:"Owned",n:true,f:v=>pct(v.owned)},{k:"e",h:"Earned",n:true,f:v=>pct(v.earned)},{k:"i",h:"Institutional",n:true,f:v=>pct(v.institutional)},{k:"c",h:"Competitor",n:true,f:v=>pct(v.competitor)}], (C.owner_shares_by_model||[]), {scroll:false}), "", "", "c5")
-   + sec("Top domains", tbl([{k:"d",h:"Domain",f:d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}">${esc(d.domain)}</a>`},{k:"o",h:"Owner",f:d=>`${esc(d.owner)}${d.subtype?` <span class="note">${esc(d.subtype)}</span>`:""}`},{k:"c",h:"Citations",n:true,f:d=>d.citations.toLocaleString("en"),sort:d=>d.citations},{k:"s",h:"Share",n:true,f:d=>pct(d.share),sort:d=>d.share},{k:"a",h:"Answers",n:true,f:d=>pct(d.answers_pct)},{k:"u",h:"With us",n:true,f:d=>pct(d.with_us_pct)},{k:"cp",h:"With competitor",n:true,f:d=>pct(d.with_comp_pct)},{k:"m",h:"Top family · zone",f:d=>`${esc(cap(d.top_model))} · ${esc(d.top_zone)}`}], C.top_domains, {sortKey:"c"}), "", "", "c12")
-   + sec("Gap list", tbl([{k:"d",h:"Domain",f:g=>`<a href="#/sources?domain=${encodeURIComponent(g.domain)}">${esc(g.domain)}</a>`},{k:"g",h:"Gap",n:true,f:g=>g.gap_score,sort:g=>g.gap_score},{k:"cc",h:"Cites competitor / us",n:true,f:g=>`${g.cites_comp} / ${g.cites_us}`},{k:"cf",h:"Competitors fed",n:true,f:g=>g.competitors_fed},{k:"o",h:"Owner",f:g=>`${esc(g.owner)}${g.subtype?` <span class="note">${esc(g.subtype)}</span>`:""}`},{k:"a",h:"Action",f:g=>esc(g.action_type)}], C.gap_list, {sortKey:"g"}), "Feeds competitor answers while silent about us.", "R1 C1", "c8")
-   + `<section class="tile c4 safety"><h2>Adversarial sources <span>threat, excluded from lever</span></h2>${tbl([{k:"d",h:"Domain",f:a=>esc(a.domain)},{k:"c",h:"Citations",n:true,f:a=>a.citations,sort:a=>a.citations}], C.adversarial_sources, {sortKey:"c"})}</section>`
+  el.innerHTML = page("Sources", sn, "screen_sources") + `<div class="stack">`
+   + sec("Who gets cited", `<div class="bar"><i class="t-comp" style="width:${own.earned}%"></i><i class="t-mute" style="width:${own.institutional}%"></i><i class="t-us" style="width:${own.owned}%"></i><i style="width:${own.competitor}%;background:var(--ink)"></i></div>` + kv([[`<span class="tag warn"${gAttr("citation_earned")}>earned</span>`,pct(own.earned)],[`<span class="tag p1"${gAttr("citation_institutional")}>institutional</span>`,pct(own.institutional)],[`<span class="tag us"${gAttr("citation_owned")}>owned</span>`,pct(own.owned)],[`<span class="tag p1"${gAttr("citation_competitor")}>competitor</span>`,pct(own.competitor)],["<span${gAttr('owned_share_with_us')}>Owned share where we are named</span>",pct(C.owned_share_in_answers_with_us)],["<span${gAttr('answers_without_citations')}>Answers without citations</span>",pct(C.answers_without_citations_pct)]]), "", "all runs with citations", "c4", "screen_sources")
+   + sec("Earned subtypes", kv(Object.entries(C.earned_subtypes).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[esc(k),pct(v)])), "", "share of all citations", "c3", "citation_earned")
+   + sec("Owner share by model", tbl([{k:"m",h:"Model",g:"model_family",f:v=>esc(v.model)},{k:"n",h:"Citations",g:"top_domain_citations",n:true,f:v=>v.n.toLocaleString("en"),sort:v=>v.n},{k:"o",h:"Owned",g:"citation_owned",n:true,f:v=>pct(v.owned)},{k:"e",h:"Earned",g:"citation_earned",n:true,f:v=>pct(v.earned)},{k:"i",h:"Institutional",g:"citation_institutional",n:true,f:v=>pct(v.institutional)},{k:"c",h:"Competitor",n:true,f:v=>pct(v.competitor)}], (C.owner_shares_by_model||[]), {scroll:false}), "", "", "c5", "model_family")
+   + sec("Top domains", tbl([{k:"d",h:"Domain",g:"top_domain_citations",f:d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}">${esc(d.domain)}</a>`},{k:"o",h:"Owner",g:"citation_owned",f:d=>`${esc(d.owner)}${d.subtype?` <span class="note">${esc(d.subtype)}</span>`:""}`},{k:"c",h:"Citations",g:"top_domain_citations",n:true,f:d=>d.citations.toLocaleString("en"),sort:d=>d.citations},{k:"s",h:"Share",g:"domain_share",n:true,f:d=>pct(d.share),sort:d=>d.share},{k:"a",h:"Answers",g:"answers_scored",n:true,f:d=>pct(d.answers_pct)},{k:"u",h:"With us",g:"with_us_pct",n:true,f:d=>pct(d.with_us_pct)},{k:"cp",h:"With competitor",g:"citation_competitor",n:true,f:d=>pct(d.with_comp_pct)},{k:"m",h:"Top family · zone",f:d=>`${esc(cap(d.top_model))} · ${esc(d.top_zone)}`}], C.top_domains, {sortKey:"c"}), "", "", "c12", "top_domain_citations")
+   + sec("Gap list", tbl([{k:"d",h:"Domain",g:"top_domain_citations",f:g=>`<a href="#/sources?domain=${encodeURIComponent(g.domain)}">${esc(g.domain)}</a>`},{k:"g",h:"Gap",g:"gap_score",n:true,f:g=>g.gap_score,sort:g=>g.gap_score},{k:"cc",h:"Cites competitor / us",g:"gap_score",n:true,f:g=>`${g.cites_comp} / ${g.cites_us}`},{k:"cf",h:"Competitors fed",g:"gap_score",n:true,f:g=>g.competitors_fed},{k:"o",h:"Owner",g:"citation_owned",f:g=>`${esc(g.owner)}${g.subtype?` <span class="note">${esc(g.subtype)}</span>`:""}`},{k:"a",h:"Action",g:"task_execution",f:g=>esc(g.action_type)}], C.gap_list, {sortKey:"g"}), "Feeds competitor answers while silent about us.", "R1 C1", "c8", "gap_score")
+   + `<section class="tile c4 safety"><h2${gAttr("citation_adversarial")}>Adversarial sources <span>threat, excluded from lever</span></h2>${tbl([{k:"d",h:"Domain",g:"top_domain_citations",f:a=>esc(a.domain)},{k:"c",h:"Citations",g:"top_domain_citations",n:true,f:a=>a.citations,sort:a=>a.citations}], C.adversarial_sources, {sortKey:"c"})}</section>`
    + sec("Points", `<div id="pt"></div>`, dom?"":"Click a domain to list the points citing it.", dom?`citing ${esc(dom)}`:"all runs") + `</div>`;
   let keys = KEYS;
   if(dom){ const idx=(D.sources.domain_pids||{})[dom]; keys = idx ? idx.filter(k=>PTS[k]) : KEYS.filter(k=>(PTS[k].metrics.citations.top_domains||[]).some(t=>t.domain===dom)); }
@@ -417,10 +430,10 @@ function vPriorities(el, q){
   const rec = GROUPS.filter(g=>g.bucket==="recommendation").sort((a,b)=>(b.priority-a.priority)||((b.impact_reach?b.impact_reach.point:0)-(a.impact_reach?a.impact_reach.point:0)));
   const healthy = GROUPS.filter(g=>g.bucket==="healthy").sort((a,b)=>b.failure_code_share-a.failure_code_share);
   const label = GROUPS.filter(g=>g.bucket==="label");
-  el.innerHTML = page("Diagnosis & Prioritization", `Ranked by demand × gap × lever. ${esc(P.gap_note)}`) + `<div class="stack">`
-   + sec("Act on these", `<div class="lead">Topics where we lose answers and something can be done about it. ${rec.length} of ${GROUPS.length} topics. Tiers are the top, middle and bottom third of ${P.rows_total} client rows.</div>` + rec.map(recRow).join(""), "", "recommendations", "c12")
-   + sec("Checked, nothing to fix", `<div class="lead">The dominant code on these topics is not a failure, so no campaign was raised. Failure-code share shows how many of their points still carry some other failure — informational in v1, set aside deliberately.</div>` + healthy.map(healthyRow).join(""), "Ordered by failure-code share, highest first.", `healthy · ${healthy.length}`, "c7")
-   + `<section class="tile c5 safety"><h2>Awaiting clinician sign-off <span>label / medical · ${label.length}</span></h2><div class="lead">Label findings on these topics are held out of the client report and the Action Center until a clinician signs them off.</div>${label.map(labelRow).join("")}<div class="note">Findings reach the client report only after clinician sign-off. ${DASH.safety_label.findings.pending_signoff} findings are pending across all topics.</div></section>`
+  el.innerHTML = page("Diagnosis & Prioritization", `Ranked by demand × gap × lever. ${esc(P.gap_note)}`, "screen_priorities") + `<div class="stack">`
+   + sec("Act on these", `<div class="lead">Topics where we lose answers and something can be done about it. ${rec.length} of ${GROUPS.length} topics. Tiers are the top, middle and bottom third of ${P.rows_total} client rows.</div>` + rec.map(recRow).join(""), "", "recommendations", "c12", "priority")
+   + sec("Checked, nothing to fix", `<div class="lead">The dominant code on these topics is not a failure, so no campaign was raised. Failure-code share shows how many of their points still carry some other failure — informational in v1, set aside deliberately.</div>` + healthy.map(healthyRow).join(""), "Ordered by failure-code share, highest first.", `healthy · ${healthy.length}`, "c7", "failure_code_share")
+   + `<section class="tile c5 safety"><h2${gAttr("pending_signoff")}>Awaiting clinician sign-off <span>label / medical · ${label.length}</span></h2>${gLead("pending_signoff")}<div class="lead">Label findings on these topics are held out of the client report and the Action Center until a clinician signs them off.</div>${label.map(labelRow).join("")}<div class="note">Findings reach the client report only after clinician sign-off. ${DASH.safety_label.findings.pending_signoff} findings are pending across all topics.</div></section>`
    + sec("All points", `<div id="pt"></div>`, "", "every run") + `</div>`;
   bindRows(el);
   pointTable(document.getElementById("pt"), KEYS, {sortKey:"dem"});
@@ -432,18 +445,18 @@ function campChip(id){
 function recLines(g){
   const reach = g.impact_reach ? g.impact_reach.point : null;
   const why = g.failing_cause || g.dominant_cause;
-  return `<div class="rec-n"><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month · we lose <b>${shr0(g.gap)}</b> of answers on this topic · ${esc(g.source_label||"sources")} supply <b>${shr0(g.top_owner_lever)}</b> of the sources</div>
-  <div class="rec-w">Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div>
-  <div class="rec-f"><span>Affects up to <b>${reach==null?"—":Math.round(reach).toLocaleString("en")}</b> searches a month</span><span>·</span><span>Priority <b>${g.priority}</b></span>${g.campaign_ids.length?`<span>·</span><span>Campaigns:</span>${g.campaign_ids.map(campChip).join("")}`:`<span>·</span><span>${esc(g.no_campaign_reason||"")}</span>`}</div>`;
+  return `<div class="rec-n"><span${gAttr("demand")}><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month</span> · <span${gAttr("topic_gap")}>we lose <b>${shr0(g.gap)}</b> of answers on this topic</span> · <span${gAttr("lever")}>${esc(g.source_label||"sources")} supply <b>${shr0(g.top_owner_lever)}</b> of the sources</span></div>
+  <div class="rec-w"${gAttr("cause")}>Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div>
+  <div class="rec-f"><span${gAttr("impact_reach")}>Affects up to <b>${reach==null?"—":Math.round(reach).toLocaleString("en")}</b> searches a month</span><span>·</span><span>Priority <b>${g.priority}</b></span>${g.campaign_ids.length?`<span>·</span><span>Campaigns:</span>${g.campaign_ids.map(campChip).join("")}`:`<span>·</span><span${gAttr("no_campaign")}>${esc(g.no_campaign_reason||"")}</span>`}</div>`;
 }
 function recRow(g){
   return `<div class="rec" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}" title="score ${g.owner_rows[0]?g.owner_rows[0].score:""} · ${esc(g.group_id)}">
-    <div class="rec-t"><span class="tag p${g.priority}">${g.priority}</span> ${esc(g.headline)}</div>${recLines(g)}</div>`;
+    <div class="rec-t"><span class="tag p${g.priority}"${gAttr("priority")}>${g.priority}</span> ${esc(g.headline)}</div>${recLines(g)}</div>`;
 }
 function healthyRow(g){
   return `<div class="hz" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}" title="${esc(g.group_id)}">
     <div class="s">${esc(g.subject_label)}</div><div class="n">${Math.round(g.demand).toLocaleString("en")}/mo</div>
-    <div class="d">${esc(g.dominant_code_label)} · ${g.n_prompts} prompts</div><div class="n">${shr0(g.failure_code_share)} failure codes</div></div>`;
+    <div class="d">${esc(g.dominant_code_label)} · ${g.n_prompts} prompts</div><div class="n"${gAttr("failure_code_share")}>${shr0(g.failure_code_share)} failure codes</div></div>`;
 }
 function labelRow(g){
   const held = g.held_task_ids.map(id=>heldById[id]).filter(Boolean);
@@ -459,28 +472,28 @@ function groupView(el, g){
   const why = g.failing_cause || g.dominant_cause;
   const camps = g.campaign_ids.map(id=>campById[id]).filter(Boolean).concat(g.held_task_ids.map(id=>heldById[id]).filter(Boolean));
   const ownerCols = [
-    {k:"o",h:"Where",c:"cw",f:o=>`<b>${esc(o.owner)}</b><div class="z">${esc(o.source_label||"")}${o.top_domain?` · ${esc(o.top_domain)}`:""}</div>`},
-    {k:"w",h:"What to do",c:"cq",f:o=>esc(o.what)},
-    {k:"lv",h:"Lever",f:o=>bar((o.lever||0)*100),sort:o=>o.lever||0},
-    {k:"cp",h:"Ceiling",n:true,f:o=>o.ceiling_pp==null?"—":`${f1(o.ceiling_pp)} pp`,sort:o=>o.ceiling_pp||0},
-    {k:"ep",h:"Expected",n:true,f:o=>o.expected_pp?`+${f1(o.expected_pp[0])} to +${f1(o.expected_pp[1])} pp`:"not estimated"},
-    {k:"wh",h:"Who",f:o=>`${esc(o.who)}<div class="z">${esc(o.speed||"")}</div>`},
-    {k:"st",h:"Campaign",c:"c",f:o=>o.task_id?campChip(o.task_id):`<span class="tag mute">none</span>`},
+    {k:"o",h:"Where",g:"lever",c:"cw",f:o=>`<b>${esc(o.owner)}</b><div class="z">${esc(o.source_label||"")}${o.top_domain?` · ${esc(o.top_domain)}`:""}</div>`},
+    {k:"w",h:"What to do",g:"task_execution",c:"cq",f:o=>esc(o.what)},
+    {k:"lv",h:"Lever",g:"lever",f:o=>bar((o.lever||0)*100),sort:o=>o.lever||0},
+    {k:"cp",h:"Ceiling",g:"ceiling_pp",n:true,f:o=>o.ceiling_pp==null?"—":`${f1(o.ceiling_pp)} pp`,sort:o=>o.ceiling_pp||0},
+    {k:"ep",h:"Expected",g:"expected_pp",n:true,f:o=>o.expected_pp?`+${f1(o.expected_pp[0])} to +${f1(o.expected_pp[1])} pp`:"not estimated"},
+    {k:"wh",h:"Who",g:"who",f:o=>`${esc(o.who)}<div class="z">${esc(o.speed||"")}</div>`},
+    {k:"st",h:"Campaign",g:"task_status",c:"c",f:o=>o.task_id?campChip(o.task_id):`<span class="tag mute">none</span>`},
   ];
   el.innerHTML = `<div class="prevnext"><a class="backlink" href="#/priorities">← All topics</a><span class="count">${esc(g.group_id)}</span></div>`
    + `<h2 class="page">${esc(g.headline)}</h2>`
-   + `<div style="margin-bottom:16px">${g.bucket==="recommendation"?recLines(g):`<div class="rec-n"><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month · we lose <b>${shr0(g.gap)}</b> of answers on this topic · ${g.n_prompts} prompts</div><div class="rec-w">Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div><div class="rec-f">${esc(g.no_campaign_reason||"")}</div>`}</div>`
+   + `<div style="margin-bottom:16px">${g.bucket==="recommendation"?recLines(g):`<div class="rec-n"><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month · we lose <b>${shr0(g.gap)}</b> of answers on this topic · ${g.n_prompts} prompts</div><div class="rec-w"${gAttr("cause")}>Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div><div class="rec-f">${esc(g.no_campaign_reason||"")}</div>`}</div>`
    + `<div class="stack">`
-   + sec("Where the lever is", tbl(ownerCols, g.owner_rows, {sortKey:"lv", scroll:false}), `Lever is the share of this topic's sources we can act on; ceiling is the presence it could add, in percentage points. ${esc((g.impact_reach||{}).caption||"")}`, "owners", "c12")
-   + sec("What happened", distBlock(g.code_distribution, g.n_prompts), `Dominant code: ${esc(g.dominant_code_label)}. Failure codes on ${shr0(g.failure_code_share)} of points.`, `${g.n_prompts} points`, "c6")
-   + sec("Why", distBlock(g.cause_distribution, g.n_prompts), why.confidence?`Dominant cause among failing points: ${esc(why.label||why.code)} · confidence ${esc(why.confidence)}.`:"", "cause", "c6")
-   + sec("Top sources on this topic", tbl([{k:"d",h:"Domain",f:t=>`<a href="#/sources?domain=${encodeURIComponent(t.domain)}">${esc(t.domain)}</a>`},{k:"o",h:"Owner",f:t=>`${esc(t.owner)}${t.subtype?` <span class="note">${esc(t.subtype)}</span>`:""}`},{k:"c",h:"Citations",n:true,f:t=>t.citations,sort:t=>t.citations},{k:"u",h:"In answers naming us",n:true,f:t=>t.with_us,sort:t=>t.with_us}], g.top_domains, {scroll:false}), "", "cited by this topic's answers", "c6")
-   + sec("Campaigns from this topic", camps.length ? camps.map(t=>`<div class="hz" data-href="#/actions?task=${encodeURIComponent(t.task_id)}"><div class="s">${esc(t.owner)} → ${esc(t.who)}</div><div class="n"><span class="tag ${t.awaiting_label_signoff?"p1":"mute"}">${esc(t.awaiting_label_signoff?"awaiting sign-off":(t.status||"open").replace("_"," "))}</span></div><div class="d">${esc(t.what)}</div><div class="n">${t.impact.ceiling_pp==null?"":f1(t.impact.ceiling_pp)+" pp"}</div></div>`).join("") : `<div class="lead">${esc(g.no_campaign_reason||"")}</div>`, "", `${camps.length}`, "c6")
+   + sec("Where the lever is", tbl(ownerCols, g.owner_rows, {sortKey:"lv", scroll:false}), `Lever is the share of this topic's sources we can act on; ceiling is the presence it could add, in percentage points. ${esc((g.impact_reach||{}).caption||"")}`, "owners", "c12", "lever")
+   + sec("What happened", distBlock(g.code_distribution, g.n_prompts), `Dominant code: ${esc(g.dominant_code_label)}. Failure codes on ${shr0(g.failure_code_share)} of points.`, `${g.n_prompts} points`, "c6", "code")
+   + sec("Why", distBlock(g.cause_distribution, g.n_prompts), why.confidence?`Dominant cause among failing points: ${esc(why.label||why.code)} · confidence ${esc(why.confidence)}.`:"", "cause", "c6", "cause")
+   + sec("Top sources on this topic", tbl([{k:"d",h:"Domain",g:"top_domain_citations",f:t=>`<a href="#/sources?domain=${encodeURIComponent(t.domain)}">${esc(t.domain)}</a>`},{k:"o",h:"Owner",g:"citation_owned",f:t=>`${esc(t.owner)}${t.subtype?` <span class="note">${esc(t.subtype)}</span>`:""}`},{k:"c",h:"Citations",g:"top_domain_citations",n:true,f:t=>t.citations,sort:t=>t.citations},{k:"u",h:"In answers naming us",g:"with_us_pct",n:true,f:t=>t.with_us,sort:t=>t.with_us}], g.top_domains, {scroll:false}), "", "cited by this topic's answers", "c6", "top_domain_citations")
+   + sec("Campaigns from this topic", camps.length ? camps.map(t=>`<div class="hz" data-href="#/actions?task=${encodeURIComponent(t.task_id)}"><div class="s">${esc(t.owner)} → ${esc(t.who)}</div><div class="n"><span class="tag ${t.awaiting_label_signoff?"p1":"mute"}">${esc(t.awaiting_label_signoff?"awaiting sign-off":(t.status||"open").replace("_"," "))}</span></div><div class="d">${esc(t.what)}</div><div class="n">${t.impact.ceiling_pp==null?"":f1(t.impact.ceiling_pp)+" pp"}</div></div>`).join("") : `<div class="lead">${esc(g.no_campaign_reason||"")}</div>`, "", `${camps.length}`, "c6", "task_status")
    + sec("Points", `<div id="pt"></div>`, "", "ordered by rank score") + `</div>`;
   bindRows(el);
   pointTable(document.getElementById("pt"), g.pids, {caption:g.group_id});
 }
-function fixCard(c, link){ return `<div class="fx"><div class="fxh"><span class="tag ${c.platform_execution==="AGENT"?"us":c.platform_execution==="AGENT+APPROVE"?"warn":"ink"}">${esc(c.platform_execution)}</span><span class="tag ${c.type==="LABEL-MEDICAL"?"bad":"mute"}">${esc(c.type)}</span><span class="tag ${c.mlr==="medical-review"?"warn":"ok"}">${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span><span>${esc(c.owner)} · ${esc(c.speed)}</span>${link?`<a href="${link}" style="margin-left:auto;color:var(--us);text-decoration:none">${esc(link.split("/").pop().replace("%7C"," · "))}</a>`:""}</div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}${c.agent?`<div class="fxl"><b>Execution</b> ${esc(c.agent)}</div>`:""}</div>`; }
+function fixCard(c, link){ return `<div class="fx"><div class="fxh"><span class="tag ${c.platform_execution==="AGENT"?"us":c.platform_execution==="AGENT+APPROVE"?"warn":"ink"}">${esc(c.platform_execution)}</span><span class="tag ${c.type==="LABEL-MEDICAL"?"bad":"mute"}">${esc(c.type)}</span><span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span><span>${esc(c.owner)} · ${esc(c.speed)}</span>${link?`<a href="${link}" style="margin-left:auto;color:var(--us);text-decoration:none">${esc(link.split("/").pop().replace("%7C"," · "))}</a>`:""}</div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}${c.agent?`<div class="fxl"><b>Execution</b> ${esc(c.agent)}</div>`:""}</div>`; }
 function vActions(el, q){
   const st = JSON.parse(localStorage.getItem("citere_task_status")||"{}");
   const A=DASH.action_center.counters;
@@ -488,9 +501,9 @@ function vActions(el, q){
   const tasks = D.campaigns.slice().map(t=>({...t, ui_status: st[t.task_id]?.status || t.status})).sort((a,b)=>(order[a.ui_status]-order[b.ui_status])||(b.score-a.score));
   const groups = ["open","in_progress","done","dismissed"];
   const card = ref => fixCard(PTS[ref.pid_run].fixes[ref.fix_idx], `#/point/${encodeURIComponent(ref.pid_run)}`);
-  const camp = t => { const i=t.impact; return `<div class="camp" data-task="${t.task_id}"><div class="ch" onclick="this.nextElementSibling.classList.toggle('hide')"><span class="tag p${t.priority}">${t.priority}</span><span class="t">${esc((groupById[t.group_id]||{}).subject_label || t.group_id)} → ${esc(t.owner)}</span><select class="status-sel" data-id="${t.task_id}" onclick="event.stopPropagation()">${groups.map(s=>`<option value="${s}" ${s===t.ui_status?"selected":""}>${s.replace("_"," ")}</option>`).join("")}</select><span class="meta"><span>${esc(t.who)} · ${esc(t.execution)} · ${esc(t.speed)}</span><span>losing ${shr0(t.why.gap)} (${esc(t.why.dominant_run)}) · lever ${shr0(t.why.lever)} · reach up to ${(+i.ceiling_pp).toFixed(0)} pp · expected ${i.expected_pp?`+${(+i.expected_pp[0]).toFixed(0)} to +${(+i.expected_pp[1]).toFixed(0)} pp`:"not estimated"} (${esc(i.basis)}) · demand ${fmtK(i.demand)}/mo</span>${st[t.task_id]?'<span class="tag warn">not synced to registry</span>':""}</span></div><div class="body hide"><div class="fxl" style="margin-bottom:6px"><b>What</b> ${esc(t.what)}</div><div class="fxl" style="margin-bottom:6px"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc((groupById[t.group_id]||{}).headline || t.group_id)}</a></div><div class="fxl" style="margin-bottom:6px"><b>Cause</b> ${(t.cause||[]).map(c=>`${esc(c.code)} (${c.n})`).join(", ")}</div><div class="fxl" style="margin-bottom:10px"><b>Where</b> ${(t.where||[]).map(w=>`${esc(w.domain)} (${w.citations})`).join(", ")}</div><div class="kicker" style="margin-bottom:4px">Fix cards · client · ${t.fix_card_refs.length}</div>${t.fix_card_refs.slice(0,40).map(card).join("")}${t.fix_card_refs.length>40?`<div class="note">${t.fix_card_refs.length-40} more cards on the points of this group.</div>`:""}</div></div>`; };
-  el.innerHTML = page("Action Center", "Status changes are saved in this browser only and are not synced to the registry.") + `<div class="stack">`
-   + sec("Counters", `<div class="row top"><div><div class="mid">${A.open_total}<small>open</small></div><div class="note">${A.open_auto} automated, ${A.open_manual} for your team</div></div><div><div class="mid">${A.in_progress}<small>in progress</small></div></div><div><div class="mid">${A.done_this_cycle}<small>done this cycle</small></div></div><div><div class="mid">${A.dismissed_total}<small>dismissed</small></div></div><div style="flex:1;min-width:200px">${kv(Object.entries(A.by_who).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[esc(k),v]))}</div></div>`, `${A.label_tasks_awaiting_signoff} label tasks await sign-off; ${A.citere_tasks} tasks are Citere's own.`, "registry", "c12")
+  const camp = t => { const i=t.impact; return `<div class="camp" data-task="${t.task_id}"><div class="ch" onclick="this.nextElementSibling.classList.toggle('hide')"><span class="tag p${t.priority}">${t.priority}</span><span class="t">${esc((groupById[t.group_id]||{}).subject_label || t.group_id)} → ${esc(t.owner)}</span><select class="status-sel" data-id="${t.task_id}" onclick="event.stopPropagation()">${groups.map(s=>`<option value="${s}" ${s===t.ui_status?"selected":""}>${s.replace("_"," ")}</option>`).join("")}</select><span class="meta"><span>${esc(t.who)} · ${esc(t.execution)} · <span${gAttr("speed")}>${esc(t.speed)}</span></span><span>losing ${shr0(t.why.gap)} (${esc(t.why.dominant_run)}) · lever ${shr0(t.why.lever)} · reach up to ${(+i.ceiling_pp).toFixed(0)} pp · expected ${i.expected_pp?`+${(+i.expected_pp[0]).toFixed(0)} to +${(+i.expected_pp[1]).toFixed(0)} pp`:"not estimated"} (${esc(i.basis)}) · demand ${fmtK(i.demand)}/mo</span>${st[t.task_id]?'<span class="tag warn">not synced to registry</span>':""}</span></div><div class="body hide"><div class="fxl" style="margin-bottom:6px"><b>What</b> ${esc(t.what)}</div><div class="fxl" style="margin-bottom:6px"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc((groupById[t.group_id]||{}).headline || t.group_id)}</a></div><div class="fxl" style="margin-bottom:6px"><b>Cause</b> ${(t.cause||[]).map(c=>`${esc(c.code)} (${c.n})`).join(", ")}</div><div class="fxl" style="margin-bottom:10px"><b>Where</b> ${(t.where||[]).map(w=>`${esc(w.domain)} (${w.citations})`).join(", ")}</div><div class="kicker" style="margin-bottom:4px">Fix cards · client · ${t.fix_card_refs.length}</div>${t.fix_card_refs.slice(0,40).map(card).join("")}${t.fix_card_refs.length>40?`<div class="note">${t.fix_card_refs.length-40} more cards on the points of this group.</div>`:""}</div></div>`; };
+  el.innerHTML = page("Action Center", "Status changes are saved in this browser only and are not synced to the registry.", "screen_actions") + `<div class="stack">`
+   + sec("Counters", `<div class="row top"><div><div class="mid"${gAttr("open_tasks")}>${A.open_total}<small>open</small></div><div class="note">${A.open_auto} automated, ${A.open_manual} for your team</div></div><div><div class="mid">${A.in_progress}<small>in progress</small></div></div><div><div class="mid">${A.done_this_cycle}<small>done this cycle</small></div></div><div><div class="mid">${A.dismissed_total}<small>dismissed</small></div></div><div style="flex:1;min-width:200px">${kv(Object.entries(A.by_who).sort((a,b)=>b[1]-a[1]).map(([k,v])=>[esc(k),v]))}</div></div>`, `${A.label_tasks_awaiting_signoff} label tasks await sign-off; ${A.citere_tasks} tasks are Citere's own.`, "registry", "c12", "open_tasks")
    + groups.map(g=>{ const list=tasks.filter(t=>t.ui_status===g); return list.length ? sec(cap(g.replace("_"," ")), list.map(camp).join(""), "", `${list.length}`, "c12") : ""; }).join("")
    + `<section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('citere').classList.toggle('hide')">Citere monitoring (${D.citere_tasks.registry_tasks.length} registry tasks, ${Object.values(D.citere_tasks.track_cards_by_group).reduce((s,a)=>s+a.length,0)} TRACK cards)</button><div id="citere" class="hide">${D.citere_tasks.registry_tasks.map(t=>`<div class="fxl">${esc(t.group_id)} → ${esc(t.owner)} · P${t.priority} · ${esc(t.what)}</div>`).join("")}${Object.entries(D.citere_tasks.track_cards_by_group).map(([g,refs])=>`<div style="margin-top:10px"><div class="title">${esc(g)} <span class="note">${refs.length} TRACK cards</span></div>${refs.slice(0,3).map(card).join("")}</div>`).join("")}</div></section></div>`;
   const want = q && q.get("task");
@@ -501,18 +514,18 @@ function vSafety(el, q){
   const L=DASH.safety_label; const t=q.get("target"), s=q.get("surface");
   const findings = D.label_findings;
   const lightText = {red:"Dangerous errors found", yellow:"Warnings found", green:"No critical findings"}[L.traffic_light]||L.traffic_light;
-  el.innerHTML = page("Safety / Label", "R4, web surfaces. Pending findings are excluded from any count labelled confirmed.") + `<div class="stack">`
-   + `<section class="tile c4 safety ${L.traffic_light}"><h2>Traffic light</h2><div class="light ${L.traffic_light}">${lightText}</div><div class="big">${L.findings.total}<small>findings</small></div>${kv([["Said something dangerous",L.findings.dangerous],["Omitted a required warning",L.findings.incomplete],["Awaiting clinical sign-off",L.findings.pending_signoff],["Confirmed",L.findings.confirmed],["Answers with a critical error",`${pct(L.critical_answer_share)} · ${ci(L.critical_ci95)}`]])}<div class="note">${esc(L.findings.note)}</div></section>`
+  el.innerHTML = page("Safety / Label", "R4, web surfaces. Pending findings are excluded from any count labelled confirmed.", "screen_safety") + `<div class="stack">`
+   + `<section class="tile c4 safety ${L.traffic_light}"><h2${gAttr("traffic_light")}>Traffic light</h2>${gLead("traffic_light")}<div class="light ${L.traffic_light}"${gAttr("traffic_light")}>${lightText}</div><div class="big"${gAttr("findings_total")}>${L.findings.total}<small>findings</small></div>${kv([["Said something dangerous",L.findings.dangerous],["<span${gAttr('findings_incomplete')}>Omitted a required warning</span>",L.findings.incomplete],["Awaiting clinical sign-off",L.findings.pending_signoff],["Confirmed",L.findings.confirmed],["Answers with a critical error",`${pct(L.critical_answer_share)} · ${ci(L.critical_ci95)}`]])}<div class="note">${esc(L.findings.note)}</div></section>`
    + sec("Findings", tbl([
-      {k:"c",h:"Class",c:"c",f:f=>`<span class="tag ${f.class==="DANGEROUS"?"bad":"warn"}">${f.class.toLowerCase()}</span>`,sort:f=>f.class},
-      {k:"cell",h:"Cell",f:f=>`<a href="#/safety?target=${encodeURIComponent(f.target)}&surface=${encodeURIComponent(f.surface)}">${esc(f.target)} × ${esc(f.surface)}</a>`},
-      {k:"s",h:"Critical",n:true,f:f=>shr(f.critical_share),sort:f=>f.critical_share},{k:"n",h:"n",n:true,f:f=>f.n},{k:"st",h:"Stability",n:true,f:f=>f1(f.stability)},{k:"ls",h:"Label sections",f:f=>esc((f.label_sections||[]).join(", "))},
-      {k:"so",h:"Sign-off",c:"c",f:f=>`<span class="tag ${f.signoff_status==="confirmed"?"ok":"p1"}">${f.signoff_status==="pending"?"awaiting sign-off":esc(f.signoff_status)}</span>${f.single_run?' <span class="tag mute">single run</span>':""}`},
-      {k:"cv",h:"Caveat",f:f=>`<span class="note" title="${esc(f.scoring_caveat)}">${esc((f.scoring_caveat||"").slice(0,80))}…${(f.flagged_for_review||[]).length?` <span class="tag mute">${f.flagged_for_review.length} flagged</span>`:""}</span>`}], findings, {sortKey:"s"}), esc(L.scoring_caveat), "cells target × surface", "c8")
-   + sec("By surface", tbl([{k:"s",h:"Surface",f:d=>`${esc(d.surface)}${d.single_run?' <span class="tag mute">single run</span>':""}`},{k:"n",h:"Answers",n:true,f:d=>d.n},{k:"c",h:"Critical",f:d=>bar(d.critical_share,"t-bad"),sort:d=>d.critical_share},{k:"f",h:"Findings",n:true,f:d=>d.findings},{k:"w",h:"Worst class",f:d=>esc((d.worst_class||"—").toLowerCase())},{k:"x",h:"Excluded",n:true,f:d=>pct(d.excluded_pct)}], L.by_surface, {sortKey:"c"}), "", "", "c6")
-   + sec("Top label sections", tbl([{k:"s",h:"Section",f:d=>esc(d.section)},{k:"t",h:"Targets",f:d=>esc((d.targets||[d.target]).join(", "))},{k:"n",h:"Critical answers",n:true,f:d=>d.critical_answers}], L.top_label_sections), "Error types among critical answers: "+Object.entries(L.error_types).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · "), "by critical answers", "c6")
-   + sec("By target", tbl([{k:"t",h:"Target",f:d=>esc(d.target)},{k:"tier",h:"Tier",c:"c",f:d=>`<span class="tag ${d.tier==="CRITICAL"?"bad":d.tier==="MAJOR"?"warn":"mute"}">${esc(d.tier.toLowerCase())}</span>`,sort:d=>d.tier},{k:"ls",h:"Label section",f:d=>esc(d.label_section)},{k:"n",h:"Answers",n:true,f:d=>d.n,sort:d=>d.n},{k:"c",h:"Critical",f:d=>bar(d.critical_share,"t-bad"),sort:d=>d.critical_share},{k:"d",h:"Dangerous",n:true,f:d=>pct(d.dangerous_share),sort:d=>d.dangerous_share},{k:"fs",h:"Findings on",f:d=>esc((d.findings_surfaces||[]).join(", "))}], D.breakdowns.safety_by_target, {sortKey:"c"}), "", "R4", "c7")
-   + sec("Unstable cells", tbl([{k:"t",h:"Target",f:d=>esc(d.target)},{k:"s",h:"Surface",f:d=>esc(d.surface)},{k:"n",h:"n",n:true,f:d=>d.n},{k:"c",h:"Critical",n:true,f:d=>shr(d.critical_share),sort:d=>d.critical_share}], D.breakdowns.safety_unstable_cells, {sortKey:"c"}), "Critical share above zero but below the finding threshold.", "", "c5")
+      {k:"c",h:"Class",g:"sev",c:"c",f:f=>`<span class="tag ${f.class==="DANGEROUS"?"bad":"warn"}">${f.class.toLowerCase()}</span>`,sort:f=>f.class},
+      {k:"cell",h:"Cell",g:"label_section",f:f=>`<a href="#/safety?target=${encodeURIComponent(f.target)}&surface=${encodeURIComponent(f.surface)}">${esc(f.target)} × ${esc(f.surface)}</a>`},
+      {k:"s",h:"Critical",g:"critical_answer_share",n:true,f:f=>shr(f.critical_share),sort:f=>f.critical_share},{k:"n",h:"n",g:"answers_scored",n:true,f:f=>f.n},{k:"st",h:"Stability",g:"stability",n:true,f:f=>f1(f.stability)},{k:"ls",h:"Label sections",g:"label_section",f:f=>esc((f.label_sections||[]).join(", "))},
+      {k:"so",h:"Sign-off",g:"pending_signoff",c:"c",f:f=>`<span class="tag ${f.signoff_status==="confirmed"?"ok":"p1"}">${f.signoff_status==="pending"?"awaiting sign-off":esc(f.signoff_status)}</span>${f.single_run?' <span class="tag mute">single run</span>':""}`},
+      {k:"cv",h:"Caveat",g:"findings_total",f:f=>`<span class="note" title="${esc(f.scoring_caveat)}">${esc((f.scoring_caveat||"").slice(0,80))}…${(f.flagged_for_review||[]).length?` <span class="tag mute">${f.flagged_for_review.length} flagged</span>`:""}</span>`}], findings, {sortKey:"s"}), esc(L.scoring_caveat), "cells target × surface", "c8", "findings_total")
+   + sec("By surface", tbl([{k:"s",h:"Surface",g:"surface",f:d=>`${esc(d.surface)}${d.single_run?' <span class="tag mute">single run</span>':""}`},{k:"n",h:"Answers",g:"answers_scored",n:true,f:d=>d.n},{k:"c",h:"Critical",g:"critical_answer_share",f:d=>bar(d.critical_share,"t-bad"),sort:d=>d.critical_share},{k:"f",h:"Findings",g:"findings_total",n:true,f:d=>d.findings},{k:"w",h:"Worst class",g:"findings_dangerous",f:d=>esc((d.worst_class||"—").toLowerCase())},{k:"x",h:"Excluded",g:"answers_excluded",n:true,f:d=>pct(d.excluded_pct)}], L.by_surface, {sortKey:"c"}), "", "", "c6", "critical_answer_share")
+   + sec("Top label sections", tbl([{k:"s",h:"Section",g:"label_section",f:d=>esc(d.section)},{k:"t",h:"Targets",g:"label_section",f:d=>esc((d.targets||[d.target]).join(", "))},{k:"n",h:"Critical answers",g:"critical_answer_share",n:true,f:d=>d.critical_answers}], L.top_label_sections), "Error types among critical answers: "+Object.entries(L.error_types).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · "), "by critical answers", "c6", "label_section")
+   + sec("By target", tbl([{k:"t",h:"Target",g:"label_section",f:d=>esc(d.target)},{k:"tier",h:"Tier",g:"label_section",c:"c",f:d=>`<span class="tag ${d.tier==="CRITICAL"?"bad":d.tier==="MAJOR"?"warn":"mute"}">${esc(d.tier.toLowerCase())}</span>`,sort:d=>d.tier},{k:"ls",h:"Label section",g:"label_section",f:d=>esc(d.label_section)},{k:"n",h:"Answers",g:"answers_scored",n:true,f:d=>d.n,sort:d=>d.n},{k:"c",h:"Critical",g:"critical_answer_share",f:d=>bar(d.critical_share,"t-bad"),sort:d=>d.critical_share},{k:"d",h:"Dangerous",g:"findings_dangerous",n:true,f:d=>pct(d.dangerous_share),sort:d=>d.dangerous_share},{k:"fs",h:"Findings on",g:"findings_total",f:d=>esc((d.findings_surfaces||[]).join(", "))}], D.breakdowns.safety_by_target, {sortKey:"c"}), "", "R4", "c7", "critical_answer_share")
+   + sec("Unstable cells", tbl([{k:"t",h:"Target",g:"label_section",f:d=>esc(d.target)},{k:"s",h:"Surface",g:"surface",f:d=>esc(d.surface)},{k:"n",h:"n",g:"answers_scored",n:true,f:d=>d.n},{k:"c",h:"Critical",g:"critical_answer_share",n:true,f:d=>shr(d.critical_share),sort:d=>d.critical_share}], D.breakdowns.safety_unstable_cells, {sortKey:"c"}), "Critical share above zero but below the finding threshold.", "", "c5", "unstable_cell")
    + sec("Points", `<div id="pt"></div>`, "", t?`R4 answers in cell ${esc(t)} × ${esc(s||"")}`:"R4") + `</div>`;
   let keys = KEYS.filter(k=>PTS[k].run==="R4");
   if(t){ const f=findings.find(x=>x.target===t&&x.surface===s); if(f) keys = f.pids; }
@@ -541,15 +554,15 @@ function level3(el, key){
   const nav = `<div class="prevnext">${i>0?`<a href="#/point/${encodeURIComponent(list[i-1])}">← Previous</a>`:""}<a href="javascript:history.back()">Back</a>${i>=0&&i<list.length-1?`<a href="#/point/${encodeURIComponent(list[i+1])}">Next →</a>`:""}<span class="count">${i>=0?`${i+1} of ${list.length} in the current list`:""}</span></div>`;
   const m = p.metrics;
   const runspec = Object.entries(m.run_specific||{}).map(([k,v])=>[esc(k), esc(Object.entries(v).map(([a,b])=>`${a} ×${b}`).join(", "))]);
-  el.innerHTML = nav + `<div class="kicker">${esc(p.pid)} · ${esc(p.run)} · ${esc(p.class)} · <a href="#/priorities?group=${encodeURIComponent(p.group_id)}" style="color:var(--us);text-decoration:none;text-transform:none;letter-spacing:0">${esc(p.group_id)}</a></div><h2 class="page">${esc(p.question)}</h2><div class="subline" style="margin-bottom:6px">${esc(p.zone)} · ${esc(p.topic)}${p.subtopic?` / ${esc(p.subtopic)}`:""} · ${esc(p.patient_stage)} · ${esc(p.query_type)}</div><div style="margin-bottom:16px"><span class="tag ${SEVTAG[p.sev]||"mute"}">${esc(p.sev)}</span> ${titleCause(p.code,p.code_label,p.cause)}${p.cause&&p.cause.evidence?`<ul class="evid note">${p.cause.evidence.map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`:""}</div>
+  el.innerHTML = nav + `<div class="kicker">${esc(p.pid)} · ${esc(p.run)} · ${esc(p.class)} · <a href="#/priorities?group=${encodeURIComponent(p.group_id)}" style="color:var(--us);text-decoration:none;text-transform:none;letter-spacing:0">${esc(p.group_id)}</a></div><h2 class="page"${gAttr("screen_point")}>${esc(p.question)}</h2>${gLead("screen_point")}<div class="subline" style="margin-bottom:6px">${esc(p.zone)} · ${esc(p.topic)}${p.subtopic?` / ${esc(p.subtopic)}`:""} · ${esc(p.patient_stage)} · ${esc(p.query_type)}</div><div style="margin-bottom:16px"><span class="tag ${SEVTAG[p.sev]||"mute"}"${gAttr("sev")}>${esc(p.sev)}</span> ${titleCause(p.code,p.code_label,p.cause)}${p.cause&&p.cause.evidence?`<ul class="evid note">${p.cause.evidence.map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`:""}</div>
   <div class="stack">
-    ${sec("Metrics", `<div class="row top"><div><div class="mid">${m.we_present_share==null?"—":shr0(m.we_present_share)}<small>named</small></div></div><div><div class="mid">${f1(m.avg_position)}<small>position</small></div></div><div><div class="mid">${m.answers-m.answers_excluded}<small>scored answers</small></div><div class="note">${m.answers_excluded?m.answers_excluded+" excluded as unscoreable":"none excluded"}</div></div></div>` + tbl([{k:"f",h:"Family",f:r=>esc(cap(r.model_family))},{k:"a",h:"Answers",n:true,f:r=>r.answers},{k:"w",h:"We present",n:true,f:r=>r.we_present},{k:"p",h:"Position",n:true,f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",n:true,f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",n:true,f:r=>f1(r.answer_sentiment)}], m.by_model) + `<div></div>` + kv([["INN only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)],["Competitors present",Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(", ")||"none"],["Citations",`${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}`],...runspec]), "", "from the pipeline", "c7")}
-    ${sec("Sources", `<div class="srclist">${(m.citations.top_domains||[]).map(d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}">${esc(d.domain)} <span>×${d.n} · ${esc(d.owner)}${d.subtype?"/"+esc(d.subtype):""}</span></a>`).join("")||"<span class='note'>no citations</span>"}</div>` + (p.serp?`<dl class="dl" style="margin-top:10px"><dt>Google</dt><dd>${p.serp.our?"we rank #"+p.serp.our:"we are absent"}; competitor ${p.serp.comp?"#"+p.serp.comp:"absent"}</dd><dt>Occupiers</dt><dd>${(p.serp.occ||[]).map(esc).join(", ")||"—"}</dd><dt>Overlap</dt><dd>${p.serp.ov??"—"}%</dd></dl>`:"") + (p.inventory?`<dl class="dl" style="margin-top:10px"><dt>Our page</dt><dd>${esc(p.inventory.v)}${p.inventory.url?` · <a href="${esc(p.inventory.url)}" target="_blank" rel="noopener">${esc(p.inventory.url)}</a>`:""}</dd><dt>Missing</dt><dd>${esc(p.inventory.miss||"—")}</dd></dl>`:""), "", "top domains, SERP snapshot, inventory", "c5")}
-    ${sec("Diagnosis", `<div class="para">${(p.diagnosis_text||[]).map(s=>`<p>${esc(s)}</p>`).join("")}</div>`, "", "platform export", "c12")}
-    ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["Basis",esc(p.demand.basis)],["Prompt share",f1(p.demand_extra.prompt_share)],["AI-native",p.demand_extra.ai_native?"yes":"no"]]), "Prompt share and AI-native come from the platform export.", "", "c4")}
-    ${sec("Evidence", `<ul class="evid">${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`, "", "platform export", "c8")}
-    ${sec("Answers", `<button class="btn ghost" id="loadAns" type="button">Load answers</button><div id="ansBox"></div>`, "Full texts from the corpus, loaded on demand. Excluded answers are flagged; their verdicts are not counted.", "one per model × repeat", "c12")}
-    ${sec("Fix cards", p.fixes.filter(c=>c.audience==="client").map(c=>fixCard(c)).join("")||"<span class='note'>none</span>", "", "client", "c12")}
+    ${sec("Metrics", `<div class="row top"><div><div class="mid"${gAttr("presence_share")}>${m.we_present_share==null?"—":shr0(m.we_present_share)}<small>named</small></div></div><div><div class="mid">${f1(m.avg_position)}<small>position</small></div></div><div><div class="mid"${gAttr("answers_scored")}>${m.answers-m.answers_excluded}<small>scored answers</small></div><div class="note">${m.answers_excluded?m.answers_excluded+" excluded as unscoreable":"none excluded"}</div></div></div>` + tbl([{k:"f",h:"Family",g:"model_family",f:r=>esc(cap(r.model_family))},{k:"a",h:"Answers",g:"answers_scored",n:true,f:r=>r.answers},{k:"w",h:"We present",g:"presence_share",n:true,f:r=>r.we_present},{k:"p",h:"Position",g:"avg_position",n:true,f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.answer_sentiment)}], m.by_model) + `<div></div>` + kv([["INN only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)],["Competitors present",Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(", ")||"none"],["Citations",`${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}`],...runspec]), "", "from the pipeline", "c7", "presence_share")}
+    ${sec("Sources", `<div class="srclist">${(m.citations.top_domains||[]).map(d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}">${esc(d.domain)} <span>×${d.n} · ${esc(d.owner)}${d.subtype?"/"+esc(d.subtype):""}</span></a>`).join("")||"<span class='note'>no citations</span>"}</div>` + (p.serp?`<dl class="dl" style="margin-top:10px"><dt>Google</dt><dd>${p.serp.our?"we rank #"+p.serp.our:"we are absent"}; competitor ${p.serp.comp?"#"+p.serp.comp:"absent"}</dd><dt>Occupiers</dt><dd>${(p.serp.occ||[]).map(esc).join(", ")||"—"}</dd><dt>Overlap</dt><dd>${p.serp.ov??"—"}%</dd></dl>`:"") + (p.inventory?`<dl class="dl" style="margin-top:10px"><dt>Our page</dt><dd>${esc(p.inventory.v)}${p.inventory.url?` · <a href="${esc(p.inventory.url)}" target="_blank" rel="noopener">${esc(p.inventory.url)}</a>`:""}</dd><dt>Missing</dt><dd>${esc(p.inventory.miss||"—")}</dd></dl>`:""), "", "top domains, SERP snapshot, inventory", "c5", "top_domain_citations")}
+    ${sec("Diagnosis", `<div class="para">${(p.diagnosis_text||[]).map(s=>`<p>${esc(s)}</p>`).join("")}</div>`, "", "platform export", "c12", "cause")}
+    ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]]), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
+    ${sec("Evidence", `<ul class="evid">${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`, "", "platform export", "c8", "code")}
+    ${sec("Answers", `<button class="btn ghost" id="loadAns" type="button">Load answers</button><div id="ansBox"></div>`, "Full texts from the corpus, loaded on demand. Excluded answers are flagged; their verdicts are not counted.", "one per model × repeat", "c12", "answers_scored")}
+    ${sec("Fix cards", p.fixes.filter(c=>c.audience==="client").map(c=>fixCard(c)).join("")||"<span class='note'>none</span>", "", "client", "c12", "task_execution")}
     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('cit2').classList.toggle('hide')">Citere monitoring (${p.fixes.filter(c=>c.audience==="citere").length} TRACK cards)</button><div id="cit2" class="hide">${p.fixes.filter(c=>c.audience==="citere").map(c=>fixCard(c)).join("")}</div></section>
   </div>`;
   document.getElementById("loadAns").onclick = async (ev) => {
@@ -560,6 +573,32 @@ function level3(el, key){
     ev.target.textContent = `${arr.length} answers loaded`;
   };
 }
+
+// ---------------- glossary tooltips: hover, tap, click-away; never over the figure ----------------
+const GT = document.createElement("div"); GT.id = "gtip"; document.body.appendChild(GT);
+let gEl = null;
+function showG(el){
+  const g = G(el.dataset.g); if(!g) return;
+  GT.innerHTML = `<b>${escG(g.title)}</b>${escG(g.text)}`; GT.classList.add("on"); gEl = el;
+  const r = el.getBoundingClientRect(), w = GT.offsetWidth, h = GT.offsetHeight, pad = 8;
+  let x = Math.min(Math.max(pad, r.left), Math.max(pad, innerWidth - w - pad));
+  let y = r.bottom + pad;                                  // below the figure, so it never covers it
+  if(y + h > innerHeight - pad) y = r.top - h - pad;                 // flip above rather than cover the figure
+  y = Math.min(Math.max(pad, y), Math.max(pad, innerHeight - h - pad));
+  GT.style.left = x + "px"; GT.style.top = y + "px";
+}
+function hideG(){ GT.classList.remove("on"); gEl = null; }
+document.addEventListener("pointerover", e => { const el = e.target.closest && e.target.closest("[data-g]"); if(el && el !== gEl) showG(el); });
+document.addEventListener("pointerout", e => { const el = e.target.closest && e.target.closest("[data-g]"); if(el && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest("#gtip,[data-g]"))) hideG(); });
+document.addEventListener("click", e => {
+  const el = e.target.closest && e.target.closest("[data-g]");
+  if(!el){ hideG(); return; }
+  if(el.closest("[data-href]") || el.closest("a")) return;   // tapping inside a link or a row still navigates
+  showG(el);
+});
+document.addEventListener("keydown", e => { if(e.key === "Escape") hideG(); });
+window.addEventListener("hashchange", hideG);
+addEventListener("scroll", () => { if(gEl) showG(gEl); }, true);
 
 // ---------------- map bridge (legacy block below is unchanged) ----------------
 const PID2KEY = {}; KEYS.forEach(k=>{ const pid=k.split("|")[0]; if(!PID2KEY[pid]) PID2KEY[pid]=k; });

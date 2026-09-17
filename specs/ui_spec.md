@@ -76,6 +76,10 @@ Columns: pid, run, question, topic/subtopic, sev, code, cause, presence %, posit
 
 ---
 
+## Plain language
+
+Every figure carries a hover explanation and every screen and tile carries a visible one-line description. The wording lives in one file, `ui/glossary.json`, keyed by metric id: `text` is the hover explanation (two or three sentences: what it means, how it was measured, what a good value looks like), `lead` is the visible line under a heading. No interval names, no class codes, no internal vocabulary. The build inlines the file and fails if any figure points at an id the file does not define; it also lists ids the interface never uses, so the file and the screens stay in step.
+
 ## Do not
 
 - No calculations in JS beyond formatting, sorting and filtering.

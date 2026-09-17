@@ -1,0 +1,423 @@
+{
+  "_note": "Plain-language wording for the whole platform, in one file. `lead` is the visible one-line description under a heading; `text` is the hover explanation. Written for a reader with no analytics background: no interval names, no class codes, no internal vocabulary. Cycle-scoped — review the counts when the prompt set changes.",
+  "screen_dashboard": {
+    "title": "Master dashboard",
+    "lead": "One page: how often AI names us, who takes our answers, how patients are told about us, which sources feed the answers, and what to do about it.",
+    "text": "Every figure on this page comes from one run of the same 1,424 patient questions across 10 AI surfaces. Click any tile to see how that number was built."
+  },
+  "screen_visibility": {
+    "title": "Visibility",
+    "lead": "How often AI names Ozempic when the patient has not mentioned any brand.",
+    "text": "This screen answers one question: when someone asks about the condition rather than about a brand, does the answer say Ozempic at all? Every breakdown here uses the same set of unbranded questions so the comparisons are fair."
+  },
+  "screen_competitors": {
+    "title": "Competitors",
+    "lead": "Who takes the answers we do not get, and who wins when the patient names two brands at once.",
+    "text": "Three readings of the same rivalry: how many answers a competitor takes from us, who is named higher when both appear, and who wins when the patient asks about one against the other."
+  },
+  "screen_sentiment": {
+    "title": "Sentiment",
+    "lead": "How answers about Ozempic read to a patient: supportive, neutral or discouraging.",
+    "text": "Only questions that already name Ozempic count here, so this is about tone towards us, not about how often we appear. Myth-probe questions are reported separately because they are hostile on purpose."
+  },
+  "screen_sources": {
+    "title": "Sources",
+    "lead": "Which websites the AI models quote when they answer, and who owns them.",
+    "text": "Every answer that searches the web cites sources. This screen groups those citations by who owns the site, so you can see whether our own pages, independent health sites or competitor pages are feeding the answers."
+  },
+  "screen_priorities": {
+    "title": "Diagnosis and priorities",
+    "lead": "The topics where we lose answers, what to do about each, and how much traffic is at stake.",
+    "text": "Topics are ranked by three things together: how much patient demand they carry, how much of the answer we lose today, and how much of that we can realistically influence. The top third are priority 3."
+  },
+  "screen_actions": {
+    "title": "Action Center",
+    "lead": "Every task this cycle produced, who owns it and what shift to expect.",
+    "text": "Each task comes from one topic and one kind of source. Status changes here are saved in your browser only and are not written back to the task registry."
+  },
+  "screen_safety": {
+    "title": "Safety and label",
+    "lead": "Where AI answers contradict or omit something from the approved prescribing information.",
+    "text": "Every answer to a safety question was checked against the label. Findings are grouped by which label statement was missed and on which AI surface, and none of them counts as confirmed until a clinician signs it off."
+  },
+  "screen_map": {
+    "title": "Neural map",
+    "lead": "Every tested question as a dot, grouped by topic, coloured by whether we hold that answer.",
+    "text": "The same 1,424 questions as the rest of the platform. Each dot is one question on one run; the rings group them by topic and sub-topic. Click a dot for the full detail of that question."
+  },
+  "screen_point": {
+    "title": "Question detail",
+    "lead": "One patient question: what the models answered, where they got it, and what to do.",
+    "text": "Everything measured for this single question, plus the full text of every answer the models gave and the sources each one cited."
+  },
+  "visibility_score": {
+    "title": "Visibility",
+    "lead": "How often AI names us when the patient asks about the category without naming any brand.",
+    "text": "How often AI names Ozempic when a patient asks about the category without mentioning any brand. Measured across 250 such questions on three AI model families. Higher is better; today one answer in four names us."
+  },
+  "named_any_scope": {
+    "title": "Named anywhere",
+    "text": "How often Ozempic is named across every question we tested, including the ones that already mention the brand or a competitor. It runs far higher than Visibility because most of those questions hand the model the brand name. Useful as a contrast, never as the visibility number on its own."
+  },
+  "ai_brand_score": {
+    "title": "AI Brand Score",
+    "text": "How often we are named, weighted by how early in the answer the name appears. Being named first counts for more than being named last. Scored out of 100; higher is better."
+  },
+  "avg_position": {
+    "title": "Average position when named",
+    "text": "When the answer does name Ozempic, how far down the list of brands we sit. 1 means we are the first brand mentioned. Lower is better."
+  },
+  "inn_only": {
+    "title": "Active ingredient named, brand not",
+    "text": "How often the answer says semaglutide but never says Ozempic. The patient learns about the molecule and not about us. Lower is better."
+  },
+  "ci95": {
+    "title": "95% interval",
+    "text": "The range the true value is very likely to sit in, given how many answers we measured. A wide range means few answers behind the number, so treat it as directional."
+  },
+  "brand_bearing": {
+    "title": "Named when any brand is named",
+    "text": "Of the answers that name at least one brand, how often one of them is us. This separates two problems: answers that name nobody, and answers that name someone else."
+  },
+  "cross_check": {
+    "title": "Cross-check",
+    "text": "The same visibility figure counted a second way, from the models' own structured output rather than from the answer text. The two should agree closely; a gap would mean the text reading is off."
+  },
+  "unstable_groups": {
+    "title": "Unstable questions",
+    "text": "Share of questions where the same model gave a different verdict when asked again. High instability means the answer is a coin flip that day, not a settled position."
+  },
+  "single_run": {
+    "title": "Asked once",
+    "text": "Share of questions asked only once on that surface, so there is no repeat to compare against. Treat their results as provisional."
+  },
+  "low_n": {
+    "title": "Few answers",
+    "text": "Fewer answers behind this figure than we consider reliable. The number is shown for completeness but should not drive a decision on its own."
+  },
+  "intrusion_c2": {
+    "title": "Competitor named in answers about us",
+    "text": "When a patient asks specifically about Ozempic, how often the answer brings up a competitor anyway. Lower is better."
+  },
+  "intrusion_c3": {
+    "title": "We are named in answers about competitors",
+    "text": "When a patient asks about a competitor, how often the answer brings up Ozempic. Higher is better: it means we are in the conversation even when we are not the subject."
+  },
+  "impact": {
+    "title": "Answers taken",
+    "lead": "How many of our answers this competitor takes.",
+    "text": "How many answers this competitor takes from us overall, either by being named ahead of us or by being named where we are absent. Higher is worse for us. This is the column the list is sorted by."
+  },
+  "impact_by_position": {
+    "title": "Taken by position / by absence",
+    "text": "The loss split in two. The first number is answers where we are present but the competitor is named ahead of us, fixable with better content on the sites the models quote. The second is answers where we are missing altogether and they are not, fixable only by getting cited in the first place."
+  },
+  "win_rate": {
+    "title": "Win rate",
+    "text": "When both we and this competitor appear in the same answer, how often we are named higher. Ours, not theirs: 80% means we lead in four answers out of five. Higher is better."
+  },
+  "duel_win_rate": {
+    "title": "Duel win rate",
+    "text": "When the patient asks directly, \"Ozempic or this brand?\", how often the answer comes down on our side. Ours, not theirs. A high win rate beside a low duel win rate means we lead where both are mentioned but lose the direct question."
+  },
+  "overlap_answers": {
+    "title": "Overlap answers",
+    "text": "How many answers named both us and this competitor. The win rate is measured on these answers only, so a small number means a shaky figure."
+  },
+  "duel_prompts": {
+    "title": "Duel questions",
+    "text": "How many head-to-head questions we asked about this brand. Blank means we asked none this cycle, so there is no duel result to show."
+  },
+  "found_in_data": {
+    "title": "Found in data, not a target",
+    "text": "This brand was added to the dictionary mid-cycle because it kept appearing in answers. The question set was designed against the GLP-1 brands, so this one is measured where it turns up but was never deliberately tested."
+  },
+  "worst_model": {
+    "title": "Worst model family and topic area",
+    "text": "Where this competitor does the most damage to us: the AI model family that favours them most, and the area of patient need where they take the most answers. A starting point for reading answers by hand."
+  },
+  "sentiment_score": {
+    "title": "Sentiment score",
+    "lead": "How supportive the answers sound to a patient.",
+    "text": "How an answer reads to a patient who is already on Ozempic: supportive, neutral, or discouraging. Scored out of 100 across the answers to questions that name the brand. Above 70 reads as broadly supportive."
+  },
+  "sentiment_positive": {
+    "title": "Positive",
+    "text": "Share of answers that read as supportive: they explain the medicine, address the worry and do not push the patient away."
+  },
+  "sentiment_neutral": {
+    "title": "Neutral",
+    "text": "Share of answers that are purely factual, neither reassuring nor discouraging."
+  },
+  "sentiment_negative": {
+    "title": "Negative",
+    "text": "Share of answers that would discourage a patient: they lead with harm, advise stopping, or frame the medicine as a mistake. Lower is better."
+  },
+  "narrative_resistance": {
+    "title": "Under myth probes",
+    "text": "The same sentiment measure, but only on questions built around a false or hostile claim. These are adversarial on purpose, so the score is always lower; what matters is whether the model corrects the myth or repeats it."
+  },
+  "theme_of_negative": {
+    "title": "Share of negative answers",
+    "text": "Of all the answers that read negatively, how many raise this particular worry. Shows what the negativity is actually about."
+  },
+  "theme_of_all": {
+    "title": "Share of all answers",
+    "text": "How often this worry comes up across every answer, negative or not."
+  },
+  "theme_negative_rate": {
+    "title": "Negative rate in this theme",
+    "text": "When this worry comes up, how often the answer around it reads negatively. A high rate means the topic itself pulls the answer down."
+  },
+  "citation_owned": {
+    "title": "Owned sources",
+    "text": "Citations pointing at our own websites. This is the share of everything the models quoted, so single digits is normal and low is common in this category."
+  },
+  "citation_earned": {
+    "title": "Earned sources",
+    "text": "Citations pointing at independent sites: health media, drug directories, hospitals, patient forums. These are not ours but we can influence what they say."
+  },
+  "citation_institutional": {
+    "title": "Institutional sources",
+    "text": "Citations pointing at regulators, public health bodies, journals and reference works. Authoritative, rarely brand-specific, and effectively out of our reach."
+  },
+  "citation_competitor": {
+    "title": "Competitor sources",
+    "text": "Citations pointing at a competitor's own websites. Every one of these is a competitor shaping an answer a patient reads."
+  },
+  "citation_adversarial": {
+    "title": "Threat sources",
+    "text": "Citations pointing at litigation and campaign sites that exist to attack the medicine. Tracked as a threat, never treated as something to influence."
+  },
+  "owned_share_with_us": {
+    "title": "Owned share where we are named",
+    "text": "When an answer does name Ozempic, how much of its source list is ours. Tells you whether we are named because of our own pages or because someone else mentioned us."
+  },
+  "answers_without_citations": {
+    "title": "Answers with no sources",
+    "text": "Share of answers the model produced from memory, without quoting any website. Nothing on the web can change these answers directly."
+  },
+  "gap_score": {
+    "title": "Source gap",
+    "text": "This site feeds answers about competitors but stays silent about us. The number is how far ahead of us the competitors are in its citations. Higher means a bigger missed opportunity."
+  },
+  "top_domain_citations": {
+    "title": "Citations",
+    "text": "How many times the models quoted this site across all the answers we collected."
+  },
+  "domain_share": {
+    "title": "Share of all citations",
+    "text": "This site's slice of every citation the models made. A handful of sites usually carry most of the answers."
+  },
+  "with_us_pct": {
+    "title": "Cited in answers naming us",
+    "text": "Of the answers that quote this site, how many also name Ozempic."
+  },
+  "demand": {
+    "title": "Searches a month",
+    "lead": "How many people ask about this topic each month.",
+    "text": "Roughly how many people search for this topic each month, taken from Google search volume as a stand-in for how often it is asked to an AI. Directional, not exact: it sizes a topic against other topics."
+  },
+  "topic_gap": {
+    "title": "Share of answers we lose",
+    "text": "On this topic, how many of the answers do not go our way: we are absent, named below a competitor, or the answer is wrong about us. Lower is better."
+  },
+  "lever": {
+    "title": "Share of sources we can act on",
+    "text": "Of the sites the models quote on this topic, how many we can realistically influence, whether by publishing our own page or by getting cited on an independent one. Regulators and journals are out of reach, so a low figure here means the topic is hard to move whatever we spend."
+  },
+  "ceiling_pp": {
+    "title": "Reach ceiling",
+    "text": "The most this action could add to how often we are named on this topic, in percentage points, if every source we can influence went our way. A ceiling, not a forecast."
+  },
+  "expected_pp": {
+    "title": "Expected shift",
+    "text": "The realistic range this action should move the topic by, in percentage points. Based on industry priors until we have two of our own cycles to compare."
+  },
+  "impact_reach": {
+    "title": "Traffic at stake",
+    "text": "How many monthly searches sit behind the answers we currently lose on this topic. It multiplies the topic's search demand by the share of answers going against us."
+  },
+  "priority": {
+    "title": "Priority",
+    "text": "Topics are sorted by demand, loss and how much we can influence, then split into three bands. 3 is the top third and where the money should go first; 1 is the bottom third."
+  },
+  "failure_code_share": {
+    "title": "Questions with some failure",
+    "text": "On a topic we have classed as healthy, how many of its individual questions still went wrong in some way. Shown so nothing is quietly set aside; it is not acted on this cycle."
+  },
+  "rank_score": {
+    "title": "Question rank",
+    "text": "How important this single question is inside its topic, from the platform export. Used only to order the list, never added up."
+  },
+  "no_campaign": {
+    "title": "No campaign",
+    "text": "Why this topic produced no task: either nothing is wrong with it, the loss is too small to spend on, it is waiting for a clinician, or it is Citere's own monitoring rather than your work."
+  },
+  "presence_share": {
+    "title": "Presence",
+    "text": "For this one question, how many of the answers named Ozempic, averaged fairly across the model families so a chatty model cannot swamp the result."
+  },
+  "answers_scored": {
+    "title": "Scored answers",
+    "text": "How many answers to this question we could score. Answers that arrived cut off or too short to read are excluded and counted separately, so every percentage on this page divides by the same number."
+  },
+  "answers_excluded": {
+    "title": "Excluded as unscoreable",
+    "text": "Answers that came back truncated or too short to judge. They are left out of every calculation rather than counted as a loss."
+  },
+  "sev": {
+    "title": "Verdict",
+    "text": "A traffic light for this question: green means the answer went our way, amber means it is contested or incomplete, red means we lost it or it was wrong about us."
+  },
+  "code": {
+    "title": "What happened",
+    "text": "The plain result for this question, such as we are absent from the answer, or a competitor was named ahead of us. One code per question."
+  },
+  "cause": {
+    "title": "Why it happened",
+    "text": "The reason behind the result: which kind of source shaped the answer, or whether the model answered from memory. This is what a fix has to change."
+  },
+  "confidence": {
+    "title": "Confidence",
+    "text": "How strongly the evidence supports this explanation. High means the measured signals all point one way; low means treat it as a hypothesis."
+  },
+  "model_family": {
+    "title": "Model family",
+    "text": "The AI system behind the answers, with its versions pooled. Families are weighted equally so one busy model cannot dominate a figure."
+  },
+  "run": {
+    "title": "Question set",
+    "text": "Which of the nine question sets this came from: unbranded category questions, head-to-head duels, life-on-the-drug questions, label checks, and so on."
+  },
+  "critical_answer_share": {
+    "title": "Answers with a critical error",
+    "lead": "How often safety answers contradict or omit the label.",
+    "text": "Share of safety answers that got something clinically important wrong: they contradicted the prescribing information or left out a warning the patient needed. Lower is better; anything above zero is worth reading by hand."
+  },
+  "findings_total": {
+    "title": "Findings",
+    "text": "A finding is one combination of a label statement and an AI surface where the errors are frequent and repeatable, not a one-off slip."
+  },
+  "findings_dangerous": {
+    "title": "Said something dangerous",
+    "text": "Findings where the answer stated something that could harm a patient who acted on it."
+  },
+  "findings_incomplete": {
+    "title": "Omitted a required warning",
+    "text": "Findings where nothing said was false, but a warning the patient needed was missing."
+  },
+  "pending_signoff": {
+    "title": "Awaiting clinician sign-off",
+    "text": "Findings held back until a clinician confirms them. They are excluded from anything labelled confirmed and never reach the client report on their own."
+  },
+  "traffic_light": {
+    "title": "Safety traffic light",
+    "text": "Red means dangerous errors were found, amber means warnings were missing, green means nothing critical. Based only on findings a reviewer has not rejected."
+  },
+  "stability": {
+    "title": "Repeatability",
+    "text": "How consistently the same surface made the same error when asked again. 1 means every repeat did it; a low figure means it is intermittent."
+  },
+  "label_section": {
+    "title": "Label section",
+    "text": "The part of the approved prescribing information the answer contradicted or left out."
+  },
+  "unstable_cell": {
+    "title": "Unstable cell",
+    "text": "A label statement and surface where errors appear sometimes but not often enough to call a finding. Watch these next cycle rather than acting now."
+  },
+  "open_tasks": {
+    "title": "Open tasks",
+    "text": "Tasks raised this cycle and not yet started. Each one comes from a single topic and a single kind of source."
+  },
+  "task_execution": {
+    "title": "How it runs",
+    "text": "Whether the platform can do this task itself, can draft it for your approval, or whether it needs a person. Automated tasks still need someone to accept the result."
+  },
+  "mlr_status": {
+    "title": "Review status",
+    "text": "Whether this action can go through normal marketing review, or whether it touches the label and needs medical and regulatory sign-off first."
+  },
+  "task_status": {
+    "title": "Task status",
+    "text": "Open, in progress, done or dismissed. Changes are stored in this browser only and are not written back to the task registry."
+  },
+  "who": {
+    "title": "Owner",
+    "text": "The team that has to do the work: digital, communications, medical or regulatory."
+  },
+  "speed": {
+    "title": "Time to effect",
+    "text": "Roughly how long before this action could change what the models say, once the work is done."
+  },
+  "map_centre": {
+    "title": "Map centre",
+    "text": "How often Ozempic is named across every answer we scored, all question sets included. It is far higher than Visibility because most of these questions already hand the model the brand name."
+  },
+  "map_hold_index": {
+    "title": "Hold index",
+    "text": "A single score for a topic: questions we clearly hold count fully, contested ones count half. It is not a share of answers and not the visibility figure."
+  },
+  "map_we_hold": {
+    "title": "We hold this",
+    "text": "Questions where the answer went our way: we are named, and named ahead of the alternatives."
+  },
+  "map_we_lose": {
+    "title": "We lose this",
+    "text": "Questions where we are absent from the answer or named below a competitor."
+  },
+  "map_contested": {
+    "title": "Contested",
+    "text": "Questions where the answer is split: we appear alongside alternatives with no clear winner, or the result changes between repeats."
+  },
+  "map_unclaimed": {
+    "title": "Unclaimed by anyone",
+    "text": "Questions where no brand is named at all. Nobody holds the answer, so the first brand with a citable page can take it."
+  },
+  "question_share": {
+    "title": "This question's share",
+    "text": "The slice of the topic's monthly searches this particular question accounts for, from the platform export. Used to size the dot on the map."
+  },
+  "ai_native": {
+    "title": "AI-native question",
+    "text": "A question people ask an AI but almost never type into Google. It has no search volume behind it, which is why it can look small and still matter."
+  },
+  "answer_sentiment": {
+    "title": "Answer sentiment",
+    "text": "How supportive this one question's answers read, scored out of 100. Different from the Sentiment screen headline, which covers a specific question set."
+  },
+  "surface": {
+    "title": "AI surface",
+    "text": "The product a patient would actually use — a chat assistant, a search assistant, an AI answer box. The same underlying model can behave differently on different surfaces."
+  },
+  "prompts": {
+    "title": "Questions",
+    "text": "How many distinct patient questions sit behind this figure. Each one was asked on several AI surfaces and usually more than once."
+  },
+  "topic_group": {
+    "title": "Topic",
+    "text": "A group of patient questions about the same thing, such as side effects during daily life. Topics are the unit we plan work against."
+  },
+  "topic_subtopic": {
+    "title": "Topic and sub-topic",
+    "text": "What this question is about, and the narrower area inside it. Used to group questions into the topics on the priorities screen."
+  },
+  "point_id": {
+    "title": "Question reference",
+    "text": "The internal reference for one question in one question set. Useful when you want to quote a specific case back to us."
+  },
+  "question": {
+    "title": "Patient question",
+    "text": "The exact wording put to the AI, written the way a patient would ask it."
+  },
+  "zone": {
+    "title": "Area of patient need",
+    "text": "The stage or concern the question belongs to, such as starting treatment, weight loss, or price and access."
+  },
+  "before_after": {
+    "title": "Before / after",
+    "lead": "Nothing to compare yet — this cycle is the baseline.",
+    "text": "From the second cycle this tile shows what moved since last time: visibility, safety findings and the win rate against each competitor. The same questions and the same surfaces are used every cycle so the change is real and not drift."
+  }
+}
