@@ -54,7 +54,8 @@ def map_nodes(pd_data):
                       "rn": pt["run"], "qt": pt["query_type"], "sg": pt["patient_stage"],
                       "cz": cz.get("code"), "ch": cz.get("label") or cz.get("code"),
                       "sr": pt["code_label"], "sf": ("confidence " + cz["confidence"]) if cz.get("confidence") else "",
-                      "oz": oz, "n": int(m["answers"]), "ot": int(m.get("comp_present_answers") or 0),
+                      "oz": oz, "n": int(m["answers"]) - int(m["answers_excluded"]), "nx": int(m["answers_excluded"]),
+                      "ot": int(m.get("comp_present_answers") or 0),
                       "vol": pt["demand_extra"].get("prompt_share") or 0, "tdm": pt["demand"]["topic_demand"],
                       "db": pt["demand"].get("basis"), "ai": 1 if pt["demand_extra"].get("ai_native") else 0,
                       "se": m.get("answer_sentiment"),
@@ -149,6 +150,8 @@ def main() -> int:
         ("· sentiment <b>'+q.se+'</b>/100'", "· answer sentiment <b>'+q.se+'</b>/100'"),
         ("· sentiment <b>${q.se}</b>/100", "· answer sentiment <b>${q.se}</b>/100"),
         ("· demand <b>${q.vol.toLocaleString('en')}</b>/mo", "· this question's share <b>${q.vol.toLocaleString('en')}</b>/mo"),
+        ('<div class="agg">${q.n} answers · ${q.qt} · ${q.sg}</div>',
+         '<div class="agg">${q.n} scored answers · ${q.qt} · ${q.sg}${q.nx?` · <b>${q.nx}</b> excluded as unscoreable`:``}</div>'),
     ]
     for a_, b_ in relabels:
         assert a_ in nm, "map label not found: " + a_
