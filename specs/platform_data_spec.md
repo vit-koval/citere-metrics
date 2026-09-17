@@ -59,8 +59,10 @@ Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stay
         "we_present_share": 0.0, "avg_position": null, "inn_only_share": 0.0,
         "by_model": [{"model_family": "...", "answers": 0, "we_present": 0, "position": null,
                       "brand_sentiment": null, "answer_sentiment": null}],
-        "competitors_present": {"Mounjaro": 0, ...},
+        "competitors_present": {"Mounjaro": 0, ...}, "comp_present_answers": 0,
+        "answer_sentiment": null, "brand_sentiment": null,          — point means over used answers (added for the Neural map)
         "citations": {"total": 0, "owned": 0, "earned": 0, "institutional": 0, "competitor": 0, "adversarial": 0,
+                      "answers_with": {"any": 0, "owned": 0, "earned": 0, "institutional": 0, "competitor": 0, "adversarial": 0},
                       "top_domains": [{"domain": "...", "owner": "...", "subtype": "...", "n": 0}]},
         "run_specific": { ...scores fields relevant to the run: R1 our_status/our_rank, R2 winner, R4 verdict/harm_class/target/label_section, R6 status/attribution, R9 uptake/anti_frame_outcome... }
       },

@@ -509,7 +509,7 @@ function vSafety(el, q){
 }
 
 // ---------------- map data on demand (the map block itself is untouched legacy code) ----------------
-let mapPromise=null;
+var mapPromise=null;   // var, not let: render() can reach openMapRoute() before this line on a cold load at #/map
 function openMapRoute(){
   if(window.__openMap){ window.__openMap(); return; }
   if(!mapPromise) mapPromise = loadScript("map_data.js").then(()=>{ window.__mapBoot(); });

@@ -129,6 +129,10 @@ def main() -> int:
         comps = Counter(b for l in used["comps_present"] for b in l)
         cc = live_c[live_c["key"] == k]
         dom = cc.groupby("domain").agg(n=("url", "size"), owner=("owner", lambda s_: s_.value_counts().idxmax()), subtype=("subtype", lambda s_: s_.dropna().value_counts().idxmax() if s_.notna().any() else None)).reset_index().sort_values(["n", "domain"], ascending=[False, True]).head(10)
+        ans_keys = cc.drop_duplicates(["model", "repeat_idx"])
+        answers_with = {"any": int(len(ans_keys))}
+        for _o in ["owned", "earned", "institutional", "competitor", "adversarial"]:
+            answers_with[_o] = int(cc[cc["group"] == _o].drop_duplicates(["model", "repeat_idx"]).shape[0])
         runf = RUN_FIELDS.get(cp["run"], [])
         run_specific = {f: Counter(str(s_.get(f, "")) for s_ in sc) for f in runf}
         run_specific = {f: dict(v) for f, v in run_specific.items()}
@@ -144,8 +148,12 @@ def main() -> int:
                         "we_present_share_pooled": _n(used["we_present"].mean()) if len(used) else None,
                         "aggregation_note": "we_present_share / avg_position are repeats→version→family→point means (pipeline convention); *_pooled is the raw share over answers",
                         "inn_only_share": _n(used["inn_only"].mean()) if len(used) else None, "by_model": fam_rows,
+                        "answer_sentiment": _n(used["answer_sentiment"].mean()) if used["answer_sentiment"].notna().any() else None,
+                        "brand_sentiment": _n(used["brand_sentiment"].mean()) if used["brand_sentiment"].notna().any() else None,
                         "competitors_present": dict(sorted(comps.items())),
+                        "comp_present_answers": int((used["comps_present"].map(len) > 0).sum()),
                         "citations": {"total": int(len(cc)), **{o: int((cc["group"] == o).sum()) for o in ["owned", "earned", "institutional", "competitor", "adversarial"]},
+                                      "answers_with": answers_with,
                                       "top_domains": [{"domain": r.domain, "owner": r.owner, "subtype": r.subtype, "n": int(r.n)} for r in dom.itertuples()]},
                         "run_specific": run_specific},
             "demand": {"topic_demand": cp["topic_traffic"]["demand"], "lo": cp["topic_traffic"]["lo"], "hi": cp["topic_traffic"]["hi"], "basis": cp["topic_traffic"]["basis"]},
