@@ -74,6 +74,7 @@ Fix-card `execution` in the export (`AGENT`, `AGENT+APPROVE`, `HUMAN TASK`) stay
       "answers_ref": "corpus_master.json#P0001|R1"   — answer texts are NOT embedded here
     }
   },
+  "campaigns/label_tasks_awaiting_signoff also carry": "rows derived in step 9 (task_id prefixed `d`, `source` field set) for client fix cards whose group already has tasks but none for their owner — step 6 can raise a label row only when a group has no citations at all, so label/medical cards on ordinary recommendation groups had no home. Derived rows carry no ceiling or expected shift (basis says so). Check 8 fails if any client card in a task-bearing group is unreferenced.",
   "campaigns": [ ...action_center_tasks.json client tasks, each with "fix_card_refs": [{"pid_run": "...", "fix_idx": 0}, ...]
                   = client fix cards whose point is in the campaign's group AND whose card type maps to the campaign owner
                   (OWNED→owned, EARNED→earned/ugc/comp_owned, LABEL-MEDICAL→label rows) ],

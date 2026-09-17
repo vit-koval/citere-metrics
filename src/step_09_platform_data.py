@@ -5,7 +5,7 @@ SERP snapshots and inventory come from the platform export data/raw/citere_point
 from the export is trusted except point_rank_score (= export priority), prompt_share and ai_native (labelled).
 Checks (spec §3) must all pass, else the file is not written.
 """
-import gzip, base64, json, math, re, sys
+import gzip, base64, hashlib, json, math, re, sys
 from collections import Counter, defaultdict
 
 import pandas as pd
@@ -296,6 +296,51 @@ def main() -> int:
         for i, card in enumerate(pt["fixes"]):
             if card["audience"] == "citere": track_by_group[pt["group_id"]].append({"pid_run": k, "fix_idx": i})
     citere_tasks = {"registry_tasks": ac_reg.get("citere_tasks", []), "track_cards_by_group": dict(sorted(track_by_group.items()))}
+    # ---- derived rows: client fix cards in a group that already has tasks, but no task for their owner ----
+    # Step 6 raises a label row only when a group has no citations at all (its `elif`), so label/medical fix cards on
+    # points of ordinary recommendation groups had nowhere to attach. The export knows that work exists and the registry
+    # does not, so the join layer raises the row here, held for sign-off like every other label row.
+    OWNER_FOR_CARD = {"OWNED": "owned", "EARNED": "earned", "LABEL-MEDICAL": "label"}
+    referenced = set()
+    for t in campaigns + held:
+        for r in t["fix_card_refs"]: referenced.add((r["pid_run"], r["fix_idx"]))
+    have_owner = defaultdict(set)
+    for t in campaigns + held: have_owner[t["group_id"]].add(t["owner"])
+    orphan_by = defaultdict(list)
+    for k, pt in points.items():
+        for i, card in enumerate(pt["fixes"]):
+            if card["audience"] != "client" or (k, i) in referenced: continue
+            gid = pt["group_id"]
+            if not have_owner.get(gid): continue                      # healthy / below-floor / Citere-only: no task by design
+            if CARD_TO_OWNER.get(card["type"], set()) & have_owner[gid]: continue
+            orphan_by[(gid, OWNER_FOR_CARD.get(card["type"], "label"))].append({"pid_run": k, "fix_idx": i})
+    group_by_id = {g["group_id"]: g for g in groups}
+    derived = []
+    for (gid, owner), refs in sorted(orphan_by.items()):
+        g = group_by_id[gid]
+        cards = [points[r["pid_run"]]["fixes"][r["fix_idx"]] for r in refs]
+        who = Counter(c.get("owner") for c in cards).most_common(1)[0][0]
+        speed = Counter(c.get("speed") for c in cards).most_common(1)[0][0]
+        tid = "d" + hashlib.md5((gid + "|" + owner).encode("utf-8")).hexdigest()[:11]
+        derived.append({"task_id": tid, "group_id": gid, "group": {"topic": g["topic"], "subtopic": g["subtopic"], "zone": g["zone"]},
+                        "owner": owner, "execution": "manual", "priority": g["priority"], "rank": None, "score": None,
+                        "what": "{} {} fix card{} on this topic carry no task in the registry — raised here so the work is visible{}".format(
+                            len(refs), owner, "" if len(refs) == 1 else "s", "; needs clinician sign-off" if owner == "label" else ""),
+                        "who": who, "speed": speed,
+                        "why": {"demand": g["demand"], "lo": g["lo"], "hi": g["hi"], "gap": g["gap"], "gap_by_run": g["gap_by_run"],
+                                "n_prompts": g["n_prompts"], "dominant_run": max(g["gap_by_run"], key=g["gap_by_run"].get) if g["gap_by_run"] else None,
+                                "lever": None, "institutional_share": g["lever"].get("institutional_share")},
+                        "cause": [], "where": [],
+                        "impact": {"ceiling_pp": None, "expected_pp": None, "basis": "not estimated — raised from the export, not scored by the pipeline",
+                                   "n_groups": None, "demand": g["demand"], "lo": g["lo"], "hi": g["hi"],
+                                   "demand_caption": "topic demand, Google, proxy", "reach": g.get("impact_reach")},
+                        "is_label": owner == "label", "awaiting_label_signoff": owner == "label", "resolved_by_data": False,
+                        "status": "open", "dismiss_reason": None, "cycle_opened": dash["meta"]["cycle"], "cycle_done": None,
+                        "source": "derived in step 9: fix cards present in the export with no registry row for their owner",
+                        "fix_card_refs": refs, "task_types": _task_types(refs)})
+    held += [t for t in derived if t["is_label"]]
+    campaigns += [t for t in derived if not t["is_label"]]
+
     camp_by_group = defaultdict(list); held_by_group = defaultdict(list)
     for t in campaigns:
         camp_by_group[t["group_id"]].append(t["task_id"])
@@ -377,6 +422,18 @@ def main() -> int:
         if abs(v - r.vis) > 1e-9: diffs.append((k, round(v, 6), round(r.vis, 6)))
         pa, pb = points[k]["metrics"]["avg_position"], r.avg_pos
         if not ((pa is None and pd.isna(pb)) or (pa is not None and not pd.isna(pb) and abs(pa - pb) < 1e-9)): diffs.append((k, "avg_position", pa, pb))
+    ref2 = set()
+    for t in campaigns + held:
+        for r in t["fix_card_refs"]: ref2.add((r["pid_run"], r["fix_idx"]))
+    orph = defaultdict(int)
+    for k, pt in points.items():
+        for i, card in enumerate(pt["fixes"]):
+            if card["audience"] == "client" and (k, i) not in ref2:
+                orph["IN A GROUP THAT HAS TASKS" if have_owner.get(pt["group_id"]) else group_by_id[pt["group_id"]]["bucket"] + " group, raises no task by design"] += 1
+    ck("8. every client fix card is reachable from a task, except in groups that raise none by design",
+       orph.get("IN A GROUP THAT HAS TASKS", 0) == 0,
+       "orphans by reason: {} | derived rows raised: {} ({} label held, {} client)".format(
+           dict(orph) or "none", len(derived), sum(1 for t in derived if t["is_label"]), sum(1 for t in derived if not t["is_label"])))
     ck("7. spot check 20 random R1 points: we_present_share (and avg_position) identical to visibility_by_prompt.csv", not diffs, "20 points, tolerance 1e-9; mismatches={}".format(diffs[:3]))
     lines = ["# platform_data checks — cycle 1", ""] + ["- {} **{}** — {}".format("PASS" if ok else "FAIL", n, d) for n, ok, d in checks]
     (C.METRICS_DIR / "platform_data_checks.md").write_text("\n".join(lines) + "\n", encoding="utf-8"); print("\n".join(lines))

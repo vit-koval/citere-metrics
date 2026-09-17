@@ -102,7 +102,13 @@ th[data-g]{text-decoration:underline dotted var(--line);text-underline-offset:3p
 @media(max-width:640px){.kb{grid-template-columns:minmax(0,1fr)}}
 .kbcol{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius);padding:10px;min-width:0}
 .kbcol h4{margin:0 0 8px;font-size:12px;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;text-transform:uppercase;letter-spacing:.04em}
-.kcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;display:grid;gap:5px;min-width:0}
+.kcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;display:grid;gap:5px;min-width:0;cursor:pointer}
+.kcard:hover{border-color:var(--us)}
+.kcard.open{border-color:var(--us)}
+tr.task{cursor:pointer}
+tr.task:hover td{background:var(--soft)}
+tr.taskdetail td{background:var(--soft)}
+tr.taskdetail .inner{padding:4px 0 8px;display:grid;gap:6px}
 .kcard:last-child{margin-bottom:0}
 .kcard .t{font-weight:600;font-size:13px;line-height:1.35}
 .kcard .m{color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:2px 8px}
@@ -117,8 +123,19 @@ td.ct,th.ct{min-width:150px}
 .acts button.pri{border-color:var(--us);color:var(--us)}
 .kcard .state{font-size:11.5px;color:var(--us)}
 .dedup{color:var(--muted);font-size:11.5px}
-.fxq{border-top:1px solid var(--line);padding:7px 0;font-size:12.5px}
-.fxq:first-child{border-top:0}
+.fixlist{display:grid;gap:0}
+.fitem{border-top:1px solid var(--line);padding:9px 0;display:grid;gap:4px}
+.fitem:first-child{border-top:0}
+.faction{font-size:12.5px;line-height:1.45}
+.fmeta{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font-size:11.5px;color:var(--muted)}
+.fmeta .tag{font-size:10.5px}
+.fwhy{font-size:12px;color:var(--muted);line-height:1.45;max-width:80ch}
+.fwhy b{color:var(--ink);font-weight:500}
+.fpts{display:grid;gap:2px;margin-top:2px}
+.fpt{font-size:12px}
+.fpt a{color:var(--us);text-decoration:none;font-variant-numeric:tabular-nums}
+.fpt .q{color:var(--muted)}
+.flmore{background:none;border:0;padding:0;color:var(--us);font:inherit;font-size:11.5px;cursor:pointer;justify-self:start}
 .backlink{color:var(--us);text-decoration:none;font-size:13px;font-weight:500}
 .prevnext{display:flex;gap:14px;align-items:center;font-size:13px;margin-bottom:14px}
 .prevnext a{color:var(--us);text-decoration:none;font-weight:500}
@@ -584,12 +601,45 @@ function vActions(el, q){
     if(t.awaiting_label_signoff) bits.push("awaiting clinician sign-off");
     return bits.length ? `<div class="state">${bits.join(" · ")}${t.touched?' <span class="tag warn">not synced to registry</span>':""}</div>` : "";
   };
-  // Kanban only: identical templated action text collapses to one line with a count
-  function dedupCards(t){
-    const seen = new Map();
-    (t.fix_card_refs||[]).forEach(r=>{ const c=PTS[r.pid_run].fixes[r.fix_idx]; const k=c.action; seen.set(k, (seen.get(k)||{c:c,n:0})); seen.get(k).n++; });
-    const rows=[...seen.values()].sort((a,b)=>b.n-a.n);
-    return `<div>${rows.slice(0,6).map(({c,n})=>`<div class="fxq">${esc(c.action.length>150?c.action.slice(0,150)+"…":c.action)} ${n>1?`<span class="dedup">×${n} points</span>`:""}</div>`).join("")}${rows.length>6?`<div class="dedup">${rows.length-6} more distinct actions</div>`:""}<div class="dedup">${(t.fix_card_refs||[]).length} fix cards, ${rows.length} distinct</div></div>`;
+  // Every fix card the task references. Identical action text is grouped into one row with its points behind a
+  // toggle — collapsed, never dropped.
+  function fixList(t){
+    const byAction = new Map();
+    (t.fix_card_refs||[]).forEach(r=>{ const c=PTS[r.pid_run].fixes[r.fix_idx]; if(!byAction.has(c.action)) byAction.set(c.action, []); byAction.get(c.action).push({r,c}); });
+    const rows = [...byAction.entries()].sort((a,b)=>b[1].length-a[1].length);
+    if(!rows.length) return `<div class="dedup">No fix cards reference this task.</div>`;
+    const body = rows.map(([action, items], gi) => {
+      const c = items[0].c, many = items.length > 1, id = `fl_${t.task_id}_${gi}`;
+      const pts = items.map(({r}) => `<div class="fpt"><a href="#/point/${encodeURIComponent(r.pid_run)}">${esc(r.pid_run)}</a> <span class="q">${esc((PTS[r.pid_run].question||"").slice(0,110))}</span></div>`).join("");
+      return `<div class="fitem">
+        <div class="faction">${esc(action)}</div>
+        <div class="fmeta">
+          <span class="tt" title="${esc(c.agent||"")}">${esc(c.task_type||"")}</span>
+          <span class="tag ${c.execution==="AGENT"?"us":c.execution==="AGENT+APPROVE"?"warn":"ink"}"${gAttr("task_execution")}>${esc(c.execution)}</span>
+          <span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span>
+          <span class="tag mute">${esc(c.type)}</span>
+          <span>target <b>${esc(c.target||"—")}</b></span><span>${esc(c.owner||"")}</span><span${gAttr("speed")}>${esc(c.speed||"")}</span>
+        </div>
+        <div class="fwhy"><b>Why</b> ${esc(c.why||"—")}</div>
+        ${c.effect?`<div class="fwhy"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}
+        ${c.verify?`<div class="fwhy"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}
+        ${many ? `<button class="flmore" type="button" data-fl="${id}">Show the ${items.length} points ▾</button><div class="fpts hide" id="${id}">${pts}</div>`
+               : `<div class="fpts">${pts}</div>`}
+      </div>`;
+    }).join("");
+    return `<div class="dedup" style="margin-bottom:4px">${(t.fix_card_refs||[]).length} fix cards · ${rows.length} distinct action${rows.length===1?"":"s"}</div><div class="fixlist">${body}</div>`;
+  }
+  function wireFixList(root){
+    root.querySelectorAll("[data-fl]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const box=document.getElementById(b.dataset.fl); box.classList.toggle("hide"); b.textContent = b.textContent.replace(box.classList.contains("hide")?"▴":"▾", box.classList.contains("hide")?"▾":"▴"); });
+    root.querySelectorAll(".fpt a, .fixlist a").forEach(a=>a.onclick=ev=>ev.stopPropagation());
+  }
+  const byId = Object.fromEntries(tasks.map(t=>[t.task_id, t]));
+  function detailHTML(t){
+    const gh = groupById[t.group_id] || {};
+    return `<div class="fxl" style="margin:4px 0 6px"><b>What</b> ${esc(t.what)}</div>`
+      + `<div class="fxl" style="margin-bottom:6px"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc(gh.headline || t.group_id)}</a></div>`
+      + `<div class="fxl" style="margin-bottom:6px"><b>Why</b> losing ${shr0(t.why.gap)} of answers (${esc(t.why.dominant_run)}), ${esc(t.owner)} sources supply ${shr0(t.why.lever)}</div>`
+      + fixList(t);
   }
   function draw(){
     const list = tasks.filter(match);
@@ -608,7 +658,7 @@ function vActions(el, q){
           <div class="m">${(t.task_types||[]).map(n=>ttChip(n,t)).join("")}</div>
           <div class="m"><span${gAttr("potential")}>potential <b class="num">${i.ceiling_pp==null?"—":f1(i.ceiling_pp)} pp</b></span><span${gAttr("expected_pp")}>expected <b class="num">${i.expected_pp?`+${f1(i.expected_pp[0])} to +${f1(i.expected_pp[1])}`:"n/a"}</b></span><span${gAttr("demand")}>${fmtK(i.demand)}/mo</span></div>
           ${stateLine(t)}${buttons(t)}
-          <button class="collapse" type="button" data-x="${t.task_id}">What it involves ▾</button><div class="hide" id="x_${t.task_id}"><div class="fxl" style="margin:4px 0 6px"><b>What</b> ${esc(t.what)}</div><div class="fxl" style="margin-bottom:6px"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc(gh.headline || t.group_id)}</a></div>${dedupCards(t)}</div></div>`;
+          <button class="collapse" type="button" data-x="${t.task_id}">Fix cards (${(t.fix_card_refs||[]).length}) ▾</button><div class="hide" id="x_${t.task_id}">${detailHTML(t)}</div></div>`;
       }).join("") || '<div class="dedup">none</div>'}</div>`).join("")}</div>`;
     } else {
       const cols = [
@@ -624,10 +674,31 @@ function vActions(el, q){
         {k:"s",h:"Status",c:"c",g:"task_status",f:t=>`<span class="tag ${t.ui_status==="done"?"ok":t.ui_status==="dismissed"?"mute":t.ui_status==="in_progress"?"warn":"p1"}">${esc(t.ui_status.replace("_"," "))}</span>${stateLine(t)}`,sort:t=>t.ui_status},
         {k:"a",h:"Actions",c:"ca",g:"task_actions",f:t=>buttons(t)},
       ];
-      host.innerHTML = `<section class="tile c12"><h2${gAttr("potential")}>Tasks by potential <span>${list.length} shown</span></h2>${tbl(cols, list, {sortKey:"pot", sortDir:-1, scroll:list.length>14?"tall":false})}</section>`;
+      host.innerHTML = `<section class="tile c12"><h2${gAttr("potential")}>Tasks by potential <span>${list.length} shown</span></h2>${tbl(cols, list, {sortKey:"pot", sortDir:-1, scroll:list.length>14?"tall":false, rowAttr:t=>` class="task" data-task="${t.task_id}"`})}</section>`;
     }
     host.querySelectorAll("[data-a]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); act(b.dataset.id, b.dataset.a); });
-    host.querySelectorAll("[data-x]").forEach(b=>b.onclick=()=>document.getElementById("x_"+b.dataset.x).classList.toggle("hide"));
+    wireFixList(host);
+    const swallow = ev => !!(ev.target.closest && ev.target.closest("button,a,select,input,textarea,[data-g]"));
+    host.querySelectorAll("[data-x]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const card=b.closest(".kcard"); const panel=document.getElementById("x_"+b.dataset.x); panel.classList.toggle("hide"); if(card) card.classList.toggle("open", !panel.classList.contains("hide")); });
+    // the card body opens the same detail — the buttons and links inside it keep their own behaviour
+    host.querySelectorAll(".kcard").forEach(card=>{
+      const b = card.querySelector("[data-x]"); if(!b) return;
+      card.onclick = ev => { if(swallow(ev)) return; const panel=document.getElementById("x_"+b.dataset.x); panel.classList.toggle("hide"); card.classList.toggle("open", !panel.classList.contains("hide")); };
+    });
+    // table rows open a detail row underneath
+    host.querySelectorAll("tr.task").forEach(tr=>{
+      tr.onclick = ev => {
+        if(swallow(ev)) return;
+        const next = tr.nextElementSibling;
+        if(next && next.classList.contains("taskdetail")){ next.remove(); tr.classList.remove("open"); return; }
+        const t = byId[tr.dataset.task]; if(!t) return;
+        const det = document.createElement("tr"); det.className = "taskdetail";
+        det.innerHTML = `<td colspan="${tr.children.length}"><div class="inner">${detailHTML(t)}</div></td>`;
+        tr.after(det); tr.classList.add("open");
+        wireFixList(det);
+        det.querySelectorAll("a").forEach(a=>a.onclick=e=>e.stopPropagation());
+      };
+    });
     document.getElementById("vKan").classList.toggle("on", F.view==="kanban");
     document.getElementById("vTab").classList.toggle("on", F.view!=="kanban");
   }
@@ -639,7 +710,9 @@ function vActions(el, q){
   [["f_who",F.who],["f_exec",F.exec],["f_owner",F.owner],["f_prio",F.prio],["f_type",F.type]].forEach(([i,v])=>{ if(v) document.getElementById(i).value=v; });
   const want = q && q.get("task");
   draw();
-  if(want){ const row=[...document.querySelectorAll("[data-id]")].find(b=>b.dataset.id===want); if(row){ const card=row.closest(".kcard,tr"); if(card){ card.classList.add("hit"); setTimeout(()=>card.scrollIntoView({block:"center"}),0); } } }
+  if(want){ const row=[...document.querySelectorAll("[data-id]")].find(b=>b.dataset.id===want); if(row){ const card=row.closest(".kcard,tr");
+    if(card){ card.classList.add("hit"); card.click();
+      const r = card.getBoundingClientRect(); if(r.top < 0 || r.bottom > innerHeight) card.scrollIntoView({block:"center"}); } } }
 }
 function vSafety(el, q){
   const L=DASH.safety_label; const t=q.get("target"), s=q.get("surface");

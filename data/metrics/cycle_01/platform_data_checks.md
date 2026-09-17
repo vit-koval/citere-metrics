@@ -6,4 +6,5 @@
 - PASS **4. sum of groups[].n_prompts over all buckets = 1,424** — sum=1424 buckets={'healthy': 19, 'recommendation': 18, 'label': 2}
 - PASS **5. dashboard block byte-identical to dashboard.json** — re-serialised with the step-8 settings and compared byte-for-byte
 - PASS **6. export topic/subtopic/zone vs corpus mismatch count (>0 WARN, >50 STOP)** — mismatches=0 PASS
+- PASS **8. every client fix card is reachable from a task, except in groups that raise none by design** — orphans by reason: {'healthy group, raises no task by design': 550, 'recommendation group, raises no task by design': 25} | derived rows raised: 15 (14 label held, 1 client)
 - PASS **7. spot check 20 random R1 points: we_present_share (and avg_position) identical to visibility_by_prompt.csv** — 20 points, tolerance 1e-9; mismatches=[]
