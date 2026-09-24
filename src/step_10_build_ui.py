@@ -58,7 +58,7 @@ def map_nodes(pd_data):
                       "ot": int(m.get("comp_present_answers") or 0),
                       "vol": pt["demand_extra"].get("prompt_share") or 0, "tdm": pt["demand"]["topic_demand"],
                       "usd": pt["money"]["usd"], "pf": pt["money"]["pf"], "dc": pt["money"]["dc"],
-                      "volx": pt["money"]["pt_demand_eff"],
+                      "volx": pt["money"]["pt_demand_eff"], "gp": pt["money"]["gap"],
                       "db": pt["demand"].get("basis"), "ai": 1 if pt["demand_extra"].get("ai_native") else 0,
                       "se": m.get("answer_sentiment"),
                       "dg": [int(aw.get("any", 0)), int(aw.get("owned", 0)), int(aw.get("competitor", 0)),
@@ -168,6 +168,87 @@ def main() -> int:
     nm = re.sub(r"window\.__nmGoFix=pid=>\{.*?\};\n", "", nm, flags=re.S)
     for gone in ["fixCards(", "dem(p)", "aiNative(p)", "HUMAN_CAUSE", "DATA.domIndex", "DATA.owners", "DATA.cats", "p.status", "p.bm"]:
         assert gone not in nm, "map still computes from legacy fields: " + gone
+
+    # ---- revenue-at-risk lens (spec v2 §6) — radii/colour/labels only, positions untouched ----
+    def _sub(pat, rep, why):
+        nonlocal nm
+        assert nm.count(pat) == 1, "map anchor not found ({}): {!r}".format(why, pat[:60])
+        nm = nm.replace(pat, rep, 1)
+
+    _sub("      q.r=(2.3+rnd()*1.6)*dsc; q.ph=rnd()*6.28; q.sub=sub; q.hide=false;",
+         "      q.base=2.3+rnd()*1.6; q.dsc=dsc; q.r=q.base*dsc; q.ph=rnd()*6.28; q.sub=sub; q.hide=false;",
+         "dot radius")
+
+    _sub("const qsL=[...qs].sort((a,b)=>(b.cr-a.cr)||(PRI[a.s]-PRI[b.s])||((b.vol||0)-(a.vol||0)));",
+         """let qsL=[];
+const NM_PRICING=DATA.pricing||null;
+let nmLens="dem", nmQT=[Infinity,Infinity];
+function nmQuant(){
+  const v=qs.filter(q=>!q.hide&&!q.pf&&q.usd&&q.usd[1]>0).map(q=>q.usd[1]).sort((a,b)=>b-a);
+  return v.length?[v[Math.floor(v.length*0.10)],v[Math.floor(v.length*0.25)]]:[Infinity,Infinity];
+}
+function nmMult(q){
+  if(nmLens!=="usd") return q.dsc;
+  if(q.pf||!q.usd||!q.usd[1]) return 0.6;
+  return q.usd[1]>=nmQT[0]?1.60 : q.usd[1]>=nmQT[1]?1.32 : 1.0;
+}
+function nmRelabel(){
+  qsL = nmLens==="usd"
+    ? [...qs].sort((a,b)=>(((b.usd&&b.usd[1])||0)-((a.usd&&a.usd[1])||0))||(b.cr-a.cr)||(PRI[a.s]-PRI[b.s])||((b.vol||0)-(a.vol||0)))
+    : [...qs].sort((a,b)=>(b.cr-a.cr)||(PRI[a.s]-PRI[b.s])||((b.vol||0)-(a.vol||0)));
+}
+function nmU(v){ v=Math.round(v||0); const u=v>=1e6?1e6:v>=1000?1000:1, sfx=u===1e6?"M":u===1000?"K":"";
+  const x=v/u; return (u===1e6?(x<10?x.toFixed(1):Math.round(x)):Math.round(x))+sfx; }
+function nmUsd(f,m){ return "$"+nmU(f)+"\\u2013"+nmU(m); }
+function nmSumUsd(list){ return list.reduce((a,q)=>(q.hide||q.pf||!q.usd)?a:[a[0]+q.usd[0],a[1]+q.usd[1]],[0,0]); }
+function nmSetLens(l){
+  nmLens=l; nmQT=nmQuant(); nmRelabel();
+  const from=qs.map(q=>q.r), to=qs.map(q=>q.base*nmMult(q)), t0=performance.now();
+  const step=()=>{ const p=Math.min(1,(performance.now()-t0)/300), e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+    qs.forEach((q,i)=>{ q.r=from[i]+(to[i]-from[i])*e; });
+    if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+nmRelabel();""",
+         "label priority + lens state")
+
+    _sub('function qCol(q){ return ov==="out"? COL[q.s] : FCOL[FAM[q.cz]||"phy"]; }',
+         'function qCol(q){ if(q.pf) return "#8A94AC"; return ov==="out"? COL[q.s] : FCOL[FAM[q.cz]||"phy"]; }',
+         "portfolio dots grey")
+
+    _sub("          if(key!=='m'&&scale>.55){const gl=ctx.createRadialGradient(QX,QY,0,QX,QY,r*2.6);",
+         "          if(key!=='m'&&scale>.55&&!q.pf){const gl=ctx.createRadialGradient(QX,QY,0,QX,QY,r*2.6);",
+         "no halo on portfolio dots")
+
+    _sub("function drawDonut(X,Y,br,cnt,vis){", "function drawDonut(X,Y,br,cnt,vis,host){", "donut signature")
+    _sub("  ctx.textAlign='center';ctx.fillText(String(vis),X,Y+3.5);",
+         """  ctx.textAlign='center';
+  if(nmLens==="usd"&&host){ const v=nmSumUsd(host); ctx.font='600 '+Math.max(8,Math.min(11,br*.42))+'px "IBM Plex Mono"';
+    ctx.fillText(nmUsd(v[0],v[1]),X,Y+3.5); } else ctx.fillText(String(vis),X,Y+3.5);""",
+         "donut centre text")
+    _sub("      drawDonut(X,Y,br,c.cnt,c.vis);", "      drawDonut(X,Y,br,c.cnt,c.vis,c.subs.flatMap(s=>s.qs));", "cluster donut call")
+    _sub("          drawDonut(SX,SY,br,s.cnt,s.vis);", "          drawDonut(SX,SY,br,s.cnt,s.vis,s.qs);", "subtopic donut call")
+
+    _sub("""    <a class="dcta" onclick="window.__nmGoPoint('${q.p}')">""",
+         """    ${NM_PRICING&&q.usd?`<h3>$ at risk ${q.pf?"":"<span style=\\"color:#6A7590\\">(Google proxy, US \\u00b7 estimate)</span>"}</h3>
+    <div class="agg">${q.pf?"Portfolio brand \\u2014 not counted as a loss"
+      :`<b>${nmUsd(q.usd[0],q.usd[1])}</b>/mo \\u2014 ${(q.volx||0).toLocaleString("en")} searches/mo \\u00d7 ${Math.round((q.gp||0)*100)}% answers without Ozempic \\u00d7 $${NM_PRICING.floor.toFixed(2)}\\u2013${NM_PRICING.mid.toFixed(2)}`}</div>`:""}
+    <a class="dcta" onclick="window.__nmGoPoint('${q.p}')">""",
+         "drawer money block")
+
+    _sub("window.__nmKick=()=>{",
+         """window.__nmSetLens=nmSetLens;
+(function(){ const s=document.getElementById('nm_fLens'); if(!s) return;
+  if(!NM_PRICING){ s.style.display='none'; return; }
+  if((location.hash||"").indexOf("lens=usd")>=0){ s.value="usd"; nmSetLens("usd"); }
+  s.onchange=e=>nmSetLens(e.target.value);
+})();
+window.__nmKick=()=>{""",
+         "lens control wiring")
+
+    map_html = map_html.replace(
+        '<select id="nm_fEx">',
+        '<select id="nm_fLens"><option value="dem">Size: Demand</option><option value="usd">Size: $ at risk</option></select>\n  <select id="nm_fEx">', 1)
     map_js = ("<script>\nwindow.__mapBoot = function(){\n\"use strict\";\nconst DATA = window.MAP_DATA;\nconst P = DATA.points;\n" + nm +
               "\nwindow.__openMap=openMap; window.__closeMap=closeMap;\n};\n</script>")
 

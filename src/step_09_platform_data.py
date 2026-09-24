@@ -160,7 +160,7 @@ def point_money(cp, export_point, factor, bd, portfolio, comp_money, usd_per_sea
             "pf": pf, "usd": usd, "panel": "web" if cp["run"] in WEB_RUNS else "api"}
 
 
-def money_totals(points, corrected_cells, has_pricing):
+def money_totals(points, corrected_cells, has_pricing, portfolio_names):
     api = [0, 0]
     web = [0, 0]
     excluded = 0.0
@@ -175,7 +175,8 @@ def money_totals(points, corrected_cells, has_pricing):
         bucket[0] += m["usd"][0]
         bucket[1] += m["usd"][1]
     return {"api_usd_mo": api if has_pricing else None, "web_usd_mo": web if has_pricing else None,
-            "excluded_pf_pt_demand_mo": int(round(excluded)), "corrected_cells": corrected_cells}
+            "excluded_pf_pt_demand_mo": int(round(excluded)), "corrected_cells": corrected_cells,
+            "portfolio": portfolio_names}
 
 
 def _n(x):
@@ -500,7 +501,7 @@ def main() -> int:
                          "ad_spend_yr": pricing_cfg.get("benchmark_ad_spend_usd_yr"),
                          "sources": pricing_cfg.get("sources"), "market": pricing_cfg.get("market")}
                         if pricing_cfg else None),
-            "money_totals": money_totals(points, len(corrected_cells), pricing_cfg is not None),
+            "money_totals": money_totals(points, len(corrected_cells), pricing_cfg is not None, sorted(portfolio)),
             "code_labels": CODE_LABELS, "display_rule": "code = what happened (bold title); cause = why (grey sub-line with confidence) — never two equal labels"}
 
     # ---- checks (§3) ------------------------------------------------------------------

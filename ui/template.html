@@ -216,6 +216,50 @@ td.ct,th.ct{min-width:150px}
 const D = window.PLATFORM_DATA;
 const DASH = D.dashboard, PTS = D.points, GROUPS = D.groups;
 const KEYS = Object.keys(PTS);
+// ---------------- revenue-at-risk layer (spec v2 §5) — display only ----------------
+const PRICING = D.pricing || null, MONEY = D.money_totals || null;
+const MONEY_NOTE = "(Google proxy, US \u00b7 estimate)";
+const MONEY_TIP = "Floor = what the brand already pays per search visit. Mid = value of a new patient \u00d7 assumed conversion. "
+  + "Ranking of groups and points does not depend on either value. Demand is Google search demand, a proxy for AI demand."
+  + (PRICING ? "\n\nFloor: " + PRICING.sources.floor + "\n\nMid: " + PRICING.sources.mid
+             + "\n\nAd spend: " + PRICING.sources.benchmark_ad_spend_usd_yr : "");
+const _usdUnit = v => v >= 1e6 ? 1e6 : v >= 1000 ? 1000 : 1;
+function usdRange(f, m){
+  f = Math.round(f||0); m = Math.round(m||0);
+  const u = _usdUnit(Math.max(f, m)), sfx = u===1e6 ? "M" : u===1000 ? "K" : "";
+  const one = v => { const x = v/u; return u===1e6 ? (x<10 ? x.toFixed(1) : String(Math.round(x))) : String(Math.round(x)); };
+  return "$" + one(f) + "\u2013" + one(m) + sfx;
+}
+const usdYr = a => usdRange(a[0]*12, a[1]*12);
+function usdOne(v){ v=Math.round(v||0); const u=_usdUnit(v), sfx=u===1e6?"M":u===1000?"K":""; const x=v/u; return "$"+(u===1e6?(x<10?x.toFixed(1):Math.round(x)):Math.round(x))+sfx; }
+function groupMoney(gid){
+  if(!PRICING) return null;
+  const g = groupById[gid]; if(!g) return null;
+  return (g.pids||[]).reduce((a,k)=>{ const mo=(PTS[k]||{}).money;
+    return (!mo||!mo.usd||mo.pf||mo.panel!=="api") ? a : [a[0]+mo.usd[0], a[1]+mo.usd[1]]; }, [0,0]);
+}
+function moneyTile(){
+  if(!PRICING || !MONEY || !MONEY.api_usd_mo) return "";
+  const yr=[MONEY.api_usd_mo[0]*12, MONEY.api_usd_mo[1]*12];
+  const shr=v=>Math.round(v/PRICING.ad_spend_yr*100);
+  const seen=new Set(), gids=[];
+  (DASH.prioritization.recommendations||[]).forEach(r=>{ if(!seen.has(r.group_id)){ seen.add(r.group_id); gids.push(r.group_id); } });
+  const top=gids.map(g=>[g,groupMoney(g)]).filter(x=>x[1]&&x[1][1]>0).sort((a,b)=>b[1][1]-a[1][1]).slice(0,3);
+  const web=MONEY.web_usd_mo||[0,0];
+  const names=(MONEY.portfolio||[]).join(", ");
+  return `
+  <section class="tile c5" aria-label="Revenue at risk" onclick="location.hash='#/priorities?sort=usd&panel=api&pf=0'">
+    <h2>Revenue at risk <span>${MONEY_NOTE}</span></h2>
+    <div class="big" title="${esc(MONEY_TIP)}">${usdRange(yr[0],yr[1])}<small> / yr</small></div>
+    ${bar(shr(yr[1]))}
+    <div class="note">${shr(yr[0])}%\u2013${shr(yr[1])}% of annual ${esc(M.brand)} ad budget (${usdOne(PRICING.ad_spend_yr)})</div>
+    <div class="tblwrap"><table><tr><th>Top groups</th><th class="n">$ / yr</th></tr>${
+      top.map(([g,v])=>`<tr><td>${esc(g)}</td><td class="n">${usdYr(v)}</td></tr>`).join("")}</table></div>
+    <div class="note">Web surfaces (R4/R5): ${usdYr(web)} / yr \u2014 separate panel, not added</div>
+    <div class="note">Portfolio queries excluded${names?` \u2014 ${esc(names)} ${MONEY.portfolio.length>1?"are":"is"} the client's own brand${MONEY.portfolio.length>1?"s":""}`:""}</div>
+  </section>`;
+}
+function moneySum(list){ return list.reduce((s,p)=>{ const u=(p.money||{}).usd; return (p.money&&p.money.pf)||!u ? s : [s[0]+u[0], s[1]+u[1]]; }, [0,0]); }
 const G = id => (window.GLOSSARY||{})[id] || null;
 const gAttr = id => G(id) ? ` data-g="${id}"` : "";
 const gLead = id => { const g=G(id); return g&&g.lead ? `<div class="lead">${escG(g.lead)}</div>` : ""; };
@@ -445,10 +489,12 @@ function level1(el){
   const lightText = {red:"Dangerous errors found", yellow:"Warnings found", green:"No critical findings"}[L.traffic_light]||L.traffic_light;
   const r3 = S.top_negative_themes.filter(t=>t.run==="R3").slice(0,5).map(t=>`<tr><td>${esc(themeName(t.theme))}</td><td class="n">${pct0(t.pct_of_negative)}</td></tr>`).join("");
   const gap = C.gap_list.slice(0,4).map(g=>`<tr><td><a href="#/sources?domain=${encodeURIComponent(g.domain)}">${esc(g.domain)}</a></td><td class="n">${esc(g.subtype||g.owner)}</td><td class="n">gap ${g.gap_score}</td></tr>`).join("");
-  const recs = P.recommendations.slice(0,3).map(r=>{ const g=groupById[r.group_id]; const o=r.owners[0]; return `<tr><td><span class="tag p${r.priority}">${r.priority}</span> <a href="#/priorities?group=${encodeURIComponent(r.group_id)}">${esc(r.group_id)}</a> — ${esc(o.owner)}<br><span class="note">Cause: ${esc(g.dominant_cause.code.toLowerCase())} in ${shr0(g.dominant_cause.share)} of points</span></td><td class="n">${fmtK(g.demand)}</td><td class="n">${shr0(g.gap)}</td><td class="n">${shr0(o.lever)}</td><td class="n">up to ${(+o.ceiling_pp).toFixed(0)} pp</td></tr>`; }).join("");
+  const recs = P.recommendations.slice(0,3).map(r=>{ const g=groupById[r.group_id]; const o=r.owners[0]; return `<tr><td><span class="tag p${r.priority}">${r.priority}</span> <a href="#/priorities?group=${encodeURIComponent(r.group_id)}">${esc(r.group_id)}</a> — ${esc(o.owner)}<br><span class="note">Cause: ${esc(g.dominant_cause.code.toLowerCase())} in ${shr0(g.dominant_cause.share)} of points</span>${(()=>{const v=groupMoney(r.group_id);return v&&v[1]?`<br><span class="note">${usdYr(v)} / yr at risk <span class="z">${MONEY_NOTE}</span></span>`:"";})()}</td><td class="n">${fmtK(g.demand)}</td><td class="n">${shr0(g.gap)}</td><td class="n">${shr0(o.lever)}</td><td class="n">up to ${(+o.ceiling_pp).toFixed(0)} pp</td></tr>`; }).join("");
   const who = Object.entries(A.counters.by_who).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<div>${esc(k)}</div><div>${v}</div>`).join("");
-  const next = A.top3_open.map(t=>{ const c=campById[t.task_id]||{}; const e=t.impact.expected_pp; return `<tr><td><a href="#/actions">${esc(c.what||t.group_id+" → "+t.owner)}</a></td><td>${esc(t.who)}</td><td class="n">${e?`+${(+e[0]).toFixed(0)} to +${(+e[1]).toFixed(0)} pp`:"not estimated"}</td><td class="n"><span class="tag p1">open</span></td></tr>`; }).join("");
+  const stakeTip = "A point can belong to several groups \u2014 amounts are not additive. See the Revenue at risk tile for the total.";
+  const next = A.top3_open.map(t=>{ const c=campById[t.task_id]||{}; const e=t.impact.expected_pp; const v=groupMoney(t.group_id); return `<tr><td><a href="#/actions">${esc(c.what||t.group_id+" → "+t.owner)}</a></td><td>${esc(t.who)}</td><td class="n">${e?`+${(+e[0]).toFixed(0)} to +${(+e[1]).toFixed(0)} pp`:"not estimated"}</td>${PRICING?`<td class="n" title="${esc(stakeTip)}">${v&&v[1]?usdRange(v[0],v[1]):"\u2014"}</td>`:""}<td class="n"><span class="tag p1">open</span></td></tr>`; }).join("");
   el.innerHTML = `${gLead("screen_dashboard")}<div class="grid">
+  ${moneyTile()}
   <section class="tile c5" aria-label="Visibility Score" onclick="location.hash='#/visibility'">
     <h2${gAttr("visibility_score")}>Visibility Score <span>unbranded questions, API models</span></h2>${gLead("visibility_score")}
     <div class="row top">
@@ -521,7 +567,7 @@ function level1(el){
       <div><div class="mid">${A.counters.done_this_cycle}<small>done this cycle</small></div></div>
       <div style="flex:1;min-width:200px"><div class="kv">${who}</div></div>
     </div>
-    <div class="tblwrap"><table><tr><th>Next up</th><th>Who</th><th class="n">Expected</th><th class="n">Status</th></tr>${next}</table></div>
+    <div class="tblwrap"><table><tr><th>Next up</th><th>Who</th><th class="n">Expected</th>${PRICING?`<th class="n" title="${esc(stakeTip)}">$ at stake/mo</th>`:""}<th class="n">Status</th></tr>${next}</table></div>
     <div class="note">Expected shift uses industry priors until two cycles of your own results exist. ${A.counters.label_tasks_awaiting_signoff} label tasks await sign-off.</div>
   </section>
   <section class="tile c5 empty" aria-label="Before and after">
@@ -541,7 +587,7 @@ function tbl(cols, rows, opts={}){
   const state = {k:opts.sortKey||null, dir:opts.sortDir||-1};
   const draw = () => {
     let r = rows.slice();
-    if(state.k){ const c=cols.find(x=>x.k===state.k); const sv=c.sort||c.f; r.sort((a,b)=>{const x=sv(a),y=sv(b); return (x>y?1:x<y?-1:0)*state.dir;}); }
+    if(state.k && cols.some(x=>x.k===state.k)){ const c=cols.find(x=>x.k===state.k); const sv=c.sort||c.f; r.sort((a,b)=>{const x=sv(a),y=sv(b); return (x>y?1:x<y?-1:0)*state.dir;}); }
     const scroll = opts.scroll===undefined ? rows.length>12 : opts.scroll;
     const cls = c => [c.n?"n":"", c.c||""].filter(Boolean).join(" ");
     return `${scroll===true?`<div class="count">${rows.length.toLocaleString("en")} rows, scroll inside the table</div>`:""}<div class="tblwrap${scroll===true?" scroll":scroll==="tall"?" tall":""}"><table${opts.tableClass?` class="${opts.tableClass}"`:""}><thead><tr>${cols.map(c=>`<th data-k="${c.k}"${gAttr(c.g)} class="sort ${cls(c)}${state.k===c.k?" on":""}">${c.h}${state.k===c.k?(state.dir>0?" ↑":" ↓"):""}</th>`).join("")}</tr></thead><tbody>${r.map(row=>`<tr${opts.rowAttr?opts.rowAttr(row):""}>${cols.map(c=>`<td class="${cls(c)}">${c.f(row)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
@@ -572,16 +618,32 @@ function pointTable(el, keys, opts={}){
     {k:"pos",h:"Position",g:"avg_position",n:true,f:p=>f1(p.metrics.avg_position),sort:p=>p.metrics.avg_position??99},
     {k:"models",h:"Models, present / answers",g:"model_family",f:p=>`<div class="mchips">${famChips(p)}</div>`,sort:p=>p.metrics.answers},
     {k:"dem",h:"Demand /mo",g:"demand",n:true,f:p=>fmtK(p.demand.topic_demand),sort:p=>p.demand.topic_demand},
-    {k:"rank",h:"Rank",g:"rank_score",n:true,f:p=>f1(p.point_rank_score),sort:p=>p.point_rank_score},
   ];
+  if(PRICING) cols.push(
+    {k:"usd",h:"$ at risk/mo",g:"usd_at_risk",n:true,
+     f:p=>{ const mo=p.money||{}; if(!mo.usd) return "\u2014";
+            if(mo.pf) return '<span class="z">portfolio</span>';
+            return usdRange(mo.usd[0],mo.usd[1]) + (mo.panel==="web" ? ' <span class="z">web</span>' : ""); },
+     sort:p=>(p.money&&p.money.usd)?p.money.usd[1]:-1});
+  cols.push(
+    {k:"rank",h:"Rank",g:"rank_score",n:true,f:p=>f1(p.point_rank_score),sort:p=>p.point_rank_score});
+  const panelSel = opts.panel || "", pfSel = opts.pf || "";
+  const scoped = all.filter(p => (!panelSel || (p.money||{}).panel===panelSel) && (pfSel!=="0" || !(p.money||{}).pf));
   const draw = () => {
     const q = st.text.toLowerCase();
-    const list = all.filter(p => (!st.run||p.run===st.run)&&(!st.zone||p.zone===st.zone)&&(!st.topic||p.topic===st.topic)&&(!st.sub||p.subtopic===st.sub)&&(!st.fam||(p.metrics.by_model||[]).some(m=>m.model_family===st.fam))&&(!st.qt||p.query_type===st.qt)&&(!st.stage||p.patient_stage===st.stage)&&(!st.code||p.code===st.code)&&(!st.cause||(p.cause&&p.cause.code===st.cause))&&(!st.sev||p.sev===st.sev)&&(!q||p.question.toLowerCase().includes(q)||p.pid.toLowerCase().includes(q)));
+    const list = scoped.filter(p => (!st.run||p.run===st.run)&&(!st.zone||p.zone===st.zone)&&(!st.topic||p.topic===st.topic)&&(!st.sub||p.subtopic===st.sub)&&(!st.fam||(p.metrics.by_model||[]).some(m=>m.model_family===st.fam))&&(!st.qt||p.query_type===st.qt)&&(!st.stage||p.patient_stage===st.stage)&&(!st.code||p.code===st.code)&&(!st.cause||(p.cause&&p.cause.code===st.cause))&&(!st.sev||p.sev===st.sev)&&(!q||p.question.toLowerCase().includes(q)||p.pid.toLowerCase().includes(q)));
     document.getElementById("pf_cnt").textContent = `${list.length.toLocaleString("en")} of ${all.length.toLocaleString("en")} points${opts.caption?" · "+opts.caption:""}`;
     window.__lastList = list.map(p=>p.pid+"|"+p.run);
+    const foot = document.getElementById("pf_money");
+    if(foot){
+      const preset = panelSel==="api" && pfSel==="0" && list.length===scoped.length;
+      const tot = (preset && MONEY && MONEY.api_usd_mo) ? MONEY.api_usd_mo : moneySum(list);
+      foot.innerHTML = `\u03a3 $ at risk: ${usdRange(tot[0],tot[1])}/mo \u00b7 ${panelSel?panelSel:"all"} panel \u00b7 portfolio ${pfSel==="0"?"excluded":"included"} <span class="z">${MONEY_NOTE}</span>`;
+    }
     document.getElementById("pf_tbl").innerHTML = tbl(cols, list, {sortKey:opts.sortKey||null, sortDir:opts.sortDir||-1, tableClass:"pt-table", scroll:list.length>30?"tall":false, rowAttr:p=>` class="pt" data-href="#/point/${encodeURIComponent(p.pid+"|"+p.run)}"`});
   };
   Object.keys(st).forEach(k=>{ const e=document.getElementById("pf_"+k); if(e) e[k==="text"?"oninput":"onchange"]=ev=>{st[k]=ev.target.value;draw();}; });
+  if(PRICING){ const f=document.createElement("div"); f.className="note"; f.id="pf_money"; el.appendChild(f); }
   document.getElementById("pf_reset").onclick=()=>{Object.keys(st).forEach(k=>{st[k]="";const e=document.getElementById("pf_"+k);if(e)e.value="";});draw();};
   (opts.preset||[]).forEach(([k,v])=>{ st[k]=v; const e=document.getElementById("pf_"+k); if(e) e.value=v; });
   draw();
@@ -705,7 +767,8 @@ function vPriorities(el, q){
       + `<div class="note">Findings reach the client report only after clinician sign-off. ${DASH.safety_label.findings.pending_signoff} findings are pending across all topics.</div></section>`
    + sec("All points", `<div id="pt"></div>`, "", "every run") + `</div>`;
   el.querySelectorAll("[data-href]").forEach(r=>r.onclick=ev=>{ if(ev.target.closest("a")) return; location.hash=r.dataset.href; });
-  pointTable(document.getElementById("pt"), KEYS, {sortKey:"dem"});
+  pointTable(document.getElementById("pt"), KEYS,
+    {sortKey: q.get("sort")==="usd" ? "usd" : "dem", sortDir:-1, panel:q.get("panel")||"", pf:q.get("pf")||""});
 }
 function groupView(el, g){
   const why = g.failing_cause || g.dominant_cause;
@@ -863,6 +926,15 @@ function loadAnswers(run){
   ansPromise[run] = loadScript("answers_"+run+".js").then(async()=>{ const b64=window["ANSWERS_B64_"+run]; const bin=Uint8Array.from(atob(b64), c=>c.charCodeAt(0)); const ds=new DecompressionStream("gzip"); const text=await new Response(new Blob([bin]).stream().pipeThrough(ds)).text(); Object.assign(ANSWERS, JSON.parse(text)); });
   return ansPromise[run];
 }
+function moneyDetailRows(p){
+  if(!PRICING) return [];
+  const mo = p.money || {}; if(!mo.usd) return [];
+  const rows = [[`$ at risk /mo <span class="z">${MONEY_NOTE}</span>`,
+                 mo.pf ? '<span class="z">portfolio \u2014 not counted as a loss</span>' : usdRange(mo.usd[0],mo.usd[1])],
+                ["How", `${(mo.pt_demand_eff||0).toLocaleString("en")}/mo searches \u00d7 ${Math.round((mo.gap||0)*100)}% answers without ${esc(M.brand)} \u00d7 $${PRICING.floor.toFixed(2)}\u2013${PRICING.mid.toFixed(2)}`]];
+  if(mo.dc) rows.push(["Demand note", "topic demand corrected upward to its own keyword volume"]);
+  return rows;
+}
 function level3(el, key, q){
   const p = PTS[key]; if(!p){ el.innerHTML=`<section class="tile">Point ${esc(key)} not found.</section>`; return; }
   const list = window.__lastList || KEYS; const i = list.indexOf(key);
@@ -874,7 +946,7 @@ function level3(el, key, q){
     ${sec("Metrics", `<div class="row top"><div><div class="mid"${gAttr("presence_share")}>${m.we_present_share==null?"—":shr0(m.we_present_share)}<small>named</small></div></div><div><div class="mid">${f1(m.avg_position)}<small>position</small></div></div><div><div class="mid"${gAttr("answers_scored")}>${m.answers-m.answers_excluded}<small>scored answers</small></div><div class="note">${m.answers_excluded?m.answers_excluded+" excluded as unscoreable":"none excluded"}</div></div></div>` + tbl([{k:"f",h:"Family",g:"model_family",f:r=>esc(cap(r.model_family))},{k:"a",h:"Answers",g:"answers_scored",n:true,f:r=>r.answers},{k:"w",h:"We present",g:"presence_share",n:true,f:r=>r.we_present},{k:"p",h:"Position",g:"avg_position",n:true,f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.answer_sentiment)}], m.by_model) + `<div></div>` + kv([["INN only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)],["Competitors present",Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(", ")||"none"],["Citations",`${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}`],...runspec]), "", "from the pipeline", "c7", "presence_share")}
     ${sec("Sources", `<div class="srclist">${(m.citations.top_domains||[]).map(d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}">${esc(d.domain)} <span>×${d.n} · ${esc(d.owner)}${d.subtype?"/"+esc(d.subtype):""}</span></a>`).join("")||"<span class='note'>no citations</span>"}</div>` + (p.serp?`<dl class="dl" style="margin-top:10px"><dt>Google</dt><dd>${p.serp.our?"we rank #"+p.serp.our:"we are absent"}; competitor ${p.serp.comp?"#"+p.serp.comp:"absent"}</dd><dt>Occupiers</dt><dd>${(p.serp.occ||[]).map(esc).join(", ")||"—"}</dd><dt>Overlap</dt><dd>${p.serp.ov??"—"}%</dd></dl>`:"") + (p.inventory?`<dl class="dl" style="margin-top:10px"><dt>Our page</dt><dd>${esc(p.inventory.v)}${p.inventory.url?` · <a href="${esc(p.inventory.url)}" target="_blank" rel="noopener">${esc(p.inventory.url)}</a>`:""}</dd><dt>Missing</dt><dd>${esc(p.inventory.miss||"—")}</dd></dl>`:""), "", "top domains, SERP snapshot, inventory", "c5", "top_domain_citations")}
     ${sec("Diagnosis", `<div class="para">${(p.diagnosis_text||[]).map(s=>`<p>${esc(s)}</p>`).join("")}</div>`, "", "platform export", "c12", "cause")}
-    ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]]), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
+    ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]].concat(moneyDetailRows(p))), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
     ${sec("Evidence", `<ul class="evid">${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`, "", "platform export", "c8", "code")}
     ${sec("Answers", `<button class="btn ghost" id="loadAns" type="button">Load answers</button><div id="ansBox"></div>`, "Full texts from the corpus, loaded on demand. Excluded answers are flagged; their verdicts are not counted.", "one per model × repeat", "c12", "answers_scored")}
     ${sec("Tasks from this question", `<div class="lead">The same cards as the Action Center: open one for its detail, or act on it here.</div><div id="ptTasks">${taskListHTML(tasksForPoint(key), false, {acLink:true, showStatus:true})}</div>`, "", `client · ${p.fixes.filter(c=>c.audience==="client").length}`, "c12", "open_tasks")}
