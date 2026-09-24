@@ -90,12 +90,18 @@ Add to the exported object (the `data` dict written at `:443`):
 ```python
 "pricing": {"floor", "mid", "ad_spend_yr", "sources", "market"} | None,
 "money_totals": {
-  "api_usd_mo": [floor, mid],   # Σ usd over panel=api, pf=0
-  "web_usd_mo": [floor, mid],   # Σ usd over panel=web, pf=0 — never added to api
-  "excluded_pf_pt_demand_mo": <int>,
-  "corrected_cells": <int>
+  "api_usd_mo": [floor, mid] | None,   # Σ usd over panel=api, pf=0; None without pricing.yaml
+  "web_usd_mo": [floor, mid] | None,   # Σ usd over panel=web, pf=0 — never added to api
+  "excluded_pf_pt_demand_mo": <int>,   # Σ pt_demand_eff × gap over pf=1, corrected basis
+  "corrected_cells": <int>,
+  "portfolio": [<brand>, …]            # the brands.yaml portfolio list, so the UI can name them (§5.1)
 }
 ```
+
+Without `config/pricing.yaml` the block is still emitted: the two USD ranges are `null`, while
+`excluded_pf_pt_demand_mo`, `corrected_cells` and `portfolio` stay live — they do not depend on the constants.
+`excluded_pf_pt_demand_mo` uses `pt_demand_eff` (corrected); the uncorrected equivalent, quoted in §3.3, is
+smaller by the `dcf` of the portfolio points' cells.
 
 `money_totals` is computed by the builder once so every UI element reads the same numbers (tile ↔ table agreement is a builder invariant, not a UI coincidence).
 
@@ -135,7 +141,9 @@ Portfolio queries excluded — Wegovy, Rybelsus are the client's own brands
 - Headline = `money_totals.api_usd_mo × 12`, format `$floor–midM / yr` (one decimal below $10M, integer above; `$285K` below $1M).
 - Bar = headline ÷ `pricing.ad_spend_yr` as `floor%–mid%`.
 - Tooltip (mandatory text): "Floor = what the brand already pays per search visit. Mid = value of a new patient × assumed conversion. Ranking of groups and points does not depend on either value. Demand is Google search demand, a proxy for AI demand." + the three `sources` strings.
-- Click → Data points view sorted by `money.usd[1]` desc with `panel=api&pf=0` applied (§5.2). The footer there must show the same `money_totals.api_usd_mo`.
+- Click → `#/priorities?sort=usd&panel=api&pf=0` — the repository has no standalone Data-points route; the
+  "All points" table on the Priorities screen is that view. The footer there must show the same `money_totals.api_usd_mo`.
+- The ad-spend benchmark is a single value, not a range: same unit rules, one number (`$225M`).
 
 ### 5.2 Data points table (`:574` area) and detail (`:877` area)
 
@@ -154,7 +162,14 @@ If the tile lists campaigns/groups, add `$ at stake/mo` per row with tooltip: "A
 
 ---
 
-## 6. Neural map — `ui/index.html`
+## 6. Neural map — `ui/index.html` (built artifact: edit via `src/step_10_build_ui.py`)
+
+`ui/index.html` is produced by step 10 from `ui/template.html` plus the legacy map JS extracted from
+`ui/evidence_base_legacy.html`, so the changes below are implemented as guarded string replacements inside
+`src/step_10_build_ui.py` (each asserting a unique anchor) rather than edits to the built file, which step 10
+would overwrite. The node also carries `gp` (the money gap) in addition to the four fields of §4: §6.3's drawer
+formula needs it and it cannot be derived from `oz/n`, whose denominator excludes unscoreable answers.
+
 
 ### 6.1 Lens toggle
 Header control **`Size: Demand | $ at risk`**, default Demand, hidden when `MAP_DATA.pricing` is null. Route param `lens=usd`.
@@ -165,7 +180,9 @@ Today: `const d=q.vol||0, dsc = d>=1000?1.32 : d>=100?1.14 : d>0?1.0 : 0.85; q.r
 Keep the `rnd()` draw and the base exactly as is. Store `q.base = 2.3+rnd()*1.6` once at layout time; radius = `q.base × mult(lens)`:
 - Demand lens: `mult = dsc` (unchanged).
 - `$` lens: quantile of `usd[1]` over currently visible nodes with `pf=0` and `usd[1]>0`: top 10% → 1.60 · top 25% → 1.32 · other >0 → 1.0 · `usd=0` or `pf=1` → 0.6. Quantiles keep sizing independent of the constant.
-- `crit` multiplier stays on top if present. Positions never change on toggle; only radii animate (≤300 ms).
+- `crit` multiplier stays on top if present — the current map has none (`cr` only drives label priority), so
+  nothing is carried over. Positions never change on toggle; only radii animate (≤300 ms).
+- A `window.__nmSetLens` hook is exported next to the existing `__nmGoPoint` / `__nmKick`.
 
 ### 6.3 Colors, hubs, labels, drawer
 - Class colors unchanged. `pf=1` nodes grey, no halo, drawer line "Portfolio brand — not counted as a loss".
