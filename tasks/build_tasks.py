@@ -9,6 +9,36 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "metrics" / "cycle_01" / "platform_data.json"
 OUT = ROOT / "tasks"
 MIN_TASK_USD_MO = 5000
+MAX_TASK_POINTS = 25
+ZONE_SHORT = {
+ "STARTING & SWITCHING": "starting or switching", "WEIGHT LOSS": "weight loss",
+ "BLOOD SUGAR & GLYCEMIC CONTROL": "blood sugar", "LIVING ON THE DRUG": "living on the drug",
+ "SAFETY & CONTRAINDICATIONS": "safety", "HEART & KIDNEY": "heart and kidney",
+ "PRICE & ACCESS": "price and access",
+}
+
+
+def intent_of(q):
+    """The dominant thing the patient is doing in the question. Rules written by hand from the corpus."""
+    x = (q or "").lower()
+    if re.search(r"\b(zepbound|mounjaro|trulicity|wegovy|saxenda|victoza|jardiance|rybelsus)\b", x) and \
+       re.search(r"\b(vs|versus|or|switch|switching|instead|alternative|better|compare|which)\b", x):
+        return "considering a competitor"
+    if re.search(r"just diagnosed|newly diagnosed|recently diagnosed|new to this|where do i (start|begin)|first thing", x):
+        return "newly diagnosed"
+    if re.search(r"is that (right|true)|marketing|real data|studied|actually work|as bad as|horror stor|myth|for life|forever", x):
+        return "doubts about the claims"
+    if re.search(r"side effect|nausea|vomit|stomach|gi\b|tolerat|hair loss|fatigue", x):
+        return "side effects and tolerance"
+    if re.search(r"a1c|blood sugar|sugars|glucose|insulin|metformin", x):
+        return "blood sugar control"
+    if re.search(r"lose|losing|weight|lbs|kg|pounds|plateau|maintenance", x):
+        return "weight-loss results"
+    if re.search(r"cost|price|insuranc|cover|stock|afford", x):
+        return "price and access"
+    if re.search(r"inject|needle|pen\b|dose|dosing|titrat|mg\b|shot", x):
+        return "dosing and injecting"
+    return "general treatment choice"
 
 # ---------------------------------------------------------------- taxonomy
 TYPES = {
@@ -185,6 +215,8 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan):
         if t in ("T2", "T3", "T6", "T10"):
             pp = pages_for(t, fix_of[k].get(t, ""), p, k)
             pg = pp[0] if pp else ""
+        if t in ("T6", "T10") and pg:
+            g = ""          # the deliverable is the placement on that domain, not one subtopic
         return (g, pg)
 
     buckets = collections.defaultdict(list)
@@ -202,9 +234,60 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan):
         mid = sum(money(k)["usd"][1] for k in ks)
         merged[key if mid >= MIN_TASK_USD_MO or key[0] in ("T1", "T8") else (key[0], "other", "")].extend(ks)
 
-    for (t, g, pg), ks in merged.items():
+    # A board task must stay readable: nothing in lane A above MAX_TASK_POINTS. Split by zone, then by the
+    # question intent, then by topic; thin pieces fall back only into a sibling that still has room.
+    LANE_A = ("T2", "T3", "T4", "T5", "T6", "T10")
+
+    def chunk(ks, label):
+        ks = sorted(ks, key=lambda k: (-P[k]["money"]["usd"][1], k))
+        n = (len(ks) + MAX_TASK_POINTS - 1) // MAX_TASK_POINTS
+        return {"{} \u00b7 part {}".format(label, i + 1): ks[i::n] for i in range(n)}
+
+    def refine(ks, level, label=""):
+        if len(ks) <= MAX_TASK_POINTS:
+            return {label: ks}
+        if level > 2:
+            return chunk(ks, label)
+        keyf = (lambda k: ZONE_SHORT.get(P[k].get("zone"), P[k].get("zone") or "other"),
+                lambda k: intent_of(P[k]["question"]),
+                lambda k: P[k].get("topic") or "other")[level]
+        by = collections.defaultdict(list)
+        for k in ks:
+            by[keyf(k)].append(k)
+        if len(by) == 1:
+            return refine(ks, level + 1, label)
+        out = {}
+        for part, pk in sorted(by.items()):
+            lab = "{} \u00b7 {}".format(label, part) if label else part
+            out.update(refine(pk, level + 1, lab))
+        return out
+
+    split = {}
+    for key, ks in merged.items():
+        if key[0] not in LANE_A:
+            split[key + ("",)] = ks; continue
+        for lab, pk in refine(ks, 0).items():
+            split[key + (lab,)] = pk
+    out, rest = {}, {}
+    for key in sorted(split, key=lambda x: (-sum(P[k]["money"]["usd"][1] for k in split[x]), x)):
+        ks = split[key]
+        mid = sum(P[k]["money"]["usd"][1] for k in ks)
+        if key[3] and mid < MIN_TASK_USD_MO:
+            room = [x for x in out if x[:3] == key[:3] and len(out[x]) + len(ks) <= MAX_TASK_POINTS]
+            if room:
+                out[max(room, key=lambda x: (sum(P[k]["money"]["usd"][1] for k in out[x]), x))].extend(ks); continue
+            rest.setdefault(key[:3], []).extend(ks); continue
+        out[key] = list(ks)
+    for base, ks in rest.items():                      # leftovers of one task become a single board card
+        for lab, pk in (chunk(ks, "remaining questions") if len(ks) > MAX_TASK_POINTS
+                        else {"remaining questions": ks}).items():
+            out[base + (lab,)] = pk
+    merged = out
+
+    for (t, g, pg, piece), ks in merged.items():
         if (g or "").strip().lower() in ("other", "", "(general)") or g == "other":
             g = theme([P[k]["question"] for k in ks])
+        zone_of = collections.Counter(P[k].get("zone") for k in ks).most_common(1)[0][0]
         ks = sorted(ks, key=lambda k: (-money(k)["usd"][1], k))
         info = TYPES[t]
         lane = "C" if t in ("T12", "T1", "T8") else info["lane"]
@@ -222,13 +305,14 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan):
             pages = [pg] + [x for x in pages if x != pg]
         also = sorted({x for k in ks for x in applicable[k]} - {t, "T1"}, key=lambda x: PRIMARY_ORDER.get(x, (99, 99)))
         wk = info["weeks"]
-        tid = "{}-{}-{}".format(lane, t, slug("{}-{}".format(slug(pg, 26), slug(g, 26)) if pg else slug(g), 56))
+        tid = "{}-{}-{}".format(lane, t, slug("{}-{}{}".format(slug(pg, 20), slug(g, 20), "-" + slug(piece, 46) if piece else ""), 92))
         tasks.append(dict(
             id=tid,
             lane=lane, type=t, type_name=info["name"],
-            title=human_title(tid, t, g, pg or (pages[0] if pages else ""), len(ks)),
+            title=human_title(tid, t, g, pg or (pages[0] if pages else ""), len(ks), piece),
             owner=info["owner"], weeks=wk,
             usd_yr=[f * 12, m * 12], usd_per_week=round(m * 12 / wk) if wk else None,
+            zone=zone_of, piece=piece or None,
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
             points=dict(count=len(ks), pids=[k for k in ks[:40]]), _all_pids=ks,
             questions=[P[k]["question"][:180] for k in ks[:3]],
@@ -274,6 +358,66 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan):
 # Themes written by hand from each task's own questions — what the patient is actually asking,
 # in the words a CMO would use. Max 12 words. Keyed by task id.
 THEMES = {
+ "A-T4-x-side-effects-mounjar-living-on-the-drug": "patients resisting medication over side-effect fear",
+ "A-T4-x-want-lose-weight-mou-weight-loss": "active weight-loss patients with PCOS or thyroid conditions",
+ "A-T4-x-basics-mechanism": "what these drugs are and what results they show",
+ "A-T4-x-titration-dose-sched-starting-or-switching": "alternatives to injections and how switching works",
+ "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1": "sedentary patients wanting sustainable weight loss (part 1)",
+ "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2": "sedentary patients wanting sustainable weight loss (part 2)",
+ "A-T5-x-basics-mechanism": "how the drug is taken and what is in it",
+ "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims": "patients told the drug is cheating or a money grab",
+ "A-T4-x-pen-device": "is the pen easy to use if injecting scares you",
+ "A-T6-drugs-com-safest-diabetes-what": "which diabetes drug is safest and gentlest",
+ "A-T4-x-efficacy-results-reputation-entity": "doctors repeating the drug-induced-anorexia line",
+ "A-T4-x-efficacy-results-starting-or-switching-blood-sugar-control": "morning sugars out of control despite low carb",
+ "A-T4-x-site-volume": "where to inject and how much",
+ "A-T4-x-efficacy-results-starting-or-switching-dosing-and-injecting": "dose escalation that stopped working",
+ "A-T4-x-efficacy-results-price-and-access": "asking the doctor for a specific brand, and coverage",
+ "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice": "patients asking whether the drug stops working",
+ "A-T6-goodrx-com-weight-actually-deal": "skeptical patients whose doctor keeps recommending a GLP-1",
+ "A-T5-x-efficacy-results": "options before insulin when metformin is not enough",
+ "A-T4-x-titration-dose-sched-weight-loss": "maintenance dosing after reaching goal weight",
+ "A-T4-x-efficacy-results-weight-loss-considering-a-competitor": "switching after a competitor stopped working",
+ "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor": "switching from Trulicity to a newer drug",
+ "A-T6-doctronic-ai-type-diabetes-safe-g": "what new diabetes treatment is coming next",
+ "A-T3-diabeteseducation-no-efficacy-results": "newly diagnosed: what to do first and how to avoid insulin",
+ "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug": "Ozempic vs Mounjaro on side effects and tolerance",
+ "A-T3-diabeteseducation-no-titration-dose-sched": "do all type 2 patients end up injecting",
+ "A-T4-x-efficacy-results-starting-or-switching-newly-diagnosed": "newly diagnosed and frightened, deciding the first step",
+ "A-T4-x-ozempic-what-s-alter-starting-or-switching": "is this drug safe, and what is gentler",
+ "A-T4-x-efficacy-results-weight-loss-blood-sugar-control": "poor blood sugar control with stubborn belly fat",
+ "A-T3-ozempic-com-titration-dose-sched": "dose-escalation myths and what higher doses really do",
+ "A-T6-onlinedoctor-asda-co-where-inject-mounjar": "where to inject",
+ "A-T5-x-titration-dose-sched": "starting dose and titration schedule",
+ "A-T6-webmd-com-numbers-insulin": "when diet alone stops being sustainable",
+ "A-T2-novo-pi-com-saxenda-efficacy-results": "what to switch to when Saxenda stops working",
+ "A-T10-motleyrice-com-now-ozempic-weight-b": "a patient who could not tolerate Ozempic and went legal",
+ "A-T6-universaldrugstore-c-type-glp-safe": "long-term safety of GLP-1s for diet-controlled type 2",
+ "A-T4-x-efficacy-results-weight-loss-doubts-about-the-claims": "couples wanting lasting weight loss without medication",
+ "A-T4-x-efficacy-results-weight-loss-side-effects-and-tolerance": "claims that the drug only works for a year",
+ "A-T4-x-efficacy-results-living-on-the-drug": "morning highs and plateaus after a year on treatment",
+ "A-T4-x-efficacy-results-weight-loss-newly-diagnosed": "just diagnosed, frightened, and overweight",
+ "A-T2-ozempic-com-ozempic-efficacy-results": "Ozempic vs Mounjaro for lowering A1c",
+ "A-T4-x-ozempic-mounjaro-dru-starting-or-switching": "the on-it-for-life claim and non-injection options",
+ "A-T2-novomedlink-com-obes-efficacy-results": "what is stronger than Saxenda",
+ "A-T4-x-titration-dose-sched-living-on-the-drug": "hair loss and other long-term worries on treatment",
+ "A-T6-resources-healthgrad-need": "which medications a person with diabetes actually needs",
+ "A-T6-weightwatchers-com-pcos-losing-weight-l": "the newest weight-loss drug doctors prescribe",
+ "A-T3-ozempic-com-efficacy-results": "does it control blood sugar, not just weight",
+ "A-T5-x-weight-loss-without": "the latest type 2 treatments",
+ "A-T4-x-gi-nausea": "which drug causes less nausea, and how to handle it",
+ "A-T3-novomedlink-com-titration-dose-sched": "do higher doses actually work better",
+ "A-T6-kadieleachmd-com-diet-alone": "can diet alone replace metformin patients cannot tolerate",
+ "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1": "kidney safety and non-injection alternatives (part 1)",
+ "A-T5-x-diabetes-injections": "PCOS and weight that will not move",
+ "A-T3-x-time-weight-loss-eff-remaining-questions-part-1": "fitting treatment around a chaotic schedule (part 1)",
+ "A-T2-x-ozempic-nausea-zepbo": "switching away from what wrecks the stomach",
+ "A-T4-x-side-diabetes-type-k-remaining-questions-part-2": "coverage questions from safety-anxious patients (part 2)",
+ "A-T10-x-ozempic-resting-hear": "the maintenance-drug-forever narrative",
+ "A-T6-x-diabetes-disease-med": "PCOS weight and what actually works",
+ "A-T3-x-effects-actually-wei-remaining-questions-part-2": "long-term effects that worry patients (part 2)",
+ "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1": "do these drugs wreck your organs (part 1)",
+ "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2": "Ozempic vs Mounjaro, which people prefer (part 2)",
  "A-T4-efficacy-results": "what actually works for type 2, and is it safe to start",
  "A-T4-side-effects-ozempic-trulicity-mounjaro-zepb": "switching between GLP-1s and what the side effects really feel like",
  "A-T4-titration-dose-schedule": "switching drugs, maintenance doses and non-injection options",
@@ -343,6 +487,45 @@ VERB = {
 }
 
 
+# Hand-written phrases for the split pieces: what the patient is doing, in a CMO's words.
+ZONE_THEME = {
+ "living on the drug": "already on treatment",
+ "weight loss": "weight-loss patients",
+ "starting or switching": "about to start or switch",
+ "blood sugar": "trying to get blood sugar down",
+ "safety": "safety worries before starting",
+ "heart and kidney": "heart and kidney patients",
+ "price and access": "cost, coverage and supply",
+ "REPUTATION & ENTITY": "doctors repeating the \u201cdrug-induced anorexia\u201d line",
+ "SAFETY & CONTRAINDICATIONS": "safety worries before starting",
+ "PRICE & ACCESS": "cost, coverage and supply",
+}
+INTENT_THEME = {
+ "considering a competitor": "weighing a competitor brand",
+ "newly diagnosed": "newly diagnosed, deciding what to do first",
+ "doubts about the claims": "pushing back on what they have heard",
+ "side effects and tolerance": "cannot tolerate what they are on",
+ "dosing and injecting": "dose, titration and injection questions",
+ "blood sugar control": "getting A1c down",
+ "weight-loss results": "results, plateaus and maintenance",
+ "price and access": "cost, coverage and supply",
+ "general treatment choice": "choosing a first treatment",
+ "remaining questions": "the long tail on this page",
+}
+
+
+def piece_theme(piece):
+    parts = [x.strip() for x in (piece or "").split("\u00b7")]
+    part_no = ""
+    if parts and parts[-1].startswith("part "):
+        part_no = " ({})".format(parts.pop())
+    zone = ZONE_THEME.get(parts[0], parts[0].lower()) if parts else ""
+    intent = INTENT_THEME.get(parts[1]) if len(parts) > 1 else ""
+    if parts and parts[0] == "remaining questions":
+        zone, intent = INTENT_THEME["remaining questions"], ""
+    return "{}{}{}".format(intent + ", " if intent else "", zone, part_no)
+
+
 def page_label(pg):
     if not pg:
         return "our page"
@@ -353,9 +536,10 @@ def page_label(pg):
     return pg
 
 
-def human_title(tid, t, g, pg, n):
+def human_title(tid, t, g, pg, n, piece=""):
     head = VERB[t].format(page=page_label(pg))
-    tail = THEMES.get(tid) or (g if g and g.lower() not in ("other", "", "(general)") else "")
+    tail = THEMES.get(tid) or (piece_theme(piece) if piece else "") \
+        or (g if g and g.lower() not in ("other", "", "(general)") else "")
     return "{} \u2014 {}".format(head, tail) if tail else head
 
 def title_for(t, g, pg, n):
@@ -458,7 +642,7 @@ def write_md(tasks, MT, P, api):
         L.append("| {} | {} | {} | {} | {} | {} | {} | {} |".format(
             i, t["title"], t["owner"], t["weeks"], t["severity"]["bad"], t["severity"]["warn"],
             t["points"]["count"], rng(t["web_usd_yr_info"])))
-    L += ["", "## Lane C — Decisions", "",
+    L += ["", "## Lane C — Decisions — at risk, not recoverable by content alone (needs commercial / executive action)", "",
           "**{} /yr at risk but not recoverable by content.** These need a decision, not a page.".format(rng(sc)), "",
           "| # | task | owner | wks | $/yr | pts |", "|---|---|---|---|---|---|"]
     for i, t in enumerate(C, 1):
