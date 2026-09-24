@@ -57,6 +57,8 @@ def map_nodes(pd_data):
                       "oz": oz, "n": int(m["answers"]) - int(m["answers_excluded"]), "nx": int(m["answers_excluded"]),
                       "ot": int(m.get("comp_present_answers") or 0),
                       "vol": pt["demand_extra"].get("prompt_share") or 0, "tdm": pt["demand"]["topic_demand"],
+                      "usd": pt["money"]["usd"], "pf": pt["money"]["pf"], "dc": pt["money"]["dc"],
+                      "volx": pt["money"]["pt_demand_eff"],
                       "db": pt["demand"].get("basis"), "ai": 1 if pt["demand_extra"].get("ai_native") else 0,
                       "se": m.get("answer_sentiment"),
                       "dg": [int(aw.get("any", 0)), int(aw.get("owned", 0)), int(aw.get("competitor", 0)),
@@ -182,6 +184,8 @@ def main() -> int:
     for stale in ["answers_b64.js", "answers.js"]:
         if (UI / stale).exists(): (UI / stale).unlink()
     # map data block: separate file, loaded only when #/map opens
+    pdj_pricing = json.loads(pdata).get("pricing")
+    map_data["pricing"] = pdj_pricing   # revenue-at-risk v2 §4 — None when config/pricing.yaml is absent
     (UI / "map_data.js").write_text("window.MAP_DATA=" + json.dumps(map_data, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     map_size = (UI / "map_data.js").stat().st_size
     assert map_size <= ARTIFACT_TEXT_LIMIT
