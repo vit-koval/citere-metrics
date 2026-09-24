@@ -1,0 +1,10 @@
+market: US
+currency: USD
+usd_per_search:
+  floor: 3.13
+  mid: 9.30
+benchmark_ad_spend_usd_yr: 225000000
+sources:
+  floor: "Replacement cost of a search visit: Novo Nordisk paid $7.5M for 2.4M paid visits to Ozempic.com, Apr 2022–Mar 2024 (JAMA Network Open, Nov 2025)"
+  mid: "One new patient ($349/mo NovoCare cash price × 8.9 months expected time on therapy in year 1, from 46.5% 12-month discontinuation, JAMA Network Open 2025) × 0.3% search→patient rate (assumption)"
+  benchmark_ad_spend_usd_yr: "Ozempic US advertising $169M Jan–Sep 2025 (MediaRadar via Reuters, Jan 2026), annualized ×12/9"

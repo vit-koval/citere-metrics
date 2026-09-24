@@ -1,5 +1,6 @@
 our_brand: ["Ozempic"]
 our_inn: ["semaglutide"]
+portfolio: ["Wegovy", "Rybelsus"]
 competitors:
   Mounjaro: ["Mounjaro"]
   Wegovy: ["Wegovy"]

@@ -86,6 +86,98 @@ def L(name):
     return json.load(open(C.METRICS_DIR / name, encoding="utf-8"))
 
 
+
+# --------------------------------------------------------------------------- #
+# Revenue-at-risk layer (citere_revenue_at_risk_spec_v2 §3). Display only: nothing
+# here feeds point_rank_score, group score, causes, fixes or any ordering.
+# --------------------------------------------------------------------------- #
+WEB_RUNS = ("R4", "R5")
+
+
+def money_cell_key(cp):
+    """(zone | "*", subtopic | topic) by demand.basis — the cell the export used for prompt_share."""
+    tt = cp.get("topic_traffic") or {}
+    it = cp.get("intent") or {}
+    basis = tt.get("basis") or ""
+    topic, sub = it.get("topic"), it.get("subtopic")
+    if basis == "topic-google:zone\u00d7subtopic":
+        return (cp.get("zone"), sub or topic)
+    if basis == "topic-google:subtopic":
+        return ("*", sub or topic)
+    return ("*", topic)
+
+
+def r7_volume(cp):
+    """models[0].scores.volume — the R7 keyword volume stored on the prompt."""
+    ms = cp.get("models") or []
+    if not ms:
+        return 0.0
+    try:
+        return float((ms[0].get("scores") or {}).get("volume"))
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def demand_correction(corpus):
+    """dcf(cell) = max(1, r7vol / topic_demand) (§3.1). Returns (factor by cell, corrected rows)."""
+    topic_demand, r7 = {}, defaultdict(float)
+    for cp in corpus["prompts"]:
+        key = money_cell_key(cp)
+        topic_demand.setdefault(key, (cp.get("topic_traffic") or {}).get("demand") or 0)
+        if cp["run"] == "R7":
+            r7[key] += r7_volume(cp)
+    factor, corrected = {}, []
+    for key, dem in topic_demand.items():
+        vol = r7.get(key, 0.0)
+        f = max(1.0, vol / dem) if dem else 1.0
+        factor[key] = f
+        if f > 1:
+            corrected.append({"cell": "{} / {}".format(key[0], key[1]), "topic_demand": dem,
+                              "r7vol": int(round(vol)), "dcf": round(f, 4)})
+    corrected.sort(key=lambda r: (-r["dcf"], r["cell"]))
+    return factor, corrected
+
+
+def point_money(cp, export_point, factor, bd, portfolio, comp_money, usd_per_search):
+    """The per-point `money` block (§3.2). `usd` is None when pricing.yaml is absent."""
+    models = cp.get("models") or []
+    n = len(models)
+    # gap is recomputed here, not taken from metrics.we_present_share — see the step report.
+    our = sum(1 for m in models if bd.we_present(m.get("answer") or ""))
+    gap = (1.0 - our / n) if n else 0.0
+    named = set(bd.competitors_present(cp.get("text") or ""))
+    pf = 1 if (named & portfolio) and not (named & comp_money) else 0
+    f = factor.get(money_cell_key(cp), 1.0)
+    pt_demand_eff = int(round((export_point["demand"].get("prompt_share") or 0) * f))
+    if usd_per_search is None:
+        usd = None
+    elif pf:
+        usd = [0, 0]
+    else:
+        usd = [int(round(pt_demand_eff * gap * usd_per_search["floor"])),
+               int(round(pt_demand_eff * gap * usd_per_search["mid"]))]
+    return {"pt_demand_eff": pt_demand_eff, "dc": 1 if f > 1 else 0, "gap": round(gap, 6),
+            "pf": pf, "usd": usd, "panel": "web" if cp["run"] in WEB_RUNS else "api"}
+
+
+def money_totals(points, corrected_cells, has_pricing):
+    api = [0, 0]
+    web = [0, 0]
+    excluded = 0.0
+    for pt in points.values():
+        m = pt["money"]
+        if m["pf"]:
+            excluded += m["pt_demand_eff"] * m["gap"]
+            continue
+        if m["usd"] is None:
+            continue
+        bucket = api if m["panel"] == "api" else web
+        bucket[0] += m["usd"][0]
+        bucket[1] += m["usd"][1]
+    return {"api_usd_mo": api if has_pricing else None, "web_usd_mo": web if has_pricing else None,
+            "excluded_pf_pt_demand_mo": int(round(excluded)), "corrected_cells": corrected_cells}
+
+
 def _n(x):
     return None if x is None or (isinstance(x, float) and math.isnan(x)) else (float(x) if isinstance(x, float) else x)
 
@@ -99,6 +191,12 @@ def main() -> int:
     pri, cit, lab = L("prioritization_summary.json"), L("citations_summary.json"), L("label_flag_summary.json")
     ac_reg = json.load(open(C.REGISTRY_DIR / "action_center_tasks.json", encoding="utf-8"))
     lab_reg = json.load(open(C.REGISTRY_DIR / "label_findings_registry.json", encoding="utf-8"))
+    pricing_cfg = C.load_config("pricing") if (C.CONFIG_DIR / "pricing.yaml").exists() else None
+    usd_per_search = (pricing_cfg or {}).get("usd_per_search") or None
+    portfolio = set(cfg["brands"].get("portfolio") or [])
+    comp_money = set(cfg["brands"]["competitors"]) - portfolio
+    bd_money = C.BrandDictionary(cfg["brands"])
+    dcf_by_cell, corrected_cells = demand_correction(corpus)
     groups_csv = pd.read_csv(C.METRICS_DIR / "prioritization_groups.csv")
     vis_bp = pd.read_csv(C.METRICS_DIR / "visibility_by_prompt.csv")
     a = C.load_answers(); c = C.load_citations()
@@ -185,6 +283,7 @@ def main() -> int:
                         "run_specific": run_specific},
             "demand": {"topic_demand": cp["topic_traffic"]["demand"], "lo": cp["topic_traffic"]["lo"], "hi": cp["topic_traffic"]["hi"], "basis": cp["topic_traffic"]["basis"]},
             "demand_extra": {"prompt_share": p["demand"].get("prompt_share"), "ai_native": p["demand"].get("ai_native"), "source": "platform_export"},
+            "money": point_money(cp, p, dcf_by_cell, bd_money, portfolio, comp_money, usd_per_search),
             "diagnosis_text": p["diagnosis"], "evidence_lines": (p.get("evidence_measured") or []) + (p.get("evidence_search") or []),
             "serp": p.get("serp"), "inventory": p.get("inventory"),
             # `execution` is the export's own AGENT / AGENT+APPROVE / HUMAN TASK — one field, not duplicated
@@ -397,6 +496,11 @@ def main() -> int:
                          label_mismatches=len(label_mismatch), ans_store="ui/answers.js (built by step 10 from the corpus: gzip+base64, keys pid|run, full texts)"),
             "dashboard": dash, "groups": groups, "points": points, "campaigns": campaigns, "label_tasks_awaiting_signoff": held, "citere_tasks": citere_tasks,
             "label_findings": label_findings, "sources": sources, "breakdowns": breakdowns, "map": "unchanged — the neural map keeps its own data block",
+            "pricing": ({"floor": usd_per_search["floor"], "mid": usd_per_search["mid"],
+                         "ad_spend_yr": pricing_cfg.get("benchmark_ad_spend_usd_yr"),
+                         "sources": pricing_cfg.get("sources"), "market": pricing_cfg.get("market")}
+                        if pricing_cfg else None),
+            "money_totals": money_totals(points, len(corrected_cells), pricing_cfg is not None),
             "code_labels": CODE_LABELS, "display_rule": "code = what happened (bold title); cause = why (grey sub-line with confidence) — never two equal labels"}
 
     # ---- checks (§3) ------------------------------------------------------------------
@@ -435,6 +539,9 @@ def main() -> int:
        "orphans by reason: {} | derived rows raised: {} ({} label held, {} client)".format(
            dict(orph) or "none", len(derived), sum(1 for t in derived if t["is_label"]), sum(1 for t in derived if not t["is_label"])))
     ck("7. spot check 20 random R1 points: we_present_share (and avg_position) identical to visibility_by_prompt.csv", not diffs, "20 points, tolerance 1e-9; mismatches={}".format(diffs[:3]))
+    print("\ndemand correction (§3.1): {} cells corrected".format(len(corrected_cells)))
+    for r in corrected_cells:
+        print("  {:<52} topic_demand {:>9,}  r7vol {:>9,}  dcf {:>7.2f}".format(r["cell"][:52], r["topic_demand"], r["r7vol"], r["dcf"]))
     lines = ["# platform_data checks — cycle 1", ""] + ["- {} **{}** — {}".format("PASS" if ok else "FAIL", n, d) for n, ok, d in checks]
     (C.METRICS_DIR / "platform_data_checks.md").write_text("\n".join(lines) + "\n", encoding="utf-8"); print("\n".join(lines))
     if any(not ok for _, ok, _ in checks):
