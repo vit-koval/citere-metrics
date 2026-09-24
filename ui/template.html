@@ -238,6 +238,11 @@ function groupMoney(gid){
   return (g.pids||[]).reduce((a,k)=>{ const mo=(PTS[k]||{}).money;
     return (!mo||!mo.usd||mo.pf||mo.panel!=="api") ? a : [a[0]+mo.usd[0], a[1]+mo.usd[1]]; }, [0,0]);
 }
+const COMP_TIP = "Answers without Ozempic that name this brand. An answer naming several brands is split equally; "
+  + "totals across brands never exceed the overall figure.";
+const STAKE_TIP = "A point can belong to several groups \u2014 amounts are not additive. See the Revenue at risk tile for the total.";
+const BY_COMP = Object.fromEntries(((MONEY&&MONEY.by_comp)||[]).map(r=>[r.brand, r.usd_mo]));
+function compUsdYr(brand){ const v=BY_COMP[brand]; return v?usdYr(v):"\u2014"; }
 function moneyTile(){
   if(!PRICING || !MONEY || !MONEY.api_usd_mo) return "";
   const yr=[MONEY.api_usd_mo[0]*12, MONEY.api_usd_mo[1]*12];
@@ -385,12 +390,18 @@ function taskDetailHTML(t){
     <div class="fwhy"><b>Point</b> <a href="#/point/${encodeURIComponent(t.pid_run)}">${esc(t.pid_run)}</a> ${esc(t.point.question||"")}</div>
   </div>`;
 }
+function stakeChip(gid){
+  if(!PRICING) return "";
+  const v = groupMoney(gid); if(!v) return "";
+  const tip = `${v[1]?usdYr(v)+" / yr":"nothing at risk on the API panel"} \u00b7 ${MONEY_NOTE} \u2014 ${STAKE_TIP}`;
+  return `<span class="tag mute" title="${esc(tip)}">${v[1]?usdRange(v[0],v[1])+"/mo at stake":"no $ at stake"}</span>`;
+}
 function taskCardHTML(t, opts){
   opts = opts || {};
   return `<div class="kcard" data-id="${t.id}">
     <div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span>${opts.noCrumb?"":taskCrumb(t)}${opts.showStatus?`<span class="tag ${t.status==="done"?"ok":t.status==="dismissed"?"mute":t.status==="in_progress"?"warn":"p1"}">${esc(t.status.replace("_"," "))}</span>`:""}</div>
     <div class="t">${esc(t.card.action)}</div>
-    <div class="m">${taskMeta(t.card)}</div>
+    <div class="m">${taskMeta(t.card)}${stakeChip(t.group_id)}</div>
     <div class="fpt">${taskPointLink(t)}</div>
     <button class="flmore" type="button" data-td="${t.id}">Details ▾</button>
     <div class="hide" id="${tdId(t)}">${taskDetailHTML(t)}</div>
@@ -405,7 +416,7 @@ function taskGroupCardHTML(action, items, opts){
   return `<div class="kcard grouped">
     <div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span><span class="tag mute">${items.length} identical tasks</span>${opts.noCrumb?"":taskCrumb(t)}</div>
     <div class="t">${esc(action)}</div>
-    <div class="m">${taskMeta(t.card)}</div>
+    <div class="m">${taskMeta(t.card)}${stakeChip(t.group_id)}</div>
     <button class="flmore" type="button" data-td="${t.id}">Details ▾</button>
     <div class="hide" id="${tdId(t)}">${taskDetailHTML(t)}</div>
     <button class="flmore" type="button" data-fl="${id}">Show the ${items.length} tasks ▾</button>
@@ -484,7 +495,7 @@ function level1(el){
   const V=DASH.visibility, H=V.headline, B=DASH.benchmarking, S=DASH.sentiment, C=DASH.citations, P=DASH.prioritization, A=DASH.action_center, L=DASH.safety_label, BA=DASH.before_after;
   const lo=H.visibility_ci95[0], hi=H.visibility_ci95[1];
   const fam = V.by_model.map(d=>`<div>${esc(cap(d.model))}</div><div class="bar"><i class="t-us" style="width:${Math.min(100,Math.max(0,d.ai_brand_score))}%"></i></div><div>${(+d.ai_brand_score).toFixed(1)}</div>`).join("");
-  const lead = B.leaderboard.slice(0,4).map(d=>`<tr><td>${esc(d.competitor)}</td><td class="n">${pct(d.impact)}</td><td class="n">${pct(d.impact_by_absence)}</td></tr>`).join("");
+  const lead = B.leaderboard.slice(0,4).map(d=>`<tr><td>${esc(d.competitor)}</td><td class="n">${pct(d.impact)}</td><td class="n">${pct(d.impact_by_absence)}</td>${PRICING?`<td class="n" title="${esc(COMP_TIP)}">${compUsdYr(d.competitor)}</td>`:""}</tr>`).join("");
   const worst = L.by_surface.slice().sort((a,b)=>b.critical_share-a.critical_share)[0];
   const lightText = {red:"Dangerous errors found", yellow:"Warnings found", green:"No critical findings"}[L.traffic_light]||L.traffic_light;
   const r3 = S.top_negative_themes.filter(t=>t.run==="R3").slice(0,5).map(t=>`<tr><td>${esc(themeName(t.theme))}</td><td class="n">${pct0(t.pct_of_negative)}</td></tr>`).join("");
@@ -521,7 +532,7 @@ function level1(el){
       <div><div class="mid"${gAttr("win_rate")}>${Math.round(B.overall.win_rate)}<small>% win rate</small></div><div class="note">ahead when both named</div></div>
       <div><div class="mid"${gAttr("duel_win_rate")}>${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">"${esc(M.brand)} vs X" questions</div></div>
     </div>
-    <div class="tblwrap"><table><tr><th>Competitor</th><th class="n">Answers taken</th><th class="n">By absence</th></tr>${lead}</table></div>
+    <div class="tblwrap"><table><tr><th>Competitor</th><th class="n">Answers taken</th><th class="n">By absence</th>${PRICING?`<th class="n" title="${esc(COMP_TIP)}">$ at risk/yr</th>`:""}</tr>${lead}</table></div>
     <div class="note">Win rate ${ci(B.overall.win_rate_ci95)} over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.</div>
   </section>
   <section class="tile c3 safety ${L.traffic_light}" aria-label="Safety and label flag" onclick="location.hash='#/safety'">
@@ -681,7 +692,8 @@ function vCompetitors(el, q){
       {k:"dw",h:"Duel win rate",g:"duel_win_rate",f:d=>{const v=duelOf(d.competitor); return v?bar(v.duel_win_rate)+`<div class="z">${ci(v.ci95||[])}</div>`:`<span class="note" title="no “${esc(M.brand)} or X” prompts in R2 for this brand">not asked</span>`;},sort:d=>{const v=duelOf(d.competitor); return v?v.duel_win_rate:-1;}},
       {k:"ip",h:"Impact: position / absence",g:"impact_by_position",n:true,f:d=>`${pct(d.impact_by_position)} / ${pct(d.impact_by_absence)}`,sort:d=>d.impact_by_position},
       {k:"n",h:"Answers: overlap / duels",g:"overlap_answers",n:true,f:d=>{const v=duelOf(d.competitor); return `${d.overlap_answers} / ${v?v.n_prompts:"—"}`;},sort:d=>d.overlap_answers},
-      {k:"wm",h:"Worst family · zone",g:"worst_model",f:d=>`${esc(cap(d.worst_model))}<div class="z">${esc(d.worst_zone)}</div>`}], B.leaderboard, {sortKey:"i", scroll:false}),
+      {k:"wm",h:"Worst family · zone",g:"worst_model",f:d=>`${esc(cap(d.worst_model))}<div class="z">${esc(d.worst_zone)}</div>`}]
+      .concat(PRICING?[{k:"usd",h:"$ at risk/yr",n:true,f:d=>`<span title="${esc(COMP_TIP)}">${compUsdYr(d.competitor)}</span>`,sort:d=>(BY_COMP[d.competitor]||[0,0])[1]}]:[]), B.leaderboard, {sortKey:"i", scroll:false}) + (PRICING&&MONEY.unattributed_usd_mo?`<table style="margin-top:8px"><tr><td>Unattributed</td><td class="n" title="Answers without Ozempic that name no competitor brand.">${usdYr(MONEY.unattributed_usd_mo)}</td></tr></table>`:""),
       `Impact and win rate are R1 C1; duel win rate is R2, C4 prompts. Overall win rate ${pct(B.overall.win_rate)}, interval ${ci(B.overall.win_rate_ci95)}, over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.`, "R1 C1 · R2", "c12", "impact")
    + sec("Duel verdict", `<div class="row top"><div><div class="mid"${gAttr("duel_win_rate")}>${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">interval ${ci(B.duel_verdict.duel_win_rate_ci95)} · ${B.duel_verdict.n_scored} scored answers · ${pct(B.duel_verdict.excluded_na_pct)} without a verdict</div></div></div>` + tbl([{k:"c",h:"Competitor asked",g:"duel_prompts",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",g:"duel_win_rate",f:([,v])=>bar(v.duel_win_rate),sort:([,v])=>v.duel_win_rate},{k:"ci",h:"95% interval",g:"ci95",n:true,f:([,v])=>ci(v.ci95||[])},{k:"n",h:"Prompts / answers",g:"duel_prompts",n:true,f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}), `By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(cap(k))} ${pct(v.duel_win_rate)}`).join(" · ")}`, "R2, C4 prompts", "c12", "duel_win_rate")
    + sec("By model family", tbl([{k:"m",h:"Family",g:"model_family",f:d=>esc(cap(d.model))},{k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`}], B.by_model) + `<div></div>` + tbl([{k:"z",h:"Zone",g:"zone",f:d=>esc(d.zone)},{k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",g:"prompts",n:true,f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}), "", "and by zone, R1 C1", "c12")
@@ -740,6 +752,7 @@ function vPriorities(el, q){
       + tbl([
         {k:"t",h:"Topic",c:"cq",g:"topic_group",f:topicCell,sort:g=>g.subject_label},
         {k:"d",h:"Demand /mo",n:true,g:"demand",f:g=>fmtK(g.demand),sort:g=>g.demand},
+        ...(PRICING?[{k:"gusd",h:"$ at risk/yr",n:true,f:g=>{const v=groupMoney(g.group_id); return v&&v[1]?`<span title="${esc(MONEY_NOTE)}">${usdYr(v)}</span>`:"\u2014";},sort:g=>{const v=groupMoney(g.group_id); return v?v[1]:-1;}}]:[]),
         {k:"gp",h:"Gap",n:true,g:"topic_gap",f:g=>shr0(g.gap),sort:g=>g.gap},
         {k:"c",h:"Dominant cause",c:"cw",g:"cause",f:g=>{const w=g.failing_cause||g.dominant_cause; return `${esc(w.label||w.code)}${w.confidence?`<div class="z">confidence ${esc(w.confidence)}</div>`:""}`;},sort:g=>(g.failing_cause||g.dominant_cause).code},
         {k:"p",h:"Priority",c:"c",g:"priority",f:g=>`<span class="tag p${g.priority}">${g.priority}</span>`,sort:g=>g.priority},
@@ -752,6 +765,7 @@ function vPriorities(el, q){
       + tbl([
         {k:"t",h:"Topic",c:"cq",g:"topic_group",f:topicCell,sort:g=>g.subject_label},
         {k:"d",h:"Demand /mo",n:true,g:"demand",f:g=>fmtK(g.demand),sort:g=>g.demand},
+        ...(PRICING?[{k:"gusd",h:"$ at risk/yr",n:true,f:g=>{const v=groupMoney(g.group_id); return v&&v[1]?`<span title="${esc(MONEY_NOTE)}">${usdYr(v)}</span>`:"\u2014";},sort:g=>{const v=groupMoney(g.group_id); return v?v[1]:-1;}}]:[]),
         {k:"gp",h:"Gap",n:true,g:"topic_gap",f:g=>shr0(g.gap),sort:g=>g.gap},
         {k:"c",h:"Dominant code",c:"cw",g:"code",f:g=>esc(g.dominant_code_label),sort:g=>g.dominant_code},
         {k:"f",h:"Failure code share",n:true,g:"failure_code_share",f:g=>shr0(g.failure_code_share),sort:g=>g.failure_code_share},
@@ -760,6 +774,7 @@ function vPriorities(el, q){
       + tbl([
         {k:"t",h:"Topic",c:"cq",g:"topic_group",f:topicCell,sort:g=>g.subject_label},
         {k:"d",h:"Demand /mo",n:true,g:"demand",f:g=>fmtK(g.demand),sort:g=>g.demand},
+        ...(PRICING?[{k:"gusd",h:"$ at risk/yr",n:true,f:g=>{const v=groupMoney(g.group_id); return v&&v[1]?`<span title="${esc(MONEY_NOTE)}">${usdYr(v)}</span>`:"\u2014";},sort:g=>{const v=groupMoney(g.group_id); return v?v[1]:-1;}}]:[]),
         {k:"gp",h:"Gap",n:true,g:"topic_gap",f:g=>shr0(g.gap),sort:g=>g.gap},
         {k:"c",h:"Cause",c:"cw",g:"cause",f:g=>{const w=g.failing_cause||g.dominant_cause; return esc(w.label||w.code);},sort:g=>(g.failing_cause||g.dominant_cause).code},
         {k:"s",h:"Sign-off",c:"c",g:"pending_signoff",f:g=>`<span class="tag p1">awaiting sign-off</span>`},

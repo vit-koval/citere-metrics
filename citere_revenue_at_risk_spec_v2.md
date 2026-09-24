@@ -162,6 +162,36 @@ If the tile lists campaigns/groups, add `$ at stake/mo` per row with tooltip: "A
 
 ---
 
+### 5.5 Breakdowns
+
+The same money, split three ways. Every figure keeps the §1/§7 rules: `floor–mid` range, "(Google proxy, US ·
+estimate)", API panel only, `pf = 0`, never summed with web, and no effect on `score`, `point_rank_score` or any
+ordering.
+
+**Builder (`src/step_09_platform_data.py`).** Per point, each answer that does not name Ozempic is attributed to
+the competitor trade names it does name — `brands.yaml: competitors` minus `portfolio`, matched by the same
+word-boundary regex. An answer naming k brands gives `1/k` to each; an answer naming none goes to
+`unattributed`. Per point emit `money.by_comp = {brand: [floor, mid]}` and `money.unattributed = [floor, mid]`,
+each worth `pt_demand_eff × (attributed answers / n) × usd_per_search`. The point's already-rounded `usd` is
+divided among those buckets by largest remainder, so the parts add back to `usd` exactly and no breakdown can
+drift past the headline. Emit `money_totals.by_comp` — `[{brand, usd_mo}]` over API `pf=0` points, sorted by mid
+desc — and `money_totals.unattributed_usd_mo`.
+
+**A · Competitors.** The Competitive Benchmarking tile and the leaderboard on the competitors screen gain a
+`$ at risk/yr` column (`by_comp × 12`), tooltip: "Answers without Ozempic that name this brand. An answer naming
+several brands is split equally; totals across brands never exceed the overall figure." Portfolio brands show
+"—" because they are outside `COMP_MONEY`. An `Unattributed` row follows the leaderboard table.
+
+**B · Priorities.** Every full group table gains `$ at risk/yr` = Σ `money.usd` over the group's API `pf=0`
+points × 12. Order stays `score`.
+
+**C · Actions.** Every Action Center card carries a `$ at stake/mo` chip whose tooltip adds the `/yr` value and
+the non-additive note; groups with nothing at risk on the API panel say so rather than showing a zero. Order
+unchanged.
+
+**Invariant.** `Σ by_comp + unattributed == money_totals.api_usd_mo` exactly; `Σ by_comp` alone equals it only
+when every gap answer names at least one non-portfolio competitor.
+
 ## 6. Neural map — `ui/index.html` (built artifact: edit via `src/step_10_build_ui.py`)
 
 `ui/index.html` is produced by step 10 from `ui/template.html` plus the legacy map JS extracted from

@@ -138,12 +138,24 @@ def demand_correction(corpus):
     return factor, corrected
 
 
-def point_money(cp, export_point, factor, bd, portfolio, comp_money, usd_per_search):
-    """The per-point `money` block (§3.2). `usd` is None when pricing.yaml is absent."""
+def point_money(cp, export_point, factor, bd, portfolio, comp_money, usd_per_search, acc=None):
+    """The per-point `money` block (§3.2, §5.5). `usd` is None when pricing.yaml is absent."""
     models = cp.get("models") or []
     n = len(models)
     # gap is recomputed here, not taken from metrics.we_present_share — see the step report.
-    our = sum(1 for m in models if bd.we_present(m.get("answer") or ""))
+    our = 0
+    attributed, unattr = defaultdict(float), 0.0          # §5.5: split each gap answer across the brands it names
+    for m in models:
+        ans = m.get("answer") or ""
+        if bd.we_present(ans):
+            our += 1
+            continue
+        named = sorted(set(bd.competitors_present(ans)) & comp_money)
+        if named:
+            for b in named:
+                attributed[b] += 1.0 / len(named)
+        else:
+            unattr += 1.0
     gap = (1.0 - our / n) if n else 0.0
     named = set(bd.competitors_present(cp.get("text") or ""))
     pf = 1 if (named & portfolio) and not (named & comp_money) else 0
@@ -156,11 +168,36 @@ def point_money(cp, export_point, factor, bd, portfolio, comp_money, usd_per_sea
     else:
         usd = [int(round(pt_demand_eff * gap * usd_per_search["floor"])),
                int(round(pt_demand_eff * gap * usd_per_search["mid"]))]
+    panel = "web" if cp["run"] in WEB_RUNS else "api"
+
+    # §5.5: the point's own rounded `usd` is divided among the brands its gap answers name, largest remainder
+    # first, so the parts always add back up to `usd` exactly and no total can drift past the headline.
+    names = [b for b, _ in sorted(attributed.items(), key=lambda kv: (-kv[1], kv[0]))]
+    weights = ([attributed[b] for b in names] + [unattr])
+    tot_w = sum(weights)
+    parts = [[0, 0] for _ in weights]
+    if usd and tot_w > 0:
+        for i in (0, 1):
+            raw = [usd[i] * w / tot_w for w in weights]
+            base = [int(math.floor(x)) for x in raw]
+            for j in sorted(range(len(raw)), key=lambda j: (-(raw[j] - base[j]), j))[: usd[i] - sum(base)]:
+                base[j] += 1
+            for j, v in enumerate(base):
+                parts[j][i] = v
+    by_comp = {b: (parts[k] if usd is not None else None) for k, b in enumerate(names)}
+    unattributed = parts[-1] if usd is not None else None
+    if acc is not None and panel == "api" and not pf and usd:
+        for k, b in enumerate(names):
+            acc["by_comp"][b][0] += parts[k][0]
+            acc["by_comp"][b][1] += parts[k][1]
+        acc["unattr"][0] += parts[-1][0]
+        acc["unattr"][1] += parts[-1][1]
     return {"pt_demand_eff": pt_demand_eff, "dc": 1 if f > 1 else 0, "gap": round(gap, 6),
-            "pf": pf, "usd": usd, "panel": "web" if cp["run"] in WEB_RUNS else "api"}
+            "pf": pf, "usd": usd, "panel": panel,
+            "by_comp": by_comp, "unattributed": unattributed}
 
 
-def money_totals(points, corrected_cells, has_pricing, portfolio_names):
+def money_totals(points, corrected_cells, has_pricing, portfolio_names, acc=None):
     api = [0, 0]
     web = [0, 0]
     excluded = 0.0
@@ -174,9 +211,15 @@ def money_totals(points, corrected_cells, has_pricing, portfolio_names):
         bucket = api if m["panel"] == "api" else web
         bucket[0] += m["usd"][0]
         bucket[1] += m["usd"][1]
+    by_comp, unattributed = None, None
+    if has_pricing and acc:
+        by_comp = sorted(({"brand": b, "usd_mo": list(v)} for b, v in acc["by_comp"].items()),
+                         key=lambda r: (-r["usd_mo"][1], r["brand"]))
+        unattributed = list(acc["unattr"])
     return {"api_usd_mo": api if has_pricing else None, "web_usd_mo": web if has_pricing else None,
             "excluded_pf_pt_demand_mo": int(round(excluded)), "corrected_cells": corrected_cells,
-            "portfolio": portfolio_names}
+            "portfolio": portfolio_names,
+            "by_comp": by_comp, "unattributed_usd_mo": unattributed}
 
 
 def _n(x):
@@ -198,6 +241,7 @@ def main() -> int:
     comp_money = set(cfg["brands"]["competitors"]) - portfolio
     bd_money = C.BrandDictionary(cfg["brands"])
     dcf_by_cell, corrected_cells = demand_correction(corpus)
+    money_acc = {"by_comp": defaultdict(lambda: [0, 0]), "unattr": [0, 0]}
     groups_csv = pd.read_csv(C.METRICS_DIR / "prioritization_groups.csv")
     vis_bp = pd.read_csv(C.METRICS_DIR / "visibility_by_prompt.csv")
     a = C.load_answers(); c = C.load_citations()
@@ -284,7 +328,7 @@ def main() -> int:
                         "run_specific": run_specific},
             "demand": {"topic_demand": cp["topic_traffic"]["demand"], "lo": cp["topic_traffic"]["lo"], "hi": cp["topic_traffic"]["hi"], "basis": cp["topic_traffic"]["basis"]},
             "demand_extra": {"prompt_share": p["demand"].get("prompt_share"), "ai_native": p["demand"].get("ai_native"), "source": "platform_export"},
-            "money": point_money(cp, p, dcf_by_cell, bd_money, portfolio, comp_money, usd_per_search),
+            "money": point_money(cp, p, dcf_by_cell, bd_money, portfolio, comp_money, usd_per_search, money_acc),
             "diagnosis_text": p["diagnosis"], "evidence_lines": (p.get("evidence_measured") or []) + (p.get("evidence_search") or []),
             "serp": p.get("serp"), "inventory": p.get("inventory"),
             # `execution` is the export's own AGENT / AGENT+APPROVE / HUMAN TASK — one field, not duplicated
@@ -501,7 +545,7 @@ def main() -> int:
                          "ad_spend_yr": pricing_cfg.get("benchmark_ad_spend_usd_yr"),
                          "sources": pricing_cfg.get("sources"), "market": pricing_cfg.get("market")}
                         if pricing_cfg else None),
-            "money_totals": money_totals(points, len(corrected_cells), pricing_cfg is not None, sorted(portfolio)),
+            "money_totals": money_totals(points, len(corrected_cells), pricing_cfg is not None, sorted(portfolio), money_acc),
             "code_labels": CODE_LABELS, "display_rule": "code = what happened (bold title); cause = why (grey sub-line with confidence) — never two equal labels"}
 
     # ---- checks (§3) ------------------------------------------------------------------
