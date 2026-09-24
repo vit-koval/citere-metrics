@@ -81,7 +81,10 @@ Read `config/pricing.yaml` (optional) and `brands.yaml: portfolio` at load time,
 
 ### 3.3 Portfolio rule
 
-`pf = 1` when `question` (`:168`) names ≥1 `portfolio` brand AND names no `COMP_MONEY` brand. `pf = 1` ⇒ `usd = [0, 0]`. Expected: 77 points, ≈62K/mo of pt_demand×gap excluded (uncorrected basis).
+`pf = 1` when `question` (`:168`) names ≥1 `portfolio` brand AND does **not** name `our_brand` — whichever
+competitors it also names. A "Wegovy vs Zepbound" question is Wegovy's territory; our absence there is not our
+loss. `pf = 1` ⇒ `usd = [0, 0]`. Measured: **80 points**, 272 737/mo of `pt_demand_eff × gap` excluded
+(141 429/mo on the uncorrected basis).
 
 ### 3.4 Top-level block
 
@@ -238,10 +241,10 @@ Keep the `rnd()` draw and the base exactly as is. Store `q.base = 2.3+rnd()*1.6`
 | check | value | tolerance |
 |---|---|---|
 | A. R7 only: Σ `scores.volume × gap` | **1 015 794 /mo** (competitor-named 892 194 + compare 123 600); gap vs `visibility_share` +0.16% | ±3% — a miss means `gap` is wrong |
-| B. API panel, pf=0: Σ `pt_demand_eff × gap` | **754 508 /mo** (uncorrected 351 058); corrected cells 14/49 | ±10% |
-| B → USD/yr | **$28.3M floor – $84.2M mid** | ±10% |
-| Web panel, pf=0 | ≈ 32 601 /mo, shown separately | info |
-| Portfolio excluded | 77 points | exact |
+| B. API panel, pf=0: Σ `pt_demand_eff × gap` | **642 579 /mo**; corrected cells 14/49 | ±10% |
+| B → USD/yr | **$24.1M floor – $71.7M mid** (11%–32% of the $225M ad spend) | ±10% |
+| Web panel, pf=0 | ≈ 32 607 /mo, shown separately | info |
+| Portfolio excluded | 80 points | exact |
 | Sanity | mid/yr ≤ ad spend $225M | must hold |
 
 The earlier R7-only estimate ($38–113M/yr) is a different method; it is not a target here.

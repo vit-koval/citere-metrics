@@ -2,8 +2,8 @@
  "meta": {
   "source": "data/metrics/cycle_01/platform_data.json",
   "api_usd_mo": [
-   2370093,
-   7042024
+   2011302,
+   5975971
   ],
   "generated_by": "tasks/build_tasks.py"
  },
@@ -13,84 +13,84 @@
    "lane": "A",
    "type": "T4",
    "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “Efficacy & results” (97 questions)",
+   "title": "Publish a new page — what actually works for type 2, and is it safe to start",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    2331096,
-    6925656
+    3310104,
+    9834360
    ],
-   "usd_per_week": 1154276,
-   "demand_mo": 120147,
+   "usd_per_week": 1639060,
+   "demand_mo": 178155,
    "points": {
-    "count": 97,
+    "count": 137,
     "pids": [
+     "P0464|R2",
      "P0860|R6",
      "P0039|R1",
+     "P0125|R1",
      "P0134|R1",
      "P0168|R1",
      "P0316|R2",
-     "P0401|R2",
      "P0434|R2",
+     "P0456|R2",
+     "P0470|R2",
+     "P0780|R6",
+     "P0829|R6",
      "P0945|R7",
+     "P0871|R6",
      "P0468|R2",
+     "P0830|R6",
+     "P0859|R6",
      "P0832|R6",
      "P0781|R6",
      "P0019|R1",
+     "P0033|R1",
      "P0034|R1",
+     "P0044|R1",
      "P0077|R1",
      "P0078|R1",
      "P0079|R1",
      "P0080|R1",
+     "P0113|R1",
      "P0114|R1",
+     "P0116|R1",
      "P0117|R1",
      "P0182|R1",
      "P0209|R1",
      "P0213|R1",
      "P0216|R1",
      "P0218|R1",
-     "P0303|R2",
-     "P0364|R2",
-     "P0399|R2",
+     "P0435|R2",
      "P0462|R2",
      "P0465|R2",
-     "P0466|R2",
-     "P0469|R2",
-     "P0471|R2",
-     "P0522|R2",
-     "P0166|R1",
-     "P0866|R6",
-     "P0279|R2",
-     "P0308|R2",
-     "P0322|R2",
-     "P0268|R2",
-     "P0869|R6"
+     "P0466|R2"
     ]
    },
    "questions": [
+    "I am considering talking with my doctor about the possibility of taking Zepbound.\nI am not concerned about insurance or how to finance this—I have already researched that—I am main",
     "a doctor said to me \"it's basically drug induced anorexia so the numbers don't mean real control\" — is that right?",
-    "Just diagnosed and I'm terrified. What's the very first thing I should change this week?",
-    "my endo finally wants to put me on insulin after avoiding it for years. is there any real downside to starting it?"
+    "Just diagnosed and I'm terrified. What's the very first thing I should change this week?"
    ],
    "pages": [],
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 132623
+     "usd_mo": 167256
     },
     {
      "brand": "Mounjaro",
-     "usd_mo": 101364
+     "usd_mo": 114020
     },
     {
      "brand": "Trulicity",
-     "usd_mo": 19401
+     "usd_mo": 28312
     }
    ],
    "cause_codes": [
     "UNCLAIMED",
-    "SOURCE-PREF",
     "SOURCE-LEAK",
+    "SOURCE-PREF",
     "COMP-CONTENT"
    ],
    "also_addresses": [
@@ -99,96 +99,55 @@
    ],
    "evidence_refs": {
     "answers": [
+     "answers.js#P0464|R2",
      "answers.js#P0860|R6",
-     "answers.js#P0039|R1",
-     "answers.js#P0134|R1"
+     "answers.js#P0039|R1"
     ],
-    "serp": 97,
-    "inventory": 97
+    "serp": 137,
+    "inventory": 137
    }
   },
   {
-   "id": "A-T3-novomedlink-com",
-   "lane": "A",
-   "type": "T3",
-   "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on novomedlink.com for “Other” (3 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    2213892,
-    6578040
-   ],
-   "usd_per_week": 1096340,
-   "demand_mo": 67832,
-   "points": {
-    "count": 3,
-    "pids": [
-     "P0475|R2",
-     "P0329|R2",
-     "P0690|R3"
-    ]
-   },
-   "questions": [
-    "I'm deciding between Wegovy and Zepbound for a weight loss program; my doctor recommended either and cost is nearly the same. Which would you recommend? I'm mainly concerned with s",
-    "Zepbound or Wegovy — which has fewer side effects?",
-    "I finally got my hands on Ozempic, but I am so terrified to start based on all the horror stories of side effects, cancer and weight re-gain. This year I have recently started ther"
-   ],
-   "pages": [
-    "novomedlink.com"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 548170
-    }
-   ],
-   "cause_codes": [
-    "SYNTH"
-   ],
-   "also_addresses": [],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0475|R2",
-     "answers.js#P0329|R2",
-     "answers.js#P0690|R3"
-    ],
-    "serp": 3,
-    "inventory": 3
-   }
-  },
-  {
-   "id": "A-T4-other",
+   "id": "A-T4-side-effects-ozempic-trulicity-mounjaro-zepb",
    "lane": "A",
    "type": "T4",
    "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “Other” (27 questions)",
+   "title": "Publish a new page — switching between GLP-1s and what the side effects really feel like",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    1801200,
-    5351796
+    2965620,
+    8811648
    ],
-   "usd_per_week": 891966,
-   "demand_mo": 229060,
+   "usd_per_week": 1468608,
+   "demand_mo": 278397,
    "points": {
-    "count": 27,
+    "count": 36,
     "pids": [
      "P0424|R2",
      "P0433|R2",
      "P0463|R2",
+     "P0423|R2",
+     "P0036|R1",
+     "P0455|R2",
      "P0890|R7",
+     "P0894|R7",
      "P0987|R7",
      "P1025|R7",
+     "P1037|R7",
+     "P0252|R2",
      "P0705|R3",
      "P0338|R2",
-     "P0432|R2",
+     "P0927|R7",
      "P0354|R2",
      "P0299|R2",
      "P0274|R2",
+     "P0284|R2",
+     "P0297|R2",
      "P0320|R2",
      "P0336|R2",
      "P0385|R2",
+     "P0386|R2",
      "P0436|R2",
      "P0439|R2",
      "P0477|R2",
@@ -211,23 +170,23 @@
    "pages": [],
    "competitors_leaking": [
     {
-     "brand": "Mounjaro",
-     "usd_mo": 180553
+     "brand": "Zepbound",
+     "usd_mo": 237172
     },
     {
-     "brand": "Zepbound",
-     "usd_mo": 133458
+     "brand": "Mounjaro",
+     "usd_mo": 210066
     },
     {
      "brand": "Trulicity",
-     "usd_mo": 105238
+     "usd_mo": 128748
     }
    ],
    "cause_codes": [
     "SOURCE-PREF",
     "COMP-CONTENT",
     "SOURCE-LEAK",
-    "NARR-AMP"
+    "UNCLAIMED"
    ],
    "also_addresses": [
     "T5",
@@ -239,181 +198,8 @@
      "answers.js#P0433|R2",
      "answers.js#P0463|R2"
     ],
-    "serp": 27,
-    "inventory": 27
-   }
-  },
-  {
-   "id": "A-T2-ozempic-com-why-ozempic-efficacy-results-htm",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” (54 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    1546212,
-    4593888
-   ],
-   "usd_per_week": 765648,
-   "demand_mo": 77561,
-   "points": {
-    "count": 54,
-    "pids": [
-     "P0464|R2",
-     "P0125|R1",
-     "P0456|R2",
-     "P0470|R2",
-     "P0780|R6",
-     "P0829|R6",
-     "P0871|R6",
-     "P0830|R6",
-     "P0859|R6",
-     "P0447|R2",
-     "P0033|R1",
-     "P0044|R1",
-     "P0113|R1",
-     "P0116|R1",
-     "P0341|R2",
-     "P0435|R2",
-     "P0467|R2",
-     "P1044|R7",
-     "P0042|R1",
-     "P0408|R2",
-     "P0376|R2",
-     "P0404|R2",
-     "P0406|R2",
-     "P0369|R2",
-     "P0410|R2",
-     "P0317|R2",
-     "P0340|R2",
-     "P0046|R1",
-     "P0122|R1",
-     "P0161|R1",
-     "P0199|R1",
-     "P0233|R1",
-     "P0285|R2",
-     "P0398|R2",
-     "P0403|R2",
-     "P0418|R2",
-     "P0489|R2",
-     "P0836|R6",
-     "P0835|R6",
-     "P0001|R1"
-    ]
-   },
-   "questions": [
-    "I am considering talking with my doctor about the possibility of taking Zepbound.\nI am not concerned about insurance or how to finance this—I have already researched that—I am main",
-    "sugars been all over lately, woke up at like 300 this morning even eating low carb. what am i doing wrong, what can i do",
-    "When I was on 2.5 mg of Mounjaro I was hardly hungry and felt full. However, with Tirz compound @ 5.0 MG, I feel it has half the efficacy of the Mounjaro I was taking.\n\nQuestion 1:"
-   ],
-   "pages": [
-    "https://www.ozempic.com/why-ozempic/efficacy-results.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 105013
-    },
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 71412
-    },
-    {
-     "brand": "Saxenda",
-     "usd_mo": 19260
-    }
-   ],
-   "cause_codes": [
-    "SOURCE-PREF",
-    "COMP-CONTENT",
-    "UNCLAIMED",
-    "SOURCE-LEAK"
-   ],
-   "also_addresses": [
-    "T5",
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0464|R2",
-     "answers.js#P0125|R1",
-     "answers.js#P0456|R2"
-    ],
-    "serp": 54,
-    "inventory": 54
-   }
-  },
-  {
-   "id": "A-T2-ozempic-com-why-ozempic-other-html",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/why-ozempic/other.html into a full answer for “Other” (12 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    1275096,
-    3788700
-   ],
-   "usd_per_week": 631450,
-   "demand_mo": 52457,
-   "points": {
-    "count": 12,
-    "pids": [
-     "P0423|R2",
-     "P0036|R1",
-     "P0455|R2",
-     "P0894|R7",
-     "P1037|R7",
-     "P0252|R2",
-     "P0266|R2",
-     "P0927|R7",
-     "P0425|R2",
-     "P0284|R2",
-     "P0297|R2",
-     "P0386|R2"
-    ]
-   },
-   "questions": [
-    "I really want to get in shape so I know I need to exercise, but it's very difficult and I'm wondering if it's worth it to keep doing this or if maybe it just isn't right for me and",
-    "Every visit my doctor nudges me toward medication and I keep resisting out of fear of side effects. Should I keep an open mind?",
-    "For someone who had bad side effects with Trulicity, is Mounjaro likely to be better tolerated?"
-   ],
-   "pages": [
-    "https://www.ozempic.com/why-ozempic/other.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 113386
-    },
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 47245
-    },
-    {
-     "brand": "Trulicity",
-     "usd_mo": 23510
-    }
-   ],
-   "cause_codes": [
-    "SOURCE-PREF",
-    "COMP-CONTENT",
-    "UNCLAIMED"
-   ],
-   "also_addresses": [
-    "T5",
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0423|R2",
-     "answers.js#P0036|R1",
-     "answers.js#P0455|R2"
-    ],
-    "serp": 12,
-    "inventory": 12
+    "serp": 36,
+    "inventory": 36
    }
   },
   {
@@ -421,33 +207,42 @@
    "lane": "A",
    "type": "T4",
    "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “Titration & dose schedule” (17 questions)",
+   "title": "Publish a new page — switching drugs, maintenance doses and non-injection options",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    723492,
-    2149560
+    1012896,
+    3009384
    ],
-   "usd_per_week": 358260,
-   "demand_mo": 28067,
+   "usd_per_week": 501564,
+   "demand_mo": 42926,
    "points": {
-    "count": 17,
+    "count": 26,
     "pids": [
      "P0355|R2",
      "P0454|R2",
      "P0898|R7",
+     "P0912|R7",
+     "P0916|R7",
+     "P0924|R7",
      "P0947|R7",
      "P0951|R7",
      "P0955|R7",
+     "P0957|R7",
      "P1005|R7",
      "P1015|R7",
      "P0851|R6",
      "P0407|R2",
      "P0855|R6",
      "P0759|R3",
+     "P0856|R6",
      "P0707|R3",
+     "P0315|R2",
      "P0546|R3",
+     "P0682|R3",
      "P0713|R3",
+     "P0739|R3",
+     "P0760|R3",
      "P0762|R3",
      "P0764|R3"
     ]
@@ -461,15 +256,15 @@
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 81163
+     "usd_mo": 114430
     },
     {
      "brand": "Mounjaro",
-     "usd_mo": 33139
+     "usd_mo": 45934
     },
     {
      "brand": "Trulicity",
-     "usd_mo": 23031
+     "usd_mo": 38385
     }
    ],
    "cause_codes": [
@@ -488,8 +283,8 @@
      "answers.js#P0454|R2",
      "answers.js#P0898|R7"
     ],
-    "serp": 17,
-    "inventory": 17
+    "serp": 26,
+    "inventory": 26
    }
   },
   {
@@ -497,22 +292,23 @@
    "lane": "A",
    "type": "T4",
    "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “Basics & mechanism” (4 questions)",
+   "title": "Publish a new page — what these drugs are and what results they show",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    657312,
-    1953024
+    821640,
+    2441280
    ],
-   "usd_per_week": 325504,
-   "demand_mo": 17500,
+   "usd_per_week": 406880,
+   "demand_mo": 21875,
    "points": {
-    "count": 4,
+    "count": 5,
     "pids": [
      "P0900|R7",
      "P0935|R7",
      "P0986|R7",
-     "P1013|R7"
+     "P1013|R7",
+     "P1030|R7"
     ]
    },
    "questions": [
@@ -524,11 +320,11 @@
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 92678
+     "usd_mo": 126585
     },
     {
      "brand": "Mounjaro",
-     "usd_mo": 65553
+     "usd_mo": 72334
     },
     {
      "brand": "Saxenda",
@@ -547,8 +343,8 @@
      "answers.js#P0935|R7",
      "answers.js#P0986|R7"
     ],
-    "serp": 4,
-    "inventory": 4
+    "serp": 5,
+    "inventory": 5
    }
   },
   {
@@ -556,7 +352,7 @@
    "lane": "A",
    "type": "T5",
    "type_name": "Listings, directory & reference-web data",
-   "title": "Correct our listing data on the cited directories for “Basics & mechanism” (14 questions)",
+   "title": "Fix our listing on doctronic.ai — how the drug is taken and what is in it",
    "owner": "Digital + Medical",
    "weeks": 12,
    "usd_yr": [
@@ -564,9 +360,9 @@
     2517216
    ],
    "usd_per_week": 209768,
-   "demand_mo": 61250,
+   "demand_mo": 65625,
    "points": {
-    "count": 14,
+    "count": 15,
     "pids": [
      "P1061|R8",
      "P1058|R8",
@@ -578,6 +374,7 @@
      "P0212|R1",
      "P0979|R8",
      "P1066|R8",
+     "P1067|R8",
      "P1070|R8",
      "P1072|R8",
      "P1073|R8",
@@ -617,73 +414,7 @@
      "answers.js#P1063|R8"
     ],
     "serp": 2,
-    "inventory": 14
-   }
-  },
-  {
-   "id": "A-T2-ozempic-com-why-ozempic-titration-dose-sched",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/why-ozempic/titration-dose-schedule.html into a full answer for “Titration & dose schedule” (8 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    289404,
-    859824
-   ],
-   "usd_per_week": 143304,
-   "demand_mo": 13208,
-   "points": {
-    "count": 8,
-    "pids": [
-     "P0912|R7",
-     "P0916|R7",
-     "P0924|R7",
-     "P0957|R7",
-     "P0856|R6",
-     "P0682|R3",
-     "P0739|R3",
-     "P0760|R3"
-    ]
-   },
-   "questions": [
-    "How can I get Zepbound?",
-    "What are the dosing steps for Trulicity?",
-    "What is the dose schedule for Zepbound?"
-   ],
-   "pages": [
-    "https://www.ozempic.com/why-ozempic/titration-dose-schedule.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 33267
-    },
-    {
-     "brand": "Trulicity",
-     "usd_mo": 15354
-    },
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 12795
-    }
-   ],
-   "cause_codes": [
-    "COMP-CONTENT",
-    "SOURCE-LEAK"
-   ],
-   "also_addresses": [
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0912|R7",
-     "answers.js#P0916|R7",
-     "answers.js#P0924|R7"
-    ],
-    "serp": 8,
-    "inventory": 8
+    "inventory": 15
    }
   },
   {
@@ -691,18 +422,20 @@
    "lane": "A",
    "type": "T4",
    "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “Pen & device” (10 questions)",
+   "title": "Publish a new page — is the pen easy to use if injecting scares you",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    215976,
-    641748
+    286656,
+    851772
    ],
-   "usd_per_week": 106958,
-   "demand_mo": 9410,
+   "usd_per_week": 141962,
+   "demand_mo": 12233,
    "points": {
-    "count": 10,
+    "count": 13,
     "pids": [
+     "P0258|R2",
+     "P0413|R2",
      "P0776|R6",
      "P0778|R6",
      "P0920|R7",
@@ -712,23 +445,28 @@
      "P0771|R6",
      "P0359|R2",
      "P0420|R2",
+     "P0678|R3",
      "P0770|R6"
     ]
    },
    "questions": [
-    "i've never injected anything and the idea of measuring a dose freaks me out. are these diabetes pens actually easy?",
-    "i'm scared of injections and worried i'll mess up the dose. how hard is a diabetes pen to actually use?",
-    "How do I inject Mounjaro?"
+    "Is Mounjaro's pen easy to use for someone with hand arthritis?",
+    "Is the Mounjaro pen easy to use for someone with hand arthritis?",
+    "i've never injected anything and the idea of measuring a dose freaks me out. are these diabetes pens actually easy?"
    ],
    "pages": [],
    "competitors_leaking": [
     {
      "brand": "Mounjaro",
-     "usd_mo": 10696
+     "usd_mo": 27469
     },
     {
      "brand": "Zepbound",
      "usd_mo": 8751
+    },
+    {
+     "brand": "Saxenda",
+     "usd_mo": 729
     }
    ],
    "cause_codes": [
@@ -741,56 +479,59 @@
    ],
    "evidence_refs": {
     "answers": [
-     "answers.js#P0776|R6",
-     "answers.js#P0778|R6",
-     "answers.js#P0920|R7"
+     "answers.js#P0258|R2",
+     "answers.js#P0413|R2",
+     "answers.js#P0776|R6"
     ],
-    "serp": 10,
-    "inventory": 10
+    "serp": 13,
+    "inventory": 13
    }
   },
   {
-   "id": "A-T3-wegovy-com",
+   "id": "A-T4-site-volume",
    "lane": "A",
-   "type": "T3",
-   "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on wegovy.com for “Other” (1 questions)",
+   "type": "T4",
+   "type_name": "Publish a new owned evidence page",
+   "title": "Publish a new page — where to inject and how much",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    189900,
-    564252
+    247512,
+    735456
    ],
-   "usd_per_week": 94042,
-   "demand_mo": 5056,
+   "usd_per_week": 122576,
+   "demand_mo": 6590,
    "points": {
-    "count": 1,
+    "count": 2,
     "pids": [
-     "P0343|R2"
+     "P0981|R7",
+     "P1029|R7"
     ]
    },
    "questions": [
-    "Which has fewer side effects, Wegovy or Zepbound?"
+    "Where should I inject Zepbound?",
+    "Where can I inject Zepbound?"
    ],
-   "pages": [
-    "wegovy.com"
-   ],
+   "pages": [],
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 47021
+     "usd_mo": 61288
     }
    ],
    "cause_codes": [
-    "SYNTH"
+    "COMP-CONTENT"
    ],
-   "also_addresses": [],
+   "also_addresses": [
+    "T6"
+   ],
    "evidence_refs": {
     "answers": [
-     "answers.js#P0343|R2"
+     "answers.js#P0981|R7",
+     "answers.js#P1029|R7"
     ],
-    "serp": 1,
-    "inventory": 1
+    "serp": 2,
+    "inventory": 2
    }
   },
   {
@@ -798,7 +539,7 @@
    "lane": "A",
    "type": "T5",
    "type_name": "Listings, directory & reference-web data",
-   "title": "Correct our listing data on the cited directories for “Efficacy & results” (18 questions)",
+   "title": "Fix our listing on endocrine.plus — options before insulin when metformin is not enough",
    "owner": "Digital + Medical",
    "weeks": 12,
    "usd_yr": [
@@ -872,61 +613,11 @@
    }
   },
   {
-   "id": "A-T2-ozempic-com-why-ozempic-basics-mechanism-htm",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/why-ozempic/basics-mechanism.html into a full answer for “Basics & mechanism” (1 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    164328,
-    488256
-   ],
-   "usd_per_week": 81376,
-   "demand_mo": 4375,
-   "points": {
-    "count": 1,
-    "pids": [
-     "P1030|R7"
-    ]
-   },
-   "questions": [
-    "How does Zepbound work?"
-   ],
-   "pages": [
-    "https://www.ozempic.com/why-ozempic/basics-mechanism.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 33907
-    },
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 6781
-    }
-   ],
-   "cause_codes": [
-    "COMP-CONTENT"
-   ],
-   "also_addresses": [
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P1030|R7"
-    ],
-    "serp": 1,
-    "inventory": 1
-   }
-  },
-  {
-   "id": "A-T6-drugs-com",
+   "id": "A-T6-drugs-com-what-s-safest-diabetes",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto drugs.com for “Other” (2 questions)",
+   "title": "Place the brand on drugs.com — which diabetes drug is safest and gentlest",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -973,164 +664,11 @@
    }
   },
   {
-   "id": "A-T2-ozempic-com-why-ozempic-pen-device-html",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/why-ozempic/pen-device.html into a full answer for “Pen & device” (5 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    135468,
-    402552
-   ],
-   "usd_per_week": 67092,
-   "demand_mo": 4705,
-   "points": {
-    "count": 5,
-    "pids": [
-     "P0254|R2",
-     "P0258|R2",
-     "P0413|R2",
-     "P0412|R2",
-     "P0678|R3"
-    ]
-   },
-   "questions": [
-    "Wegovy vs Zepbound — which pen/device is simpler to use?",
-    "Is Mounjaro's pen easy to use for someone with hand arthritis?",
-    "Is the Mounjaro pen easy to use for someone with hand arthritis?"
-   ],
-   "pages": [
-    "https://www.ozempic.com/why-ozempic/pen-device.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 17502
-    },
-    {
-     "brand": "Zepbound",
-     "usd_mo": 15315
-    },
-    {
-     "brand": "Saxenda",
-     "usd_mo": 729
-    }
-   ],
-   "cause_codes": [
-    "COMP-CONTENT",
-    "SOURCE-LEAK"
-   ],
-   "also_addresses": [
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0254|R2",
-     "answers.js#P0258|R2",
-     "answers.js#P0413|R2"
-    ],
-    "serp": 5,
-    "inventory": 5
-   }
-  },
-  {
-   "id": "A-T2-ozempic-com-why-ozempic-site-volume-html",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/why-ozempic/site-volume.html into a full answer for “Site & volume” (1 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    123756,
-    367728
-   ],
-   "usd_per_week": 61288,
-   "demand_mo": 3295,
-   "points": {
-    "count": 1,
-    "pids": [
-     "P1029|R7"
-    ]
-   },
-   "questions": [
-    "Where can I inject Zepbound?"
-   ],
-   "pages": [
-    "https://www.ozempic.com/why-ozempic/site-volume.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 30644
-    }
-   ],
-   "cause_codes": [
-    "COMP-CONTENT"
-   ],
-   "also_addresses": [
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P1029|R7"
-    ],
-    "serp": 1,
-    "inventory": 1
-   }
-  },
-  {
-   "id": "A-T4-site-volume",
-   "lane": "A",
-   "type": "T4",
-   "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “Site & volume” (1 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    123756,
-    367728
-   ],
-   "usd_per_week": 61288,
-   "demand_mo": 3295,
-   "points": {
-    "count": 1,
-    "pids": [
-     "P0981|R7"
-    ]
-   },
-   "questions": [
-    "Where should I inject Zepbound?"
-   ],
-   "pages": [],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 30644
-    }
-   ],
-   "cause_codes": [
-    "COMP-CONTENT"
-   ],
-   "also_addresses": [
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0981|R7"
-    ],
-    "serp": 1,
-    "inventory": 1
-   }
-  },
-  {
-   "id": "A-T3-diabeteseducation-novocare-com",
+   "id": "A-T3-diabeteseducation-novocare-efficacy-results",
    "lane": "A",
    "type": "T3",
    "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on diabeteseducation.novocare.com for “Efficacy & results” (3 questions)",
+   "title": "Rewrite the diabeteseducation.novocare.com page — newly diagnosed: what to do first and how to avoid insulin",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -1171,11 +709,11 @@
    }
   },
   {
-   "id": "A-T6-goodrx-com",
+   "id": "A-T6-goodrx-com-efficacy-results",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto goodrx.com for “Efficacy & results” (6 questions)",
+   "title": "Place the brand on goodrx.com — what to add when metformin stops working",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1237,11 +775,11 @@
    }
   },
   {
-   "id": "A-T6-drugs-com",
+   "id": "A-T6-drugs-com-basics-mechanism",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto drugs.com for “Basics & mechanism” (2 questions)",
+   "title": "Place the brand on drugs.com — the newest and safest options, and the lowest workable dose",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1296,11 +834,11 @@
    }
   },
   {
-   "id": "A-T10-drugwatch-com",
+   "id": "A-T10-drugwatch-com-ozempic-mounjaro-side-effe",
    "lane": "A",
    "type": "T10",
    "type_name": "Hostile source response",
-   "title": "Handle drugwatch.com: legal decision, then PR displacement (“Other”, 8 questions)",
+   "title": "Decide and displace drugwatch.com — Ozempic vs Mounjaro on side effects and stomach tolerance",
    "owner": "Legal + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1353,11 +891,11 @@
    }
   },
   {
-   "id": "A-T3-diabeteseducation-novocare-com",
+   "id": "A-T3-diabeteseducation-novocare-titration-dose-schedule",
    "lane": "A",
    "type": "T3",
    "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on diabeteseducation.novocare.com for “Titration & dose schedule” (4 questions)",
+   "title": "Rewrite the diabeteseducation.novocare.com page — do all type 2 patients end up injecting",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -1412,88 +950,11 @@
    }
   },
   {
-   "id": "A-T4-gi-nausea",
-   "lane": "A",
-   "type": "T4",
-   "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “GI & nausea” (19 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    67344,
-    200196
-   ],
-   "usd_per_week": 33366,
-   "demand_mo": 4446,
-   "points": {
-    "count": 19,
-    "pids": [
-     "P0251|R2",
-     "P0260|R2",
-     "P0277|R2",
-     "P0342|R2",
-     "P0400|R2",
-     "P0426|R2",
-     "P0474|R2",
-     "P0363|R2",
-     "P0453|R2",
-     "P0326|R2",
-     "P0345|R2",
-     "P0443|R2",
-     "P0499|R2",
-     "P0560|R3",
-     "P0561|R3",
-     "P0588|R3",
-     "P0591|R3",
-     "P0655|R3",
-     "P0677|R3"
-    ]
-   },
-   "questions": [
-    "Is switching from Zepbound to Wegovy worth it for GI side effects — do symptoms improve, or are they similar on Wegovy?",
-    "Mounjaro vs Wegovy — which has fewer GI side effects?",
-    "Between Wegovy and Zepbound, which one tends to cause less nausea?"
-   ],
-   "pages": [],
-   "competitors_leaking": [
-    {
-     "brand": "Zepbound",
-     "usd_mo": 9066
-    },
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 5803
-    },
-    {
-     "brand": "Trulicity",
-     "usd_mo": 1451
-    }
-   ],
-   "cause_codes": [
-    "SOURCE-PREF",
-    "COMP-CONTENT",
-    "SOURCE-LEAK"
-   ],
-   "also_addresses": [
-    "T5",
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0251|R2",
-     "answers.js#P0260|R2",
-     "answers.js#P0277|R2"
-    ],
-    "serp": 19,
-    "inventory": 19
-   }
-  },
-  {
-   "id": "A-T6-goodrx-com",
+   "id": "A-T6-goodrx-com-considering-going-glp",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto goodrx.com for “Other” (1 questions)",
+   "title": "Place the brand on goodrx.com — should I start a GLP-1 when I am skeptical",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1530,11 +991,11 @@
    }
   },
   {
-   "id": "A-T3-ozempic-com",
+   "id": "A-T3-ozempic-com-titration-dose-schedule",
    "lane": "A",
    "type": "T3",
    "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on ozempic.com for “Titration & dose schedule” (13 questions)",
+   "title": "Rewrite the ozempic.com page — dose-escalation myths and what to do when A1c rises",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -1590,11 +1051,11 @@
    }
   },
   {
-   "id": "A-T6-onlinedoctor-asda-com",
+   "id": "A-T6-onlinedoctor-asda-com-site-volume",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto onlinedoctor.asda.com for “Site & volume” (1 questions)",
+   "title": "Place the brand on onlinedoctor.asda.com — where to inject",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1640,7 +1101,7 @@
    "lane": "A",
    "type": "T5",
    "type_name": "Listings, directory & reference-web data",
-   "title": "Correct our listing data on the cited directories for “Titration & dose schedule” (5 questions)",
+   "title": "Fix our listing on goodrx.com — starting dose and titration schedule",
    "owner": "Digital + Medical",
    "weeks": 12,
    "usd_yr": [
@@ -1697,11 +1158,11 @@
    }
   },
   {
-   "id": "A-T6-webmd-com",
+   "id": "A-T6-webmd-com-efficacy-results",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto webmd.com for “Efficacy & results” (2 questions)",
+   "title": "Place the brand on webmd.com — when diet or insulin alone stops being enough",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1743,11 +1204,65 @@
    }
   },
   {
-   "id": "A-T10-motleyrice-com",
+   "id": "A-T2-novo-pi-com-saxenda-pdf-efficacy-results",
+   "lane": "A",
+   "type": "T2",
+   "type_name": "Expand an existing owned page",
+   "title": "Expand the saxenda page — what to switch to when Saxenda stops working",
+   "owner": "Digital + Medical",
+   "weeks": 6,
+   "usd_yr": [
+    56940,
+    169188
+   ],
+   "usd_per_week": 28198,
+   "demand_mo": 2274,
+   "points": {
+    "count": 1,
+    "pids": [
+     "P0447|R2"
+    ]
+   },
+   "questions": [
+    "Saxenda stopped working for me months ago — what should I switch to that actually gets results?"
+   ],
+   "pages": [
+    "https://www.novo-pi.com/saxenda.pdf"
+   ],
+   "competitors_leaking": [
+    {
+     "brand": "Saxenda",
+     "usd_mo": 6462
+    },
+    {
+     "brand": "Zepbound",
+     "usd_mo": 6462
+    },
+    {
+     "brand": "Mounjaro",
+     "usd_mo": 1175
+    }
+   ],
+   "cause_codes": [
+    "SOURCE-PREF"
+   ],
+   "also_addresses": [
+    "T5"
+   ],
+   "evidence_refs": {
+    "answers": [
+     "answers.js#P0447|R2"
+    ],
+    "serp": 1,
+    "inventory": 1
+   }
+  },
+  {
+   "id": "A-T10-motleyrice-com-diabetic-prescribed-weight",
    "lane": "A",
    "type": "T10",
    "type_name": "Hostile source response",
-   "title": "Handle motleyrice.com: legal decision, then PR displacement (“Other”, 1 questions)",
+   "title": "Decide and displace motleyrice.com — a patient who could not tolerate Ozempic and went legal",
    "owner": "Legal + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1783,11 +1298,11 @@
    }
   },
   {
-   "id": "A-T6-doctronic-ai",
+   "id": "A-T6-doctronic-ai-basics-mechanism",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto doctronic.ai for “Basics & mechanism” (1 questions)",
+   "title": "Place the brand on doctronic.ai — what new diabetes treatment is coming next",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1829,11 +1344,11 @@
    }
   },
   {
-   "id": "A-T6-universaldrugstore-com",
+   "id": "A-T6-universaldrugstore-com-efficacy-results",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto universaldrugstore.com for “Efficacy & results” (2 questions)",
+   "title": "Place the brand on universaldrugstore.com — are GLP-1s safe long term for type 2",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -1884,116 +1399,110 @@
    }
   },
   {
-   "id": "A-T3-novomedlink-com",
+   "id": "A-T4-take-ozempic-mounjaro-side-diabetes-weight",
    "lane": "A",
-   "type": "T3",
-   "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on novomedlink.com for “Efficacy & results” (4 questions)",
+   "type": "T4",
+   "type_name": "Publish a new owned evidence page",
+   "title": "Publish a new page — is it a drug for life, and are there non-injection options",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    48984,
-    145524
+    49560,
+    147288
    ],
-   "usd_per_week": 24254,
-   "demand_mo": 3924,
+   "usd_per_week": 24548,
+   "demand_mo": 31949,
    "points": {
-    "count": 4,
+    "count": 51,
     "pids": [
-     "P0304|R2",
-     "P0563|R3",
-     "P0661|R3",
-     "P0864|R6"
+     "P0799|R6",
+     "P0421|R2",
+     "P0214|R1",
+     "P0847|R6",
+     "P0452|R2",
+     "P0054|R1",
+     "P0324|R2",
+     "P0382|R2",
+     "P0414|R2",
+     "P0427|R2",
+     "P0155|R1",
+     "P0148|R1",
+     "P0840|R6",
+     "P0841|R6",
+     "P0839|R6",
+     "P0846|R6",
+     "P0187|R1",
+     "P0789|R6",
+     "P0790|R6",
+     "P0795|R6",
+     "P0796|R6",
+     "P0797|R6",
+     "P0679|R3",
+     "P0821|R6",
+     "P0825|R6",
+     "P0826|R6",
+     "P0827|R6",
+     "P0106|R1",
+     "P0291|R2",
+     "P0323|R2",
+     "P0377|R2",
+     "P0378|R2",
+     "P0379|R2",
+     "P0415|R2",
+     "P0484|R2",
+     "P0538|R3",
+     "P0552|R3",
+     "P0556|R3",
+     "P0593|R3",
+     "P0642|R3"
     ]
    },
    "questions": [
-    "For weight loss, which is more effective, Mounjaro or Wegovy?",
-    "On Ozempic two months, A1c is dropping but no weight loss — is that expected?",
-    "Been on Ozempic 2 months, A1c is coming down but no weight loss. Is that expected?"
+    "someone online says \"it's a for-life drug, you never get off it\" — is that right?",
+    "Any alternative to Mounjaro that isn't a weekly injection?",
+    "I'm 5'5, 195 lbs and really want to hit my first goal of 155lbs for summer. I'm in a 1000 calorie deficit and work out at the gym 3 times a week; my weakness is alcohol, especially"
    ],
-   "pages": [
-    "novomedlink.com"
-   ],
+   "pages": [],
    "competitors_leaking": [
     {
-     "brand": "Mounjaro",
-     "usd_mo": 8085
+     "brand": "Zepbound",
+     "usd_mo": 2181
     },
     {
-     "brand": "Zepbound",
-     "usd_mo": 4042
+     "brand": "Mounjaro",
+     "usd_mo": 1747
+    },
+    {
+     "brand": "Saxenda",
+     "usd_mo": 748
     }
    ],
    "cause_codes": [
-    "SYNTH"
-   ],
-   "also_addresses": [],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0304|R2",
-     "answers.js#P0563|R3",
-     "answers.js#P0661|R3"
-    ],
-    "serp": 4,
-    "inventory": 4
-   }
-  },
-  {
-   "id": "A-T2-wegovy-com-obesity-is-wegovy-right-for-me-we",
-   "lane": "A",
-   "type": "T2",
-   "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.wegovy.com/obesity/is-wegovy-right-for-me/wegovy-pill-results.html into a full answer for “Efficacy & results” (1 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    48984,
-    145524
-   ],
-   "usd_per_week": 24254,
-   "demand_mo": 1304,
-   "points": {
-    "count": 1,
-    "pids": [
-     "P0335|R2"
-    ]
-   },
-   "questions": [
-    "For weight loss, which is stronger, Wegovy or Mounjaro?"
-   ],
-   "pages": [
-    "https://www.wegovy.com/obesity/is-wegovy-right-for-me/wegovy-pill-results.html"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 6064
-    },
-    {
-     "brand": "Zepbound",
-     "usd_mo": 6063
-    }
-   ],
-   "cause_codes": [
-    "SOURCE-PREF"
+    "SOURCE-LEAK",
+    "SOURCE-PREF",
+    "UNCLAIMED",
+    "COMP-CONTENT"
    ],
    "also_addresses": [
-    "T5"
+    "T5",
+    "T6"
    ],
    "evidence_refs": {
     "answers": [
-     "answers.js#P0335|R2"
+     "answers.js#P0799|R6",
+     "answers.js#P0421|R2",
+     "answers.js#P0214|R1"
     ],
-    "serp": 1,
-    "inventory": 1
+    "serp": 51,
+    "inventory": 51
    }
   },
   {
-   "id": "A-T6-doctronic-ai",
+   "id": "A-T6-doctronic-ai-efficacy-results",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto doctronic.ai for “Efficacy & results” (2 questions)",
+   "title": "Place the brand on doctronic.ai — long-term safety of GLP-1s for diet-controlled type 2",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2043,61 +1552,11 @@
    }
   },
   {
-   "id": "A-T6-weightwatchers-com",
-   "lane": "A",
-   "type": "T6",
-   "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto weightwatchers.com for “Efficacy & results” (1 questions)",
-   "owner": "Digital + PR",
-   "weeks": 12,
-   "usd_yr": [
-    85416,
-    253776
-   ],
-   "usd_per_week": 21148,
-   "demand_mo": 2274,
-   "points": {
-    "count": 1,
-    "pids": [
-     "P1011|R7"
-    ]
-   },
-   "questions": [
-    "Which is better, Saxenda or Wegovy?"
-   ],
-   "pages": [
-    "weightwatchers.com",
-    "goodrx.com",
-    "drugs.com"
-   ],
-   "competitors_leaking": [
-    {
-     "brand": "Saxenda",
-     "usd_mo": 17623
-    },
-    {
-     "brand": "Zepbound",
-     "usd_mo": 3525
-    }
-   ],
-   "cause_codes": [
-    "COMMERCIAL-GAP"
-   ],
-   "also_addresses": [],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P1011|R7"
-    ],
-    "serp": 1,
-    "inventory": 1
-   }
-  },
-  {
-   "id": "A-T2-ozempic-com-ozempic-pen-diabetes-medicines-c",
+   "id": "A-T2-ozempic-com-ozempic-pen-di-efficacy-results",
    "lane": "A",
    "type": "T2",
    "type_name": "Expand an existing owned page",
-   "title": "Expand https://www.ozempic.com/ozempic-pen/diabetes-medicines-comparison.html into a full answer for “Efficacy & results” (2 questions)",
+   "title": "Expand the diabetes medicines comparison page — Ozempic vs Mounjaro for lowering A1c",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -2152,199 +1611,65 @@
    }
   },
   {
-   "id": "A-T2-other",
+   "id": "A-T2-novomedlink-com-obesity-pr-efficacy-results",
    "lane": "A",
    "type": "T2",
    "type_name": "Expand an existing owned page",
-   "title": "Expand our page into a full answer for “other” (23 questions)",
+   "title": "Expand the how saxenda works page — what is stronger than Saxenda",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    39912,
-    118584
+    32652,
+    97020
    ],
-   "usd_per_week": 19764,
-   "demand_mo": 13439,
+   "usd_per_week": 16170,
+   "demand_mo": 1304,
    "points": {
-    "count": 23,
+    "count": 1,
     "pids": [
-     "P0476|R2",
-     "P0497|R2",
-     "P0214|R1",
-     "P0405|R2",
-     "P0430|R2",
-     "P0054|R1",
-     "P0382|R2",
-     "P0427|R2",
-     "P0294|R2",
-     "P0187|R1",
-     "P0790|R6",
-     "P0796|R6",
-     "P0288|R2",
-     "P0327|R2",
-     "P0378|R2",
-     "P0577|R3",
-     "P0581|R3",
-     "P0593|R3",
-     "P0643|R3",
-     "P0697|R3",
-     "P0699|R3",
-     "P0738|R3",
-     "P0756|R3"
+     "P0376|R2"
     ]
    },
    "questions": [
-    "I tried Wegovy for weight loss but even after 7 weeks I struggled with severe nausea and vomiting. I've read people are typically less nauseous on Mounjaro than Wegovy — is switchi",
-    "Do you think Zepbound has more tolerable GI side effects than Wegovy? I’m trying to weigh my options. I want to start a GLP1, but I am nervous about side effects, especially the na",
-    "I'm 5'5, 195 lbs and really want to hit my first goal of 155lbs for summer. I'm in a 1000 calorie deficit and work out at the gym 3 times a week; my weakness is alcohol, especially"
+    "Saxenda stopped helping my weight — what stronger option should I move to?"
    ],
    "pages": [
-    "https://www.ozempic.com/why-ozempic/gi-nausea.html",
-    "https://www.wegovy.com/obesity/is-wegovy-right-for-me/safety-side-effects.html",
-    "https://www.ozempic.com/why-ozempic/lifestyle-daily-living.html",
-    "https://www.ozempic.com/why-ozempic/fatigue-energy.html",
-    "https://www.ozempic.com/why-ozempic/thyroid-mtc.html",
-    "https://www.ozempic.com/why-ozempic/kidney-safety.html"
+    "https://www.novomedlink.com/obesity/products/treatments/saxenda/about/how-saxenda-works.html"
    ],
    "competitors_leaking": [
     {
-     "brand": "Zepbound",
-     "usd_mo": 5108
-    },
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 2190
-    },
-    {
      "brand": "Saxenda",
-     "usd_mo": 279
-    }
-   ],
-   "cause_codes": [
-    "SOURCE-LEAK",
-    "SOURCE-PREF",
-    "COMP-CONTENT",
-    "UNCLAIMED"
-   ],
-   "also_addresses": [
-    "T5",
-    "T6"
-   ],
-   "evidence_refs": {
-    "answers": [
-     "answers.js#P0476|R2",
-     "answers.js#P0497|R2",
-     "answers.js#P0214|R1"
-    ],
-    "serp": 23,
-    "inventory": 23
-   }
-  },
-  {
-   "id": "A-T4-other",
-   "lane": "A",
-   "type": "T4",
-   "type_name": "Publish a new owned evidence page",
-   "title": "Publish a citable owned page for “other” (40 questions)",
-   "owner": "Digital + Medical",
-   "weeks": 6,
-   "usd_yr": [
-    38388,
-    114120
-   ],
-   "usd_per_week": 19020,
-   "demand_mo": 28053,
-   "points": {
-    "count": 40,
-    "pids": [
-     "P0799|R6",
-     "P0421|R2",
-     "P0847|R6",
-     "P0452|R2",
-     "P0324|R2",
-     "P0414|R2",
-     "P0155|R1",
-     "P0325|R2",
-     "P0148|R1",
-     "P0840|R6",
-     "P0841|R6",
-     "P0839|R6",
-     "P0846|R6",
-     "P0789|R6",
-     "P0795|R6",
-     "P0797|R6",
-     "P0679|R3",
-     "P0821|R6",
-     "P0825|R6",
-     "P0826|R6",
-     "P0827|R6",
-     "P0106|R1",
-     "P0291|R2",
-     "P0323|R2",
-     "P0377|R2",
-     "P0379|R2",
-     "P0415|R2",
-     "P0484|R2",
-     "P0538|R3",
-     "P0552|R3",
-     "P0556|R3",
-     "P0642|R3",
-     "P0653|R3",
-     "P0676|R3",
-     "P0696|R3",
-     "P0741|R3",
-     "P0751|R3",
-     "P0806|R6",
-     "P0807|R6",
-     "P1140|R9"
-    ]
-   },
-   "questions": [
-    "someone online says \"it's a for-life drug, you never get off it\" — is that right?",
-    "Any alternative to Mounjaro that isn't a weekly injection?",
-    "my dad is 61, type 2 for years and had a stent last spring. his doctor is reviewing his meds next month — what should we be asking about for someone like him?"
-   ],
-   "pages": [],
-   "competitors_leaking": [
-    {
-     "brand": "Mounjaro",
-     "usd_mo": 1695
+     "usd_mo": 3032
     },
     {
      "brand": "Zepbound",
-     "usd_mo": 1509
+     "usd_mo": 3032
     },
     {
-     "brand": "Saxenda",
-     "usd_mo": 741
+     "brand": "Mounjaro",
+     "usd_mo": 2021
     }
    ],
    "cause_codes": [
-    "SOURCE-LEAK",
-    "SOURCE-PREF",
-    "COMP-CONTENT",
-    "UNCLAIMED"
+    "SOURCE-PREF"
    ],
    "also_addresses": [
-    "T5",
-    "T6"
+    "T5"
    ],
    "evidence_refs": {
     "answers": [
-     "answers.js#P0799|R6",
-     "answers.js#P0421|R2",
-     "answers.js#P0847|R6"
+     "answers.js#P0376|R2"
     ],
-    "serp": 40,
-    "inventory": 40
+    "serp": 1,
+    "inventory": 1
    }
   },
   {
-   "id": "A-T6-resources-healthgrades-com",
+   "id": "A-T6-resources-healthgrades-com-efficacy-results",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto resources.healthgrades.com for “Efficacy & results” (1 questions)",
+   "title": "Place the brand on resources.healthgrades.com — which medications a person with diabetes actually needs",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2393,11 +1718,11 @@
    }
   },
   {
-   "id": "A-T3-ozempic-com",
+   "id": "A-T3-ozempic-com-efficacy-results",
    "lane": "A",
    "type": "T3",
    "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on ozempic.com for “Efficacy & results” (18 questions)",
+   "title": "Rewrite the ozempic.com page — does it control blood sugar, and is it as bad as feared",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -2458,11 +1783,11 @@
    }
   },
   {
-   "id": "A-T6-weightwatchers-com",
+   "id": "A-T6-weightwatchers-com-weight-loss-without-diabet",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto weightwatchers.com for “Weight loss without diabetes” (1 questions)",
+   "title": "Place the brand on weightwatchers.com — the newest weight-loss drug doctors prescribe",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2516,7 +1841,7 @@
    "lane": "A",
    "type": "T5",
    "type_name": "Listings, directory & reference-web data",
-   "title": "Correct our listing data on the cited directories for “Weight loss without diabetes” (7 questions)",
+   "title": "Fix our listing on doctronic.ai — the latest type 2 treatments",
    "owner": "Digital + Medical",
    "weeks": 12,
    "usd_yr": [
@@ -2577,111 +1902,83 @@
    }
   },
   {
-   "id": "A-T3-other",
+   "id": "A-T4-gi-nausea",
    "lane": "A",
-   "type": "T3",
-   "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on our domain for “other” (40 questions)",
+   "type": "T4",
+   "type_name": "Publish a new owned evidence page",
+   "title": "Publish a new page — which drug causes less nausea, and how to handle it",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
-    23448,
-    69684
+    23424,
+    69636
    ],
-   "usd_per_week": 11614,
-   "demand_mo": 38422,
+   "usd_per_week": 11606,
+   "demand_mo": 3276,
    "points": {
-    "count": 40,
+    "count": 14,
     "pids": [
-     "P0473|R2",
-     "P0472|R2",
-     "P0805|R6",
-     "P0417|R2",
-     "P0245|R1",
-     "P0845|R6",
-     "P0743|R3",
-     "P0109|R1",
-     "P0295|R2",
-     "P0296|R2",
-     "P0333|R2",
-     "P0353|R2",
-     "P0519|R2",
-     "P0523|R3",
-     "P0531|R3",
-     "P0566|R3",
-     "P0586|R3",
-     "P0600|R3",
-     "P0601|R3",
-     "P0603|R3",
-     "P0652|R3",
-     "P0670|R3",
-     "P0681|R3",
-     "P0703|R3",
-     "P0711|R3",
-     "P0730|R3",
-     "P0732|R3",
-     "P0745|R3",
-     "P0758|R3",
-     "P0765|R3",
-     "P0772|R6",
-     "P0773|R6",
-     "P0774|R6",
-     "P0777|R6",
-     "P0801|R6",
-     "P0822|R6",
-     "P0823|R6",
-     "P0828|R6",
-     "P0854|R6",
-     "P0857|R6"
+     "P0400|R2",
+     "P0426|R2",
+     "P0363|R2",
+     "P0453|R2",
+     "P0326|R2",
+     "P0345|R2",
+     "P0443|R2",
+     "P0499|R2",
+     "P0560|R3",
+     "P0561|R3",
+     "P0588|R3",
+     "P0591|R3",
+     "P0655|R3",
+     "P0677|R3"
     ]
    },
    "questions": [
-    "I had quite a bad initial reaction to Mounjaro which put me off continuing (namely severe abdominal pain but also I must have been very sensitive to it as I couldn't do much as dri",
-    "I was on Mounjaro as I’ve got 15 stone to lose however it made me so so sick. I was throwing up my epilepsy medication constantly over the 6 weeks and most anti-nausea meds I took ",
-    "My work schedule is chaos and I can never take medication at the same time every day. Is there a diabetes option that fits a less rigid routine?"
+    "Which causes less nausea, Trulicity or Mounjaro?",
+    "The discomfort on Mounjaro is probably worth it — what are some tips for handling the nausea and trapped gas?",
+    "Any alternatives to Zepbound that cause less nausea?"
    ],
-   "pages": [
-    "wegovy.com",
-    "novomedlink.com",
-    "novonordiskmedical.com",
-    "ozempic.com",
-    "novonordisk.com",
-    "pro.novonordisk.co.uk"
-   ],
+   "pages": [],
    "competitors_leaking": [
     {
      "brand": "Mounjaro",
-     "usd_mo": 3662
+     "usd_mo": 3627
     },
     {
-     "brand": "Zepbound",
-     "usd_mo": 628
+     "brand": "Trulicity",
+     "usd_mo": 1451
     },
     {
      "brand": "Saxenda",
-     "usd_mo": 509
+     "usd_mo": 363
     }
    ],
    "cause_codes": [
-    "SYNTH"
+    "SOURCE-LEAK",
+    "COMP-CONTENT",
+    "SOURCE-PREF"
    ],
-   "also_addresses": [],
+   "also_addresses": [
+    "T5",
+    "T6"
+   ],
    "evidence_refs": {
     "answers": [
-     "answers.js#P0473|R2",
-     "answers.js#P0472|R2",
-     "answers.js#P0805|R6"
+     "answers.js#P0400|R2",
+     "answers.js#P0426|R2",
+     "answers.js#P0363|R2"
     ],
-    "serp": 40,
-    "inventory": 40
+    "serp": 14,
+    "inventory": 14
    }
   },
   {
-   "id": "A-T6-other",
+   "id": "A-T6-diabetes-medications-actually-type-pcos-weig",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto the cited commercial pages for “other” (18 questions)",
+   "title": "Place the brand on doctronic.ai — the newest drugs, and what works for PCOS weight",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2756,11 +2053,11 @@
    }
   },
   {
-   "id": "A-T3-novomedlink-com",
+   "id": "A-T3-novomedlink-com-titration-dose-schedule",
    "lane": "A",
    "type": "T3",
    "type_name": "Citability rewrite of a losing page",
-   "title": "Rewrite the cited-but-losing page on novomedlink.com for “Titration & dose schedule” (2 questions)",
+   "title": "Rewrite the novomedlink.com page — do higher doses actually work better",
    "owner": "Digital + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -2798,11 +2095,11 @@
    }
   },
   {
-   "id": "A-T6-kadieleachmd-com",
+   "id": "A-T6-kadieleachmd-com-titration-dose-schedule",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto kadieleachmd.com for “Titration & dose schedule” (1 questions)",
+   "title": "Place the brand on kadieleachmd.com — can type 2 be managed by diet when metformin is intolerable",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2844,11 +2141,11 @@
    }
   },
   {
-   "id": "A-T6-goodrx-com",
+   "id": "A-T6-goodrx-com-titration-dose-schedule",
    "lane": "A",
    "type": "T6",
    "type_name": "Third-party placement (commercial & editorial)",
-   "title": "Get the brand onto goodrx.com for “Titration & dose schedule” (1 questions)",
+   "title": "Place the brand on goodrx.com — is there a pill instead of injections",
    "owner": "Digital + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2898,11 +2195,11 @@
    }
   },
   {
-   "id": "A-T5-other",
+   "id": "A-T5-diabetes-injections-weight-loss-type-pcos",
    "lane": "A",
    "type": "T5",
    "type_name": "Listings, directory & reference-web data",
-   "title": "Correct our listing data on the cited directories for “other” (21 questions)",
+   "title": "Fix our listing on taramd.com — PCOS and weight that will not move",
    "owner": "Digital + Medical",
    "weeks": 12,
    "usd_yr": [
@@ -2980,11 +2277,190 @@
    }
   },
   {
-   "id": "A-T10-other",
+   "id": "A-T3-weight-loss-effects-side-ozempic-start",
+   "lane": "A",
+   "type": "T3",
+   "type_name": "Citability rewrite of a losing page",
+   "title": "Rewrite the novomedlink.com page — fitting treatment around real life, and long-term effects",
+   "owner": "Digital + Medical",
+   "weeks": 6,
+   "usd_yr": [
+    7344,
+    21804
+   ],
+   "usd_per_week": 3634,
+   "demand_mo": 51464,
+   "points": {
+    "count": 45,
+    "pids": [
+     "P0805|R6",
+     "P0417|R2",
+     "P0245|R1",
+     "P0845|R6",
+     "P0743|R3",
+     "P0109|R1",
+     "P0270|R2",
+     "P0295|R2",
+     "P0296|R2",
+     "P0333|R2",
+     "P0344|R2",
+     "P0353|R2",
+     "P0444|R2",
+     "P0519|R2",
+     "P0523|R3",
+     "P0531|R3",
+     "P0563|R3",
+     "P0566|R3",
+     "P0586|R3",
+     "P0600|R3",
+     "P0601|R3",
+     "P0603|R3",
+     "P0652|R3",
+     "P0661|R3",
+     "P0670|R3",
+     "P0681|R3",
+     "P0690|R3",
+     "P0703|R3",
+     "P0711|R3",
+     "P0730|R3",
+     "P0732|R3",
+     "P0745|R3",
+     "P0758|R3",
+     "P0765|R3",
+     "P0772|R6",
+     "P0773|R6",
+     "P0774|R6",
+     "P0777|R6",
+     "P0801|R6",
+     "P0822|R6"
+    ]
+   },
+   "questions": [
+    "My work schedule is chaos and I can never take medication at the same time every day. Is there a diabetes option that fits a less rigid routine?",
+    "Saxenda's long-term effects worry me — what's a safer option to switch to?",
+    "I was diagnosed with PCOS nearly 10 years ago — weight has always been an issue along with facial hair and absent periods. I wanted to ask for people's experiences with weight loss"
+   ],
+   "pages": [
+    "novomedlink.com",
+    "wegovy.com",
+    "novonordiskmedical.com",
+    "rybelsus.com",
+    "ozempic.com",
+    "novonordisk.com"
+   ],
+   "competitors_leaking": [
+    {
+     "brand": "Saxenda",
+     "usd_mo": 327
+    },
+    {
+     "brand": "Zepbound",
+     "usd_mo": 266
+    },
+    {
+     "brand": "Mounjaro",
+     "usd_mo": 216
+    }
+   ],
+   "cause_codes": [
+    "SYNTH"
+   ],
+   "also_addresses": [],
+   "evidence_refs": {
+    "answers": [
+     "answers.js#P0805|R6",
+     "answers.js#P0417|R2",
+     "answers.js#P0245|R1"
+    ],
+    "serp": 45,
+    "inventory": 45
+   }
+  },
+  {
+   "id": "A-T2-ozempic-nausea-zepbound-weight-side-feel",
+   "lane": "A",
+   "type": "T2",
+   "type_name": "Expand an existing owned page",
+   "title": "Expand the safety side effects page — switching for fewer side effects and proven heart benefit",
+   "owner": "Digital + Medical",
+   "weeks": 6,
+   "usd_yr": [
+    4560,
+    13536
+   ],
+   "usd_per_week": 2256,
+   "demand_mo": 20324,
+   "points": {
+    "count": 13,
+    "pids": [
+     "P0405|R2",
+     "P0836|R6",
+     "P0288|R2",
+     "P0300|R2",
+     "P0327|R2",
+     "P0332|R2",
+     "P0450|R2",
+     "P0510|R2",
+     "P0577|R3",
+     "P0581|R3",
+     "P0699|R3",
+     "P0744|R3",
+     "P0756|R3"
+    ]
+   },
+   "questions": [
+    "What's an alternative to Zepbound that causes less nausea?",
+    "i want a diabetes drug where the heart benefit is actually proven, not marketing. does that exist?",
+    "Ozempic gives me nausea, thinking of switching to Mounjaro — is it easier on the stomach?"
+   ],
+   "pages": [
+    "https://www.wegovy.com/obesity/is-wegovy-right-for-me/safety-side-effects.html",
+    "https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=166301",
+    "https://www.ozempic.com/ozempic-pill/side-effects.html",
+    "https://pro.novonordisk.co.uk/disclaimer.html?disclaim=https://pro.novonordisk.co.uk/products/ozempic/mechanism-of-action",
+    "https://www.novomedlink.com/diabetes/products/treatments/ozempic/dosing-administration/administration/pen.html",
+    "https://www.novocare.com/patient/medicines/wegovy/check-coverage.html"
+   ],
+   "competitors_leaking": [
+    {
+     "brand": "Zepbound",
+     "usd_mo": 453
+    },
+    {
+     "brand": "Saxenda",
+     "usd_mo": 272
+    },
+    {
+     "brand": "Trulicity",
+     "usd_mo": 272
+    }
+   ],
+   "cause_codes": [
+    "SOURCE-PREF",
+    "SOURCE-LEAK",
+    "COMP-CONTENT",
+    "SOURCE-MISS"
+   ],
+   "also_addresses": [
+    "T5",
+    "T6"
+   ],
+   "evidence_refs": {
+    "answers": [
+     "answers.js#P0405|R2",
+     "answers.js#P0836|R6",
+     "answers.js#P0288|R2"
+    ],
+    "serp": 13,
+    "inventory": 13
+   }
+  },
+  {
+   "id": "A-T10-ozempic-mounjaro-weight-loss-people-side",
    "lane": "A",
    "type": "T10",
    "type_name": "Hostile source response",
-   "title": "Handle the litigation sources: legal decision, then PR displacement (“other”, 53 questions)",
+   "title": "Decide and displace legalclarity.org — the “on it for life” narrative and rebound weight",
    "owner": "Legal + PR",
    "weeks": 12,
    "usd_yr": [
@@ -2992,9 +2468,9 @@
     24156
    ],
    "usd_per_week": 2013,
-   "demand_mo": 284237,
+   "demand_mo": 303788,
    "points": {
-    "count": 53,
+    "count": 64,
     "pids": [
      "P0800|R6",
      "P1109|R9",
@@ -3002,21 +2478,32 @@
      "P0107|R1",
      "P0262|R2",
      "P0264|R2",
+     "P0267|R2",
+     "P0269|R2",
      "P0273|R2",
+     "P0287|R2",
+     "P0289|R2",
      "P0290|R2",
      "P0302|R2",
      "P0305|R2",
+     "P0346|R2",
+     "P0347|R2",
      "P0348|R2",
      "P0349|R2",
      "P0351|R2",
+     "P0357|R2",
+     "P0365|R2",
      "P0375|R2",
      "P0383|R2",
      "P0384|R2",
      "P0387|R2",
      "P0392|R2",
+     "P0393|R2",
      "P0431|R2",
      "P0437|R2",
      "P0448|R2",
+     "P0449|R2",
+     "P0451|R2",
      "P0479|R2",
      "P0485|R2",
      "P0486|R2",
@@ -3024,18 +2511,7 @@
      "P0502|R2",
      "P0516|R2",
      "P0518|R2",
-     "P0547|R3",
-     "P0557|R3",
-     "P0562|R3",
-     "P0569|R3",
-     "P0576|R3",
-     "P0616|R3",
-     "P0658|R3",
-     "P0673|R3",
-     "P0698|R3",
-     "P0700|R3",
-     "P0701|R3",
-     "P0708|R3"
+     "P0547|R3"
     ]
    },
    "questions": [
@@ -3071,8 +2547,8 @@
      "answers.js#P1109|R9",
      "answers.js#P0301|R2"
     ],
-    "serp": 53,
-    "inventory": 53
+    "serp": 64,
+    "inventory": 64
    }
   },
   {
@@ -3080,7 +2556,7 @@
    "lane": "B",
    "type": "T8",
    "type_name": "Medical/Regulatory escalation & off-label dossier",
-   "title": "Regulatory dossier and decision for “Serious risks & contraindications” (132 questions)",
+   "title": "Open a regulatory dossier — serious risks and contraindications",
    "owner": "Medical / Regulatory",
    "weeks": 6,
    "usd_yr": [
@@ -3169,7 +2645,7 @@
    "lane": "B",
    "type": "T7",
    "type_name": "Label-clarity content",
-   "title": "Draft label-clarity content for “Serious risks & contraindications” (68 questions)",
+   "title": "Draft label-clarity content — serious risks and contraindications",
    "owner": "Medical + Digital",
    "weeks": 6,
    "usd_yr": [
@@ -3257,7 +2733,7 @@
    "lane": "B",
    "type": "T8",
    "type_name": "Medical/Regulatory escalation & off-label dossier",
-   "title": "Regulatory dossier and decision for “Indications & eligibility” (60 questions)",
+   "title": "Open a regulatory dossier — who the drug is approved for",
    "owner": "Medical / Regulatory",
    "weeks": 6,
    "usd_yr": [
@@ -3348,7 +2824,7 @@
    "lane": "B",
    "type": "T9",
    "type_name": "Provider error reports",
-   "title": "File provider error reports for “Serious risks & contraindications” (21 questions)",
+   "title": "File provider error reports — serious risks and contraindications",
    "owner": "Citere + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -3417,7 +2893,7 @@
    "lane": "B",
    "type": "T8",
    "type_name": "Medical/Regulatory escalation & off-label dossier",
-   "title": "Regulatory dossier and decision for “Dosing & administration” (14 questions)",
+   "title": "Open a regulatory dossier — dosing and administration",
    "owner": "Medical / Regulatory",
    "weeks": 6,
    "usd_yr": [
@@ -3480,7 +2956,7 @@
    "lane": "B",
    "type": "T7",
    "type_name": "Label-clarity content",
-   "title": "Draft label-clarity content for “Dosing & administration” (10 questions)",
+   "title": "Draft label-clarity content — dosing and administration",
    "owner": "Medical + Digital",
    "weeks": 6,
    "usd_yr": [
@@ -3538,7 +3014,7 @@
    "lane": "B",
    "type": "T9",
    "type_name": "Provider error reports",
-   "title": "File provider error reports for “Dosing & administration” (6 questions)",
+   "title": "File provider error reports — dosing and administration",
    "owner": "Citere + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -3592,7 +3068,7 @@
    "lane": "B",
    "type": "T7",
    "type_name": "Label-clarity content",
-   "title": "Draft label-clarity content for “Indications & eligibility” (10 questions)",
+   "title": "Draft label-clarity content — who the drug is approved for",
    "owner": "Medical + Digital",
    "weeks": 6,
    "usd_yr": [
@@ -3650,7 +3126,7 @@
    "lane": "B",
    "type": "T9",
    "type_name": "Provider error reports",
-   "title": "File provider error reports for “Indications & eligibility” (4 questions)",
+   "title": "File provider error reports — who the drug is approved for",
    "owner": "Citere + Medical",
    "weeks": 6,
    "usd_yr": [
@@ -3702,17 +3178,17 @@
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Coupons & savings” (16 questions)",
+   "title": "Decide: accept the floor or fix the program — coupons and savings terms",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
-    6271824,
-    18635292
+    5776680,
+    17164080
    ],
-   "usd_per_week": 9317646,
-   "demand_mo": 246080,
+   "usd_per_week": 8582040,
+   "demand_mo": 230700,
    "points": {
-    "count": 16,
+    "count": 15,
     "pids": [
      "P0494|R2",
      "P0906|R7",
@@ -3724,7 +3200,6 @@
      "P1051|R7",
      "P1053|R7",
      "P1055|R7",
-     "P0330|R2",
      "P0459|R2",
      "P0624|R3",
      "P0625|R3",
@@ -3741,11 +3216,11 @@
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 926315
+     "usd_mo": 905882
     },
     {
      "brand": "Mounjaro",
-     "usd_mo": 459753
+     "usd_mo": 357585
     },
     {
      "brand": "Trulicity",
@@ -3759,8 +3234,8 @@
     "SOURCE-PREF"
    ],
    "also_addresses": [
-    "T2",
     "T3",
+    "T4",
     "T5",
     "T6"
    ],
@@ -3770,8 +3245,8 @@
      "answers.js#P0906|R7",
      "answers.js#P0913|R7"
     ],
-    "serp": 16,
-    "inventory": 16
+    "serp": 15,
+    "inventory": 15
    }
   },
   {
@@ -3779,17 +3254,17 @@
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Efficacy & results” (55 questions)",
+   "title": "Decide: accept the floor or fix the program — what works for type 2 — answered by institutions, not brands",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
-    2071212,
-    6153684
+    1900380,
+    5646132
    ],
-   "usd_per_week": 3076842,
-   "demand_mo": 56670,
+   "usd_per_week": 2823066,
+   "demand_mo": 52122,
    "points": {
-    "count": 55,
+    "count": 53,
     "pids": [
      "P0037|R1",
      "P0040|R1",
@@ -3805,10 +3280,8 @@
      "P0183|R1",
      "P0202|R1",
      "P0225|R1",
-     "P0919|R7",
      "P1023|R7",
      "P1039|R7",
-     "P1052|R7",
      "P0032|R1",
      "P0197|R1",
      "P0068|R1",
@@ -3830,7 +3303,9 @@
      "P0118|R1",
      "P0124|R1",
      "P0127|R1",
-     "P0162|R1"
+     "P0162|R1",
+     "P0171|R1",
+     "P0190|R1"
     ]
    },
    "questions": [
@@ -3842,11 +3317,11 @@
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 54223
+     "usd_mo": 22501
     },
     {
      "brand": "Mounjaro",
-     "usd_mo": 31740
+     "usd_mo": 21166
     },
     {
      "brand": "Jardiance",
@@ -3865,8 +3340,8 @@
      "answers.js#P0040|R1",
      "answers.js#P0086|R1"
     ],
-    "serp": 55,
-    "inventory": 55
+    "serp": 53,
+    "inventory": 53
    }
   },
   {
@@ -3874,7 +3349,7 @@
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Insurance & coverage” (38 questions)",
+   "title": "Decide: accept the floor or fix the program — insurance and coverage",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
@@ -3882,9 +3357,9 @@
     4326228
    ],
    "usd_per_week": 2163114,
-   "demand_mo": 81738,
+   "demand_mo": 83889,
    "points": {
-    "count": 38,
+    "count": 39,
     "pids": [
      "P0239|R1",
      "P0490|R2",
@@ -3911,6 +3386,7 @@
      "P0147|R1",
      "P0503|R2",
      "P0509|R2",
+     "P0511|R2",
      "P0548|R3",
      "P0549|R3",
      "P0551|R3",
@@ -3955,6 +3431,7 @@
    "also_addresses": [
     "T2",
     "T3",
+    "T4",
     "T5",
     "T6",
     "T10"
@@ -3965,8 +3442,8 @@
      "answers.js#P0490|R2",
      "answers.js#P0506|R2"
     ],
-    "serp": 38,
-    "inventory": 38
+    "serp": 39,
+    "inventory": 39
    }
   },
   {
@@ -3974,22 +3451,19 @@
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Cost & price” (33 questions)",
+   "title": "Decide: accept the floor or fix the program — what the drug costs",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
-    1197408,
-    3557808
+    967764,
+    2875500
    ],
-   "usd_per_week": 1778904,
-   "demand_mo": 65216,
+   "usd_per_week": 1437750,
+   "demand_mo": 61140,
    "points": {
-    "count": 33,
+    "count": 31,
     "pids": [
-     "P0397|R2",
      "P0457|R2",
-     "P0495|R2",
-     "P0496|R2",
      "P0905|R7",
      "P0911|R7",
      "P0915|R7",
@@ -4012,6 +3486,7 @@
      "P0271|R2",
      "P0283|R2",
      "P0309|R2",
+     "P0512|R2",
      "P0535|R3",
      "P0536|R3",
      "P0594|R3",
@@ -4022,19 +3497,19 @@
     ]
    },
    "questions": [
-    "Which is more affordable, Mounjaro or Wegovy?",
     "I'll be on this medicine for life and want to cut my cost from $450 a month. Is switching from Zepbound to a compounded version worth it, and how does it go?",
-    "I need to lose 15-20 kg and can only afford one course: one Mounjaro 15mg pen or two Wegovy 2.4mg pens. I lost 7 kg in my first month on Mounjaro with no side effects; on Wegovy I "
+    "How much weight can you lose on Zepbound in 3 months?",
+    "What is the generic name for Zepbound?"
    ],
    "pages": [],
    "competitors_leaking": [
     {
      "brand": "Zepbound",
-     "usd_mo": 124797
+     "usd_mo": 113742
     },
     {
      "brand": "Mounjaro",
-     "usd_mo": 96336
+     "usd_mo": 50532
     },
     {
      "brand": "Trulicity",
@@ -4048,19 +3523,20 @@
     "INSTITUTIONAL"
    ],
    "also_addresses": [
-    "T2",
     "T3",
+    "T4",
     "T5",
-    "T6"
+    "T6",
+    "T10"
    ],
    "evidence_refs": {
     "answers": [
-     "answers.js#P0397|R2",
      "answers.js#P0457|R2",
-     "answers.js#P0495|R2"
+     "answers.js#P0905|R7",
+     "answers.js#P0911|R7"
     ],
-    "serp": 33,
-    "inventory": 33
+    "serp": 31,
+    "inventory": 31
    }
   },
   {
@@ -4068,58 +3544,58 @@
    "lane": "C",
    "type": "T1",
    "type_name": "Monitor & verify position",
-   "title": "Held positions — monitoring only, no content action (307 questions)",
+   "title": "Monitor held positions — positions we already hold",
    "owner": "Citere",
    "weeks": null,
    "usd_yr": [
-    658488,
-    1956492
+    573072,
+    1702716
    ],
    "usd_per_week": null,
-   "demand_mo": 891403,
+   "demand_mo": 909008,
    "points": {
-    "count": 307,
+    "count": 320,
     "pids": [
      "P1057|R8",
      "P0950|R7",
      "P0999|R7",
      "P1045|R7",
-     "P0954|R7",
      "P0925|R7",
-     "P1042|R7",
      "P0977|R7",
      "P1036|R7",
      "P0816|R6",
+     "P0265|R2",
      "P0272|R2",
+     "P0280|R2",
      "P0282|R2",
      "P0286|R2",
      "P0292|R2",
      "P0293|R2",
+     "P0310|R2",
      "P0311|R2",
      "P0312|R2",
      "P0313|R2",
+     "P0318|R2",
+     "P0319|R2",
+     "P0328|R2",
      "P0331|R2",
      "P0356|R2",
      "P0358|R2",
+     "P0360|R2",
+     "P0361|R2",
      "P0362|R2",
      "P0368|R2",
      "P0371|R2",
      "P0372|R2",
+     "P0373|R2",
      "P0374|R2",
      "P0380|R2",
      "P0388|R2",
      "P0389|R2",
      "P0391|R2",
+     "P0394|R2",
      "P0395|R2",
-     "P0411|R2",
-     "P0419|R2",
-     "P0441|R2",
-     "P0480|R2",
-     "P0481|R2",
-     "P0482|R2",
-     "P0483|R2",
-     "P0508|R2",
-     "P0524|R3"
+     "P0411|R2"
     ]
    },
    "questions": [
@@ -4131,11 +3607,11 @@
    "competitors_leaking": [
     {
      "brand": "Mounjaro",
-     "usd_mo": 100395
+     "usd_mo": 93345
     },
     {
      "brand": "Zepbound",
-     "usd_mo": 59638
+     "usd_mo": 45540
     },
     {
      "brand": "Saxenda",
@@ -4155,8 +3631,8 @@
      "answers.js#P0950|R7",
      "answers.js#P0999|R7"
     ],
-    "serp": 306,
-    "inventory": 307
+    "serp": 319,
+    "inventory": 320
    }
   },
   {
@@ -4164,7 +3640,7 @@
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Titration & dose schedule” (6 questions)",
+   "title": "Decide: accept the floor or fix the program — dosing and titration",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
@@ -4208,11 +3684,11 @@
    }
   },
   {
-   "id": "C-T12-other",
+   "id": "C-T12-side-effects-diabetes-medication-can-t",
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Other” (3 questions)",
+   "title": "Decide: accept the floor or fix the program — side effects patients cannot tolerate",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
@@ -4257,7 +3733,7 @@
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “Basics & mechanism” (2 questions)",
+   "title": "Decide: accept the floor or fix the program — what the drug is and how it works",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [
@@ -4299,7 +3775,7 @@
    "lane": "C",
    "type": "T8",
    "type_name": "Medical/Regulatory escalation & off-label dossier",
-   "title": "Regulatory dossier and decision for “regulatory hold” (4 questions)",
+   "title": "Open a regulatory dossier — off-label territory awaiting a regulatory call",
    "owner": "Medical / Regulatory",
    "weeks": 6,
    "usd_yr": [
@@ -4352,11 +3828,11 @@
    }
   },
   {
-   "id": "C-T12-other",
+   "id": "C-T12-diabetes-drugs-help-type-sugar-blood",
    "lane": "C",
    "type": "T12",
    "type_name": "Executive decision (commercial / channel floor)",
-   "title": "Decision: accept the floor or fix the program for “other” (23 questions)",
+   "title": "Decide: accept the floor or fix the program — which drug helps bring blood sugar down",
    "owner": "Commercial / CMO",
    "weeks": 2,
    "usd_yr": [

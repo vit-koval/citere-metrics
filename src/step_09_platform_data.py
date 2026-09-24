@@ -157,8 +157,10 @@ def point_money(cp, export_point, factor, bd, portfolio, comp_money, usd_per_sea
         else:
             unattr += 1.0
     gap = (1.0 - our / n) if n else 0.0
-    named = set(bd.competitors_present(cp.get("text") or ""))
-    pf = 1 if (named & portfolio) and not (named & comp_money) else 0
+    qtext = cp.get("text") or ""
+    # §3.3: a question that names a portfolio brand and not ours is that brand's territory — our absence
+    # there is not our loss, whichever competitors it also names.
+    pf = 1 if (set(bd.competitors_present(qtext)) & portfolio) and not bd.we_present(qtext) else 0
     f = factor.get(money_cell_key(cp), 1.0)
     pt_demand_eff = int(round((export_point["demand"].get("prompt_share") or 0) * f))
     if usd_per_search is None:
