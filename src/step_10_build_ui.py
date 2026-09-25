@@ -264,6 +264,12 @@ window.__nmKick=()=>{""",
         assert ans_sizes[run] <= ARTIFACT_TEXT_LIMIT, "answers_{}.js exceeds the artifact text-file ceiling".format(run)
     for stale in ["answers_b64.js", "answers.js"]:
         if (UI / stale).exists(): (UI / stale).unlink()
+    # tasks layer (tasks/tasks.json + tasks/task_state.json) — the single source of "what to do"
+    _tp, _sp = C.ROOT / "tasks" / "tasks.json", C.ROOT / "tasks" / "task_state.json"
+    _tasks = json.loads(_tp.read_text(encoding="utf-8")) if _tp.exists() else {"tasks": []}
+    _state = json.loads(_sp.read_text(encoding="utf-8")) if _sp.exists() else {}
+    tasks_blob = json.dumps({"tasks": _tasks.get("tasks", []), "state": _state},
+                            ensure_ascii=False, separators=(",", ":"))
     # map data block: separate file, loaded only when #/map opens
     pdj_pricing = json.loads(pdata).get("pricing")
     map_data["pricing"] = pdj_pricing   # revenue-at-risk v2 §4 — None when config/pricing.yaml is absent
@@ -282,6 +288,7 @@ window.__nmKick=()=>{""",
              .replace("<!--LEGACY_MAP_HTML-->", map_html) \
              .replace("<script>/*GLOSSARY*/</script>", "<script>window.GLOSSARY=" + json.dumps(glossary, ensure_ascii=False, separators=(",", ":")) + ";</script>") \
              .replace("<script>/*PLATFORM_DATA*/</script>", "<script>window.PLATFORM_DATA=" + pdata + ";</script>") \
+             .replace("<script>/*TASKS*/</script>", "<script>window.TASKS=" + tasks_blob + ";</script>") \
              .replace("<!--LEGACY_MAP_JS-->", map_js)
     markup = tpl + map_js + map_html
     used = set(k for k in glossary if not k.startswith("_") and re.search(r'["\']' + re.escape(k) + r'["\']', markup))

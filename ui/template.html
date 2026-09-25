@@ -211,11 +211,17 @@ td.ct,th.ct{min-width:150px}
 <!--LEGACY_MAP_HTML-->
 <script>/*GLOSSARY*/</script>
 <script>/*PLATFORM_DATA*/</script>
+<script>/*TASKS*/</script>
 <script>
 "use strict";
 const D = window.PLATFORM_DATA;
 const DASH = D.dashboard, PTS = D.points, GROUPS = D.groups;
 const KEYS = Object.keys(PTS);
+const TASKS_ALL = (window.TASKS && window.TASKS.tasks) || [];      // tasks layer, spec v1 §4
+const TASK_STATE = (window.TASKS && window.TASKS.state) || {};
+const taskById = Object.fromEntries(TASKS_ALL.map(t=>[t.id,t]));
+const LANE_A = TASKS_ALL.filter(t=>t.lane==="A"), LANE_B = TASKS_ALL.filter(t=>t.lane==="B"), LANE_C = TASKS_ALL.filter(t=>t.lane==="C");
+function byWeek(a,b){ return (b.usd_per_week-a.usd_per_week)||(b.demand_mo-a.demand_mo)||a.id.localeCompare(b.id); }
 // ---------------- revenue-at-risk layer (spec v2 §5) — display only ----------------
 const PRICING = D.pricing || null, MONEY = D.money_totals || null;
 const MONEY_NOTE = "(Google proxy, US \u00b7 estimate)";
@@ -500,7 +506,7 @@ function level1(el){
   const lightText = {red:"Dangerous errors found", yellow:"Warnings found", green:"No critical findings"}[L.traffic_light]||L.traffic_light;
   const r3 = S.top_negative_themes.filter(t=>t.run==="R3").slice(0,5).map(t=>`<tr><td>${esc(themeName(t.theme))}</td><td class="n">${pct0(t.pct_of_negative)}</td></tr>`).join("");
   const gap = C.gap_list.slice(0,4).map(g=>`<tr><td><a href="#/sources?domain=${encodeURIComponent(g.domain)}">${esc(g.domain)}</a></td><td class="n">${esc(g.subtype||g.owner)}</td><td class="n">gap ${g.gap_score}</td></tr>`).join("");
-  const recs = P.recommendations.slice(0,3).map(r=>{ const g=groupById[r.group_id]; const o=r.owners[0]; return `<tr><td><span class="tag p${r.priority}">${r.priority}</span> <a href="#/priorities?group=${encodeURIComponent(r.group_id)}">${esc(r.group_id)}</a> — ${esc(o.owner)}<br><span class="note">Cause: ${esc(g.dominant_cause.code.toLowerCase())} in ${shr0(g.dominant_cause.share)} of points</span>${(()=>{const v=groupMoney(r.group_id);return v&&v[1]?`<br><span class="note">${usdYr(v)} / yr at risk <span class="z">${MONEY_NOTE}</span></span>`:"";})()}</td><td class="n">${fmtK(g.demand)}</td><td class="n">${shr0(g.gap)}</td><td class="n">${shr0(o.lever)}</td><td class="n">up to ${(+o.ceiling_pp).toFixed(0)} pp</td></tr>`; }).join("");
+  const recs = LANE_A.slice().sort(byWeek).slice(0,3).map(t=>`<tr><td><a href="#/priorities?zone=${encodeURIComponent(t.zone||"")}">${esc(t.title)}</a><br><span class="note">${esc(t.owner)} \u00b7 ${t.weeks} weeks \u00b7 ${esc(t.type)}</span></td><td class="n">${fmtK(t.demand_mo)}</td><td class="n">${usdOne(t.usd_per_week)}</td><td class="n">${t.expected_pp?`+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp`:"\u2014"}</td><td class="n">${usdRange(t.usd_yr[0],t.usd_yr[1])}</td></tr>`).join("");
   const who = Object.entries(A.counters.by_who).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<div>${esc(k)}</div><div>${v}</div>`).join("");
   const stakeTip = "A point can belong to several groups \u2014 amounts are not additive. See the Revenue at risk tile for the total.";
   const next = A.top3_open.map(t=>{ const c=campById[t.task_id]||{}; const e=t.impact.expected_pp; const v=groupMoney(t.group_id); return `<tr><td><a href="#/actions">${esc(c.what||t.group_id+" → "+t.owner)}</a></td><td>${esc(t.who)}</td><td class="n">${e?`+${(+e[0]).toFixed(0)} to +${(+e[1]).toFixed(0)} pp`:"not estimated"}</td>${PRICING?`<td class="n" title="${esc(stakeTip)}">${v&&v[1]?usdRange(v[0],v[1]):"\u2014"}</td>`:""}<td class="n"><span class="tag p1">open</span></td></tr>`; }).join("");
@@ -566,9 +572,9 @@ function level1(el){
     <div class="tblwrap"><table>${gap}</table></div>
   </section>
   <section class="tile c5" aria-label="Diagnosis and prioritization" onclick="location.hash='#/priorities'">
-    <h2${gAttr("screen_priorities")}>Diagnosis &amp; Prioritization <span>demand × gap × lever</span></h2>${gLead("screen_priorities")}
-    <div class="tblwrap"><table><tr><th>Fix first</th><th class="n">Demand /mo</th><th class="n">Losing</th><th class="n">Lever</th><th class="n">Reach</th></tr>${recs}</table></div>
-    <div class="note">Reach is a ceiling, in percentage points of presence. Priority tiers are the top, middle and bottom third of ${P.rows_total} client rows; ${P.healthy_groups_count} groups are healthy.</div>
+    <h2${gAttr("screen_priorities")}>Priorities <span>$ at risk per week of work</span></h2>${gLead("screen_priorities")}
+    <div class="tblwrap"><table><tr><th>Fix first</th><th class="n">Demand /mo</th><th class="n">$/week</th><th class="n">Expected</th><th class="n">$ at risk/yr</th></tr>${recs}</table></div>
+    <div class="note">Ranked by $ at risk per week of work. Expected impact is shown, never sorted on. ${LANE_A.length} lane-A tasks across ${new Set(LANE_A.map(t=>t.zone)).size} zones.</div>
   </section>
   <section class="tile c7" aria-label="Action Center" onclick="location.hash='#/actions'">
     <h2${gAttr("screen_actions")}>Action Center <span>tasks from the list above</span></h2>${gLead("screen_actions")}
@@ -733,54 +739,68 @@ function vSources(el, q){
 function distBlock(list, total){
   return `<div class="dist">${list.slice(0,8).map(d=>`<div>${esc(d.label||d.code)}</div><div class="n">${d.n}</div><div class="bar"><i class="t-us" style="width:${Math.round(d.n/total*100)}%"></i></div>`).join("")}</div>`;
 }
+function zoneRows(){                                  // §4: tasks grouped by zone, zones by Σ $/week
+  const by = {};
+  LANE_A.forEach(t=>{ (by[t.zone||"—"] = by[t.zone||"—"] || []).push(t); });
+  return Object.entries(by).map(([zone, ts]) => ({
+    zone, tasks: ts.slice().sort(byWeek),
+    week: ts.reduce((s,t)=>s+(t.usd_per_week||0),0),
+    yr: [0,1].map(i=>ts.reduce((s,t)=>s+t.usd_yr[i],0)),
+  })).sort((a,b)=>(b.week-a.week)||a.zone.localeCompare(b.zone));
+}
+function ppCell(t){ return t.expected_pp ? `+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp` : "\u2014"; }
+function compCell(t){ return (t.competitors_leaking && t.competitors_leaking[0]) ? esc(t.competitors_leaking[0].brand) : "\u2014"; }
+function taskHref(t){ return `#/actions?task=${encodeURIComponent(t.id)}`; }
+function taskRowAttr(t){ return ` class="pt" data-href="${taskHref(t)}"`; }
+function taskColsA(){ return [
+  {k:"t",h:"Task",c:"cq",g:"task_title",f:t=>`<div class="title">${esc(t.title)}</div><div class="causeln">${esc(t.type)} \u00b7 ${esc(t.type_name)}</div>`,sort:t=>t.title},
+  {k:"o",h:"Owner",c:"cw",f:t=>esc(t.owner),sort:t=>t.owner},
+  {k:"w",h:"Wks",c:"c",n:true,f:t=>t.weeks==null?"prog":t.weeks,sort:t=>t.weeks||99},
+  {k:"usd",h:"$ at risk/yr",n:true,f:t=>`<span title="${esc(MONEY_NOTE)}">${usdRange(t.usd_yr[0],t.usd_yr[1])}</span>`,sort:t=>t.usd_yr[1]},
+  {k:"wk",h:"$/week",n:true,f:t=>usdOne(t.usd_per_week),sort:t=>t.usd_per_week||-1},
+  {k:"pp",h:"Expected",n:true,g:"potential",f:ppCell,sort:t=>t.expected_pp?t.expected_pp[1]:-1},
+  {k:"d",h:"Demand /mo",n:true,g:"demand",f:t=>fmtK(t.demand_mo),sort:t=>t.demand_mo},
+  {k:"n",h:"Points",c:"c",n:true,f:t=>t.points.count,sort:t=>t.points.count},
+  {k:"c",h:"Top competitor",c:"cw",f:compCell,sort:t=>compCell(t)},
+]; }
 function vPriorities(el, q){
-  const P=DASH.prioritization; const gsel=q.get("group");
-  if(gsel && groupById[gsel]) return groupView(el, groupById[gsel]);
-  const TASKS = buildTasks();
-  const potOf = g => (g.owner_rows && g.owner_rows[0] && g.owner_rows[0].expected_pp) || null;
-  const potCell = g => { const e = potOf(g); return e ? `+${f1(e[0])} to +${f1(e[1])} pp` : "not estimated"; };
-  const statusCell = gid => { const s = groupTaskStats(gid, TASKS); if(!s.n) return `<span class="note"${gAttr("no_campaign")}>${esc(groupById[gid] && groupById[gid].no_campaign_reason ? "no tasks — " + groupById[gid].no_campaign_reason.replace(/^No campaign[^—]*— /,"") : "no tasks")}</span>`;
-    return TASK_COLS.filter(([k])=>s.by[k]).map(([k,l])=>`${s.by[k]} ${l.toLowerCase()}`).join(" · "); };
-  const topicCell = g => `<div class="title">${esc(g.subject_label)}</div><div class="causeln">${esc(g.group_id)}</div>`;
-  const rec = GROUPS.filter(g=>g.bucket==="recommendation")
-    .sort((a,b)=>(b.priority-a.priority) || ((potOf(b)?potOf(b)[1]:0)-(potOf(a)?potOf(a)[1]:0)));
-  const healthy = GROUPS.filter(g=>g.bucket==="healthy").sort((a,b)=>b.failure_code_share-a.failure_code_share);
-  const label = GROUPS.filter(g=>g.bucket==="label");
-  const rowAttr = g => ` class="pt" data-href="#/priorities?group=${encodeURIComponent(g.group_id)}"`;
-  el.innerHTML = page("Diagnosis & Prioritization", `Ranked by demand × gap × lever. ${esc(P.gap_note)}`, "screen_priorities") + `<div class="stack">`
-   + sec("Act on these", `<div class="lead">Topics where we lose answers and something can be done about it. Click a row for the topic's evidence and its individual tasks.</div>`
+  const zones = zoneRows();
+  const gsel = q.get("group");                       // legacy deep links fold into the zone view
+  const zsel = q.get("zone") || (gsel && groupById[gsel] ? groupById[gsel].zone : "");
+  const open = zsel ? new Set([zsel]) : new Set(zones.slice(0,1).map(z=>z.zone));
+  const tot = [0,1].map(i => LANE_A.reduce((s,t)=>s+t.usd_yr[i],0));
+  const zoneSec = z => {
+    const on = open.has(z.zone);
+    return `<section class="tile c12"><h2 class="zhead" data-zone="${esc(z.zone)}" style="cursor:pointer">
+        ${on?"\u25be":"\u25b8"} ${esc(z.zone)} <span>${usdRange(z.yr[0],z.yr[1])} / yr \u00b7 ${usdOne(z.week)}/week \u00b7 ${z.tasks.length} tasks</span></h2>
+      <div${on?"":' class="hide"'}>${tbl(taskColsA(), z.tasks, {rowAttr:taskRowAttr, scroll:false, sortKey:"wk", sortDir:-1})}</div></section>`;
+  };
+  const sevOf = t => (t.severity||{}).bad||0;
+  el.innerHTML = page("Priorities", `What to do, by zone. Ranked by $ at risk per week of work \u2014 expected impact is shown, never sorted on. ${MONEY_NOTE}`, "screen_priorities")
+   + `<div class="stack">`
+   + sec("Lane A \u2014 Revenue", `<div class="lead">${LANE_A.length} tasks across ${zones.length} zones, ${usdRange(tot[0],tot[1])} / yr at risk. Click a zone to fold it, a task for its detail.</div>`, "", `${LANE_A.length} tasks`, "c12")
+   + zones.map(zoneSec).join("")
+   + sec("Lane B \u2014 Label &amp; regulatory", `<div class="lead">Ranked by severity, never by money. The web-panel figure is information only and is never added to lane A.</div>`
       + tbl([
-        {k:"t",h:"Topic",c:"cq",g:"topic_group",f:topicCell,sort:g=>g.subject_label},
-        {k:"d",h:"Demand /mo",n:true,g:"demand",f:g=>fmtK(g.demand),sort:g=>g.demand},
-        ...(PRICING?[{k:"gusd",h:"$ at risk/yr",n:true,f:g=>{const v=groupMoney(g.group_id); return v&&v[1]?`<span title="${esc(MONEY_NOTE)}">${usdYr(v)}</span>`:"\u2014";},sort:g=>{const v=groupMoney(g.group_id); return v?v[1]:-1;}}]:[]),
-        {k:"gp",h:"Gap",n:true,g:"topic_gap",f:g=>shr0(g.gap),sort:g=>g.gap},
-        {k:"c",h:"Dominant cause",c:"cw",g:"cause",f:g=>{const w=g.failing_cause||g.dominant_cause; return `${esc(w.label||w.code)}${w.confidence?`<div class="z">confidence ${esc(w.confidence)}</div>`:""}`;},sort:g=>(g.failing_cause||g.dominant_cause).code},
-        {k:"p",h:"Priority",c:"c",g:"priority",f:g=>`<span class="tag p${g.priority}">${g.priority}</span>`,sort:g=>g.priority},
-        {k:"pot",h:"Potential",n:true,g:"potential",f:potCell,sort:g=>potOf(g)?potOf(g)[1]:-1},
-        {k:"tn",h:"Tasks",n:true,g:"open_tasks",f:g=>groupTaskStats(g.group_id, TASKS).n,sort:g=>groupTaskStats(g.group_id, TASKS).n},
-        {k:"ts",h:"Task status",c:"cw",g:"task_status",f:g=>statusCell(g.group_id)},
-      ], rec, {rowAttr, scroll:false, sortKey:q.get("sort")||null, sortDir:-1}),
-      q.get("sort") ? "Sorted by the column you picked; the link carries it." : "Sorted by priority, then by the best expected shift.", `${rec.length} topics`, "c12")
-   + sec("Checked, nothing to fix", `<div class="lead">The dominant code on these topics is not a failure, so no task was raised. Failure-code share shows how many of their points still carry some other failure.</div>`
+        {k:"t",h:"Task",c:"cq",f:t=>`<div class="title">${esc(t.title)}</div><div class="causeln">${esc(t.type)} \u00b7 ${esc(t.owner)}</div>`,sort:t=>t.title},
+        {k:"b",h:"Bad",c:"c",n:true,f:t=>(t.severity||{}).bad||0,sort:sevOf},
+        {k:"wn",h:"Warn",c:"c",n:true,f:t=>(t.severity||{}).warn||0,sort:t=>(t.severity||{}).warn||0},
+        {k:"n",h:"Points",c:"c",n:true,f:t=>t.points.count,sort:t=>t.points.count},
+        {k:"m",h:"MLR",c:"c",f:t=>t.mlr_gate?'<span class="tag p1">medical review</span>':'<span class="tag mute">compatible</span>'},
+        {k:"w",h:"Web $/yr (info)",n:true,f:t=>usdRange((t.web_usd_yr_info||[0,0])[0],(t.web_usd_yr_info||[0,0])[1]),sort:t=>(t.web_usd_yr_info||[0,0])[1]},
+      ], LANE_B.slice().sort((a,b)=>(sevOf(b)-sevOf(a))||(b.points.count-a.points.count)||a.id.localeCompare(b.id)),
+      {rowAttr:taskRowAttr, scroll:false}), "", `${LANE_B.length} tasks`, "c12")
+   + sec("Decisions \u2014 at risk, not recoverable by content alone (needs commercial / executive action)",
+      `<div class="lead">${usdRange(...[0,1].map(i=>LANE_C.reduce((s,t)=>s+t.usd_yr[i],0)))} / yr sits here. These need a decision, not a page.</div>`
       + tbl([
-        {k:"t",h:"Topic",c:"cq",g:"topic_group",f:topicCell,sort:g=>g.subject_label},
-        {k:"d",h:"Demand /mo",n:true,g:"demand",f:g=>fmtK(g.demand),sort:g=>g.demand},
-        ...(PRICING?[{k:"gusd",h:"$ at risk/yr",n:true,f:g=>{const v=groupMoney(g.group_id); return v&&v[1]?`<span title="${esc(MONEY_NOTE)}">${usdYr(v)}</span>`:"\u2014";},sort:g=>{const v=groupMoney(g.group_id); return v?v[1]:-1;}}]:[]),
-        {k:"gp",h:"Gap",n:true,g:"topic_gap",f:g=>shr0(g.gap),sort:g=>g.gap},
-        {k:"c",h:"Dominant code",c:"cw",g:"code",f:g=>esc(g.dominant_code_label),sort:g=>g.dominant_code},
-        {k:"f",h:"Failure code share",n:true,g:"failure_code_share",f:g=>shr0(g.failure_code_share),sort:g=>g.failure_code_share},
-      ], healthy, {rowAttr, scroll:false}), "", `healthy · ${healthy.length}`, "c12")
-   + `<section class="tile c12 safety"><h2${gAttr("pending_signoff")}>Awaiting clinician sign-off <span>label / medical · ${label.length}</span></h2>${gLead("pending_signoff")}`
-      + tbl([
-        {k:"t",h:"Topic",c:"cq",g:"topic_group",f:topicCell,sort:g=>g.subject_label},
-        {k:"d",h:"Demand /mo",n:true,g:"demand",f:g=>fmtK(g.demand),sort:g=>g.demand},
-        ...(PRICING?[{k:"gusd",h:"$ at risk/yr",n:true,f:g=>{const v=groupMoney(g.group_id); return v&&v[1]?`<span title="${esc(MONEY_NOTE)}">${usdYr(v)}</span>`:"\u2014";},sort:g=>{const v=groupMoney(g.group_id); return v?v[1]:-1;}}]:[]),
-        {k:"gp",h:"Gap",n:true,g:"topic_gap",f:g=>shr0(g.gap),sort:g=>g.gap},
-        {k:"c",h:"Cause",c:"cw",g:"cause",f:g=>{const w=g.failing_cause||g.dominant_cause; return esc(w.label||w.code);},sort:g=>(g.failing_cause||g.dominant_cause).code},
-        {k:"s",h:"Sign-off",c:"c",g:"pending_signoff",f:g=>`<span class="tag p1">awaiting sign-off</span>`},
-      ], label, {rowAttr, scroll:false})
-      + `<div class="note">Findings reach the client report only after clinician sign-off. ${DASH.safety_label.findings.pending_signoff} findings are pending across all topics.</div></section>`
+        {k:"t",h:"Task",c:"cq",f:t=>`<div class="title">${esc(t.title)}</div><div class="causeln">${esc(t.type)} \u00b7 ${esc(t.owner)}</div>`,sort:t=>t.title},
+        {k:"usd",h:"$ at risk/yr",n:true,f:t=>usdRange(t.usd_yr[0],t.usd_yr[1]),sort:t=>t.usd_yr[1]},
+        {k:"d",h:"Demand /mo",n:true,f:t=>fmtK(t.demand_mo),sort:t=>t.demand_mo},
+        {k:"n",h:"Points",c:"c",n:true,f:t=>t.points.count,sort:t=>t.points.count},
+      ], LANE_C.slice().sort((a,b)=>(b.usd_yr[1]-a.usd_yr[1])||a.id.localeCompare(b.id)),
+      {rowAttr:taskRowAttr, scroll:false, sortKey:"usd", sortDir:-1}), "", `${LANE_C.length} tasks`, "c12")
    + sec("All points", `<div id="pt"></div>`, "", "every run") + `</div>`;
+  el.querySelectorAll(".zhead").forEach(h=>h.onclick=()=>{ location.hash = "#/priorities?zone=" + encodeURIComponent(h.dataset.zone); });
   el.querySelectorAll("[data-href]").forEach(r=>r.onclick=ev=>{ if(ev.target.closest("a")) return; location.hash=r.dataset.href; });
   pointTable(document.getElementById("pt"), KEYS,
     {sortKey: q.get("sort")==="usd" ? "usd" : "dem", sortDir:-1, panel:q.get("panel")||"", pf:q.get("pf")||""});
