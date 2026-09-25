@@ -61,8 +61,8 @@ gh api -X POST repos/:owner/citere-metrics/pages \
 
 The site lands at `https://<owner>.github.io/citere-metrics/`.
 
-Sizes are within every GitHub limit: 152 MB of history, largest tracked file 15 MB against the
-100 MB hard limit. Nothing needs Git LFS.
+Sizes are within every GitHub limit: about 165 MB of history, largest tracked file 15 MB against
+the 100 MB hard limit. Nothing needs Git LFS.
 
 ## 4. Known gap: a clean clone cannot rebuild the UI
 
