@@ -123,7 +123,13 @@ This question is addressed by: **Publish a new page — patients resisting medic
 
 - Link text = the task's title verbatim (not a generic "view task").
 - Click → `#/actions?task=<id>` (task detail, §6).
-- If the point is `pf=1` (portfolio) or otherwise has no task (shouldn't happen per the money invariant — every api pf=0 point is in exactly one lane A/C task; lane B points too), show "Monitored only — no active task" instead, linking nowhere.
+- A point has no task when it is **portfolio (`pf=1`), OR a web-panel (R4/R5) position that is holding and
+  only monitored** (cause `WORKING`, no label/regulatory card). Measured on cycle 1: 172 of 1,424 points —
+  80 portfolio and 92 web-panel R4 `WORKING` points whose only fix card is "Keep this position: monitor…".
+  Every api `pf=0` point does have a task (0 exceptions). For these, show "Monitored only — no active task"
+  instead, linking nowhere.
+- A point may carry **more than one** line: lane B overlaps lane A/C, and a point with T7+T8+T9 cards belongs
+  to three lane B tasks. Measured: 1,148 points with one task, 73 with two, 31 with three.
 - The raw `fixes[]` text is no longer shown here. It remains fully available in `tasks.json`/`tasks.md` per task and in the underlying data for anyone who opens `platform_data.json` directly — nothing is deleted, just no longer duplicated in this screen.
 
 ---

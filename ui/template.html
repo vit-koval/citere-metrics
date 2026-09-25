@@ -254,9 +254,8 @@ function moneyTile(){
   if(!PRICING || !MONEY || !MONEY.api_usd_mo) return "";
   const yr=[MONEY.api_usd_mo[0]*12, MONEY.api_usd_mo[1]*12];
   const shr=v=>Math.round(v/PRICING.ad_spend_yr*100);
-  const seen=new Set(), gids=[];
-  (DASH.prioritization.recommendations||[]).forEach(r=>{ if(!seen.has(r.group_id)){ seen.add(r.group_id); gids.push(r.group_id); } });
-  const top=gids.map(g=>[g,groupMoney(g)]).filter(x=>x[1]&&x[1][1]>0).sort((a,b)=>b[1][1]-a[1][1]).slice(0,3);
+  const zt={}; LANE_A.forEach(t=>{ const z=t.zone||"\u2014"; (zt[z]=zt[z]||[0,0])[0]+=t.usd_yr[0]; zt[z][1]+=t.usd_yr[1]; });
+  const top=Object.entries(zt).filter(x=>x[1][1]>0).sort((a,b)=>b[1][1]-a[1][1]).slice(0,3);
   const web=MONEY.web_usd_mo||[0,0];
   const names=(MONEY.portfolio||[]).join(", ");
   return `
@@ -265,8 +264,8 @@ function moneyTile(){
     <div class="big" title="${esc(MONEY_TIP)}">${usdRange(yr[0],yr[1])}<small> / yr</small></div>
     ${bar(shr(yr[1]))}
     <div class="note">${shr(yr[0])}%\u2013${shr(yr[1])}% of annual ${esc(M.brand)} ad budget (${usdOne(PRICING.ad_spend_yr)})</div>
-    <div class="tblwrap"><table><tr><th>Top groups</th><th class="n">$ / yr</th></tr>${
-      top.map(([g,v])=>`<tr><td>${esc(g)}</td><td class="n">${usdYr(v)}</td></tr>`).join("")}</table></div>
+    <div class="tblwrap"><table><tr><th>Top zones</th><th class="n">$ / yr</th></tr>${
+      top.map(([z,v])=>`<tr><td><a href="#/priorities?zone=${encodeURIComponent(z)}">${esc(z)}</a></td><td class="n">${usdRange(v[0],v[1])}</td></tr>`).join("")}</table></div>
     <div class="note">Web surfaces (R4/R5): ${usdYr(web)} / yr \u2014 separate panel, not added</div>
     <div class="note">Portfolio queries excluded${names?` \u2014 ${esc(names)} ${MONEY.portfolio.length>1?"are":"is"} the client's own brand${MONEY.portfolio.length>1?"s":""}`:""}</div>
   </section>`;
@@ -292,8 +291,6 @@ const CONF = {high:"high",med:"medium",medium:"medium",low:"low"};
 const themeName = t => t.includes(" · ") ? t.split(" · ").slice(1).join(" · ") : t;
 const titleCause = (code, label, cause) => `<div class="title">${esc(label||code)}</div>${cause?`<div class="causeln">${esc(cause.label||cause.code)} · <span${gAttr("confidence")}>confidence ${esc(CONF[(cause.confidence||"").toLowerCase()]||cause.confidence||"—")}</span></div>`:""}`;
 const groupById = Object.fromEntries(GROUPS.map(g=>[g.group_id,g]));
-const campById = Object.fromEntries(D.campaigns.map(t=>[t.task_id,t]));
-const heldById = Object.fromEntries((D.label_tasks_awaiting_signoff||[]).map(t=>[t.task_id,t]));
 const NOT_TARGETED = new Set(D.meta.competitors_found_in_data||[]);   // entered the dictionary mid-cycle; R1/R2 were built against the GLP-1 set
 const duelOf = name => (DASH.benchmarking.duel_verdict.by_competitor||{})[name] || null;
 const ROUTES = ["visibility","competitors","sentiment","sources","priorities","actions","safety","map"];
@@ -307,113 +304,11 @@ document.getElementById("hChips").innerHTML = `<span class="chip"><strong>${M.pr
 document.getElementById("nav").innerHTML = ["",...ROUTES].map(r=>`<a href="#/${r}" data-r="${r}">${NAVL[r]}</a>`).join("");
 
 // ---- tasks: one fix card is one task. Shared by the Action Center and the group detail page. ----
-const TASK_COLS = [["open","Open"],["in_progress","In progress"],["done","Done"],["dismissed","Dismissed"]];
-let __campIndex = null;
-function campaignsByCard(){                       // fix-card id -> the campaigns that reference it
-  if(__campIndex) return __campIndex;
-  __campIndex = new Map();
-  D.campaigns.concat(D.label_tasks_awaiting_signoff || []).forEach(t => {
-    (t.fix_card_refs || []).forEach(r => {
-      const id = r.pid_run + "#" + r.fix_idx;
-      if(!__campIndex.has(id)) __campIndex.set(id, []);
-      __campIndex.get(id).push(t);
-    });
-  });
-  return __campIndex;
-}
-function makeTask(pid_run, fix_idx, cs, st){      // one fix card, with whatever campaign context it has
-  const id = pid_run + "#" + fix_idx, s = st[id] || {};
-  return {id, pid_run, fix_idx, point: PTS[pid_run], card: PTS[pid_run].fixes[fix_idx], campaigns: cs,
-          group_id: cs.length ? cs[0].group_id : PTS[pid_run].group_id,
-          owners: [...new Set(cs.map(t => t.owner))],
-          priority: cs.length ? Math.max(...cs.map(t => t.priority || 0)) : ((groupById[PTS[pid_run].group_id] || {}).priority || 0),
-          awaiting: cs.length ? cs.every(t => t.awaiting_label_signoff) : false,
-          status: s.status || "open", assignee: s.assignee || null, sent_at: s.sent_at || null,
-          dismiss_reason: s.dismiss_reason || null, touched: !!st[id]};
-}
-function buildTasks(){
-  // window.__taskById lets a table row find its task when it opens its detail row
-  const st = {};
-  return [...campaignsByCard().entries()].map(([id, cs]) => {
-    const i = id.lastIndexOf("#");
-    return makeTask(id.slice(0, i), Number(id.slice(i + 1)), cs, st);
-  }).sort((a,b) => (b.priority - a.priority) || a.id.localeCompare(b.id));
-}
-function tasksForPoint(key){                      // every client fix card on one question, as real tasks
-  const idx = campaignsByCard(), st = {};
-  return (PTS[key].fixes || []).map((c, i) => ({c, i}))
-    .filter(x => x.c.audience === "client")
-    .map(x => makeTask(key, x.i, idx.get(key + "#" + x.i) || [], st));
-}
-function indexTasks(list){ window.__taskById = Object.fromEntries(list.map(t=>[t.id, t])); return list; }
-const taskCrumb = t => `<a class="crumb" href="#/priorities?group=${encodeURIComponent(t.group_id)}" title="${esc((groupById[t.group_id]||{}).headline||"")}">${esc(subjOf(t.group_id))} · ${t.owners.map(esc).join(" / ")}</a>`;
-const taskMeta = c => `<span class="tt" title="${esc(c.agent||"")}"${gAttr("task_type")}>${esc(c.task_type||"")}</span>
-    <span class="tag ${c.execution==="AGENT"?"us":c.execution==="AGENT+APPROVE"?"warn":"ink"}"${gAttr("task_execution")}>${esc(c.execution)}</span>
-    <span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span>
-    <span>target <b>${esc(c.target||"—")}</b></span><span>${esc(c.owner||"")}</span><span${gAttr("speed")}>${esc(c.speed||"")}</span>`;
-const taskStateLine = t => {
-  const bits = [];
-  if(t.sent_at) bits.push("sent to agent");
-  if(t.assignee) bits.push("assigned to " + esc(t.assignee));
-  if(t.dismiss_reason) bits.push("dismissed: " + esc(t.dismiss_reason));
-  if(t.awaiting) bits.push("awaiting clinician sign-off");
-  return bits.length ? `<div class="state">${bits.join(" · ")}${t.touched?' <span class="tag warn">not synced to registry</span>':""}</div>` : "";
-};
-const taskPointLink = t => `<a class="fpt-l" href="#/point/${encodeURIComponent(t.pid_run)}">${esc(t.pid_run)}</a> <span class="q">${esc((t.point.question||"").slice(0,90))}</span>`;
-const tdId = t => "td_" + t.id.replace(/[^a-zA-Z0-9]/g, "");
-function taskDetailHTML(t){
-  const g = groupById[t.group_id] || {};
-  return `<div class="tdetail">
-    <div class="fwhy"><b>Why</b> ${esc(t.card.why||"—")}</div>
-    ${t.card.effect?`<div class="fwhy"><b>Expected effect</b> ${esc(t.card.effect)}</div>`:""}
-    ${t.card.verify?`<div class="fwhy"><b>Verify on re-run</b> ${esc(t.card.verify)}</div>`:""}
-    <div class="fwhy"><b>Runs as</b> ${esc(t.card.execution)} · ${esc(t.card.agent||"")}</div>
-    <div class="fwhy"><b>Review</b> ${t.card.mlr==="medical-review"?"medical review":"MLR-compatible"} · card type ${esc(t.card.type)} · ${esc(t.card.speed||"")}</div>
-    <div class="fwhy"><b>Target</b> ${esc(t.card.target||"—")} · owner ${esc(t.card.owner||"—")}</div>
-    <div class="fwhy"><b>Topic</b> <a href="#/priorities?group=${encodeURIComponent(t.group_id)}">${esc(g.headline || t.group_id)}</a> · ${t.owners.map(esc).join(" / ")}</div>
-    <div class="fwhy"><b>Point</b> <a href="#/point/${encodeURIComponent(t.pid_run)}">${esc(t.pid_run)}</a> ${esc(t.point.question||"")}</div>
-  </div>`;
-}
 function stakeChip(gid){
   if(!PRICING) return "";
   const v = groupMoney(gid); if(!v) return "";
   const tip = `${v[1]?usdYr(v)+" / yr":"nothing at risk on the API panel"} \u00b7 ${MONEY_NOTE} \u2014 ${STAKE_TIP}`;
   return `<span class="tag mute" title="${esc(tip)}">${v[1]?usdRange(v[0],v[1])+"/mo at stake":"no $ at stake"}</span>`;
-}
-function taskCardHTML(t, opts){
-  opts = opts || {};
-  return `<div class="kcard" data-id="${t.id}">
-    <div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span>${opts.noCrumb?"":taskCrumb(t)}${opts.showStatus?`<span class="tag ${t.status==="done"?"ok":t.status==="dismissed"?"mute":t.status==="in_progress"?"warn":"p1"}">${esc(t.status.replace("_"," "))}</span>`:""}</div>
-    <div class="t">${esc(t.card.action)}</div>
-    <div class="m">${taskMeta(t.card)}${stakeChip(t.group_id)}</div>
-    <div class="fpt">${taskPointLink(t)}</div>
-    <button class="flmore" type="button" data-td="${t.id}">Details ▾</button>
-    <div class="hide" id="${tdId(t)}">${taskDetailHTML(t)}</div>
-    ${opts.acLink ? (t.campaigns.length
-        ? `<a class="crumb" href="#/actions?open=${encodeURIComponent(t.pid_run)}~${t.fix_idx}">in Action Center →</a>`
-        : `<span class="note">not on the Action Center board — this topic raises no tasks</span>`) : ""}
-    ${taskStateLine(t)}</div>`;
-}
-function taskGroupCardHTML(action, items, opts){
-  opts = opts || {};
-  const t = items[0], id = "g_" + items[0].id.replace(/[^a-zA-Z0-9]/g,"");
-  return `<div class="kcard grouped">
-    <div class="m"><span class="tag p${t.priority}"${gAttr("priority")}>${t.priority}</span><span class="tag mute">${items.length} identical tasks</span>${opts.noCrumb?"":taskCrumb(t)}</div>
-    <div class="t">${esc(action)}</div>
-    <div class="m">${taskMeta(t.card)}${stakeChip(t.group_id)}</div>
-    <button class="flmore" type="button" data-td="${t.id}">Details ▾</button>
-    <div class="hide" id="${tdId(t)}">${taskDetailHTML(t)}</div>
-    <button class="flmore" type="button" data-fl="${id}">Show the ${items.length} tasks ▾</button>
-    <div class="fpts hide" id="${id}">${items.map(x=>`<div class="fpt">${taskPointLink(x)} ${taskStateLine(x)}</div>`).join("")}</div>
-    </div>`;
-}
-function taskListHTML(list, dedupe, opts){
-  if(!list.length) return '<div class="dedup">none</div>';
-  if(!dedupe) return list.map(t=>taskCardHTML(t, opts)).join("");
-  const m = new Map();
-  list.forEach(t => { if(!m.has(t.card.action)) m.set(t.card.action, []); m.get(t.card.action).push(t); });
-  return [...m.entries()].sort((a,b)=>b[1].length-a[1].length)
-    .map(([a,its]) => its.length>1 ? taskGroupCardHTML(a, its, opts) : taskCardHTML(its[0], opts)).join("");
 }
 const taskSwallow = ev => !!(ev.target.closest && ev.target.closest("button,a,select,input,textarea"));
 function toggleTaskDetail(id, btn){
@@ -423,37 +318,6 @@ function toggleTaskDetail(id, btn){
   if(btn) btn.textContent = open ? "Details ▴" : "Details ▾";
   const card = box.closest(".kcard"); if(card) card.classList.toggle("open", open);
 }
-function wireTasks(root){
-  root.querySelectorAll("[data-fl]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const box=document.getElementById(b.dataset.fl); box.classList.toggle("hide");
-    b.textContent = `Show the ${box.querySelectorAll(".fpt").length} tasks ` + (box.classList.contains("hide") ? "▾" : "▴"); });
-  root.querySelectorAll("[data-td]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); toggleTaskDetail(b.dataset.td, b); });
-  // the card body opens the same detail; buttons and links inside it keep their own behaviour
-  root.querySelectorAll(".kcard[data-id], .kcard.grouped").forEach(card=>{
-    const b = card.querySelector("[data-td]"); if(!b) return;
-    card.onclick = ev => { if(taskSwallow(ev)) return; toggleTaskDetail(b.dataset.td, b); };
-  });
-  // table rows open a detail row underneath
-  root.querySelectorAll("tr.task").forEach(tr=>{
-    tr.onclick = ev => {
-      if(taskSwallow(ev)) return;
-      const next = tr.nextElementSibling;
-      if(next && next.classList.contains("taskdetail")){ next.remove(); tr.classList.remove("open"); return; }
-      const t = (window.__taskById || {})[tr.dataset.id]; if(!t) return;
-      const det = document.createElement("tr"); det.className = "taskdetail";
-      det.innerHTML = `<td colspan="${tr.children.length}"><div class="inner">${taskDetailHTML(t)}</div></td>`;
-      tr.after(det); tr.classList.add("open");
-      det.querySelectorAll("a").forEach(a=>a.onclick=e=>e.stopPropagation());
-    };
-  });
-  root.querySelectorAll("a").forEach(a=>a.onclick=ev=>ev.stopPropagation());
-}
-function groupTaskStats(gid, tasks){
-  const l = tasks.filter(t => t.group_id === gid);
-  const by = {}; TASK_COLS.forEach(([k]) => by[k] = l.filter(t => t.status === k).length);
-  return {n: l.length, by, list: l};
-}
-
-// ---------------- router ----------------
 function parseHash(){
   const h = location.hash.replace(/^#\/?/,""); const [path,qs] = h.split("?"); const q = new URLSearchParams(qs||"");
   if(path.startsWith("point/")) return {route:"point", key:decodeURIComponent(path.slice(6)), q};
@@ -484,9 +348,10 @@ function level1(el){
   const r3 = S.top_negative_themes.filter(t=>t.run==="R3").slice(0,5).map(t=>`<tr><td>${esc(themeName(t.theme))}</td><td class="n">${pct0(t.pct_of_negative)}</td></tr>`).join("");
   const gap = C.gap_list.slice(0,4).map(g=>`<tr><td><a href="#/sources?domain=${encodeURIComponent(g.domain)}">${esc(g.domain)}</a></td><td class="n">${esc(g.subtype||g.owner)}</td><td class="n">gap ${g.gap_score}</td></tr>`).join("");
   const recs = LANE_A.slice().sort(byWeek).slice(0,3).map(t=>`<tr><td><a href="#/priorities?zone=${encodeURIComponent(t.zone||"")}">${esc(t.title)}</a><br><span class="note">${esc(t.owner)} \u00b7 ${t.weeks} weeks \u00b7 ${esc(t.type)}</span></td><td class="n">${fmtK(t.demand_mo)}</td><td class="n">${usdOne(t.usd_per_week)}</td><td class="n">${t.expected_pp?`+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp`:"\u2014"}</td><td class="n">${usdRange(t.usd_yr[0],t.usd_yr[1])}</td></tr>`).join("");
-  const who = Object.entries(A.counters.by_who).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<div>${esc(k)}</div><div>${v}</div>`).join("");
+  const byOwner={}; TASKS_ALL.forEach(t=>{ byOwner[t.owner]=(byOwner[t.owner]||0)+1; });
+  const who = Object.entries(byOwner).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<div>${esc(k)}</div><div>${v}</div>`).join("");
   const stakeTip = "A point can belong to several groups \u2014 amounts are not additive. See the Revenue at risk tile for the total.";
-  const next = A.top3_open.map(t=>{ const c=campById[t.task_id]||{}; const e=t.impact.expected_pp; const v=groupMoney(t.group_id); return `<tr><td><a href="#/actions">${esc(c.what||t.group_id+" → "+t.owner)}</a></td><td>${esc(t.who)}</td><td class="n">${e?`+${(+e[0]).toFixed(0)} to +${(+e[1]).toFixed(0)} pp`:"not estimated"}</td>${PRICING?`<td class="n" title="${esc(stakeTip)}">${v&&v[1]?usdRange(v[0],v[1]):"\u2014"}</td>`:""}<td class="n"><span class="tag p1">open</span></td></tr>`; }).join("");
+  const next = TASKS_ALL.filter(t=>taskStatus(t.id)==="open").sort(byWeek).slice(0,3).map(t=>`<tr><td><a href="#/actions?task=${encodeURIComponent(t.id)}">${esc(t.title)}</a></td><td>${esc(t.owner)}</td><td class="n">${t.expected_pp?`+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp`:"\u2014"}</td>${PRICING?`<td class="n" title="${esc(stakeTip)}">${t.usd_yr[1]?usdRange(t.usd_yr[0]/12,t.usd_yr[1]/12):"\u2014"}</td>`:""}<td class="n"><span class="tag p1">open</span></td></tr>`).join("");
   el.innerHTML = `${gLead("screen_dashboard")}<div class="grid">
   ${moneyTile()}
   <section class="tile c5" aria-label="Visibility Score" onclick="location.hash='#/visibility'">
@@ -556,13 +421,13 @@ function level1(el){
   <section class="tile c7" aria-label="Action Center" onclick="location.hash='#/actions'">
     <h2${gAttr("screen_actions")}>Action Center <span>tasks from the list above</span></h2>${gLead("screen_actions")}
     <div class="row">
-      <div><div class="mid"${gAttr("open_tasks")}>${A.counters.open_total}<small>open</small></div><div class="note">${A.counters.open_auto} automated, ${A.counters.open_manual} for your team</div></div>
-      <div><div class="mid">${A.counters.in_progress}<small>in progress</small></div></div>
-      <div><div class="mid">${A.counters.done_this_cycle}<small>done this cycle</small></div></div>
+      <div><div class="mid"${gAttr("open_tasks")}>${TASKS_ALL.filter(t=>taskStatus(t.id)==="open").length}<small>open</small></div><div class="note">${TASKS_ALL.filter(t=>(t.execution||"").indexOf("AGENT")===0).length} agent-run, ${TASKS_ALL.filter(t=>t.execution==="HUMAN TASK").length} for your team</div></div>
+      <div><div class="mid">${TASKS_ALL.filter(t=>taskStatus(t.id)==="in_progress").length}<small>in progress</small></div></div>
+      <div><div class="mid">${TASKS_ALL.filter(t=>taskStatus(t.id)==="done").length}<small>done this cycle</small></div></div>
       <div style="flex:1;min-width:200px"><div class="kv">${who}</div></div>
     </div>
     <div class="tblwrap"><table><tr><th>Next up</th><th>Who</th><th class="n">Expected</th>${PRICING?`<th class="n" title="${esc(stakeTip)}">$ at stake/mo</th>`:""}<th class="n">Status</th></tr>${next}</table></div>
-    <div class="note">Expected shift uses industry priors until two cycles of your own results exist. ${A.counters.label_tasks_awaiting_signoff} label tasks await sign-off.</div>
+    <div class="note">Expected impact uses industry priors until two cycles of your own results exist. ${LANE_B.length} label / regulatory tasks are ranked by severity, not money.</div>
   </section>
   <section class="tile c5 empty" aria-label="Before and after">
     <h2${gAttr("before_after")}>Before / After <span>trend across cycles</span></h2>${gLead("before_after")}
@@ -784,44 +649,6 @@ function vPriorities(el, q){
   pointTable(document.getElementById("pt"), KEYS,
     {sortKey: q.get("sort")==="usd" ? "usd" : "dem", sortDir:-1, panel:q.get("panel")||"", pf:q.get("pf")||""});
 }
-function groupView(el, g){
-  const why = g.failing_cause || g.dominant_cause;
-  const TASKS = buildTasks();
-  const mine = TASKS.filter(t => t.group_id === g.group_id);
-  const stats = groupTaskStats(g.group_id, TASKS);
-  const pot = (g.owner_rows && g.owner_rows[0] && g.owner_rows[0].expected_pp) || null;
-  const reach = g.impact_reach ? g.impact_reach.point : null;
-  const dedupe = (window.__gvDedupe === true);
-  el.innerHTML = `<div class="prevnext"><a class="backlink" href="#/priorities">← All topics</a><span class="count">${esc(g.group_id)}</span></div>`
-   + `<h2 class="page"${gAttr("screen_priorities")}>${esc(g.headline)}</h2>`
-   + `<section class="tile c12 potpanel"><div class="row top">
-        <div><div class="big"${gAttr("expected_pp")}>${pot?`+${f1(pot[0])} to +${f1(pot[1])}`:"—"}<small>points on this topic</small></div>
-             <div class="note">what the best action here is expected to add to how often we are named</div></div>
-        <div><div class="mid"${gAttr("impact_reach")}>${reach==null?"—":Math.round(reach).toLocaleString("en")}<small>searches a month affected</small></div>
-             <div class="note">${esc((g.impact_reach||{}).caption||"")}</div></div>
-        <div><div class="mid"${gAttr("priority")}>${g.priority?`P${g.priority}`:"—"}<small>priority</small></div>
-             <div class="note">${stats.n} task${stats.n===1?"":"s"} · ${TASK_COLS.filter(([k])=>stats.by[k]).map(([k,l])=>`${stats.by[k]} ${l.toLowerCase()}`).join(" · ")||"none"}</div></div>
-      </div>
-      <div class="rec-n" style="margin-top:10px"><span${gAttr("demand")}><b>${Math.round(g.demand).toLocaleString("en")}</b> searches a month</span> · <span${gAttr("topic_gap")}>we lose <b>${shr0(g.gap)}</b> of answers on this topic</span> · <span${gAttr("lever")}>${esc(g.source_label||"sources")} supply <b>${shr0(g.top_owner_lever)}</b> of the sources</span></div>
-      <div class="rec-w"${gAttr("cause")}>Why: ${esc(why.label||why.code)}${why.confidence?` · confidence: ${esc(why.confidence)}`:""}</div></section>`
-   + `<div class="stack">`
-   + sec("Where the lever is", `<div class="ownertags">${(g.owner_rows||[]).map(o=>`<div class="otag"><b>${esc(o.owner)}</b><span${gAttr("lever")}>lever ${shr0(o.lever)}</span><span${gAttr("ceiling_pp")}>ceiling ${o.ceiling_pp==null?"—":f1(o.ceiling_pp)+" pp"}</span><span class="z">${esc(o.source_label||"")}${o.top_domain?` · ${esc(o.top_domain)}`:""}</span></div>`).join("")}</div>`,
-      `Lever is the share of this topic's sources we can act on; ceiling is the presence it could add.`, "owners", "c6")
-   + sec("Top sources on this topic", tbl([{k:"d",h:"Domain",g:"top_domain_citations",f:t=>`<a href="#/sources?domain=${encodeURIComponent(t.domain)}">${esc(t.domain)}</a>`},{k:"o",h:"Owner",g:"citation_owned",f:t=>`${esc(t.owner)}${t.subtype?` <span class="note">${esc(t.subtype)}</span>`:""}`},{k:"c",h:"Citations",n:true,g:"top_domain_citations",f:t=>t.citations,sort:t=>t.citations},{k:"u",h:"In answers naming us",n:true,g:"with_us_pct",f:t=>t.with_us,sort:t=>t.with_us}], g.top_domains, {scroll:false}), "", "cited by this topic's answers", "c6")
-   + sec("What happened", distBlock(g.code_distribution, g.n_prompts), `Dominant code: ${esc(g.dominant_code_label)}. Failure codes on ${shr0(g.failure_code_share)} of points.`, `${g.n_prompts} points`, "c6", "code")
-   + sec("Why", distBlock(g.cause_distribution, g.n_prompts), why.confidence?`Dominant cause among failing points: ${esc(why.label||why.code)} · confidence ${esc(why.confidence)}.`:"", "cause", "c6", "cause")
-   + sec("Points", `<div id="pt"></div>`, "", "ordered by rank score")
-   + `<section class="tile c12"><h2${gAttr("open_tasks")}>Tasks on this topic <span>${mine.length}</span></h2>
-        <div class="lead">Every individual task this topic produced. The same cards as the Action Center.</div>
-        <div class="toolbar"><label class="ded"><input type="checkbox" id="gv_dedupe"${dedupe?" checked":""}> Group identical actions</label>
-          <a class="btn ghost" href="#/actions?group=${encodeURIComponent(g.subject_label)}">View all in Action Center →</a></div>
-        <div class="kbscroll" id="gvTasks" style="margin-top:10px">${taskListHTML(mine, dedupe, {noCrumb:true, showStatus:true})}</div></section>`
-   + `</div>`;
-  el.querySelectorAll("[data-href]").forEach(r=>r.onclick=ev=>{ if(ev.target.closest("a")) return; location.hash=r.dataset.href; });
-  wireTasks(document.getElementById("gvTasks"));
-  document.getElementById("gv_dedupe").onchange=e=>{ window.__gvDedupe = e.target.checked; render(); };
-  pointTable(document.getElementById("pt"), g.pids, {caption:g.group_id});
-}
 function fixCard(c, link){ return `<div class="fx"><div class="fxh"><span class="tag ${c.platform_execution==="AGENT"?"us":c.platform_execution==="AGENT+APPROVE"?"warn":"ink"}">${esc(c.platform_execution)}</span><span class="tag ${c.type==="LABEL-MEDICAL"?"bad":"mute"}">${esc(c.type)}</span><span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span><span>${esc(c.owner)} · ${esc(c.speed)}</span>${link?`<a href="${link}" style="margin-left:auto;color:var(--us);text-decoration:none">${esc(link.split("/").pop().replace("%7C"," · "))}</a>`:""}</div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}${c.agent?`<div class="fxl"><b>Execution</b> ${esc(c.agent)}</div>`:""}</div>`; }
 function taskStatus(id){ return (TASK_STATE[id] || {}).status || "open"; }
 function STATUS_LABELS(){ return {open:"Open", in_progress:"In progress", done:"Done", dismissed:"Dismissed"}; }
@@ -971,7 +798,7 @@ function level3(el, key, q){
     ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]].concat(moneyDetailRows(p))), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
     ${sec("Evidence", `<ul class="evid">${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`, "", "platform export", "c8", "code")}
     ${sec("Answers", `<button class="btn ghost" id="loadAns" type="button">Load answers</button><div id="ansBox"></div>`, "Full texts from the corpus, loaded on demand. Excluded answers are flagged; their verdicts are not counted.", "one per model × repeat", "c12", "answers_scored")}
-    ${sec("What is being done about it", pointTaskLine(key), "Tasks come from the tasks layer; the underlying fix cards stay in the data and in tasks.md.", "", "c12", "screen_actions")}
+    ${sec("What is being done about it", pointTaskLine(key), "One line per task that covers this question. The underlying fix cards stay in the data and in tasks.md.", "tasks layer", "c12")}
     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('cit2').classList.toggle('hide')">Citere monitoring (${p.fixes.filter(c=>c.audience==="citere").length} TRACK cards)</button><div id="cit2" class="hide">${p.fixes.filter(c=>c.audience==="citere").map(c=>fixCard(c)).join("")}</div></section>
   </div>`;
   document.getElementById("loadAns").onclick = async (ev) => {
