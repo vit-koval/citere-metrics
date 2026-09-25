@@ -868,9 +868,20 @@ function taskDetailPanel(t){                         // §6, shared by Prioritie
 }
 
 function modelVerdict(m){
-  if(m.ours) return "<b>mentions " + esc(M.brand) + "</b>" + (m.comps && m.comps.length ? " \u00b7 also " + m.comps.map(esc).join(", ") : "");
-  if(m.comps && m.comps.length) return "does not mention " + esc(M.brand) + " \u2014 <b>names " + m.comps.map(esc).join(", ") + "</b>";
-  return "does not mention " + esc(M.brand) + " \u2014 names no brand";
+  const c = m.comps || [], p = m.portfolio || [];
+  // Portfolio brands are the client's own: the money layer never counts them against us (pf rule),
+  // so the verdict must not present them as competitors either.
+  const pfPart = p.length ? "also names <b>" + p.map(esc).join(", ") + "</b> (own portfolio, not counted against " + esc(M.brand) + ")" : "";
+  if(m.ours){
+    const bits = [];
+    if(c.length) bits.push("also names " + c.map(esc).join(", ") + (c.length > 1 ? " (competitors)" : " (competitor)"));
+    if(pfPart) bits.push(pfPart);
+    return "<b>mentions " + esc(M.brand) + "</b>" + (bits.length ? " \u00b7 " + bits.join("; ") : "");
+  }
+  const head = "does not mention " + esc(M.brand) + " \u2014 ";
+  if(c.length) return head + "names <b>" + c.map(esc).join(", ") + "</b>" + (c.length > 1 ? " (competitors)" : " (competitor)") + (pfPart ? "; " + pfPart : "");
+  if(p.length) return head + pfPart;
+  return head + "names no brand";
 }
 async function showModelText(box, pidRun, model){
   const run = pidRun.split("|")[1];

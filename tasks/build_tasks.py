@@ -190,12 +190,15 @@ def _brand_res():
     try:
         import yaml
     except ImportError:
-        return None, {}
+        return None, {}, {}
     cfg = yaml.safe_load(open(BRANDS_CFG, encoding="utf-8")) if BRANDS_CFG.exists() else {}
     wb = lambda w: re.compile(r"(?<![A-Za-z0-9])" + re.escape(w) + r"(?![A-Za-z0-9])", re.I)
     ours = wb((cfg.get("our_brand") or ["Ozempic"])[0])
-    comps = {b: wb(b) for b in (cfg.get("competitors") or {})}
-    return ours, comps
+    port = set(cfg.get("portfolio") or [])
+    # Same split the money layer uses: portfolio brands are the client's own and never count as a loss.
+    comps = {b: wb(b) for b in (cfg.get("competitors") or {}) if b not in port}
+    pf = {b: wb(b) for b in (cfg.get("competitors") or {}) if b in port}
+    return ours, comps, pf
 
 
 def load_answers():
@@ -206,7 +209,7 @@ def load_answers():
         return
     if not ANSWERS.exists():
         return
-    rx_our, rx_comp = _brand_res()
+    rx_our, rx_comp, rx_pf = _brand_res()
     a = pd.read_parquet(ANSWERS, columns=["pid", "run", "model", "repeat_idx", "answer_clean", "excluded"])
     a = a[~a["excluded"].astype(bool)].copy()
     a["k"] = a["pid"].astype(str) + "|" + a["run"].astype(str)
@@ -217,7 +220,9 @@ def load_answers():
             txt = str(gm.iloc[0]["answer_clean"] or "")
             ours = bool(rx_our and rx_our.search(txt))
             comps = sorted(b for b, rx in rx_comp.items() if rx.search(txt)) if rx_comp else []
-            rows.append({"model": str(model), "ours": ours, "comps": comps, "answer_clean": txt})
+            portfolio = sorted(b for b, rx in rx_pf.items() if rx.search(txt)) if rx_pf else []
+            rows.append({"model": str(model), "ours": ours, "comps": comps,
+                         "portfolio": portfolio, "answer_clean": txt})
         MODELS_BY_POINT[k] = rows
         if rows:
             ANSWER_BY_POINT[k] = (rows[0]["model"], rows[0]["answer_clean"])
@@ -321,7 +326,7 @@ def questions_all_row(key, P):
     model, text = ANSWER_BY_POINT.get(key, (None, ""))
     return {"pid_run": key, "question_full": P[key]["question"], "model": model,
             "cause": (P[key].get("cause") or {}).get("code"), "answer_clean": text,
-            "models": [{k2: r[k2] for k2 in ("model", "ours", "comps", "answer_clean")} for r in rows]}
+            "models": [{k2: r[k2] for k2 in ("model", "ours", "comps", "portfolio", "answer_clean")} for r in rows]}
 
 
 def slug(s, n=44):
