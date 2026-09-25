@@ -9,6 +9,10 @@ The repository contains client analysis, not a demo:
 
 - revenue-at-risk figures for a named client and their competitors;
 - full text of 12,314 model answers about a marketed drug;
+- the raw corpus, `data/raw/corpus_master.json` (56 MB). It is not in the working tree — it was
+  committed first and removed in `193bcc7` — but it is intact in history and anyone with access can
+  recover it with `git show f528f2a:data/raw/corpus_master.json`. Removing a file from the tip does
+  not remove it from a repository;
 - 10 safety findings asserting that AI assistants contradict or omit parts of the Ozempic
   prescribing information. Every one of them is `signoff_status: "pending"`, and the platform
   itself states that pending findings do not enter the client report.
@@ -67,24 +71,27 @@ the 100 MB hard limit. Nothing needs Git LFS.
 ## 4. Known gap: a clean clone cannot rebuild the UI
 
 `ui/index.html` and `ui/answers_R*.js` are committed as build artifacts, so **deploying works from
-a clean clone**. Changing the UI does not.
+a clean clone**. Changing the UI takes two extra steps that are not obvious.
 
 `src/step_10_build_ui.py` calls `build_answer_store()`, which reads `data/raw/corpus_master.json`
-and `data/normalized/*.parquet`. All three are in `.gitignore`. Verified by removing one parquet
-and running the build: it stops with `FileNotFoundError` before writing anything.
+and `data/normalized/*.parquet`. None of the three is in the working tree: the corpus was removed
+in `193bcc7`, and the parquets have never been committed. Run the build on a fresh clone and it
+stops with `FileNotFoundError` before writing anything.
 
-So an engineer who clones the repository, edits `ui/template.html` and runs the build gets a
-traceback, not a page. Two ways out — pick one and do it deliberately:
+Both are recoverable, because the corpus survives in history and the parquets are derived from it:
 
-- **Ship the inputs.** Un-ignore `data/normalized/*.parquet` (~40 MB) and commit them. Simplest,
-  and makes the repository self-contained. It also puts the full answer corpus in the repository
-  in a second form, which feeds back into §1.
-- **Let the build skip the answer store.** Make `build_answer_store()` return the existing
-  `ui/answers_R*.js` untouched when the parquets are absent, so template and layout changes
-  rebuild `index.html` alone. Smaller repository, but answer bundles can then only be regenerated
-  on a machine that has the raw corpus.
+```bash
+git show f528f2a:data/raw/corpus_master.json > data/raw/corpus_master.json   # 56 MB, 1,424 prompts
+.venv/bin/python -m src.step_01_normalize                                    # writes both parquets
+.venv/bin/python -m src.step_10_build_ui                                     # now succeeds
+```
 
-Until one of these is done, treat `ui/` as a deployment artifact produced elsewhere.
+Verified: the blob in `f528f2a` parses and holds all 1,424 prompts across R1–R9.
+
+If UI work is going to be routine, make this less fragile — either commit the parquets (~40 MB,
+which also settles it for anyone who never reads this file), or let `build_answer_store()` leave
+the existing `ui/answers_R*.js` alone when the parquets are absent, so template and layout changes
+rebuild `index.html` on its own.
 
 ## 5. Rebuilding, where the inputs exist
 
