@@ -268,7 +268,8 @@ window.__nmKick=()=>{""",
     _tp, _sp = C.ROOT / "tasks" / "tasks.json", C.ROOT / "tasks" / "task_state.json"
     _tasks = json.loads(_tp.read_text(encoding="utf-8")) if _tp.exists() else {"tasks": []}
     _state = json.loads(_sp.read_text(encoding="utf-8")) if _sp.exists() else {}
-    tasks_blob = json.dumps({"tasks": _tasks.get("tasks", []), "state": _state},
+    tasks_blob = json.dumps({"tasks": _tasks.get("tasks", []), "state": _state,
+                             "point_tasks": _tasks.get("point_tasks", {})},
                             ensure_ascii=False, separators=(",", ":"))
     # map data block: separate file, loaded only when #/map opens
     pdj_pricing = json.loads(pdata).get("pricing")

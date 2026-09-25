@@ -7,6 +7,3899 @@
   ],
   "generated_by": "tasks/build_tasks.py"
  },
+ "point_tasks": {
+  "P0001|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0002|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0003|R1": [
+   "C-T12-x-side-effects-diabete"
+  ],
+  "P0004|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0005|R1": [
+   "C-T12-x-side-effects-diabete"
+  ],
+  "P0006|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0007|R1": [
+   "A-T4-x-efficacy-results-weight-loss-newly-diagnosed"
+  ],
+  "P0008|R1": [
+   "B-T8-indications-eligibility",
+   "C-T8-x-regulatory-hold"
+  ],
+  "P0009|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0010|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0011|R1": [
+   "A-T6-kadieleachmd-com-diet-alone"
+  ],
+  "P0012|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0013|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0014|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0015|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0016|R1": [
+   "A-T6-webmd-com-numbers-insulin"
+  ],
+  "P0017|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0018|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0019|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0020|R1": [
+   "A-T3-diabeteseducation-no-titration-dose-sched"
+  ],
+  "P0021|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0022|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0023|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0024|R1": [
+   "A-T6-kadieleachmd-com-diet-alone"
+  ],
+  "P0025|R1": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0026|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0027|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0028|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0029|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0030|R1": [
+   "A-T3-diabeteseducation-no-titration-dose-sched"
+  ],
+  "P0031|R1": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0032|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0033|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0034|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0035|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0036|R1": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0037|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0038|R1": [
+   "A-T6-webmd-com-numbers-insulin"
+  ],
+  "P0039|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-newly-diagnosed"
+  ],
+  "P0040|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0041|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0042|R1": [
+   "A-T4-x-efficacy-results-weight-loss-blood-sugar-control"
+  ],
+  "P0043|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0044|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0045|R1": [
+   "A-T4-x-efficacy-results-living-on-the-drug"
+  ],
+  "P0046|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0047|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0048|R1": [
+   "C-T12-x-titration-dose-sched"
+  ],
+  "P0049|R1": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0050|R1": [
+   "A-T5-x-titration-dose-sched"
+  ],
+  "P0051|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0052|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0053|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0054|R1": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0055|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0056|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0057|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0058|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0059|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0060|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0061|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0062|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0063|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0064|R1": [
+   "A-T5-x-titration-dose-sched"
+  ],
+  "P0065|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0066|R1": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0067|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0068|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0069|R1": [
+   "A-T6-doctronic-ai-type-diabetes-safe-g"
+  ],
+  "P0070|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0071|R1": [
+   "B-T8-indications-eligibility",
+   "C-T8-x-regulatory-hold"
+  ],
+  "P0072|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0073|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0074|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0075|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0076|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0077|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0078|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0079|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0080|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0081|R1": [
+   "A-T6-universaldrugstore-c-type-glp-safe"
+  ],
+  "P0082|R1": [
+   "A-T6-universaldrugstore-c-type-glp-safe"
+  ],
+  "P0083|R1": [
+   "A-T6-doctronic-ai-type-diabetes-safe-g"
+  ],
+  "P0084|R1": [
+   "A-T6-doctronic-ai-type-diabetes-safe-g"
+  ],
+  "P0085|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0086|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0087|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0088|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0089|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0090|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0091|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0092|R1": [
+   "A-T6-weightwatchers-com-pcos-losing-weight-l"
+  ],
+  "P0093|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0094|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0095|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0096|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0097|R1": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0098|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0099|R1": [
+   "A-T3-diabeteseducation-no-titration-dose-sched"
+  ],
+  "P0100|R1": [
+   "A-T6-resources-healthgrad-need"
+  ],
+  "P0101|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0102|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0103|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0104|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0105|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0106|R1": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0107|R1": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0108|R1": [
+   "C-T12-x-cost-price"
+  ],
+  "P0109|R1": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0110|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0111|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0112|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0113|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0114|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0115|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0116|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0117|R1": [
+   "A-T4-x-efficacy-results-weight-loss-doubts-about-the-claims"
+  ],
+  "P0118|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0119|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0120|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0121|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0122|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0123|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0124|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0125|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-blood-sugar-control"
+  ],
+  "P0126|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0127|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0128|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0129|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0130|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0131|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0132|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0133|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0134|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-blood-sugar-control"
+  ],
+  "P0135|R1": [
+   "A-T3-diabeteseducation-no-efficacy-results"
+  ],
+  "P0136|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0137|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0138|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0139|R1": [
+   "A-T6-webmd-com-numbers-insulin"
+  ],
+  "P0140|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0141|R1": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P0142|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0143|R1": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0144|R1": [
+   "B-T8-indications-eligibility",
+   "C-T8-x-regulatory-hold"
+  ],
+  "P0145|R1": [
+   "B-T8-indications-eligibility",
+   "C-T8-x-regulatory-hold"
+  ],
+  "P0146|R1": [
+   "A-T6-weightwatchers-com-pcos-losing-weight-l"
+  ],
+  "P0147|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0148|R1": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0149|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0150|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0151|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0152|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0153|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0154|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0155|R1": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0156|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0157|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0158|R1": [
+   "C-T12-x-titration-dose-sched"
+  ],
+  "P0159|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0160|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0161|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0162|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0163|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0164|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0165|R1": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0166|R1": [
+   "A-T4-x-efficacy-results-weight-loss-newly-diagnosed"
+  ],
+  "P0167|R1": [
+   "A-T3-diabeteseducation-no-titration-dose-sched"
+  ],
+  "P0168|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-blood-sugar-control"
+  ],
+  "P0169|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0170|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0171|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0172|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0173|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0174|R1": [
+   "A-T3-diabeteseducation-no-efficacy-results"
+  ],
+  "P0175|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0176|R1": [
+   "C-T12-x-cost-price"
+  ],
+  "P0177|R1": [
+   "C-T12-x-titration-dose-sched"
+  ],
+  "P0178|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0179|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0180|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0181|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0182|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0183|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0184|R1": [
+   "C-T12-x-basics-mechanism"
+  ],
+  "P0185|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0186|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0187|R1": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0188|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0189|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0190|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0191|R1": [
+   "A-T3-diabeteseducation-no-efficacy-results"
+  ],
+  "P0192|R1": [
+   "A-T5-x-titration-dose-sched"
+  ],
+  "P0193|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0194|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0195|R1": [
+   "A-T6-doctronic-ai-type-diabetes-safe-g"
+  ],
+  "P0196|R1": [
+   "C-T12-x-basics-mechanism"
+  ],
+  "P0197|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0198|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0199|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0200|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0201|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0202|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0203|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0204|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0205|R1": [
+   "C-T12-x-titration-dose-sched"
+  ],
+  "P0206|R1": [
+   "C-T12-x-titration-dose-sched"
+  ],
+  "P0207|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0208|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0209|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0210|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0211|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0212|R1": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P0213|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0214|R1": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0215|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0216|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0217|R1": [
+   "A-T4-x-efficacy-results-living-on-the-drug"
+  ],
+  "P0218|R1": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0219|R1": [
+   "A-T6-goodrx-com-weight-actually-deal"
+  ],
+  "P0220|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0221|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0222|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0223|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0224|R1": [
+   "A-T5-x-weight-loss-without"
+  ],
+  "P0225|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0226|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0227|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0228|R1": [
+   "A-T6-x-diabetes-disease-med"
+  ],
+  "P0229|R1": [
+   "C-T12-x-side-effects-diabete"
+  ],
+  "P0230|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0231|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0232|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0233|R1": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0234|R1": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P0235|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0236|R1": [
+   "A-T6-resources-healthgrad-need"
+  ],
+  "P0237|R1": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0238|R1": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0239|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0240|R1": [
+   "C-T12-x-titration-dose-sched"
+  ],
+  "P0241|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0242|R1": [
+   "C-T12-x-cost-price"
+  ],
+  "P0243|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0244|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0245|R1": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0246|R1": [
+   "A-T6-weightwatchers-com-pcos-losing-weight-l"
+  ],
+  "P0247|R1": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0248|R1": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0249|R1": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P0250|R1": [
+   "A-T5-x-efficacy-results"
+  ],
+  "P0252|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0253|R2": [
+   "A-T2-ozempic-com-ozempic-efficacy-results"
+  ],
+  "P0255|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0256|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0257|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0258|R2": [
+   "A-T4-x-pen-device"
+  ],
+  "P0259|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0262|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0263|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0264|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0265|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0267|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0268|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0269|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0270|R2": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0271|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0272|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0273|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0274|R2": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0275|R2": [
+   "A-T2-ozempic-com-ozempic-efficacy-results"
+  ],
+  "P0276|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0278|R2": [
+   "A-T4-x-efficacy-results-living-on-the-drug"
+  ],
+  "P0280|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0281|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0282|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0283|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0284|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0285|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0286|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0287|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0288|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0289|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0290|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0291|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0292|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0293|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0295|R2": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0296|R2": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0297|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0298|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0299|R2": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0300|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0301|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0302|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0305|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0306|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0307|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0308|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0309|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0310|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0311|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0312|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0313|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0314|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0315|R2": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0316|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0317|R2": [
+   "A-T4-x-efficacy-results-living-on-the-drug"
+  ],
+  "P0318|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0319|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0320|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0321|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0323|R2": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0324|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0326|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0327|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0328|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0331|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0332|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0333|R2": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0334|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0336|R2": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0337|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0338|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0339|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0340|R2": [
+   "A-T4-x-efficacy-results-living-on-the-drug"
+  ],
+  "P0344|R2": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0345|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0346|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0347|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0348|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0349|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0350|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0351|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0352|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0353|R2": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0354|R2": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0355|R2": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0356|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0357|R2": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0358|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0359|R2": [
+   "A-T4-x-pen-device"
+  ],
+  "P0360|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0361|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0362|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0363|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0365|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0366|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0367|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0368|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0370|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0371|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0372|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0373|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0374|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0375|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0376|R2": [
+   "A-T2-novomedlink-com-obes-efficacy-results"
+  ],
+  "P0377|R2": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0378|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0379|R2": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0380|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0381|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0382|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0383|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0384|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0385|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0386|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0387|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0388|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0389|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0390|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0391|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0392|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0393|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0394|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0395|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0396|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0398|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0400|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0403|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0404|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0405|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0406|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0407|R2": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0408|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0409|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0410|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0411|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0413|R2": [
+   "A-T4-x-pen-device"
+  ],
+  "P0414|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0415|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0416|R2": [
+   "A-T4-x-efficacy-results-price-and-access"
+  ],
+  "P0417|R2": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0419|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0420|R2": [
+   "A-T4-x-pen-device"
+  ],
+  "P0421|R2": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0422|R2": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0423|R2": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P0424|R2": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P0426|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0427|R2": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0429|R2": [
+   "C-T12-x-diabetes-drugs-help"
+  ],
+  "P0431|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0433|R2": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P0434|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0435|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0436|R2": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0437|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0438|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0439|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0440|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0441|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0442|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0443|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0444|R2": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0445|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0446|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0447|R2": [
+   "A-T2-novo-pi-com-saxenda-efficacy-results"
+  ],
+  "P0448|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0449|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0450|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0451|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0452|R2": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0453|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0454|R2": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0455|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0456|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-dosing-and-injecting"
+  ],
+  "P0457|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0458|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0459|R2": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0460|R2": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0461|R2": [
+   "A-T4-x-efficacy-results-living-on-the-drug"
+  ],
+  "P0462|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0463|R2": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P0464|R2": [
+   "A-T4-x-efficacy-results-price-and-access"
+  ],
+  "P0465|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0466|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0467|R2": [
+   "A-T4-x-efficacy-results-weight-loss-side-effects-and-tolerance"
+  ],
+  "P0468|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-dosing-and-injecting"
+  ],
+  "P0469|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0470|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-dosing-and-injecting"
+  ],
+  "P0477|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0478|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0479|R2": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P0480|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0481|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0482|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0483|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0484|R2": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0485|R2": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0486|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0487|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0488|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0489|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0490|R2": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0491|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0492|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0493|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0494|R2": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0499|R2": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0500|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0501|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0502|R2": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0503|R2": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0504|R2": [
+   "A-T4-x-efficacy-results-price-and-access"
+  ],
+  "P0505|R2": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0506|R2": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0507|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0508|R2": [
+   "C-T1-x-held-positions"
+  ],
+  "P0509|R2": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0510|R2": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0511|R2": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0512|R2": [
+   "C-T12-x-cost-price"
+  ],
+  "P0513|R2": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0514|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0515|R2": [
+   "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor"
+  ],
+  "P0516|R2": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0517|R2": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0518|R2": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0519|R2": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0520|R2": [
+   "A-T4-x-efficacy-results-weight-loss-considering-a-competitor"
+  ],
+  "P0521|R2": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0523|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0524|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0525|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0526|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0527|R3": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0528|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0529|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0530|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0531|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0532|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0533|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0534|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0535|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0536|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0537|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0538|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0539|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0540|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0541|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0542|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0543|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0544|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0545|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0546|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0547|R3": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0548|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0549|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0550|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0551|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0552|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0553|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0554|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0555|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0556|R3": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0557|R3": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P0558|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0559|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0560|R3": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0561|R3": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0562|R3": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0563|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0564|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0565|R3": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0566|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0567|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0568|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0569|R3": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0570|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0571|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0572|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0573|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0574|R3": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0575|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0576|R3": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0577|R3": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0578|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0579|R3": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0580|R3": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0581|R3": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0582|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0583|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0584|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0585|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0586|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0587|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0588|R3": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0589|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0590|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0591|R3": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0592|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0593|R3": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0594|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0595|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0596|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0597|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0598|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0599|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0600|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0601|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0602|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0603|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0604|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0605|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0606|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0607|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0608|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0609|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0610|R3": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0611|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0612|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0613|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0614|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0615|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0616|R3": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0617|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0618|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0619|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0620|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0621|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0622|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0623|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0624|R3": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0625|R3": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0626|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0627|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0628|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0629|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0630|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0631|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0632|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0633|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0634|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0635|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0636|R3": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0637|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0638|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0639|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0640|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0641|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0642|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0643|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0644|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0645|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0646|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0647|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0648|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0649|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0650|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0651|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0652|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0653|R3": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0654|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0655|R3": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0656|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0657|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0658|R3": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0659|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0660|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0661|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0662|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0663|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0664|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0665|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0666|R3": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0667|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0668|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0669|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0670|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0671|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0672|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0673|R3": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0674|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0675|R3": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0676|R3": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0677|R3": [
+   "A-T4-x-gi-nausea"
+  ],
+  "P0678|R3": [
+   "A-T4-x-pen-device"
+  ],
+  "P0679|R3": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0680|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0681|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0682|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0683|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0684|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0685|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0686|R3": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P0687|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0688|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0689|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0690|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0691|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0692|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0693|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0694|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0695|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0696|R3": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0697|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0698|R3": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P0699|R3": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0700|R3": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0701|R3": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0702|R3": [
+   "C-T12-x-cost-price"
+  ],
+  "P0703|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0704|R3": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P0705|R3": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0706|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0707|R3": [
+   "A-T4-x-titration-dose-sched-living-on-the-drug"
+  ],
+  "P0708|R3": [
+   "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1"
+  ],
+  "P0709|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0710|R3": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P0711|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0712|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0713|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0714|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0715|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0716|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0717|R3": [
+   "B-T8-indications-eligibility",
+   "C-T1-x-held-positions"
+  ],
+  "P0718|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0719|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0720|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0721|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0722|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0723|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0724|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0725|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0726|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0727|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0728|R3": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P0729|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0730|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0731|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0732|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0733|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0734|R3": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P0735|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0736|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0737|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0738|R3": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0739|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0740|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0741|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0742|R3": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0743|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0744|R3": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0745|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0746|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0747|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0748|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0749|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0750|R3": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0751|R3": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0752|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0753|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0754|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0755|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0756|R3": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0757|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0758|R3": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0759|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0760|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0761|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0762|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0763|R3": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0764|R3": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0765|R3": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0766|R3": [
+   "C-T1-x-held-positions"
+  ],
+  "P0767|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0768|R3": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0769|R6": [
+   "A-T4-x-pen-device"
+  ],
+  "P0770|R6": [
+   "A-T4-x-pen-device"
+  ],
+  "P0771|R6": [
+   "A-T4-x-pen-device"
+  ],
+  "P0772|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0773|R6": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0774|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0775|R6": [
+   "A-T4-x-pen-device"
+  ],
+  "P0776|R6": [
+   "A-T4-x-pen-device"
+  ],
+  "P0777|R6": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0778|R6": [
+   "A-T4-x-pen-device"
+  ],
+  "P0779|R6": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0780|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0781|R6": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0782|R6": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0783|R6": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0784|R6": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0785|R6": [
+   "A-T4-x-efficacy-results-weight-loss-blood-sugar-control"
+  ],
+  "P0786|R6": [
+   "A-T4-x-efficacy-results-weight-loss-blood-sugar-control"
+  ],
+  "P0787|R6": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0788|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0789|R6": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0790|R6": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0791|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0792|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0793|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0794|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0795|R6": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0796|R6": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0797|R6": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0798|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0799|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0800|R6": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P0801|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0802|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0803|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0804|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0805|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0806|R6": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0807|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0808|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0809|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0810|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0811|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0812|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0813|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0814|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0815|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0816|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0817|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P0818|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0819|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0820|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0821|R6": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0822|R6": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0823|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0824|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0825|R6": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0826|R6": [
+   "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1"
+  ],
+  "P0827|R6": [
+   "A-T4-x-side-diabetes-type-k-remaining-questions-part-2"
+  ],
+  "P0828|R6": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0829|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0830|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0831|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0832|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0833|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0834|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0835|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0836|R6": [
+   "A-T2-x-ozempic-nausea-zepbo"
+  ],
+  "P0837|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0838|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0839|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0840|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0841|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0842|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0843|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0844|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0845|R6": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0846|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0847|R6": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P0848|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0849|R6": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0850|R6": [
+   "A-T3-novomedlink-com-titration-dose-sched"
+  ],
+  "P0851|R6": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0852|R6": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0853|R6": [
+   "A-T3-ozempic-com-titration-dose-sched"
+  ],
+  "P0854|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0855|R6": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0856|R6": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0857|R6": [
+   "A-T3-x-effects-actually-wei-remaining-questions-part-2"
+  ],
+  "P0858|R6": [
+   "A-T3-novomedlink-com-titration-dose-sched"
+  ],
+  "P0859|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0860|R6": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0861|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0862|R6": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0863|R6": [
+   "A-T3-ozempic-com-efficacy-results"
+  ],
+  "P0864|R6": [
+   "A-T3-x-time-weight-loss-eff-remaining-questions-part-1"
+  ],
+  "P0865|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0866|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0867|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0868|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0869|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0870|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0871|R6": [
+   "A-T4-x-efficacy-results-reputation-entity"
+  ],
+  "P0872|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0873|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0874|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0875|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0876|R6": [
+   "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims"
+  ],
+  "P0877|R6": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2"
+  ],
+  "P0878|R6": [
+   "C-T1-x-held-positions"
+  ],
+  "P0880|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0881|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0883|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0884|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0886|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0887|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0888|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0890|R7": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0892|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0894|R7": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0895|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0896|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0898|R7": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P0899|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0900|R7": [
+   "A-T4-x-basics-mechanism"
+  ],
+  "P0901|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0902|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0903|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0904|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0905|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0906|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0907|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0909|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0911|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0912|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0913|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0914|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0915|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0916|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0917|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0918|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0920|R7": [
+   "A-T4-x-pen-device"
+  ],
+  "P0921|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0922|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0923|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0924|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0925|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0926|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0927|R7": [
+   "A-T4-x-ozempic-what-s-alter-starting-or-switching"
+  ],
+  "P0929|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0930|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0932|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0935|R7": [
+   "A-T4-x-basics-mechanism"
+  ],
+  "P0936|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0937|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0940|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0942|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0945|R7": [
+   "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice"
+  ],
+  "P0946|R7": [
+   "A-T6-drugs-com-safest-diabetes-what"
+  ],
+  "P0947|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0948|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0949|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0950|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0951|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0952|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0953|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0955|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0956|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0957|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P0960|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0961|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0962|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0964|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0965|R7": [
+   "A-T4-x-pen-device"
+  ],
+  "P0966|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0967|R7": [
+   "A-T6-onlinedoctor-asda-co-where-inject-mounjar"
+  ],
+  "P0968|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0969|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0971|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0972|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0973|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0974|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0975|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0976|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0977|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0978|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0979|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0979|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P0981|R7": [
+   "A-T4-x-site-volume"
+  ],
+  "P0982|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0983|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0984|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0985|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0986|R7": [
+   "A-T4-x-basics-mechanism"
+  ],
+  "P0987|R7": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P0988|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P0989|R7": [
+   "C-T12-x-cost-price"
+  ],
+  "P0990|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0991|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0993|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0996|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0997|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P0998|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P0999|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1000|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1001|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1002|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1003|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1004|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1005|R7": [
+   "A-T4-x-titration-dose-sched-starting-or-switching"
+  ],
+  "P1007|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1010|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1012|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1013|R7": [
+   "A-T4-x-basics-mechanism"
+  ],
+  "P1013|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1014|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1015|R7": [
+   "A-T4-x-titration-dose-sched-weight-loss"
+  ],
+  "P1016|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1017|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1018|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1019|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1020|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1021|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1023|R7": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P1024|R7": [
+   "C-T12-x-insurance-coverage"
+  ],
+  "P1025|R7": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P1028|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1029|R7": [
+   "A-T4-x-site-volume"
+  ],
+  "P1030|R7": [
+   "A-T4-x-basics-mechanism"
+  ],
+  "P1031|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1032|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1033|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1035|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1036|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1037|R7": [
+   "A-T4-x-side-effects-mounjar-living-on-the-drug"
+  ],
+  "P1038|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1039|R7": [
+   "C-T12-x-efficacy-results"
+  ],
+  "P1040|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1041|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1043|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1044|R7": [
+   "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1"
+  ],
+  "P1045|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1046|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1047|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1048|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1049|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1050|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1051|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P1053|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P1055|R7": [
+   "C-T12-x-coupons-savings"
+  ],
+  "P1056|R7": [
+   "C-T1-x-held-positions"
+  ],
+  "P1057|R8": [
+   "C-T1-x-held-positions"
+  ],
+  "P1058|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1059|R8": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P1060|R8": [
+   "A-T5-x-titration-dose-sched"
+  ],
+  "P1061|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1062|R8": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P1063|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1064|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1065|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1066|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1067|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1068|R8": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P1069|R8": [
+   "A-T5-x-titration-dose-sched"
+  ],
+  "P1070|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1071|R8": [
+   "A-T5-x-diabetes-injections"
+  ],
+  "P1072|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1073|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1074|R8": [
+   "A-T5-x-basics-mechanism"
+  ],
+  "P1075|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1076|R9": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P1077|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1078|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1079|R9": [
+   "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug"
+  ],
+  "P1080|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1081|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1082|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1083|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1084|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1085|R9": [
+   "A-T4-x-want-lose-weight-mou-weight-loss"
+  ],
+  "P1086|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1087|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1088|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1089|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1090|R9": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P1091|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1092|R9": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P1093|R9": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P1094|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1095|R9": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P1096|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1097|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1098|R9": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P1099|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1100|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1101|R9": [
+   "A-T10-x-ozempic-resting-hear"
+  ],
+  "P1102|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1103|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1104|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1105|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1106|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1107|R9": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P1108|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1109|R9": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P1110|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1111|R9": [
+   "A-T10-motleyrice-com-now-ozempic-weight-b"
+  ],
+  "P1112|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1113|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1114|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1115|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1116|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1117|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1118|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1119|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1120|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1121|R9": [
+   "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2"
+  ],
+  "P1122|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1123|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1124|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1125|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1126|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1127|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1128|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1129|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1130|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1131|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1132|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1133|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1134|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1135|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1136|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1137|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1138|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1139|R9": [
+   "C-T1-x-held-positions"
+  ],
+  "P1140|R9": [
+   "A-T4-x-ozempic-mounjaro-dru-starting-or-switching"
+  ],
+  "P1141|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1142|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1143|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1144|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1145|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1146|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1147|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1148|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1149|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1150|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1151|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1154|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1156|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1157|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1158|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1160|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1164|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1165|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1166|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1169|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1171|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1172|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1173|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1174|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1178|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1181|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1184|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1185|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1186|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1187|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1188|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1189|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1190|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1191|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1193|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration",
+   "B-T9-dosing-administration"
+  ],
+  "P1194|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration"
+  ],
+  "P1195|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration",
+   "B-T9-dosing-administration"
+  ],
+  "P1196|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration",
+   "B-T9-dosing-administration"
+  ],
+  "P1197|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration"
+  ],
+  "P1198|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration"
+  ],
+  "P1199|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration",
+   "B-T9-dosing-administration"
+  ],
+  "P1202|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1204|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1205|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1208|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility"
+  ],
+  "P1214|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility"
+  ],
+  "P1215|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility",
+   "B-T9-indications-eligibility"
+  ],
+  "P1216|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility",
+   "B-T9-indications-eligibility"
+  ],
+  "P1217|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility"
+  ],
+  "P1218|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility"
+  ],
+  "P1220|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility",
+   "B-T9-indications-eligibility"
+  ],
+  "P1223|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1225|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1227|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1236|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1238|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1239|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1240|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1241|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1257|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1258|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1262|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1263|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1265|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1266|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1267|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1280|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility",
+   "B-T9-indications-eligibility"
+  ],
+  "P1281|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1282|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1283|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1284|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1285|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1286|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1287|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1288|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1294|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1295|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1296|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1297|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1298|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1303|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1305|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications",
+   "B-T9-serious-risks-contraindications"
+  ],
+  "P1306|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration",
+   "B-T9-dosing-administration"
+  ],
+  "P1307|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration"
+  ],
+  "P1308|R4": [
+   "B-T8-dosing-administration",
+   "B-T7-dosing-administration",
+   "B-T9-dosing-administration"
+  ],
+  "P1312|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility"
+  ],
+  "P1316|R4": [
+   "B-T8-indications-eligibility",
+   "B-T7-indications-eligibility"
+  ],
+  "P1319|R4": [
+   "B-T8-serious-risks-contraindications",
+   "B-T7-serious-risks-contraindications"
+  ],
+  "P1321|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1322|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1323|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1324|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1325|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1326|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1327|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1328|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1329|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1330|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1331|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1332|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1333|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1334|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1335|R5": [
+   "B-T8-dosing-administration"
+  ],
+  "P1336|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1337|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1338|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1339|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1340|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1341|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1342|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1343|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1344|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1345|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1346|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1347|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1348|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1349|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1350|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1351|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1352|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1353|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1354|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1355|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1356|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1357|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1358|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1359|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1360|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1361|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1362|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1363|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1364|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1365|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1366|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1367|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1368|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1369|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1370|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1371|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1372|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1373|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1374|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1375|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1376|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1377|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1378|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1379|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1380|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1381|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1382|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1383|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1384|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1385|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1386|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1387|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1388|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1389|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1390|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1391|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1392|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1393|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1394|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1395|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1396|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1397|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1398|R5": [
+   "B-T8-dosing-administration"
+  ],
+  "P1399|R5": [
+   "B-T8-dosing-administration"
+  ],
+  "P1400|R5": [
+   "B-T8-dosing-administration"
+  ],
+  "P1401|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1402|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1403|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1404|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1405|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1406|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1407|R5": [
+   "B-T8-indications-eligibility"
+  ],
+  "P1408|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1409|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1410|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1411|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1412|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1413|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1414|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1415|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1416|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1417|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1418|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1419|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1420|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1421|R5": [
+   "B-T8-serious-risks-contraindications"
+  ],
+  "P1422|R5": [
+   "B-T8-serious-risks-contraindications"
+  ]
+ },
  "tasks": [
   {
    "id": "A-T4-x-side-effects-mounjar-living-on-the-drug",

@@ -219,6 +219,7 @@ const DASH = D.dashboard, PTS = D.points, GROUPS = D.groups;
 const KEYS = Object.keys(PTS);
 const TASKS_ALL = (window.TASKS && window.TASKS.tasks) || [];      // tasks layer, spec v1 §4
 const TASK_STATE = (window.TASKS && window.TASKS.state) || {};
+const POINT_TASKS = (window.TASKS && window.TASKS.point_tasks) || {};   // §7: pid|run -> [task id]
 const taskById = Object.fromEntries(TASKS_ALL.map(t=>[t.id,t]));
 const LANE_A = TASKS_ALL.filter(t=>t.lane==="A"), LANE_B = TASKS_ALL.filter(t=>t.lane==="B"), LANE_C = TASKS_ALL.filter(t=>t.lane==="C");
 function byWeek(a,b){ return (b.usd_per_week-a.usd_per_week)||(b.demand_mo-a.demand_mo)||a.id.localeCompare(b.id); }
@@ -740,6 +741,8 @@ function taskColsA(){ return [
   {k:"c",h:"Top competitor",c:"cw",f:compCell,sort:t=>compCell(t)},
 ]; }
 function vPriorities(el, q){
+  const tsel = q.get("task");
+  if(tsel && taskById[tsel]) return void (el.innerHTML = `<div class="stack">${taskDetailPanel(taskById[tsel])}</div>`);
   const zones = zoneRows();
   const gsel = q.get("group");                       // legacy deep links fold into the zone view
   const zsel = q.get("zone") || (gsel && groupById[gsel] ? groupById[gsel].zone : "");
@@ -937,6 +940,14 @@ function loadAnswers(run){
   ansPromise[run] = loadScript("answers_"+run+".js").then(async()=>{ const b64=window["ANSWERS_B64_"+run]; const bin=Uint8Array.from(atob(b64), c=>c.charCodeAt(0)); const ds=new DecompressionStream("gzip"); const text=await new Response(new Blob([bin]).stream().pipeThrough(ds)).text(); Object.assign(ANSWERS, JSON.parse(text)); });
   return ansPromise[run];
 }
+function pointTaskLine(key){                        // §7: one line per task that addresses this question
+  const ids = (POINT_TASKS[key] || []).filter(id => taskById[id]);
+  if(!ids.length) return `<div class="lead">Monitored only \u2014 no active task.</div>`;
+  return ids.map(id => { const t = taskById[id];
+    return `<div class="fpt">This question is addressed by: <a href="#/actions?task=${encodeURIComponent(id)}"><b>${esc(t.title)}</b></a> \u2192
+      <div class="z">${esc(t.lane)} \u00b7 ${esc(t.owner)} \u00b7 ${t.weeks == null ? "standing programme" : t.weeks + " weeks"}${t.usd_yr[1] ? " \u00b7 " + usdRange(t.usd_yr[0], t.usd_yr[1]) + " / yr at risk" : ""}</div></div>`;
+  }).join("");
+}
 function moneyDetailRows(p){
   if(!PRICING) return [];
   const mo = p.money || {}; if(!mo.usd) return [];
@@ -960,15 +971,9 @@ function level3(el, key, q){
     ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]].concat(moneyDetailRows(p))), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
     ${sec("Evidence", `<ul class="evid">${(p.evidence_lines||[]).map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`, "", "platform export", "c8", "code")}
     ${sec("Answers", `<button class="btn ghost" id="loadAns" type="button">Load answers</button><div id="ansBox"></div>`, "Full texts from the corpus, loaded on demand. Excluded answers are flagged; their verdicts are not counted.", "one per model × repeat", "c12", "answers_scored")}
-    ${sec("Tasks from this question", `<div class="lead">The same cards as the Action Center: open one for its detail, or act on it here.</div><div id="ptTasks">${taskListHTML(tasksForPoint(key), false, {acLink:true, showStatus:true})}</div>`, "", `client · ${p.fixes.filter(c=>c.audience==="client").length}`, "c12", "open_tasks")}
+    ${sec("What is being done about it", pointTaskLine(key), "Tasks come from the tasks layer; the underlying fix cards stay in the data and in tasks.md.", "", "c12", "screen_actions")}
     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('cit2').classList.toggle('hide')">Citere monitoring (${p.fixes.filter(c=>c.audience==="citere").length} TRACK cards)</button><div id="cit2" class="hide">${p.fixes.filter(c=>c.audience==="citere").map(c=>fixCard(c)).join("")}</div></section>
   </div>`;
-  wireTasks(document.getElementById("ptTasks"));
-  const openTask = q && q.get("open");                    // #/point/<key>?open=<fix index> opens that task here
-  if(openTask){
-    const card = document.querySelector(`#ptTasks .kcard[data-id="${CSS.escape(key + "#" + openTask)}"]`);
-    if(card){ card.classList.add("hit"); card.click(); }
-  }
   document.getElementById("loadAns").onclick = async (ev) => {
     ev.target.textContent = "Loading…";
     let err=null; try{ await loadAnswers(p.run); }catch(e){ err=e; }

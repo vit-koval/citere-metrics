@@ -780,9 +780,17 @@ def run():
     tasks_sorted = A + B + C
     n_state, added, gone = sync_state([t["id"] for t in tasks_sorted])
     print("task_state.json: {} ids | added {} | archived {}".format(n_state, len(added), len(gone)))
+    # point -> the tasks that address it. The per-task `pids` list is capped for readability, so the UI
+    # needs this full index to answer "which task covers this question" for all 1,387 covered points.
+    point_tasks = {}
+    for t in tasks_sorted:
+        for k in t["_all_pids"]:
+            point_tasks.setdefault(k, []).append(t["id"])
+    point_tasks = {k: point_tasks[k] for k in sorted(point_tasks)}
     (OUT / "tasks.json").write_text(json.dumps(
         {"meta": {"source": "data/metrics/cycle_01/platform_data.json",
                   "api_usd_mo": MT["api_usd_mo"], "generated_by": "tasks/build_tasks.py"},
+         "point_tasks": point_tasks,
          "tasks": [{k: v for k, v in t.items() if k != "_all_pids"} for t in tasks_sorted]},
         ensure_ascii=False, indent=1, sort_keys=False) + "\n", encoding="utf-8")
     return d, P, MT, api, applicable, primary, orphan, tasks_sorted, A, B, C
