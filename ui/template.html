@@ -195,6 +195,22 @@ td.ct,th.ct{min-width:150px}
 @media (max-width:1100px){.stack>.c3,.stack>.c4,.stack>.c5,.stack>.c6,.stack>.c7,.stack>.c8{grid-column:span 12}}
 @media (max-width:640px){.tile h2{flex-wrap:wrap}.tile h2 span{flex-basis:100%}}
 @media print{.nav,.btn,#view2,#view3,#mapView{display:none!important}.wrap{padding:0}.tile{break-inside:avoid}}
+.qlist{margin-top:6px}
+.qrow{border-top:1px solid var(--line);padding:8px 0}
+.qrow:first-child{border-top:none}
+.qhead{display:flex;gap:9px;align-items:flex-start}
+.qtog{flex:none;width:22px;height:22px;border:1px solid var(--line);background:var(--panel);border-radius:6px;cursor:pointer;font-size:11px;line-height:1;color:var(--mut)}
+.qtext{flex:1;font-size:13.5px;line-height:1.5}
+.qans{margin:8px 0 2px 31px;padding:8px 10px;background:var(--soft);border-radius:8px;font-size:13px}
+.mrow{border-top:1px solid var(--line);padding:5px 0}
+.mrow:first-child{border-top:none}
+.mhead{display:flex;gap:8px;align-items:baseline;cursor:pointer}
+.mname{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink);flex:none}
+.mverd{font-size:12px;color:var(--muted);flex:1}
+.mverd b{color:var(--ink);font-weight:500}
+.mtext{margin:6px 0 4px;padding:9px 11px;background:var(--panel);border:1px solid var(--line);border-radius:6px;font-size:12.5px;line-height:1.6;white-space:pre-wrap;max-height:340px;overflow:auto}
+.qans p{margin:0}
+.qmodel{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
 </style>
 <!--LEGACY_MAP_CSS-->
 </head><body>
@@ -607,7 +623,7 @@ function taskColsA(){ return [
 ]; }
 function vPriorities(el, q){
   const tsel = q.get("task");
-  if(tsel && taskById[tsel]) return void (el.innerHTML = `<div class="stack">${taskDetailPanel(taskById[tsel])}</div>`);
+  if(tsel && taskById[tsel]) return void showTask(el, taskById[tsel]);
   const zones = zoneRows();
   const gsel = q.get("group");                       // legacy deep links fold into the zone view
   const zsel = q.get("zone") || (gsel && groupById[gsel] ? groupById[gsel].zone : "");
@@ -658,7 +674,7 @@ function stakeMo(t){ return t.usd_yr[1] ? usdRange(t.usd_yr[0]/12, t.usd_yr[1]/1
 
 function taskDetailPanel(t){                         // §6, shared by Priorities and Action Center
   const st = TASK_STATE[t.id] || {};
-  const pts = (t.points.pids || []);
+  const rows = t.questions_all || [];
   return `<section class="tile c12"><h2>${esc(t.title)} <span>${esc(t.lane)} \u00b7 ${esc(t.type)} \u00b7 ${esc(t.type_name)}</span></h2>
     ${kv([
       ["Owner", esc(t.owner)],
@@ -676,15 +692,53 @@ function taskDetailPanel(t){                         // §6, shared by Prioritie
       ["Also addresses", (t.also_addresses || []).join(", ") || "\u2014"],
     ])}
     <div class="note">Status is read from <code>tasks/task_state.json</code> as it stood at build time. This screen never writes.</div>
-    <h3 style="margin-top:14px">Sample questions</h3><ul class="evid">${(t.questions || []).map(qq => `<li>${esc(qq)}</li>`).join("")}</ul>
-    <h3 style="margin-top:14px">Questions in this task <span class="z">${t.points.count}${pts.length < t.points.count ? ", first " + pts.length + " listed" : ""}</span></h3>
-    <div class="srclist">${pts.map(k => `<a href="#/point/${encodeURIComponent(k)}">${esc(k)}</a>`).join("")}</div>
+    <h3 style="margin-top:14px">Questions in this task <span class="z">${rows.length}</span></h3>
+    <div class="qlist">${rows.map((r, i) => `<div class="qrow">
+        <div class="qhead"><button class="qtog" type="button" data-q="${i}">\u25b8</button>
+          <div class="qtext">${esc(r.question_full)}
+            <div class="z">${esc(r.pid_run)} \u00b7 ${esc(r.model || "no scored answer")}${r.cause ? " \u00b7 " + esc(r.cause) : ""} \u00b7 <a href="#/point/${encodeURIComponent(r.pid_run)}">open the question \u2192</a></div></div></div>
+        <div class="qans hide" id="qa_${i}">${(r.models && r.models.length) ? r.models.map((m, j) => `<div class="mrow">
+            <div class="mhead" data-m="${i}_${j}" data-pr="${esc(r.pid_run)}" data-model="${esc(m.model)}">
+              <span class="mtog">\u25b8</span><span class="mname">${esc(m.model)}</span><span class="mverd">${modelVerdict(m)}</span></div>
+            <div class="mtext hide" id="mt_${i}_${j}">loading\u2026</div></div>`).join("")
+          : '<p class="z">No non-excluded answer is stored for this point.</p>'}</div>
+      </div>`).join("")}</div>
     <div class="note" style="margin-top:10px"><a href="#/actions">\u2190 back to the Action Center</a></div></section>`;
 }
 
+function modelVerdict(m){
+  if(m.ours) return "<b>mentions " + esc(M.brand) + "</b>" + (m.comps && m.comps.length ? " \u00b7 also " + m.comps.map(esc).join(", ") : "");
+  if(m.comps && m.comps.length) return "does not mention " + esc(M.brand) + " \u2014 <b>names " + m.comps.map(esc).join(", ") + "</b>";
+  return "does not mention " + esc(M.brand) + " \u2014 names no brand";
+}
+async function showModelText(box, pidRun, model){
+  const run = pidRun.split("|")[1];
+  try { await loadAnswers(run); } catch(e){ box.textContent = "Could not load answers_" + run + ".js"; return; }
+  const recs = (ANSWERS[pidRun] || []).filter(a => a.model === model && !a.excluded);
+  box.textContent = recs.length ? (recs[0].answer_clean || recs[0].answer_raw || "") : "No stored answer for this model.";
+}
+function wireQuestions(root){
+  root.querySelectorAll(".qtog").forEach(b => b.onclick = () => {
+    const box = root.querySelector("#qa_" + b.dataset.q);
+    if(!box) return;
+    box.classList.toggle("hide");
+    b.textContent = box.classList.contains("hide") ? "\u25b8" : "\u25be";
+  });
+  root.querySelectorAll(".mhead").forEach(h => h.onclick = () => {
+    const box = root.querySelector("#mt_" + h.dataset.m), tog = h.querySelector(".mtog");
+    if(!box) return;
+    box.classList.toggle("hide");
+    tog.textContent = box.classList.contains("hide") ? "\u25b8" : "\u25be";
+    if(!box.classList.contains("hide") && !box.dataset.loaded){
+      box.dataset.loaded = "1";
+      showModelText(box, h.dataset.pr, h.dataset.model);
+    }
+  });
+}
+function showTask(el, t){ el.innerHTML = `<div class="stack">${taskDetailPanel(t)}</div>`; wireQuestions(el); }
 function vActions(el, q){
   const tsel = q.get("task");
-  if(tsel && taskById[tsel]) return void (el.innerHTML = `<div class="stack">${taskDetailPanel(taskById[tsel])}</div>`);
+  if(tsel && taskById[tsel]) return void showTask(el, taskById[tsel]);
   const F = {lane: q.get("lane") || "", exec: q.get("exec") || "", mlr: q.get("mlr") || "", status: q.get("status") || "", text: q.get("text") || ""};
   const counts = {}; Object.keys(STATUS_LABELS()).forEach(k => counts[k] = 0);
   TASKS_ALL.forEach(t => counts[taskStatus(t.id)]++);

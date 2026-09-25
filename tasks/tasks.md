@@ -139,7 +139,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - Every visit my doctor nudges me toward medication and I keep resisting out of fear of side effects. Should I keep an open mind?
   - For someone who had bad side effects with Trulicity, is Mounjaro likely to be better tolerated?
   - How long do Zepbound side effects last?
-- **Evidence** answers: answers.js#P0036|R1, answers.js#P0455|R2, answers.js#P0890|R7 · serp on 22 points · inventory on 22 points
+- **Evidence** answers: answers_R1.js#P0036, answers_R2.js#P0455, answers_R7.js#P0890, answers_R7.js#P0894, answers_R7.js#P0987, answers_R7.js#P1025, answers_R7.js#P1037, answers_R2.js#P0252, answers_R3.js#P0705, answers_R2.js#P0338, answers_R2.js#P0284, answers_R2.js#P0297, answers_R2.js#P0320, answers_R2.js#P0385, answers_R2.js#P0386, answers_R2.js#P0439, answers_R2.js#P0477, answers_R2.js#P0478, answers_R2.js#P0513, answers_R3.js#P0527, answers_R3.js#P0574, answers_R3.js#P0579 · serp on 22 points · inventory on 22 points
 
 ### A-T4-x-want-lose-weight-mou-weight-loss · Publish a new page — active weight-loss patients with PCOS or thyroid conditions
 
@@ -156,7 +156,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - I'm a 32F, 84kg, celiac with Hashimoto's and PCOS. I weight train, box, do 10k steps daily and eat ~1800kcal weighing everything, and my bloodwork looks good, but my endocrinologis
   - Trulicity was started to lower my A1C, and now she is switching to Mounjaro to help continue that and to help me lose the weight I want to lose. I’ve felt great on Trulicity, and a
   - I've been on Zepbound since April and lost about 45 pounds while strength training throughout. Halfway through I had to lower my usual weight load and my original strength still ha
-- **Evidence** answers: answers.js#P0424|R2, answers.js#P0433|R2, answers.js#P0463|R2 · serp on 7 points · inventory on 7 points
+- **Evidence** answers: answers_R2.js#P0424, answers_R2.js#P0433, answers_R2.js#P0463, answers_R2.js#P0423, answers_R3.js#P0686, answers_R3.js#P0710, answers_R9.js#P1085 · serp on 7 points · inventory on 7 points
 
 ### A-T4-x-basics-mechanism · Publish a new page — what these drugs are and what results they show
 
@@ -173,7 +173,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - What does the Zepbound weight-loss chart show?
   - What is Mounjaro used for?
   - What is Zepbound used for?
-- **Evidence** answers: answers.js#P0900|R7, answers.js#P0935|R7, answers.js#P0986|R7 · serp on 5 points · inventory on 5 points
+- **Evidence** answers: answers_R7.js#P0900, answers_R7.js#P0935, answers_R7.js#P0986, answers_R7.js#P1013, answers_R7.js#P1030 · serp on 5 points · inventory on 5 points
 
 ### A-T4-x-titration-dose-sched-starting-or-switching · Publish a new page — alternatives to injections and how switching works
 
@@ -190,7 +190,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - Any alternative to Zepbound that isn't an injection?
   - changing from trulicity to mounjaro. Do I need a dry out time in between?
   - How can I get Zepbound?
-- **Evidence** answers: answers.js#P0355|R2, answers.js#P0454|R2, answers.js#P0912|R7 · serp on 15 points · inventory on 15 points
+- **Evidence** answers: answers_R2.js#P0355, answers_R2.js#P0454, answers_R7.js#P0912, answers_R7.js#P0916, answers_R7.js#P0924, answers_R7.js#P0947, answers_R7.js#P0951, answers_R7.js#P0955, answers_R7.js#P0957, answers_R7.js#P1005, answers_R6.js#P0851, answers_R2.js#P0407, answers_R6.js#P0855, answers_R6.js#P0856, answers_R2.js#P0315 · serp on 15 points · inventory on 15 points
 
 ### A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1 · Publish a new page — sedentary patients wanting sustainable weight loss (part 1)
 
@@ -207,7 +207,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - I've been overweight my whole life and I'm very sedentary. I struggle most with constant hunger and snacking — how do I overcome that to lose weight?
   - Getting married in a few months and want to lose as much as I safely can. What's a realistic approach?
   - want to lose 40 lbs sustainably, snacking is my problem, how?
-- **Evidence** answers: answers.js#P0019|R1, answers.js#P0034|R1, answers.js#P0077|R1 · serp on 25 points · inventory on 25 points
+- **Evidence** answers: answers_R1.js#P0019, answers_R1.js#P0034, answers_R1.js#P0077, answers_R1.js#P0079, answers_R1.js#P0113, answers_R1.js#P0116, answers_R1.js#P0209, answers_R1.js#P0216, answers_R2.js#P0462, answers_R2.js#P0466, answers_R7.js#P1044, answers_R2.js#P0308, answers_R1.js#P0035, answers_R1.js#P0211, answers_R6.js#P0810, answers_R6.js#P0815, answers_R6.js#P0809, answers_R6.js#P0817, answers_R2.js#P0440, answers_R3.js#P0564, answers_R3.js#P0582, answers_R3.js#P0660, answers_R3.js#P0671, answers_R3.js#P0709, answers_R3.js#P0763 · serp on 25 points · inventory on 25 points
 
 ### A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2 · Publish a new page — sedentary patients wanting sustainable weight loss (part 2)
 
@@ -224,7 +224,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - Trying to lose 20 lbs sustainably. I'm sedentary and only do cardio. How would you build a plan that sticks?
   - I work out hard and eat in a deficit but the scale won't move and I think it's hormonal. What should I look into to lose weight?
   - We're a couple trying to each drop about 40 pounds and actually keep it off this time. Home cooking is fine but sides and snacking trip us up. How would you approach something sust
-- **Evidence** answers: answers.js#P0033|R1, answers.js#P0044|R1, answers.js#P0078|R1 · serp on 25 points · inventory on 25 points
+- **Evidence** answers: answers_R1.js#P0033, answers_R1.js#P0044, answers_R1.js#P0078, answers_R1.js#P0080, answers_R1.js#P0114, answers_R1.js#P0182, answers_R1.js#P0213, answers_R1.js#P0218, answers_R2.js#P0465, answers_R2.js#P0469, answers_R6.js#P0866, answers_R1.js#P0161, answers_R6.js#P0861, answers_R6.js#P0877, answers_R6.js#P0865, answers_R6.js#P0835, answers_R6.js#P0838, answers_R2.js#P0521, answers_R2.js#P0276, answers_R3.js#P0578, answers_R3.js#P0613, answers_R3.js#P0662, answers_R3.js#P0688, answers_R3.js#P0747, answers_R6.js#P0788 · serp on 25 points · inventory on 25 points
 
 ### A-T5-x-basics-mechanism · Fix our listing on doctronic.ai — how the drug is taken and what is in it
 
@@ -241,7 +241,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - How often do you take Mounjaro and in what form?
   - Are Mounjaro and Zepbound the same thing? What is the difference?
   - What is the active ingredient in Mounjaro?
-- **Evidence** answers: answers.js#P1061|R8, answers.js#P1058|R8, answers.js#P1063|R8 · serp on 2 points · inventory on 15 points
+- **Evidence** answers: answers_R8.js#P1061, answers_R8.js#P1058, answers_R8.js#P1063, answers_R8.js#P1064, answers_R8.js#P1065, answers_R8.js#P1013, answers_R1.js#P0141, answers_R1.js#P0212, answers_R8.js#P0979, answers_R8.js#P1066, answers_R8.js#P1067, answers_R8.js#P1070, answers_R8.js#P1072, answers_R8.js#P1073, answers_R8.js#P1074 · serp on 2 points · inventory on 15 points
 
 ### A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims · Publish a new page — patients told the drug is cheating or a money grab
 
@@ -258,7 +258,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - a family member said to me "using it is just cheating and looking for an easy way out" — is that right?
   - an anti-pharma stranger said to me "another take-it-for-life drug to make money off of" — is that right?
   - a skeptical commenter said to me "i'm thinking dietary reduction and changes are almost all the cause, not the drug" — is that right?
-- **Evidence** answers: answers.js#P0780|R6, answers.js#P0829|R6, answers.js#P0830|R6 · serp on 22 points · inventory on 22 points
+- **Evidence** answers: answers_R6.js#P0780, answers_R6.js#P0829, answers_R6.js#P0830, answers_R6.js#P0859, answers_R6.js#P0832, answers_R6.js#P0869, answers_R1.js#P0046, answers_R1.js#P0120, answers_R1.js#P0122, answers_R1.js#P0123, answers_R1.js#P0178, answers_R1.js#P0199, answers_R1.js#P0200, answers_R1.js#P0233, answers_R2.js#P0285, answers_R2.js#P0403, answers_R1.js#P0138, answers_R1.js#P0198, answers_R6.js#P0867, answers_R6.js#P0876, answers_R6.js#P0875, answers_R1.js#P0001 · serp on 22 points · inventory on 22 points
 
 ### A-T4-x-pen-device · Publish a new page — is the pen easy to use if injecting scares you
 
@@ -275,7 +275,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - Is Mounjaro's pen easy to use for someone with hand arthritis?
   - Is the Mounjaro pen easy to use for someone with hand arthritis?
   - i've never injected anything and the idea of measuring a dose freaks me out. are these diabetes pens actually easy?
-- **Evidence** answers: answers.js#P0258|R2, answers.js#P0413|R2, answers.js#P0776|R6 · serp on 13 points · inventory on 13 points
+- **Evidence** answers: answers_R2.js#P0258, answers_R2.js#P0413, answers_R6.js#P0776, answers_R6.js#P0778, answers_R7.js#P0920, answers_R7.js#P0965, answers_R6.js#P0775, answers_R6.js#P0769, answers_R6.js#P0771, answers_R2.js#P0359, answers_R2.js#P0420, answers_R3.js#P0678, answers_R6.js#P0770 · serp on 13 points · inventory on 13 points
 
 ### A-T6-drugs-com-safest-diabetes-what · Place the brand on drugs.com — which diabetes drug is safest and gentlest
 
@@ -292,7 +292,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - Does Zepbound cause hair loss?
   - What's the safest diabetes medication with the fewest side effects?
   - What is the newest most effective weight suppressant prescribed by your physician ?
-- **Evidence** answers: answers.js#P0946|R7, answers.js#P0031|R1, answers.js#P0238|R1 · serp on 7 points · inventory on 7 points
+- **Evidence** answers: answers_R7.js#P0946, answers_R1.js#P0031, answers_R1.js#P0238, answers_R1.js#P0237, answers_R1.js#P0143, answers_R1.js#P0066, answers_R1.js#P0097 · serp on 7 points · inventory on 7 points
 
 ### A-T4-x-efficacy-results-reputation-entity · Publish a new page — doctors repeating the drug-induced-anorexia line
 
@@ -309,7 +309,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - a doctor said to me "it's basically drug induced anorexia so the numbers don't mean real control" — is that right?
   - a doctor said to me "it's basically drug induced anorexia and of course it's all the rage now" — is that right?
   - a coworker said to me "it's basically drug induced anorexia that everyone's abusing for weight" — is that right?
-- **Evidence** answers: answers.js#P0860|R6, answers.js#P0871|R6, answers.js#P0781|R6 · serp on 12 points · inventory on 12 points
+- **Evidence** answers: answers_R6.js#P0860, answers_R6.js#P0871, answers_R6.js#P0781, answers_R2.js#P0398, answers_R2.js#P0352, answers_R2.js#P0489, answers_R2.js#P0263, answers_R2.js#P0307, answers_R2.js#P0314, answers_R2.js#P0366, answers_R2.js#P0381, answers_R2.js#P0505 · serp on 12 points · inventory on 12 points
 
 ### A-T4-x-efficacy-results-starting-or-switching-blood-sugar-control · Publish a new page — morning sugars out of control despite low carb
 
@@ -326,7 +326,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
   - sugars been all over lately, woke up at like 300 this morning even eating low carb. what am i doing wrong, what can i do
   - my endo finally wants to put me on insulin after avoiding it for years. is there any real downside to starting it?
   - Over the years my endo has put me on every medicine except insulin. Last week I asked her if I need to be on insulin and she reluctantly said yes and plans on writing a script next
-- **Evidence** answers: answers.js#P0125|R1, answers.js#P0134|R1, answers.js#P0168|R1 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R1.js#P0125, answers_R1.js#P0134, answers_R1.js#P0168 · serp on 3 points · inventory on 3 points
 
 ### A-T4-x-site-volume · Publish a new page — where to inject and how much
 
@@ -342,7 +342,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Sample questions**
   - Where should I inject Zepbound?
   - Where can I inject Zepbound?
-- **Evidence** answers: answers.js#P0981|R7, answers.js#P1029|R7 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R7.js#P0981, answers_R7.js#P1029 · serp on 2 points · inventory on 2 points
 
 ### A-T4-x-efficacy-results-starting-or-switching-dosing-and-injecting · Publish a new page — dose escalation that stopped working
 
@@ -361,7 +361,7 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 Question 1:
   - Anyone get to 15mg of Mounjaro and find that it wasn’t working anymore?
   - I started 2.5mg Mounjaro last week and just took my second dose. Some people say its effect gradually decreases over time — does that happen?
-- **Evidence** answers: answers.js#P0456|R2, answers.js#P0470|R2, answers.js#P0468|R2 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R2.js#P0456, answers_R2.js#P0470, answers_R2.js#P0468 · serp on 3 points · inventory on 3 points
 
 ### A-T4-x-efficacy-results-price-and-access · Publish a new page — asking the doctor for a specific brand, and coverage
 
@@ -379,7 +379,7 @@ Question 1:
 I am not concerned about insurance or how to finance this—I have already researched that—I am main
   - If Mounjaro is out of stock, what's the nearest equivalent option?
   - I'm going to ask my doctor for either Ozempic or Mounjaro. My insurance covers both — which one should I ask for? I really don't want to lose weight, I'm in the best shape of my li
-- **Evidence** answers: answers.js#P0464|R2, answers.js#P0416|R2, answers.js#P0504|R2 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R2.js#P0464, answers_R2.js#P0416, answers_R2.js#P0504 · serp on 3 points · inventory on 3 points
 
 ### A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice · Publish a new page — patients asking whether the drug stops working
 
@@ -396,7 +396,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - does zepbound quit working after a few months
   - What do before-and-after results for Zepbound look like?
   - Is Trulicity worth starting for type 2?
-- **Evidence** answers: answers.js#P0316|R2, answers.js#P0945|R7, answers.js#P0404|R2 · serp on 9 points · inventory on 9 points
+- **Evidence** answers: answers_R2.js#P0316, answers_R7.js#P0945, answers_R2.js#P0404, answers_R2.js#P0410, answers_R1.js#P0009, answers_R2.js#P0257, answers_R3.js#P0565, answers_R3.js#P0610, answers_R3.js#P0666 · serp on 9 points · inventory on 9 points
 
 ### A-T6-goodrx-com-weight-actually-deal · Place the brand on goodrx.com — skeptical patients whose doctor keeps recommending a GLP-1
 
@@ -413,7 +413,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Considering going on a GLP-1 seeing how every time I go to the doctors he recommends it. I'm just skeptical and nervous about long term side effects. Should I just have an open min
   - What are effective combinations of drugs to help with type 2 diabetes?
   - metformin just isnt cutting it, morning sugars still 150+. what did your doc switch you to?
-- **Evidence** answers: answers.js#P0219|R1, answers.js#P0194|R1, answers.js#P0140|R1 · serp on 8 points · inventory on 8 points
+- **Evidence** answers: answers_R1.js#P0219, answers_R1.js#P0194, answers_R1.js#P0140, answers_R1.js#P0150, answers_R1.js#P0041, answers_R1.js#P0115, answers_R1.js#P0193, answers_R1.js#P0179 · serp on 8 points · inventory on 8 points
 
 ### A-T5-x-efficacy-results · Fix our listing on endocrine.plus — options before insulin when metformin is not enough
 
@@ -430,7 +430,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I'm scared of ending up on insulin because you can't come back from it. What are the options before that?
   - metformin destroys my stomach even cut down small, cant handle the gi stuff. is there an alternative or can i manage t2 without it
   - If someone has type 2 diabetes, what would generally be considered the best medication options?
-- **Evidence** answers: answers.js#P0023|R1, answers.js#P0063|R1, answers.js#P0074|R1 · serp on 18 points · inventory on 18 points
+- **Evidence** answers: answers_R1.js#P0023, answers_R1.js#P0063, answers_R1.js#P0074, answers_R1.js#P0075, answers_R1.js#P0210, answers_R1.js#P0026, answers_R1.js#P0073, answers_R1.js#P0076, answers_R1.js#P0185, answers_R1.js#P0062, answers_R1.js#P0226, answers_R1.js#P0029, answers_R1.js#P0175, answers_R1.js#P0201, answers_R1.js#P0137, answers_R1.js#P0028, answers_R1.js#P0250, answers_R1.js#P0133 · serp on 18 points · inventory on 18 points
 
 ### A-T4-x-titration-dose-sched-weight-loss · Publish a new page — maintenance dosing after reaching goal weight
 
@@ -447,7 +447,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - What is the maintenance dose of Zepbound after reaching goal weight?
   - What is the Mounjaro dose for weight loss?
   - I started taking semaglutide for weight loss about 7 weeks ago. The first week I took 1 unit, second - fourth week 2 units, fifth week 3 units, and sixth week 4 units. The day afte
-- **Evidence** answers: answers.js#P0898|R7, answers.js#P1015|R7, answers.js#P0759|R3 · serp on 10 points · inventory on 10 points
+- **Evidence** answers: answers_R7.js#P0898, answers_R7.js#P1015, answers_R3.js#P0759, answers_R3.js#P0546, answers_R3.js#P0682, answers_R3.js#P0713, answers_R3.js#P0739, answers_R3.js#P0760, answers_R3.js#P0762, answers_R3.js#P0764 · serp on 10 points · inventory on 10 points
 
 ### A-T4-x-efficacy-results-weight-loss-considering-a-competitor · Publish a new page — switching after a competitor stopped working
 
@@ -464,7 +464,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - So my dr put me on mounjaro, telling me that it’s actually better than the victoza. I’ve already lost a bunch of weight but I wonder if I’ll lose even more. Did any one switch from
   - Saxenda barely helped my weight — what should I switch to?
   - Mounjaro stopped working for weight — what's an equally effective alternative?
-- **Evidence** answers: answers.js#P0435|R2, answers.js#P0408|R2, answers.js#P0406|R2 · serp on 13 points · inventory on 13 points
+- **Evidence** answers: answers_R2.js#P0435, answers_R2.js#P0408, answers_R2.js#P0406, answers_R2.js#P0256, answers_R2.js#P0259, answers_R2.js#P0298, answers_R2.js#P0337, answers_R2.js#P0350, answers_R2.js#P0370, answers_R2.js#P0446, answers_R2.js#P0500, answers_R2.js#P0514, answers_R2.js#P0520 · serp on 13 points · inventory on 13 points
 
 ### A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor · Publish a new page — switching from Trulicity to a newer drug
 
@@ -481,7 +481,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I am curious if anyone has ever switched from Trulicity to Mounjaro? I was at 1.5 with the Trulicity and am about to take my 4th dose of 2.5 Mounjaro. I haven’t noticed any changes
   - Trulicity isn't doing much for me anymore — what should I switch to?
   - Trulicity stopped working — what should my doctor switch me to?
-- **Evidence** answers: answers.js#P0434|R2, answers.js#P0268|R2, answers.js#P0281|R2 · serp on 8 points · inventory on 8 points
+- **Evidence** answers: answers_R2.js#P0434, answers_R2.js#P0268, answers_R2.js#P0281, answers_R2.js#P0334, answers_R2.js#P0390, answers_R2.js#P0442, answers_R2.js#P0501, answers_R2.js#P0515 · serp on 8 points · inventory on 8 points
 
 ### A-T6-doctronic-ai-type-diabetes-safe-g · Place the brand on doctronic.ai — what new diabetes treatment is coming next
 
@@ -498,7 +498,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - What is the most promising treatment for diabetes that will come on the market in the near future?
   - How safe are GLP-1 medications for long-term use? I'm type 2 and controlling it with diet but it's tiring, so I'm considering asking about one.
   - how safe are these glp-1 meds long term? controlling my type 2 with diet rn but its exhausting and im thinking of asking my doctor
-- **Evidence** answers: answers.js#P0195|R1, answers.js#P0083|R1, answers.js#P0084|R1 · serp on 4 points · inventory on 4 points
+- **Evidence** answers: answers_R1.js#P0195, answers_R1.js#P0083, answers_R1.js#P0084, answers_R1.js#P0069 · serp on 4 points · inventory on 4 points
 
 ### A-T3-diabeteseducation-no-efficacy-results · Rewrite the diabeteseducation.novocare.com page — newly diagnosed: what to do first and how to avoid insulin
 
@@ -515,7 +515,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - My dad was told he's a type 2 diabetic last week and wants to get on top of it as quickly as possible. What can I do? And what quick easy recipes or websites for them do you guys r
   - What other meds could i take for diabetes type 2 besides going on insulin?
   - on metformin, a1c coming down slow, and i really want to avoid ever going on insulin. what else can i push for to stay off it?
-- **Evidence** answers: answers.js#P0174|R1, answers.js#P0191|R1, answers.js#P0135|R1 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R1.js#P0174, answers_R1.js#P0191, answers_R1.js#P0135 · serp on 3 points · inventory on 3 points
 
 ### A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug · Decide and displace drugwatch.com — Ozempic vs Mounjaro on side effects and tolerance
 
@@ -532,7 +532,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - How bad are the side effects on Mounjaro?
   - Originally my doctor was going to put me on Ozempic but told me that mounjaro be better side effect wise. Now I’m having second thoughts on actually starting the Mounjaro due to th
   - Insurance is pushing me from Ozempic to Wegovy — will it work the same?
-- **Evidence** answers: answers.js#P0396|R2, answers.js#P0301|R2, answers.js#P0267|R2 · serp on 15 points · inventory on 15 points
+- **Evidence** answers: answers_R2.js#P0396, answers_R2.js#P0301, answers_R2.js#P0267, answers_R2.js#P0290, answers_R2.js#P0302, answers_R2.js#P0305, answers_R2.js#P0306, answers_R2.js#P0348, answers_R2.js#P0349, answers_R2.js#P0375, answers_R2.js#P0383, answers_R2.js#P0437, answers_R2.js#P0485, answers_R3.js#P0704, answers_R9.js#P1079 · serp on 15 points · inventory on 15 points
 
 ### A-T3-diabeteseducation-no-titration-dose-sched · Rewrite the diabeteseducation.novocare.com page — do all type 2 patients end up injecting
 
@@ -549,7 +549,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I've gotten all of my tests back and I'm 99% sure I'm a type 2 diabetic. My question is, do all type 2 diabetics have to inject themselves with insulin or any other type of medicat
   - I'm terrified of needles and 99% sure I'm type 2 — do all type 2 diabetics end up having to inject something?
   - Are there any new diabetes treatments that aren't injections?
-- **Evidence** answers: answers.js#P0167|R1, answers.js#P0020|R1, answers.js#P0030|R1 · serp on 4 points · inventory on 4 points
+- **Evidence** answers: answers_R1.js#P0167, answers_R1.js#P0020, answers_R1.js#P0030, answers_R1.js#P0099 · serp on 4 points · inventory on 4 points
 
 ### A-T4-x-efficacy-results-starting-or-switching-newly-diagnosed · Publish a new page — newly diagnosed and frightened, deciding the first step
 
@@ -564,7 +564,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** —
 - **Sample questions**
   - Just diagnosed and I'm terrified. What's the very first thing I should change this week?
-- **Evidence** answers: answers.js#P0039|R1 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R1.js#P0039 · serp on 1 points · inventory on 1 points
 
 ### A-T4-x-ozempic-what-s-alter-starting-or-switching · Publish a new page — is this drug safe, and what is gentler
 
@@ -581,7 +581,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Is Zepbound safe?
   - Zepbound wrecks my stomach — what's a gentler alternative?
   - What's a good alternative to Mounjaro that's easier on the stomach?
-- **Evidence** answers: answers.js#P0927|R7, answers.js#P0354|R2, answers.js#P0299|R2 · serp on 7 points · inventory on 7 points
+- **Evidence** answers: answers_R7.js#P0927, answers_R2.js#P0354, answers_R2.js#P0299, answers_R2.js#P0274, answers_R2.js#P0336, answers_R2.js#P0436, answers_R2.js#P0517 · serp on 7 points · inventory on 7 points
 
 ### A-T4-x-efficacy-results-weight-loss-blood-sugar-control · Publish a new page — poor blood sugar control with stubborn belly fat
 
@@ -598,7 +598,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I've got poor blood sugar control and belly fat that won't budge with diet and cardio alone. What's the missing piece?
   - i'm diabetic and heavier than i've ever been. what actually helps the blood sugar and the weight at the same time?
   - My A1c is high and I've put on weight I can't shift. I want to get the diabetes under control — could the right treatment help with both?
-- **Evidence** answers: answers.js#P0042|R1, answers.js#P0785|R6, answers.js#P0786|R6 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R1.js#P0042, answers_R6.js#P0785, answers_R6.js#P0786 · serp on 3 points · inventory on 3 points
 
 ### A-T3-ozempic-com-titration-dose-sched · Rewrite the ozempic.com page — dose-escalation myths and what higher doses really do
 
@@ -615,7 +615,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - someone online says "you should just crank it up to 4mg for max results" — is that right?
   - My metformin dose was doubled but my A1c went up to 9.4 and my doctor wants to change meds. What are the next options?
   - What hormone injections are available for someone with diabetes mellitus?
-- **Evidence** answers: answers.js#P0849|R6, answers.js#P0025|R1, answers.js#P0165|R1 · serp on 13 points · inventory on 13 points
+- **Evidence** answers: answers_R6.js#P0849, answers_R1.js#P0025, answers_R1.js#P0165, answers_R3.js#P0541, answers_R3.js#P0599, answers_R3.js#P0633, answers_R3.js#P0669, answers_R3.js#P0719, answers_R3.js#P0727, answers_R3.js#P0735, answers_R3.js#P0742, answers_R6.js#P0852, answers_R6.js#P0853 · serp on 13 points · inventory on 13 points
 
 ### A-T6-onlinedoctor-asda-co-where-inject-mounjar · Place the brand on onlinedoctor.asda.com — where to inject
 
@@ -630,7 +630,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** —
 - **Sample questions**
   - Where can I inject Mounjaro?
-- **Evidence** answers: answers.js#P0967|R7 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R7.js#P0967 · serp on 1 points · inventory on 1 points
 
 ### A-T5-x-titration-dose-sched · Fix our listing on goodrx.com — starting dose and titration schedule
 
@@ -647,7 +647,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - What is the starting dose and titration schedule for Mounjaro?
   - My A1c fell from 11 to 7 and my doctor floated weight-loss injections. If my weight doesn't move, does that mean lifelong tablets? And are the injections actually needed to get int
   - I recently was diagnosed diabetic. With 1000mg metformin my A1C went from 8.9 to 8.0. I increased to 2000mg but I'm reading that this is the max dose. I've been shooting for 130 ca
-- **Evidence** answers: answers.js#P1060|R8, answers.js#P0050|R1, answers.js#P0192|R1 · serp on 3 points · inventory on 5 points
+- **Evidence** answers: answers_R8.js#P1060, answers_R1.js#P0050, answers_R1.js#P0192, answers_R1.js#P0064, answers_R8.js#P1069 · serp on 3 points · inventory on 5 points
 
 ### A-T6-webmd-com-numbers-insulin · Place the brand on webmd.com — when diet alone stops being sustainable
 
@@ -664,7 +664,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I've kept my numbers good with diet but I'm exhausted from the effort. Is it worth asking about medication just to make it sustainable?
   - been on insulin a while and my fasting is still over 200 no matter how far up we go. does that mean insulin isnt working for me? whats next
   - Do diabetes medications actually work long-term or do they just mask the numbers?
-- **Evidence** answers: answers.js#P0038|R1, answers.js#P0139|R1, answers.js#P0016|R1 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R1.js#P0038, answers_R1.js#P0139, answers_R1.js#P0016 · serp on 3 points · inventory on 3 points
 
 ### A-T2-novo-pi-com-saxenda-efficacy-results · Expand the saxenda page — what to switch to when Saxenda stops working
 
@@ -679,7 +679,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** T5
 - **Sample questions**
   - Saxenda stopped working for me months ago — what should I switch to that actually gets results?
-- **Evidence** answers: answers.js#P0447|R2 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R2.js#P0447 · serp on 1 points · inventory on 1 points
 
 ### A-T10-motleyrice-com-now-ozempic-weight-b · Decide and displace motleyrice.com — a patient who could not tolerate Ozempic and went legal
 
@@ -696,7 +696,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I am T2 diabetic and in 2021 my Dr prescribed Ozempic to help shed some weight. After one month I couldn't cope with the side effects any longer and told my Dr I wasn't taking them
   - the thing about how once you start ozempic you're on it for life and the weight roars back if you stop is basically proven now, right? my friend sent me like three articles about i
   - She’s now offering me medication. Saxenda, ozempic, or contrave. I am terrified of taking these medications and seeing results but then stopping and finding out I’ve destroyed my t
-- **Evidence** answers: answers.js#P0734|R3, answers.js#P1109|R9, answers.js#P0479|R2 · serp on 8 points · inventory on 8 points
+- **Evidence** answers: answers_R3.js#P0734, answers_R9.js#P1109, answers_R2.js#P0479, answers_R3.js#P0557, answers_R3.js#P0728, answers_R9.js#P1095, answers_R9.js#P1107, answers_R9.js#P1111 · serp on 8 points · inventory on 8 points
 
 ### A-T6-universaldrugstore-c-type-glp-safe · Place the brand on universaldrugstore.com — long-term safety of GLP-1s for diet-controlled type 2
 
@@ -712,7 +712,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Sample questions**
   - I've kept my type 2 in the pre-diabetic range with diet alone, but keeping it up is wearing me down. I'm thinking about a GLP-1 — how safe are they to be on for years?
   - are glp-1 meds safe long term for type 2?
-- **Evidence** answers: answers.js#P0081|R1, answers.js#P0082|R1 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R1.js#P0081, answers_R1.js#P0082 · serp on 2 points · inventory on 2 points
 
 ### A-T4-x-efficacy-results-weight-loss-doubts-about-the-claims · Publish a new page — couples wanting lasting weight loss without medication
 
@@ -727,7 +727,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** —
 - **Sample questions**
   - my partner and i both want to lose about 40 lbs and keep it off. we cook at home mostly. what actually works long term?
-- **Evidence** answers: answers.js#P0117|R1 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R1.js#P0117 · serp on 1 points · inventory on 1 points
 
 ### A-T4-x-efficacy-results-weight-loss-side-effects-and-tolerance · Publish a new page — claims that the drug only works for a year
 
@@ -742,7 +742,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** T6
 - **Sample questions**
   - I read somewhere that Mounjaro is really only effective for about 1 year before people stop losing weight. It's been a miracle for me — I've been on 7.5 for a while with a steady 1
-- **Evidence** answers: answers.js#P0467|R2 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R2.js#P0467 · serp on 1 points · inventory on 1 points
 
 ### A-T4-x-efficacy-results-living-on-the-drug · Publish a new page — morning highs and plateaus after a year on treatment
 
@@ -759,7 +759,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Type 2 for a year, my morning sugars are always the highest of the day no matter what I eat at night. How do I fix the morning highs?
   - I currently weigh 93kgs (205lbs) and want to get to at least 80kgs (176lbs). I'm a 32M, fairly active but don't have time for the gym — I can walk about 60 minutes a day and own a 
   - Does Zepbound stop working for some people after a while?
-- **Evidence** answers: answers.js#P0045|R1, answers.js#P0217|R1, answers.js#P0278|R2 · serp on 6 points · inventory on 6 points
+- **Evidence** answers: answers_R1.js#P0045, answers_R1.js#P0217, answers_R2.js#P0278, answers_R2.js#P0317, answers_R2.js#P0340, answers_R2.js#P0461 · serp on 6 points · inventory on 6 points
 
 ### A-T4-x-efficacy-results-weight-loss-newly-diagnosed · Publish a new page — just diagnosed, frightened, and overweight
 
@@ -775,7 +775,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Sample questions**
   - I was just diagnosed today with type 2 diabetes and feel like my life is over. About a month ago I noticed severe dry mouth, drinking tons of water and peeing a lot at night, and I
   - I'm sedentary and overweight and want to start losing weight without doing anything drastic. Where do I begin?
-- **Evidence** answers: answers.js#P0166|R1, answers.js#P0007|R1 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R1.js#P0166, answers_R1.js#P0007 · serp on 2 points · inventory on 2 points
 
 ### A-T2-ozempic-com-ozempic-efficacy-results · Expand the diabetes medicines comparison page — Ozempic vs Mounjaro for lowering A1c
 
@@ -791,7 +791,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Sample questions**
   - Saxenda barely helped my weight — what should I move to?
   - For lowering A1c, which is more effective, Ozempic or Mounjaro?
-- **Evidence** answers: answers.js#P0253|R2, answers.js#P0275|R2 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R2.js#P0253, answers_R2.js#P0275 · serp on 2 points · inventory on 2 points
 
 ### A-T4-x-ozempic-mounjaro-dru-starting-or-switching · Publish a new page — the on-it-for-life claim and non-injection options
 
@@ -808,7 +808,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - someone online says "it's a for-life drug, you never get off it" — is that right?
   - I'm 5'5, 195 lbs and really want to hit my first goal of 155lbs for summer. I'm in a 1000 calorie deficit and work out at the gym 3 times a week; my weakness is alcohol, especially
   - my dad is 61, type 2 for years and had a stent last spring. his doctor is reviewing his meds next month — what should we be asking about for someone like him?
-- **Evidence** answers: answers.js#P0799|R6, answers.js#P0214|R1, answers.js#P0847|R6 · serp on 25 points · inventory on 25 points
+- **Evidence** answers: answers_R6.js#P0799, answers_R1.js#P0214, answers_R6.js#P0847, answers_R1.js#P0054, answers_R2.js#P0324, answers_R2.js#P0382, answers_R2.js#P0414, answers_R2.js#P0427, answers_R1.js#P0155, answers_R6.js#P0840, answers_R6.js#P0841, answers_R6.js#P0839, answers_R6.js#P0846, answers_R2.js#P0291, answers_R2.js#P0378, answers_R2.js#P0415, answers_R3.js#P0538, answers_R3.js#P0552, answers_R3.js#P0642, answers_R3.js#P0643, answers_R3.js#P0697, answers_R3.js#P0741, answers_R3.js#P0751, answers_R6.js#P0807, answers_R9.js#P1140 · serp on 25 points · inventory on 25 points
 
 ### A-T2-novomedlink-com-obes-efficacy-results · Expand the how saxenda works page — what is stronger than Saxenda
 
@@ -823,7 +823,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** T5
 - **Sample questions**
   - Saxenda stopped helping my weight — what stronger option should I move to?
-- **Evidence** answers: answers.js#P0376|R2 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R2.js#P0376 · serp on 1 points · inventory on 1 points
 
 ### A-T4-x-titration-dose-sched-living-on-the-drug · Publish a new page — hair loss and other long-term worries on treatment
 
@@ -838,7 +838,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Also addresses** —
 - **Sample questions**
   - Has anyone experienced hair loss or shedding? Does it stop after a while of being on semaglutide? I don’t plan on increasing my dose and want to stay on it long term.
-- **Evidence** answers: answers.js#P0707|R3 · serp on 1 points · inventory on 1 points
+- **Evidence** answers: answers_R3.js#P0707 · serp on 1 points · inventory on 1 points
 
 ### A-T6-resources-healthgrad-need · Place the brand on resources.healthgrades.com — which medications a person with diabetes actually needs
 
@@ -854,7 +854,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Sample questions**
   - What medications do you need if you have diabetes?
   - diagnosed type 2 and they said i might need injections eventually. is there any way to stay on pills only? i really cant do needles
-- **Evidence** answers: answers.js#P0236|R1, answers.js#P0100|R1 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R1.js#P0236, answers_R1.js#P0100 · serp on 2 points · inventory on 2 points
 
 ### A-T6-weightwatchers-com-pcos-losing-weight-l · Place the brand on weightwatchers.com — the newest weight-loss drug doctors prescribe
 
@@ -871,7 +871,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - whats the newest weight loss med docs are actually prescribing rn
   - I have PCOS and losing weight has been really hard despite trying. For people who lost weight with PCOS, what actually worked?
   - I have PCOS and losing weight has been really frustrating — the scale barely changes. For those of you who successfully lost weight with PCOS, what actually worked for you? Did you
-- **Evidence** answers: answers.js#P0146|R1, answers.js#P0092|R1, answers.js#P0246|R1 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R1.js#P0146, answers_R1.js#P0092, answers_R1.js#P0246 · serp on 3 points · inventory on 3 points
 
 ### A-T3-ozempic-com-efficacy-results · Rewrite the ozempic.com page — does it control blood sugar, and is it as bad as feared
 
@@ -888,7 +888,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I know the weight loss is great, but I wanna hear from diabetics. How is it for getting your sugar under control?
   - a1c went 11 to 7, doc offered weight-loss shots, are they necessary for remission?
   - My doctor wants me on Ozempic for my diabetes — is it as bad as people say?
-- **Evidence** answers: answers.js#P0422|R2, answers.js#P0049|R1, answers.js#P0571|R3 · serp on 18 points · inventory on 18 points
+- **Evidence** answers: answers_R2.js#P0422, answers_R1.js#P0049, answers_R3.js#P0571, answers_R3.js#P0614, answers_R3.js#P0617, answers_R3.js#P0618, answers_R3.js#P0680, answers_R3.js#P0687, answers_R3.js#P0691, answers_R3.js#P0706, answers_R3.js#P0767, answers_R3.js#P0768, answers_R6.js#P0782, answers_R6.js#P0783, answers_R6.js#P0784, answers_R6.js#P0787, answers_R6.js#P0862, answers_R6.js#P0863 · serp on 18 points · inventory on 18 points
 
 ### A-T5-x-weight-loss-without · Fix our listing on doctronic.ai — the latest type 2 treatments
 
@@ -905,7 +905,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - What's the latest treatment news on diabetes mellitus type 2?
   - newest type 2 diabetes treatments?
   - What's the latest treatment news for type 2 diabetes?
-- **Evidence** answers: answers.js#P0224|R1, answers.js#P0070|R1, answers.js#P0072|R1 · serp on 7 points · inventory on 7 points
+- **Evidence** answers: answers_R1.js#P0224, answers_R1.js#P0070, answers_R1.js#P0072, answers_R1.js#P0027, answers_R1.js#P0142, answers_R1.js#P0006, answers_R1.js#P0098 · serp on 7 points · inventory on 7 points
 
 ### A-T4-x-gi-nausea · Publish a new page — which drug causes less nausea, and how to handle it
 
@@ -922,7 +922,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Which causes less nausea, Trulicity or Mounjaro?
   - The discomfort on Mounjaro is probably worth it — what are some tips for handling the nausea and trapped gas?
   - Any alternatives to Zepbound that cause less nausea?
-- **Evidence** answers: answers.js#P0400|R2, answers.js#P0426|R2, answers.js#P0363|R2 · serp on 14 points · inventory on 14 points
+- **Evidence** answers: answers_R2.js#P0400, answers_R2.js#P0426, answers_R2.js#P0363, answers_R2.js#P0453, answers_R2.js#P0326, answers_R2.js#P0345, answers_R2.js#P0443, answers_R2.js#P0499, answers_R3.js#P0560, answers_R3.js#P0561, answers_R3.js#P0588, answers_R3.js#P0591, answers_R3.js#P0655, answers_R3.js#P0677 · serp on 14 points · inventory on 14 points
 
 ### A-T3-novomedlink-com-titration-dose-sched · Rewrite the novomedlink.com page — do higher doses actually work better
 
@@ -938,7 +938,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Sample questions**
   - a redditor said to me "0.25 is the only dose that matters, the rest is marketing" — is that right?
   - how does ozempic actually affect stronger blood sugar control at higher doses? is there real data?
-- **Evidence** answers: answers.js#P0850|R6, answers.js#P0858|R6 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R6.js#P0850, answers_R6.js#P0858 · serp on 2 points · inventory on 2 points
 
 ### A-T6-kadieleachmd-com-diet-alone · Place the brand on kadieleachmd.com — can diet alone replace metformin patients cannot tolerate
 
@@ -954,7 +954,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Sample questions**
   - I get severe side effects on metformin even at half the dose. Can type 2 be managed with diet alone instead?
   - Is the whole diabetes-drug industry overblown — could most people manage with diet alone?
-- **Evidence** answers: answers.js#P0024|R1, answers.js#P0011|R1 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R1.js#P0024, answers_R1.js#P0011 · serp on 2 points · inventory on 2 points
 
 ### A-T4-x-mounjaro-kidney-take-remaining-questions-part-1 · Publish a new page — kidney safety and non-injection alternatives (part 1)
 
@@ -971,7 +971,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Any alternative to Mounjaro that isn't a weekly injection?
   - my wife is 5 weeks pregnant and type 2, her sugars are all over the place and she's scared to eat anything. whats safe for her right now before she gets seen?
   - a patient said to me "if you have kidney issues do NOT take this drug at all" — is that right?
-- **Evidence** answers: answers.js#P0421|R2, answers.js#P0148|R1, answers.js#P0789|R6 · serp on 13 points · inventory on 13 points
+- **Evidence** answers: answers_R2.js#P0421, answers_R1.js#P0148, answers_R6.js#P0789, answers_R6.js#P0795, answers_R6.js#P0797, answers_R6.js#P0821, answers_R6.js#P0826, answers_R1.js#P0106, answers_R2.js#P0377, answers_R2.js#P0484, answers_R3.js#P0593, answers_R3.js#P0676, answers_R3.js#P0738 · serp on 13 points · inventory on 13 points
 
 ### A-T5-x-diabetes-injections · Fix our listing on taramd.com — PCOS and weight that will not move
 
@@ -988,7 +988,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - I've had PCOS for years and the weight just won't come off even though I eat well and move. What genuinely helped others in the same boat lose it?
   - pcos and cannot lose weight no matter what i try. what actually worked for you to drop the weight
   - I have PCOS, I'm trying to work on losing weight but I have such a hard time with having no energy, no motivation and crave a lot. Is there anything people are doing to help with t
-- **Evidence** answers: answers.js#P0089|R1, answers.js#P0091|R1, answers.js#P0243|R1 · serp on 17 points · inventory on 21 points
+- **Evidence** answers: answers_R1.js#P0089, answers_R1.js#P0091, answers_R1.js#P0243, answers_R8.js#P1062, answers_R1.js#P0223, answers_R8.js#P1059, answers_R1.js#P0249, answers_R1.js#P0051, answers_R1.js#P0052, answers_R1.js#P0061, answers_R1.js#P0241, answers_R1.js#P0244, answers_R1.js#P0227, answers_R1.js#P0189, answers_R1.js#P0152, answers_R1.js#P0004, answers_R1.js#P0017, answers_R1.js#P0110, answers_R1.js#P0111, answers_R8.js#P1068, answers_R8.js#P1071 · serp on 17 points · inventory on 21 points
 
 ### A-T3-x-time-weight-loss-eff-remaining-questions-part-1 · Rewrite the novomedlink.com page — fitting treatment around a chaotic schedule (part 1)
 
@@ -1005,7 +1005,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - My work schedule is chaos and I can never take medication at the same time every day. Is there a diabetes option that fits a less rigid routine?
   - I was diagnosed with PCOS nearly 10 years ago — weight has always been an issue along with facial hair and absent periods. I wanted to ask for people's experiences with weight loss
   - I really want to give semaglutide a chance. I can deal with nausea and vomiting. I am just trying to figure out how the drug works and how it could affect your thyroid so negativel
-- **Evidence** answers: answers.js#P0805|R6, answers.js#P0245|R1, answers.js#P0743|R3 · serp on 23 points · inventory on 23 points
+- **Evidence** answers: answers_R6.js#P0805, answers_R1.js#P0245, answers_R3.js#P0743, answers_R2.js#P0270, answers_R2.js#P0296, answers_R2.js#P0344, answers_R2.js#P0444, answers_R3.js#P0523, answers_R3.js#P0563, answers_R3.js#P0586, answers_R3.js#P0601, answers_R3.js#P0652, answers_R3.js#P0670, answers_R3.js#P0690, answers_R3.js#P0711, answers_R3.js#P0732, answers_R3.js#P0758, answers_R6.js#P0772, answers_R6.js#P0774, answers_R6.js#P0801, answers_R6.js#P0823, answers_R6.js#P0854, answers_R6.js#P0864 · serp on 23 points · inventory on 23 points
 
 ### A-T2-x-ozempic-nausea-zepbo · Expand the safety side effects page — switching away from what wrecks the stomach
 
@@ -1022,7 +1022,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - What's an alternative to Zepbound that causes less nausea?
   - i want a diabetes drug where the heart benefit is actually proven, not marketing. does that exist?
   - Ozempic gives me nausea, thinking of switching to Mounjaro — is it easier on the stomach?
-- **Evidence** answers: answers.js#P0405|R2, answers.js#P0836|R6, answers.js#P0288|R2 · serp on 13 points · inventory on 13 points
+- **Evidence** answers: answers_R2.js#P0405, answers_R6.js#P0836, answers_R2.js#P0288, answers_R2.js#P0300, answers_R2.js#P0327, answers_R2.js#P0332, answers_R2.js#P0450, answers_R2.js#P0510, answers_R3.js#P0577, answers_R3.js#P0581, answers_R3.js#P0699, answers_R3.js#P0744, answers_R3.js#P0756 · serp on 13 points · inventory on 13 points
 
 ### A-T4-x-side-diabetes-type-k-remaining-questions-part-2 · Publish a new page — coverage questions from safety-anxious patients (part 2)
 
@@ -1039,7 +1039,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - My doctor recommended Zepbound to me and I'm 90% sure my insurance covers it. I'm 27F, roughly 250lbs, tired of being overweight, but after reading side effect horror stories I'm v
   - I have diabetes (type 2), high blood pressure, chronic kidney disease, taking diuretic for 12 days because of chf and coughing constantly. now what?
   - an online stranger said to me "another injectable you're just stuck on for life" — is that right?
-- **Evidence** answers: answers.js#P0452|R2, answers.js#P0187|R1, answers.js#P0790|R6 · serp on 13 points · inventory on 13 points
+- **Evidence** answers: answers_R2.js#P0452, answers_R1.js#P0187, answers_R6.js#P0790, answers_R6.js#P0796, answers_R3.js#P0679, answers_R6.js#P0825, answers_R6.js#P0827, answers_R2.js#P0323, answers_R2.js#P0379, answers_R3.js#P0556, answers_R3.js#P0653, answers_R3.js#P0696, answers_R6.js#P0806 · serp on 13 points · inventory on 13 points
 
 ### A-T10-x-ozempic-resting-hear · Decide and displace legalclarity.org — the maintenance-drug-forever narrative
 
@@ -1056,7 +1056,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - a skeptical commenter said to me "money forever since it's going to be a maintenance drug for most" — is that right?
   - Any long-term safety differences between Ozempic and Wegovy?
   - Prior to starting Mounjaro my resting heart rate was 58-62, but ever since starting it's climbed to about 90. Would switching to Ozempic avoid such a drastic effect on my heart, or
-- **Evidence** answers: answers.js#P0800|R6, answers.js#P0357|R2, answers.js#P0518|R2 · serp on 16 points · inventory on 16 points
+- **Evidence** answers: answers_R6.js#P0800, answers_R2.js#P0357, answers_R2.js#P0518, answers_R3.js#P0562, answers_R3.js#P0569, answers_R3.js#P0576, answers_R3.js#P0658, answers_R3.js#P0700, answers_R3.js#P0701, answers_R6.js#P0779, answers_R9.js#P1076, answers_R9.js#P1090, answers_R9.js#P1092, answers_R9.js#P1093, answers_R9.js#P1098, answers_R9.js#P1101 · serp on 16 points · inventory on 16 points
 
 ### A-T6-x-diabetes-disease-med · Place the brand on cls.health — PCOS weight and what actually works
 
@@ -1073,7 +1073,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - pcos, weight won't budge, what actually works?
   - I'm in my 40s, obese, pre-diabetic with insulin resistance, and every medication or supplement I try triggers tachycardia because of my POTS. Is there something I'm overlooking?
   - My A1C has been 6.7 for 6 months, after being in the 6.0 range for a year before. I also have high lipid numbers and just got a call that I have fatty liver (moderate to severe) fr
-- **Evidence** answers: answers.js#P0090|R1, answers.js#P0053|R1, answers.js#P0160|R1 · serp on 9 points · inventory on 9 points
+- **Evidence** answers: answers_R1.js#P0090, answers_R1.js#P0053, answers_R1.js#P0160, answers_R1.js#P0067, answers_R1.js#P0157, answers_R1.js#P0228, answers_R1.js#P0153, answers_R1.js#P0014, answers_R1.js#P0103 · serp on 9 points · inventory on 9 points
 
 ### A-T3-x-effects-actually-wei-remaining-questions-part-2 · Rewrite the novomedlink.com page — long-term effects that worry patients (part 2)
 
@@ -1090,7 +1090,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Saxenda's long-term effects worry me — what's a safer option to switch to?
   - type 2 with a heart attack 2 years ago, currently just on metformin and a statin. i feel like i'm not doing enough — what actually moves the needle?
   - honestly is all this hype around the weight loss shots real or is it just marketing?
-- **Evidence** answers: answers.js#P0417|R2, answers.js#P0845|R6, answers.js#P0109|R1 · serp on 22 points · inventory on 22 points
+- **Evidence** answers: answers_R2.js#P0417, answers_R6.js#P0845, answers_R1.js#P0109, answers_R2.js#P0295, answers_R2.js#P0333, answers_R2.js#P0353, answers_R2.js#P0519, answers_R3.js#P0531, answers_R3.js#P0566, answers_R3.js#P0600, answers_R3.js#P0603, answers_R3.js#P0661, answers_R3.js#P0681, answers_R3.js#P0703, answers_R3.js#P0730, answers_R3.js#P0745, answers_R3.js#P0765, answers_R6.js#P0773, answers_R6.js#P0777, answers_R6.js#P0822, answers_R6.js#P0828, answers_R6.js#P0857 · serp on 22 points · inventory on 22 points
 
 ### A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1 · Decide and displace drugwatch.com — do these drugs wreck your organs (part 1)
 
@@ -1107,7 +1107,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - everyone's on these diabetes meds now, but do they wreck your organs down the line? feels too good to be true
   - Which drops weight faster, Ozempic or Mounjaro?
   - I'm trying to decide between Ozempic and Mounjaro mainly for weight loss — which tends to work better?
-- **Evidence** answers: answers.js#P0107|R1, answers.js#P0264|R2, answers.js#P0273|R2 · serp on 17 points · inventory on 17 points
+- **Evidence** answers: answers_R1.js#P0107, answers_R2.js#P0264, answers_R2.js#P0273, answers_R2.js#P0289, answers_R2.js#P0346, answers_R2.js#P0351, answers_R2.js#P0367, answers_R2.js#P0387, answers_R2.js#P0393, answers_R2.js#P0438, answers_R2.js#P0449, answers_R2.js#P0486, answers_R2.js#P0488, answers_R2.js#P0516, answers_R3.js#P0580, answers_R3.js#P0673, answers_R3.js#P0708 · serp on 17 points · inventory on 17 points
 
 ### A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2 · Decide and displace drugwatch.com — Ozempic vs Mounjaro, which people prefer (part 2)
 
@@ -1124,7 +1124,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - Torn between Ozempic and Mounjaro for weight loss — which do people prefer?
   - If I hate needles, is Rybelsus a real alternative to Ozempic or is the daily pill a hassle?
   - Switching from Ozempic injections to Rybelsus pills — worth it?
-- **Evidence** answers: answers.js#P0262|R2, answers.js#P0269|R2, answers.js#P0287|R2 · serp on 17 points · inventory on 17 points
+- **Evidence** answers: answers_R2.js#P0262, answers_R2.js#P0269, answers_R2.js#P0287, answers_R2.js#P0321, answers_R2.js#P0347, answers_R2.js#P0365, answers_R2.js#P0384, answers_R2.js#P0392, answers_R2.js#P0431, answers_R2.js#P0448, answers_R2.js#P0451, answers_R2.js#P0487, answers_R2.js#P0502, answers_R3.js#P0547, answers_R3.js#P0616, answers_R3.js#P0698, answers_R9.js#P1121 · serp on 17 points · inventory on 17 points
 
 ### B-T8-serious-risks-contraindications · Open a regulatory dossier — serious risks and contraindications
 
@@ -1141,7 +1141,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - anyone with a family history of medullary thyroid cancer been put on ozempic? my cousin had it and now im not sure i even qualify
   - i had anaphylaxis on ozempic last month — can i try it again at a lower dose?
   - anyone restart ozempic after a bad allergic reaction? mine was pretty serious and im wondering if its safe to go again
-- **Evidence** answers: answers.js#P1144|R4, answers.js#P1148|R4, answers.js#P1151|R4 · serp on 132 points · inventory on 132 points
+- **Evidence** answers: answers_R4.js#P1144, answers_R4.js#P1148, answers_R4.js#P1151, answers_R4.js#P1158, answers_R4.js#P1172, answers_R4.js#P1174, answers_R4.js#P1184, answers_R4.js#P1185, answers_R4.js#P1187, answers_R4.js#P1188, answers_R4.js#P1190, answers_R4.js#P1191, answers_R4.js#P1202, answers_R4.js#P1204, answers_R4.js#P1205, answers_R4.js#P1239, answers_R4.js#P1240, answers_R4.js#P1241, answers_R4.js#P1257, answers_R4.js#P1258, answers_R4.js#P1265, answers_R4.js#P1266, answers_R4.js#P1285, answers_R4.js#P1294, answers_R4.js#P1297, answers_R4.js#P1303, answers_R4.js#P1305, answers_R5.js#P1353, answers_R5.js#P1416, answers_R4.js#P1141, answers_R4.js#P1142, answers_R4.js#P1143, answers_R4.js#P1145, answers_R4.js#P1146, answers_R4.js#P1147, answers_R4.js#P1149, answers_R4.js#P1150, answers_R4.js#P1154, answers_R4.js#P1156, answers_R4.js#P1157, answers_R4.js#P1160, answers_R4.js#P1164, answers_R4.js#P1165, answers_R4.js#P1166, answers_R4.js#P1169, answers_R4.js#P1171, answers_R4.js#P1173, answers_R4.js#P1178, answers_R4.js#P1181, answers_R4.js#P1186, answers_R4.js#P1189, answers_R4.js#P1223, answers_R4.js#P1225, answers_R4.js#P1227, answers_R4.js#P1236, answers_R4.js#P1238, answers_R4.js#P1262, answers_R4.js#P1263, answers_R4.js#P1267, answers_R4.js#P1281, answers_R4.js#P1282, answers_R4.js#P1283, answers_R4.js#P1284, answers_R4.js#P1286, answers_R4.js#P1287, answers_R4.js#P1288, answers_R4.js#P1295, answers_R4.js#P1296, answers_R4.js#P1298, answers_R4.js#P1319, answers_R5.js#P1330, answers_R5.js#P1332, answers_R5.js#P1334, answers_R5.js#P1338, answers_R5.js#P1342, answers_R5.js#P1343, answers_R5.js#P1344, answers_R5.js#P1345, answers_R5.js#P1346, answers_R5.js#P1347, answers_R5.js#P1348, answers_R5.js#P1349, answers_R5.js#P1350, answers_R5.js#P1351, answers_R5.js#P1352, answers_R5.js#P1354, answers_R5.js#P1355, answers_R5.js#P1357, answers_R5.js#P1358, answers_R5.js#P1359, answers_R5.js#P1360, answers_R5.js#P1361, answers_R5.js#P1362, answers_R5.js#P1363, answers_R5.js#P1364, answers_R5.js#P1365, answers_R5.js#P1366, answers_R5.js#P1367, answers_R5.js#P1372, answers_R5.js#P1377, answers_R5.js#P1378, answers_R5.js#P1379, answers_R5.js#P1380, answers_R5.js#P1381, answers_R5.js#P1382, answers_R5.js#P1383, answers_R5.js#P1384, answers_R5.js#P1385, answers_R5.js#P1386, answers_R5.js#P1387, answers_R5.js#P1388, answers_R5.js#P1389, answers_R5.js#P1390, answers_R5.js#P1391, answers_R5.js#P1392, answers_R5.js#P1393, answers_R5.js#P1394, answers_R5.js#P1395, answers_R5.js#P1408, answers_R5.js#P1409, answers_R5.js#P1410, answers_R5.js#P1411, answers_R5.js#P1412, answers_R5.js#P1413, answers_R5.js#P1414, answers_R5.js#P1415, answers_R5.js#P1417, answers_R5.js#P1418, answers_R5.js#P1419, answers_R5.js#P1420, answers_R5.js#P1421, answers_R5.js#P1422 · serp on 132 points · inventory on 132 points
 
 ### B-T7-serious-risks-contraindications · Draft label-clarity content — serious risks and contraindications
 
@@ -1158,7 +1158,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - anyone with a family history of medullary thyroid cancer been put on ozempic? my cousin had it and now im not sure i even qualify
   - i had anaphylaxis on ozempic last month — can i try it again at a lower dose?
   - anyone restart ozempic after a bad allergic reaction? mine was pretty serious and im wondering if its safe to go again
-- **Evidence** answers: answers.js#P1144|R4, answers.js#P1148|R4, answers.js#P1151|R4 · serp on 68 points · inventory on 68 points
+- **Evidence** answers: answers_R4.js#P1144, answers_R4.js#P1148, answers_R4.js#P1151, answers_R4.js#P1158, answers_R4.js#P1172, answers_R4.js#P1174, answers_R4.js#P1184, answers_R4.js#P1185, answers_R4.js#P1187, answers_R4.js#P1188, answers_R4.js#P1190, answers_R4.js#P1191, answers_R4.js#P1202, answers_R4.js#P1204, answers_R4.js#P1205, answers_R4.js#P1239, answers_R4.js#P1240, answers_R4.js#P1241, answers_R4.js#P1257, answers_R4.js#P1258, answers_R4.js#P1265, answers_R4.js#P1266, answers_R4.js#P1285, answers_R4.js#P1294, answers_R4.js#P1297, answers_R4.js#P1303, answers_R4.js#P1305, answers_R4.js#P1141, answers_R4.js#P1142, answers_R4.js#P1143, answers_R4.js#P1145, answers_R4.js#P1146, answers_R4.js#P1147, answers_R4.js#P1149, answers_R4.js#P1150, answers_R4.js#P1154, answers_R4.js#P1156, answers_R4.js#P1157, answers_R4.js#P1160, answers_R4.js#P1164, answers_R4.js#P1165, answers_R4.js#P1166, answers_R4.js#P1169, answers_R4.js#P1171, answers_R4.js#P1173, answers_R4.js#P1178, answers_R4.js#P1181, answers_R4.js#P1186, answers_R4.js#P1189, answers_R4.js#P1223, answers_R4.js#P1225, answers_R4.js#P1227, answers_R4.js#P1236, answers_R4.js#P1238, answers_R4.js#P1262, answers_R4.js#P1263, answers_R4.js#P1267, answers_R4.js#P1281, answers_R4.js#P1282, answers_R4.js#P1283, answers_R4.js#P1284, answers_R4.js#P1286, answers_R4.js#P1287, answers_R4.js#P1288, answers_R4.js#P1295, answers_R4.js#P1296, answers_R4.js#P1298, answers_R4.js#P1319 · serp on 68 points · inventory on 68 points
 
 ### B-T8-indications-eligibility · Open a regulatory dossier — who the drug is approved for
 
@@ -1175,7 +1175,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - What's the newest weight-loss treatment a doctor can prescribe?
   - any recent news on new type 2 diabetes treatments?
   - Do most people stay on Ozempic long term or eventually stop?
-- **Evidence** answers: answers.js#P0008|R1, answers.js#P0145|R1, answers.js#P0620|R3 · serp on 60 points · inventory on 60 points
+- **Evidence** answers: answers_R1.js#P0008, answers_R1.js#P0145, answers_R3.js#P0620, answers_R4.js#P1215, answers_R4.js#P1216, answers_R4.js#P1220, answers_R4.js#P1280, answers_R5.js#P1321, answers_R5.js#P1322, answers_R5.js#P1323, answers_R5.js#P1325, answers_R5.js#P1326, answers_R5.js#P1327, answers_R5.js#P1328, answers_R5.js#P1333, answers_R5.js#P1337, answers_R5.js#P1339, answers_R5.js#P1371, answers_R5.js#P1374, answers_R5.js#P1375, answers_R5.js#P1401, answers_R5.js#P1402, answers_R5.js#P1403, answers_R5.js#P1405, answers_R1.js#P0071, answers_R1.js#P0144, answers_R3.js#P0524, answers_R3.js#P0529, answers_R3.js#P0543, answers_R3.js#P0555, answers_R3.js#P0602, answers_R3.js#P0604, answers_R3.js#P0605, answers_R3.js#P0621, answers_R3.js#P0649, answers_R3.js#P0654, answers_R3.js#P0717, answers_R4.js#P1208, answers_R4.js#P1214, answers_R4.js#P1217, answers_R4.js#P1218, answers_R4.js#P1312, answers_R4.js#P1316, answers_R5.js#P1324, answers_R5.js#P1329, answers_R5.js#P1331, answers_R5.js#P1336, answers_R5.js#P1340, answers_R5.js#P1341, answers_R5.js#P1356, answers_R5.js#P1368, answers_R5.js#P1369, answers_R5.js#P1370, answers_R5.js#P1373, answers_R5.js#P1376, answers_R5.js#P1396, answers_R5.js#P1397, answers_R5.js#P1404, answers_R5.js#P1406, answers_R5.js#P1407 · serp on 60 points · inventory on 60 points
 
 ### B-T9-serious-risks-contraindications · File provider error reports — serious risks and contraindications
 
@@ -1192,7 +1192,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - anyone with a family history of medullary thyroid cancer been put on ozempic? my cousin had it and now im not sure i even qualify
   - i had anaphylaxis on ozempic last month — can i try it again at a lower dose?
   - anyone restart ozempic after a bad allergic reaction? mine was pretty serious and im wondering if its safe to go again
-- **Evidence** answers: answers.js#P1144|R4, answers.js#P1148|R4, answers.js#P1151|R4 · serp on 21 points · inventory on 21 points
+- **Evidence** answers: answers_R4.js#P1144, answers_R4.js#P1148, answers_R4.js#P1151, answers_R4.js#P1158, answers_R4.js#P1172, answers_R4.js#P1174, answers_R4.js#P1184, answers_R4.js#P1185, answers_R4.js#P1187, answers_R4.js#P1188, answers_R4.js#P1190, answers_R4.js#P1191, answers_R4.js#P1202, answers_R4.js#P1204, answers_R4.js#P1205, answers_R4.js#P1265, answers_R4.js#P1285, answers_R4.js#P1294, answers_R4.js#P1297, answers_R4.js#P1303, answers_R4.js#P1305 · serp on 21 points · inventory on 21 points
 
 ### B-T8-dosing-administration · Open a regulatory dossier — dosing and administration
 
@@ -1209,7 +1209,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - can i just start ozempic at 1mg to lose weight faster instead of 0.25?
   - everyone on tiktok says the 0.25 ozempic dose is useless and you should skip to 1 or 2mg right away — should i just do that
   - anyone titrate ozempic up faster than the 4 week thing? my 0.25 isnt doing much and i wanna speed it up
-- **Evidence** answers: answers.js#P1193|R4, answers.js#P1195|R4, answers.js#P1196|R4 · serp on 14 points · inventory on 14 points
+- **Evidence** answers: answers_R4.js#P1193, answers_R4.js#P1195, answers_R4.js#P1196, answers_R4.js#P1199, answers_R4.js#P1306, answers_R4.js#P1308, answers_R4.js#P1194, answers_R4.js#P1197, answers_R4.js#P1198, answers_R4.js#P1307, answers_R5.js#P1335, answers_R5.js#P1398, answers_R5.js#P1399, answers_R5.js#P1400 · serp on 14 points · inventory on 14 points
 
 ### B-T7-dosing-administration · Draft label-clarity content — dosing and administration
 
@@ -1226,7 +1226,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - can i just start ozempic at 1mg to lose weight faster instead of 0.25?
   - everyone on tiktok says the 0.25 ozempic dose is useless and you should skip to 1 or 2mg right away — should i just do that
   - anyone titrate ozempic up faster than the 4 week thing? my 0.25 isnt doing much and i wanna speed it up
-- **Evidence** answers: answers.js#P1193|R4, answers.js#P1195|R4, answers.js#P1196|R4 · serp on 10 points · inventory on 10 points
+- **Evidence** answers: answers_R4.js#P1193, answers_R4.js#P1195, answers_R4.js#P1196, answers_R4.js#P1199, answers_R4.js#P1306, answers_R4.js#P1308, answers_R4.js#P1194, answers_R4.js#P1197, answers_R4.js#P1198, answers_R4.js#P1307 · serp on 10 points · inventory on 10 points
 
 ### B-T9-dosing-administration · File provider error reports — dosing and administration
 
@@ -1243,7 +1243,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - can i just start ozempic at 1mg to lose weight faster instead of 0.25?
   - everyone on tiktok says the 0.25 ozempic dose is useless and you should skip to 1 or 2mg right away — should i just do that
   - anyone titrate ozempic up faster than the 4 week thing? my 0.25 isnt doing much and i wanna speed it up
-- **Evidence** answers: answers.js#P1193|R4, answers.js#P1195|R4, answers.js#P1196|R4 · serp on 6 points · inventory on 6 points
+- **Evidence** answers: answers_R4.js#P1193, answers_R4.js#P1195, answers_R4.js#P1196, answers_R4.js#P1199, answers_R4.js#P1306, answers_R4.js#P1308 · serp on 6 points · inventory on 6 points
 
 ### B-T7-indications-eligibility · Draft label-clarity content — who the drug is approved for
 
@@ -1260,7 +1260,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - my daughter is 14, obese and prediabetic. her pediatrician mentioned options — is ozempic something that's established for someone her age?
   - tiktok teens are all on ozempic — my 16yo wants it for weight, is that actually studied and safe for kids??
   - what does the evidence say about ozempic in children and teens?
-- **Evidence** answers: answers.js#P1215|R4, answers.js#P1216|R4, answers.js#P1220|R4 · serp on 10 points · inventory on 10 points
+- **Evidence** answers: answers_R4.js#P1215, answers_R4.js#P1216, answers_R4.js#P1220, answers_R4.js#P1280, answers_R4.js#P1208, answers_R4.js#P1214, answers_R4.js#P1217, answers_R4.js#P1218, answers_R4.js#P1312, answers_R4.js#P1316 · serp on 10 points · inventory on 10 points
 
 ### B-T9-indications-eligibility · File provider error reports — who the drug is approved for
 
@@ -1277,7 +1277,7 @@ I am not concerned about insurance or how to finance this—I have already resea
   - my daughter is 14, obese and prediabetic. her pediatrician mentioned options — is ozempic something that's established for someone her age?
   - tiktok teens are all on ozempic — my 16yo wants it for weight, is that actually studied and safe for kids??
   - what does the evidence say about ozempic in children and teens?
-- **Evidence** answers: answers.js#P1215|R4, answers.js#P1216|R4, answers.js#P1220|R4 · serp on 4 points · inventory on 4 points
+- **Evidence** answers: answers_R4.js#P1215, answers_R4.js#P1216, answers_R4.js#P1220, answers_R4.js#P1280 · serp on 4 points · inventory on 4 points
 
 ### C-T12-x-coupons-savings · Decide: accept the floor or fix the program — Coupons & savings
 
@@ -1296,7 +1296,7 @@ I am not concerned about insurance or how to finance this—I have already resea
 Anybody had exp
   - Is there a coupon card for Zepbound?
   - Does Aetna cover Zepbound?
-- **Evidence** answers: answers.js#P0494|R2, answers.js#P0906|R7, answers.js#P0913|R7 · serp on 15 points · inventory on 15 points
+- **Evidence** answers: answers_R2.js#P0494, answers_R7.js#P0906, answers_R7.js#P0913, answers_R7.js#P0960, answers_R7.js#P0966, answers_R7.js#P0971, answers_R7.js#P0998, answers_R7.js#P1051, answers_R7.js#P1053, answers_R7.js#P1055, answers_R2.js#P0459, answers_R3.js#P0624, answers_R3.js#P0625, answers_R3.js#P0636, answers_R3.js#P0675 · serp on 15 points · inventory on 15 points
 
 ### C-T12-x-efficacy-results · Decide: accept the floor or fix the program — Efficacy & results
 
@@ -1313,7 +1313,7 @@ Anybody had exp
   - My dad was just diagnosed and we don't cook. What are easy foods to start with for a diabetic?
   - New type 2 diagnosis — are there apps or resources people found genuinely useful for getting started?
   - newly diagnosed type 2, where do i start?
-- **Evidence** answers: answers.js#P0037|R1, answers.js#P0040|R1, answers.js#P0086|R1 · serp on 53 points · inventory on 53 points
+- **Evidence** answers: answers_R1.js#P0037, answers_R1.js#P0040, answers_R1.js#P0086, answers_R1.js#P0126, answers_R1.js#P0128, answers_R1.js#P0129, answers_R1.js#P0131, answers_R1.js#P0136, answers_R1.js#P0163, answers_R1.js#P0164, answers_R1.js#P0173, answers_R1.js#P0183, answers_R1.js#P0202, answers_R1.js#P0225, answers_R7.js#P1023, answers_R7.js#P1039, answers_R1.js#P0032, answers_R1.js#P0197, answers_R1.js#P0068, answers_R1.js#P0186, answers_R1.js#P0169, answers_R1.js#P0172, answers_R1.js#P0221, answers_R1.js#P0234, answers_R1.js#P0085, answers_R1.js#P0087, answers_R1.js#P0088, answers_R1.js#P0132, answers_R1.js#P0222, answers_R1.js#P0215, answers_R1.js#P0043, answers_R1.js#P0093, answers_R1.js#P0094, answers_R1.js#P0095, answers_R1.js#P0118, answers_R1.js#P0124, answers_R1.js#P0127, answers_R1.js#P0162, answers_R1.js#P0171, answers_R1.js#P0190, answers_R1.js#P0231, answers_R1.js#P0232, answers_R1.js#P0047, answers_R1.js#P0096, answers_R1.js#P0121, answers_R1.js#P0130, answers_R1.js#P0181, answers_R1.js#P0220, answers_R1.js#P0065, answers_R1.js#P0170, answers_R1.js#P0002, answers_R1.js#P0010, answers_R1.js#P0012 · serp on 53 points · inventory on 53 points
 
 ### C-T12-x-insurance-coverage · Decide: accept the floor or fix the program — Insurance & coverage
 
@@ -1330,7 +1330,7 @@ Anybody had exp
   - Got blood work done for life insurance. my levels look like i have pre diabetes. what can i do to either lower my levels or prevent full blown diabete?
   - I changed jobs and my new insurance doesn't cover Victoza, so my doctor is trying to get Trulicity approved. How do Victoza and Trulicity compare?
   - I was just curious what it would cost for a month supply of Mounjaro in the United States as of July 2026 without insurance? When I look it up online it says about $1300 but I am n
-- **Evidence** answers: answers.js#P0239|R1, answers.js#P0490|R2, answers.js#P0506|R2 · serp on 39 points · inventory on 39 points
+- **Evidence** answers: answers_R1.js#P0239, answers_R2.js#P0490, answers_R2.js#P0506, answers_R7.js#P0892, answers_R7.js#P0909, answers_R7.js#P0930, answers_R7.js#P0932, answers_R7.js#P0937, answers_R7.js#P0983, answers_R7.js#P0988, answers_R7.js#P1024, answers_R1.js#P0058, answers_R1.js#P0248, answers_R1.js#P0059, answers_R1.js#P0203, answers_R1.js#P0060, answers_R1.js#P0057, answers_R1.js#P0154, answers_R1.js#P0207, answers_R1.js#P0235, answers_R2.js#P0460, answers_R1.js#P0021, answers_R1.js#P0147, answers_R2.js#P0503, answers_R2.js#P0509, answers_R2.js#P0511, answers_R3.js#P0548, answers_R3.js#P0549, answers_R3.js#P0551, answers_R3.js#P0634, answers_R3.js#P0637, answers_R3.js#P0638, answers_R3.js#P0639, answers_R3.js#P0692, answers_R3.js#P0694, answers_R3.js#P0712, answers_R3.js#P0714, answers_R3.js#P0748, answers_R3.js#P0750 · serp on 39 points · inventory on 39 points
 
 ### C-T12-x-cost-price · Decide: accept the floor or fix the program — Cost & price
 
@@ -1347,7 +1347,7 @@ Anybody had exp
   - I'll be on this medicine for life and want to cut my cost from $450 a month. Is switching from Zepbound to a compounded version worth it, and how does it go?
   - How much weight can you lose on Zepbound in 3 months?
   - What is the generic name for Zepbound?
-- **Evidence** answers: answers.js#P0457|R2, answers.js#P0905|R7, answers.js#P0911|R7 · serp on 31 points · inventory on 31 points
+- **Evidence** answers: answers_R2.js#P0457, answers_R7.js#P0905, answers_R7.js#P0911, answers_R7.js#P0915, answers_R7.js#P0918, answers_R7.js#P0956, answers_R7.js#P0989, answers_R1.js#P0242, answers_R7.js#P0887, answers_R1.js#P0176, answers_R3.js#P0702, answers_R2.js#P0458, answers_R2.js#P0491, answers_R2.js#P0339, answers_R2.js#P0492, answers_R2.js#P0255, answers_R2.js#P0409, answers_R2.js#P0493, answers_R3.js#P0683, answers_R1.js#P0108, answers_R2.js#P0271, answers_R2.js#P0283, answers_R2.js#P0309, answers_R2.js#P0512, answers_R3.js#P0535, answers_R3.js#P0536, answers_R3.js#P0594, answers_R3.js#P0596, answers_R3.js#P0597, answers_R3.js#P0598, answers_R3.js#P0640 · serp on 31 points · inventory on 31 points
 
 ### C-T1-x-held-positions · Monitor held positions — held positions
 
@@ -1364,7 +1364,7 @@ Anybody had exp
   - Does Mounjaro come in a skin patch form?
   - Does Mounjaro cause hair loss?
   - How does Mounjaro work?
-- **Evidence** answers: answers.js#P1057|R8, answers.js#P0950|R7, answers.js#P0999|R7 · serp on 319 points · inventory on 320 points
+- **Evidence** answers: answers_R8.js#P1057, answers_R7.js#P0950, answers_R7.js#P0999, answers_R7.js#P1045, answers_R7.js#P0925, answers_R7.js#P0977, answers_R7.js#P1036, answers_R6.js#P0816, answers_R2.js#P0265, answers_R2.js#P0272, answers_R2.js#P0280, answers_R2.js#P0282, answers_R2.js#P0286, answers_R2.js#P0292, answers_R2.js#P0293, answers_R2.js#P0310, answers_R2.js#P0311, answers_R2.js#P0312, answers_R2.js#P0313, answers_R2.js#P0318, answers_R2.js#P0319, answers_R2.js#P0328, answers_R2.js#P0331, answers_R2.js#P0356, answers_R2.js#P0358, answers_R2.js#P0360, answers_R2.js#P0361, answers_R2.js#P0362, answers_R2.js#P0368, answers_R2.js#P0371, answers_R2.js#P0372, answers_R2.js#P0373, answers_R2.js#P0374, answers_R2.js#P0380, answers_R2.js#P0388, answers_R2.js#P0389, answers_R2.js#P0391, answers_R2.js#P0394, answers_R2.js#P0395, answers_R2.js#P0411, answers_R2.js#P0419, answers_R2.js#P0441, answers_R2.js#P0445, answers_R2.js#P0480, answers_R2.js#P0481, answers_R2.js#P0482, answers_R2.js#P0483, answers_R2.js#P0507, answers_R2.js#P0508, answers_R3.js#P0524, answers_R3.js#P0525, answers_R3.js#P0526, answers_R3.js#P0528, answers_R3.js#P0529, answers_R3.js#P0530, answers_R3.js#P0532, answers_R3.js#P0533, answers_R3.js#P0534, answers_R3.js#P0537, answers_R3.js#P0539, answers_R3.js#P0540, answers_R3.js#P0542, answers_R3.js#P0543, answers_R3.js#P0544, answers_R3.js#P0545, answers_R3.js#P0550, answers_R3.js#P0553, answers_R3.js#P0554, answers_R3.js#P0555, answers_R3.js#P0558, answers_R3.js#P0559, answers_R3.js#P0567, answers_R3.js#P0568, answers_R3.js#P0570, answers_R3.js#P0572, answers_R3.js#P0573, answers_R3.js#P0575, answers_R3.js#P0583, answers_R3.js#P0584, answers_R3.js#P0585, answers_R3.js#P0587, answers_R3.js#P0589, answers_R3.js#P0590, answers_R3.js#P0592, answers_R3.js#P0595, answers_R3.js#P0602, answers_R3.js#P0604, answers_R3.js#P0605, answers_R3.js#P0606, answers_R3.js#P0607, answers_R3.js#P0608, answers_R3.js#P0609, answers_R3.js#P0611, answers_R3.js#P0612, answers_R3.js#P0615, answers_R3.js#P0619, answers_R3.js#P0620, answers_R3.js#P0621, answers_R3.js#P0622, answers_R3.js#P0623, answers_R3.js#P0626, answers_R3.js#P0627, answers_R3.js#P0628, answers_R3.js#P0629, answers_R3.js#P0630, answers_R3.js#P0631, answers_R3.js#P0632, answers_R3.js#P0635, answers_R3.js#P0641, answers_R3.js#P0644, answers_R3.js#P0645, answers_R3.js#P0646, answers_R3.js#P0647, answers_R3.js#P0648, answers_R3.js#P0649, answers_R3.js#P0650, answers_R3.js#P0651, answers_R3.js#P0654, answers_R3.js#P0656, answers_R3.js#P0657, answers_R3.js#P0659, answers_R3.js#P0663, answers_R3.js#P0664, answers_R3.js#P0665, answers_R3.js#P0667, answers_R3.js#P0668, answers_R3.js#P0672, answers_R3.js#P0674, answers_R3.js#P0684, answers_R3.js#P0685, answers_R3.js#P0689, answers_R3.js#P0693, answers_R3.js#P0695, answers_R3.js#P0715, answers_R3.js#P0716, answers_R3.js#P0717, answers_R3.js#P0718, answers_R3.js#P0720, answers_R3.js#P0721, answers_R3.js#P0722, answers_R3.js#P0723, answers_R3.js#P0724, answers_R3.js#P0725, answers_R3.js#P0726, answers_R3.js#P0729, answers_R3.js#P0731, answers_R3.js#P0733, answers_R3.js#P0736, answers_R3.js#P0737, answers_R3.js#P0740, answers_R3.js#P0746, answers_R3.js#P0749, answers_R3.js#P0752, answers_R3.js#P0753, answers_R3.js#P0754, answers_R3.js#P0755, answers_R3.js#P0757, answers_R3.js#P0761, answers_R3.js#P0766, answers_R6.js#P0791, answers_R6.js#P0792, answers_R6.js#P0793, answers_R6.js#P0794, answers_R6.js#P0798, answers_R6.js#P0802, answers_R6.js#P0803, answers_R6.js#P0804, answers_R6.js#P0808, answers_R6.js#P0811, answers_R6.js#P0812, answers_R6.js#P0813, answers_R6.js#P0814, answers_R6.js#P0818, answers_R6.js#P0819, answers_R6.js#P0820, answers_R6.js#P0824, answers_R6.js#P0831, answers_R6.js#P0833, answers_R6.js#P0834, answers_R6.js#P0837, answers_R6.js#P0842, answers_R6.js#P0843, answers_R6.js#P0844, answers_R6.js#P0848, answers_R6.js#P0868, answers_R6.js#P0870, answers_R6.js#P0872, answers_R6.js#P0873, answers_R6.js#P0874, answers_R6.js#P0878, answers_R7.js#P0880, answers_R7.js#P0881, answers_R7.js#P0883, answers_R7.js#P0884, answers_R7.js#P0886, answers_R7.js#P0888, answers_R7.js#P0895, answers_R7.js#P0896, answers_R7.js#P0899, answers_R7.js#P0901, answers_R7.js#P0902, answers_R7.js#P0903, answers_R7.js#P0904, answers_R7.js#P0907, answers_R7.js#P0914, answers_R7.js#P0917, answers_R7.js#P0921, answers_R7.js#P0922, answers_R7.js#P0923, answers_R7.js#P0926, answers_R7.js#P0929, answers_R7.js#P0936, answers_R7.js#P0940, answers_R7.js#P0942, answers_R7.js#P0948, answers_R7.js#P0949, answers_R7.js#P0952, answers_R7.js#P0953, answers_R7.js#P0961, answers_R7.js#P0962, answers_R7.js#P0964, answers_R7.js#P0968, answers_R7.js#P0969, answers_R7.js#P0972, answers_R7.js#P0973, answers_R7.js#P0974, answers_R7.js#P0975, answers_R7.js#P0976, answers_R7.js#P0978, answers_R7.js#P0979, answers_R7.js#P0982, answers_R7.js#P0984, answers_R7.js#P0985, answers_R7.js#P0990, answers_R7.js#P0991, answers_R7.js#P0993, answers_R7.js#P0996, answers_R7.js#P0997, answers_R7.js#P1000, answers_R7.js#P1001, answers_R7.js#P1002, answers_R7.js#P1003, answers_R7.js#P1004, answers_R7.js#P1007, answers_R7.js#P1010, answers_R7.js#P1012, answers_R7.js#P1014, answers_R7.js#P1016, answers_R7.js#P1017, answers_R7.js#P1018, answers_R7.js#P1019, answers_R7.js#P1020, answers_R7.js#P1021, answers_R7.js#P1028, answers_R7.js#P1031, answers_R7.js#P1032, answers_R7.js#P1033, answers_R7.js#P1035, answers_R7.js#P1038, answers_R7.js#P1040, answers_R7.js#P1041, answers_R7.js#P1043, answers_R7.js#P1046, answers_R7.js#P1047, answers_R7.js#P1048, answers_R7.js#P1049, answers_R7.js#P1050, answers_R7.js#P1056, answers_R9.js#P1075, answers_R9.js#P1077, answers_R9.js#P1078, answers_R9.js#P1080, answers_R9.js#P1081, answers_R9.js#P1082, answers_R9.js#P1083, answers_R9.js#P1084, answers_R9.js#P1086, answers_R9.js#P1087, answers_R9.js#P1088, answers_R9.js#P1089, answers_R9.js#P1091, answers_R9.js#P1094, answers_R9.js#P1096, answers_R9.js#P1097, answers_R9.js#P1099, answers_R9.js#P1100, answers_R9.js#P1102, answers_R9.js#P1103, answers_R9.js#P1104, answers_R9.js#P1105, answers_R9.js#P1106, answers_R9.js#P1108, answers_R9.js#P1110, answers_R9.js#P1112, answers_R9.js#P1113, answers_R9.js#P1114, answers_R9.js#P1115, answers_R9.js#P1116, answers_R9.js#P1117, answers_R9.js#P1118, answers_R9.js#P1119, answers_R9.js#P1120, answers_R9.js#P1122, answers_R9.js#P1123, answers_R9.js#P1124, answers_R9.js#P1125, answers_R9.js#P1126, answers_R9.js#P1127, answers_R9.js#P1128, answers_R9.js#P1129, answers_R9.js#P1130, answers_R9.js#P1131, answers_R9.js#P1132, answers_R9.js#P1133, answers_R9.js#P1134, answers_R9.js#P1135, answers_R9.js#P1136, answers_R9.js#P1137, answers_R9.js#P1138, answers_R9.js#P1139 · serp on 319 points · inventory on 320 points
 
 ### C-T12-x-titration-dose-sched · Decide: accept the floor or fix the program — Titration & dose schedule
 
@@ -1381,7 +1381,7 @@ Anybody had exp
   - I'm 55 and my fasting glucose is creeping into the prediabetic range. What lifestyle changes actually move the needle?
   - They prescribed me metformin (1000 mg) as well as insulin (10 units, increasing until my morning blood sugars are in target range). My A1c is pretty bad and I'm pretty scared of ne
   - I eat a whole food plant-based diet, about 1000-1200 calories a day. I cut my metformin in quarters so I take 125 mg a day and can't get past that amount because of the constant GI
-- **Evidence** answers: answers.js#P0048|R1, answers.js#P0177|R1, answers.js#P0206|R1 · serp on 6 points · inventory on 6 points
+- **Evidence** answers: answers_R1.js#P0048, answers_R1.js#P0177, answers_R1.js#P0206, answers_R1.js#P0240, answers_R1.js#P0205, answers_R1.js#P0158 · serp on 6 points · inventory on 6 points
 
 ### C-T12-x-side-effects-diabete · Decide: accept the floor or fix the program — side effects diabetes medication can't
 
@@ -1398,7 +1398,7 @@ Anybody had exp
   - I have pre diabetes and insulin resistance, in my 40s and possibly perimenopause, obese. I can't lose weight for the life of me and can't take any sort of medication or supplement 
   - I'm elderly and worried about side effects; what's the gentlest way to manage type 2?
   - I'm nervous about long-term side effects of diabetes medication. Should I just try it and see how it goes?
-- **Evidence** answers: answers.js#P0229|R1, answers.js#P0003|R1, answers.js#P0005|R1 · serp on 3 points · inventory on 3 points
+- **Evidence** answers: answers_R1.js#P0229, answers_R1.js#P0003, answers_R1.js#P0005 · serp on 3 points · inventory on 3 points
 
 ### C-T12-x-basics-mechanism · Decide: accept the floor or fix the program — Basics & mechanism
 
@@ -1414,7 +1414,7 @@ Anybody had exp
 - **Sample questions**
   - What is the best medicine for a new diabetic with fbs 9.0 & rbs 13?
   - What is the standard of care for diabetes patients? what needs to be done for them besides treatment of the type 2 disease?
-- **Evidence** answers: answers.js#P0184|R1, answers.js#P0196|R1 · serp on 2 points · inventory on 2 points
+- **Evidence** answers: answers_R1.js#P0184, answers_R1.js#P0196 · serp on 2 points · inventory on 2 points
 
 ### C-T8-x-regulatory-hold · Open a regulatory dossier — regulatory hold
 
@@ -1431,7 +1431,7 @@ Anybody had exp
   - any recent news on new type 2 diabetes treatments?
   - whats the most promising diabetes drug in the pipeline that might hit the market soon?
   - whats the newest treatment out for type 2 diabetes rn
-- **Evidence** answers: answers.js#P0145|R1, answers.js#P0144|R1, answers.js#P0071|R1 · serp on 4 points · inventory on 4 points
+- **Evidence** answers: answers_R1.js#P0145, answers_R1.js#P0144, answers_R1.js#P0071, answers_R1.js#P0008 · serp on 4 points · inventory on 4 points
 
 ### C-T12-x-diabetes-drugs-help · Decide: accept the floor or fix the program — diabetes drugs help type sugar blood
 
@@ -1448,5 +1448,5 @@ Anybody had exp
   - I recently started taking Metformin and on day one I've had severe stomach pains and diarrhea. This is my second time trying and the first month on it was brutal — I was always sic
   - Is there anyone out there that hasn’t experienced this symptom? Or that got over it with prolonged use? Or should I just expect to be super tired for however long I’m on the drug?
   - prediabetic and insulin resistant but i cant take most meds or supplements cause they spike my heart rate (POTS). is there anything left for me to try
-- **Evidence** answers: answers.js#P0204|R1, answers.js#P0429|R2, answers.js#P0055|R1 · serp on 23 points · inventory on 23 points
+- **Evidence** answers: answers_R1.js#P0204, answers_R2.js#P0429, answers_R1.js#P0055, answers_R1.js#P0056, answers_R1.js#P0149, answers_R1.js#P0188, answers_R1.js#P0022, answers_R1.js#P0112, answers_R1.js#P0156, answers_R1.js#P0208, answers_R1.js#P0230, answers_R1.js#P0247, answers_R1.js#P0159, answers_R1.js#P0180, answers_R1.js#P0119, answers_R1.js#P0151, answers_R1.js#P0013, answers_R1.js#P0015, answers_R1.js#P0018, answers_R1.js#P0101, answers_R1.js#P0102, answers_R1.js#P0104, answers_R1.js#P0105 · serp on 23 points · inventory on 23 points
 

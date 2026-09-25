@@ -268,9 +268,27 @@ window.__nmKick=()=>{""",
     _tp, _sp = C.ROOT / "tasks" / "tasks.json", C.ROOT / "tasks" / "task_state.json"
     _tasks = json.loads(_tp.read_text(encoding="utf-8")) if _tp.exists() else {"tasks": []}
     _state = json.loads(_sp.read_text(encoding="utf-8")) if _sp.exists() else {}
-    tasks_blob = json.dumps({"tasks": _tasks.get("tasks", []), "state": _state,
+    # The browser gets every field except the answer bodies: those already ship, gzipped, in
+    # ui/answers_<run>.js, and duplicating 15.9MB of text here would double the page weight.
+    # tasks/tasks.json keeps the full text as the source of truth.
+    _slim = []
+    for t in _tasks.get("tasks", []):
+        t = dict(t)
+        t["questions_all"] = [dict(r, answer_clean=None,
+                                   models=[{k: v for k, v in m.items() if k != "answer_clean"}
+                                           for m in (r.get("models") or [])])
+                              for r in t.get("questions_all", [])]
+        _slim.append(t)
+    tasks_blob = json.dumps({"tasks": _slim, "state": _state,
                              "point_tasks": _tasks.get("point_tasks", {})},
                             ensure_ascii=False, separators=(",", ":"))
+    # tasks layer: its own file, like map_data.js — the full answer texts would push index.html past the
+    # 16MB artifact ceiling. Loaded by a plain <script src> before the app runs, so nothing is fetched at
+    # render time.
+    (UI / "tasks_data.js").write_text("window.TASKS=" + tasks_blob + ";\n", encoding="utf-8")
+    tasks_size = (UI / "tasks_data.js").stat().st_size
+    assert tasks_size <= ARTIFACT_TEXT_LIMIT, "tasks_data.js exceeds the artifact text-file ceiling"
+
     # map data block: separate file, loaded only when #/map opens
     pdj_pricing = json.loads(pdata).get("pricing")
     map_data["pricing"] = pdj_pricing   # revenue-at-risk v2 §4 — None when config/pricing.yaml is absent
@@ -289,7 +307,7 @@ window.__nmKick=()=>{""",
              .replace("<!--LEGACY_MAP_HTML-->", map_html) \
              .replace("<script>/*GLOSSARY*/</script>", "<script>window.GLOSSARY=" + json.dumps(glossary, ensure_ascii=False, separators=(",", ":")) + ";</script>") \
              .replace("<script>/*PLATFORM_DATA*/</script>", "<script>window.PLATFORM_DATA=" + pdata + ";</script>") \
-             .replace("<script>/*TASKS*/</script>", "<script>window.TASKS=" + tasks_blob + ";</script>") \
+             .replace("<script>/*TASKS*/</script>", '<script src="tasks_data.js"></script>') \
              .replace("<!--LEGACY_MAP_JS-->", map_js)
     markup = tpl + map_js + map_html
     used = set(k for k in glossary if not k.startswith("_") and re.search(r'["\']' + re.escape(k) + r'["\']', markup))
@@ -298,6 +316,7 @@ window.__nmKick=()=>{""",
     unused = sorted(k for k in glossary if not k.startswith("_") and k not in used)
     (UI / "index.html").write_text(out, encoding="utf-8")
     print("glossary: {} entries, {} used by figures{}".format(len([k for k in glossary if not k.startswith("_")]), len(used), ", unused: " + ", ".join(unused) if unused else ""))
+    print("tasks_data.js {:,} bytes".format(tasks_size))
     print("index.html {:,} bytes | map_data.js {:,} bytes ({} nodes, {} topic groups, from platform_data.json) | answer stores {} points, {} answers, total {:,} bytes:".format(
         (UI / "index.html").stat().st_size, map_size, len(map_data["points"]), len(per_gid), n_pts, n_ans, sum(ans_sizes.values())))
     for run, sz in ans_sizes.items():

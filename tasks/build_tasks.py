@@ -110,6 +110,7 @@ def pages_for(t, action, point, key=None):
 
 def main():
     load_real_pages()
+    load_answers()
     d = json.loads(SRC.read_text(encoding="utf-8"))
     P, MT = d["points"], d["money_totals"]
     applicable = collections.defaultdict(set)
@@ -175,6 +176,51 @@ def theme(questions, lo=3, hi=6):
 CITATIONS = ROOT / "data" / "normalized" / "citations.parquet"
 REAL_URLS = set()          # every owned URL an answer actually cited
 PAGE_BY_POINT = {}         # pid|run -> [url, …] most-cited first
+
+
+ANSWERS = ROOT / "data" / "normalized" / "answers.parquet"
+ANSWER_BY_POINT = {}          # pid|run -> (model, answer_clean)
+
+
+BRANDS_CFG = ROOT / "config" / "brands.yaml"
+MODELS_BY_POINT = {}          # pid|run -> [{model, ours, comps, answer_clean}] — one row per model
+
+
+def _brand_res():
+    try:
+        import yaml
+    except ImportError:
+        return None, {}
+    cfg = yaml.safe_load(open(BRANDS_CFG, encoding="utf-8")) if BRANDS_CFG.exists() else {}
+    wb = lambda w: re.compile(r"(?<![A-Za-z0-9])" + re.escape(w) + r"(?![A-Za-z0-9])", re.I)
+    ours = wb((cfg.get("our_brand") or ["Ozempic"])[0])
+    comps = {b: wb(b) for b in (cfg.get("competitors") or {})}
+    return ours, comps
+
+
+def load_answers():
+    """Every model that answered a point, with the first non-excluded repeat of each."""
+    try:
+        import pandas as pd
+    except ImportError:
+        return
+    if not ANSWERS.exists():
+        return
+    rx_our, rx_comp = _brand_res()
+    a = pd.read_parquet(ANSWERS, columns=["pid", "run", "model", "repeat_idx", "answer_clean", "excluded"])
+    a = a[~a["excluded"].astype(bool)].copy()
+    a["k"] = a["pid"].astype(str) + "|" + a["run"].astype(str)
+    a = a.sort_values(["k", "model", "repeat_idx"], kind="mergesort")
+    for k, g in a.groupby("k", sort=False):
+        rows = []
+        for model, gm in g.groupby("model", sort=True):
+            txt = str(gm.iloc[0]["answer_clean"] or "")
+            ours = bool(rx_our and rx_our.search(txt))
+            comps = sorted(b for b, rx in rx_comp.items() if rx.search(txt)) if rx_comp else []
+            rows.append({"model": str(model), "ours": ours, "comps": comps, "answer_clean": txt})
+        MODELS_BY_POINT[k] = rows
+        if rows:
+            ANSWER_BY_POINT[k] = (rows[0]["model"], rows[0]["answer_clean"])
 
 
 def load_real_pages():
@@ -262,6 +308,20 @@ def ops_fields(t, ks, card_of):
     m = AGENT_CODE.match(desc or "")
     return {"execution": execution, "agent_id": m.group(1) if m else None, "agent_desc": desc,
             "mlr_gate": any(c.get("mlr") == "medical-review" for c in cards)}
+
+
+def answer_ref(key):
+    """The real store is one file per run: answers_R1.js … answers_R9.js, keyed by pid|run."""
+    pid, _, run = key.partition("|")
+    return "answers_{}.js#{}".format(run, pid)
+
+
+def questions_all_row(key, P):
+    rows = MODELS_BY_POINT.get(key) or []
+    model, text = ANSWER_BY_POINT.get(key, (None, ""))
+    return {"pid_run": key, "question_full": P[key]["question"], "model": model,
+            "cause": (P[key].get("cause") or {}).get("code"), "answer_clean": text,
+            "models": [{k2: r[k2] for k2 in ("model", "ours", "comps", "answer_clean")} for r in rows]}
 
 
 def slug(s, n=44):
@@ -385,12 +445,12 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
             zone=zone_of, piece=piece or None,
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
             points=dict(count=len(ks), pids=[k for k in ks[:40]]), _all_pids=ks,
-            questions=[P[k]["question"][:180] for k in ks[:3]],
+            questions_all=[questions_all_row(k, P) for k in ks],
             pages=pages[:6],
             competitors_leaking=[{"brand": b, "usd_mo": v} for b, v in by.most_common(3) if v],
             cause_codes=[c for c, _ in collections.Counter(P[k]["cause"]["code"] for k in ks).most_common(4)],
             also_addresses=also,
-            evidence_refs=dict(answers=[P[k]["answers_ref"] for k in ks[:3]],
+            evidence_refs=dict(answers=[answer_ref(k) for k in ks],
                                serp=sum(1 for k in ks if P[k].get("serp")),
                                inventory=sum(1 for k in ks if P[k].get("inventory")))))
 
@@ -416,10 +476,10 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
             severity=dict(bad=sum(1 for k in ks if P[k]["sev"] == "bad"), warn=sum(1 for k in ks if P[k]["sev"] == "warn")),
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
             points=dict(count=len(ks), pids=[k for k in ks[:40]]), _all_pids=ks,
-            questions=[P[k]["question"][:180] for k in ks[:3]],
+            questions_all=[questions_all_row(k, P) for k in ks],
             pages=[], competitors_leaking=[],
             cause_codes=[c for c, _ in collections.Counter(P[k]["cause"]["code"] for k in ks).most_common(4)],
-            also_addresses=[], evidence_refs=dict(answers=[P[k]["answers_ref"] for k in ks[:3]],
+            also_addresses=[], evidence_refs=dict(answers=[answer_ref(k) for k in ks],
                                                   serp=sum(1 for k in ks if P[k].get("serp")),
                                                   inventory=sum(1 for k in ks if P[k].get("inventory")))))
     return tasks
@@ -764,7 +824,7 @@ def write_md(tasks, MT, P, api):
                   ", ".join("{} {}".format(c["brand"], usd(c["usd_mo"] * 12)) for c in t["competitors_leaking"]) or "—"),
               "- **Also addresses** {}".format(", ".join(t["also_addresses"]) or "—"),
               "- **Sample questions**"]
-        L += ["  - {}".format(q) for q in t["questions"]]
+        L += ["  - {}".format(r["question_full"][:180]) for r in t["questions_all"][:3]]
         L += ["- **Evidence** answers: {} · serp on {} points · inventory on {} points".format(
             ", ".join(t["evidence_refs"]["answers"]) or "—", t["evidence_refs"]["serp"], t["evidence_refs"]["inventory"]), ""]
     (OUT / "tasks.md").write_text("\n".join(L) + "\n", encoding="utf-8")
