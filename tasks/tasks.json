@@ -21,6 +21,14 @@
     4796136
    ],
    "usd_per_week": 799356,
+   "expected_pp": [
+    0.14,
+    0.27
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": "living on the drug",
    "demand_mo": 208894,
@@ -104,6 +112,14 @@
     3802728
    ],
    "usd_per_week": 633788,
+   "expected_pp": [
+    0.05,
+    0.11
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss",
    "demand_mo": 62223,
@@ -172,6 +188,14 @@
     2441280
    ],
    "usd_per_week": 406880,
+   "expected_pp": [
+    0.18,
+    0.36
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 21875,
@@ -234,6 +258,14 @@
     2425932
    ],
    "usd_per_week": 404322,
+   "expected_pp": [
+    0.18,
+    0.37
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching",
    "demand_mo": 24765,
@@ -310,6 +342,14 @@
     1770864
    ],
    "usd_per_week": 295144,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · weight-loss results · part 1",
    "demand_mo": 24179,
@@ -396,6 +436,14 @@
     1589508
    ],
    "usd_per_week": 264918,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · weight-loss results · part 2",
    "demand_mo": 23558,
@@ -482,6 +530,14 @@
     2517216
    ],
    "usd_per_week": 209768,
+   "expected_pp": [
+    0.15,
+    0.34
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "E16",
+   "agent_desc": "E16/E17 · Reference-web agent — COI process, a named person signs",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 65625,
@@ -554,6 +610,14 @@
     1145664
    ],
    "usd_per_week": 190944,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "BLOOD SUGAR & GLYCEMIC CONTROL",
    "piece": "starting or switching · doubts about the claims",
    "demand_mo": 13824,
@@ -636,6 +700,14 @@
     851772
    ],
    "usd_per_week": 141962,
+   "expected_pp": [
+    0.3,
+    0.59
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 12233,
@@ -708,6 +780,14 @@
     1589928
    ],
    "usd_per_week": 132494,
+   "expected_pp": [
+    5.36,
+    11.8
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 19713,
@@ -777,6 +857,14 @@
     791100
    ],
    "usd_per_week": 131850,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "BLOOD SUGAR & GLYCEMIC CONTROL",
    "piece": "REPUTATION & ENTITY",
    "demand_mo": 19161,
@@ -849,6 +937,14 @@
     761328
    ],
    "usd_per_week": 126888,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching · blood sugar control",
    "demand_mo": 6822,
@@ -894,6 +990,14 @@
     735456
    ],
    "usd_per_week": 122576,
+   "expected_pp": [
+    0.2,
+    0.39
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 6590,
@@ -943,6 +1047,14 @@
     725076
    ],
    "usd_per_week": 120846,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching · dosing and injecting",
    "demand_mo": 6822,
@@ -1001,6 +1113,14 @@
     708768
    ],
    "usd_per_week": 118128,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "PRICE & ACCESS",
    "piece": "price and access",
    "demand_mo": 19053,
@@ -1055,6 +1175,14 @@
     634440
    ],
    "usd_per_week": 105740,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching · general treatment choice",
    "demand_mo": 18192,
@@ -1125,6 +1253,14 @@
     1079724
    ],
    "usd_per_week": 89977,
+   "expected_pp": [
+    5.83,
+    12.82
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": null,
    "demand_mo": 15384,
@@ -1195,6 +1331,14 @@
     1025112
    ],
    "usd_per_week": 85426,
+   "expected_pp": [
+    0.04,
+    0.08
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 26390,
@@ -1275,6 +1419,14 @@
     491328
    ],
    "usd_per_week": 81888,
+   "expected_pp": [
+    0.18,
+    0.37
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss",
    "demand_mo": 16510,
@@ -1339,6 +1491,14 @@
     339564
    ],
    "usd_per_week": 56594,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · considering a competitor",
    "demand_mo": 16952,
@@ -1411,6 +1571,14 @@
     338364
    ],
    "usd_per_week": 56394,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching · considering a competitor",
    "demand_mo": 18192,
@@ -1472,6 +1640,14 @@
     659496
    ],
    "usd_per_week": 54958,
+   "expected_pp": [
+    5.0,
+    11.01
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 9762,
@@ -1538,6 +1714,14 @@
     310476
    ],
    "usd_per_week": 51746,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 4560,
@@ -1585,6 +1769,14 @@
     564492
    ],
    "usd_per_week": 47041,
+   "expected_pp": [
+    5.64,
+    12.41
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "F18",
+   "agent_desc": "F18/C12 · Mass-tort watch + PR outreach agents — human approves each send",
+   "mlr_gate": false,
    "zone": "LIVING ON THE DRUG",
    "piece": "living on the drug",
    "demand_mo": 28319,
@@ -1652,6 +1844,14 @@
     257952
    ],
    "usd_per_week": 42992,
+   "expected_pp": [
+    0.18,
+    0.37
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 4953,
@@ -1713,6 +1913,14 @@
     253776
    ],
    "usd_per_week": 42296,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching · newly diagnosed",
    "demand_mo": 2274,
@@ -1752,6 +1960,14 @@
     212784
    ],
    "usd_per_week": 35464,
+   "expected_pp": [
+    0.1,
+    0.2
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching",
    "demand_mo": 7280,
@@ -1818,6 +2034,14 @@
     210204
    ],
    "usd_per_week": 35034,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · blood sugar control",
    "demand_mo": 3912,
@@ -1864,6 +2088,14 @@
     184248
    ],
    "usd_per_week": 30708,
+   "expected_pp": [
+    0.18,
+    0.37
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 21463,
@@ -1926,6 +2158,14 @@
     367728
    ],
    "usd_per_week": 30644,
+   "expected_pp": [
+    3.22,
+    7.08
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 3295,
@@ -1974,6 +2214,14 @@
     362352
    ],
    "usd_per_week": 30196,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 8255,
@@ -2037,6 +2285,14 @@
     338376
    ],
    "usd_per_week": 28198,
+   "expected_pp": [
+    5.28,
+    11.62
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 4548,
@@ -2089,6 +2345,14 @@
     169188
    ],
    "usd_per_week": 28198,
+   "expected_pp": [
+    0.07,
+    0.14
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 2274,
@@ -2145,6 +2409,14 @@
     332124
    ],
    "usd_per_week": 27677,
+   "expected_pp": [
+    4.6,
+    10.12
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "F18",
+   "agent_desc": "F18/C12 · Mass-tort watch + PR outreach agents — human approves each send",
+   "mlr_gate": false,
    "zone": "WEIGHT LOSS",
    "piece": null,
    "demand_mo": 14301,
@@ -2200,6 +2472,14 @@
     310176
    ],
    "usd_per_week": 25848,
+   "expected_pp": [
+    5.28,
+    11.62
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 4548,
@@ -2257,6 +2537,14 @@
     145524
    ],
    "usd_per_week": 24254,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · doubts about the claims",
    "demand_mo": 1304,
@@ -2296,6 +2584,14 @@
     145524
    ],
    "usd_per_week": 24254,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · side effects and tolerance",
    "demand_mo": 1304,
@@ -2342,6 +2638,14 @@
     145296
    ],
    "usd_per_week": 24216,
+   "expected_pp": [
+    0.01,
+    0.02
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": "living on the drug",
    "demand_mo": 1302,
@@ -2398,6 +2702,14 @@
     129360
    ],
    "usd_per_week": 21560,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": "weight loss · newly diagnosed",
    "demand_mo": 1304,
@@ -2440,6 +2752,14 @@
     121272
    ],
    "usd_per_week": 20212,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": null,
    "demand_mo": 1316,
@@ -2501,6 +2821,14 @@
     105864
    ],
    "usd_per_week": 17644,
+   "expected_pp": [
+    0.01,
+    0.02
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": "starting or switching",
    "demand_mo": 26574,
@@ -2587,6 +2915,14 @@
     97020
    ],
    "usd_per_week": 16170,
+   "expected_pp": [
+    0.08,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": null,
    "demand_mo": 1304,
@@ -2643,6 +2979,14 @@
     92124
    ],
    "usd_per_week": 15354,
+   "expected_pp": [
+    0.18,
+    0.37
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": "living on the drug",
    "demand_mo": 1651,
@@ -2682,6 +3026,14 @@
     169188
    ],
    "usd_per_week": 14099,
+   "expected_pp": [
+    5.28,
+    11.62
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 2274,
@@ -2742,6 +3094,14 @@
     164160
    ],
    "usd_per_week": 13680,
+   "expected_pp": [
+    4.88,
+    10.73
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": null,
    "demand_mo": 2638,
@@ -2807,6 +3167,14 @@
     80844
    ],
    "usd_per_week": 13474,
+   "expected_pp": [
+    0.08,
+    0.16
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "WEIGHT LOSS",
    "piece": null,
    "demand_mo": 25738,
@@ -2874,6 +3242,14 @@
     152940
    ],
    "usd_per_week": 12745,
+   "expected_pp": [
+    0.02,
+    0.04
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 4195,
@@ -2941,6 +3317,14 @@
     69636
    ],
    "usd_per_week": 11606,
+   "expected_pp": [
+    0.09,
+    0.17
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": null,
    "demand_mo": 3276,
@@ -3015,6 +3399,14 @@
     61416
    ],
    "usd_per_week": 10236,
+   "expected_pp": [
+    0.18,
+    0.37
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 3302,
@@ -3059,6 +3451,14 @@
     122832
    ],
    "usd_per_week": 10236,
+   "expected_pp": [
+    5.27,
+    11.6
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 1651,
@@ -3111,6 +3511,14 @@
     30084
    ],
    "usd_per_week": 5014,
+   "expected_pp": [
+    0.04,
+    0.09
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "SAFETY & CONTRAINDICATIONS",
    "piece": "remaining questions · part 1",
    "demand_mo": 4073,
@@ -3183,6 +3591,14 @@
     52704
    ],
    "usd_per_week": 4392,
+   "expected_pp": [
+    0.02,
+    0.04
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 1571,
@@ -3267,6 +3683,14 @@
     15336
    ],
    "usd_per_week": 2556,
+   "expected_pp": [
+    0.15,
+    0.3
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": "remaining questions · part 1",
    "demand_mo": 31995,
@@ -3352,6 +3776,14 @@
     13536
    ],
    "usd_per_week": 2256,
+   "expected_pp": [
+    0.1,
+    0.2
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2/A6 · Rewrite & fan-out expansion agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": null,
    "demand_mo": 20324,
@@ -3433,6 +3865,14 @@
     11340
    ],
    "usd_per_week": 1890,
+   "expected_pp": [
+    0.12,
+    0.23
+   ],
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1/A7 · Page-creation / evidence-asset agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "SAFETY & CONTRAINDICATIONS",
    "piece": "remaining questions · part 2",
    "demand_mo": 1302,
@@ -3507,6 +3947,14 @@
     22464
    ],
    "usd_per_week": 1872,
+   "expected_pp": [
+    5.66,
+    12.46
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "F18",
+   "agent_desc": "F18/C12 · Mass-tort watch + PR outreach agents — human approves each send",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 248133,
@@ -3577,6 +4025,14 @@
     18228
    ],
    "usd_per_week": 1519,
+   "expected_pp": [
+    4.28,
+    9.42
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "B8",
+   "agent_desc": "B8/C12 · Listings-data / outreach agent — drafts, submits, follow-ups; human approves each send",
+   "mlr_gate": true,
    "zone": "SAFETY & CONTRAINDICATIONS",
    "piece": null,
    "demand_mo": 251,
@@ -3649,6 +4105,14 @@
     6468
    ],
    "usd_per_week": 1078,
+   "expected_pp": [
+    0.15,
+    0.3
+   ],
+   "execution": "AGENT",
+   "agent_id": "A2",
+   "agent_desc": "A2 · Citability rewrite agent — MLR-gated",
+   "mlr_gate": true,
    "zone": "LIVING ON THE DRUG",
    "piece": "remaining questions · part 2",
    "demand_mo": 19469,
@@ -3729,6 +4193,14 @@
     0
    ],
    "usd_per_week": 0,
+   "expected_pp": [
+    5.6,
+    12.31
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "F18",
+   "agent_desc": "F18/C12 · Mass-tort watch + PR outreach agents — human approves each send",
+   "mlr_gate": false,
    "zone": "WEIGHT LOSS",
    "piece": "remaining questions · part 1",
    "demand_mo": 34873,
@@ -3793,6 +4265,14 @@
     0
    ],
    "usd_per_week": 0,
+   "expected_pp": [
+    5.61,
+    12.35
+   ],
+   "execution": "AGENT+APPROVE",
+   "agent_id": "F18",
+   "agent_desc": "F18/C12 · Mass-tort watch + PR outreach agents — human approves each send",
+   "mlr_gate": false,
    "zone": "WEIGHT LOSS",
    "piece": "remaining questions · part 2",
    "demand_mo": 30966,
@@ -3858,6 +4338,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for the client's Medical/Regulatory — agents only maintain the evidence map",
+   "mlr_gate": true,
    "web_usd_yr_info": [
     96096,
     285612
@@ -3947,6 +4432,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1 · Label-clarity draft agent — MLR-gated",
+   "mlr_gate": true,
    "web_usd_yr_info": [
     2940,
     8700
@@ -4035,6 +4525,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for the client's team — agents maintain the dossier and deadlines",
+   "mlr_gate": true,
    "web_usd_yr_info": [
     883692,
     2625672
@@ -4126,6 +4621,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "AGENT+APPROVE",
+   "agent_id": "G20",
+   "agent_desc": "G20 · Provider error-report agent — human approves each report",
+   "mlr_gate": false,
    "web_usd_yr_info": [
     792,
     2304
@@ -4195,6 +4695,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for the client's Medical/Regulatory — agents only maintain the evidence map",
+   "mlr_gate": true,
    "web_usd_yr_info": [
     241680,
     718092
@@ -4258,6 +4763,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1 · Label-clarity draft agent — MLR-gated",
+   "mlr_gate": true,
    "web_usd_yr_info": [
     73644,
     218808
@@ -4316,6 +4826,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "AGENT+APPROVE",
+   "agent_id": "G20",
+   "agent_desc": "G20 · Provider error-report agent — human approves each report",
+   "mlr_gate": false,
    "web_usd_yr_info": [
     50388,
     149712
@@ -4370,6 +4885,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "AGENT",
+   "agent_id": "A1",
+   "agent_desc": "A1 · Label-clarity draft agent — MLR-gated",
+   "mlr_gate": true,
    "web_usd_yr_info": [
     11616,
     34536
@@ -4428,6 +4948,11 @@
     0
    ],
    "usd_per_week": null,
+   "expected_pp": null,
+   "execution": "AGENT+APPROVE",
+   "agent_id": "G20",
+   "agent_desc": "G20 · Provider error-report agent — human approves each report",
+   "mlr_gate": false,
    "web_usd_yr_info": [
     0,
     0
@@ -4480,6 +5005,11 @@
     17164080
    ],
    "usd_per_week": 8582040,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for the client's Commercial team",
+   "mlr_gate": false,
    "zone": "PRICE & ACCESS",
    "piece": null,
    "demand_mo": 230700,
@@ -4558,6 +5088,11 @@
     5646132
    ],
    "usd_per_week": 2823066,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Decision for the client — H22 agent keeps monitoring",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 52122,
@@ -4655,6 +5190,11 @@
     4326228
    ],
    "usd_per_week": 2163114,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for the client's Commercial team",
+   "mlr_gate": false,
    "zone": "PRICE & ACCESS",
    "piece": null,
    "demand_mo": 83889,
@@ -4759,6 +5299,11 @@
     2875500
    ],
    "usd_per_week": 1437750,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for the client's Commercial team",
+   "mlr_gate": false,
    "zone": "PRICE & ACCESS",
    "piece": null,
    "demand_mo": 61140,
@@ -4854,6 +5399,14 @@
     1702716
    ],
    "usd_per_week": null,
+   "expected_pp": [
+    0.03,
+    0.09
+   ],
+   "execution": "AGENT",
+   "agent_id": "H22",
+   "agent_desc": "H22 · Verification & drift monitor",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 909008,
@@ -4952,6 +5505,11 @@
     1046124
    ],
    "usd_per_week": 523062,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Decision for the client — H22 agent keeps monitoring",
+   "mlr_gate": false,
    "zone": "BLOOD SUGAR & GLYCEMIC CONTROL",
    "piece": null,
    "demand_mo": 9906,
@@ -5002,6 +5560,11 @@
     881784
    ],
    "usd_per_week": 440892,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Decision for the client — H22 agent keeps monitoring",
+   "mlr_gate": false,
    "zone": "SAFETY & CONTRAINDICATIONS",
    "piece": null,
    "demand_mo": 8889,
@@ -5049,6 +5612,11 @@
     759504
    ],
    "usd_per_week": 379752,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Decision for the client — H22 agent keeps monitoring",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 8750,
@@ -5093,6 +5661,11 @@
     143568
    ],
    "usd_per_week": 23928,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Task for Regulatory; A1 agent builds only after the go",
+   "mlr_gate": true,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 2517,
@@ -5152,6 +5725,11 @@
     98196
    ],
    "usd_per_week": 49098,
+   "expected_pp": null,
+   "execution": "HUMAN TASK",
+   "agent_id": null,
+   "agent_desc": "Decision for the client — H22 agent keeps monitoring",
+   "mlr_gate": false,
    "zone": "STARTING & SWITCHING",
    "piece": null,
    "demand_mo": 940,

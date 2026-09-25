@@ -1,0 +1,476 @@
+{
+ "A-T10-drugwatch-com-doctor-ozempic-mounj-living-on-the-drug": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T10-drugwatch-com-ozempic-mounjaro-wei-remaining-questions-part-2": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T10-drugwatch-com-weight-ozempic-mounj-remaining-questions-part-1": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T10-motleyrice-com-now-ozempic-weight-b": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T10-x-ozempic-resting-hear": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T2-novo-pi-com-saxenda-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T2-novomedlink-com-obes-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T2-ozempic-com-ozempic-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T2-x-ozempic-nausea-zepbo": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-diabeteseducation-no-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-diabeteseducation-no-titration-dose-sched": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-novomedlink-com-titration-dose-sched": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-ozempic-com-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-ozempic-com-titration-dose-sched": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-x-effects-actually-wei-remaining-questions-part-2": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T3-x-time-weight-loss-eff-remaining-questions-part-1": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-basics-mechanism": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-living-on-the-drug": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-price-and-access": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-reputation-entity": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-starting-or-switching-blood-sugar-control": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-starting-or-switching-considering-a-competitor": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-starting-or-switching-dosing-and-injecting": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-starting-or-switching-doubts-about-the-claims": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-starting-or-switching-general-treatment-choice": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-starting-or-switching-newly-diagnosed": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-blood-sugar-control": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-considering-a-competitor": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-doubts-about-the-claims": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-newly-diagnosed": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-side-effects-and-tolerance": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-1": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-efficacy-results-weight-loss-weight-loss-results-part-2": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-gi-nausea": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-mounjaro-kidney-take-remaining-questions-part-1": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-ozempic-mounjaro-dru-starting-or-switching": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-ozempic-what-s-alter-starting-or-switching": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-pen-device": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-side-diabetes-type-k-remaining-questions-part-2": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-side-effects-mounjar-living-on-the-drug": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-site-volume": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-titration-dose-sched-living-on-the-drug": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-titration-dose-sched-starting-or-switching": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-titration-dose-sched-weight-loss": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T4-x-want-lose-weight-mou-weight-loss": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T5-x-basics-mechanism": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T5-x-diabetes-injections": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T5-x-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T5-x-titration-dose-sched": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T5-x-weight-loss-without": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-doctronic-ai-type-diabetes-safe-g": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-drugs-com-safest-diabetes-what": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-goodrx-com-weight-actually-deal": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-kadieleachmd-com-diet-alone": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-onlinedoctor-asda-co-where-inject-mounjar": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-resources-healthgrad-need": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-universaldrugstore-c-type-glp-safe": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-webmd-com-numbers-insulin": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-weightwatchers-com-pcos-losing-weight-l": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "A-T6-x-diabetes-disease-med": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T7-dosing-administration": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T7-indications-eligibility": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T7-serious-risks-contraindications": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T8-dosing-administration": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T8-indications-eligibility": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T8-serious-risks-contraindications": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T9-dosing-administration": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T9-indications-eligibility": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "B-T9-serious-risks-contraindications": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T1-x-held-positions": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-basics-mechanism": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-cost-price": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-coupons-savings": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-diabetes-drugs-help": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-efficacy-results": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-insurance-coverage": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-side-effects-diabete": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T12-x-titration-dose-sched": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ },
+ "C-T8-x-regulatory-hold": {
+  "status": "open",
+  "assignee": null,
+  "note": null,
+  "updated": null
+ }
+}

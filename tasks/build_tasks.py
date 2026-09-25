@@ -114,12 +114,14 @@ def main():
     P, MT = d["points"], d["money_totals"]
     applicable = collections.defaultdict(set)
     fix_of = collections.defaultdict(dict)
+    card_of = collections.defaultdict(dict)
     for k, p in P.items():
         for c in (p.get("fixes") or []):
             t = classify(c["action"])
             if t:
                 applicable[k].add(t)
                 fix_of[k].setdefault(t, c["action"])
+                card_of[k].setdefault(t, c)
     # A T2 "expand our page" is only honest when the page is real: the platform synthesises
     # https://www.ozempic.com/why-ozempic/<slug(subtopic)>.html whenever no cited owned URL exists.
     retyped = 0
@@ -127,6 +129,8 @@ def main():
         if "T2" in ts and not real_page(P[k], k):
             ts.discard("T2"); ts.add("T4"); retyped += 1
             fix_of[k].setdefault("T4", fix_of[k].get("T2", ""))
+            if card_of[k].get("T2"):                 # the retyped card carries this point's ops fields
+                card_of[k].setdefault("T4", card_of[k]["T2"])
     globals()["RETYPED_POINTS"] = retyped
     api = sorted(k for k in P if P[k]["money"]["panel"] == "api" and not P[k]["money"]["pf"])
     primary, orphan = {}, []
@@ -135,7 +139,7 @@ def main():
         if not cand:
             orphan.append(k); continue
         primary[k] = min(cand, key=lambda t: PRIMARY_ORDER[t])
-    return d, P, MT, api, applicable, fix_of, primary, orphan
+    return d, P, MT, api, applicable, fix_of, primary, orphan, card_of
 
 
 
@@ -198,14 +202,79 @@ def real_page(point, key=None):
     return cited[0] if cited else None
 
 
+# --------------------------------------------------------------------------- #
+# Tasks-integration spec v1 §1 and §3.
+# --------------------------------------------------------------------------- #
+THRESHOLDS = ROOT / "config" / "thresholds.yaml"
+# §1: the closure class a task type belongs to. It picks both the coefficient pair and which owner-class
+# lever to read out of groups[].lever (which is a dict per owner class, not a scalar).
+TYPE_CLASS = {"T2": "owned", "T3": "owned", "T4": "owned", "T5": "comp_owned",
+              "T6": "earned", "T10": "earned", "T1": "ugc", "T9": "owned"}
+NO_EXPECTED = ("T7", "T8", "T9", "T12")     # lane B by design (§1); T12 is a decision, no content lever
+EXEC_RANK = {"HUMAN TASK": 2, "AGENT+APPROVE": 1, "AGENT": 0}
+AGENT_CODE = re.compile(r"^([A-Z]\d{1,2})(?=[/\s\u00b7])")
+
+
+def load_coefficients():
+    try:
+        import yaml
+    except ImportError:
+        return {}
+    if not THRESHOLDS.exists():
+        return {}
+    with open(THRESHOLDS, encoding="utf-8") as fh:
+        return (yaml.safe_load(fh) or {}).get("closure_coefficients") or {}
+
+
+def expected_pp(t, ks, P, group_by_id, coef):
+    """§1: ceiling = demand-weighted gap × demand-weighted lever × 100, then the closure coefficients."""
+    cls = TYPE_CLASS.get(t)
+    if t in NO_EXPECTED or not cls or cls not in coef:
+        return None
+    w = num = lev = 0.0
+    for k in ks:
+        g = group_by_id.get(P[k]["group_id"])
+        if not g or g.get("gap") is None:
+            continue
+        d = P[k]["money"]["pt_demand_eff"] or 0
+        if d <= 0:
+            continue
+        w += d
+        num += d * g["gap"]
+        lev += d * ((g.get("lever") or {}).get(cls) or 0.0)
+    if w <= 0:
+        return None
+    ceiling = (num / w) * (lev / w) * 100
+    k_lo, k_hi = coef[cls]
+    return [round(ceiling * k_lo, 2), round(ceiling * k_hi, 2)]
+
+
+def ops_fields(t, ks, card_of):
+    """§3: execution / agent_id / agent_desc / mlr_gate from the cards of this task's own type."""
+    cards = [card_of[k][t] for k in ks if t in card_of.get(k, {})]
+    if not cards:
+        return {"execution": None, "agent_id": None, "agent_desc": None, "mlr_gate": False}
+    ex = collections.Counter(c.get("execution") for c in cards)
+    top = max(ex.values())
+    execution = max((v for v, n in ex.items() if n == top), key=lambda v: EXEC_RANK.get(v, -1))
+    ag = collections.Counter(c.get("agent") for c in cards if c.get("agent"))
+    desc = ag.most_common(1)[0][0] if ag else None
+    m = AGENT_CODE.match(desc or "")
+    return {"execution": execution, "agent_id": m.group(1) if m else None, "agent_desc": desc,
+            "mlr_gate": any(c.get("mlr") == "medical-review" for c in cards)}
+
+
 def slug(s, n=44):
     s = re.sub(r"https?://(www\.)?", "", s or "")
     s = re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
     return s[:n] or "x"
 
 
-def build(d, P, MT, api, applicable, fix_of, primary, orphan):
+def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
     money = lambda k: P[k]["money"]
+    global GROUP_BY_ID, COEF
+    GROUP_BY_ID = {g["group_id"]: g for g in d["groups"]}
+    COEF = load_coefficients()
     tasks = []
 
     def group_key(t, k):
@@ -312,6 +381,7 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan):
             title=human_title(tid, t, g, pg or (pages[0] if pages else ""), len(ks), piece),
             owner=info["owner"], weeks=wk,
             usd_yr=[f * 12, m * 12], usd_per_week=round(m * 12 / wk) if wk else None,
+            expected_pp=expected_pp(t, ks, P, GROUP_BY_ID, COEF), **ops_fields(t, ks, card_of),
             zone=zone_of, piece=piece or None,
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
             points=dict(count=len(ks), pids=[k for k in ks[:40]]), _all_pids=ks,
@@ -341,6 +411,7 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan):
             id=btid, lane="B", type=t, type_name=info["name"],
             title=human_title(btid, t, g, "", len(ks)), owner=info["owner"], weeks=info["weeks"],
             usd_yr=[0, 0], usd_per_week=None,
+            expected_pp=expected_pp(t, ks, P, GROUP_BY_ID, COEF), **ops_fields(t, ks, card_of),
             web_usd_yr_info=[sum(money(k)["usd"][0] for k in web) * 12, sum(money(k)["usd"][1] for k in web) * 12],
             severity=dict(bad=sum(1 for k in ks if P[k]["sev"] == "bad"), warn=sum(1 for k in ks if P[k]["sev"] == "warn")),
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
@@ -573,6 +644,27 @@ def rng(a):
     return "${}–{}{}".format(one(f), one(m), s)
 
 
+STATE = OUT / "task_state.json"
+ARCHIVE = OUT / "task_state_archive.json"
+
+
+def sync_state(task_ids):
+    """§2: status lives outside the generated data. New ids arrive as `open`; ids that disappear are
+    archived with their record, never dropped. Existing records are never touched."""
+    state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
+    archive = json.loads(ARCHIVE.read_text(encoding="utf-8")) if ARCHIVE.exists() else {}
+    added = [i for i in task_ids if i not in state]
+    for i in added:
+        state[i] = {"status": "open", "assignee": None, "note": None, "updated": None}
+    gone = [i for i in list(state) if i not in task_ids]
+    for i in gone:
+        archive[i] = state.pop(i)
+    STATE.write_text(json.dumps({k: state[k] for k in sorted(state)}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if archive or ARCHIVE.exists():
+        ARCHIVE.write_text(json.dumps({k: archive[k] for k in sorted(archive)}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return len(state), added, gone
+
+
 def write_types():
     L = ["# Task types — standalone task layer v1", "",
          "Eleven repeatable units of work. One owner, one deliverable, one speed class each.",
@@ -658,6 +750,13 @@ def write_md(tasks, MT, P, api):
         L += ["### {} · {}".format(t["id"], t["title"]), "",
               "- **Type** {} ({}) · **owner** {} · **{} weeks**".format(t["type"], t["type_name"], t["owner"], t["weeks"] or "program"),
               "- **Money** {} /yr{}".format(rng(t["usd_yr"]), " · {}/week".format(usd(t["usd_per_week"])) if t["usd_per_week"] else ""),
+              "- **Expected impact** {}".format(
+                  "+{}\u2013{}pp".format(t["expected_pp"][0], t["expected_pp"][1]) if t.get("expected_pp")
+                  else "not scored \u2014 ranked by severity or a decision, not by closure"),
+              "- **Execution** {}{} · MLR {}".format(
+                  t.get("execution") or "\u2014",
+                  " \u00b7 " + t["agent_id"] if t.get("agent_id") else "",
+                  "medical review" if t.get("mlr_gate") else "compatible"),
               "- **Demand** {:,}/mo · **points** {}".format(t["demand_mo"], t["points"]["count"]),
               "- **Causes** {}".format(", ".join(t["cause_codes"]) or "—"),
               "- **Pages / domains** {}".format(", ".join(t["pages"]) or "—"),
@@ -673,12 +772,14 @@ def write_md(tasks, MT, P, api):
 
 
 def run():
-    d, P, MT, api, applicable, fix_of, primary, orphan = main()
-    tasks = build(d, P, MT, api, applicable, fix_of, primary, orphan)
+    d, P, MT, api, applicable, fix_of, primary, orphan, card_of = main()
+    tasks = build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of)
     write_types()
     A, B, C = write_md(tasks, MT, P, api)
     order = {"A": 0, "B": 1, "C": 2}
     tasks_sorted = A + B + C
+    n_state, added, gone = sync_state([t["id"] for t in tasks_sorted])
+    print("task_state.json: {} ids | added {} | archived {}".format(n_state, len(added), len(gone)))
     (OUT / "tasks.json").write_text(json.dumps(
         {"meta": {"source": "data/metrics/cycle_01/platform_data.json",
                   "api_usd_mo": MT["api_usd_mo"], "generated_by": "tasks/build_tasks.py"},

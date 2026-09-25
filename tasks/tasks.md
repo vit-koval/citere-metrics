@@ -128,6 +128,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $1.6–4.8M /yr · $799K/week
+- **Expected impact** +0.14–0.27pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 208,894/mo · **points** 22
 - **Causes** SOURCE-PREF, COMP-CONTENT, SOURCE-LEAK, UNCLAIMED
 - **Pages / domains** —
@@ -143,6 +145,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $1.3–3.8M /yr · $634K/week
+- **Expected impact** +0.05–0.11pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 62,223/mo · **points** 7
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK, NARR-AMP
 - **Pages / domains** —
@@ -158,6 +162,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $0.8–2.4M /yr · $407K/week
+- **Expected impact** +0.18–0.36pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 21,875/mo · **points** 5
 - **Causes** COMP-CONTENT
 - **Pages / domains** —
@@ -173,6 +179,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $0.8–2.4M /yr · $404K/week
+- **Expected impact** +0.18–0.37pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 24,765/mo · **points** 15
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK, SOURCE-MISS
 - **Pages / domains** —
@@ -188,6 +196,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $0.6–1.8M /yr · $295K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 24,179/mo · **points** 25
 - **Causes** UNCLAIMED, SOURCE-LEAK, COMP-CONTENT, SOURCE-PREF
 - **Pages / domains** —
@@ -203,6 +213,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $0.5–1.6M /yr · $265K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 23,558/mo · **points** 25
 - **Causes** SOURCE-LEAK, UNCLAIMED, SOURCE-PREF, SOURCE-MISS
 - **Pages / domains** —
@@ -218,6 +230,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T5 (Listings, directory & reference-web data) · **owner** Digital + Medical · **12 weeks**
 - **Money** $0.8–2.5M /yr · $210K/week
+- **Expected impact** +0.15–0.34pp
+- **Execution** AGENT+APPROVE · E16 · MLR compatible
 - **Demand** 65,625/mo · **points** 15
 - **Causes** KNOW, NOT-CHOSEN
 - **Pages / domains** doctronic.ai, 247healthcare.blog, windermeremedical.com, goodrx.com
@@ -233,6 +247,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $0.4–1.1M /yr · $191K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 13,824/mo · **points** 22
 - **Causes** UNCLAIMED, SOURCE-LEAK, COMP-CONTENT, SOURCE-MISS
 - **Pages / domains** —
@@ -248,6 +264,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $287–852K /yr · $142K/week
+- **Expected impact** +0.3–0.59pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 12,233/mo · **points** 13
 - **Causes** COMP-CONTENT, SOURCE-LEAK, SOURCE-MISS
 - **Pages / domains** —
@@ -263,6 +281,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $0.5–1.6M /yr · $132K/week
+- **Expected impact** +5.36–11.8pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 19,713/mo · **points** 7
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** drugs.com, medvidi.com, faynutrition.com, dietitianlive.com, pandameds.com, peakwellnessva.com
@@ -278,6 +298,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $266–791K /yr · $132K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 19,161/mo · **points** 12
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK
 - **Pages / domains** —
@@ -293,6 +315,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $256–761K /yr · $127K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 6,822/mo · **points** 3
 - **Causes** UNCLAIMED
 - **Pages / domains** —
@@ -308,6 +332,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $248–735K /yr · $123K/week
+- **Expected impact** +0.2–0.39pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 6,590/mo · **points** 2
 - **Causes** COMP-CONTENT
 - **Pages / domains** —
@@ -322,6 +348,8 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $244–725K /yr · $121K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 6,822/mo · **points** 3
 - **Causes** COMP-CONTENT, SOURCE-PREF
 - **Pages / domains** —
@@ -339,6 +367,8 @@ Question 1:
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $239–709K /yr · $118K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 19,053/mo · **points** 3
 - **Causes** SOURCE-PREF, COMP-CONTENT
 - **Pages / domains** —
@@ -355,6 +385,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $214–634K /yr · $106K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 18,192/mo · **points** 9
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK, UNCLAIMED
 - **Pages / domains** —
@@ -370,6 +402,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $0.4–1.1M /yr · $90K/week
+- **Expected impact** +5.83–12.82pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 15,384/mo · **points** 8
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** goodrx.com, bassbariatricsurgery.com, grandhealthpartners.com, doctronic.ai, 247healthcare.blog, marleydrug.com
@@ -385,6 +419,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T5 (Listings, directory & reference-web data) · **owner** Digital + Medical · **12 weeks**
 - **Money** $0.3–1.0M /yr · $85K/week
+- **Expected impact** +0.04–0.08pp
+- **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 26,390/mo · **points** 18
 - **Causes** NOT-CHOSEN
 - **Pages / domains** endocrine.plus, webmd.com, buzzrx.com, planetdrugsdirect.com, pandameds.com, goodrx.com
@@ -400,6 +436,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $165–491K /yr · $82K/week
+- **Expected impact** +0.18–0.37pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 16,510/mo · **points** 10
 - **Causes** SOURCE-LEAK, COMP-CONTENT
 - **Pages / domains** —
@@ -415,6 +453,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $114–340K /yr · $57K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 16,952/mo · **points** 13
 - **Causes** SOURCE-PREF, COMP-CONTENT
 - **Pages / domains** —
@@ -430,6 +470,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $114–338K /yr · $56K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 18,192/mo · **points** 8
 - **Causes** SOURCE-PREF
 - **Pages / domains** —
@@ -445,6 +487,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $222–659K /yr · $55K/week
+- **Expected impact** +5.0–11.01pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 9,762/mo · **points** 4
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** doctronic.ai, 247healthcare.blog, avantmedicalgroup.com, telehealthally.com, goodrx.com, universaldrugstore.com
@@ -460,6 +504,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $104–310K /yr · $52K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 4,560/mo · **points** 3
 - **Causes** SYNTH
 - **Pages / domains** diabeteseducation.novocare.com
@@ -475,6 +521,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T10 (Hostile source response) · **owner** Legal + PR · **12 weeks**
 - **Money** $190–564K /yr · $47K/week
+- **Expected impact** +5.64–12.41pp
+- **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 28,319/mo · **points** 15
 - **Causes** HOSTILE
 - **Pages / domains** drugwatch.com, robertkinglawfirm.com, wisnerbaum.com, bursor.com
@@ -490,6 +538,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $87–258K /yr · $43K/week
+- **Expected impact** +0.18–0.37pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 4,953/mo · **points** 4
 - **Causes** SYNTH
 - **Pages / domains** diabeteseducation.novocare.com
@@ -505,6 +555,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $85–254K /yr · $42K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 2,274/mo · **points** 1
 - **Causes** UNCLAIMED
 - **Pages / domains** —
@@ -518,6 +570,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $72–213K /yr · $35K/week
+- **Expected impact** +0.1–0.2pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 7,280/mo · **points** 7
 - **Causes** SOURCE-PREF, COMP-CONTENT
 - **Pages / domains** —
@@ -533,6 +587,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $71–210K /yr · $35K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 3,912/mo · **points** 3
 - **Causes** SOURCE-LEAK, UNCLAIMED
 - **Pages / domains** —
@@ -548,6 +604,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $62–184K /yr · $31K/week
+- **Expected impact** +0.18–0.37pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 21,463/mo · **points** 13
 - **Causes** SYNTH
 - **Pages / domains** ozempic.com
@@ -563,6 +621,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $124–368K /yr · $31K/week
+- **Expected impact** +3.22–7.08pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 3,295/mo · **points** 1
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** onlinedoctor.asda.com, drugs.com, goodrx.com
@@ -576,6 +636,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T5 (Listings, directory & reference-web data) · **owner** Digital + Medical · **12 weeks**
 - **Money** $122–362K /yr · $30K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 8,255/mo · **points** 5
 - **Causes** NOT-CHOSEN, KNOW
 - **Pages / domains** goodrx.com, endocrine.org, wholehealthpartners.com, drugs.com, buzzrx.com
@@ -591,6 +653,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $114–338K /yr · $28K/week
+- **Expected impact** +5.28–11.62pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 4,548/mo · **points** 3
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** webmd.com, reboundclinicsdmv.com, temeculamedicalgroup.com, nutrisense.io, allclinicaltrials.com, goodrx.com
@@ -606,6 +670,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T2 (Expand an existing owned page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $57–169K /yr · $28K/week
+- **Expected impact** +0.07–0.14pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 2,274/mo · **points** 1
 - **Causes** SOURCE-PREF
 - **Pages / domains** https://www.novo-pi.com/saxenda.pdf
@@ -619,6 +685,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T10 (Hostile source response) · **owner** Legal + PR · **12 weeks**
 - **Money** $112–332K /yr · $28K/week
+- **Expected impact** +4.6–10.12pp
+- **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 14,301/mo · **points** 8
 - **Causes** HOSTILE
 - **Pages / domains** motleyrice.com, bursor.com, drugwatch.com, torhoermanlaw.com
@@ -634,6 +702,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $104–310K /yr · $26K/week
+- **Expected impact** +5.28–11.62pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 4,548/mo · **points** 2
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** universaldrugstore.com, telehealthally.com, middlewaynutrition.com, goodrx.com, doctronic.ai
@@ -648,6 +718,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $49–146K /yr · $24K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,304/mo · **points** 1
 - **Causes** UNCLAIMED
 - **Pages / domains** —
@@ -661,6 +733,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $49–146K /yr · $24K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 1,304/mo · **points** 1
 - **Causes** COMP-CONTENT
 - **Pages / domains** —
@@ -674,6 +748,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $49–145K /yr · $24K/week
+- **Expected impact** +0.01–0.02pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,302/mo · **points** 6
 - **Causes** COMP-CONTENT, UNCLAIMED
 - **Pages / domains** —
@@ -689,6 +765,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $44–129K /yr · $22K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,304/mo · **points** 2
 - **Causes** UNCLAIMED
 - **Pages / domains** —
@@ -703,6 +781,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T2 (Expand an existing owned page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $41–121K /yr · $20K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 1,316/mo · **points** 2
 - **Causes** SOURCE-PREF, COMP-CONTENT
 - **Pages / domains** https://www.ozempic.com/ozempic-pen/diabetes-medicines-comparison.html
@@ -717,6 +797,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $36–106K /yr · $18K/week
+- **Expected impact** +0.01–0.02pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 26,574/mo · **points** 25
 - **Causes** SOURCE-LEAK, SOURCE-PREF, UNCLAIMED, SOURCE-MISS
 - **Pages / domains** —
@@ -732,6 +814,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T2 (Expand an existing owned page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $33–97K /yr · $16K/week
+- **Expected impact** +0.08–0.17pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 1,304/mo · **points** 1
 - **Causes** SOURCE-PREF
 - **Pages / domains** https://www.novomedlink.com/obesity/products/treatments/saxenda/about/how-saxenda-works.html
@@ -745,6 +829,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $31–92K /yr · $15K/week
+- **Expected impact** +0.18–0.37pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,651/mo · **points** 1
 - **Causes** SOURCE-LEAK
 - **Pages / domains** —
@@ -758,6 +844,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $57–169K /yr · $14K/week
+- **Expected impact** +5.28–11.62pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 2,274/mo · **points** 2
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** resources.healthgrades.com, endocrine.org, canadianinsulin.com, premiumconciergehealthcare.com
@@ -772,6 +860,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $55–164K /yr · $14K/week
+- **Expected impact** +4.88–10.73pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 2,638/mo · **points** 3
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** weightwatchers.com, webmd.com, hillsideprimarycare.com, cls.health, joinvoy.com, goodrx.com
@@ -787,6 +877,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $27–81K /yr · $13K/week
+- **Expected impact** +0.08–0.16pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 25,738/mo · **points** 18
 - **Causes** SYNTH
 - **Pages / domains** ozempic.com
@@ -802,6 +894,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T5 (Listings, directory & reference-web data) · **owner** Digital + Medical · **12 weeks**
 - **Money** $51–153K /yr · $13K/week
+- **Expected impact** +0.02–0.04pp
+- **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 4,195/mo · **points** 7
 - **Causes** NOT-CHOSEN
 - **Pages / domains** doctronic.ai, prnewswire.com, drugs.com, windermeremedical.com
@@ -817,6 +911,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $23–70K /yr · $12K/week
+- **Expected impact** +0.09–0.17pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 3,276/mo · **points** 14
 - **Causes** SOURCE-LEAK, COMP-CONTENT, SOURCE-PREF
 - **Pages / domains** —
@@ -832,6 +928,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $21–61K /yr · $10K/week
+- **Expected impact** +0.18–0.37pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 3,302/mo · **points** 2
 - **Causes** SYNTH
 - **Pages / domains** novomedlink.com
@@ -846,6 +944,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $41–123K /yr · $10K/week
+- **Expected impact** +5.27–11.6pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 1,651/mo · **points** 2
 - **Causes** COMMERCIAL-GAP
 - **Pages / domains** kadieleachmd.com, premiumconciergehealthcare.com, goodrx.com, coreprimarycare.com
@@ -860,6 +960,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $10–30K /yr · $5K/week
+- **Expected impact** +0.04–0.09pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 4,073/mo · **points** 13
 - **Causes** SOURCE-LEAK, SOURCE-PREF, UNCLAIMED
 - **Pages / domains** —
@@ -875,6 +977,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T5 (Listings, directory & reference-web data) · **owner** Digital + Medical · **12 weeks**
 - **Money** $18–53K /yr · $4K/week
+- **Expected impact** +0.02–0.04pp
+- **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 1,571/mo · **points** 21
 - **Causes** NOT-CHOSEN, KNOW
 - **Pages / domains** taramd.com, cls.health, weightwatchers.com, goodrx.com, axelradclinic.com, endocrine.plus
@@ -890,6 +994,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $5–15K /yr · $3K/week
+- **Expected impact** +0.15–0.3pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 31,995/mo · **points** 23
 - **Causes** SYNTH
 - **Pages / domains** novomedlink.com, wegovy.com, rybelsus.com, ozempic.com, novo-pi.com, novonordisk.com
@@ -905,6 +1011,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T2 (Expand an existing owned page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $5–14K /yr · $2K/week
+- **Expected impact** +0.1–0.2pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 20,324/mo · **points** 13
 - **Causes** SOURCE-PREF, SOURCE-LEAK, COMP-CONTENT, SOURCE-MISS
 - **Pages / domains** https://www.wegovy.com/obesity/is-wegovy-right-for-me/safety-side-effects.html, https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=166301, https://www.ozempic.com/ozempic-pill/side-effects.html, https://pro.novonordisk.co.uk/disclaimer.html?disclaim=https://pro.novonordisk.co.uk/products/ozempic/mechanism-of-action, https://www.novomedlink.com/diabetes/products/treatments/ozempic/dosing-administration/administration/pen.html, https://www.novocare.com/patient/medicines/wegovy/check-coverage.html
@@ -920,6 +1028,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T4 (Publish a new owned evidence page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $4–11K /yr · $2K/week
+- **Expected impact** +0.12–0.23pp
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,302/mo · **points** 13
 - **Causes** SOURCE-LEAK, COMP-CONTENT, UNCLAIMED, SOURCE-PREF
 - **Pages / domains** —
@@ -935,6 +1045,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T10 (Hostile source response) · **owner** Legal + PR · **12 weeks**
 - **Money** $8–22K /yr · $2K/week
+- **Expected impact** +5.66–12.46pp
+- **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 248,133/mo · **points** 16
 - **Causes** HOSTILE
 - **Pages / domains** legalclarity.org, bursor.com, drugwatch.com, motleyrice.com, lawfirm.com, robertkinglawfirm.com
@@ -950,6 +1062,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T6 (Third-party placement (commercial & editorial)) · **owner** Digital + PR · **12 weeks**
 - **Money** $6–18K /yr · $2K/week
+- **Expected impact** +4.28–9.42pp
+- **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 251/mo · **points** 9
 - **Causes** COMMERCIAL-GAP, NOT-CHOSEN
 - **Pages / domains** cls.health, eatprayliftnutrition.com, weightwatchers.com, human.health, sesamecare.com, nourish.com
@@ -965,6 +1079,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T3 (Citability rewrite of a losing page) · **owner** Digital + Medical · **6 weeks**
 - **Money** $2–6K /yr · $1K/week
+- **Expected impact** +0.15–0.3pp
+- **Execution** AGENT · A2 · MLR medical review
 - **Demand** 19,469/mo · **points** 22
 - **Causes** SYNTH
 - **Pages / domains** novomedlink.com, novonordiskmedical.com, wegovy.com, ozempic.com, novonordisk.com, pro.novonordisk.co.uk
@@ -980,6 +1096,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T10 (Hostile source response) · **owner** Legal + PR · **12 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** +5.6–12.31pp
+- **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 34,873/mo · **points** 17
 - **Causes** HOSTILE
 - **Pages / domains** drugwatch.com, wisnerbaum.com, bursor.com, helbocklaw.com
@@ -995,6 +1113,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T10 (Hostile source response) · **owner** Legal + PR · **12 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** +5.61–12.35pp
+- **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 30,966/mo · **points** 17
 - **Causes** HOSTILE
 - **Pages / domains** drugwatch.com, wisnerbaum.com, motleyrice.com, helbocklaw.com, bursor.com
@@ -1010,6 +1130,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T8 (Medical/Regulatory escalation & off-label dossier) · **owner** Medical / Regulatory · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR medical review
 - **Demand** 5,264/mo · **points** 132
 - **Causes** LABEL-GAP, COMP-OFFLABEL
 - **Pages / domains** —
@@ -1025,6 +1147,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T7 (Label-clarity content) · **owner** Medical + Digital · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 2,415/mo · **points** 68
 - **Causes** LABEL-GAP
 - **Pages / domains** —
@@ -1040,6 +1164,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T8 (Medical/Regulatory escalation & off-label dossier) · **owner** Medical / Regulatory · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR medical review
 - **Demand** 89,162/mo · **points** 60
 - **Causes** COMP-OFFLABEL, SOURCE-LEAK, LABEL-GAP, SYNTH
 - **Pages / domains** —
@@ -1055,6 +1181,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T9 (Provider error reports) · **owner** Citere + Medical · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** AGENT+APPROVE · G20 · MLR compatible
 - **Demand** 592/mo · **points** 21
 - **Causes** LABEL-GAP
 - **Pages / domains** —
@@ -1070,6 +1198,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T8 (Medical/Regulatory escalation & off-label dossier) · **owner** Medical / Regulatory · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR medical review
 - **Demand** 20,984/mo · **points** 14
 - **Causes** LABEL-GAP, COMP-OFFLABEL
 - **Pages / domains** —
@@ -1085,6 +1215,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T7 (Label-clarity content) · **owner** Medical + Digital · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 16,510/mo · **points** 10
 - **Causes** LABEL-GAP
 - **Pages / domains** —
@@ -1100,6 +1232,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T9 (Provider error reports) · **owner** Citere + Medical · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** AGENT+APPROVE · G20 · MLR compatible
 - **Demand** 9,906/mo · **points** 6
 - **Causes** LABEL-GAP
 - **Pages / domains** —
@@ -1115,6 +1249,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T7 (Label-clarity content) · **owner** Medical + Digital · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** AGENT · A1 · MLR medical review
 - **Demand** 5,262/mo · **points** 10
 - **Causes** LABEL-GAP
 - **Pages / domains** —
@@ -1130,6 +1266,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T9 (Provider error reports) · **owner** Citere + Medical · **6 weeks**
 - **Money** $0–0 /yr
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** AGENT+APPROVE · G20 · MLR compatible
 - **Demand** 156/mo · **points** 4
 - **Causes** LABEL-GAP
 - **Pages / domains** —
@@ -1145,6 +1283,8 @@ I am not concerned about insurance or how to finance this—I have already resea
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $5.8–17M /yr · $8.6M/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 230,700/mo · **points** 15
 - **Causes** COMP-CONTENT, SYNTH, COMMERCIAL-GAP, SOURCE-PREF
 - **Pages / domains** —
@@ -1162,6 +1302,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $1.9–5.6M /yr · $2.8M/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 52,122/mo · **points** 53
 - **Causes** INSTITUTIONAL
 - **Pages / domains** —
@@ -1177,6 +1319,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $1.5–4.3M /yr · $2.2M/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 83,889/mo · **points** 39
 - **Causes** SYNTH, COMP-CONTENT, SOURCE-LEAK, INSTITUTIONAL
 - **Pages / domains** —
@@ -1192,6 +1336,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $1.0–2.9M /yr · $1.4M/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 61,140/mo · **points** 31
 - **Causes** SOURCE-PREF, COMP-CONTENT, SYNTH, INSTITUTIONAL
 - **Pages / domains** —
@@ -1207,6 +1353,8 @@ Anybody had exp
 
 - **Type** T1 (Monitor & verify position) · **owner** Citere · **program weeks**
 - **Money** $0.6–1.7M /yr
+- **Expected impact** +0.03–0.09pp
+- **Execution** AGENT · H22 · MLR compatible
 - **Demand** 909,008/mo · **points** 320
 - **Causes** WORKING, SOURCE-LEAK
 - **Pages / domains** —
@@ -1222,6 +1370,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $0.4–1.0M /yr · $523K/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 9,906/mo · **points** 6
 - **Causes** INSTITUTIONAL
 - **Pages / domains** —
@@ -1237,6 +1387,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $297–882K /yr · $441K/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 8,889/mo · **points** 3
 - **Causes** INSTITUTIONAL
 - **Pages / domains** —
@@ -1252,6 +1404,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $256–760K /yr · $380K/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 8,750/mo · **points** 2
 - **Causes** INSTITUTIONAL
 - **Pages / domains** —
@@ -1266,6 +1420,8 @@ Anybody had exp
 
 - **Type** T8 (Medical/Regulatory escalation & off-label dossier) · **owner** Medical / Regulatory · **6 weeks**
 - **Money** $48–144K /yr · $24K/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR medical review
 - **Demand** 2,517/mo · **points** 4
 - **Causes** SYNTH
 - **Pages / domains** —
@@ -1281,6 +1437,8 @@ Anybody had exp
 
 - **Type** T12 (Executive decision (commercial / channel floor)) · **owner** Commercial / CMO · **2 weeks**
 - **Money** $33–98K /yr · $49K/week
+- **Expected impact** not scored — ranked by severity or a decision, not by closure
+- **Execution** HUMAN TASK · MLR compatible
 - **Demand** 940/mo · **points** 23
 - **Causes** INSTITUTIONAL, POLICY, MIXED
 - **Pages / domains** —
