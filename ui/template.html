@@ -306,9 +306,6 @@ document.getElementById("hChips").innerHTML = `<span class="chip"><strong>${M.pr
 document.getElementById("nav").innerHTML = ["",...ROUTES].map(r=>`<a href="#/${r}" data-r="${r}">${NAVL[r]}</a>`).join("");
 
 // ---- tasks: one fix card is one task. Shared by the Action Center and the group detail page. ----
-const TASK_STORE = "citere_task_state";
-const readTaskState = () => { try { return JSON.parse(localStorage.getItem(TASK_STORE) || "{}"); } catch(e){ return {}; } };
-const writeTaskState = o => { try { localStorage.setItem(TASK_STORE, JSON.stringify(o)); } catch(e){} };
 const TASK_COLS = [["open","Open"],["in_progress","In progress"],["done","Done"],["dismissed","Dismissed"]];
 let __campIndex = null;
 function campaignsByCard(){                       // fix-card id -> the campaigns that reference it
@@ -335,39 +332,19 @@ function makeTask(pid_run, fix_idx, cs, st){      // one fix card, with whatever
 }
 function buildTasks(){
   // window.__taskById lets a table row find its task when it opens its detail row
-  const st = readTaskState();
+  const st = {};
   return [...campaignsByCard().entries()].map(([id, cs]) => {
     const i = id.lastIndexOf("#");
     return makeTask(id.slice(0, i), Number(id.slice(i + 1)), cs, st);
   }).sort((a,b) => (b.priority - a.priority) || a.id.localeCompare(b.id));
 }
 function tasksForPoint(key){                      // every client fix card on one question, as real tasks
-  const idx = campaignsByCard(), st = readTaskState();
+  const idx = campaignsByCard(), st = {};
   return (PTS[key].fixes || []).map((c, i) => ({c, i}))
     .filter(x => x.c.audience === "client")
     .map(x => makeTask(key, x.i, idx.get(key + "#" + x.i) || [], st));
 }
 function indexTasks(list){ window.__taskById = Object.fromEntries(list.map(t=>[t.id, t])); return list; }
-function taskAct(ids, kind){
-  const cur = readTaskState(); let assignee = null, why = null;
-  if(kind==="assign"){ assignee = prompt("Assign to"); if(!assignee) return; }
-  if(kind==="dismiss"){ why = prompt("Dismiss reason (required)"); if(!why) return; }
-  ids.forEach(id => {
-    const e = cur[id] || {};
-    if(kind==="agent"){ e.sent_at = new Date().toISOString(); e.status = "in_progress"; }
-    if(kind==="assign"){ e.assignee = assignee; if(e.status !== "done") e.status = "in_progress"; }
-    if(kind==="done"){ e.status = "done"; }
-    if(kind==="dismiss"){ e.status = "dismissed"; e.dismiss_reason = why; }
-    e.at = new Date().toISOString(); cur[id] = e;
-  });
-  writeTaskState(cur); render();
-}
-const subjOf = gid => (groupById[gid] || {}).subject_label || gid;
-const taskButtons = (ids, n) => `<div class="acts"${gAttr("task_actions")}>
-    <button type="button" class="pri" data-a="agent" data-ids="${ids.join(",")}">Send to agent${n>1?` (${n})`:""}</button>
-    <button type="button" data-a="assign" data-ids="${ids.join(",")}">Assign</button>
-    <button type="button" data-a="done" data-ids="${ids.join(",")}">Mark done</button>
-    <button type="button" data-a="dismiss" data-ids="${ids.join(",")}">Dismiss</button></div>`;
 const taskCrumb = t => `<a class="crumb" href="#/priorities?group=${encodeURIComponent(t.group_id)}" title="${esc((groupById[t.group_id]||{}).headline||"")}">${esc(subjOf(t.group_id))} · ${t.owners.map(esc).join(" / ")}</a>`;
 const taskMeta = c => `<span class="tt" title="${esc(c.agent||"")}"${gAttr("task_type")}>${esc(c.task_type||"")}</span>
     <span class="tag ${c.execution==="AGENT"?"us":c.execution==="AGENT+APPROVE"?"warn":"ink"}"${gAttr("task_execution")}>${esc(c.execution)}</span>
@@ -414,7 +391,7 @@ function taskCardHTML(t, opts){
     ${opts.acLink ? (t.campaigns.length
         ? `<a class="crumb" href="#/actions?open=${encodeURIComponent(t.pid_run)}~${t.fix_idx}">in Action Center →</a>`
         : `<span class="note">not on the Action Center board — this topic raises no tasks</span>`) : ""}
-    ${taskStateLine(t)}${taskButtons([t.id], 1)}</div>`;
+    ${taskStateLine(t)}</div>`;
 }
 function taskGroupCardHTML(action, items, opts){
   opts = opts || {};
@@ -427,7 +404,7 @@ function taskGroupCardHTML(action, items, opts){
     <div class="hide" id="${tdId(t)}">${taskDetailHTML(t)}</div>
     <button class="flmore" type="button" data-fl="${id}">Show the ${items.length} tasks ▾</button>
     <div class="fpts hide" id="${id}">${items.map(x=>`<div class="fpt">${taskPointLink(x)} ${taskStateLine(x)}</div>`).join("")}</div>
-    ${taskButtons(items.map(x=>x.id), items.length)}</div>`;
+    </div>`;
 }
 function taskListHTML(list, dedupe, opts){
   if(!list.length) return '<div class="dedup">none</div>';
@@ -446,7 +423,6 @@ function toggleTaskDetail(id, btn){
   const card = box.closest(".kcard"); if(card) card.classList.toggle("open", open);
 }
 function wireTasks(root){
-  root.querySelectorAll("[data-a]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); taskAct(b.dataset.ids.split(","), b.dataset.a); });
   root.querySelectorAll("[data-fl]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); const box=document.getElementById(b.dataset.fl); box.classList.toggle("hide");
     b.textContent = `Show the ${box.querySelectorAll(".fpt").length} tasks ` + (box.classList.contains("hide") ? "▾" : "▴"); });
   root.querySelectorAll("[data-td]").forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); toggleTaskDetail(b.dataset.td, b); });
@@ -844,84 +820,84 @@ function groupView(el, g){
   pointTable(document.getElementById("pt"), g.pids, {caption:g.group_id});
 }
 function fixCard(c, link){ return `<div class="fx"><div class="fxh"><span class="tag ${c.platform_execution==="AGENT"?"us":c.platform_execution==="AGENT+APPROVE"?"warn":"ink"}">${esc(c.platform_execution)}</span><span class="tag ${c.type==="LABEL-MEDICAL"?"bad":"mute"}">${esc(c.type)}</span><span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span><span>${esc(c.owner)} · ${esc(c.speed)}</span>${link?`<a href="${link}" style="margin-left:auto;color:var(--us);text-decoration:none">${esc(link.split("/").pop().replace("%7C"," · "))}</a>`:""}</div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}${c.agent?`<div class="fxl"><b>Execution</b> ${esc(c.agent)}</div>`:""}</div>`; }
+function taskStatus(id){ return (TASK_STATE[id] || {}).status || "open"; }
+function STATUS_LABELS(){ return {open:"Open", in_progress:"In progress", done:"Done", dismissed:"Dismissed"}; }
+function statusLabel(k){ return STATUS_LABELS()[k] || k; }
+function statusTag(k){ return ({open:"p1", in_progress:"p2", done:"ok", dismissed:"mute"})[k] || "mute"; }
+function stakeMo(t){ return t.usd_yr[1] ? usdRange(t.usd_yr[0]/12, t.usd_yr[1]/12) + "/mo" : "\u2014"; }
+
+function taskDetailPanel(t){                         // §6, shared by Priorities and Action Center
+  const st = TASK_STATE[t.id] || {};
+  const pts = (t.points.pids || []);
+  return `<section class="tile c12"><h2>${esc(t.title)} <span>${esc(t.lane)} \u00b7 ${esc(t.type)} \u00b7 ${esc(t.type_name)}</span></h2>
+    ${kv([
+      ["Owner", esc(t.owner)],
+      ["Execution", `${esc(t.execution || "\u2014")}${t.agent_id ? " \u00b7 <b>" + esc(t.agent_id) + "</b>" : ""}`],
+      ["Agent", esc(t.agent_desc || "\u2014")],
+      ["MLR", t.mlr_gate ? '<span class="tag p1">medical review</span>' : '<span class="tag mute">compatible</span>'],
+      ["Weeks to result", t.weeks == null ? "standing programme" : t.weeks],
+      ["Status", `<span class="tag ${statusTag(taskStatus(t.id))}">${statusLabel(taskStatus(t.id))}</span>${st.assignee ? " \u00b7 " + esc(st.assignee) : ""}${st.note ? '<div class="z">' + esc(st.note) + "</div>" : ""}`],
+      [`$ at risk <span class="z">${MONEY_NOTE}</span>`, t.usd_yr[1] ? `${usdRange(t.usd_yr[0], t.usd_yr[1])} / yr \u00b7 ${usdOne(t.usd_per_week)}/week` : "\u2014"],
+      ["Expected impact", t.expected_pp ? `+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp` : "not scored \u2014 ranked by severity or a decision"],
+      ["Demand", `${fmtK(t.demand_mo)}/mo \u00b7 ${t.points.count} questions \u00b7 ${esc(t.zone || "\u2014")}`],
+      ["Pages / domains", (t.pages || []).map(x => esc(x)).join("<br>") || "\u2014"],
+      ["Competitors taking these answers", (t.competitors_leaking || []).map(c => `${esc(c.brand)} ${usdOne(c.usd_mo * 12)}`).join(" \u00b7 ") || "\u2014"],
+      ["Causes", (t.cause_codes || []).join(", ") || "\u2014"],
+      ["Also addresses", (t.also_addresses || []).join(", ") || "\u2014"],
+    ])}
+    <div class="note">Status is read from <code>tasks/task_state.json</code> as it stood at build time. This screen never writes.</div>
+    <h3 style="margin-top:14px">Sample questions</h3><ul class="evid">${(t.questions || []).map(qq => `<li>${esc(qq)}</li>`).join("")}</ul>
+    <h3 style="margin-top:14px">Questions in this task <span class="z">${t.points.count}${pts.length < t.points.count ? ", first " + pts.length + " listed" : ""}</span></h3>
+    <div class="srclist">${pts.map(k => `<a href="#/point/${encodeURIComponent(k)}">${esc(k)}</a>`).join("")}</div>
+    <div class="note" style="margin-top:10px"><a href="#/actions">\u2190 back to the Action Center</a></div></section>`;
+}
+
 function vActions(el, q){
-  const A = DASH.action_center.counters;
-  const TASKS = indexTasks(buildTasks());
-  const uniq = f => [...new Set(TASKS.map(f).flat().filter(Boolean))].sort();
-  const qp = k => (q && q.get(k)) || "";
-  const F = {view: qp("view") || window.__acView || "board", who: qp("who"), exec: qp("exec"), owner: qp("owner"),
-             prio: qp("prio"), type: qp("type"), group: qp("group"), text: qp("text"), dedupe: qp("dedupe") === "1"};
-  const syncHash = () => {
-    const parts = Object.entries({view: F.view === "board" ? "" : "table", who:F.who, exec:F.exec, owner:F.owner, prio:F.prio,
-                                  type:F.type, group:F.group, text:F.text, dedupe: F.dedupe ? "1" : ""})
-      .filter(([,v]) => v).map(([k,v]) => `${k}=${encodeURIComponent(v)}`);
-    history.replaceState(null, "", "#/actions" + (parts.length ? "?" + parts.join("&") : ""));
-  };
-  const sel = (id,label,vals) => `<select id="${id}"><option value="">${label}</option>${vals.map(v=>`<option>${esc(v)}</option>`).join("")}</select>`;
-  el.innerHTML = page("Action Center", "One card is one task. Status, assignment and dismissals are saved in this browser only and are not written back to the task registry.", "screen_actions")
-   + `<section class="tile c12"><h2${gAttr("open_tasks")}>This cycle <span>registry</span></h2>${gLead("open_tasks")}
-      <div class="bar-sum" id="sumbar"></div>
+  const tsel = q.get("task");
+  if(tsel && taskById[tsel]) return void (el.innerHTML = `<div class="stack">${taskDetailPanel(taskById[tsel])}</div>`);
+  const F = {lane: q.get("lane") || "", exec: q.get("exec") || "", mlr: q.get("mlr") || "", status: q.get("status") || "", text: q.get("text") || ""};
+  const counts = {}; Object.keys(STATUS_LABELS()).forEach(k => counts[k] = 0);
+  TASKS_ALL.forEach(t => counts[taskStatus(t.id)]++);
+  const uniq = f => [...new Set(TASKS_ALL.map(f).filter(Boolean))].sort();
+  const sel = (id, label, vals, cur) => `<select id="${id}"><option value="">${label}</option>${vals.map(v => `<option${v === cur ? " selected" : ""}>${esc(v)}</option>`).join("")}</select>`;
+  const match = t => (!F.lane || t.lane === F.lane) && (!F.exec || t.execution === F.exec)
+    && (!F.mlr || (F.mlr === "medical review") === !!t.mlr_gate) && (!F.status || taskStatus(t.id) === F.status)
+    && (!F.text || [t.title, t.owner, t.type_name, t.agent_desc || "", t.zone || ""].join(" ").toLowerCase().includes(F.text.toLowerCase()));
+  const list = TASKS_ALL.filter(match).sort((a, b) => (b.usd_per_week || 0) - (a.usd_per_week || 0) || a.lane.localeCompare(b.lane) || a.id.localeCompare(b.id));
+  el.innerHTML = page("Action Center", "Every task, once, by its stable id. Status comes from <code>tasks/task_state.json</code> at build time \u2014 this screen is read-only.", "screen_actions")
+   + `<div class="stack"><section class="tile c12"><h2${gAttr("open_tasks")}>This cycle <span>${TASKS_ALL.length} tasks</span></h2>${gLead("open_tasks")}
+      <div class="bar-sum">${Object.entries(STATUS_LABELS()).map(([k, l]) => `<span>${l} <b>${counts[k]}</b></span>`).join('<span class="sep">\u00b7</span>')}
+        <span class="sep">|</span><span>lane A <b>${LANE_A.length}</b></span><span class="sep">\u00b7</span><span>B <b>${LANE_B.length}</b></span><span class="sep">\u00b7</span><span>C <b>${LANE_C.length}</b></span></div>
       <div class="toolbar">
-        <span class="vtog"${gAttr("view_toggle")}><button id="vKan" type="button">Board</button><button id="vTab" type="button">Table</button></span>
-        ${sel("f_who","Who: all",uniq(t=>t.card.owner))}${sel("f_exec","How it runs: all",uniq(t=>t.card.execution))}
-        ${sel("f_owner","Source type: all",uniq(t=>t.owners))}${sel("f_prio","Priority: all",uniq(t=>String(t.priority)))}
-        ${sel("f_type","Task type: all",uniq(t=>t.card.task_type))}${sel("f_group","Topic: all",uniq(t=>subjOf(t.group_id)))}
-        <input type="search" id="f_text" placeholder="Search action, topic or target" value="${esc(F.text)}">
-        <label class="ded"><input type="checkbox" id="f_dedupe"${F.dedupe?" checked":""}> Group identical actions</label>
+        ${sel("f_lane", "Lane: all", ["A", "B", "C"], F.lane)}
+        ${sel("f_exec", "Execution: all", uniq(t => t.execution), F.exec)}
+        ${sel("f_mlr", "MLR: all", ["medical review", "compatible"], F.mlr)}
+        ${sel("f_status", "Status: all", Object.keys(STATUS_LABELS()), F.status)}
+        <input type="search" id="f_text" placeholder="Search task, owner or agent" value="${esc(F.text)}">
         <button class="btn ghost" id="f_reset" type="button">Reset</button>
-      </div></section>
-     <div id="acView"></div>
-     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('citere').classList.toggle('hide')">Citere monitoring (${D.citere_tasks.registry_tasks.length} registry tasks, ${Object.values(D.citere_tasks.track_cards_by_group).reduce((s,a)=>s+a.length,0)} TRACK cards) ▾</button><div id="citere" class="hide">${D.citere_tasks.registry_tasks.map(t=>`<div class="fxl">${esc(subjOf(t.group_id))} → ${esc(t.owner)} · P${t.priority} · ${esc(t.what)}</div>`).join("")}</div></section>`;
-  const match = t => (!F.who||t.card.owner===F.who) && (!F.exec||t.card.execution===F.exec) && (!F.owner||t.owners.includes(F.owner))
-    && (!F.prio||String(t.priority)===F.prio) && (!F.type||t.card.task_type===F.type) && (!F.group||subjOf(t.group_id)===F.group)
-    && (!F.text||[t.card.action,t.card.target,t.card.why,subjOf(t.group_id),t.card.owner].join(" ").toLowerCase().includes(F.text.toLowerCase()));
-  function draw(){
-    const list = TASKS.filter(match);
-    const by = Object.fromEntries(TASK_COLS.map(([k])=>[k, list.filter(t=>t.status===k)]));
-    document.getElementById("sumbar").innerHTML =
-      `<span>Showing <b>${list.length}</b> of <b>${TASKS.length}</b> tasks</span><span class="sep">|</span>`
-      + TASK_COLS.map(([k,l])=>`<span>${l} <b>${by[k].length}</b></span>`).join('<span class="sep">·</span>')
-      + `<span class="sep">|</span><span>across <b>${new Set(list.map(t=>t.group_id)).size}</b> topics</span>`
-      + `<span class="sep">·</span><span>${list.filter(t=>t.awaiting).length} awaiting clinician sign-off</span>`;
-    const host = document.getElementById("acView");
-    if(F.view === "board"){
-      host.innerHTML = `<div class="kb">${TASK_COLS.map(([k,l])=>`<div class="kbcol"><h4>${l}<span>${by[k].length}</span></h4><div class="kbscroll">${taskListHTML(by[k], F.dedupe)}</div></div>`).join("")}</div>`;
-    } else {
-      const cols = [
-        {k:"p",h:"P",c:"c",g:"priority",f:t=>`<span class="tag p${t.priority}">${t.priority}</span>`,sort:t=>t.priority},
-        {k:"a",h:"Task",c:"cq",g:"task_execution",f:t=>`<div>${esc(t.card.action)}</div><div class="z">${taskCrumb(t)}</div>`,sort:t=>t.card.action},
-        {k:"tt",h:"Task type",c:"ct",g:"task_type",f:t=>`<span class="tt" title="${esc(t.card.agent||"")}">${esc(t.card.task_type||"")}</span>`,sort:t=>t.card.task_type||""},
-        {k:"e",h:"How it runs",g:"task_execution",f:t=>esc(t.card.execution),sort:t=>t.card.execution},
-        {k:"w",h:"Who",g:"who",f:t=>`${esc(t.card.owner)}<div class="z">${esc(t.card.speed)}</div>`,sort:t=>t.card.owner},
-        {k:"m",h:"Review",c:"c",g:"mlr_status",f:t=>`<span class="tag ${t.card.mlr==="medical-review"?"warn":"ok"}">${t.card.mlr==="medical-review"?"medical":"MLR"}</span>`,sort:t=>t.card.mlr},
-        {k:"tg",h:"Target",g:"lever",f:t=>esc(t.card.target||"—"),sort:t=>t.card.target||""},
-        {k:"pt",h:"Point",g:"point_id",f:t=>`<a href="#/point/${encodeURIComponent(t.pid_run)}">${esc(t.pid_run)}</a>`,sort:t=>t.pid_run},
-        {k:"s",h:"Status",c:"c",g:"task_status",f:t=>`<span class="tag ${t.status==="done"?"ok":t.status==="dismissed"?"mute":t.status==="in_progress"?"warn":"p1"}">${esc(t.status.replace("_"," "))}</span>${taskStateLine(t)}`,sort:t=>t.status},
-        {k:"ac",h:"Actions",c:"ca",g:"task_actions",f:t=>taskButtons([t.id],1)},
-      ];
-      host.innerHTML = `<section class="tile c12"><h2${gAttr("open_tasks")}>Tasks <span>${list.length} shown</span></h2>${tbl(cols, list, {sortKey:"p", sortDir:-1, scroll:list.length>14?"tall":false, rowAttr:t=>` class="task" data-id="${t.id}"`})}</section>`;
-    }
-    wireTasks(host);
-    const open = q && q.get("open");                       // ?open=<pid|run>~<idx> links straight to one task's detail
-    if(open){
-      const id = open.replace("~", "#");
-      const card = host.querySelector(`.kcard[data-id="${CSS.escape(id)}"]`) || host.querySelector(`tr.task[data-id="${CSS.escape(id)}"]`);
-      if(card){ card.classList.add("hit"); card.click(); const r = card.getBoundingClientRect(); if(r.top < 0 || r.bottom > innerHeight) card.scrollIntoView({block:"center"}); }
-    }
-    document.getElementById("vKan").classList.toggle("on", F.view==="board");
-    document.getElementById("vTab").classList.toggle("on", F.view!=="board");
-  }
-  document.getElementById("vKan").onclick=()=>{F.view="board"; window.__acView="board"; syncHash(); draw();};
-  document.getElementById("vTab").onclick=()=>{F.view="table"; window.__acView="table"; syncHash(); draw();};
-  [["f_who","who"],["f_exec","exec"],["f_owner","owner"],["f_prio","prio"],["f_type","type"],["f_group","group"]].forEach(([id,k])=>{
-    document.getElementById(id).onchange=e=>{F[k]=e.target.value; syncHash(); draw();}; });
-  document.getElementById("f_text").oninput=e=>{F.text=e.target.value; syncHash(); draw();};
-  document.getElementById("f_dedupe").onchange=e=>{F.dedupe=e.target.checked; syncHash(); draw();};
-  document.getElementById("f_reset").onclick=()=>{ ["who","exec","owner","prio","type","group","text"].forEach(k=>F[k]=""); F.dedupe=false;
-    ["f_who","f_exec","f_owner","f_prio","f_type","f_group","f_text"].forEach(i=>document.getElementById(i).value="");
-    document.getElementById("f_dedupe").checked=false; syncHash(); draw(); };
-  [["f_who",F.who],["f_exec",F.exec],["f_owner",F.owner],["f_prio",F.prio],["f_type",F.type],["f_group",F.group]].forEach(([i,v])=>{ if(v) document.getElementById(i).value=v; });
-  draw();
+      </div>
+      <div class="note">Showing <b>${list.length}</b> of <b>${TASKS_ALL.length}</b>. To change a status, edit <code>tasks/task_state.json</code> and rebuild.</div></section>`
+   + sec("Tasks", tbl([
+      {k: "t", h: "Task", c: "cq", g: "task_title", f: t => `<div class="title">${esc(t.title)}</div><div class="causeln">${esc(t.lane)} \u00b7 ${esc(t.type)} \u00b7 ${esc(t.zone || "\u2014")}</div>`, sort: t => t.title},
+      {k: "o", h: "Owner", c: "cw", f: t => esc(t.owner), sort: t => t.owner},
+      {k: "e", h: "Execution", c: "cw", g: "task_execution", f: t => esc(t.execution || "\u2014"), sort: t => t.execution || ""},
+      {k: "a", h: "Agent", c: "cw", f: t => t.agent_desc ? `<span title="${esc(t.agent_desc)}">${esc(t.agent_id || "\u2014")} \u00b7 ${esc(t.agent_desc.split("\u00b7").slice(1).join("\u00b7").trim() || t.agent_desc)}</span>` : "\u2014", sort: t => t.agent_id || ""},
+      {k: "m", h: "MLR", c: "c", f: t => t.mlr_gate ? '<span class="tag p1">medical</span>' : '<span class="tag mute">ok</span>', sort: t => t.mlr_gate ? 1 : 0},
+      {k: "s", h: "Status", c: "c", g: "task_status", f: t => `<span class="tag ${statusTag(taskStatus(t.id))}">${statusLabel(taskStatus(t.id))}</span>`, sort: t => taskStatus(t.id)},
+      {k: "u", h: "$ at stake/mo", n: true, f: t => `<span title="${esc(STAKE_TIP)}">${stakeMo(t)}</span>`, sort: t => t.usd_yr[1]},
+    ], list, {rowAttr: taskRowAttr, scroll: list.length > 20 ? "tall" : false, sortKey: "u", sortDir: -1}),
+    "A point can belong to several tasks only through <i>also addresses</i>; the money column is never additive across rows.", `${list.length} shown`, "c12")
+   + `</div>`;
+  el.querySelectorAll("[data-href]").forEach(r => r.onclick = ev => { if(ev.target.closest("a")) return; location.hash = r.dataset.href; });
+  const push = () => { const p = Object.entries({lane: F.lane, exec: F.exec, mlr: F.mlr, status: F.status, text: F.text})
+      .filter(([, v]) => v).map(([k, v]) => `${k}=${encodeURIComponent(v)}`);
+    location.hash = "#/actions" + (p.length ? "?" + p.join("&") : ""); };
+  [["f_lane", "lane"], ["f_exec", "exec"], ["f_mlr", "mlr"], ["f_status", "status"]].forEach(([id, k]) => {
+    const e = document.getElementById(id); if(e) e.onchange = ev => { F[k] = ev.target.value; push(); };
+  });
+  const tx = document.getElementById("f_text");
+  if(tx) tx.onchange = ev => { F.text = ev.target.value; push(); };
+  const rs = document.getElementById("f_reset"); if(rs) rs.onclick = () => { location.hash = "#/actions"; };
 }
 function vSafety(el, q){
   const L=DASH.safety_label; const t=q.get("target"), s=q.get("surface");
