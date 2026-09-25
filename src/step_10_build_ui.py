@@ -78,6 +78,23 @@ def build_answer_store():
     for k, g in c[~c["is_artifact"]].groupby(key):
         cit[k] = [{"domain": d, "url": u, "owner": o} for d, u, o in zip(g["domain"], g["url"], g["owner"])]
     arow = a.set_index(key)
+
+    # R4/R5 answers carry a per-answer label verdict in scores_json: what the model said, which
+    # section of the prescribing information it breaks, and one sentence naming the error.
+    # The Safety screen needs those per answer, not just as a per-cell count.
+    LABEL_FIELDS = ("verdict", "tier", "harm_class", "error_types", "target", "label_section", "evidence")
+    def label_of(r):
+        raw = r.get("scores_json") if hasattr(r, "get") else r["scores_json"]
+        if raw is None or (isinstance(raw, float) and pd.isna(raw)):
+            return None
+        try:
+            d = json.loads(raw)
+        except (TypeError, ValueError):
+            return None
+        if not isinstance(d, dict) or not d.get("verdict"):
+            return None
+        return {k: d[k] for k in LABEL_FIELDS if d.get(k)}
+
     store = collections.OrderedDict()
     for p in corpus["prompts"]:
         k = "{}|{}".format(p["pid"], p["run"]); seen = collections.Counter(); rows = []
@@ -88,6 +105,9 @@ def build_answer_store():
             r = arow.loc[(p["pid"], p["run"], m, ri)]
             rows.append({"model": m, "repeat_idx": ri, "answer_raw": r["answer_raw"], "answer_clean": r["answer_clean"], "excluded": bool(r["excluded"]),
                          "exclude_reason": None if pd.isna(r["exclude_reason"]) else r["exclude_reason"], "citations": cit.get((p["pid"], p["run"], m, ri), [])})
+            lab = label_of(r)
+            if lab:
+                rows[-1]["label"] = lab
         store[k] = rows
     by_run = collections.OrderedDict()
     for k, rows in store.items():

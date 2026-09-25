@@ -30,13 +30,14 @@ td.cw,th.cw{min-width:150px}
 td.cq,th.cq{min-width:260px;max-width:460px}
 td.cc,th.cc{min-width:180px;max-width:300px}
 td.cx,th.cx{min-width:220px;max-width:360px}
+td.cev,th.cev{min-width:320px;max-width:560px}
 .ell{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
 .tblwrap.scroll{max-height:520px;overflow:auto}
 .tblwrap.tall{max-height:820px;overflow:auto}
 .tblwrap.scroll thead th,.tblwrap.tall thead th{position:sticky;top:0;background:var(--panel);z-index:1}
 .pt-table{min-width:1080px}
 .row.top{align-items:flex-start}
-.tile > .note:last-child{margin-top:auto}
+.tile > .note:last-child{margin-top:var(--sp-2)}   /* was margin-top:auto — it tore footnotes away from what they explain */
 th.sort{cursor:pointer;user-select:none}
 th.sort.on{color:var(--ink)}
 tr.pt{cursor:pointer}
@@ -47,6 +48,7 @@ td .z{color:var(--muted);font-size:12px;margin-top:2px}
 .causeln{color:var(--muted);font-size:12px;margin-top:2px}
 .tag.mute{background:var(--soft);color:var(--muted)}
 .tag.ink{background:var(--soft);color:var(--ink)}
+.tag.us{background:var(--us-soft);color:var(--us)}
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .filters select,.filters input{font:inherit;font-size:13px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:5px 12px;max-width:220px}
 .filters input{border-radius:var(--radius);min-width:220px}
@@ -125,6 +127,35 @@ th[data-g]{text-decoration:underline dotted var(--line);text-underline-offset:3p
 .kcard:hover{border-color:var(--us)}
 .kcard.open{border-color:var(--us)}
 .kcard.hit{border-color:var(--us);box-shadow:0 0 0 2px var(--us-soft)}
+.kbcol.over{border-color:var(--us);background:var(--us-soft)}
+.kcard[draggable]{cursor:grab}
+.kcard .m.ctl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px}
+.kcard select.acsel{font:inherit;font-size:11.5px;padding:2px 4px;max-width:100%;min-width:0}
+td select.acsel{font:inherit;font-size:12px;padding:2px 4px;max-width:170px;min-width:0}
+.kbcol{min-height:110px}
+.acsave{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin-top:var(--sp-2)}
+.acsave .btn{padding:4px 10px;font-size:12.5px}
+.tctl{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12.5px;color:var(--muted);padding:var(--sp-3) 0;border-bottom:1px solid var(--line)}
+.tctl label{display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
+.tctl select.acsel{font:inherit;font-size:12.5px;padding:3px 6px;max-width:260px}
+.lvio{border-top:1px solid var(--line);padding:var(--sp-3) 0}
+.lvio:first-child{border-top:0}
+.lvh{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;font-size:13px}
+.lvh .note{font-size:12px}
+.lve{margin-top:var(--sp-1);font-size:13.5px;line-height:1.5;max-width:82ch}
+.lvio.v-CRITICAL{border-left:3px solid var(--bad);padding-left:var(--sp-3)}
+.lvio.v-MAJOR{border-left:3px solid var(--warn);padding-left:var(--sp-3)}
+.lvok{margin-top:var(--sp-3);font-size:13px;color:var(--muted)}
+.lvok summary{cursor:pointer}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+tr.pt.on > td{background:var(--soft)}
+tr.fdet > td{background:var(--soft);padding:var(--sp-3) var(--sp-4) var(--sp-4)}
+.fdh{font-size:12.5px;color:var(--muted);margin-bottom:var(--sp-2)}
+.fqs{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.fq{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;justify-content:space-between;background:var(--panel);padding:var(--sp-2) var(--sp-3);text-decoration:none;color:var(--ink);font-size:13px}
+.fq:hover{background:var(--us-soft)}
+.fqq{flex:1 1 320px;min-width:0}
+.fqm{display:flex;gap:6px;align-items:baseline;white-space:nowrap}
 tr.task.hit td{background:var(--us-soft)}
 tr.task{cursor:pointer}
 tr.task:hover td{background:var(--soft)}
@@ -192,14 +223,14 @@ td.ct,th.ct{min-width:150px}
 .srclist a span{color:var(--muted)}
 .hide{display:none}
 .big.pct small,.mid.pct small{margin-left:2px}
-@media (max-width:1100px){.stack>.c3,.stack>.c4,.stack>.c5,.stack>.c6,.stack>.c7,.stack>.c8{grid-column:span 12}}
+@media (max-width:1100px){.stack>.c3,.stack>.c4,.stack>.c5,.stack>.c6,.stack>.c7,.stack>.c8,.stack>.c9{grid-column:span 12}}
 @media (max-width:640px){.tile h2{flex-wrap:wrap}.tile h2 span{flex-basis:100%}}
 @media print{.nav,.btn,#view2,#view3,#mapView{display:none!important}.wrap{padding:0}.tile{break-inside:avoid}}
 .qlist{margin-top:6px}
 .qrow{border-top:1px solid var(--line);padding:8px 0}
 .qrow:first-child{border-top:none}
 .qhead{display:flex;gap:9px;align-items:flex-start}
-.qtog{flex:none;width:22px;height:22px;border:1px solid var(--line);background:var(--panel);border-radius:6px;cursor:pointer;font-size:11px;line-height:1;color:var(--mut)}
+.qtog{flex:none;width:24px;height:24px;font-size:12px;color:var(--us);border:1px solid var(--line);background:var(--panel);border-radius:6px;cursor:pointer;font-size:11px;line-height:1;color:var(--mut)}
 .qtext{flex:1;font-size:13.5px;line-height:1.5}
 .qans{margin:8px 0 2px 31px;padding:8px 10px;background:var(--soft);border-radius:8px;font-size:13px}
 .mrow{border-top:1px solid var(--line);padding:5px 0}
@@ -211,6 +242,59 @@ td.ct,th.ct{min-width:150px}
 .mtext{margin:6px 0 4px;padding:9px 11px;background:var(--panel);border:1px solid var(--line);border-radius:6px;font-size:12.5px;line-height:1.6;white-space:pre-wrap;max-height:340px;overflow:auto}
 .qans p{margin:0}
 .qmodel{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+/* --- Overview: semantic left accent per tile --- */
+.tile.acc{border-left:3px solid var(--line)}
+.tile.acc-us{border-left-color:var(--us)}
+.tile.acc-comp{border-left-color:var(--comp)}
+.tile.acc-ok{border-left-color:var(--ok)}
+.tile.acc-bad{border-left-color:var(--bad)}
+.tile.acc-mute{border-left-color:var(--line)}
+/* --- reusable horizontal bar chart --- */
+.hbars{display:grid;gap:var(--sp-2);margin:var(--sp-1) 0}
+.hbar{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-1)}
+.hbar .hbl{font-size:12.5px;color:var(--ink);display:flex;gap:var(--sp-2);align-items:baseline;min-width:0}
+.hbar .hbl small{color:var(--muted);font-size:11.5px;white-space:nowrap}
+.hbar .hbl .ell{max-width:none}
+.hbar .hbt{position:relative;height:20px;background:var(--soft);border-radius:3px;overflow:hidden}
+.hbar .hbt i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;display:block}
+.hbar .hbv{position:absolute;top:0;line-height:20px;font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hbar .hbv.out{color:var(--muted);padding-left:var(--sp-2)}
+.hbar .hbv.in{color:var(--panel);padding-right:var(--sp-2);text-align:right}
+.hbar .hbv.in.ink{color:var(--ink)}
+.tile.safety{border-left-width:3px}
+.brief{display:grid;gap:var(--sp-3);margin:var(--sp-3) 0 var(--sp-2);padding:var(--sp-4);background:var(--soft);border-radius:var(--radius)}
+.brief .bsec h4{margin:0 0 var(--sp-1);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brief .bsec p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink)}
+/* --- task detail --- */
+.taskpane{gap:0}
+.taskpane .tcrumb{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-4);font-size:12px;color:var(--muted);margin-bottom:var(--sp-3)}
+.taskpane .tcrumb a{color:var(--us);text-decoration:none}
+.taskpane h2.page{margin:0 0 var(--sp-3);max-width:34ch}
+.tchips{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-5)}
+.tchip{font-size:11.5px;line-height:1.7;padding:0 var(--sp-2);border:1px solid var(--line);border-radius:999px;color:var(--muted);white-space:nowrap}
+.tchip b{color:var(--ink);font-weight:500}
+.tchip.own{border-color:var(--us);color:var(--us)}
+.tchip.warn{border-color:var(--warn);color:var(--warn)}
+.tchip.st-open{border-color:var(--ink);color:var(--ink)}
+.tchip.sm{font-family:'IBM Plex Mono',monospace;font-size:10.5px}
+.tmets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4);padding:var(--sp-4) 0 var(--sp-5);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:var(--sp-5)}
+.tmet .tmv{font-family:"Fraunces",Georgia,serif;font-size:26px;line-height:1.1;color:var(--ink)}
+.tmet .tmv small{font-size:14px;color:var(--muted);margin-left:2px}
+.tmet .tml{font-size:12.5px;color:var(--ink);margin-top:var(--sp-1)}
+.tmet .tmn{font-size:11px;color:var(--muted);margin-top:2px}
+.taskpane .bsec{margin-bottom:var(--sp-4);max-width:72ch}
+.taskpane .bsec h4{margin:0 0 var(--sp-1);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.taskpane .bsec p{margin:0;font-size:13.5px;line-height:1.65;color:var(--ink)}
+.tbody{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(220px,1fr);gap:var(--sp-6);align-items:start}
+.tfacts{display:grid;gap:var(--sp-4);padding:var(--sp-4);background:var(--soft);border-radius:var(--radius);position:sticky;top:var(--sp-4)}
+.tfl{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.tfv{font-size:12.5px;line-height:1.6;color:var(--ink);word-break:break-word}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11.5px}
+.thead{margin:var(--sp-5) 0 var(--sp-2);font-size:15px;font-weight:600;display:flex;gap:var(--sp-2);align-items:baseline}
+.thead span{font-size:12px;font-weight:400;color:var(--muted)}
+.tfoot{margin-top:var(--sp-5);padding-top:var(--sp-3);border-top:1px solid var(--line)}
+.tfoot a{color:var(--us)}
+@media(max-width:900px){.tmets{grid-template-columns:repeat(2,minmax(0,1fr))}.tbody{grid-template-columns:minmax(0,1fr)}.tfacts{position:static}}
 </style>
 <!--LEGACY_MAP_CSS-->
 </head><body>
@@ -271,17 +355,16 @@ function moneyTile(){
   const yr=[MONEY.api_usd_mo[0]*12, MONEY.api_usd_mo[1]*12];
   const shr=v=>Math.round(v/PRICING.ad_spend_yr*100);
   const zt={}; LANE_A.forEach(t=>{ const z=t.zone||"\u2014"; (zt[z]=zt[z]||[0,0])[0]+=t.usd_yr[0]; zt[z][1]+=t.usd_yr[1]; });
-  const top=Object.entries(zt).filter(x=>x[1][1]>0).sort((a,b)=>b[1][1]-a[1][1]).slice(0,3);
+  const top=Object.entries(zt).filter(x=>x[1][1]>0).sort((a,b)=>b[1][1]-a[1][1]);
   const web=MONEY.web_usd_mo||[0,0];
   const names=(MONEY.portfolio||[]).join(", ");
   return `
-  <section class="tile c5" aria-label="Revenue at risk" onclick="location.hash='#/priorities?sort=usd&panel=api&pf=0'">
+  <section class="tile c6 acc acc-us" aria-label="Revenue at risk" onclick="location.hash='#/priorities?sort=usd&panel=api&pf=0'">
     <h2>Revenue at risk <span>${MONEY_NOTE}</span></h2>
     <div class="big" title="${esc(MONEY_TIP)}">${usdRange(yr[0],yr[1])}<small> / yr</small></div>
-    ${bar(shr(yr[1]))}
-    <div class="note">${shr(yr[0])}%\u2013${shr(yr[1])}% of annual ${esc(M.brand)} ad budget (${usdOne(PRICING.ad_spend_yr)})</div>
-    <div class="tblwrap"><table><tr><th>Top zones</th><th class="n">$ / yr</th></tr>${
-      top.map(([z,v])=>`<tr><td><a href="#/priorities?zone=${encodeURIComponent(z)}">${esc(z)}</a></td><td class="n">${usdRange(v[0],v[1])}</td></tr>`).join("")}</table></div>
+    ${hbars([{label:"share of annual ad budget", note:usdOne(PRICING.ad_spend_yr)+" spend", value:shr(yr[1]), display:shr(yr[0])+"\u2013"+shr(yr[1])+"%", fill:"var(--us)"}], {max:100})}
+    <div class="note" style="margin-top:var(--sp-3);color:var(--ink)">Where it sits \u2014 by zone, $ / yr</div>
+    ${hbars(top.map(([z,v])=>({label:z, value:v[1], display:usdRange(v[0],v[1]), fill:"var(--us)"})))}
     <div class="note">Web surfaces (R4/R5): ${usdYr(web)} / yr \u2014 separate panel, not added</div>
     <div class="note">Portfolio queries excluded${names?` \u2014 ${esc(names)} ${MONEY.portfolio.length>1?"are":"is"} the client's own brand${MONEY.portfolio.length>1?"s":""}`:""}</div>
   </section>`;
@@ -308,6 +391,7 @@ const themeName = t => t.includes(" · ") ? t.split(" · ").slice(1).join(" · "
 const titleCause = (code, label, cause) => `<div class="title">${esc(label||code)}</div>${cause?`<div class="causeln">${esc(cause.label||cause.code)} · <span${gAttr("confidence")}>confidence ${esc(CONF[(cause.confidence||"").toLowerCase()]||cause.confidence||"—")}</span></div>`:""}`;
 const groupById = Object.fromEntries(GROUPS.map(g=>[g.group_id,g]));
 const NOT_TARGETED = new Set(D.meta.competitors_found_in_data||[]);   // entered the dictionary mid-cycle; R1/R2 were built against the GLP-1 set
+const PORTFOLIO = new Set(((typeof MONEY!=="undefined" && MONEY && MONEY.portfolio)||[]));   // our own brands: they win answers, but not from us
 const duelOf = name => (DASH.benchmarking.duel_verdict.by_competitor||{})[name] || null;
 const ROUTES = ["visibility","competitors","sentiment","sources","priorities","actions","safety","map"];
 const NAVL = {"":"Dashboard",visibility:"Visibility",competitors:"Competitors",sentiment:"Sentiment",sources:"Sources",priorities:"Priorities",actions:"Actions",safety:"Safety / Label",map:"Neural map"};
@@ -355,22 +439,18 @@ function render(){
 
 // ---------------- Level 1: the approved master screen with real data ----------------
 function level1(el){
-  const V=DASH.visibility, H=V.headline, B=DASH.benchmarking, S=DASH.sentiment, C=DASH.citations, P=DASH.prioritization, A=DASH.action_center, L=DASH.safety_label, BA=DASH.before_after;
+  const V=DASH.visibility, H=V.headline, B=DASH.benchmarking, S=DASH.sentiment, C=DASH.citations, P=DASH.prioritization, L=DASH.safety_label;
   const lo=H.visibility_ci95[0], hi=H.visibility_ci95[1];
-  const fam = V.by_model.map(d=>`<div>${esc(cap(d.model))}</div><div class="bar"><i class="t-us" style="width:${Math.min(100,Math.max(0,d.ai_brand_score))}%"></i></div><div>${(+d.ai_brand_score).toFixed(1)}</div>`).join("");
+  const fam = hbars(V.by_model.map(d=>({label:cap(d.model), value:d.ai_brand_score, display:(+d.ai_brand_score).toFixed(1), fill:"var(--us)"})), {max:100});
   const lead = B.leaderboard.slice(0,4).map(d=>`<tr><td>${esc(d.competitor)}</td><td class="n">${pct(d.impact)}</td><td class="n">${pct(d.impact_by_absence)}</td>${PRICING?`<td class="n" title="${esc(COMP_TIP)}">${compUsdYr(d.competitor)}</td>`:""}</tr>`).join("");
   const worst = L.by_surface.slice().sort((a,b)=>b.critical_share-a.critical_share)[0];
   const lightText = {red:"Dangerous errors found", yellow:"Warnings found", green:"No critical findings"}[L.traffic_light]||L.traffic_light;
   const r3 = S.top_negative_themes.filter(t=>t.run==="R3").slice(0,5).map(t=>`<tr><td>${esc(themeName(t.theme))}</td><td class="n">${pct0(t.pct_of_negative)}</td></tr>`).join("");
   const gap = C.gap_list.slice(0,4).map(g=>`<tr><td><a href="#/sources?domain=${encodeURIComponent(g.domain)}">${esc(g.domain)}</a></td><td class="n">${esc(g.subtype||g.owner)}</td><td class="n">gap ${g.gap_score}</td></tr>`).join("");
-  const recs = LANE_A.slice().sort(byWeek).slice(0,3).map(t=>`<tr><td><a href="#/priorities?zone=${encodeURIComponent(t.zone||"")}">${esc(t.title)}</a><br><span class="note">${esc(t.owner)} \u00b7 ${t.weeks} weeks \u00b7 ${esc(t.type)}</span></td><td class="n">${fmtK(t.demand_mo)}</td><td class="n">${usdOne(t.usd_per_week)}</td><td class="n">${t.expected_pp?`+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp`:"\u2014"}</td><td class="n">${usdRange(t.usd_yr[0],t.usd_yr[1])}</td></tr>`).join("");
-  const byOwner={}; TASKS_ALL.forEach(t=>{ byOwner[t.owner]=(byOwner[t.owner]||0)+1; });
-  const who = Object.entries(byOwner).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([k,v])=>`<div>${esc(k)}</div><div>${v}</div>`).join("");
-  const stakeTip = "A point can belong to several groups \u2014 amounts are not additive. See the Revenue at risk tile for the total.";
-  const next = TASKS_ALL.filter(t=>taskStatus(t.id)==="open").sort(byWeek).slice(0,3).map(t=>`<tr><td><a href="#/actions?task=${encodeURIComponent(t.id)}">${esc(t.title)}</a></td><td>${esc(t.owner)}</td><td class="n">${t.expected_pp?`+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp`:"\u2014"}</td>${PRICING?`<td class="n" title="${esc(stakeTip)}">${t.usd_yr[1]?usdRange(t.usd_yr[0]/12,t.usd_yr[1]/12):"\u2014"}</td>`:""}<td class="n"><span class="tag p1">open</span></td></tr>`).join("");
+  const recs = LANE_A.slice().sort(byWeek).slice(0,5).map(t=>`<tr><td><a href="#/priorities?zone=${encodeURIComponent(t.zone||"")}">${esc(t.title)}</a><br><span class="note">${esc(t.owner)} \u00b7 ${t.weeks} weeks \u00b7 ${esc(t.type)}</span></td><td class="n">${fmtK(t.demand_mo)}</td><td class="n">${usdOne(t.usd_per_week)}</td><td class="n">${t.expected_pp?`+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp`:"\u2014"}</td><td class="n">${usdRange(t.usd_yr[0],t.usd_yr[1])}</td></tr>`).join("");
   el.innerHTML = `${gLead("screen_dashboard")}<div class="grid">
   ${moneyTile()}
-  <section class="tile c5" aria-label="Visibility Score" onclick="location.hash='#/visibility'">
+  <section class="tile c6 acc acc-us" aria-label="Visibility Score" onclick="location.hash='#/visibility'">
     <h2${gAttr("visibility_score")}>Visibility Score <span>unbranded questions, API models</span></h2>${gLead("visibility_score")}
     <div class="row top">
       <div style="flex:1;min-width:210px">
@@ -387,10 +467,10 @@ function level1(el){
       </div>
     </div>
     <div class="note" style="color:var(--ink)">We answer well once the conversation reaches us — the gap is getting into the conversation.</div>
-    <div class="models">${fam}</div>
+    <div class="note" style="color:var(--ink)">AI Brand Score by model family, out of 100</div>${fam}
     <div class="note">${esc((V.scope.surfaces_not_covered||[]).join(", "))} not measured on unbranded questions this cycle.</div>
   </section>
-  <section class="tile c4" aria-label="Competitive Benchmarking" onclick="location.hash='#/competitors'">
+  <section class="tile c4 acc acc-comp" aria-label="Competitive Benchmarking" onclick="location.hash='#/competitors'">
     <h2${gAttr("screen_competitors")}>Competitive Benchmarking <span>who takes our answers</span></h2>${gLead("screen_competitors")}
     <div class="row">
       <div><div class="mid"${gAttr("win_rate")}>${Math.round(B.overall.win_rate)}<small>% win rate</small></div><div class="note">ahead when both named</div></div>
@@ -399,7 +479,7 @@ function level1(el){
     <div class="tblwrap"><table><tr><th>Competitor</th><th class="n">Answers taken</th><th class="n">By absence</th>${PRICING?`<th class="n" title="${esc(COMP_TIP)}">$ at risk/yr</th>`:""}</tr>${lead}</table></div>
     <div class="note">Win rate ${ci(B.overall.win_rate_ci95)} over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.</div>
   </section>
-  <section class="tile c3 safety ${L.traffic_light}" aria-label="Safety and label flag" onclick="location.hash='#/safety'">
+  <section class="tile c4 safety acc acc-bad ${L.traffic_light}" aria-label="Safety and label flag" onclick="location.hash='#/safety'">
     <h2${gAttr("screen_safety")}>Safety / Label <span>web surfaces</span></h2>${gLead("screen_safety")}
     <div class="light ${L.traffic_light}"${gAttr("traffic_light")}>${lightText}</div>
     <div class="big"${gAttr("findings_total")}>${L.findings.total}<small>findings</small></div>
@@ -407,49 +487,34 @@ function level1(el){
     <dl class="dl"><dt>Worst surface</dt><dd>${esc(worst.surface)}, ${pct0(worst.critical_share)} critical</dd><dt>Top label section</dt><dd>${esc(L.top_label_sections[0].section)} (${esc(L.top_label_sections[0].target)})</dd><dt>Then</dt><dd>${L.top_label_sections.slice(1).map(s=>`${esc(s.section)} (${esc(s.target)})`).join(", ")}</dd></dl>
     <div class="note">Findings reach the client report only after clinician sign-off.</div>
   </section>
-  <section class="tile c3" aria-label="Sentiment" onclick="location.hash='#/sentiment'">
+  <section class="tile c4 acc acc-ok" aria-label="Sentiment" onclick="location.hash='#/sentiment'">
     <h2${gAttr("sentiment_score")}>Sentiment <span>questions about us</span></h2>${gLead("sentiment_score")}
     <div class="mid"${gAttr("sentiment_score")}>${Math.round(S.headline.score)}<small>of 100</small></div>
-    <div class="bar"><i class="t-ok" style="width:${S.headline.shares.positive_pct}%"></i><i class="t-mute" style="width:${S.headline.shares.neutral_pct}%"></i><i class="t-bad" style="width:${S.headline.shares.negative_pct}%"></i></div>
-    <div class="kv"><div>Positive</div><div>${pct0(S.headline.shares.positive_pct)}</div><div>Neutral</div><div>${pct0(S.headline.shares.neutral_pct)}</div><div>Negative</div><div>${pct0(S.headline.shares.negative_pct)}</div></div>
+    ${hbars([
+      {label:"Positive", value:S.headline.shares.positive_pct, display:pct0(S.headline.shares.positive_pct), fill:"var(--ok)"},
+      {label:"Neutral",  value:S.headline.shares.neutral_pct,  display:pct0(S.headline.shares.neutral_pct),  fill:"var(--muted)"},
+      {label:"Negative", value:S.headline.shares.negative_pct, display:pct0(S.headline.shares.negative_pct), fill:"var(--bad)"},
+    ], {max:100})}
     <div class="note" style="margin-top:2px">What negative answers say</div>
     <div class="tblwrap"><table>${r3}</table></div>
     <div class="note">Under myth probes: ${Math.round(S.narrative_resistance.score)} of 100, ${pct0(S.narrative_resistance.shares.negative_pct)} negative.</div>
   </section>
-  <section class="tile c4" aria-label="Citation tracking" onclick="location.hash='#/sources'">
+  <section class="tile c5 acc acc-comp" aria-label="Citation tracking" onclick="location.hash='#/sources'">
     <h2${gAttr("screen_sources")}>Citation Tracking <span>all runs with citations</span></h2>${gLead("screen_sources")}
-    <div class="bar"><i class="t-comp" style="width:${C.owner_shares.earned}%"></i><i class="t-mute" style="width:${C.owner_shares.institutional}%"></i><i class="t-us" style="width:${C.owner_shares.owned}%"></i><i style="width:${C.owner_shares.competitor}%;background:var(--ink)"></i></div>
-    <div class="kv">
-      <div><span class="tag warn"${gAttr("citation_earned")}>earned</span> media, directories, forums, hospitals</div><div>${pct0(C.owner_shares.earned)}</div>
-      <div><span class="tag p1"${gAttr("citation_institutional")}>institutional</span> FDA, NIH, journals, Wikipedia</div><div>${pct0(C.owner_shares.institutional)}</div>
-      <div><span class="tag us"${gAttr("citation_owned")}>owned</span> our sites</div><div>${pct(C.owner_shares.owned)}</div>
-      <div><span class="tag p1"${gAttr("citation_competitor")}>competitor</span> their sites</div><div>${pct(C.owner_shares.competitor)}</div>
-      <div><span class="tag bad"${gAttr("citation_adversarial")}>threat</span> litigation, adversarial</div><div>${C.adversarial_sources.length} domain${C.adversarial_sources.length===1?"":"s"}</div>
-    </div>
+    ${hbars([
+      {label:"owned", note:"our sites", value:C.owner_shares.owned, display:pct(C.owner_shares.owned), fill:"var(--us)"},
+      {label:"competitor", note:"their sites", value:C.owner_shares.competitor, display:pct(C.owner_shares.competitor), fill:"var(--comp)"},
+      {label:"earned", note:"media, directories, forums, hospitals", value:C.owner_shares.earned, display:pct0(C.owner_shares.earned), fill:"var(--comp-soft)", light:true},
+      {label:"institutional", note:"FDA, NIH, journals, Wikipedia", value:C.owner_shares.institutional, display:pct0(C.owner_shares.institutional), fill:"var(--us-soft)", light:true},
+    ])}
+    <div class="note"><span class="tag bad"${gAttr("citation_adversarial")}>threat</span> litigation, adversarial \u2014 <b>${C.adversarial_sources.length}</b> domain${C.adversarial_sources.length===1?"":"s"}</div>
     <div class="note" style="margin-top:2px">Feeding answers about competitors, not us</div>
     <div class="tblwrap"><table>${gap}</table></div>
   </section>
-  <section class="tile c5" aria-label="Diagnosis and prioritization" onclick="location.hash='#/priorities'">
+  <section class="tile c7 acc acc-us" aria-label="Diagnosis and prioritization" onclick="location.hash='#/priorities'">
     <h2${gAttr("screen_priorities")}>Priorities <span>$ at risk per week of work</span></h2>${gLead("screen_priorities")}
     <div class="tblwrap"><table><tr><th>Fix first</th><th class="n">Demand /mo</th><th class="n">$/week</th><th class="n">Expected</th><th class="n">$ at risk/yr</th></tr>${recs}</table></div>
     <div class="note">Ranked by $ at risk per week of work. Expected impact is shown, never sorted on. ${LANE_A.length} lane-A tasks across ${new Set(LANE_A.map(t=>t.zone)).size} zones.</div>
-  </section>
-  <section class="tile c7" aria-label="Action Center" onclick="location.hash='#/actions'">
-    <h2${gAttr("screen_actions")}>Action Center <span>tasks from the list above</span></h2>${gLead("screen_actions")}
-    <div class="row">
-      <div><div class="mid"${gAttr("open_tasks")}>${TASKS_ALL.filter(t=>taskStatus(t.id)==="open").length}<small>open</small></div><div class="note">${TASKS_ALL.filter(t=>(t.execution||"").indexOf("AGENT")===0).length} agent-run, ${TASKS_ALL.filter(t=>t.execution==="HUMAN TASK").length} for your team</div></div>
-      <div><div class="mid">${TASKS_ALL.filter(t=>taskStatus(t.id)==="in_progress").length}<small>in progress</small></div></div>
-      <div><div class="mid">${TASKS_ALL.filter(t=>taskStatus(t.id)==="done").length}<small>done this cycle</small></div></div>
-      <div style="flex:1;min-width:200px"><div class="kv">${who}</div></div>
-    </div>
-    <div class="tblwrap"><table><tr><th>Next up</th><th>Who</th><th class="n">Expected</th>${PRICING?`<th class="n" title="${esc(stakeTip)}">$ at stake/mo</th>`:""}<th class="n">Status</th></tr>${next}</table></div>
-    <div class="note">Expected impact uses industry priors until two cycles of your own results exist. ${LANE_B.length} label / regulatory tasks are ranked by severity, not money.</div>
-  </section>
-  <section class="tile c5 empty" aria-label="Before and after">
-    <h2${gAttr("before_after")}>Before / After <span>trend across cycles</span></h2>${gLead("before_after")}
-    <div class="mid"${gAttr("before_after")}>${BA.available?"Available":"First cycle"}</div>
-    <div class="note">This is the baseline. From cycle 2 this tile shows the Visibility Score line, the Safety findings count and the win rate against each competitor, with change since last cycle. Same questions, same surfaces, same brand dictionary each time, so the deltas are comparable.</div>
-    <div class="note">Next run: ${esc(period(BA.next_cycle_expected))}.</div>
   </section>
   </div>
   <div class="foot"><div>All figures computed from ${M.prompts.toLocaleString("en")} questions run on ${M.surfaces} AI surfaces in ${period(M.period)}. Brand means trade name only; "semaglutide" without "${esc(M.brand)}" is counted separately.</div><div>Click any tile for the breakdown by model, topic and source.</div></div>`;
@@ -467,11 +532,47 @@ function tbl(cols, rows, opts={}){
     const cls = c => [c.n?"n":"", c.c||""].filter(Boolean).join(" ");
     return `${scroll===true?`<div class="count">${rows.length.toLocaleString("en")} rows, scroll inside the table</div>`:""}<div class="tblwrap${scroll===true?" scroll":scroll==="tall"?" tall":""}"><table${opts.tableClass?` class="${opts.tableClass}"`:""}><thead><tr>${cols.map(c=>`<th data-k="${c.k}"${gAttr(c.g)} class="sort ${cls(c)}${state.k===c.k?" on":""}">${c.h}${state.k===c.k?(state.dir>0?" ↑":" ↓"):""}</th>`).join("")}</tr></thead><tbody>${r.map(row=>`<tr${opts.rowAttr?opts.rowAttr(row):""}>${cols.map(c=>`<td class="${cls(c)}">${c.f(row)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   };
-  setTimeout(()=>{ const host=document.getElementById(id); if(!host) return; const bind=()=>{ host.querySelectorAll("th").forEach(th=>th.onclick=()=>{ const k=th.dataset.k; if(state.k===k) state.dir*=-1; else {state.k=k; state.dir=-1;} host.innerHTML=draw(); bind(); }); host.querySelectorAll("tr[data-href]").forEach(tr=>tr.onclick=()=>location.hash=tr.dataset.href); }; bind(); },0);
+  setTimeout(()=>{ const host=document.getElementById(id); if(!host) return; const bind=()=>{ host.querySelectorAll("th").forEach(th=>th.onclick=()=>{ const k=th.dataset.k; if(state.k===k) state.dir*=-1; else {state.k=k; state.dir=-1;} host.innerHTML=draw(); bind(); }); host.querySelectorAll("tr[data-href]").forEach(tr=>tr.onclick=ev=>{
+      if(ev.target.closest("a,summary,details,select,button,input,label")) return;   // inline controls act on their own
+      location.hash = (opts.toggleHref && tr.dataset.href===location.hash) ? opts.toggleHref : tr.dataset.href;
+    }); }; bind(); },0);
   return `<div id="${id}">${draw()}</div>`;
 }
 function sec(h, inner, note, sub, span, gid){ return `<section class="tile ${span||"c12"}"><h2${gAttr(gid)}>${h}${sub?` <span>${sub}</span>`:""}</h2>${gLead(gid)}${inner}${note?`<div class="note">${note}</div>`:""}</section>`; }
 function kv(pairs){ return `<div class="kv">${pairs.map(([k,v])=>`<div>${k}</div><div>${v}</div>`).join("")}</div>`; }
+function metricStrip(items){
+  // The same four-up strip the task panel uses: one number, one label, one qualifier.
+  return `<div class="tmets">${items.map(it => `<div class="tmet"><div class="tmv">${it.value}</div>
+    <div class="tml">${esc(it.label)}</div>${it.note ? `<div class="tmn">${esc(it.note)}</div>` : ""}</div>`).join("")}</div>`;
+}
+function barSem(v, title){
+  // Teal when we lead the exchange, amber when the competitor does. 50% is the turn.
+  const lead = (+v || 0) >= 50;
+  return `<div class="bars"${title ? ` title="${esc(title)}"` : ""}><div class="bar"><i class="${lead ? "t-us" : "t-comp"}" style="width:${Math.min(100, Math.max(0, +v || 0))}%"></i></div><span>${pct(v)}</span></div>`;
+}
+function barRel(v, max, cls){
+  // For values that live in a narrow range (impact 2–7%): scale against the group's own maximum.
+  const w = max ? Math.min(100, Math.max(0, (+v || 0) / max * 100)) : 0;
+  return `<div class="bars"><div class="bar"><i class="${cls || "t-comp"}" style="width:${w.toFixed(1)}%"></i></div><span>${pct(v)}</span></div>`;
+}
+function hbars(rows, opts){
+  // One reusable horizontal bar chart. rows: [{label, note, value, display, fill}].
+  // Bar length is the value relative to the group's max, so a group is read against itself.
+  opts = opts || {};
+  const vals = rows.map(r => Math.abs(+r.value || 0));
+  const max = opts.max || Math.max(...vals, 0) || 1;
+  return `<div class="hbars">${rows.map(r => {
+    const v = Math.abs(+r.value || 0), w = Math.max(0, Math.min(100, v / max * 100));
+    const label = r.display != null ? r.display : pct(r.value);
+    const inside = w >= 72;
+    const cls = inside ? (r.light ? "in ink" : "in") : "out";
+    const place = inside ? `right:${(100 - w).toFixed(1)}%` : `left:${w.toFixed(1)}%`;
+    return `<div class="hbar">
+      <div class="hbl"><span class="ell">${esc(r.label)}</span>${r.note ? `<small>${esc(r.note)}</small>` : ""}</div>
+      <div class="hbt"><i style="width:${w.toFixed(1)}%;background:${r.fill || "var(--us)"}"></i>
+        <span class="hbv ${cls}" style="${place}">${esc(label)}</span></div></div>`;
+  }).join("")}</div>`;
+}
 function bar(v, cls){ return `<div class="bars"><div class="bar"><i class="${cls||"t-us"}" style="width:${Math.min(100,Math.max(0,v||0))}%"></i></div><span>${pct(v)}</span></div>`; }
 function page(title, sub, gid){ return `<div style="margin-bottom:16px"><h2 class="page"${gAttr(gid)}>${title}</h2>${gLead(gid)}${sub?`<div class="subline">${sub}</div>`:""}</div>`; }
 
@@ -548,20 +649,34 @@ function vVisibility(el){
 }
 function vCompetitors(el, q){
   const B=DASH.benchmarking; const sel=q.get("competitor");
-  el.innerHTML = page("Competitors", esc(B.scope_note), "screen_competitors") + `<div class="stack">`
-   + sec("Leaderboard by Impact", `<div class="lead">Three readings of the same rivalry. <b>Impact</b> is how many answers the competitor takes from us overall. <b>Win rate</b> is who ranks higher when both are named. <b>Duel win rate</b> is who wins when the patient asks “${esc(M.brand)} or X” directly. Both rates are ours, so a high win rate beside a low duel win rate means we lead where both are mentioned and lose the direct question. Sorted by Impact.</div>` + tbl([
-      {k:"c",h:"Competitor",c:"cw",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}">${esc(d.competitor)}</a>${d.low_n?' <span class="tag mute"${gAttr("low_n")}>low n</span>':""}${NOT_TARGETED.has(d.competitor)?`<div class="z"${gAttr("found_in_data")}>found in data, not a target of this run</div>`:""}`},
-      {k:"i",h:"Impact",g:"impact",f:d=>bar(d.impact,"t-comp"),sort:d=>d.impact},
-      {k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate)+`<div class="z">${ci(d.win_rate_ci95)}</div>`,sort:d=>d.win_rate},
-      {k:"dw",h:"Duel win rate",g:"duel_win_rate",f:d=>{const v=duelOf(d.competitor); return v?bar(v.duel_win_rate)+`<div class="z">${ci(v.ci95||[])}</div>`:`<span class="note" title="no “${esc(M.brand)} or X” prompts in R2 for this brand">not asked</span>`;},sort:d=>{const v=duelOf(d.competitor); return v?v.duel_win_rate:-1;}},
+  const maxImpact = Math.max(...B.leaderboard.map(d => d.impact || 0), 0);
+  const top = B.leaderboard.slice().sort((a, b) => b.impact - a.impact)[0] || {};
+  const compTotal = ((MONEY && MONEY.by_comp) || []).reduce((a, r) => [a[0] + r.usd_mo[0], a[1] + r.usd_mo[1]], [0, 0]);
+  el.innerHTML = page("Competitors", esc(B.scope_note), "screen_competitors")
+   + metricStrip([
+      {value: Math.round(B.overall.win_rate) + "<small>%</small>", label: "win rate when both are named",
+       note: "interval " + ci(B.overall.win_rate_ci95) + " over " + B.overall.n_overlap_answers.toLocaleString("en") + " answers"},
+      {value: Math.round(B.duel_verdict.duel_win_rate) + "<small>%</small>", label: "win rate in direct duels",
+       note: '"' + M.brand + ' or X" questions \u00b7 ' + B.duel_verdict.n_scored.toLocaleString("en") + " scored"},
+      {value: pct(top.impact), label: "taken by " + esc(top.competitor || "\u2014"),
+       note: "the single biggest drain of our answers"},
+      {value: PRICING ? usdRange(compTotal[0] * 12, compTotal[1] * 12) : "\u2014", label: "at risk to competitors / year",
+       note: PRICING ? "named in answers that skip us \u00b7 " + MONEY_NOTE : "no pricing configured"},
+     ])
+   + `<div class="stack">`
+   + sec("Leaderboard by Impact", `<div class="lead">Three readings of the same rivalry: <b>impact</b> — answers the competitor takes from us; <b>win rate</b> — who ranks higher when both are named; <b>duel win rate</b> — who wins when the patient asks “${esc(M.brand)} or X” outright. Both rates are ours, so a high win rate beside a low duel win rate means we lead the mention and lose the question. Bars run amber where the competitor leads.</div>` + tbl([
+      {k:"c",h:"Competitor",c:"cw",f:d=>`<a href="#/competitors?competitor=${encodeURIComponent(d.competitor)}">${esc(d.competitor)}</a>${d.low_n?' <span class="tag mute"${gAttr("low_n")}>low n</span>':""}${NOT_TARGETED.has(d.competitor)?` <span class="tag mute" title="Entered the dictionary mid-cycle; R1/R2 were built against the GLP-1 set."${gAttr("found_in_data")}>not targeted</span>`:""}${PORTFOLIO.has(d.competitor)?` <span class="tag us" title="Our own portfolio brand. It takes the answer, but the revenue stays with us \u2014 no dollars are attributed to it.">own portfolio</span>`:""}`},
+      {k:"i",h:"Impact",g:"impact",f:d=>barRel(d.impact,maxImpact,"t-comp"),sort:d=>d.impact},
+      {k:"w",h:"Win rate",g:"win_rate",f:d=>barSem(d.win_rate,"95% interval "+ci(d.win_rate_ci95)),sort:d=>d.win_rate},
+      {k:"dw",h:"Duel win rate",g:"duel_win_rate",f:d=>{const v=duelOf(d.competitor); return v?barSem(v.duel_win_rate,"95% interval "+ci(v.ci95||[])):`<span class="note" title="no “${esc(M.brand)} or X” prompts in R2 for this brand">not asked</span>`;},sort:d=>{const v=duelOf(d.competitor); return v?v.duel_win_rate:-1;}},
       {k:"ip",h:"Impact: position / absence",g:"impact_by_position",n:true,f:d=>`${pct(d.impact_by_position)} / ${pct(d.impact_by_absence)}`,sort:d=>d.impact_by_position},
       {k:"n",h:"Answers: overlap / duels",g:"overlap_answers",n:true,f:d=>{const v=duelOf(d.competitor); return `${d.overlap_answers} / ${v?v.n_prompts:"—"}`;},sort:d=>d.overlap_answers},
       {k:"wm",h:"Worst family · zone",g:"worst_model",f:d=>`${esc(cap(d.worst_model))}<div class="z">${esc(d.worst_zone)}</div>`}]
       .concat(PRICING?[{k:"usd",h:"$ at risk/yr",n:true,f:d=>`<span title="${esc(COMP_TIP)}">${compUsdYr(d.competitor)}</span>`,sort:d=>(BY_COMP[d.competitor]||[0,0])[1]}]:[]), B.leaderboard, {sortKey:"i", scroll:false}) + (PRICING&&MONEY.unattributed_usd_mo?`<table style="margin-top:8px"><tr><td>Unattributed</td><td class="n" title="Answers without Ozempic that name no competitor brand.">${usdYr(MONEY.unattributed_usd_mo)}</td></tr></table>`:""),
-      `Impact and win rate are R1 C1; duel win rate is R2, C4 prompts. Overall win rate ${pct(B.overall.win_rate)}, interval ${ci(B.overall.win_rate_ci95)}, over ${B.overall.n_overlap_answers.toLocaleString("en")} overlap answers.`, "R1 C1 · R2", "c12", "impact")
-   + sec("Duel verdict", `<div class="row top"><div><div class="mid"${gAttr("duel_win_rate")}>${Math.round(B.duel_verdict.duel_win_rate)}<small>% in duels</small></div><div class="note">interval ${ci(B.duel_verdict.duel_win_rate_ci95)} · ${B.duel_verdict.n_scored} scored answers · ${pct(B.duel_verdict.excluded_na_pct)} without a verdict</div></div></div>` + tbl([{k:"c",h:"Competitor asked",g:"duel_prompts",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",g:"duel_win_rate",f:([,v])=>bar(v.duel_win_rate),sort:([,v])=>v.duel_win_rate},{k:"ci",h:"95% interval",g:"ci95",n:true,f:([,v])=>ci(v.ci95||[])},{k:"n",h:"Prompts / answers",g:"duel_prompts",n:true,f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}), `By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(cap(k))} ${pct(v.duel_win_rate)}`).join(" · ")}`, "R2, C4 prompts", "c12", "duel_win_rate")
-   + sec("By model family", tbl([{k:"m",h:"Family",g:"model_family",f:d=>esc(cap(d.model))},{k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`}], B.by_model) + `<div></div>` + tbl([{k:"z",h:"Zone",g:"zone",f:d=>esc(d.zone)},{k:"w",h:"Win rate",g:"win_rate",f:d=>bar(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",g:"prompts",n:true,f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}), "", "and by zone, R1 C1", "c12")
-   + sec("Points", `<div id="pt"></div>`, "", sel?`${esc(sel)} present, we are absent or lower`:"R1") + `</div>`;
+      `Impact and win rate are R1 C1; duel win rate is R2, C4 prompts. Hover a bar for its 95% interval.`, "R1 C1 · R2", "c12 acc acc-comp", "impact")
+   + sec("Duel verdict", `<div class="lead"${gAttr("duel_win_rate")}>${esc(B.duel_verdict.scope)} — interval ${ci(B.duel_verdict.duel_win_rate_ci95)} on ${B.duel_verdict.n_scored} scored answers, ${pct(B.duel_verdict.excluded_na_pct)} without a verdict.</div>` + tbl([{k:"c",h:"Competitor asked",g:"duel_prompts",f:([k])=>esc(k)},{k:"w",h:"Duel win rate",g:"duel_win_rate",f:([,v])=>barSem(v.duel_win_rate),sort:([,v])=>v.duel_win_rate},{k:"ci",h:"95% interval",g:"ci95",n:true,f:([,v])=>ci(v.ci95||[])},{k:"n",h:"Prompts / answers",g:"duel_prompts",n:true,f:([,v])=>`${v.n_prompts} / ${v.n_scored_answers}`}], Object.entries(B.duel_verdict.by_competitor), {sortKey:"w"}), `By family: ${Object.entries(B.duel_verdict.by_model).map(([k,v])=>`${esc(cap(k))} ${pct(v.duel_win_rate)}`).join(" · ")}`, "R2, C4 prompts", "c12 acc acc-comp", "duel_win_rate")
+   + sec("By model family", tbl([{k:"m",h:"Family",g:"model_family",f:d=>esc(cap(d.model))},{k:"w",h:"Win rate",g:"win_rate",f:d=>barSem(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`}], B.by_model) + `<div></div>` + tbl([{k:"z",h:"Zone",g:"zone",f:d=>esc(d.zone)},{k:"w",h:"Win rate",g:"win_rate",f:d=>barSem(d.win_rate),sort:d=>d.win_rate},{k:"n",h:"Overlap answers",g:"overlap_answers",n:true,f:d=>d.n_overlap_answers,sort:d=>d.n_overlap_answers},{k:"p",h:"Prompts",g:"prompts",n:true,f:d=>d.n_prompts},{k:"t",h:"Top impact competitor",g:"impact",f:d=>`${esc(d.top_impact_competitor)} <span class="note">${pct(d.top_impact)}</span>`,sort:d=>d.top_impact}], D.breakdowns.benchmarking_by_zone, {sortKey:"w"}), "", "and by zone, R1 C1", "c12 acc acc-comp")
+   + sec("Points", `<div id="pt"></div>`, "", sel?`${esc(sel)} present, we are absent or lower`:"R1", "c12 acc acc-comp") + `</div>`;
   let keys = KEYS.filter(k=>PTS[k].run==="R1");
   if(sel) keys = keys.filter(k=>{const m=PTS[k].metrics; return (m.competitors_present||{})[sel]>0 && (m.we_present_share==null || m.we_present_share<1);});
   pointTable(document.getElementById("pt"), keys, {sortKey:"dem", caption: sel?`competitor ${sel}`:"R1"});
@@ -666,44 +781,149 @@ function vPriorities(el, q){
     {sortKey: q.get("sort")==="usd" ? "usd" : "dem", sortDir:-1, panel:q.get("panel")||"", pf:q.get("pf")||""});
 }
 function fixCard(c, link){ return `<div class="fx"><div class="fxh"><span class="tag ${c.platform_execution==="AGENT"?"us":c.platform_execution==="AGENT+APPROVE"?"warn":"ink"}">${esc(c.platform_execution)}</span><span class="tag ${c.type==="LABEL-MEDICAL"?"bad":"mute"}">${esc(c.type)}</span><span class="tag ${c.mlr==="medical-review"?"warn":"ok"}"${gAttr("mlr_status")}>${c.mlr==="medical-review"?"medical review":"MLR-compatible"}</span><span>${esc(c.owner)} · ${esc(c.speed)}</span>${link?`<a href="${link}" style="margin-left:auto;color:var(--us);text-decoration:none">${esc(link.split("/").pop().replace("%7C"," · "))}</a>`:""}</div><div class="fxa">${esc(c.action)}</div><div class="fxl"><b>Why</b> ${esc(c.why)}</div>${c.effect?`<div class="fxl"><b>Expected effect</b> ${esc(c.effect)}</div>`:""}${c.verify?`<div class="fxl"><b>Verify on re-run</b> ${esc(c.verify)}</div>`:""}${c.agent?`<div class="fxl"><b>Execution</b> ${esc(c.agent)}</div>`:""}</div>`; }
-function taskStatus(id){ return (TASK_STATE[id] || {}).status || "open"; }
+// ---- task state: tasks/task_state.json is the baseline, this browser holds the unsaved edits on top ----
+// The site is static, so nothing here can write the file. Edits live in localStorage and are exported
+// as a ready task_state.json for whoever rebuilds; a card that differs from the file is marked "unsaved".
+const TASK_EDIT_STORE = "citere_task_edits_v1";
+function readTaskEdits(){ try { return JSON.parse(localStorage.getItem(TASK_EDIT_STORE) || "{}"); } catch(e){ return {}; } }
+function writeTaskEdits(o){ try { localStorage.setItem(TASK_EDIT_STORE, JSON.stringify(o)); } catch(e){} }
+function taskEdits(){ if(!window.__taskEdits) window.__taskEdits = readTaskEdits(); return window.__taskEdits; }
+function taskState(id){ return Object.assign({status:"open", assignee:null, note:null, updated:null}, TASK_STATE[id] || {}, taskEdits()[id] || {}); }
+function taskStatus(id){ return taskState(id).status; }
+function taskAssignee(id){ return taskState(id).assignee; }
+function taskUnsaved(id){ return !!taskEdits()[id]; }
+function taskEditCount(){ return Object.keys(taskEdits()).length; }
+function setTaskState(id, patch){
+  const cur = taskState(id);
+  const next = Object.assign({}, cur, patch, {updated: new Date().toISOString().slice(0,10)});
+  const base = Object.assign({status:"open", assignee:null, note:null}, TASK_STATE[id] || {});
+  if(next.status === base.status && next.assignee === base.assignee && next.note === base.note) delete taskEdits()[id];
+  else taskEdits()[id] = next;
+  writeTaskEdits(taskEdits());
+}
+function resetTaskEdits(){ window.__taskEdits = {}; writeTaskEdits(taskEdits()); }
+function taskStateExport(){                       // the whole file, not just the diff, ready to paste over tasks/task_state.json
+  const out = {};
+  TASKS_ALL.slice().sort((a,b)=>a.id.localeCompare(b.id)).forEach(t => {
+    const st = taskState(t.id);
+    out[t.id] = {status: st.status, assignee: st.assignee || null, note: st.note || null, updated: st.updated || null};
+  });
+  return JSON.stringify(out, null, 2);
+}
+// Who a task can go to: the teams and the agents that actually appear in this cycle's data.
+function assigneeOptions(){
+  const teams = [...new Set(TASKS_ALL.map(t => t.owner).filter(Boolean))].sort();
+  const seen = {};
+  TASKS_ALL.forEach(t => { if(t.agent_id && !seen[t.agent_id]) seen[t.agent_id] = t.agent_desc || ""; });
+  const agents = Object.keys(seen).sort().map(id => {
+    const d = (seen[id] || "").split("·").slice(1).join("·").trim() || seen[id] || "";
+    return {value: "agent:" + id, label: id + (d ? " — " + d.replace(/ agent\b.*$/, " agent") : "")};
+  });
+  return {teams: teams.map(v => ({value: "team:" + v, label: v})), agents};
+}
+function assigneeLabel(v){
+  if(!v) return "—";
+  if(v.indexOf("agent:") === 0) return v.slice(6);
+  if(v.indexOf("team:") === 0) return v.slice(5);
+  return v;
+}
+function assigneeSelect(id, cur){
+  const o = assigneeOptions();
+  return `<select class="acsel" data-act="assign" data-id="${esc(id)}">
+    <option value="">Unassigned</option>
+    <optgroup label="Teams">${o.teams.map(x => `<option value="${esc(x.value)}"${x.value === cur ? " selected" : ""}>${esc(x.label)}</option>`).join("")}</optgroup>
+    <optgroup label="Agents">${o.agents.map(x => `<option value="${esc(x.value)}"${x.value === cur ? " selected" : ""}>${esc(x.label)}</option>`).join("")}</optgroup>
+  </select>`;
+}
+function statusSelect(id, cur){
+  return `<select class="acsel" data-act="status" data-id="${esc(id)}">${Object.entries(STATUS_LABELS())
+    .map(([k, l]) => `<option value="${k}"${k === cur ? " selected" : ""}>${esc(l)}</option>`).join("")}</select>`;
+}
+// One handler for every status/assignee control on the screen, in either view.
+function wireTaskControls(host, redraw){
+  host.querySelectorAll("select.acsel").forEach(sl => {
+    sl.onclick = ev => ev.stopPropagation();
+    sl.onchange = ev => {
+      ev.stopPropagation();
+      const id = sl.dataset.id, v = sl.value;
+      if(sl.dataset.act === "status"){
+        if(v === "dismissed"){                       // §2: a dismissal has to say why
+          const why = prompt("Dismissing this task — why?", taskState(id).note || "");
+          if(why === null || !why.trim()){ sl.value = taskStatus(id); return; }
+          setTaskState(id, {status: "dismissed", note: why.trim()});
+        } else setTaskState(id, {status: v});
+      } else {
+        setTaskState(id, {assignee: v || null});
+      }
+      redraw();
+    };
+  });
+}
 function STATUS_LABELS(){ return {open:"Open", in_progress:"In progress", done:"Done", dismissed:"Dismissed"}; }
 function statusLabel(k){ return STATUS_LABELS()[k] || k; }
 function statusTag(k){ return ({open:"p1", in_progress:"p2", done:"ok", dismissed:"mute"})[k] || "mute"; }
 function stakeMo(t){ return t.usd_yr[1] ? usdRange(t.usd_yr[0]/12, t.usd_yr[1]/12) + "/mo" : "\u2014"; }
 
 function taskDetailPanel(t){                         // §6, shared by Priorities and Action Center
-  const st = TASK_STATE[t.id] || {};
+  const st = taskState(t.id);
   const rows = t.questions_all || [];
-  return `<section class="tile c12"><h2>${esc(t.title)} <span>${esc(t.lane)} \u00b7 ${esc(t.type)} \u00b7 ${esc(t.type_name)}</span></h2>
-    ${kv([
-      ["Owner", esc(t.owner)],
-      ["Execution", `${esc(t.execution || "\u2014")}${t.agent_id ? " \u00b7 <b>" + esc(t.agent_id) + "</b>" : ""}`],
-      ["Agent", esc(t.agent_desc || "\u2014")],
-      ["MLR", t.mlr_gate ? '<span class="tag p1">medical review</span>' : '<span class="tag mute">compatible</span>'],
-      ["Weeks to result", t.weeks == null ? "standing programme" : t.weeks],
-      ["Status", `<span class="tag ${statusTag(taskStatus(t.id))}">${statusLabel(taskStatus(t.id))}</span>${st.assignee ? " \u00b7 " + esc(st.assignee) : ""}${st.note ? '<div class="z">' + esc(st.note) + "</div>" : ""}`],
-      [`$ at risk <span class="z">${MONEY_NOTE}</span>`, t.usd_yr[1] ? `${usdRange(t.usd_yr[0], t.usd_yr[1])} / yr \u00b7 ${usdOne(t.usd_per_week)}/week` : "\u2014"],
-      ["Expected impact", t.expected_pp ? `+${f1(t.expected_pp[0])}\u2013${f1(t.expected_pp[1])}pp` : "not scored \u2014 ranked by severity or a decision"],
-      ["Demand", `${fmtK(t.demand_mo)}/mo \u00b7 ${t.points.count} questions \u00b7 ${esc(t.zone || "\u2014")}`],
-      ["Pages / domains", (t.pages || []).map(x => esc(x)).join("<br>") || "\u2014"],
-      ["Competitors taking these answers", (t.competitors_leaking || []).map(c => `${esc(c.brand)} ${usdOne(c.usd_mo * 12)}`).join(" \u00b7 ") || "\u2014"],
-      ["Causes", (t.cause_codes || []).join(", ") || "\u2014"],
-      ["Also addresses", (t.also_addresses || []).join(", ") || "\u2014"],
-    ])}
-    <div class="note">Status is read from <code>tasks/task_state.json</code> as it stood at build time. This screen never writes.</div>
-    <h3 style="margin-top:14px">Questions in this task <span class="z">${rows.length}</span></h3>
+  const b = t.brief || {};
+  const chip = (txt, cls) => `<span class="tchip ${cls || ""}">${txt}</span>`;
+  const metric = (val, lab, note) => `<div class="tmet"><div class="tmv">${val}</div><div class="tml">${esc(lab)}</div>${note ? `<div class="tmn">${note}</div>` : ""}</div>`;
+  const money = t.usd_yr[1] ? usdRange(t.usd_yr[0], t.usd_yr[1]) : "\u2014";
+  const lane = {A: "Revenue", B: "Label & regulatory", C: "Decision"}[t.lane] || t.lane;
+  return `<section class="tile c12 taskpane acc acc-${t.lane === "B" ? "bad" : t.lane === "C" ? "mute" : "us"}">
+    <div class="tcrumb"><a href="#/actions">\u2190 Action Center</a><span>${esc(lane)} \u00b7 ${esc(t.type)} \u00b7 ${esc(t.type_name)}</span></div>
+    <h2 class="page">${esc(t.title)}</h2>
+    <div class="tchips">
+      ${chip(esc(t.owner), "own")}
+      ${chip(esc(t.execution || "\u2014") + (t.agent_id ? " \u00b7 <b>" + esc(t.agent_id) + "</b>" : ""), "")}
+      ${chip(t.mlr_gate ? "medical review" : "MLR-compatible", t.mlr_gate ? "warn" : "")}
+      ${chip(t.weeks == null ? "standing programme" : t.weeks + " weeks to result", "")}
+    </div>
+    <div class="tctl">
+      <label>Status ${statusSelect(t.id, st.status)}</label>
+      <label>Assigned to ${assigneeSelect(t.id, st.assignee)}</label>
+      ${st.note ? `<span class="note">\u201c${esc(st.note)}\u201d</span>` : ""}
+      ${taskUnsaved(t.id) ? `<span class="tag warn">unsaved</span><span class="note">held in this browser \u2014 export from <a href="#/actions">Action Center</a></span>`
+        : `<span class="note">in step with <code>tasks/task_state.json</code></span>`}
+    </div>
+    <div class="tmets">
+      ${t.lane === "B" ? `
+        ${metric((t.severity || {}).bad || 0, "questions scored bad", "this lane ranks by severity, not money")}
+        ${metric((t.severity || {}).warn || 0, "scored warn", "label / regulatory review")}
+        ${metric(t.mlr_gate ? "Yes" : "No", "medical review needed", t.mlr_gate ? "at least one card is MLR-gated" : "procedural cards only")}
+        ${metric(usdRange((t.web_usd_yr_info || [0, 0])[0], (t.web_usd_yr_info || [0, 0])[1]), "web panel / year", "information only \u2014 never added to lane A")}
+      ` : `
+        ${metric(money, "at risk / year", MONEY_NOTE)}
+        ${metric(t.usd_per_week ? usdOne(t.usd_per_week) : "\u2014", "per week of work", "what ranks this task")}
+        ${metric(t.expected_pp ? "+" + f1(t.expected_pp[0]) + "\u2013" + f1(t.expected_pp[1]) + "<small>pp</small>" : "\u2014", "expected visibility shift", t.expected_pp ? "closure priors" : "a decision, not scored")}
+        ${metric(fmtK(t.demand_mo) + "<small>/mo</small>", "searches behind it", t.points.count + " question" + (t.points.count === 1 ? "" : "s") + " \u00b7 " + esc(t.zone || "\u2014"))}
+      `}
+    </div>
+    <div class="tbody">
+    <div class="tmain">${[["The problem", b.problem], ["Why this happens", b.why], ["What to do", b.what_to_do],
+       ["How we'll know it worked", b.how_verified], ["What this delivers", b.delivers]]
+      .filter(x => x[1]).map(([h, body]) => `<div class="bsec"><h4>${esc(h)}</h4><p>${esc(body)}</p></div>`).join("")}</div>
+    <aside class="tfacts">
+      ${[["Pages / domains", (t.pages || []).map(x => `<span class="mono">${esc(x)}</span>`).join("<br>")],
+         ["Competitors taking these answers", (t.competitors_leaking || []).map(c => `${esc(c.brand)} <b>${usdOne(c.usd_mo * 12)}</b>`).join(" \u00b7 ")],
+         ["Cause codes", (t.cause_codes || []).map(c => `<span class="tchip sm">${esc(c)}</span>`).join(" ")],
+         ["Also addresses", (t.also_addresses || []).map(c => `<span class="tchip sm">${esc(c)}</span>`).join(" ")],
+        ].filter(x => x[1]).map(([h, v]) => `<div><div class="tfl">${esc(h)}</div><div class="tfv">${v}</div></div>`).join("")}
+    </aside></div>
+    <h3 class="thead">The evidence <span>${rows.length} question${rows.length === 1 ? "" : "s"} \u00b7 every model that answered</span></h3>
     <div class="qlist">${rows.map((r, i) => `<div class="qrow">
         <div class="qhead"><button class="qtog" type="button" data-q="${i}">\u25b8</button>
           <div class="qtext">${esc(r.question_full)}
-            <div class="z">${esc(r.pid_run)} \u00b7 ${esc(r.model || "no scored answer")}${r.cause ? " \u00b7 " + esc(r.cause) : ""} \u00b7 <a href="#/point/${encodeURIComponent(r.pid_run)}">open the question \u2192</a></div></div></div>
+            <div class="z">${esc(r.pid_run)}${r.cause ? " \u00b7 " + esc(r.cause) : ""} \u00b7 ${(r.models || []).length} model answer${(r.models || []).length === 1 ? "" : "s"} \u00b7 <a href="#/point/${encodeURIComponent(r.pid_run)}">open the question \u2192</a></div></div></div>
         <div class="qans hide" id="qa_${i}">${(r.models && r.models.length) ? r.models.map((m, j) => `<div class="mrow">
             <div class="mhead" data-m="${i}_${j}" data-pr="${esc(r.pid_run)}" data-model="${esc(m.model)}">
               <span class="mtog">\u25b8</span><span class="mname">${esc(m.model)}</span><span class="mverd">${modelVerdict(m)}</span></div>
             <div class="mtext hide" id="mt_${i}_${j}">loading\u2026</div></div>`).join("")
           : '<p class="z">No non-excluded answer is stored for this point.</p>'}</div>
       </div>`).join("")}</div>
-    <div class="note" style="margin-top:10px"><a href="#/actions">\u2190 back to the Action Center</a></div></section>`;
+    <div class="note tfoot">Status is read from <span class="mono">tasks/task_state.json</span> as it stood at build time \u2014 this screen never writes. <a href="#/actions">\u2190 back to the Action Center</a></div></section>`;
 }
 
 function modelVerdict(m){
@@ -746,74 +966,200 @@ function wireQuestions(root){
     }
   });
 }
-function showTask(el, t){ el.innerHTML = `<div class="stack">${taskDetailPanel(t)}</div>`; wireQuestions(el); }
+function showTask(el, t){
+  el.innerHTML = `<div class="stack">${taskDetailPanel(t)}</div>`;
+  wireQuestions(el);
+  wireTaskControls(el, () => showTask(el, t));
+}
 function vActions(el, q){
   const tsel = q.get("task");
   if(tsel && taskById[tsel]) return void showTask(el, taskById[tsel]);
-  const F = {lane: q.get("lane") || "", exec: q.get("exec") || "", mlr: q.get("mlr") || "", status: q.get("status") || "", text: q.get("text") || ""};
-  const counts = {}; Object.keys(STATUS_LABELS()).forEach(k => counts[k] = 0);
-  TASKS_ALL.forEach(t => counts[taskStatus(t.id)]++);
+  const F = {view: q.get("view") || window.__acView || "board", lane: q.get("lane") || "", exec: q.get("exec") || "",
+             mlr: q.get("mlr") || "", status: q.get("status") || "", who: q.get("who") || "", text: q.get("text") || ""};
   const uniq = f => [...new Set(TASKS_ALL.map(f).filter(Boolean))].sort();
   const sel = (id, label, vals, cur) => `<select id="${id}"><option value="">${label}</option>${vals.map(v => `<option${v === cur ? " selected" : ""}>${esc(v)}</option>`).join("")}</select>`;
   const match = t => (!F.lane || t.lane === F.lane) && (!F.exec || t.execution === F.exec)
     && (!F.mlr || (F.mlr === "medical review") === !!t.mlr_gate) && (!F.status || taskStatus(t.id) === F.status)
+    && (!F.who || assigneeLabel(taskAssignee(t.id)) === F.who)
     && (!F.text || [t.title, t.owner, t.type_name, t.agent_desc || "", t.zone || ""].join(" ").toLowerCase().includes(F.text.toLowerCase()));
-  const list = TASKS_ALL.filter(match).sort((a, b) => (b.usd_per_week || 0) - (a.usd_per_week || 0) || a.lane.localeCompare(b.lane) || a.id.localeCompare(b.id));
-  el.innerHTML = page("Action Center", "Every task, once, by its stable id. Status comes from <code>tasks/task_state.json</code> at build time \u2014 this screen is read-only.", "screen_actions")
+
+  el.innerHTML = page("Action Center", "Every task, once, by its stable id. Status and assignment start from <code>tasks/task_state.json</code>; changes you make here are held in this browser until you export them back into that file.", "screen_actions")
    + `<div class="stack"><section class="tile c12"><h2${gAttr("open_tasks")}>This cycle <span>${TASKS_ALL.length} tasks</span></h2>${gLead("open_tasks")}
-      <div class="bar-sum">${Object.entries(STATUS_LABELS()).map(([k, l]) => `<span>${l} <b>${counts[k]}</b></span>`).join('<span class="sep">\u00b7</span>')}
-        <span class="sep">|</span><span>lane A <b>${LANE_A.length}</b></span><span class="sep">\u00b7</span><span>B <b>${LANE_B.length}</b></span><span class="sep">\u00b7</span><span>C <b>${LANE_C.length}</b></span></div>
+      <div class="bar-sum" id="acsum"></div>
       <div class="toolbar">
+        <span class="vtog"${gAttr("view_toggle")}><button id="vKan" type="button">Board</button><button id="vTab" type="button">Table</button></span>
         ${sel("f_lane", "Lane: all", ["A", "B", "C"], F.lane)}
         ${sel("f_exec", "Execution: all", uniq(t => t.execution), F.exec)}
         ${sel("f_mlr", "MLR: all", ["medical review", "compatible"], F.mlr)}
         ${sel("f_status", "Status: all", Object.keys(STATUS_LABELS()), F.status)}
+        ${sel("f_who", "Assigned: all", [...new Set(TASKS_ALL.map(t => assigneeLabel(taskAssignee(t.id))).filter(v => v !== "—"))].sort(), F.who)}
         <input type="search" id="f_text" placeholder="Search task, owner or agent" value="${esc(F.text)}">
         <button class="btn ghost" id="f_reset" type="button">Reset</button>
       </div>
-      <div class="note">Showing <b>${list.length}</b> of <b>${TASKS_ALL.length}</b>. To change a status, edit <code>tasks/task_state.json</code> and rebuild.</div></section>`
-   + sec("Tasks", tbl([
-      {k: "t", h: "Task", c: "cq", g: "task_title", f: t => `<div class="title">${esc(t.title)}</div><div class="causeln">${esc(t.lane)} \u00b7 ${esc(t.type)} \u00b7 ${esc(t.zone || "\u2014")}</div>`, sort: t => t.title},
-      {k: "o", h: "Owner", c: "cw", f: t => esc(t.owner), sort: t => t.owner},
-      {k: "e", h: "Execution", c: "cw", g: "task_execution", f: t => esc(t.execution || "\u2014"), sort: t => t.execution || ""},
-      {k: "a", h: "Agent", c: "cw", f: t => t.agent_desc ? `<span title="${esc(t.agent_desc)}">${esc(t.agent_id || "\u2014")} \u00b7 ${esc(t.agent_desc.split("\u00b7").slice(1).join("\u00b7").trim() || t.agent_desc)}</span>` : "\u2014", sort: t => t.agent_id || ""},
-      {k: "m", h: "MLR", c: "c", f: t => t.mlr_gate ? '<span class="tag p1">medical</span>' : '<span class="tag mute">ok</span>', sort: t => t.mlr_gate ? 1 : 0},
-      {k: "s", h: "Status", c: "c", g: "task_status", f: t => `<span class="tag ${statusTag(taskStatus(t.id))}">${statusLabel(taskStatus(t.id))}</span>`, sort: t => taskStatus(t.id)},
-      {k: "u", h: "$ at stake/mo", n: true, f: t => `<span title="${esc(STAKE_TIP)}">${stakeMo(t)}</span>`, sort: t => t.usd_yr[1]},
-    ], list, {rowAttr: taskRowAttr, scroll: list.length > 20 ? "tall" : false, sortKey: "u", sortDir: -1}),
-    "A point can belong to several tasks only through <i>also addresses</i>; the money column is never additive across rows.", `${list.length} shown`, "c12")
-   + `</div>`;
-  el.querySelectorAll("[data-href]").forEach(r => r.onclick = ev => { if(ev.target.closest("a")) return; location.hash = r.dataset.href; });
-  const push = () => { const p = Object.entries({lane: F.lane, exec: F.exec, mlr: F.mlr, status: F.status, text: F.text})
+      <div class="acsave" id="acsave"></div></section>
+      <div id="acView" class="c12"></div></div>`;
+
+  function drawSummary(list){
+    const counts = {}; Object.keys(STATUS_LABELS()).forEach(k => counts[k] = 0);
+    TASKS_ALL.forEach(t => counts[taskStatus(t.id)]++);
+    document.getElementById("acsum").innerHTML =
+      `<span>Showing <b>${list.length}</b> of <b>${TASKS_ALL.length}</b></span><span class="sep">|</span>`
+      + Object.entries(STATUS_LABELS()).map(([k, l]) => `<span>${l} <b>${counts[k]}</b></span>`).join('<span class="sep">·</span>')
+      + `<span class="sep">|</span><span>lane A <b>${LANE_A.length}</b></span><span class="sep">·</span><span>B <b>${LANE_B.length}</b></span><span class="sep">·</span><span>C <b>${LANE_C.length}</b></span>`;
+    const n = taskEditCount();
+    document.getElementById("acsave").innerHTML = n
+      ? `<span class="tag warn">${n} unsaved change${n === 1 ? "" : "s"}</span> held in this browser only —
+         <button class="btn ghost" id="acExport" type="button">Copy task_state.json</button>
+         <button class="btn ghost" id="acRevert" type="button">Discard</button>
+         <span class="note">paste over <code>tasks/task_state.json</code> and rebuild to make them permanent</span>`
+      : `<span class="note">In step with <code>tasks/task_state.json</code>. Status and assignment changes are kept in this browser until exported.</span>`;
+    const ex = document.getElementById("acExport");
+    if(ex) ex.onclick = () => {
+      const txt = taskStateExport();
+      const done = () => { ex.textContent = "Copied — paste into tasks/task_state.json"; setTimeout(() => { ex.textContent = "Copy task_state.json"; }, 4000); };
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, () => window.prompt("Copy this into tasks/task_state.json", txt));
+      else window.prompt("Copy this into tasks/task_state.json", txt);
+    };
+    const rv = document.getElementById("acRevert");
+    if(rv) rv.onclick = () => { if(confirm("Discard " + taskEditCount() + " unsaved change(s) and go back to task_state.json?")){ resetTaskEdits(); draw(); } };
+  }
+
+  function card(t){
+    const st = taskState(t.id);
+    return `<div class="kcard${taskUnsaved(t.id) ? " grouped" : ""}" draggable="true" data-id="${esc(t.id)}" data-href="${taskHref(t)}">
+      <div class="t">${esc(t.title)}</div>
+      <div class="m"><span class="tag ${t.lane === "B" ? "bad" : t.lane === "C" ? "mute" : "us"}">lane ${esc(t.lane)}</span>
+        <span>${esc(t.type)}</span>${t.zone ? `<span>· ${esc(t.zone)}</span>` : ""}</div>
+      <div class="m"><span>${esc(t.execution || "—")}</span>${t.mlr_gate ? '<span class="tag p1">medical</span>' : ""}
+        <span class="num">${stakeMo(t)}</span></div>
+      <div class="m ctl">${assigneeSelect(t.id, st.assignee)}${statusSelect(t.id, st.status)}</div>
+      ${st.note ? `<div class="state">${esc(st.note)}</div>` : ""}
+      ${taskUnsaved(t.id) ? '<div class="state">unsaved</div>' : ""}</div>`;
+  }
+
+  function draw(){
+    const list = TASKS_ALL.filter(match).sort((a, b) => (b.usd_per_week || 0) - (a.usd_per_week || 0) || a.lane.localeCompare(b.lane) || a.id.localeCompare(b.id));
+    drawSummary(list);
+    const host = document.getElementById("acView");
+    if(F.view === "board"){
+      const by = {}; Object.keys(STATUS_LABELS()).forEach(k => by[k] = list.filter(t => taskStatus(t.id) === k));
+      host.innerHTML = `<div class="kb">${Object.entries(STATUS_LABELS()).map(([k, l]) =>
+        `<div class="kbcol" data-status="${k}"><h4>${l}<span>${by[k].length}</span></h4>
+         <div class="kbscroll">${by[k].map(card).join("") || '<div class="note">Nothing here.</div>'}</div></div>`).join("")}</div>`;
+      wireBoard(host);
+    } else {
+      host.innerHTML = sec("Tasks", tbl([
+        {k: "t", h: "Task", c: "cq", g: "task_title", f: t => `<div class="title">${esc(t.title)}</div><div class="causeln">${esc(t.lane)} · ${esc(t.type)} · ${esc(t.zone || "—")}</div>`, sort: t => t.title},
+        {k: "o", h: "Owner", c: "cw", f: t => esc(t.owner), sort: t => t.owner},
+        {k: "u", h: "$ at stake/mo", n: true, f: t => `<span title="${esc(STAKE_TIP)}">${stakeMo(t)}</span>`, sort: t => t.usd_yr[1]},
+        {k: "m", h: "MLR", c: "c", f: t => t.mlr_gate ? '<span class="tag p1">medical</span>' : '<span class="tag mute">ok</span>', sort: t => t.mlr_gate ? 1 : 0},
+        {k: "as", h: "Assigned to", c: "cw", f: t => assigneeSelect(t.id, taskAssignee(t.id)), sort: t => assigneeLabel(taskAssignee(t.id))},
+        {k: "s", h: "Status", c: "cw", g: "task_status", f: t => statusSelect(t.id, taskStatus(t.id)) + (taskUnsaved(t.id) ? '<div class="state">unsaved</div>' : ""), sort: t => taskStatus(t.id)},
+      ], list, {rowAttr: taskRowAttr, scroll: list.length > 20 ? "tall" : false, sortKey: "u", sortDir: -1}),
+      "A point can belong to several tasks only through <i>also addresses</i>; the money column is never additive across rows.", `${list.length} shown`, "c12");
+      wireTaskControls(host, draw);
+      host.querySelectorAll("[data-href]").forEach(r => r.onclick = ev => { if(ev.target.closest("a,select,button")) return; location.hash = r.dataset.href; });
+    }
+    document.getElementById("vKan").classList.toggle("on", F.view === "board");
+    document.getElementById("vTab").classList.toggle("on", F.view !== "board");
+  }
+
+  // Board: drag a card between columns, or use the card's own status control. Both land in the same place.
+  function wireBoard(host){
+    wireTaskControls(host, draw);
+    host.querySelectorAll(".kcard").forEach(c => {
+      c.onclick = ev => { if(ev.target.closest("a,select,button")) return; location.hash = c.dataset.href; };
+      c.ondragstart = ev => { ev.dataTransfer.setData("text/plain", c.dataset.id); ev.dataTransfer.effectAllowed = "move"; c.classList.add("hit"); };
+      c.ondragend = () => c.classList.remove("hit");
+    });
+    host.querySelectorAll(".kbcol").forEach(col => {
+      col.ondragover = ev => { ev.preventDefault(); ev.dataTransfer.dropEffect = "move"; col.classList.add("over"); };
+      col.ondragleave = () => col.classList.remove("over");
+      col.ondrop = ev => {
+        ev.preventDefault(); col.classList.remove("over");
+        const id = ev.dataTransfer.getData("text/plain"), st = col.dataset.status;
+        if(!id || !taskById[id] || taskStatus(id) === st) return;
+        if(st === "dismissed"){
+          const why = prompt("Dismissing this task — why?", taskState(id).note || "");
+          if(why === null || !why.trim()) return;
+          setTaskState(id, {status: "dismissed", note: why.trim()});
+        } else setTaskState(id, {status: st});
+        draw();
+      };
+    });
+  }
+
+  const push = () => { const p = Object.entries({view: F.view === "board" ? "" : "table", lane: F.lane, exec: F.exec, mlr: F.mlr, status: F.status, who: F.who, text: F.text})
       .filter(([, v]) => v).map(([k, v]) => `${k}=${encodeURIComponent(v)}`);
-    location.hash = "#/actions" + (p.length ? "?" + p.join("&") : ""); };
-  [["f_lane", "lane"], ["f_exec", "exec"], ["f_mlr", "mlr"], ["f_status", "status"]].forEach(([id, k]) => {
-    const e = document.getElementById(id); if(e) e.onchange = ev => { F[k] = ev.target.value; push(); };
+    history.replaceState(null, "", "#/actions" + (p.length ? "?" + p.join("&") : "")); };
+  document.getElementById("vKan").onclick = () => { F.view = "board"; window.__acView = "board"; push(); draw(); };
+  document.getElementById("vTab").onclick = () => { F.view = "table"; window.__acView = "table"; push(); draw(); };
+  [["f_lane", "lane"], ["f_exec", "exec"], ["f_mlr", "mlr"], ["f_status", "status"], ["f_who", "who"]].forEach(([id, k]) => {
+    const e = document.getElementById(id); if(e) e.onchange = ev => { F[k] = ev.target.value; push(); draw(); };
   });
   const tx = document.getElementById("f_text");
-  if(tx) tx.onchange = ev => { F.text = ev.target.value; push(); };
-  const rs = document.getElementById("f_reset"); if(rs) rs.onclick = () => { location.hash = "#/actions"; };
+  if(tx) tx.oninput = ev => { F.text = ev.target.value; push(); draw(); };
+  const rs = document.getElementById("f_reset");
+  if(rs) rs.onclick = () => { ["lane", "exec", "mlr", "status", "who", "text"].forEach(k => F[k] = "");
+    ["f_lane", "f_exec", "f_mlr", "f_status", "f_who", "f_text"].forEach(i => { const e = document.getElementById(i); if(e) e.value = ""; });
+    push(); draw(); };
+  draw();
+}
+function findingQuestions(f){
+  const rows = (f.pids || []).map(k => PTS[k]).filter(Boolean);
+  if(!rows.length) return '<div class="note">No questions recorded for this cell.</div>';
+  const line = p => {
+    const v = ((p.metrics || {}).run_specific || {}).verdict || {};
+    const n = Object.values(v).reduce((a, b) => a + b, 0);
+    const bad = (v.CRITICAL || 0), maj = (v.MAJOR || 0);
+    return `<a class="fq" href="#/point/${encodeURIComponent(p.pid + "|" + p.run)}">
+      <span class="fqq">${esc(p.question)}</span>
+      <span class="fqm">${bad ? `<span class="tag bad">${bad} critical</span>` : ""}${maj ? `<span class="tag warn">${maj} major</span>` : ""}
+        <span class="note">${n} answer${n === 1 ? "" : "s"} scored</span></span></a>`;
+  };
+  return `<div class="fdh">The ${rows.length} question${rows.length === 1 ? "" : "s"} behind this finding — open one to read, answer by answer, what the model said and which part of the label it breaks.</div>
+    <div class="fqs">${rows.map(line).join("")}</div>`;
 }
 function vSafety(el, q){
   const L=DASH.safety_label; const t=q.get("target"), s=q.get("surface");
   const findings = D.label_findings;
   const lightText = {red:"Dangerous errors found", yellow:"Warnings found", green:"No critical findings"}[L.traffic_light]||L.traffic_light;
   el.innerHTML = page("Safety / Label", "R4, web surfaces. Pending findings are excluded from any count labelled confirmed.", "screen_safety") + `<div class="stack">`
-   + `<section class="tile c4 safety ${L.traffic_light}"><h2${gAttr("traffic_light")}>Traffic light</h2>${gLead("traffic_light")}<div class="light ${L.traffic_light}"${gAttr("traffic_light")}>${lightText}</div><div class="big"${gAttr("findings_total")}>${L.findings.total}<small>findings</small></div>${kv([["Said something dangerous",L.findings.dangerous],["<span${gAttr('findings_incomplete')}>Omitted a required warning</span>",L.findings.incomplete],["Awaiting clinical sign-off",L.findings.pending_signoff],["Confirmed",L.findings.confirmed],["Answers with a critical error",`${pct(L.critical_answer_share)} · ${ci(L.critical_ci95)}`]])}<div class="note">${esc(L.findings.note)}</div></section>`
+   + `<section class="tile c3 safety ${L.traffic_light}"><h2${gAttr("traffic_light")}>Traffic light</h2>${gLead("traffic_light")}<div class="light ${L.traffic_light}"${gAttr("traffic_light")}>${lightText}</div><div class="big"${gAttr("findings_total")}>${L.findings.total}<small>findings</small></div>${kv([["Said something dangerous",L.findings.dangerous],["<span${gAttr('findings_incomplete')}>Omitted a required warning</span>",L.findings.incomplete],["Awaiting clinical sign-off",L.findings.pending_signoff],["Confirmed",L.findings.confirmed],["Answers with a critical error",`${pct(L.critical_answer_share)} · ${ci(L.critical_ci95)}`]])}<div class="note">${esc(L.findings.note)}</div></section>`
    + sec("Findings", tbl([
       {k:"c",h:"Class",g:"sev",c:"c",f:f=>`<span class="tag ${f.class==="DANGEROUS"?"bad":"warn"}">${f.class.toLowerCase()}</span>`,sort:f=>f.class},
-      {k:"cell",h:"Cell",g:"label_section",f:f=>`<a href="#/safety?target=${encodeURIComponent(f.target)}&surface=${encodeURIComponent(f.surface)}">${esc(f.target)} × ${esc(f.surface)}</a>`},
+      {k:"cell",h:"Cell",g:"label_section",c:"cw",f:f=>`<div class="title">${esc(f.target)} × ${esc(f.surface)}</div><div class="causeln">${esc((f.error_types_top||[]).join(", ") || "—")} · ${esc((f.label_sections||[]).join(", "))}</div>`,sort:f=>f.target+f.surface},
+      {k:"ev",h:"What the model gets wrong",c:"cev",g:"sev",f:f=>{
+        const ex=(f.example_evidence||[]);
+        const more=ex.slice(1).map(e=>`<div class="lve">${esc(e)}</div>`).join("")
+          + (f.scoring_caveat?`<div class="note" style="margin-top:var(--sp-2)"><b>How this was scored.</b> ${esc(f.scoring_caveat)}</div>`:"")
+          + ((f.flagged_for_review||[]).length?`<div class="note"><span class="tag mute">${f.flagged_for_review.length} flagged for review</span></div>`:"");
+        if(!ex.length) return `<span class="note">no example captured</span>${more?`<details class="lvok"><summary>how this was scored</summary>${more}</details>`:""}`;
+        return `<div class="lve">${esc(ex[0])}</div>${more?`<details class="lvok"><summary>${ex.length>1?`${ex.length-1} more example${ex.length===2?"":"s"} · `:""}how this was scored</summary>${more}</details>`:""}`;
+      }},
       {k:"s",h:"Critical",g:"critical_answer_share",n:true,f:f=>shr(f.critical_share),sort:f=>f.critical_share},{k:"n",h:"n",g:"answers_scored",n:true,f:f=>f.n},{k:"st",h:"Stability",g:"stability",n:true,f:f=>f1(f.stability)},{k:"ls",h:"Label sections",g:"label_section",f:f=>esc((f.label_sections||[]).join(", "))},
       {k:"so",h:"Sign-off",g:"pending_signoff",c:"c",f:f=>`<span class="tag ${f.signoff_status==="confirmed"?"ok":"p1"}">${f.signoff_status==="pending"?"awaiting sign-off":esc(f.signoff_status)}</span>${f.single_run?' <span class="tag mute">single run</span>':""}`},
-      {k:"cv",h:"Caveat",g:"findings_total",f:f=>`<span class="note" title="${esc(f.scoring_caveat)}">${esc((f.scoring_caveat||"").slice(0,80))}…${(f.flagged_for_review||[]).length?` <span class="tag mute">${f.flagged_for_review.length} flagged</span>`:""}</span>`}], findings, {sortKey:"s"}), esc(L.scoring_caveat), "cells target × surface", "c8", "findings_total")
+], findings, {sortKey:"s", toggleHref:"#/safety", rowAttr:f=>` class="pt" data-href="#/safety?target=${encodeURIComponent(f.target)}&surface=${encodeURIComponent(f.surface)}"`}), esc(L.scoring_caveat), "cells target × surface", "c9", "findings_total")
    + sec("By surface", tbl([{k:"s",h:"Surface",g:"surface",f:d=>`${esc(d.surface)}${d.single_run?' <span class="tag mute">single run</span>':""}`},{k:"n",h:"Answers",g:"answers_scored",n:true,f:d=>d.n},{k:"c",h:"Critical",g:"critical_answer_share",f:d=>bar(d.critical_share,"t-bad"),sort:d=>d.critical_share},{k:"f",h:"Findings",g:"findings_total",n:true,f:d=>d.findings},{k:"w",h:"Worst class",g:"findings_dangerous",f:d=>esc((d.worst_class||"—").toLowerCase())},{k:"x",h:"Excluded",g:"answers_excluded",n:true,f:d=>pct(d.excluded_pct)}], L.by_surface, {sortKey:"c"}), "", "", "c6", "critical_answer_share")
    + sec("Top label sections", tbl([{k:"s",h:"Section",g:"label_section",f:d=>esc(d.section)},{k:"t",h:"Targets",g:"label_section",f:d=>esc((d.targets||[d.target]).join(", "))},{k:"n",h:"Critical answers",g:"critical_answer_share",n:true,f:d=>d.critical_answers}], L.top_label_sections), "Error types among critical answers: "+Object.entries(L.error_types).map(([k,v])=>`${esc(k)} ${pct(v)}`).join(" · "), "by critical answers", "c6", "label_section")
    + sec("By target", tbl([{k:"t",h:"Target",g:"label_section",f:d=>esc(d.target)},{k:"tier",h:"Tier",g:"label_section",c:"c",f:d=>`<span class="tag ${d.tier==="CRITICAL"?"bad":d.tier==="MAJOR"?"warn":"mute"}">${esc(d.tier.toLowerCase())}</span>`,sort:d=>d.tier},{k:"ls",h:"Label section",g:"label_section",f:d=>esc(d.label_section)},{k:"n",h:"Answers",g:"answers_scored",n:true,f:d=>d.n,sort:d=>d.n},{k:"c",h:"Critical",g:"critical_answer_share",f:d=>bar(d.critical_share,"t-bad"),sort:d=>d.critical_share},{k:"d",h:"Dangerous",g:"findings_dangerous",n:true,f:d=>pct(d.dangerous_share),sort:d=>d.dangerous_share},{k:"fs",h:"Findings on",g:"findings_total",f:d=>esc((d.findings_surfaces||[]).join(", "))}], D.breakdowns.safety_by_target, {sortKey:"c"}), "", "R4", "c7", "critical_answer_share")
    + sec("Unstable cells", tbl([{k:"t",h:"Target",g:"label_section",f:d=>esc(d.target)},{k:"s",h:"Surface",g:"surface",f:d=>esc(d.surface)},{k:"n",h:"n",g:"answers_scored",n:true,f:d=>d.n},{k:"c",h:"Critical",g:"critical_answer_share",n:true,f:d=>shr(d.critical_share),sort:d=>d.critical_share}], D.breakdowns.safety_unstable_cells, {sortKey:"c"}), "Critical share above zero but below the finding threshold.", "", "c5", "unstable_cell")
-   + sec("Points", `<div id="pt"></div>`, "", t?`R4 answers in cell ${esc(t)} × ${esc(s||"")}`:"R4") + `</div>`;
+   + sec(t?"Questions in this cell":"Questions scored against the label", `<div id="pt"></div>`, t?`Open any question to see, answer by answer, what the model said and which part of the prescribing information it breaks. <a href="#/safety">Clear the filter</a>`:"Open a question to see the per-answer label verdicts.", t?`R4 answers in cell ${esc(t)} × ${esc(s||"")}`:"R4") + `</div>`;
+  if(t){                                                     // open the picked finding under its own row
+    const f = findings.find(x => x.target === t && x.surface === s);
+    const row = el.querySelector(`tr.pt[data-href="#/safety?target=${encodeURIComponent(t)}&surface=${encodeURIComponent(s || "")}"]`);
+    if(f && row){
+      row.classList.add("on");
+      const det = document.createElement("tr");
+      det.className = "fdet";
+      det.innerHTML = `<td colspan="${row.children.length}">${findingQuestions(f)}</td>`;
+      row.after(det);
+    }
+  }
   let keys = KEYS.filter(k=>PTS[k].run==="R4");
   if(t){ const f=findings.find(x=>x.target===t&&x.surface===s); if(f) keys = f.pids; }
   pointTable(document.getElementById("pt"), keys, {sortKey:"dem", caption: t?`cell ${t} × ${s}`:"R4"});
+  if(t){ const box=document.getElementById("pt"); if(box) box.closest("section").scrollIntoView({block:"start"}); }
 }
 
 // ---------------- map data on demand (the map block itself is untouched legacy code) ----------------
@@ -849,15 +1195,53 @@ function moneyDetailRows(p){
   if(mo.dc) rows.push(["Demand note", "topic demand corrected upward to its own keyword volume"]);
   return rows;
 }
+// A label-scored answer is judged against the prescribing information, not against competitors.
+// CRITICAL/MAJOR mean the answer would mislead a patient; the evidence line says how.
+function verdictTag(v){ return ({CRITICAL:"bad", MAJOR:"warn", MINOR:"mute", CORRECT:"ok"})[v] || "mute"; }
+function harmPlain(h){ return ({DANGEROUS:"says something unsafe", INCOMPLETE:"leaves out a required warning"})[h] || ""; }
+function labelViolations(key){
+  const arr = (ANSWERS[key] || []).filter(a => a.label);
+  if(!arr.length) return '<div class="note">No per-answer label scoring shipped for this question.</div>';
+  const order = {CRITICAL:0, MAJOR:1, MINOR:2, CORRECT:3};
+  const sorted = arr.slice().sort((a, b) => (order[a.label.verdict] == null ? 9 : order[a.label.verdict]) - (order[b.label.verdict] == null ? 9 : order[b.label.verdict]));
+  const bad = sorted.filter(a => a.label.verdict !== "CORRECT");
+  const ok = sorted.filter(a => a.label.verdict === "CORRECT");
+  const row = a => {
+    const L = a.label, harm = harmPlain(L.harm_class);
+    return `<div class="lvio v-${esc(L.verdict)}">
+      <div class="lvh"><span class="tag ${verdictTag(L.verdict)}">${esc((L.verdict || "").toLowerCase())}</span>
+        <b>${esc(cap(a.model))}</b>
+        ${L.error_types ? `<span class="tag mute">${esc(L.error_types)}</span>` : ""}
+        ${harm ? `<span class="note">${esc(harm)}</span>` : ""}
+        ${L.label_section ? `<span class="note mono">${esc(L.label_section)}</span>` : ""}</div>
+      ${L.evidence ? `<div class="lve">${esc(L.evidence)}</div>` : ""}</div>`;
+  };
+  return (bad.length ? bad.map(row).join("") : '<div class="note">Every answer matched the label this cycle.</div>')
+    + (ok.length ? `<details class="lvok"><summary>${ok.length} answer${ok.length === 1 ? "" : "s"} matched the label</summary>${ok.map(row).join("")}</details>` : "");
+}
 function level3(el, key, q){
   const p = PTS[key]; if(!p){ el.innerHTML=`<section class="tile">Point ${esc(key)} not found.</section>`; return; }
   const list = window.__lastList || KEYS; const i = list.indexOf(key);
   const nav = `<div class="prevnext">${i>0?`<a href="#/point/${encodeURIComponent(list[i-1])}">← Previous</a>`:""}<a href="javascript:history.back()">Back</a>${i>=0&&i<list.length-1?`<a href="#/point/${encodeURIComponent(list[i+1])}">Next →</a>`:""}<span class="count">${i>=0?`${i+1} of ${list.length} in the current list`:""}</span></div>`;
   const m = p.metrics;
   const runspec = Object.entries(m.run_specific||{}).map(([k,v])=>[esc(k), esc(Object.entries(v).map(([a,b])=>`${a} ×${b}`).join(", "))]);
+  const rs = (m.run_specific||{}).verdict || {};
+  const isLabelPoint = !!(m.run_specific && m.run_specific.verdict);          // R4/R5: judged against the label, not against rivals
+  const nScored = Object.values(rs).reduce((a,b)=>a+b, 0);
+  const topOf = o => { const e = Object.entries(o||{}).filter(x=>x[0]).sort((a,b)=>b[1]-a[1]); return e.length ? e[0][0] : ""; };
   el.innerHTML = nav + `<div class="kicker">${esc(p.pid)} · ${esc(p.run)} · ${esc(p.class)} · <a href="#/priorities?group=${encodeURIComponent(p.group_id)}" style="color:var(--us);text-decoration:none;text-transform:none;letter-spacing:0">${esc(p.group_id)}</a></div><h2 class="page"${gAttr("screen_point")}>${esc(p.question)}</h2>${gLead("screen_point")}<div class="subline" style="margin-bottom:6px">${esc(p.zone)} · ${esc(p.topic)}${p.subtopic?` / ${esc(p.subtopic)}`:""} · ${esc(p.patient_stage)} · ${esc(p.query_type)}</div><div style="margin-bottom:16px"><span class="tag ${SEVTAG[p.sev]||"mute"}"${gAttr("sev")}>${esc(p.sev)}</span> ${titleCause(p.code,p.code_label,p.cause)}${p.cause&&p.cause.evidence?`<ul class="evid note">${p.cause.evidence.map(e=>`<li>${esc(e)}</li>`).join("")}</ul>`:""}</div>
   <div class="stack">
-    ${sec("Metrics", `<div class="row top"><div><div class="mid"${gAttr("presence_share")}>${m.we_present_share==null?"—":shr0(m.we_present_share)}<small>named</small></div></div><div><div class="mid">${f1(m.avg_position)}<small>position</small></div></div><div><div class="mid"${gAttr("answers_scored")}>${m.answers-m.answers_excluded}<small>scored answers</small></div><div class="note">${m.answers_excluded?m.answers_excluded+" excluded as unscoreable":"none excluded"}</div></div></div>` + tbl([{k:"f",h:"Family",g:"model_family",f:r=>esc(cap(r.model_family))},{k:"a",h:"Answers",g:"answers_scored",n:true,f:r=>r.answers},{k:"w",h:"We present",g:"presence_share",n:true,f:r=>r.we_present},{k:"p",h:"Position",g:"avg_position",n:true,f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.answer_sentiment)}], m.by_model) + `<div></div>` + kv([["INN only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)],["Competitors present",Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(", ")||"none"],["Citations",`${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}`],...runspec]), "", "from the pipeline", "c7", "presence_share")}
+    ${isLabelPoint ? sec("What the answer gets wrong",
+        metricStrip([
+          {value: (rs.CRITICAL || 0) + "<small> of " + nScored + "</small>", label: "answers scored critical", note: "a patient acting on these would be misled"},
+          {value: (rs.MAJOR || 0) + (rs.MINOR ? " / " + rs.MINOR : ""), label: rs.MINOR ? "major / minor" : "scored major", note: "short of the label, below critical"},
+          {value: esc(topOf(m.run_specific.harm_class) || "—"), label: "how it fails", note: harmPlain(topOf(m.run_specific.harm_class)) || "harm class from label scoring"},
+          {value: `<span class="mono" style="font-size:20px">${esc(topOf(m.run_specific.label_section) || "—")}</span>`, label: "section of the prescribing information", note: esc(topOf(m.run_specific.target) || "")},
+        ])
+        + `<div class="lead">Each line below is one model answer judged against the label: what it said, and what the prescribing information requires that it did not say. This is not a competitive reading — presence and position are beside the point here.</div>`
+        + `<div id="lvBox"><div class="note">Loading the answers…</div></div>`,
+        "R4/R5 label scoring · verdicts are the scorer's, pending clinician sign-off", esc(p.code_label || p.code || ""), "c12", "sev") : ""}
+    ${sec(isLabelPoint ? "Visibility metrics" : "Metrics", `<div class="row top"><div><div class="mid"${gAttr("presence_share")}>${m.we_present_share==null?"—":shr0(m.we_present_share)}<small>named</small></div></div><div><div class="mid">${f1(m.avg_position)}<small>position</small></div></div><div><div class="mid"${gAttr("answers_scored")}>${m.answers-m.answers_excluded}<small>scored answers</small></div><div class="note">${m.answers_excluded?m.answers_excluded+" excluded as unscoreable":"none excluded"}</div></div></div>` + tbl([{k:"f",h:"Family",g:"model_family",f:r=>esc(cap(r.model_family))},{k:"a",h:"Answers",g:"answers_scored",n:true,f:r=>r.answers},{k:"w",h:"We present",g:"presence_share",n:true,f:r=>r.we_present},{k:"p",h:"Position",g:"avg_position",n:true,f:r=>f1(r.position)},{k:"bs",h:"Brand sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.brand_sentiment)},{k:"as",h:"Answer sentiment",g:"answer_sentiment",n:true,f:r=>f1(r.answer_sentiment)}], m.by_model) + `<div></div>` + kv([["INN only",shr(m.inn_only_share)],["Rank score",f1(p.point_rank_score)],["Competitors present",Object.entries(m.competitors_present||{}).map(([k,v])=>`${esc(k)} ${v}`).join(", ")||"none"],["Citations",`${m.citations.total} · owned ${m.citations.owned} · earned ${m.citations.earned} · institutional ${m.citations.institutional} · competitor ${m.citations.competitor} · adversarial ${m.citations.adversarial}`],...runspec]), "", "from the pipeline", "c7", "presence_share")}
     ${sec("Sources", `<div class="srclist">${(m.citations.top_domains||[]).map(d=>`<a href="#/sources?domain=${encodeURIComponent(d.domain)}">${esc(d.domain)} <span>×${d.n} · ${esc(d.owner)}${d.subtype?"/"+esc(d.subtype):""}</span></a>`).join("")||"<span class='note'>no citations</span>"}</div>` + (p.serp?`<dl class="dl" style="margin-top:10px"><dt>Google</dt><dd>${p.serp.our?"we rank #"+p.serp.our:"we are absent"}; competitor ${p.serp.comp?"#"+p.serp.comp:"absent"}</dd><dt>Occupiers</dt><dd>${(p.serp.occ||[]).map(esc).join(", ")||"—"}</dd><dt>Overlap</dt><dd>${p.serp.ov??"—"}%</dd></dl>`:"") + (p.inventory?`<dl class="dl" style="margin-top:10px"><dt>Our page</dt><dd>${esc(p.inventory.v)}${p.inventory.url?` · <a href="${esc(p.inventory.url)}" target="_blank" rel="noopener">${esc(p.inventory.url)}</a>`:""}</dd><dt>Missing</dt><dd>${esc(p.inventory.miss||"—")}</dd></dl>`:""), "", "top domains, SERP snapshot, inventory", "c5", "top_domain_citations")}
     ${sec("Diagnosis", `<div class="para">${(p.diagnosis_text||[]).map(s=>`<p>${esc(s)}</p>`).join("")}</div>`, "", "platform export", "c12", "cause")}
     ${sec("Demand", kv([["Topic demand /mo",fmtK(p.demand.topic_demand)],["Range",`${fmtK(p.demand.lo)}–${fmtK(p.demand.hi)}`],["<span${gAttr('topic_group')}>Basis</span>",esc(p.demand.basis)],["<span${gAttr('question_share')}>Prompt share</span>",f1(p.demand_extra.prompt_share)],["<span${gAttr('ai_native')}>AI-native</span>",p.demand_extra.ai_native?"yes":"no"]].concat(moneyDetailRows(p))), "Prompt share and AI-native come from the platform export.", "", "c4", "demand")}
@@ -866,6 +1250,13 @@ function level3(el, key, q){
     ${sec("What is being done about it", pointTaskLine(key), "One line per task that covers this question. The underlying fix cards stay in the data and in tasks.md.", "tasks layer", "c12")}
     <section class="tile c12"><button class="collapse" type="button" onclick="document.getElementById('cit2').classList.toggle('hide')">Citere monitoring (${p.fixes.filter(c=>c.audience==="citere").length} TRACK cards)</button><div id="cit2" class="hide">${p.fixes.filter(c=>c.audience==="citere").map(c=>fixCard(c)).join("")}</div></section>
   </div>`;
+  // setTimeout(0): on a cold load straight at #/point/... this function runs before
+  // `const ANSWERS, ansPromise` further down the file are initialised.
+  if(isLabelPoint) setTimeout(async () => {
+    let err = null; try { await loadAnswers(p.run); } catch(e){ err = e; }
+    const box = document.getElementById("lvBox"); if(!box) return;
+    box.innerHTML = err ? `<div class="note">Could not load the answers: ${esc(err.message || err)}</div>` : labelViolations(key);
+  }, 0);
   document.getElementById("loadAns").onclick = async (ev) => {
     ev.target.textContent = "Loading…";
     let err=null; try{ await loadAnswers(p.run); }catch(e){ err=e; }

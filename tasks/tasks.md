@@ -132,6 +132,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 208,894/mo · **points** 22
 - **Causes** SOURCE-PREF, COMP-CONTENT, SOURCE-LEAK, UNCLAIMED
+
+**The problem** — Across the 22 questions in this task, 42% of the 67 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (9 of the 22 questions); the competitor has content on this and we do not (8 of the 22 questions). Where we are missing, the answer names Zepbound in 10, Mounjaro in 7.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/other.html. competitor-owned pages (zepbound.lilly.com (2)) are cited in 2/3 sourced answers; ours in 0; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (4)) are cited in 2/3 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/other.html.
+
+**What to do** — The fix cards on these questions ask for: Publish an MLR-compatible evidence page for “Other” to counter trulicity.lilly.com (an evidence asset, never a “vs” page); Create or rewrite an owned page answering “Other” for patients already on Ozempic; Expand our existing page https://www.ozempic.com/why-ozempic/other.html into a full answer for “Other” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). 2 further wordings of the same deliverable are recorded on the other points. Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 22 questions and check: our domains enter the cited set; comp-domain citation share ↓ or outcome flips; leak 2/6 ↓; our domains cited ↑ (now 0/6).
+
+**What this delivers** — Doing this addresses an answer gap worth $1.6M–$4.8M a year across ~208,894 monthly searches and should move category visibility by +0.14–0.27pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $1.8M, Trulicity $1.0M, Mounjaro $940K
 - **Also addresses** T5, T6
@@ -149,6 +160,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 62,223/mo · **points** 7
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK, NARR-AMP
+
+**The problem** — Across the 7 questions in this task, 57% of the 21 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (2 of the 7 questions); third-party comparison pages decide this, and our evidence is not in the set they read (2 of the 7 questions). Where we are missing, the answer names Mounjaro in 7, Trulicity in 3.
+
+**Why this happens** — competitor-owned pages (mounjaro.lilly.com (2)) are cited in 2/6 sourced answers; ours in 0; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/other.html. the negative framing is model synthesis, not a cited page; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Other” for patients already on Ozempic; Publish an MLR-compatible evidence page for “Other” to counter mounjaro.lilly.com (an evidence asset, never a “vs” page); Expand our existing page https://www.ozempic.com/why-ozempic/other.html into a full answer for “Other” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). 2 further wordings of the same deliverable are recorded on the other points. Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 7 questions and check: comp-domain citation share ↓ or outcome flips; leak 1/6 ↓; our domains cited ↑ (now 0/5); our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $1.3M–$3.8M a year across ~62,223 monthly searches and should move category visibility by +0.05–0.11pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $1.6M, Zepbound $909K, Trulicity $496K
 - **Also addresses** T5, T6
@@ -166,6 +188,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 21,875/mo · **points** 5
 - **Causes** COMP-CONTENT
+
+**The problem** — Across the 5 questions in this task, 100% of the 15 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (5 of the 5 questions). Where we are missing, the answer names Zepbound in 14, Mounjaro in 10.
+
+**Why this happens** — competitor-owned pages (zepbound.lilly.com (5)) are cited in 3/3 sourced answers; ours in 0; inventory: no owned page answers this intent. competitor-owned pages (mounjaro.lilly.com (4), lilly.com (1)) are cited in 3/3 sourced answers; ours in 0; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (3)) are cited in 2/3 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/basics-mechanism.html.
+
+**What to do** — The fix cards on these questions ask for: Publish an MLR-compatible evidence page for “Basics & mechanism” to counter zepbound.lilly.com (an evidence asset, never a “vs” page); Expand our existing page https://www.ozempic.com/why-ozempic/basics-mechanism.html into a full answer for “Basics & mechanism” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 5 questions and check: comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $822K–$2.4M a year across ~21,875 monthly searches and should move category visibility by +0.18–0.36pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $1.5M, Mounjaro $868K, Saxenda $54K
 - **Also addresses** T6
@@ -183,6 +216,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 24,765/mo · **points** 15
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK, SOURCE-MISS
+
+**The problem** — Across the 15 questions in this task, 85% of the 48 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (8 of the 15 questions); third-party comparison pages decide this, and our evidence is not in the set they read (4 of the 15 questions). Where we are missing, the answer names Zepbound in 20, Mounjaro in 11.
+
+**Why this happens** — competitor-owned pages (zepbound.lilly.com (7), lilly.com (1)) are cited in 3/3 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/titration-dose-schedule.html. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (10), pi.lilly.com (6)) are cited in 10/14 sourced answers; ours in 0; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (2)) are cited in 2/3 sourced answers; ours in 0; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/titration-dose-schedule.html into a full answer for “Titration & dose schedule” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible evidence page for “Titration & dose schedule” to counter zepbound.lilly.com (an evidence asset, never a “vs” page); Publish an MLR-compatible owned evidence asset for “Titration & dose schedule” (efficacy/safety facts, no head-to-head claims). 3 further wordings of the same deliverable are recorded on the other points. Expected effect: give engines an equal-authority alternative to the competitor page; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 15 questions and check: comp-domain citation share ↓ or outcome flips; our domains enter the cited set; leak 4/9 ↓; our domains cited ↑ (now 0/3).
+
+**What this delivers** — Doing this addresses an answer gap worth $817K–$2.4M a year across ~24,765 monthly searches and should move category visibility by +0.18–0.37pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $1.1M, Trulicity $461K, Mounjaro $459K
 - **Also addresses** T5, T6
@@ -200,6 +244,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 24,179/mo · **points** 25
 - **Causes** UNCLAIMED, SOURCE-LEAK, COMP-CONTENT, SOURCE-PREF
+
+**The problem** — Across the 25 questions in this task, 68% of the 85 model answers never name Ozempic at all. The cause engine reads it as: nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (10 of the 25 questions); third-party pages answer this better than anything we have published, and they surface alternatives while doing it (8 of the 25 questions). Where we are missing, the answer names Zepbound in 10, Mounjaro in 8.
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (cdc.gov (7), niddk.nih.gov (6)) carry no brand; inventory: no owned page answers this intent. answers are retold from pmc.ncbi.nlm.nih.gov (6), pubmed.ncbi.nlm.nih.gov (6); our domains cited in 0/7; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. no brand — ours or anyone's — is attached to this answer; the cited pages (healthline.com (6), nutrisense.io (4)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence; Create or rewrite an owned page answering “Efficacy & results” for patients already on Ozempic; Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). 3 further wordings of the same deliverable are recorded on the other points. Expected effect: first-mover in an unclaimed niche; no displacement fight; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 25 questions and check: cause flips to WORKING with our citation; leak 5/6 ↓; our domains cited ↑ (now 0/6); comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $596K–$1.8M a year across ~24,179 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $299K, Mounjaro $214K, Saxenda $40K
 - **Also addresses** T5, T6
@@ -217,6 +272,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 23,558/mo · **points** 25
 - **Causes** SOURCE-LEAK, UNCLAIMED, SOURCE-PREF, SOURCE-MISS
+
+**The problem** — Across the 25 questions in this task, 61% of the 85 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (11 of the 25 questions); nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (9 of the 25 questions). Where we are missing, the answer names Mounjaro in 5, Zepbound in 4.
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (healthline.com (10), mayoclinic.org (6)) carry no brand; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. no brand — ours or anyone's — is attached to this answer; the cited pages (healthline.com (10), cdc.gov (7)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. third-party pages (laviemd.us (3), bodyspec.com (3)) answer our patient's question and surface Wegovy (1); inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Efficacy & results” for patients already on Ozempic; Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence. 3 further wordings of the same deliverable are recorded on the other points. Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); first-mover in an unclaimed niche; no displacement fight; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 25 questions and check: leak 9/9 ↓; our domains cited ↑ (now 0/9); cause flips to WORKING with our citation; our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $535K–$1.6M a year across ~23,558 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $158K, Mounjaro $134K, Farxiga $360
 - **Also addresses** T5, T6
@@ -234,6 +300,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT+APPROVE · E16 · MLR compatible
 - **Demand** 65,625/mo · **points** 15
 - **Causes** KNOW, NOT-CHOSEN
+
+**The problem** — Across the 15 questions in this task, 27% of the 44 model answers never name Ozempic at all. The cause engine reads it as: the models' built-in memory of the brand is thin or confused (13 of the 15 questions); sources carry us among the options but never lead with us (2 of the 15 questions). Where we are missing, the answer names Mounjaro in 12, Zepbound in 5.
+
+**Why this happens** — search was off — the failure lives in model memory, which is shaped by reference sites, not by our website. search was off — the failure lives in model memory, which is shaped by reference sites, not by our website. Engine-specific: the picture differs by engine — Claude names us in 6 of 10 answers while Gemini in only 0 of 10, so part of the fix is engine-specific. search was off — the failure lives in model memory, which is shaped by reference sites, not by our website. Engine-specific: the picture differs by engine — Claude names us in 8 of 10 answers while GPT-4o in only 0 of 10, so part of the fix is engine-specific. the AI names us in 6/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Reference-web hygiene for brand and family: Wikipedia/Wikidata entity facts, consistent label version across the reference web; Update our entries in the drug-listing and comparison services these answers cite: doctronic.ai, 247healthcare.blog. Concretely: make sure our page there carries the current label data, dosing, coverage/savings info and the facts that set Ozempic apart — these services accept manufacturer data through formal content channels. Expected effect: the main trainable lever for parametric knowledge; answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 15 questions and check: R8 recall/version/confusion scores over the next cycles; mentioned → recommended share ↑ on this point.
+
+**What this delivers** — Doing this addresses an answer gap worth $847K–$2.5M a year across ~65,625 monthly searches and should move category visibility by +0.15–0.34pp.
+
 - **Pages / domains** doctronic.ai, 247healthcare.blog, windermeremedical.com, goodrx.com
 - **Competitors taking these answers** Mounjaro $1.8M, Zepbound $467K
 - **Also addresses** —
@@ -251,6 +328,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 13,824/mo · **points** 22
 - **Causes** UNCLAIMED, SOURCE-LEAK, COMP-CONTENT, SOURCE-MISS
+
+**The problem** — Across the 22 questions in this task, 80% of the 84 model answers never name Ozempic at all. The cause engine reads it as: nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (10 of the 22 questions); third-party pages answer this better than anything we have published, and they surface alternatives while doing it (8 of the 22 questions). Where we are missing, the answer names Mounjaro in 7, Farxiga in 3.
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (youtube.com (5), uclahealth.org (5)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. no brand — ours or anyone's — is attached to this answer; the cited pages (diabetes.org (8), cdc.gov (8)) carry no brand; inventory: no owned page answers this intent. answers are retold from medium.com (2), insidehighered.com (2); our domains cited in 0/3; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. competitor-owned pages (mounjaro.lilly.com (3)) are cited in 3/9 sourced answers; ours in 0; inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Create or rewrite an owned page answering “Efficacy & results” for patients already on Ozempic; Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence. 1 further wordings of the same deliverable are recorded on the other points. Expected effect: first-mover in an unclaimed niche; no displacement fight; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 22 questions and check: cause flips to WORKING with our citation; leak 1/9 ↓; our domains cited ↑ (now 0/9); comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $386K–$1.1M a year across ~13,824 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $42K, Saxenda $14K, Mounjaro $3K
 - **Also addresses** T6
@@ -268,6 +356,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 12,233/mo · **points** 13
 - **Causes** COMP-CONTENT, SOURCE-LEAK, SOURCE-MISS
+
+**The problem** — Across the 13 questions in this task, 58% of the 45 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (6 of the 13 questions); third-party pages answer this better than anything we have published, and they surface alternatives while doing it (5 of the 13 questions). Where we are missing, the answer names Mounjaro in 10, Zepbound in 3.
+
+**Why this happens** — competitor-owned pages (mounjaro.lilly.com (5), pi.lilly.com (2)) are cited in 3/3 sourced answers; ours in 0; inventory: no owned page answers this intent. answers are retold from diabetes.org (11), pmc.ncbi.nlm.nih.gov (8); our domains cited in 0/9; inventory: no owned page answers this intent. competitor-owned pages (mounjaro.lilly.com (4), pi.lilly.com (2)) are cited in 4/6 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/pen-device.html. third-party pages (formblends.com (11), pmc.ncbi.nlm.nih.gov (6)) answer our patient's question and surface Wegovy (3), Mounjaro (3), Zepbound (2); inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Pen & device” for patients already on Ozempic; Publish an MLR-compatible evidence page for “Pen & device” to counter zepbound.lilly.com (an evidence asset, never a “vs” page); Expand our existing page https://www.ozempic.com/why-ozempic/pen-device.html into a full answer for “Pen & device” — today it covers the basics but not this specific usage question; apply the citability spec (statistics, quotable lines, references, visible date). 1 further wordings of the same deliverable are recorded on the other points. Expected effect: give engines an equal-authority alternative to the competitor page; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 13 questions and check: comp-domain citation share ↓ or outcome flips; leak 5/9 ↓; our domains cited ↑ (now 0/9); our-domain citation rate ↑.
+
+**What this delivers** — Doing this addresses an answer gap worth $287K–$852K a year across ~12,233 monthly searches and should move category visibility by +0.3–0.59pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $330K, Zepbound $105K, Saxenda $9K
 - **Also addresses** T6
@@ -285,6 +384,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 19,713/mo · **points** 7
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 7 questions in this task, 56% of the 27 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (7 of the 7 questions). Where we are missing, the answer names Zepbound in 6, Mounjaro in 4.
+
+**Why this happens** — the commercial layer (drugs.com (12), dietitianlive.com (3), formblends.com (3)) supplies 6/9 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (drugs.com (2), medvidi.com (2), faynutrition.com (2)) supplies 2/3 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. the commercial layer (drugs.com (6), 247healthcare.blog (2), windermeremedical.com (2)) supplies 7/9 sourced answers and our pages are not among its inputs. the commercial layer (drugs.com (7), peakwellnessva.com (5), goodrx.com (4)) supplies 6/8 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — GPT-4o names us in 2 of 3 answers while Claude in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: drugs.com, medvidi.com, faynutrition.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 7 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $535K–$1.6M a year across ~19,713 monthly searches and should move category visibility by +5.36–11.8pp.
+
 - **Pages / domains** drugs.com, medvidi.com, faynutrition.com, dietitianlive.com, pandameds.com, peakwellnessva.com
 - **Competitors taking these answers** Zepbound $814K, Saxenda $54K, Mounjaro $53K
 - **Also addresses** —
@@ -302,6 +412,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 19,161/mo · **points** 12
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK
+
+**The problem** — Across the 12 questions in this task, 31% of the 39 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (5 of the 12 questions); third-party comparison pages decide this, and our evidence is not in the set they read (4 of the 12 questions). Where we are missing, the answer names Mounjaro in 8, Trulicity in 8.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. competitor-owned pages (mounjaro.lilly.com (5), investor.lilly.com (1)) are cited in 5/7 sourced answers; ours in 1; inventory: no owned page answers this intent. competitor-owned pages (investor.lilly.com (1), trulicity.lilly.com (1)) are cited in 2/5 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. competitor-owned pages (investor.lilly.com (2), mounjaro.lilly.com (1)) are cited in 3/6 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. Engine-specific: the picture differs by engine — Claude names us in 1 of 2 answers while Gemini in only 0 of 2, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Publish an MLR-compatible owned evidence asset for “Efficacy & results” (efficacy/safety facts, no head-to-head claims); Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date); Create or rewrite an owned page answering “Efficacy & results” for patients already on Ozempic. 2 further wordings of the same deliverable are recorded on the other points. Expected effect: give engines an equal-authority alternative to the competitor page; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 12 questions and check: comp-domain citation share ↓ or outcome flips; our domains enter the cited set; leak 3/9 ↓; our domains cited ↑ (now 0/8).
+
+**What this delivers** — Doing this addresses an answer gap worth $266K–$791K a year across ~19,161 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $39K, Saxenda $39K, Mounjaro $2K
 - **Also addresses** T5, T6
@@ -319,6 +440,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 6,822/mo · **points** 3
 - **Causes** UNCLAIMED
+
+**The problem** — Across the 3 questions in this task, 100% of the 12 model answers never name Ozempic at all. The cause engine reads it as: nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (3 of the 3 questions).
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (pmc.ncbi.nlm.nih.gov (14), diabetesjournals.org (11)) carry no brand; inventory: no owned page answers this intent. no brand — ours or anyone's — is attached to this answer; the cited pages (diabetes.org (10), dietdoctor.com (10)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence; Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $256K–$761K a year across ~6,822 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -336,6 +468,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 6,590/mo · **points** 2
 - **Causes** COMP-CONTENT
+
+**The problem** — Across the 2 questions in this task, 100% of the 6 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (2 of the 2 questions). Where we are missing, the answer names Zepbound in 6.
+
+**Why this happens** — competitor-owned pages (zepbound.lilly.com (3), pi.lilly.com (2)) are cited in 3/3 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/site-volume.html. competitor-owned pages (zepbound.lilly.com (5), pi.lilly.com (1)) are cited in 3/3 sourced answers; ours in 0; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/site-volume.html into a full answer for “Site & volume” — today it covers the basics but not this specific usage question; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible evidence page for “Site & volume” to counter zepbound.lilly.com (an evidence asset, never a “vs” page). Expected effect: give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $248K–$735K a year across ~6,590 monthly searches and should move category visibility by +0.2–0.39pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $735K
 - **Also addresses** T6
@@ -352,6 +495,17 @@ Ranked by severity, never by money. The money column is the web panel (R4/R5) an
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 6,822/mo · **points** 3
 - **Causes** COMP-CONTENT, SOURCE-PREF
+
+**The problem** — Across the 3 questions in this task, 100% of the 9 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (2 of the 3 questions); third-party comparison pages decide this, and our evidence is not in the set they read (1 of the 3 questions). Where we are missing, the answer names Mounjaro in 9, Zepbound in 2.
+
+**Why this happens** — competitor-owned pages (investor.lilly.com (3), medical.lilly.com (1)) are cited in 4/7 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. competitor-owned pages (medical.lilly.com (2), mounjaro.lilly.com (1)) are cited in 3/7 sourced answers; ours in 0; inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Claude names us in 1 of 2 answers while Gemini in only 0 of 2, so part of the fix is engine-specific. engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible evidence page for “Efficacy & results” to counter medical.lilly.com (an evidence asset, never a “vs” page). Expected effect: give engines an equal-authority alternative to the competitor page; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: comp-domain citation share ↓ or outcome flips; our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $244K–$725K a year across ~6,822 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $653K, Zepbound $73K
 - **Also addresses** T5, T6
@@ -371,6 +525,17 @@ Question 1:
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 19,053/mo · **points** 3
 - **Causes** SOURCE-PREF, COMP-CONTENT
+
+**The problem** — Across the 3 questions in this task, 33% of the 9 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (2 of the 3 questions); the competitor has content on this and we do not (1 of the 3 questions). Where we are missing, the answer names Zepbound in 3.
+
+**Why this happens** — competitor-owned pages (zepbound.lilly.com (3)) are cited in 3/6 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible owned evidence asset for “Efficacy & results” (efficacy/safety facts, no head-to-head claims). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: our domains enter the cited set; comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $239K–$709K a year across ~19,053 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $709K
 - **Also addresses** T5, T6
@@ -389,6 +554,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 18,192/mo · **points** 9
 - **Causes** COMP-CONTENT, SOURCE-PREF, SOURCE-LEAK, UNCLAIMED
+
+**The problem** — Across the 9 questions in this task, 43% of the 28 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (3 of the 9 questions); third-party comparison pages decide this, and our evidence is not in the set they read (2 of the 9 questions). Where we are missing, the answer names Zepbound in 6, Trulicity in 2.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. answers are retold from drugs.com (8), medicalnewstoday.com (6); our domains cited in 1/6; inventory: no owned page answers this intent. competitor-owned pages (trulicity.lilly.com (5)) are cited in 3/6 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. Engine-specific: the picture differs by engine — Gemini names us in 2 of 2 answers while GPT-4o in only 0 of 2, so part of the fix is engine-specific. competitor-owned pages (zepbound.lilly.com (3), pi.lilly.com (1)) are cited in 3/6 sourced answers; ours in 0; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible evidence page for “Efficacy & results” to counter zepbound.lilly.com (an evidence asset, never a “vs” page). 3 further wordings of the same deliverable are recorded on the other points. Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 9 questions and check: comp-domain citation share ↓ or outcome flips; leak 1/6 ↓; our domains cited ↑ (now 0/6); our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $214K–$634K a year across ~18,192 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $508K, Trulicity $106K, Farxiga $21K
 - **Also addresses** T5, T6
@@ -406,6 +582,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 15,384/mo · **points** 8
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 8 questions in this task, 47% of the 30 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (8 of the 8 questions). Where we are missing, the answer names Farxiga in 2, Jardiance in 2.
+
+**Why this happens** — the commercial layer (goodrx.com (6), bassbariatricsurgery.com (3), grandhealthpartners.com (2)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while Gemini in only 0 of 3, so part of the fix is engine-specific. the commercial layer (goodrx.com (5), resources.healthgrades.com (4), webmd.com (4)) supplies 6/9 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 0 of 3, so part of the fix is engine-specific. the commercial layer (goodrx.com (3), resources.healthgrades.com (2), atlobgyn.com (2)) supplies 6/9 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (goodrx.com (5), now.optum.com (4), drugs.com (4)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: goodrx.com, bassbariatricsurgery.com, grandhealthpartners.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 8 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $363K–$1.1M a year across ~15,384 monthly searches and should move category visibility by +5.83–12.82pp.
+
 - **Pages / domains** goodrx.com, bassbariatricsurgery.com, grandhealthpartners.com, doctronic.ai, 247healthcare.blog, marleydrug.com
 - **Competitors taking these answers** Jardiance $64K, Zepbound $40K, Farxiga $36K
 - **Also addresses** —
@@ -423,6 +610,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 26,390/mo · **points** 18
 - **Causes** NOT-CHOSEN
+
+**The problem** — Across the 18 questions in this task, 17% of the 71 model answers never name Ozempic at all. The cause engine reads it as: sources carry us among the options but never lead with us (18 of the 18 questions). Where we are missing, the answer names Farxiga in 1, Invokana in 1.
+
+**Why this happens** — the AI names us in 5/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the AI names us in 6/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the AI names us in 8/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. the AI names us in 5/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Update our entries in the drug-listing and comparison services these answers cite: doctronic.ai, drugs.com. Concretely: make sure our page there carries the current label data, dosing, coverage/savings info and the facts that set Ozempic apart — these services accept manufacturer data through formal content channels. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 18 questions and check: mentioned → recommended share ↑ on this point.
+
+**What this delivers** — Doing this addresses an answer gap worth $345K–$1.0M a year across ~26,390 monthly searches and should move category visibility by +0.04–0.08pp.
+
 - **Pages / domains** endocrine.plus, webmd.com, buzzrx.com, planetdrugsdirect.com, pandameds.com, goodrx.com
 - **Competitors taking these answers** Farxiga $26K, Invokana $26K, Mounjaro $22K
 - **Also addresses** —
@@ -440,6 +638,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 16,510/mo · **points** 10
 - **Causes** SOURCE-LEAK, COMP-CONTENT
+
+**The problem** — Across the 10 questions in this task, 27% of the 30 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (8 of the 10 questions); the competitor has content on this and we do not (2 of the 10 questions). Where we are missing, the answer names Zepbound in 6, Mounjaro in 3.
+
+**Why this happens** — competitor-owned pages (mounjaro.lilly.com (3)) are cited in 2/3 sourced answers; ours in 0; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (1), pi.lilly.com (1)) are cited in 2/3 sourced answers; ours in 0; inventory: no owned page answers this intent. third-party pages (drugs.com (10), goodrx.com (8)) answer our patient's question and surface Metformin (7), Tirzepatide (5), Zepbound (4); inventory: partial coverage at https://www.ozempic.com/why-ozempic/titration-dose-schedule.html. third-party pages (drugs.com (5), goodrx.com (5)) answer our patient's question and surface Wegovy (5), Zepbound (5), Tirzepatide (5); inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Titration & dose schedule” for patients already on Ozempic; Expand our existing page https://www.ozempic.com/why-ozempic/titration-dose-schedule.html into a full answer for “Titration & dose schedule” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible evidence page for “Titration & dose schedule” to counter zepbound.lilly.com (an evidence asset, never a “vs” page). Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 10 questions and check: leak 2/6 ↓; our domains cited ↑ (now 0/3); comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $165K–$491K a year across ~16,510 monthly searches and should move category visibility by +0.18–0.37pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $276K, Mounjaro $92K
 - **Also addresses** T6
@@ -457,6 +666,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 16,952/mo · **points** 13
 - **Causes** SOURCE-PREF, COMP-CONTENT
+
+**The problem** — Across the 13 questions in this task, 18% of the 39 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (12 of the 13 questions); the competitor has content on this and we do not (1 of the 13 questions). Where we are missing, the answer names Mounjaro in 4, Victoza in 3.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. competitor-owned pages (mounjaro.lilly.com (3)) are cited in 3/6 sourced answers; ours in 5; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible owned evidence asset for “Efficacy & results” (efficacy/safety facts, no head-to-head claims); Publish an MLR-compatible evidence page for “Efficacy & results” to counter mounjaro.lilly.com (an evidence asset, never a “vs” page). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 13 questions and check: our domains enter the cited set; comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $114K–$340K a year across ~16,952 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Saxenda $103K, Mounjaro $91K, Zepbound $83K
 - **Also addresses** T5, T6
@@ -474,6 +694,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 18,192/mo · **points** 8
 - **Causes** SOURCE-PREF
+
+**The problem** — Across the 8 questions in this task, 17% of the 24 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (8 of the 8 questions). Where we are missing, the answer names Trulicity in 4, Mounjaro in 3.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Publish an MLR-compatible owned evidence asset for “Efficacy & results” (efficacy/safety facts, no head-to-head claims). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 8 questions and check: our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $114K–$338K a year across ~18,192 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Trulicity $211K, Mounjaro $127K
 - **Also addresses** T5
@@ -491,6 +722,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 9,762/mo · **points** 4
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 4 questions in this task, 40% of the 15 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (4 of the 4 questions). Where we are missing, the answer names Mounjaro in 3, Saxenda in 1.
+
+**Why this happens** — the commercial layer (doctronic.ai (2), telehealthally.com (2), universaldrugstore.com (2)) supplies 5/8 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (doctronic.ai (2), telehealthally.com (2), goodrx.com (2)) supplies 5/8 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (doctronic.ai (4), 247healthcare.blog (3), avantmedicalgroup.com (3)) supplies 5/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while Claude in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: doctronic.ai, 247healthcare.blog, avantmedicalgroup.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 4 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $222K–$659K a year across ~9,762 monthly searches and should move category visibility by +5.0–11.01pp.
+
 - **Pages / domains** doctronic.ai, 247healthcare.blog, avantmedicalgroup.com, telehealthally.com, goodrx.com, universaldrugstore.com
 - **Competitors taking these answers** Mounjaro $180K, Saxenda $19K, Zepbound $14K
 - **Also addresses** —
@@ -508,6 +750,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 4,560/mo · **points** 3
 - **Causes** SYNTH
+
+**The problem** — Across the 3 questions in this task, 42% of the 12 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (3 of the 3 questions).
+
+**Why this happens** — our pages are cited in 2/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. our pages are cited in 3/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on diabeteseducation.novocare.com against the pages that win here (diabetes.org, cdc.gov). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $104K–$310K a year across ~4,560 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** diabeteseducation.novocare.com
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -525,6 +778,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 28,319/mo · **points** 15
 - **Causes** HOSTILE
+
+**The problem** — Across the 15 questions in this task, 7% of the 45 model answers never name Ozempic at all. The cause engine reads it as: litigation and attack sites feed this answer (15 of the 15 questions). Where we are missing, the answer names Mounjaro in 3.
+
+**Why this happens** — litigation-linked domains (drugwatch.com (3)) reach 3/6 sourced answers on this point. litigation-linked domains (drugwatch.com (2), wisnerbaum.com (2), motleyrice.com (1)) reach 3/6 sourced answers on this point. litigation-linked domains (drugwatch.com (4), wisnerbaum.com (1)) reach 4/6 sourced answers on this point. litigation-linked domains (drugwatch.com (7), robertkinglawfirm.com (4), wisnerbaum.com (2)) reach 3/6 sourced answers on this point. Engine-specific: the picture differs by engine — Gemini names us in 2 of 2 answers while GPT-4o in only 1 of 2, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Displace drugwatch.com with authoritative rebuttal content and earned editorial coverage; Displace drugwatch.com, robertkinglawfirm.com with authoritative rebuttal content and earned editorial coverage. Expected effect: push hostile framing out of the retrieval set.
+
+**How we'll know it worked** — Next cycle, re-run these 15 questions and check: adversarial share of citations ↓.
+
+**What this delivers** — Doing this addresses an answer gap worth $190K–$564K a year across ~28,319 monthly searches and should move category visibility by +5.64–12.41pp.
+
 - **Pages / domains** drugwatch.com, robertkinglawfirm.com, wisnerbaum.com, bursor.com
 - **Competitors taking these answers** Mounjaro $564K
 - **Also addresses** —
@@ -542,6 +806,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 4,953/mo · **points** 4
 - **Causes** SYNTH
+
+**The problem** — Across the 4 questions in this task, 56% of the 16 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (4 of the 4 questions). Where we are missing, the answer names Jardiance in 5, Farxiga in 4.
+
+**Why this happens** — our pages are cited in 3/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 1 of 3, so part of the fix is engine-specific. our pages are cited in 3/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on diabeteseducation.novocare.com against the pages that win here (diabetes.org, mayoclinic.org). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 4 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $87K–$258K a year across ~4,953 monthly searches and should move category visibility by +0.18–0.37pp.
+
 - **Pages / domains** diabeteseducation.novocare.com
 - **Competitors taking these answers** Farxiga $28K, Jardiance $28K, Invokana $11K
 - **Also addresses** —
@@ -559,6 +834,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 2,274/mo · **points** 1
 - **Causes** UNCLAIMED
+
+**The problem** — Across the 1 question in this task, 100% of the 4 model answers never name Ozempic at all. The cause engine reads it as: nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (1 of the 1 questions).
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (cdc.gov (2), abbott.com (1)) carry no brand; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence. Expected effect: first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $85K–$254K a year across ~2,274 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -574,6 +860,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 7,280/mo · **points** 7
 - **Causes** SOURCE-PREF, COMP-CONTENT
+
+**The problem** — Across the 7 questions in this task, 29% of the 21 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (5 of the 7 questions); the competitor has content on this and we do not (2 of the 7 questions). Where we are missing, the answer names Zepbound in 5, Saxenda in 2.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. competitor-owned pages (mounjaro.lilly.com (2)) are cited in 2/6 sourced answers; ours in 2; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (3)) are cited in 2/3 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/other.html.
+
+**What to do** — The fix cards on these questions ask for: Publish an MLR-compatible owned evidence asset for “Other” (efficacy/safety facts, no head-to-head claims); Expand our existing page https://www.ozempic.com/why-ozempic/other.html into a full answer for “Other” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Publish an MLR-compatible evidence page for “Other” to counter mounjaro.lilly.com (an evidence asset, never a “vs” page). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 7 questions and check: our domains enter the cited set; comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $72K–$213K a year across ~7,280 monthly searches and should move category visibility by +0.1–0.2pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $150K, Saxenda $34K, Trulicity $15K
 - **Also addresses** T5, T6
@@ -591,6 +888,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 3,912/mo · **points** 3
 - **Causes** SOURCE-LEAK, UNCLAIMED
+
+**The problem** — Across the 3 questions in this task, 42% of the 12 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (2 of the 3 questions); nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (1 of the 3 questions).
+
+**Why this happens** — third-party pages (mayoclinic.org (8), diabetes.org (6)) answer our patient's question and surface Tirzepatide (9), Mounjaro (6), Liraglutide (5); inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. no brand — ours or anyone's — is attached to this answer; the cited pages (uclahealth.org (5), news.vt.edu (5)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Efficacy & results” for patients already on Ozempic; Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: leak 9/9 ↓; our domains cited ↑ (now 0/9); cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $71K–$210K a year across ~3,912 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -608,6 +916,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 21,463/mo · **points** 13
 - **Causes** SYNTH
+
+**The problem** — Across the 13 questions in this task, 2% of the 43 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (13 of the 13 questions).
+
+**Why this happens** — our pages are cited in 4/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. our pages are cited in 2/8 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on ozempic.com against the pages that win here (drugs.com, goodrx.com). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 13 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $62K–$184K a year across ~21,463 monthly searches and should move category visibility by +0.18–0.37pp.
+
 - **Pages / domains** ozempic.com
 - **Competitors taking these answers** Mounjaro $20K
 - **Also addresses** —
@@ -625,6 +944,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 3,295/mo · **points** 1
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 1 question in this task, 100% of the 3 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (1 of the 1 questions). Where we are missing, the answer names Mounjaro in 3.
+
+**Why this happens** — the commercial layer (onlinedoctor.asda.com (2), drugs.com (1), goodrx.com (1)) supplies 2/3 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: onlinedoctor.asda.com, drugs.com, goodrx.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $124K–$368K a year across ~3,295 monthly searches and should move category visibility by +3.22–7.08pp.
+
 - **Pages / domains** onlinedoctor.asda.com, drugs.com, goodrx.com
 - **Competitors taking these answers** Mounjaro $368K
 - **Also addresses** —
@@ -640,6 +970,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 8,255/mo · **points** 5
 - **Causes** NOT-CHOSEN, KNOW
+
+**The problem** — Across the 5 questions in this task, 22% of the 18 model answers never name Ozempic at all. The cause engine reads it as: sources carry us among the options but never lead with us (3 of the 5 questions); the models' built-in memory of the brand is thin or confused (2 of the 5 questions). Where we are missing, the answer names Mounjaro in 3, Zepbound in 1.
+
+**Why this happens** — search was off — the failure lives in model memory, which is shaped by reference sites, not by our website. the AI names us in 5/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 1 of 3, so part of the fix is engine-specific. the AI names us in 6/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific. the AI names us in 7/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Update our entries in the drug-listing and comparison services these answers cite: goodrx.com, endocrine.org. Concretely: make sure our page there carries the current label data, dosing, coverage/savings info and the facts that set Ozempic apart — these services accept manufacturer data through formal content channels; Reference-web hygiene for brand and family: Wikipedia/Wikidata entity facts, consistent label version across the reference web. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus); the main trainable lever for parametric knowledge.
+
+**How we'll know it worked** — Next cycle, re-run these 5 questions and check: mentioned → recommended share ↑ on this point; R8 recall/version/confusion scores over the next cycles.
+
+**What this delivers** — Doing this addresses an answer gap worth $122K–$362K a year across ~8,255 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** goodrx.com, endocrine.org, wholehealthpartners.com, drugs.com, buzzrx.com
 - **Competitors taking these answers** Mounjaro $150K, Zepbound $28K
 - **Also addresses** —
@@ -657,6 +998,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 4,548/mo · **points** 3
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 3 questions in this task, 50% of the 12 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (3 of the 3 questions).
+
+**Why this happens** — the commercial layer (webmd.com (2), reboundclinicsdmv.com (1), temeculamedicalgroup.com (1)) supplies 5/8 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: webmd.com, reboundclinicsdmv.com, temeculamedicalgroup.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $114K–$338K a year across ~4,548 monthly searches and should move category visibility by +5.28–11.62pp.
+
 - **Pages / domains** webmd.com, reboundclinicsdmv.com, temeculamedicalgroup.com, nutrisense.io, allclinicaltrials.com, goodrx.com
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -674,6 +1026,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 2,274/mo · **points** 1
 - **Causes** SOURCE-PREF
+
+**The problem** — Across the 1 question in this task, 67% of the 3 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (1 of the 1 questions). Where we are missing, the answer names Saxenda in 2, Zepbound in 2.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $57K–$169K a year across ~2,274 monthly searches and should move category visibility by +0.07–0.14pp.
+
 - **Pages / domains** https://www.novo-pi.com/saxenda.pdf
 - **Competitors taking these answers** Saxenda $78K, Zepbound $78K, Mounjaro $14K
 - **Also addresses** T5
@@ -689,6 +1052,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 14,301/mo · **points** 8
 - **Causes** HOSTILE
+
+**The problem** — Across the 8 questions in this task, 4% of the 24 model answers never name Ozempic at all. The cause engine reads it as: litigation and attack sites feed this answer (8 of the 8 questions).
+
+**Why this happens** — litigation-linked domains (motleyrice.com (3)) reach 3/7 sourced answers on this point. litigation-linked domains (motleyrice.com (2), drugwatch.com (2), bursor.com (1)) reach 3/6 sourced answers on this point. litigation-linked domains (motleyrice.com (3), bursor.com (1)) reach 4/8 sourced answers on this point. litigation-linked domains (motleyrice.com (2), bursor.com (1)) reach 3/3 sourced answers on this point. Engine-specific: the picture differs by engine — Gemini names us in 2 of 2 answers while GPT-4o in only 0 of 2, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Displace motleyrice.com, bursor.com with authoritative rebuttal content and earned editorial coverage; Displace motleyrice.com with authoritative rebuttal content and earned editorial coverage. Expected effect: push hostile framing out of the retrieval set.
+
+**How we'll know it worked** — Next cycle, re-run these 8 questions and check: adversarial share of citations ↓.
+
+**What this delivers** — Doing this addresses an answer gap worth $112K–$332K a year across ~14,301 monthly searches and should move category visibility by +4.6–10.12pp.
+
 - **Pages / domains** motleyrice.com, bursor.com, drugwatch.com, torhoermanlaw.com
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -706,6 +1080,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 4,548/mo · **points** 2
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 2 questions in this task, 57% of the 7 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (2 of the 2 questions). Where we are missing, the answer names Saxenda in 1, Victoza in 1.
+
+**Why this happens** — the commercial layer (universaldrugstore.com (3), goodrx.com (2), doctronic.ai (2)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (universaldrugstore.com (3), telehealthally.com (2), middlewaynutrition.com (2)) supplies 6/9 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: universaldrugstore.com, telehealthally.com, middlewaynutrition.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $104K–$310K a year across ~4,548 monthly searches and should move category visibility by +5.28–11.62pp.
+
 - **Pages / domains** universaldrugstore.com, telehealthally.com, middlewaynutrition.com, goodrx.com, doctronic.ai
 - **Competitors taking these answers** Saxenda $14K, Victoza $14K
 - **Also addresses** —
@@ -722,6 +1107,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,304/mo · **points** 1
 - **Causes** UNCLAIMED
+
+**The problem** — Across the 1 question in this task, 100% of the 4 model answers never name Ozempic at all. The cause engine reads it as: nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (1 of the 1 questions).
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (pmc.ncbi.nlm.nih.gov (8), weightwatchers.com (7)) carry no brand; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence. Expected effect: first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $49K–$146K a year across ~1,304 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -737,6 +1133,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 1,304/mo · **points** 1
 - **Causes** COMP-CONTENT
+
+**The problem** — Across the 1 question in this task, 100% of the 3 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (1 of the 1 questions). Where we are missing, the answer names Mounjaro in 3.
+
+**Why this happens** — competitor-owned pages (investor.lilly.com (2), medical.lilly.com (2)) are cited in 2/6 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $49K–$146K a year across ~1,304 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $146K
 - **Also addresses** T6
@@ -752,6 +1159,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,302/mo · **points** 6
 - **Causes** COMP-CONTENT, UNCLAIMED
+
+**The problem** — Across the 6 questions in this task, 100% of the 20 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (4 of the 6 questions); nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (2 of the 6 questions). Where we are missing, the answer names Zepbound in 12.
+
+**Why this happens** — competitor-owned pages (zepbound.lilly.com (2)) are cited in 2/6 sourced answers; ours in 0; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. no brand — ours or anyone's — is attached to this answer; the cited pages (diabetes.org (9), mayoclinic.org (8)) carry no brand; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (2)) are cited in 2/6 sourced answers; ours in 0; inventory: no owned page answers this intent. competitor-owned pages (zepbound.lilly.com (2), investor.lilly.com (2)) are cited in 4/7 sourced answers; ours in 0; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence; Publish an MLR-compatible evidence page for “Efficacy & results” to counter zepbound.lilly.com (an evidence asset, never a “vs” page). Expected effect: give engines an equal-authority alternative to the competitor page; first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 6 questions and check: comp-domain citation share ↓ or outcome flips; cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $49K–$145K a year across ~1,302 monthly searches and should move category visibility by +0.01–0.02pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $97K
 - **Also addresses** T6
@@ -769,6 +1187,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,304/mo · **points** 2
 - **Causes** UNCLAIMED
+
+**The problem** — Across the 2 questions in this task, 100% of the 8 model answers never name Ozempic at all. The cause engine reads it as: nobody has published a page that answers this question directly, so the models assemble an answer from generic health content (2 of the 2 questions).
+
+**Why this happens** — no brand — ours or anyone's — is attached to this answer; the cited pages (cdc.gov (10), mayoclinic.org (8)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. no brand — ours or anyone's — is attached to this answer; the cited pages (mayoclinic.org (9), cdc.gov (7)) carry no brand; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Occupy the empty “Efficacy & results” niche first: owned citable page + directory presence. Expected effect: first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $44K–$129K a year across ~1,304 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -785,6 +1214,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 1,316/mo · **points** 2
 - **Causes** SOURCE-PREF, COMP-CONTENT
+
+**The problem** — Across the 2 questions in this task, 50% of the 6 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (1 of the 2 questions); the competitor has content on this and we do not (1 of the 2 questions). Where we are missing, the answer names Saxenda in 3, Zepbound in 3.
+
+**Why this happens** — competitor-owned pages (mounjaro.lilly.com (3)) are cited in 3/6 sourced answers; ours in 1; inventory: partial coverage at https://www.ozempic.com/ozempic-pen/diabetes-medicines-comparison.html. engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/ozempic-pen/diabetes-medicines-comparison.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/ozempic-pen/diabetes-medicines-comparison.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: comp-domain citation share ↓ or outcome flips; our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $41K–$121K a year across ~1,316 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** https://www.ozempic.com/ozempic-pen/diabetes-medicines-comparison.html
 - **Competitors taking these answers** Saxenda $53K, Zepbound $53K, Mounjaro $16K
 - **Also addresses** T5, T6
@@ -801,6 +1241,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 26,574/mo · **points** 25
 - **Causes** SOURCE-LEAK, SOURCE-PREF, UNCLAIMED, SOURCE-MISS
+
+**The problem** — Across the 25 questions in this task, 45% of the 84 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (12 of the 25 questions); third-party comparison pages decide this, and our evidence is not in the set they read (6 of the 25 questions). Where we are missing, the answer names Zepbound in 9, Mounjaro in 7.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. answers are retold from heart.org (10), pmc.ncbi.nlm.nih.gov (7); our domains cited in 0/9; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/fatigue-energy.html. no brand — ours or anyone's — is attached to this answer; the cited pages (healthline.com (7), cdc.gov (6)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/lifestyle-daily-living.html.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Cardiovascular & renal indication” for patients already on Ozempic; Publish an MLR-compatible owned evidence asset for “Thyroid / MTC” (efficacy/safety facts, no head-to-head claims); Create or rewrite an owned page answering “Lifestyle & daily living” for patients already on Ozempic. 13 further wordings of the same deliverable are recorded on the other points. Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 25 questions and check: leak 2/6 ↓; our domains cited ↑ (now 0/6); our domains enter the cited set; cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $36K–$106K a year across ~26,574 monthly searches and should move category visibility by +0.01–0.02pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $16K, Mounjaro $15K, Saxenda $4K
 - **Also addresses** T5, T6
@@ -818,6 +1269,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 1,304/mo · **points** 1
 - **Causes** SOURCE-PREF
+
+**The problem** — Across the 1 question in this task, 33% of the 3 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (1 of the 1 questions). Where we are missing, the answer names Mounjaro in 1, Saxenda in 1.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $33K–$97K a year across ~1,304 monthly searches and should move category visibility by +0.08–0.17pp.
+
 - **Pages / domains** https://www.novomedlink.com/obesity/products/treatments/saxenda/about/how-saxenda-works.html
 - **Competitors taking these answers** Saxenda $36K, Zepbound $36K, Mounjaro $24K
 - **Also addresses** T5
@@ -833,6 +1295,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,651/mo · **points** 1
 - **Causes** SOURCE-LEAK
+
+**The problem** — Across the 1 question in this task, 67% of the 3 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (1 of the 1 questions).
+
+**Why this happens** — third-party pages (pmc.ncbi.nlm.nih.gov (7), fellahealth.com (4)) answer our patient's question and surface Wegovy (6), Tirzepatide (1); inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Claude names us in 2 of 2 answers while GPT-4o in only 0 of 2, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Titration & dose schedule” for patients already on Ozempic. Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 1 question and check: leak 6/6 ↓; our domains cited ↑ (now 0/6).
+
+**What this delivers** — Doing this addresses an answer gap worth $31K–$92K a year across ~1,651 monthly searches and should move category visibility by +0.18–0.37pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -848,6 +1321,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 2,274/mo · **points** 2
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 2 questions in this task, 57% of the 7 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (2 of the 2 questions). Where we are missing, the answer names Farxiga in 1, Invokana in 1.
+
+**Why this happens** — the commercial layer (resources.healthgrades.com (2), canadianinsulin.com (2), premiumconciergehealthcare.com (1)) supplies 5/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (resources.healthgrades.com (2), endocrine.org (2)) supplies 4/9 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: resources.healthgrades.com, canadianinsulin.com, premiumconciergehealthcare.com; Enter the brand-carrying commercial sources answering this: resources.healthgrades.com, endocrine.org. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $57K–$169K a year across ~2,274 monthly searches and should move category visibility by +5.28–11.62pp.
+
 - **Pages / domains** resources.healthgrades.com, endocrine.org, canadianinsulin.com, premiumconciergehealthcare.com
 - **Competitors taking these answers** Mounjaro $34K, Farxiga $6K, Invokana $6K
 - **Also addresses** —
@@ -864,6 +1348,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 2,638/mo · **points** 3
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 3 questions in this task, 70% of the 10 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (3 of the 3 questions). Where we are missing, the answer names Zepbound in 4, Saxenda in 3.
+
+**Why this happens** — the commercial layer (weightwatchers.com (5), webmd.com (3), hillsideprimarycare.com (3)) supplies 6/8 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. the commercial layer (weightwatchers.com (5), cls.health (3), joinvoy.com (2)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: weightwatchers.com, webmd.com, hillsideprimarycare.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $55K–$164K a year across ~2,638 monthly searches and should move category visibility by +4.88–10.73pp.
+
 - **Pages / domains** weightwatchers.com, webmd.com, hillsideprimarycare.com, cls.health, joinvoy.com, goodrx.com
 - **Competitors taking these answers** Zepbound $108K, Mounjaro $31K, Saxenda $16K
 - **Also addresses** —
@@ -881,6 +1376,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 25,738/mo · **points** 18
 - **Causes** SYNTH
+
+**The problem** — Across the 18 questions in this task, 3% of the 61 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (18 of the 18 questions). Where we are missing, the answer names Mounjaro in 1.
+
+**Why this happens** — our pages are cited in 4/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. our pages are cited in 2/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 2 of 2 answers while Gemini in only 1 of 2, so part of the fix is engine-specific. our pages are cited in 2/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on ozempic.com against the pages that win here (reddit.com, goodrx.com). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 18 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $27K–$81K a year across ~25,738 monthly searches and should move category visibility by +0.08–0.16pp.
+
 - **Pages / domains** ozempic.com
 - **Competitors taking these answers** Mounjaro $24K
 - **Also addresses** —
@@ -898,6 +1404,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 4,195/mo · **points** 7
 - **Causes** NOT-CHOSEN
+
+**The problem** — Across the 7 questions in this task, 15% of the 27 model answers never name Ozempic at all. The cause engine reads it as: sources carry us among the options but never lead with us (7 of the 7 questions). Where we are missing, the answer names Mounjaro in 1, Farxiga in 1.
+
+**Why this happens** — the AI names us in 6/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific. the AI names us in 6/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the AI names us in 5/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while Claude in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Update our entries in the drug-listing and comparison services these answers cite: doctronic.ai, drugs.com. Concretely: make sure our page there carries the current label data, dosing, coverage/savings info and the facts that set Ozempic apart — these services accept manufacturer data through formal content channels. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 7 questions and check: mentioned → recommended share ↑ on this point.
+
+**What this delivers** — Doing this addresses an answer gap worth $51K–$153K a year across ~4,195 monthly searches and should move category visibility by +0.02–0.04pp.
+
 - **Pages / domains** doctronic.ai, prnewswire.com, drugs.com, windermeremedical.com
 - **Competitors taking these answers** Victoza $18K, Mounjaro $14K, Saxenda $13K
 - **Also addresses** —
@@ -915,6 +1432,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 3,276/mo · **points** 14
 - **Causes** SOURCE-LEAK, COMP-CONTENT, SOURCE-PREF
+
+**The problem** — Across the 14 questions in this task, 21% of the 42 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (6 of the 14 questions); the competitor has content on this and we do not (5 of the 14 questions). Where we are missing, the answer names Mounjaro in 7, Trulicity in 5.
+
+**Why this happens** — third-party pages (ubiehealth.com (5), healthline.com (5)) answer our patient's question and surface Wegovy (1); inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. competitor-owned pages (trulicity.lilly.com (2)) are cited in 2/6 sourced answers; ours in 0; inventory: no owned page answers this intent. competitor-owned pages (trulicity.lilly.com (2), mounjaro.lilly.com (1)) are cited in 2/6 sourced answers; ours in 0; inventory: no owned page answers this intent.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “GI & nausea” for patients already on Ozempic; Publish an MLR-compatible evidence page for “GI & nausea” to counter trulicity.lilly.com (an evidence asset, never a “vs” page); Publish an MLR-compatible owned evidence asset for “GI & nausea” (efficacy/safety facts, no head-to-head claims). Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 14 questions and check: leak 1/6 ↓; our domains cited ↑ (now 0/6); comp-domain citation share ↓ or outcome flips; our domains enter the cited set.
+
+**What this delivers** — Doing this addresses an answer gap worth $23K–$70K a year across ~3,276 monthly searches and should move category visibility by +0.09–0.17pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $44K, Trulicity $17K, Saxenda $4K
 - **Also addresses** T5, T6
@@ -932,6 +1460,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 3,302/mo · **points** 2
 - **Causes** SYNTH
+
+**The problem** — Across the 2 questions in this task, 12% of the 8 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (2 of the 2 questions).
+
+**Why this happens** — our pages are cited in 2/8 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. our pages are cited in 4/8 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — GPT-4o names us in 3 of 3 answers while Gemini in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on novomedlink.com against the pages that win here (reddit.com, drugs.com). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $21K–$61K a year across ~3,302 monthly searches and should move category visibility by +0.18–0.37pp.
+
 - **Pages / domains** novomedlink.com
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -948,6 +1487,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 1,651/mo · **points** 2
 - **Causes** COMMERCIAL-GAP
+
+**The problem** — Across the 2 questions in this task, 62% of the 8 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (2 of the 2 questions). Where we are missing, the answer names Januvia in 1.
+
+**Why this happens** — the commercial layer (kadieleachmd.com (4), coreprimarycare.com (3), premiumconciergehealthcare.com (2)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 0 of 3, so part of the fix is engine-specific. the commercial layer (kadieleachmd.com (6), premiumconciergehealthcare.com (5), goodrx.com (5)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: kadieleachmd.com, premiumconciergehealthcare.com, goodrx.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus).
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: our presence inside commercial-layer citations.
+
+**What this delivers** — Doing this addresses an answer gap worth $41K–$123K a year across ~1,651 monthly searches and should move category visibility by +5.27–11.6pp.
+
 - **Pages / domains** kadieleachmd.com, premiumconciergehealthcare.com, goodrx.com, coreprimarycare.com
 - **Competitors taking these answers** Januvia $41K
 - **Also addresses** —
@@ -964,6 +1514,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 4,073/mo · **points** 13
 - **Causes** SOURCE-LEAK, SOURCE-PREF, UNCLAIMED
+
+**The problem** — Across the 13 questions in this task, 51% of the 45 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (8 of the 13 questions); third-party comparison pages decide this, and our evidence is not in the set they read (3 of the 13 questions). Where we are missing, the answer names Mounjaro in 3, Saxenda in 2.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. no brand — ours or anyone's — is attached to this answer; the cited pages (ucsfhealth.org (11), medlineplus.gov (7)) carry no brand; inventory: no owned page answers this intent. third-party pages (pmc.ncbi.nlm.nih.gov (5), kidney.org (5)) answer our patient's question and surface Metformin (8); inventory: no owned page answers this intent. third-party pages (diabetesjournals.org (17), kidney.org (8)) answer our patient's question and surface Liraglutide (8), Metformin (6), Victoza (4); inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Create or rewrite an owned page answering “Kidney safety” for patients already on Ozempic; Create or rewrite an owned page answering “Cardiovascular & renal indication” for patients already on Ozempic; Publish an MLR-compatible owned evidence asset for “Timing, food & storage” (efficacy/safety facts, no head-to-head claims). 6 further wordings of the same deliverable are recorded on the other points. Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); first-mover in an unclaimed niche; no displacement fight.
+
+**How we'll know it worked** — Next cycle, re-run these 13 questions and check: leak 9/9 ↓; our domains cited ↑ (now 0/9); our domains enter the cited set; cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $10K–$30K a year across ~4,073 monthly searches and should move category visibility by +0.04–0.09pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $6K, Saxenda $5K, Victoza $5K
 - **Also addresses** T5
@@ -981,6 +1542,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR compatible
 - **Demand** 1,571/mo · **points** 21
 - **Causes** NOT-CHOSEN, KNOW
+
+**The problem** — Across the 21 questions in this task, 20% of the 76 model answers never name Ozempic at all. The cause engine reads it as: sources carry us among the options but never lead with us (17 of the 21 questions); the models' built-in memory of the brand is thin or confused (4 of the 21 questions). Where we are missing, the answer names Mounjaro in 6, Zepbound in 5.
+
+**Why this happens** — the AI names us in 5/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 1 of 3, so part of the fix is engine-specific. the AI names us in 7/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific. the AI names us in 5/9 answers but only as one option in a list — it copies its preference from these pages, and today they carry us without recommending us. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. search was off — the failure lives in model memory, which is shaped by reference sites, not by our website.
+
+**What to do** — The fix cards on these questions ask for: Update our entries in the drug-listing and comparison services these answers cite: goodrx.com, singlecare.com. Concretely: make sure our page there carries the current label data, dosing, coverage/savings info and the facts that set Ozempic apart — these services accept manufacturer data through formal content channels; Reference-web hygiene for brand and family: Wikipedia/Wikidata entity facts, consistent label version across the reference web. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus); the main trainable lever for parametric knowledge.
+
+**How we'll know it worked** — Next cycle, re-run these 21 questions and check: mentioned → recommended share ↑ on this point; R8 recall/version/confusion scores over the next cycles.
+
+**What this delivers** — Doing this addresses an answer gap worth $18K–$53K a year across ~1,571 monthly searches and should move category visibility by +0.02–0.04pp.
+
 - **Pages / domains** taramd.com, cls.health, weightwatchers.com, goodrx.com, axelradclinic.com, endocrine.plus
 - **Competitors taking these answers** Mounjaro $11K, Zepbound $8K, Saxenda $5K
 - **Also addresses** —
@@ -998,6 +1570,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 31,995/mo · **points** 23
 - **Causes** SYNTH
+
+**The problem** — Across the 23 questions in this task, 3% of the 76 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (23 of the 23 questions). Where we are missing, the answer names Saxenda in 1.
+
+**Why this happens** — our pages are cited in 2/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. our pages are cited in 2/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 2 of 2 answers while Gemini in only 1 of 2, so part of the fix is engine-specific. our pages are cited in 2/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific. our pages are cited in 2/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on ozempic.com against the pages that win here (drugs.com, goodrx.com). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 23 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $5K–$15K a year across ~31,995 monthly searches and should move category visibility by +0.15–0.3pp.
+
 - **Pages / domains** novomedlink.com, wegovy.com, rybelsus.com, ozempic.com, novo-pi.com, novonordisk.com
 - **Competitors taking these answers** Mounjaro $3K, Trulicity $2K, Saxenda $1K
 - **Also addresses** —
@@ -1015,6 +1598,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 20,324/mo · **points** 13
 - **Causes** SOURCE-PREF, SOURCE-LEAK, COMP-CONTENT, SOURCE-MISS
+
+**The problem** — Across the 13 questions in this task, 8% of the 40 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (6 of the 13 questions); third-party pages answer this better than anything we have published, and they surface alternatives while doing it (5 of the 13 questions). Where we are missing, the answer names Trulicity in 2, Zepbound in 2.
+
+**Why this happens** — engines have no owned evidence of ours to weigh in this comparison; inventory: partial coverage at https://www.ozempic.com/why-ozempic/efficacy-results.html. third-party pages (medicalnewstoday.com (5), artisanofbeauty.com (4)) answer our patient's question and surface Mounjaro (1), Tirzepatide (1), Metformin (1); inventory: partial coverage at https://www.ozempic.com/ozempic-pen/side-effects.html. answers are retold from drugs.com (9), plexusdx.com (7); our domains cited in 1/5; inventory: partial coverage at https://www.ozempic.com/ozempic-pen/side-effects.html. competitor-owned pages (mounjaro.lilly.com (2)) are cited in 2/6 sourced answers; ours in 1; inventory: partial coverage at https://www.ozempic.com/why-ozempic/timing-food-storage.html.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date); Expand our existing page https://www.ozempic.com/why-ozempic/efficacy-results.html into a full answer for “Efficacy & results” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Expand our existing page https://www.wegovy.com/obesity/is-wegovy-right-for-me/safety-side-effects.html into a full answer for “GI & nausea” — today it offers no comparison-evidence content for this choice; apply the citability spec (statistics, quotable lines, references, visible date). 4 further wordings of the same deliverable are recorded on the other points. Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page.
+
+**How we'll know it worked** — Next cycle, re-run these 13 questions and check: our domains enter the cited set; leak 9/9 ↓; our domains cited ↑ (now 1/9); comp-domain citation share ↓ or outcome flips.
+
+**What this delivers** — Doing this addresses an answer gap worth $5K–$14K a year across ~20,324 monthly searches and should move category visibility by +0.1–0.2pp.
+
 - **Pages / domains** https://www.wegovy.com/obesity/is-wegovy-right-for-me/safety-side-effects.html, https://www.novonordisk.com/news-and-media/news-and-ir-materials/news-details.html?id=166301, https://www.ozempic.com/ozempic-pill/side-effects.html, https://pro.novonordisk.co.uk/disclaimer.html?disclaim=https://pro.novonordisk.co.uk/products/ozempic/mechanism-of-action, https://www.novomedlink.com/diabetes/products/treatments/ozempic/dosing-administration/administration/pen.html, https://www.novocare.com/patient/medicines/wegovy/check-coverage.html
 - **Competitors taking these answers** Zepbound $5K, Saxenda $3K, Trulicity $3K
 - **Also addresses** T5, T6
@@ -1032,6 +1626,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 1,302/mo · **points** 13
 - **Causes** SOURCE-LEAK, COMP-CONTENT, UNCLAIMED, SOURCE-PREF
+
+**The problem** — Across the 13 questions in this task, 36% of the 45 model answers never name Ozempic at all. The cause engine reads it as: third-party pages answer this better than anything we have published, and they surface alternatives while doing it (9 of the 13 questions); the competitor has content on this and we do not (2 of the 13 questions). Where we are missing, the answer names Zepbound in 3, Trulicity in 1.
+
+**Why this happens** — competitor-owned pages (zepbound.lilly.com (10), pi.lilly.com (1)) are cited in 6/6 sourced answers; ours in 0; inventory: no owned page answers this intent. engines have no owned evidence of ours to weigh in this comparison; inventory: no owned page answers this intent. no brand — ours or anyone's — is attached to this answer; the cited pages (pmc.ncbi.nlm.nih.gov (6), heart.org (3)) carry no brand; inventory: partial coverage at https://www.ozempic.com/why-ozempic/kidney-safety.html. third-party pages (diabetesjournals.org (12), pmc.ncbi.nlm.nih.gov (9)) answer our patient's question and surface Liraglutide (5), Farxiga (5), Jardiance (4); inventory: no owned page answers this intent. Engine-specific: the picture differs by engine — Gemini names us in 3 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Expand our existing page https://www.ozempic.com/why-ozempic/kidney-safety.html into a full answer for “Kidney safety” — today it covers the topic but not this exact patient question; apply the citability spec (statistics, quotable lines, references, visible date); Create or rewrite an owned page answering “Cardiovascular & renal indication” for patients already on Ozempic; Create or rewrite an owned page answering “Surgery & anesthesia” for patients already on Ozempic. 6 further wordings of the same deliverable are recorded on the other points. Expected effect: own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); give engines an equal-authority alternative to the competitor page; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 13 questions and check: leak 9/9 ↓; our domains cited ↑ (now 0/9); comp-domain citation share ↓ or outcome flips; cause flips to WORKING with our citation.
+
+**What this delivers** — Doing this addresses an answer gap worth $4K–$11K a year across ~1,302 monthly searches and should move category visibility by +0.12–0.23pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $9K, Trulicity $336, Saxenda $84
 - **Also addresses** T5, T6
@@ -1049,6 +1654,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 248,133/mo · **points** 16
 - **Causes** HOSTILE
+
+**The problem** — Across the 16 questions in this task, 4% of the 50 model answers never name Ozempic at all. The cause engine reads it as: litigation and attack sites feed this answer (16 of the 16 questions). Where we are missing, the answer names Januvia in 1.
+
+**Why this happens** — litigation-linked domains (bursor.com (2), drugwatch.com (2), motleyrice.com (1)) reach 4/6 sourced answers on this point. litigation-linked domains (bursor.com (3), drugwatch.com (1)) reach 4/6 sourced answers on this point. litigation-linked domains (bursor.com (4)) reach 4/6 sourced answers on this point. litigation-linked domains (legalclarity.org (5)) reach 3/7 sourced answers on this point. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while Gemini in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Displace bursor.com, drugwatch.com with authoritative rebuttal content and earned editorial coverage; Displace bursor.com with authoritative rebuttal content and earned editorial coverage. Expected effect: push hostile framing out of the retrieval set.
+
+**How we'll know it worked** — Next cycle, re-run these 16 questions and check: adversarial share of citations ↓.
+
+**What this delivers** — Doing this addresses an answer gap worth $8K–$22K a year across ~248,133 monthly searches and should move category visibility by +5.66–12.46pp.
+
 - **Pages / domains** legalclarity.org, bursor.com, drugwatch.com, motleyrice.com, lawfirm.com, robertkinglawfirm.com
 - **Competitors taking these answers** Januvia $4K
 - **Also addresses** —
@@ -1066,6 +1682,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · B8 · MLR medical review
 - **Demand** 251/mo · **points** 9
 - **Causes** COMMERCIAL-GAP, NOT-CHOSEN
+
+**The problem** — Across the 9 questions in this task, 47% of the 34 model answers never name Ozempic at all. The cause engine reads it as: the commercial layer — telehealth, coupon and directory sites — answers this, and our pages are not among their inputs (7 of the 9 questions); sources carry us among the options but never lead with us (2 of the 9 questions). Where we are missing, the answer names Zepbound in 1, Mounjaro in 1.
+
+**Why this happens** — the commercial layer (prediabetescenters.com (7), drashori.com (2), webmd.com (2)) supplies 5/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while Gemini in only 0 of 3, so part of the fix is engine-specific. the commercial layer (cls.health (6), eatprayliftnutrition.com (3), weightwatchers.com (2)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific. the commercial layer (drshumard.com (7), allclinicaltrials.com (5), singlecare.com (5)) supplies 6/9 sourced answers and our pages are not among its inputs; inventory confirms no owned page — the commercial layer is the near-term lever. the commercial layer (endocrine.plus (2), cvs.com (2), webmd.com (2)) supplies 6/8 sourced answers and our pages are not among its inputs. Engine-specific: the picture differs by engine — Claude names us in 2 of 3 answers while GPT-4o in only 0 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Enter the brand-carrying commercial sources answering this: cls.health, eatprayliftnutrition.com, weightwatchers.com; Pitch updated Ozempic data and story angles to the health media whose ranking/comparison articles feed these answers: kidney.org, healthline.com. Expected effect: answers citing listings name the brand 70% vs 44% without (measured on our corpus); editorial refresh moves how these pages frame us, which the AI then copies.
+
+**How we'll know it worked** — Next cycle, re-run these 9 questions and check: our presence inside commercial-layer citations; mentioned → recommended share ↑ on this point.
+
+**What this delivers** — Doing this addresses an answer gap worth $6K–$18K a year across ~251 monthly searches and should move category visibility by +4.28–9.42pp.
+
 - **Pages / domains** cls.health, eatprayliftnutrition.com, weightwatchers.com, human.health, sesamecare.com, nourish.com
 - **Competitors taking these answers** Zepbound $3K, Mounjaro $828, Saxenda $720
 - **Also addresses** —
@@ -1083,6 +1710,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A2 · MLR medical review
 - **Demand** 19,469/mo · **points** 22
 - **Causes** SYNTH
+
+**The problem** — Across the 22 questions in this task, 6% of the 72 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (22 of the 22 questions). Where we are missing, the answer names Saxenda in 2, Zepbound in 2.
+
+**Why this happens** — our pages are cited in 2/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. our pages are cited in 2/6 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Gemini names us in 2 of 2 answers while Claude in only 0 of 2, so part of the fix is engine-specific. our pages are cited in 4/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Audit and rewrite the cited-but-losing page on novomedlink.com against the pages that win here (goodrx.com, healthline.com). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 22 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $2K–$6K a year across ~19,469 monthly searches and should move category visibility by +0.15–0.3pp.
+
 - **Pages / domains** novomedlink.com, novonordiskmedical.com, wegovy.com, ozempic.com, novonordisk.com, pro.novonordisk.co.uk
 - **Competitors taking these answers** Saxenda $2K, Zepbound $2K
 - **Also addresses** —
@@ -1100,6 +1738,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 34,873/mo · **points** 17
 - **Causes** HOSTILE
+
+**The problem** — Across the 17 questions in this task, 0% of the 52 model answers never name Ozempic at all. The cause engine reads it as: litigation and attack sites feed this answer (17 of the 17 questions).
+
+**Why this happens** — litigation-linked domains (drugwatch.com (3)) reach 3/6 sourced answers on this point. litigation-linked domains (drugwatch.com (2), bursor.com (1)) reach 3/6 sourced answers on this point. litigation-linked domains (drugwatch.com (4), wisnerbaum.com (3), bursor.com (1)) reach 5/7 sourced answers on this point.
+
+**What to do** — The fix cards on these questions ask for: Displace drugwatch.com with authoritative rebuttal content and earned editorial coverage; Displace drugwatch.com, wisnerbaum.com with authoritative rebuttal content and earned editorial coverage. Expected effect: push hostile framing out of the retrieval set.
+
+**How we'll know it worked** — Next cycle, re-run these 17 questions and check: adversarial share of citations ↓.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~34,873 monthly searches and should move category visibility by +5.6–12.31pp.
+
 - **Pages / domains** drugwatch.com, wisnerbaum.com, bursor.com, helbocklaw.com
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1117,6 +1766,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · F18 · MLR compatible
 - **Demand** 30,966/mo · **points** 17
 - **Causes** HOSTILE
+
+**The problem** — Across the 17 questions in this task, 0% of the 51 model answers never name Ozempic at all. The cause engine reads it as: litigation and attack sites feed this answer (17 of the 17 questions).
+
+**Why this happens** — litigation-linked domains (drugwatch.com (3)) reach 3/6 sourced answers on this point. litigation-linked domains (drugwatch.com (2), wisnerbaum.com (2), bursor.com (1)) reach 3/6 sourced answers on this point. litigation-linked domains (drugwatch.com (4), motleyrice.com (1)) reach 4/6 sourced answers on this point.
+
+**What to do** — The fix cards on these questions ask for: Displace drugwatch.com with authoritative rebuttal content and earned editorial coverage; Displace drugwatch.com, wisnerbaum.com with authoritative rebuttal content and earned editorial coverage. Expected effect: push hostile framing out of the retrieval set.
+
+**How we'll know it worked** — Next cycle, re-run these 17 questions and check: adversarial share of citations ↓.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~30,966 monthly searches and should move category visibility by +5.61–12.35pp.
+
 - **Pages / domains** drugwatch.com, wisnerbaum.com, motleyrice.com, helbocklaw.com, bursor.com
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1134,6 +1794,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** HUMAN TASK · MLR medical review
 - **Demand** 5,264/mo · **points** 132
 - **Causes** LABEL-GAP, COMP-OFFLABEL
+
+**The problem** — Across the 132 questions in this task, 40% of the 727 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (68 of the 132 questions); the competitor is being described beyond its approved label (64 of the 132 questions). Where we are missing, the answer names Mounjaro in 276, Jardiance in 3.
+
+**Why this happens** — when every model misreads the same label passage, the passage is the lever. competitor named in 10/10 answers on an off-label intent. competitor named in 10/10 answers on an off-label intent. Engine-specific: the picture differs by engine — Claude web names us in 1 of 2 answers while Gemini web in only 0 of 2, so part of the fix is engine-specific. competitor named in 10/10 answers on an off-label intent. Engine-specific: the picture differs by engine — Gemini web names us in 1 of 2 answers while ChatGPT web in only 0 of 2, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Compile a compliance dossier: models attach the competitor to off-label uses on this intent — material for medical/regulatory teams; If this misreading recurs across the “Surgery & anesthesia” theme, consider clarifying the label/DailyMed wording itself — we supply the map of where models stumble; If this misreading recurs across the “Thyroid / MTC” theme, consider clarifying the label/DailyMed wording itself — we supply the map of where models stumble. 7 further wordings of the same deliverable are recorded on the other points. Expected effect: fixes the root document all engines read; regulatory leverage; not a visibility action.
+
+**How we'll know it worked** — Next cycle, re-run these 132 questions and check: theme-wide error rate next cycles; tracked next cycle.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~5,264 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1151,6 +1822,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 2,415/mo · **points** 68
 - **Causes** LABEL-GAP
+
+**The problem** — Across the 68 questions in this task, 2% of the 408 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (68 of the 68 questions).
+
+**Why this happens** — answers diverge from the label on this point (CRIT 1 · MAJ 0 of 16). answers diverge from the label on this point (CRIT 2 · MAJ 0 of 16). Engine-specific: the picture differs by engine — ChatGPT web names us in 3 of 3 answers while Claude web in only 1 of 3, so part of the fix is engine-specific. answers diverge from the label on this point (CRIT 3 · MAJ 0 of 16). Engine-specific: the picture differs by engine — Gemini web names us in 3 of 3 answers while Claude web in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Draft label-clarity content for “Surgery & anesthesia” with the exact label citation the models misread; Medical approves, agent publishes; Draft label-clarity content for “Thyroid / MTC” with the exact label citation the models misread; Medical approves, agent publishes; Draft label-clarity content for “Kidney safety” with the exact label citation the models misread; Medical approves, agent publishes. 6 further wordings of the same deliverable are recorded on the other points. Expected effect: fewer dangerous/major label errors in patient-facing answers.
+
+**How we'll know it worked** — Next cycle, re-run these 68 questions and check: CRITICAL/MAJOR counts ↓ on re-run.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~2,415 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1168,6 +1850,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** HUMAN TASK · MLR medical review
 - **Demand** 89,162/mo · **points** 60
 - **Causes** COMP-OFFLABEL, SOURCE-LEAK, LABEL-GAP, SYNTH
+
+**The problem** — Across the 60 questions in this task, 57% of the 282 model answers never name Ozempic at all. The cause engine reads it as: the competitor is being described beyond its approved label (34 of the 60 questions); third-party pages answer this better than anything we have published, and they surface alternatives while doing it (12 of the 60 questions). Where we are missing, the answer names Mounjaro in 147, Zepbound in 112.
+
+**Why this happens** — competitor named in 20/10 answers on an off-label intent. when every model misreads the same label passage, the passage is the lever. competitor named in 19/10 answers on an off-label intent. Engine-specific: the picture differs by engine — AI Overviews names us in 1 of 2 answers while Gemini web in only 0 of 2, so part of the fix is engine-specific. competitor named in 19/10 answers on an off-label intent. Engine-specific: the picture differs by engine — Gemini web names us in 2 of 2 answers while ChatGPT web in only 0 of 2, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Compile a compliance dossier: models attach the competitor to off-label uses on this intent — material for medical/regulatory teams; Regulatory decision first — off-label territory: whether to build content here is the client's call. If yes: create or rewrite an owned page answering “Weight loss without diabetes” for patients already on Ozempic; If this misreading recurs across the “Pediatrics & teens” theme, consider clarifying the label/DailyMed wording itself — we supply the map of where models stumble. 3 further wordings of the same deliverable are recorded on the other points. Expected effect: regulatory leverage; not a visibility action; own the answer so no third party is left to name alternatives; citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal); fixes the root document all engines read.
+
+**How we'll know it worked** — Next cycle, re-run these 60 questions and check: tracked next cycle; leak 4/6 ↓; our domains cited ↑ (now 0/6); theme-wide error rate next cycles.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~89,162 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1185,6 +1878,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · G20 · MLR compatible
 - **Demand** 592/mo · **points** 21
 - **Causes** LABEL-GAP
+
+**The problem** — Across the 21 questions in this task, 1% of the 126 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (21 of the 21 questions).
+
+**Why this happens** — a dangerous label error reproduced in patient-facing answers.
+
+**What to do** — The fix cards on these questions ask for: File structured error reports with the AI providers (OpenAI, Google, Perplexity) citing the prescribing information — the only direct channel into model-side fixes. Expected effect: provider-side correction; nobody in the market files these.
+
+**How we'll know it worked** — Next cycle, re-run these 21 questions and check: error recurrence on re-run.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~592 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1202,6 +1906,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** HUMAN TASK · MLR medical review
 - **Demand** 20,984/mo · **points** 14
 - **Causes** LABEL-GAP, COMP-OFFLABEL
+
+**The problem** — Across the 14 questions in this task, 34% of the 80 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (10 of the 14 questions); the competitor is being described beyond its approved label (4 of the 14 questions). Where we are missing, the answer names Mounjaro in 20.
+
+**Why this happens** — when every model misreads the same label passage, the passage is the lever. competitor named in 10/10 answers on an off-label intent.
+
+**What to do** — The fix cards on these questions ask for: If this misreading recurs across the “Titration & dose schedule” theme, consider clarifying the label/DailyMed wording itself — we supply the map of where models stumble; Compile a compliance dossier: models attach the competitor to off-label uses on this intent — material for medical/regulatory teams. Expected effect: fixes the root document all engines read; regulatory leverage; not a visibility action.
+
+**How we'll know it worked** — Next cycle, re-run these 14 questions and check: theme-wide error rate next cycles; tracked next cycle.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~20,984 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1219,6 +1934,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 16,510/mo · **points** 10
 - **Causes** LABEL-GAP
+
+**The problem** — Across the 10 questions in this task, 12% of the 60 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (10 of the 10 questions).
+
+**Why this happens** — answers diverge from the label on this point (CRIT 14 · MAJ 0 of 16). answers diverge from the label on this point (CRIT 12 · MAJ 0 of 16). Engine-specific: the picture differs by engine — ChatGPT web names us in 3 of 3 answers while Gemini web in only 1 of 3, so part of the fix is engine-specific. answers diverge from the label on this point (CRIT 13 · MAJ 0 of 16). Engine-specific: the picture differs by engine — Perplexity names us in 3 of 3 answers while Gemini web in only 1 of 3, so part of the fix is engine-specific. answers diverge from the label on this point (CRIT 5 · MAJ 0 of 16). Engine-specific: the picture differs by engine — Gemini web names us in 3 of 3 answers while Claude web in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Draft label-clarity content for “Titration & dose schedule” with the exact label citation the models misread; Medical approves, agent publishes. Expected effect: fewer dangerous/major label errors in patient-facing answers.
+
+**How we'll know it worked** — Next cycle, re-run these 10 questions and check: CRITICAL/MAJOR counts ↓ on re-run.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~16,510 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1236,6 +1962,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · G20 · MLR compatible
 - **Demand** 9,906/mo · **points** 6
 - **Causes** LABEL-GAP
+
+**The problem** — Across the 6 questions in this task, 17% of the 36 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (6 of the 6 questions).
+
+**Why this happens** — a dangerous label error reproduced in patient-facing answers.
+
+**What to do** — The fix cards on these questions ask for: File structured error reports with the AI providers (OpenAI, Google, Perplexity) citing the prescribing information — the only direct channel into model-side fixes. Expected effect: provider-side correction; nobody in the market files these.
+
+**How we'll know it worked** — Next cycle, re-run these 6 questions and check: error recurrence on re-run.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~9,906 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1253,6 +1990,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT · A1 · MLR medical review
 - **Demand** 5,262/mo · **points** 10
 - **Causes** LABEL-GAP
+
+**The problem** — Across the 10 questions in this task, 0% of the 60 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (10 of the 10 questions).
+
+**Why this happens** — answers diverge from the label on this point (CRIT 1 · MAJ 0 of 16).
+
+**What to do** — The fix cards on these questions ask for: Draft label-clarity content for “Pediatrics & teens” with the exact label citation the models misread; Medical approves, agent publishes; Draft label-clarity content for “Weight loss without diabetes” with the exact label citation the models misread; Medical approves, agent publishes. Expected effect: fewer dangerous/major label errors in patient-facing answers.
+
+**How we'll know it worked** — Next cycle, re-run these 10 questions and check: CRITICAL/MAJOR counts ↓ on re-run.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~5,262 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1270,6 +2018,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** AGENT+APPROVE · G20 · MLR compatible
 - **Demand** 156/mo · **points** 4
 - **Causes** LABEL-GAP
+
+**The problem** — Across the 4 questions in this task, 0% of the 24 model answers never name Ozempic at all. The cause engine reads it as: the answer diverges from the approved prescribing information (4 of the 4 questions).
+
+**Why this happens** — a dangerous label error reproduced in patient-facing answers.
+
+**What to do** — The fix cards on these questions ask for: File structured error reports with the AI providers (OpenAI, Google, Perplexity) citing the prescribing information — the only direct channel into model-side fixes. Expected effect: provider-side correction; nobody in the market files these.
+
+**How we'll know it worked** — Next cycle, re-run these 4 questions and check: error recurrence on re-run.
+
+**What this delivers** — Doing this addresses no measurable money on the API panel across ~156 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** —
@@ -1287,6 +2046,17 @@ I am not concerned about insurance or how to finance this—I have already resea
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 230,700/mo · **points** 15
 - **Causes** COMP-CONTENT, SYNTH, COMMERCIAL-GAP, SOURCE-PREF
+
+**The problem** — Across the 15 questions in this task, 67% of the 45 model answers never name Ozempic at all. The cause engine reads it as: the competitor has content on this and we do not (9 of the 15 questions); our pages are cited here and the answer still goes against us, so the pages are being read but not believed (4 of the 15 questions). Where we are missing, the answer names Zepbound in 21, Mounjaro in 9.
+
+**Why this happens** — AI repeats real price/coverage conditions; content cannot out-write reality.
+
+**What to do** — The fix cards on these questions ask for: Commercial reality check: these answers mirror the actual program — savings terms and formulary position are a stronger fix than any content. Expected effect: routes the fix to the team that owns it.
+
+**How we'll know it worked** — Next cycle, re-run these 15 questions and check: price/access answers after program changes.
+
+**What this delivers** — Doing this addresses an answer gap worth $5.8M–$17M a year across ~230,700 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $11M, Mounjaro $4.3M, Trulicity $1.7M
 - **Also addresses** T3, T4, T5, T6
@@ -1306,6 +2076,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 52,122/mo · **points** 53
 - **Causes** INSTITUTIONAL
+
+**The problem** — Across the 53 questions in this task, 95% of the 205 model answers never name Ozempic at all. The cause engine reads it as: the cited sources are official bodies that name no brand at all, so no content spend moves this (53 of the 53 questions). Where we are missing, the answer names Mounjaro in 7, Zepbound in 7.
+
+**Why this happens** — the honest read of the evidence: competitors get the same near-zero naming from these sources.
+
+**What to do** — The fix cards on these questions ask for: CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted. Expected effect: budget protected from unwinnable spend.
+
+**How we'll know it worked** — Next cycle, re-run these 53 questions and check: naming rate vs competitors stays equal-low.
+
+**What this delivers** — Doing this addresses an answer gap worth $1.9M–$5.6M a year across ~52,122 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $270K, Mounjaro $254K, Jardiance $42K
 - **Also addresses** T5
@@ -1323,6 +2104,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 83,889/mo · **points** 39
 - **Causes** SYNTH, COMP-CONTENT, SOURCE-LEAK, INSTITUTIONAL
+
+**The problem** — Across the 39 questions in this task, 43% of the 125 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (11 of the 39 questions); the competitor has content on this and we do not (10 of the 39 questions). Where we are missing, the answer names Zepbound in 31, Mounjaro in 10.
+
+**Why this happens** — AI repeats real price/coverage conditions; content cannot out-write reality. the honest read of the evidence: competitors get the same near-zero naming from these sources.
+
+**What to do** — The fix cards on these questions ask for: Commercial reality check: these answers mirror the actual program — savings terms and formulary position are a stronger fix than any content; CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted. Expected effect: routes the fix to the team that owns it; budget protected from unwinnable spend.
+
+**How we'll know it worked** — Next cycle, re-run these 39 questions and check: price/access answers after program changes; naming rate vs competitors stays equal-low.
+
+**What this delivers** — Doing this addresses an answer gap worth $1.5M–$4.3M a year across ~83,889 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $2.1M, Mounjaro $485K, Saxenda $207K
 - **Also addresses** T2, T3, T4, T5, T6, T10
@@ -1340,6 +2132,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 61,140/mo · **points** 31
 - **Causes** SOURCE-PREF, COMP-CONTENT, SYNTH, INSTITUTIONAL
+
+**The problem** — Across the 31 questions in this task, 41% of the 95 model answers never name Ozempic at all. The cause engine reads it as: third-party comparison pages decide this, and our evidence is not in the set they read (8 of the 31 questions); the competitor has content on this and we do not (7 of the 31 questions). Where we are missing, the answer names Zepbound in 26, Mounjaro in 16.
+
+**Why this happens** — AI repeats real price/coverage conditions; content cannot out-write reality. the honest read of the evidence: competitors get the same near-zero naming from these sources.
+
+**What to do** — The fix cards on these questions ask for: Commercial reality check: these answers mirror the actual program — savings terms and formulary position are a stronger fix than any content; CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted. Expected effect: routes the fix to the team that owns it; budget protected from unwinnable spend.
+
+**How we'll know it worked** — Next cycle, re-run these 31 questions and check: price/access answers after program changes; naming rate vs competitors stays equal-low.
+
+**What this delivers** — Doing this addresses an answer gap worth $968K–$2.9M a year across ~61,140 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Zepbound $1.4M, Mounjaro $606K, Trulicity $237K
 - **Also addresses** T3, T4, T5, T6, T10
@@ -1357,6 +2160,17 @@ Anybody had exp
 - **Execution** AGENT · H22 · MLR compatible
 - **Demand** 909,008/mo · **points** 320
 - **Causes** WORKING, SOURCE-LEAK
+
+**The problem** — Across the 320 questions in this task, 2% of the 984 model answers never name Ozempic at all. The cause engine reads it as: the position is held today; the work is keeping it that way (308 of the 320 questions); third-party pages answer this better than anything we have published, and they surface alternatives while doing it (12 of the 320 questions). Where we are missing, the answer names Mounjaro in 10, Zepbound in 10.
+
+**Why this happens** — working position — Ozempic 6/6, outcome positive. per methodology: no action is licensed at this layer.
+
+**What to do** — The fix cards on these questions ask for: Keep this position: monitor the sources feeding it (ozempic.com, drugs.com) and alert on drift; Track this point's leak rate after the page ships; Keep this position: monitor the sources feeding it and alert on drift. Expected effect: honest measurement, no wasted spend.
+
+**How we'll know it worked** — Next cycle, re-run these 320 questions and check: cause stays WORKING on re-run; leak 4/6 trending to 0.
+
+**What this delivers** — Doing this addresses an answer gap worth $573K–$1.7M a year across ~909,008 monthly searches and should move category visibility by +0.03–0.09pp.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Mounjaro $1.1M, Zepbound $546K, Saxenda $16K
 - **Also addresses** T8
@@ -1374,6 +2188,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 9,906/mo · **points** 6
 - **Causes** INSTITUTIONAL
+
+**The problem** — Across the 6 questions in this task, 96% of the 23 model answers never name Ozempic at all. The cause engine reads it as: the cited sources are official bodies that name no brand at all, so no content spend moves this (6 of the 6 questions).
+
+**Why this happens** — the honest read of the evidence: competitors get the same near-zero naming from these sources.
+
+**What to do** — The fix cards on these questions ask for: CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted. Expected effect: budget protected from unwinnable spend.
+
+**How we'll know it worked** — Next cycle, re-run these 6 questions and check: naming rate vs competitors stays equal-low.
+
+**What this delivers** — Doing this addresses an answer gap worth $352K–$1.0M a year across ~9,906 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** T5
@@ -1391,6 +2216,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 8,889/mo · **points** 3
 - **Causes** INSTITUTIONAL
+
+**The problem** — Across the 3 questions in this task, 73% of the 11 model answers never name Ozempic at all. The cause engine reads it as: the cited sources are official bodies that name no brand at all, so no content spend moves this (3 of the 3 questions).
+
+**Why this happens** — the honest read of the evidence: competitors get the same near-zero naming from these sources.
+
+**What to do** — The fix cards on these questions ask for: CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted. Expected effect: budget protected from unwinnable spend.
+
+**How we'll know it worked** — Next cycle, re-run these 3 questions and check: naming rate vs competitors stays equal-low.
+
+**What this delivers** — Doing this addresses an answer gap worth $297K–$882K a year across ~8,889 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** T5
@@ -1408,6 +2244,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 8,750/mo · **points** 2
 - **Causes** INSTITUTIONAL
+
+**The problem** — Across the 2 questions in this task, 71% of the 7 model answers never name Ozempic at all. The cause engine reads it as: the cited sources are official bodies that name no brand at all, so no content spend moves this (2 of the 2 questions).
+
+**Why this happens** — the honest read of the evidence: competitors get the same near-zero naming from these sources.
+
+**What to do** — The fix cards on these questions ask for: CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted. Expected effect: budget protected from unwinnable spend.
+
+**How we'll know it worked** — Next cycle, re-run these 2 questions and check: naming rate vs competitors stays equal-low.
+
+**What this delivers** — Doing this addresses an answer gap worth $256K–$760K a year across ~8,750 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** —
 - **Also addresses** T5
@@ -1424,6 +2271,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR medical review
 - **Demand** 2,517/mo · **points** 4
 - **Causes** SYNTH
+
+**The problem** — Across the 4 questions in this task, 44% of the 16 model answers never name Ozempic at all. The cause engine reads it as: our pages are cited here and the answer still goes against us, so the pages are being read but not believed (4 of the 4 questions). Where we are missing, the answer names Zepbound in 2, Invokana in 1.
+
+**Why this happens** — our pages are cited in 2/10 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while GPT-4o in only 0 of 4, so part of the fix is engine-specific. our pages are cited in 2/9 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Gemini names us in 2 of 3 answers while Claude in only 0 of 3, so part of the fix is engine-specific. our pages are cited in 3/8 sourced answers yet the outcome is still negative — retrieved but not carrying the argument. Engine-specific: the picture differs by engine — Claude names us in 3 of 3 answers while GPT-4o in only 1 of 3, so part of the fix is engine-specific.
+
+**What to do** — The fix cards on these questions ask for: Regulatory decision first — off-label territory: whether to build content here is the client's call. If yes: audit and rewrite the cited-but-losing page on novonordisk.com against the pages that win here (diabetes.org, fda.gov). Expected effect: citability rewrite (statistics, quotable lines, cited references, visible update date, 134–167-word passages): +30–41% share of answer (Princeton GEO, causal).
+
+**How we'll know it worked** — Next cycle, re-run these 4 questions and check: outcome flips while our citation persists.
+
+**What this delivers** — Doing this addresses an answer gap worth $48K–$144K a year across ~2,517 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Farxiga $25K, Mounjaro $10K, Invokana $9K
 - **Also addresses** —
@@ -1441,6 +2299,17 @@ Anybody had exp
 - **Execution** HUMAN TASK · MLR compatible
 - **Demand** 940/mo · **points** 23
 - **Causes** INSTITUTIONAL, POLICY, MIXED
+
+**The problem** — Across the 23 questions in this task, 89% of the 85 model answers never name Ozempic at all. The cause engine reads it as: the cited sources are official bodies that name no brand at all, so no content spend moves this (21 of the 23 questions); the models deliberately keep this answer brand-free (1 of the 23 questions). Where we are missing, the answer names Jardiance in 6, Farxiga in 5.
+
+**Why this happens** — the honest read of the evidence: competitors get the same near-zero naming from these sources. no page we publish forces a brand into policy-gated answers. per methodology: no action is licensed at this layer.
+
+**What to do** — The fix cards on these questions ask for: CMO decision: accept the partial channel floor here — official sources cap ALL brands equally, so extra content spend on this point is wasted; Channel floor: models keep this answer brand-free by policy — unbranded disease content and directory presence are the only doors; Hold: the evidence is mixed — more repeat collection is needed before any action is licensed here. Expected effect: budget protected from unwinnable spend; honest measurement, no wasted spend.
+
+**How we'll know it worked** — Next cycle, re-run these 23 questions and check: naming rate vs competitors stays equal-low; cause resolves from MIXED after more repeats; naming rate (expect the floor to hold).
+
+**What this delivers** — Doing this addresses an answer gap worth $33K–$98K a year across ~940 monthly searches.
+
 - **Pages / domains** —
 - **Competitors taking these answers** Januvia $4K, Farxiga $2K, Jardiance $2K
 - **Also addresses** T5

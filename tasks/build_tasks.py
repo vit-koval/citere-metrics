@@ -10,6 +10,7 @@ SRC = ROOT / "data" / "metrics" / "cycle_01" / "platform_data.json"
 OUT = ROOT / "tasks"
 MIN_TASK_USD_MO = 5000
 MAX_TASK_POINTS = 25
+OUR_BRAND = "Ozempic"
 ZONE_SHORT = {
  "STARTING & SWITCHING": "starting or switching", "WEIGHT LOSS": "weight loss",
  "BLOOD SUGAR & GLYCEMIC CONTROL": "blood sugar", "LIVING ON THE DRUG": "living on the drug",
@@ -315,6 +316,115 @@ def ops_fields(t, ks, card_of):
             "mlr_gate": any(c.get("mlr") == "medical-review" for c in cards)}
 
 
+# --------------------------------------------------------------------------- #
+# Task brief. Every sentence is assembled from data already on the point: the cause engine's
+# verdict, the fix cards' own why / effect / verify prose, and the money already computed.
+# Nothing here is invented copy.
+# --------------------------------------------------------------------------- #
+CAUSE_PLAIN = {
+ "UNCLAIMED":      "nobody has published a page that answers this question directly, so the models assemble an answer from generic health content",
+ "SOURCE-LEAK":    "third-party pages answer this better than anything we have published, and they surface alternatives while doing it",
+ "SOURCE-MISS":    "the answer is about us, yet it is assembled entirely without our own content",
+ "SOURCE-PREF":    "third-party comparison pages decide this, and our evidence is not in the set they read",
+ "COMP-CONTENT":   "the competitor has content on this and we do not",
+ "COMMERCIAL-GAP": "the commercial layer \u2014 telehealth, coupon and directory sites \u2014 answers this, and our pages are not among their inputs",
+ "SYNTH":          "our pages are cited here and the answer still goes against us, so the pages are being read but not believed",
+ "NOT-CHOSEN":     "sources carry us among the options but never lead with us",
+ "INSTITUTIONAL":  "the cited sources are official bodies that name no brand at all, so no content spend moves this",
+ "POLICY":         "the models deliberately keep this answer brand-free",
+ "PARAMETRIC":     "the answer comes from model memory, not from any live source",
+ "KNOW":           "the models' built-in memory of the brand is thin or confused",
+ "HOSTILE":        "litigation and attack sites feed this answer",
+ "NARR-AMP":       "the models amplify a negative framing on their own, without hostile sources",
+ "LABEL-GAP":      "the answer diverges from the approved prescribing information",
+ "COMP-OFFLABEL":  "the competitor is being described beyond its approved label",
+ "MIXED":          "the evidence points in several directions at once",
+ "WORKING":        "the position is held today; the work is keeping it that way",
+}
+_NUM = re.compile(r"\s*\(\d+\)")
+_URL = re.compile(r"https?://\S+")
+
+
+def _skeleton(t):
+    """Two why-lines that differ only in which domains they name are the same reason."""
+    t = _URL.sub("<url>", _NUM.sub("", t or ""))
+    t = re.sub(r"\b[a-z0-9][a-z0-9-]*(?:\.[a-z0-9-]+)+\b", "<domain>", t)
+    t = re.sub(r"\b\d+(\.\d+)?%?\b", "<n>", t)
+    return re.sub(r"\s+", " ", t).strip().lower()
+
+
+def _dedupe(texts, limit):
+    """Group by skeleton, keep the most common full wording of each group, commonest first."""
+    groups = collections.OrderedDict()
+    for t in texts:
+        if t:
+            groups.setdefault(_skeleton(t), []).append(t)
+    ranked = sorted(groups.values(), key=lambda g: (-len(g), g[0]))
+    out = []
+    for g in ranked[:limit]:
+        out.append(collections.Counter(g).most_common(1)[0][0])
+    return out, len(groups)
+
+
+def build_brief(t, ks, P, card_of, rows, usd_yr, expected, demand):
+    cards = [card_of[k][t] for k in ks if t in card_of.get(k, {})]
+    causes = collections.Counter(P[k]["cause"]["code"] for k in ks)
+    n = len(ks)
+
+    # 1. the problem — the dominant causes in plain language, carrying this task's own numbers
+    ans = [m for r in rows for m in (r.get("models") or [])]
+    blind = sum(1 for m in ans if not m["ours"])
+    share = round(blind / len(ans) * 100) if ans else 0
+    taken = collections.Counter(b for m in ans if not m["ours"] for b in m["comps"])
+    top = ", ".join("{} in {}".format(b, c) for b, c in taken.most_common(2))
+    lead = "; ".join("{} ({} of the {} questions)".format(CAUSE_PLAIN.get(c, c.lower()), v, n)
+                     for c, v in causes.most_common(2) if c in CAUSE_PLAIN)
+    problem = "Across the {} question{} in this task, {}% of the {} model answers never name {} at all.".format(
+        n, "" if n == 1 else "s", share, len(ans), OUR_BRAND)
+    if lead:
+        problem += " The cause engine reads it as: {}.".format(lead)
+    if top:
+        problem += " Where we are missing, the answer names {}.".format(top)
+
+    # 2–4. the fix cards' own prose, deduped across the task's points
+    whys, n_why = _dedupe([c.get("why") for c in cards], 4)
+    effects, n_eff = _dedupe([c.get("effect") for c in cards], 3)
+    verifies, n_ver = _dedupe([c.get("verify") for c in cards], 3)
+    actions, n_act = _dedupe([c.get("action") for c in cards], 3)
+
+    why = " ".join(w.rstrip(".") + "." for w in whys) or "No per-point reasoning is recorded for this task."
+    what = ""
+    if actions:
+        what = "The fix cards on these questions ask for: " + "; ".join(a.rstrip(".") for a in actions) + "."
+        if n_act > len(actions):
+            what += " {} further wordings of the same deliverable are recorded on the other points.".format(n_act - len(actions))
+    if effects:
+        what += (" " if what else "") + "Expected effect: " + "; ".join(e.rstrip(".") for e in effects) + "."
+    how = ("Next cycle, re-run these {} question{} and check: {}.".format(n, "" if n == 1 else "s",
+           "; ".join(v.rstrip(".") for v in verifies)) if verifies
+           else "No verification signal is recorded on these fix cards.")
+
+    # 5. what it delivers
+    money = ("an answer gap worth {}\u2013{} a year".format(_usd_short(usd_yr[0]), _usd_short(usd_yr[1]))
+             if usd_yr and usd_yr[1] else "no measurable money on the API panel")
+    pp = (" and should move category visibility by +{}\u2013{}pp".format(expected[0], expected[1])
+          if expected else "")
+    delivers = "Doing this addresses {} across ~{:,} monthly searches{}.".format(money, demand, pp)
+    return {"problem": problem, "why": why, "what_to_do": what or "No deliverable text is recorded on these fix cards.",
+            "how_verified": how, "delivers": delivers,
+            "_variants": {"why": n_why, "effect": n_eff, "verify": n_ver, "action": n_act, "cards": len(cards)}}
+
+
+def _usd_short(v):
+    v = round(v or 0)
+    if v >= 1e6:
+        x = v / 1e6
+        return "${}M".format("{:.1f}".format(x) if x < 10 else int(round(x)))
+    if v >= 1000:
+        return "${}K".format(int(round(v / 1000)))
+    return "${}".format(v)
+
+
 def answer_ref(key):
     """The real store is one file per run: answers_R1.js … answers_R9.js, keyed by pid|run."""
     pid, _, run = key.partition("|")
@@ -439,6 +549,9 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
             pages = [pg] + [x for x in pages if x != pg]
         also = sorted({x for k in ks for x in applicable[k]} - {t, "T1"}, key=lambda x: PRIMARY_ORDER.get(x, (99, 99)))
         wk = info["weeks"]
+        _rows = [questions_all_row(k, P) for k in ks]
+        _exp = expected_pp(t, ks, P, GROUP_BY_ID, COEF)
+        _dem = sum(money(k)["pt_demand_eff"] for k in ks)
         tid = "{}-{}-{}".format(lane, t, slug("{}-{}{}".format(slug(pg, 20), slug(g, 20), "-" + slug(piece, 46) if piece else ""), 92))
         tasks.append(dict(
             id=tid,
@@ -450,7 +563,8 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
             zone=zone_of, piece=piece or None,
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
             points=dict(count=len(ks), pids=[k for k in ks[:40]]), _all_pids=ks,
-            questions_all=[questions_all_row(k, P) for k in ks],
+            questions_all=_rows,
+            brief=build_brief(t, ks, P, card_of, _rows, [f * 12, m * 12], _exp, _dem),
             pages=pages[:6],
             competitors_leaking=[{"brand": b, "usd_mo": v} for b, v in by.most_common(3) if v],
             cause_codes=[c for c, _ in collections.Counter(P[k]["cause"]["code"] for k in ks).most_common(4)],
@@ -470,6 +584,8 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
         if (g or "").strip().lower() in ("other", "", "(general)"):
             g = theme([P[k]["question"] for k in ks])
         info = TYPES[t]
+        _rows = [questions_all_row(k, P) for k in ks]
+        _dem = sum(money(k)["pt_demand_eff"] for k in ks)
         web = [k for k in ks if money(k)["panel"] == "web"]
         btid = "B-{}-{}".format(t, slug(g))
         tasks.append(dict(
@@ -481,7 +597,8 @@ def build(d, P, MT, api, applicable, fix_of, primary, orphan, card_of):
             severity=dict(bad=sum(1 for k in ks if P[k]["sev"] == "bad"), warn=sum(1 for k in ks if P[k]["sev"] == "warn")),
             demand_mo=sum(money(k)["pt_demand_eff"] for k in ks),
             points=dict(count=len(ks), pids=[k for k in ks[:40]]), _all_pids=ks,
-            questions_all=[questions_all_row(k, P) for k in ks],
+            questions_all=_rows,
+            brief=build_brief(t, ks, P, card_of, _rows, [0, 0], None, _dem),
             pages=[], competitors_leaking=[],
             cause_codes=[c for c, _ in collections.Counter(P[k]["cause"]["code"] for k in ks).most_common(4)],
             also_addresses=[], evidence_refs=dict(answers=[answer_ref(k) for k in ks],
@@ -823,7 +940,13 @@ def write_md(tasks, MT, P, api):
                   " \u00b7 " + t["agent_id"] if t.get("agent_id") else "",
                   "medical review" if t.get("mlr_gate") else "compatible"),
               "- **Demand** {:,}/mo · **points** {}".format(t["demand_mo"], t["points"]["count"]),
-              "- **Causes** {}".format(", ".join(t["cause_codes"]) or "—"),
+              "- **Causes** {}".format(", ".join(t["cause_codes"]) or "—"), ""]
+        b = t.get("brief") or {}
+        for _h, _k in (("The problem", "problem"), ("Why this happens", "why"), ("What to do", "what_to_do"),
+                       ("How we'll know it worked", "how_verified"), ("What this delivers", "delivers")):
+            if b.get(_k):
+                L += ["**{}** — {}".format(_h, b[_k]), ""]
+        L += [
               "- **Pages / domains** {}".format(", ".join(t["pages"]) or "—"),
               "- **Competitors taking these answers** {}".format(
                   ", ".join("{} {}".format(c["brand"], usd(c["usd_mo"] * 12)) for c in t["competitors_leaking"]) or "—"),
